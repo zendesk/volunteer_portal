@@ -1,0 +1,8 @@
+mutation deleteIndividualEvent($input: DeleteIndividualEventInputType!) {
+  deleteIndividualEvent(input: $input) {
+    id
+    individualEvents {
+      id
+    }
+  }
+}

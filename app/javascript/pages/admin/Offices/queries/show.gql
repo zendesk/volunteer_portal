@@ -1,0 +1,7 @@
+#import "fragments/OfficeEntry.gql"
+
+query OfficeQuery($id: ID!) {
+  office(id: $id) {
+    ...OfficeEntry
+  }
+}

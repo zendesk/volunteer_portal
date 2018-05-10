@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Volunteer Portal</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <%= action_cable_meta_tag %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjoBGXTV75LE09ql5iZ5SmajncX_JAaCk&libraries=places"></script>
+
+    <% if ENV['ROLLBAR_URL'] %>
+      <script>
+        var _rollbarConfig = {
+            endpoint: "<%= ENV['ROLLBAR_URL'] %>/api/1/",
+            accessToken: "<%= ENV['ROLLBAR_CLIENT_ACCESS_TOKEN'] %>",
+            captureUncaught: true,
+            captureUnhandledRejections: false,
+            payload: {
+                environment: "<%= Rails.env %>"
+            }
+        };
+
+        // Rollbar Snippet
+        !function(r){function e(t){if(o[t])return o[t].exports;var n=o[t]={exports:{},id:t,loaded:!1};return r[t].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var o={};return e.m=r,e.c=o,e.p="",e(0)}([function(r,e,o){"use strict";var t=o(1).Rollbar,n=o(2);_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://d37gvrvc0wt4s1.cloudfront.net/js/v1.9/rollbar.min.js";var a=t.init(window,_rollbarConfig),i=n(a,_rollbarConfig);a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,i)},function(r,e){"use strict";function o(r){return function(){try{return r.apply(this,arguments)}catch(e){try{console.error("[Rollbar]: Internal error",e)}catch(o){}}}}function t(r,e,o){window._rollbarWrappedError&&(o[4]||(o[4]=window._rollbarWrappedError),o[5]||(o[5]=window._rollbarWrappedError._rollbarContext),window._rollbarWrappedError=null),r.uncaughtError.apply(r,o),e&&e.apply(window,o)}function n(r){var e=function(){var e=Array.prototype.slice.call(arguments,0);t(r,r._rollbarOldOnError,e)};return e.belongsToShim=!0,e}function a(r){this.shimId=++c,this.notifier=null,this.parentShim=r,this._rollbarOldOnError=null}function i(r){var e=a;return o(function(){if(this.notifier)return this.notifier[r].apply(this.notifier,arguments);var o=this,t="scope"===r;t&&(o=new e(this));var n=Array.prototype.slice.call(arguments,0),a={shim:o,method:r,args:n,ts:new Date};return window._rollbarShimQueue.push(a),t?o:void 0})}function l(r,e){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){var o=e.addEventListener;e.addEventListener=function(e,t,n){o.call(this,e,r.wrap(t),n)};var t=e.removeEventListener;e.removeEventListener=function(r,e,o){t.call(this,r,e&&e._wrapped?e._wrapped:e,o)}}}var c=0;a.init=function(r,e){var t=e.globalAlias||"Rollbar";if("object"==typeof r[t])return r[t];r._rollbarShimQueue=[],r._rollbarWrappedError=null,e=e||{};var i=new a;return o(function(){if(i.configure(e),e.captureUncaught){i._rollbarOldOnError=r.onerror,r.onerror=n(i);var o,a,c="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(o=0;o<c.length;++o)a=c[o],r[a]&&r[a].prototype&&l(i,r[a].prototype)}return e.captureUnhandledRejections&&(i._unhandledRejectionHandler=function(r){var e=r.reason,o=r.promise,t=r.detail;!e&&t&&(e=t.reason,o=t.promise),i.unhandledRejection(e,o)},r.addEventListener("unhandledrejection",i._unhandledRejectionHandler)),r[t]=i,i})()},a.prototype.loadFull=function(r,e,t,n,a){var i=function(){var e;if(void 0===r._rollbarPayloadQueue){var o,t,n,i;for(e=new Error("rollbar.js did not load");o=r._rollbarShimQueue.shift();)for(n=o.args,i=0;i<n.length;++i)if(t=n[i],"function"==typeof t){t(e);break}}"function"==typeof a&&a(e)},l=!1,c=e.createElement("script"),d=e.getElementsByTagName("script")[0],p=d.parentNode;c.crossOrigin="",c.src=n.rollbarJsUrl,c.async=!t,c.onload=c.onreadystatechange=o(function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){c.onload=c.onreadystatechange=null;try{p.removeChild(c)}catch(r){}l=!0,i()}}),p.insertBefore(c,d)},a.prototype.wrap=function(r,e){try{var o;if(o="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._wrapped){r._wrapped=function(){try{return r.apply(this,arguments)}catch(e){throw e._rollbarContext=o()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e,e}},r._wrapped._isWrap=!0;for(var t in r)r.hasOwnProperty(t)&&(r._wrapped[t]=r[t])}return r._wrapped}catch(n){return r}};for(var d="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError,unhandledRejection".split(","),p=0;p<d.length;++p)a.prototype[d[p]]=i(d[p]);r.exports={Rollbar:a,_rollbarWindowOnError:t}},function(r,e){"use strict";r.exports=function(r,e){return function(o){if(!o&&!window._rollbarInitialized){var t=window.RollbarNotifier,n=e||{},a=n.globalAlias||"Rollbar",i=window.Rollbar.init(n,r);i._processShimQueue(window._rollbarShimQueue||[]),window[a]=i,window._rollbarInitialized=!0,t.processPayloads()}}}}]);
+        // End Rollbar Snippet
+      </script>
+    <% end %>
+
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 14px;
+      color: #555;
+    }
+    button {
+      font-size: 14px;
+    }
+    a {
+      color: #08c;
+      text-decoration: none;
+    }
+    .rbc-calendar{
+      color: #777;
+    }
+    .rbc-today {
+      background-color: #f5f5f5;
+    }
+    .rbc-toolbar {
+      border-bottom: 1px solid #ccc;
+    }
+    .rbc-toolbar .rbc-btn-group button {
+      border-radius: 0;
+      border: none;
+      border-bottom: 3px solid transparent;
+      text-transform: capitalize;
+    }
+    .rbc-toolbar .rbc-btn-group button.rbc-active {
+      background: none;
+      box-shadow: none;
+      border-bottom-color: #04444d;
+    }
+    .rbc-toolbar .rbc-btn-group button:hover {
+      background: none;
+    }
+    .rbc-toolbar .rbc-btn-group button:focus {
+      background: none;
+    }
+    .rbc-toolbar .rbc-btn-group button:active {
+      border: none;
+      border-bottom: 3px solid transparent;
+      background: none;
+      box-shadow: none;
+    }
+    .rbc-date-cell.rbc-now {
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+    }
+    .rbc-row-content {
+      overflow: hidden;
+    }
+    .rbc-month-view {
+      border: none;
+      border-bottom: 1px solid #dadada;
+    }
+    .rbc-month-row {
+      border-left: 1px solid #dadada;
+      border-right: 1px solid #dadada;
+    }
+    .rbc-month-header {
+      font-size: 14pt;
+      color: #999;
+    }
+    .rbc-header {
+      padding-bottom: 5px;
+    }
+    .rbc-month-view .rbc-header+.rbc-header {
+      border-left: none;
+    }
+    .rbc-event {
+      height: 30px;
+      padding: 0 8px;
+    }
+    .rbc-show-more {
+      text-align: center;
+      font-size: 120%;
+    }
+    .rbc-event-content {
+      height: 30px;
+    }
+    .rbc-overlay {
+      box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+      border-radius: 2px;
+      border: none;
+    }
+    .rbc-overlay-header {
+      font-weight: bold;
+    }
+    .rbc-agenda-time-cell {
+      border-left: 1px solid #DDD;
+    }
+    .rbc-agenda-view table {
+      border-collapse: collapse;
+    }
+    .rbc-day-slot .rbc-event {
+      border: none;
+      background-color: #03363D;
+    }
+    .geosuggest__suggests--hidden {
+      max-height: 0;
+      overflow: hidden;
+      border-width: 0;
+    }
+    .geosuggest__item {
+      padding: 5px 0;
+    }
+    .geosuggest__item--active {
+      background: #eee;
+      color: #555;
+    }
+    [type=reset], [type=submit], button, html [type=button] {
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .rainbow-progress div {
+      background: linear-gradient(to right, tomato, orange , yellow, cyan, mediumorchid);
+    }
+  </style>
+
+  <%# the mainfest.json file will references the assets as `main.js`, we should be able to configure this to portal %>
+  <% if Rails.env.development? %>
+    <script src="//localhost:8080/assets/portal/portal.js"></script>
+  <% else %>
+    <%= javascript_pack_tag 'main' %>
+  <% end %>
+
+  <% if Rails.env.production? && ENV['ZENDESK_DOMAIN'] %>
+    <!-- Start of Zendesk Widget script -->
+    <script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js",<%= ENV['ZENDESK_DOMAIN'] %>);
+    /*]]>*/</script>
+    <!-- End of Zendesk Widget script -->
+  <% end %>
+
+</html>

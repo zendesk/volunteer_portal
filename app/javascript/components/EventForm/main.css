@@ -1,0 +1,100 @@
+.form {
+  width: 100%;
+}
+
+.inputGroup {
+  width: 100%;
+  padding-bottom: 20px;
+  font-size: 13pt;
+}
+
+.twoColumnForm {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.column {
+  width: 48%;
+}
+
+.inputGroup:last-of-type {
+  padding-bottom: none;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.field {
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 5px;
+  min-width: 300px;
+  font-size: 12pt;
+  background: none;
+  width: calc(100% - 10px); /* 100% - left and right padding */
+}
+
+select.field {
+  min-width: 312px; /* border+padding+width+padding+border from .field */
+  height: 30px;
+  width: 100%;
+}
+
+.fieldError {
+  font-weight: normal;
+  color: #bb0000;
+}
+
+.btn {
+  margin-left: 10px;
+  -webkit-transition: border-color 0.25s ease-in-out, box-shadow 0.1s ease-in-out, background-color 0.25s ease-in-out,
+    color 0.25s ease-in-out;
+  transition: border-color 0.25s ease-in-out, box-shadow 0.1s ease-in-out, background-color 0.25s ease-in-out,
+    color 0.25s ease-in-out;
+  margin: 0;
+  border: 1px solid #30aabc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 0 1.7em;
+  min-width: 8.3334em;
+  overflow: visible;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.1;
+  white-space: nowrap;
+  color: #30aabc;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  border-color: #b9b9b9;
+}
+
+.primary {
+  border-color: transparent;
+  background-color: #30aabc;
+  color: #fff;
+}
+
+.autocompleteList {
+  list-style: none;
+  color: #555;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.muiTextField hr {
+  display: none;
+}

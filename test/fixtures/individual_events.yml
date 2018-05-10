@@ -1,0 +1,18 @@
+minimum:
+  description: I am a simple event
+  date: '2014-12-03'
+  duration: 120
+  organization: minimum
+  office: san_francisco
+  user: admin
+  event_type: individual
+
+approved:
+  description: I am a happy event
+  date: '2014-12-03'
+  duration: 120
+  organization: minimum
+  office: san_francisco
+  user: admin
+  event_type: individual
+  status: 1

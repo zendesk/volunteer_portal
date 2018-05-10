@@ -1,0 +1,6 @@
+fragment OfficeEntry on Office {
+  id
+  identifier
+  name
+  timezone
+}

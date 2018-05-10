@@ -1,0 +1,15 @@
+#import "fragments/UserEntry.gql"
+#import "fragments/OfficeEntry.gql"
+
+query AppQuery {
+  currentUser {
+    ...UserEntry
+    office {
+      ...OfficeEntry
+    }
+    isAdmin
+  }
+  offices {
+    ...OfficeEntry
+  }
+}

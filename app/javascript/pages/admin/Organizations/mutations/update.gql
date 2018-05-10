@@ -1,0 +1,7 @@
+#import "fragments/OrganizationEntry.gql"
+
+mutation updateOrganization($input: EditOrganizationInputType!) {
+  updateOrganization(input: $input) {
+    ...OrganizationEntry
+  }
+}

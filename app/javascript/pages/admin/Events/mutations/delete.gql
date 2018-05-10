@@ -1,0 +1,7 @@
+#import "fragments/EventEntry.gql"
+
+mutation deleteEvent($id: ID!) {
+  deleteEvent(id: $id) {
+    ...EventEntry
+  }
+}

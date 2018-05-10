@@ -1,0 +1,36 @@
+#import "fragments/EventEntry.gql"
+
+query AttendanceQuery($weekStart: Int, $weekEnd: Int, $monthStart: Int, $monthEnd: Int, $officeId: ID) {
+  allEvents: events(officeId: $officeId) {
+    id
+    duration
+  }
+
+  eventsThisMonth: events(after: $monthStart, before: $monthEnd, officeId: $officeId) {
+    ...EventEntry
+    duration
+    signups {
+      id
+      event {
+        id
+      }
+    }
+    users {
+      id
+    }
+  }
+
+  eventsThisWeek: events(after: $weekStart, before: $weekEnd, officeId: $officeId) {
+    ...EventEntry
+    duration
+    signups {
+      id
+      event {
+        id
+      }
+    }
+    users {
+      id
+    }
+  }
+}

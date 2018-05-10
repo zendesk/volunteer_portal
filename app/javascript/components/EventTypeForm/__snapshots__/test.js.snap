@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <div
+    className="inputGroup"
+  >
+    <div>
+      <label
+        className="label"
+      >
+        Title
+         
+        <span
+          className="errorMsg"
+        >
+          *
+        </span>
+      </label>
+      <div>
+        <input
+          className="field"
+          name="title"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="inputGroup"
+  >
+    <button
+      className="btn primary"
+      disabled={undefined}
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;

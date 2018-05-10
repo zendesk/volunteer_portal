@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Volunteer Portal</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjoBGXTV75LE09ql5iZ5SmajncX_JAaCk&libraries=places"></script>
+</head>
+<body>
+
+  <% if user_signed_in? %>
+    <%= nav_bar brand: "SF Volunteer", responsive: true do %>
+      <%= menu_group do %>
+        <%= menu_item 'Organizations', organizations_path %>
+        <%= menu_item 'Offices', offices_path %>
+        <%= menu_item 'Events', events_path %>
+        <%= menu_item 'Reporting', reporting_index_path %>
+        <%= menu_item 'Calendar', root_path %>
+      <% end %>
+        <%= menu_group pull: :right do %>
+          <%= menu_item 'Log Out', logout_path, method: :delete %>
+        <% end %>
+    <% end %>
+
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
+  <% end %>
+
+  <%= yield %>
+
+</body>
+
+</html>

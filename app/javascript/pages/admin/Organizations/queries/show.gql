@@ -1,0 +1,7 @@
+#import "fragments/OrganizationEntry.gql"
+
+query OrganizationQuery($id: ID!) {
+  organization(id: $id) {
+    ...OrganizationEntry
+  }
+}

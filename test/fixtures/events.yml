@@ -1,0 +1,67 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+minimum:
+  title: Minimum event
+  type: individual
+  description: I am a simple event
+  starts_at: 2014-12-03 11:38:03
+  ends_at: 2014-12-03 13:38:03
+  capacity: 1
+  organization: minimum
+  location: nowhere
+  office: san_francisco
+
+simple_event:
+  title: 'Find them kittens'
+  description: 'Find them kittens'
+  starts_at: 2014-12-01 11:38:03
+  ends_at: 2014-12-03 13:38:03
+  capacity: 1
+  organization: minimum
+  type: individual
+  location: 'Test Location'
+  office: san_francisco
+
+late_event:
+  title: 'Find them kittens 2'
+  description: 'Find them kittens'
+  starts_at: 2016-12-01 11:38:03
+  ends_at: 2014-12-03 13:38:03
+  capacity: 1
+  organization: minimum
+  type: individual
+  location: 'Test Location'
+  office: san_francisco
+
+find_kittens:
+  title: Find them kittens
+  type: individual
+  description: Find them kittens
+  starts_at: 2014-12-03 11:38:03
+  ends_at: 2014-12-03 13:38:03
+  capacity: 1
+  organization: kittens
+  location: Box
+  office: san_francisco
+
+find_kit_kats:
+  title: Find them kit kats
+  type: individual
+  description: Find them kit kats
+  starts_at: 2014-10-03 11:38:03
+  ends_at: 2014-12-03 13:38:03
+  capacity: 1
+  organization: kittens
+  location: Keyboard
+  office: san_francisco
+
+feed_the_kittens:
+  title: Feed teh kitties
+  type: individual
+  description: Find them kit kats
+  starts_at: 2016-01-01 11:38:03
+  ends_at: 2014-12-03 13:38:03
+  capacity: 1
+  organization: kittens
+  location: Catnip Cave
+  office: san_francisco

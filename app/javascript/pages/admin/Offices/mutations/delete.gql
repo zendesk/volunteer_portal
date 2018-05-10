@@ -1,0 +1,7 @@
+#import "fragments/OfficeEntry.gql"
+
+mutation deleteOffice($id: ID!) {
+  deleteOffice(id: $id) {
+    ...OfficeEntry
+  }
+}

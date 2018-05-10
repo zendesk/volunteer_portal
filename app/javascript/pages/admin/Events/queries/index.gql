@@ -1,0 +1,12 @@
+#import "fragments/EventEntry.gql"
+#import "fragments/OfficeEntry.gql"
+
+query EventsQuery {
+  events {
+    ...EventEntry
+    office {
+      ...OfficeEntry
+    }
+    duration
+  }
+}

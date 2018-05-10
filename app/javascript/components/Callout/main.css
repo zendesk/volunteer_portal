@@ -1,0 +1,29 @@
+.callout {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 20px 40px;
+  line-height: 1.42857;
+  color: #777;
+  font-size: 14px;
+}
+
+.default {
+  background-color: #fff;
+}
+
+.success {
+  border-color: #16ba52;
+  background-color: rgba(22, 186, 82, 0.1);
+}
+
+.warning {
+  border-color: #ffc800;
+  background-color: rgba(255, 200, 0, 0.1);
+}
+
+.error {
+  border-color: #eb6651;
+  background-color: hsla(8, 79%, 62%, 0.1);
+}

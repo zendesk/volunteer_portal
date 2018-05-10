@@ -1,0 +1,7 @@
+#import "fragments/EventTypeEntry.gql"
+
+query EventTypeQuery($id: ID!) {
+  eventType(id: $id) {
+    ...EventTypeEntry
+  }
+}

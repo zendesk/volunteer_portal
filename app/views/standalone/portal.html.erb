@@ -1,0 +1,20 @@
+<% if Rails.env.development? %>
+
+<div id="root">
+  <div style="margin:0 auto;text-align:center;">
+    <h3>You need to be running the volunteer-portal server locally</h3>
+    <p>Use foreman to run both unicorn and webpack</p>
+    <pre style="background-color:#ddd;margin:10px;padding:10px;display:inline-block;text-align:left;">
+<code>bundle exec foreman start</code></pre>
+  <br>
+  <p>Or run webpack dev server on its own</p>
+    <pre style="background-color:#ddd;margin:10px;padding:10px;display:inline-block;text-align:left;">
+<code>./bin/webpack-dev-server</code></pre>
+  </div>
+</div>
+
+<% else %>
+
+<div id="root"></div>
+
+<% end %>

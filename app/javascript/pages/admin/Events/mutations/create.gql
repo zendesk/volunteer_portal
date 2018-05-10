@@ -1,0 +1,7 @@
+#import "fragments/EventEntry.gql"
+
+mutation createEvent($input: EditEventInputType!) {
+  createEvent(input: $input) {
+    ...EventEntry
+  }
+}

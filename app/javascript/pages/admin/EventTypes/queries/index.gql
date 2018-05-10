@@ -1,0 +1,7 @@
+#import "fragments/EventTypeEntry.gql"
+
+query EventTypesQuery {
+  eventTypes {
+    ...EventTypeEntry
+  }
+}

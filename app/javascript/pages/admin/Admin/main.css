@@ -1,0 +1,42 @@
+.admin {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+
+.content {
+  width: 935px;
+}
+
+.navBar {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+  align-items: baseline;
+}
+
+.navSpacer {
+  min-width: 25px;
+}
+
+.growingSpace {
+  flex-grow: 10;
+}
+
+.navBtn {
+  font-weight: normal;
+  border: none;
+  border-image: none;
+  background: none;
+  border-bottom: 3px solid transparent;
+  padding: 8px 0;
+  display: inline-block;
+  color: #333;
+}
+
+.activeBtn {
+  font-weight: 500;
+  border-bottom: 3px solid #30aabc;
+}

@@ -1,0 +1,28 @@
+#import "fragments/EventEntry.gql"
+#import "fragments/EventTypeEntry.gql"
+#import "fragments/OfficeEntry.gql"
+#import "fragments/OrganizationEntry.gql"
+
+query EventQuery($id: ID!) {
+  event(id: $id) {
+    ...EventEntry
+    office {
+      ...OfficeEntry
+    }
+    eventType {
+      ...EventTypeEntry
+    }
+    organization {
+      ...OrganizationEntry
+    }
+  }
+  eventTypes {
+    ...EventTypeEntry
+  }
+  offices {
+    ...OfficeEntry
+  }
+  organizations {
+    ...OrganizationEntry
+  }
+}

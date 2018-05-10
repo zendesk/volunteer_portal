@@ -1,0 +1,7 @@
+#import "fragments/UserEntry.gql"
+
+mutation deleteUser($id: ID!) {
+  deleteUser(id: $id) {
+    ...UserEntry
+  }
+}

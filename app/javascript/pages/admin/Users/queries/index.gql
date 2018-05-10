@@ -1,0 +1,7 @@
+#import "fragments/UserEntry.gql"
+
+query UsersQuery {
+  users {
+    ...UserEntry
+  }
+}

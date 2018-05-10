@@ -1,0 +1,7 @@
+fragment OrganizationEntry on Organization {
+  id
+  name
+  location
+  description
+  website
+}

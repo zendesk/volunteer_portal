@@ -1,0 +1,18 @@
+.event {
+  cursor: pointer;
+  height: 30px;
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #686868;
+  overflow: hidden;
+}
+
+.popover {
+  margin-top: 5px;
+  font-weight: 400;
+}

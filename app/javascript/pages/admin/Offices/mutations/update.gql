@@ -1,0 +1,7 @@
+#import "fragments/OfficeEntry.gql"
+
+mutation updateOffice($input: EditOfficeInputType!) {
+  updateOffice(input: $input) {
+    ...OfficeEntry
+  }
+}

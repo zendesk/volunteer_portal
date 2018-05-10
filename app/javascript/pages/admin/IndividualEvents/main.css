@@ -1,0 +1,180 @@
+.admin {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+
+.content {
+  width: 935px;
+}
+
+.navBar {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+  align-items: baseline;
+}
+
+.navSpacer {
+  min-width: 25px;
+}
+
+.growingSpace {
+  flex-grow: 10;
+}
+
+.navBtn {
+  font-weight: normal;
+  border: none;
+  border-image: none;
+  background: none;
+  border-bottom: 3px solid transparent;
+  padding: 8px 0;
+  display: inline-block;
+  color: #333;
+}
+
+.activeBtn {
+  font-weight: 500;
+  border-bottom: 3px solid #30aabc;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  border-bottom: 2px solid #eee;
+  text-align: left;
+  padding: 15px 5px;
+}
+
+.table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.table tr:last-of-type td {
+  border-bottom: none;
+}
+
+.actionColumn {
+  max-width: 200px;
+  white-space: nowrap;
+}
+
+.input {
+  font-size: 14px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 5px 10px;
+  min-width: 250px;
+  background: none;
+  height: 20px;
+}
+
+.errorMsg {
+  color: #ff542e;
+  font-size: smaller;
+  font-weight: normal;
+}
+
+select.input {
+  height: 30px; /* selects don't honor padding, account for it in the height */
+}
+
+.btn {
+  border: none;
+  background: none;
+  padding: 5px 15px;
+}
+
+.cancelBtn {
+  color: #aaa;
+}
+
+.confirmBtn {
+  color: #08c;
+}
+
+.deleteBtn {
+  color: #a93a38;
+}
+
+.leftAligned {
+  padding-left: 0;
+}
+
+.actionBar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.createAction {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: none;
+  padding: 8px 20px;
+}
+
+.createAction:active {
+  border-color: #ddd;
+  background: #f5f5f5;
+}
+
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.form label {
+  color: #333;
+  font-weight: bold;
+  display: block;
+  padding-bottom: 5px;
+}
+
+.form input,
+textarea {
+  width: calc(100% - 20px);
+}
+
+.form textarea {
+  height: auto;
+}
+
+.form select {
+  width: 100%;
+}
+
+.form .input {
+  border-color: #ddd;
+}
+
+.formSpace {
+  height: 20px;
+}
+
+.autocompleteList {
+  list-style: none;
+  color: #555;
+  padding-left: 10px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.column {
+  width: 47%;
+}
+
+.muiTextField hr {
+  display: none;
+}

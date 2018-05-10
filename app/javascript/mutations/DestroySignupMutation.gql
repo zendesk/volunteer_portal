@@ -1,0 +1,13 @@
+#import "fragments/EventEntry.gql"
+#import "fragments/UserEntry.gql"
+
+mutation destroySignup($eventId: ID!, $userId: ID!) {
+  destroySignup(eventId: $eventId, userId: $userId) {
+    event {
+      ...EventEntry
+      users {
+        ...UserEntry
+      }
+    }
+  }
+}

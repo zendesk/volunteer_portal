@@ -1,0 +1,27 @@
+#import "fragments/UserEntry.gql"
+#import "fragments/OfficeEntry.gql"
+#import "fragments/OrganizationEntry.gql"
+#import "fragments/EventTypeEntry.gql"
+#import "fragments/IndividualEventEntry.gql"
+
+query PendingIndividualEventsQuery {
+  currentUser {
+    ...UserEntry
+    office {
+      ...OfficeEntry
+    }
+    isAdmin
+  }
+  pendingIndividualEvents {
+    ...IndividualEventEntry
+    user {
+      ...UserEntry
+    }
+    organization {
+      ...OrganizationEntry
+    }
+    eventType {
+      ...EventTypeEntry
+    }
+  }
+}

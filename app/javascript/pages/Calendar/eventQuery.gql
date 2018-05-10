@@ -1,0 +1,27 @@
+#import "fragments/UserEntry.gql"
+#import "fragments/EventEntry.gql"
+#import "fragments/OfficeEntry.gql"
+#import "fragments/EventTypeEntry.gql"
+#import "fragments/OrganizationEntry.gql"
+
+query EventQuery($id: ID!) {
+  currentUser {
+    ...UserEntry
+    isAdmin
+  }
+  event(id: $id) {
+    ...EventEntry
+    eventType {
+      ...EventTypeEntry
+    }
+    users {
+      ...UserEntry
+    }
+    office {
+      ...OfficeEntry
+    }
+    organization {
+      ...OrganizationEntry
+    }
+  }
+}

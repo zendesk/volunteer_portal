@@ -1,0 +1,6 @@
+fragment UserEntry on User {
+  id
+  name
+  email
+  photo
+}

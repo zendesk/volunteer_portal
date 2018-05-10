@@ -1,0 +1,36 @@
+#import "fragments/UserEntry.gql"
+#import "fragments/OfficeEntry.gql"
+#import "fragments/OrganizationEntry.gql"
+
+query IndividualEventsQuery {
+  currentUser {
+    ...UserEntry
+    individualEvents {
+      id
+      status
+      duration
+      date
+      description
+      organization {
+        ...OrganizationEntry
+      }
+      eventType {
+        id
+        title
+      }
+      office {
+        ...OfficeEntry
+      }
+    }
+  }
+  offices {
+    ...OfficeEntry
+  }
+  eventTypes {
+    id
+    title
+  }
+  organizations {
+    ...OrganizationEntry
+  }
+}

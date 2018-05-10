@@ -1,0 +1,34 @@
+# Note: You must restart bin/webpack-dev-server for changes to take effect
+
+default: &default
+  source_path: app/javascript
+  source_entry_path: '.'
+  public_output_path: assets/portal
+
+  extensions:
+    - .js
+    - .jsx
+    - .css
+    - .png
+    - .svg
+    - .gif
+    - .jpeg
+    - .jpg
+    - .gql
+    - .graphql
+
+development:
+  <<: *default
+
+  dev_server:
+    host: '127.0.0.1'
+    port: 8080
+    https: false
+
+test:
+  <<: *default
+
+  public_output_path: packs-test
+
+production:
+  <<: *default

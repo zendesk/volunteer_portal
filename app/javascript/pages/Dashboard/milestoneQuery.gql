@@ -1,0 +1,13 @@
+#import "fragments/UserEntry.gql"
+#import "fragments/OfficeEntry.gql"
+
+query MilestoneQuery($after: Int, $before: Int) {
+  currentUser {
+    ...UserEntry
+    isAdmin
+    hours(after: $after, before: $before)
+    office {
+      ...OfficeEntry
+    }
+  }
+}

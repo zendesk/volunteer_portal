@@ -1,0 +1,10 @@
+.actionColumn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteAction {
+  background: none;
+  border: none;
+  color: maroon;
+}

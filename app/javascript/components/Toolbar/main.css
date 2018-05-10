@@ -1,0 +1,64 @@
+.toolbar {
+  margin-bottom: 40px;
+}
+
+.navBar {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding-bottom: 3px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.label {
+  display: inline-block;
+  width: 250px;
+  font-weight: 600;
+  color: #555;
+}
+
+.todayBtn {
+  position: absolute;
+  left: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  bottom: 0;
+}
+
+.btn {
+  width: 65px;
+  border: none;
+  border-bottom: none;
+  background: none;
+  padding: 0 8px 5px;
+  font-size: 14px;
+  border-bottom: 3px solid transparent;
+}
+
+.activeBtn {
+  border-bottom: 3px solid #30aabc;
+}
+
+.spacer {
+  width: 15px;
+}
+
+.filterBar {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterDropdowns {
+  display: flex;
+}
+
+.viewBtns {
+  display: flex;
+  align-items: flex-end;
+}
+

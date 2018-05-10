@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+minimum:
+  title: Minimum Event Type
+
+hire:
+  title: New hire
+
+individual:
+  title: Individual
+
+group:
+  title: Group

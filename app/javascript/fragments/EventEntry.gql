@@ -1,0 +1,9 @@
+fragment EventEntry on Event {
+  id
+  title
+  startsAt
+  endsAt
+  location
+  capacity
+  description
+}

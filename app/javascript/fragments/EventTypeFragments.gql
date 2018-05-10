@@ -1,0 +1,4 @@
+fragment EventTypeEntry on EventType {
+  id
+  title
+}

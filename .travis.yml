@@ -1,0 +1,43 @@
+sudo: false
+language: ruby
+
+services:
+  - postgresql
+
+branches:
+  only:
+    - master
+
+before_install:
+  - gem update --system # https://github.com/travis-ci/travis-ci/issues/8978
+  - nvm install
+
+before_script:
+  - psql -c 'create database volunteer_test;' -U postgres
+  - psql -c 'create role volunteer with login superuser;' -U postgres
+  - bundle exec rake db:test:prepare
+  - bin/rails db:migrate
+  - npm install
+
+cache: bundler
+
+notifications:
+  webhooks:
+    urls:
+      secure: stfwwvkMFEZHE6zynhF7Znn4hrBUFayBX0tT0XwpWJBCR1WHbx2+K5Y2Z38b6nc2rAWaCUxD5nAdZNiEnfAb5y3+V78ZhlOqdoQRN67+tinWo6GQAhVdP/6xUFS+z7JV6IM5Cxtri6t+qk9R92dHsrAZuDLBoisp6znTdicxSpc=
+    on_start: never
+    on_cancel: never
+    on_failure: never
+    on_error: never
+
+script: $TASK
+
+env:
+  - TASK="bundle exec rake brakeman"
+  - TASK="bundle exec rake test"
+  - TASK="npm test"
+  - TASK="bundle exec script/sourceclear.sh"
+
+matrix:
+  allow_failures:
+    - env: TASK="bundle exec script/sourceclear.sh"

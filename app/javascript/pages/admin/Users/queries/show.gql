@@ -1,0 +1,16 @@
+#import "fragments/UserEntry.gql"
+#import "fragments/OfficeEntry.gql"
+
+query UserQuery($id: ID!) {
+  user(id: $id) {
+    ...UserEntry
+    office {
+      ...OfficeEntry
+    }
+    timezone
+    isAdmin
+  }
+  offices {
+    ...OfficeEntry
+  }
+}

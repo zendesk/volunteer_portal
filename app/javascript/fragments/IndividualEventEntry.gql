@@ -1,0 +1,7 @@
+fragment IndividualEventEntry on IndividualEvent {
+  id
+  description
+  date
+  duration
+  status
+}

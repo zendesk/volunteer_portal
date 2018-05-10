@@ -1,0 +1,9 @@
+san_francisco:
+  name: San Francisco
+  identifier: san_francisco
+madison:
+  name: Madison
+  identifier: madison
+remote:
+  name: Remote
+  identifier: remote

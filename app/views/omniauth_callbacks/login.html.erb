@@ -1,0 +1,15 @@
+<div class="signin-logo">
+  <%= image_tag 'hands.svg' %>
+  <span class="signin-logo-text">Zendesk Volunteering</span>
+</div>
+
+<% if @failure %>
+  <p class="signin-error-text">We're sorry, authentication failed.</p>
+<% end %>
+
+<div class="login-options">
+  <div id="omniauth_login_form">
+    <%= button_to 'Sign in with Google', '/auth/google_oauth2', class: 'google-signin-btn' %>
+  </div>
+</div>
+

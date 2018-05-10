@@ -1,0 +1,152 @@
+.page {
+  width: 100%;
+}
+
+.pageHeader {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 50px;
+}
+
+.pageNav {
+  border: none;
+  background: none;
+  float: left;
+  font-size: 16px;
+  color: #555;
+}
+
+.pageTitle {
+  font-size: 20px;
+}
+
+
+/* details */
+.detailsRow {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.leftCol {
+  width: 65%;
+  display: inline-block;
+  float: left;
+}
+
+.rightCol {
+  width: 30%;
+  display: inline-block;
+  float: right;
+}
+
+.overview {
+
+}
+
+.details {
+  min-height: 100px;
+}
+
+.eventType {
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+.organization {
+  min-height: 100px;
+}
+
+.orgTitle {
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.orgDescription {
+
+}
+
+.attendanceAndSignup {
+  margin-bottom: 30px;
+}
+
+.attendanceProgress {
+  display: inline-block;
+  width: calc(100% - 130px);
+}
+
+.signupBtn {
+  float: right;
+  height: 30px;
+}
+
+.property {
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.icon {
+  vertical-align: -33%;
+  margin-right: 10px,
+}
+
+.btn {
+  border: none;
+  background: none;
+  padding: 5px 15px;
+}
+
+.deleteBtn {
+  color: #a93a38;
+}
+
+/* description */
+.eventType {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.eventTypeCompact {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+
+/* section */
+.section {
+  margin-bottom: 50px;
+  font-weight: 500px;
+}
+
+.sectionTitle {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+/* AvatarGrid */
+.avatarGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.item {
+  padding-right: 10px;
+  padding-bottom: 10px;
+  flex-basis: calc(50% - 10px);
+}
+

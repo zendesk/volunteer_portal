@@ -1,0 +1,13 @@
+.toolbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dates {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.datepicker {
+  padding: 0px 10px;
+}

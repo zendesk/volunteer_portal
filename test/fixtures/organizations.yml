@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+minimum:
+  name: Minimum org
+  description: Minimum organization
+  location: Here
+  website: example.org
+
+kittens:
+  name: Save teh Kittens
+  description: Save all them kittens.
+  location: San Francisco
+  website: example.org

@@ -1,0 +1,58 @@
+.officeSelect {
+  padding-bottom: 20px;
+}
+
+.memobox {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 200px;
+}
+
+.memobox .label {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100px;
+}
+
+.memobox .main {
+  font-size: 18px;
+  color: #555;
+  text-align: right;
+}
+
+.memobox .sublabel {
+  font-size: 14px;
+  color: #555;
+  text-align: right;
+}
+
+.memobox .text {
+  font-size: 48px;
+  font-weight: 200;
+  padding: 0 10px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.row h2,
+h3 {
+  text-align: center;
+}
+
+.column {
+  width: 48%;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.rowSpace {
+  height: 50px;
+}

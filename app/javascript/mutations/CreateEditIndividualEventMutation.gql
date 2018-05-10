@@ -1,0 +1,25 @@
+#import "fragments/OrganizationEntry.gql"
+#import "fragments/OfficeEntry.gql"
+#import "fragments/EventTypeEntry.gql"
+
+mutation createEditIndividualEvent($input: CreateEditIndividualEventInputType!) {
+  createEditIndividualEvent(input: $input) {
+    id
+    individualEvents {
+      id
+      status
+      duration
+      date
+      description
+      organization {
+        ...OrganizationEntry
+      }
+      eventType {
+        ...EventTypeEntry
+      }
+      office {
+        ...OfficeEntry
+      }
+    }
+  }
+}
