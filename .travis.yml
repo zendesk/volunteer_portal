@@ -1,6 +1,6 @@
 sudo: false
 language: ruby
-
+cache: bundler
 services:
   - postgresql
 
@@ -18,17 +18,6 @@ before_script:
   - bundle exec rake db:test:prepare
   - bin/rails db:migrate
   - npm install
-
-cache: bundler
-
-notifications:
-  webhooks:
-    urls:
-      secure: stfwwvkMFEZHE6zynhF7Znn4hrBUFayBX0tT0XwpWJBCR1WHbx2+K5Y2Z38b6nc2rAWaCUxD5nAdZNiEnfAb5y3+V78ZhlOqdoQRN67+tinWo6GQAhVdP/6xUFS+z7JV6IM5Cxtri6t+qk9R92dHsrAZuDLBoisp6znTdicxSpc=
-    on_start: never
-    on_cancel: never
-    on_failure: never
-    on_error: never
 
 script: $TASK
 
