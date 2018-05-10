@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "postdeploy": [
-      "bundle exec rake db:schema:load"
+      "bundle exec rake db:migrate"
     ]
   },
   "buildpacks": [
