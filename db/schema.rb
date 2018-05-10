@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20180503042614) do
     t.string "locale"
     t.string "first_name"
     t.string "last_name"
-    t.bigint "role_id"
+    t.integer "role_id"
     t.string "timezone", default: "UTC", null: false
     t.integer "office_id"
     t.string "encrypted_google_token"
