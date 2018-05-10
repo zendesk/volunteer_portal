@@ -3,3 +3,4 @@ lib
 vendor
 package-lock.json
 package.json
+app.json

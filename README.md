@@ -3,13 +3,25 @@
 Volunteer Portal is a platform designed to present, track, and report volunteering opportunities. Whether you're a large company, small business, nonprofit, or just a group of amazing people, Volunteer Portal can help you be more active in your community.
 
 * [About](#about)
-  * [Set up Google OAuth](#set-up-google-oauth)
-  * [Set up your Environment](#set-up-your-environment)
-  * [Start the App](#start-the-app)
+  * [Deploying your own Volunteer Portal](#deploying-your-own-volunteer-portal)
+  * [Develpment](#development)
+    * [Set up Google OAuth](#set-up-google-oauth)
+    * [Set up your Environment](#set-up-your-environment)
+    * [Start the App](#start-the-app)
+    * [Running tests](#running-tests)
+* [Copyright and licence](#copy-right-and-license)
 
 ## About
 
-### Set up your Environment
+### Deploying your own Volunteer Portal
+
+To deploy your own volunteer portal, there are a few prerequsites and then a one-button deploy process if you want to use Heroku.
+
+For detailed information, see [the deployment docs](docs/DEPLOY.md).
+
+### Development
+
+#### Set up your Environment
 
 1. Clone the project
 
@@ -18,10 +30,11 @@ Volunteer Portal is a platform designed to present, track, and report volunteeri
    cd volunteer
    ```
 
-1. Install the right version of ruby
+1. Install the right version of ruby and node
 
    ```bash
    rbenv install
+   nvm install
    ```
 
 1. Install dependencies
@@ -54,7 +67,7 @@ Volunteer Portal is a platform designed to present, track, and report volunteeri
 
 1. Update the development env values
 
-   `ATTR_ENCRYPTION_KEY` will need to be set to a 32 byte value (eg: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa). If this is not set you will see `ArgumentError: key must be 32 bytes or longer` in the next step.
+   `ATTR_ENCRYPTION_KEY` will need to be set to a 32 byte value (eg: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa). If this is not set you will see `ArgumentError: key must be 32 bytes` in the next step.
 
 1. Create your databases (make sure that MySQL is running)
 
@@ -62,7 +75,7 @@ Volunteer Portal is a platform designed to present, track, and report volunteeri
    ./bin/rails db:setup
    ```
 
-### Start the App
+#### Start the App
 
 Make sure that PostgreSQL is running.
 
@@ -74,11 +87,11 @@ bundle exec foreman start
 
 The server will be running on [localhost:5000](http://localhost:5000/) by default.
 
-### Running tests
+#### Running tests
 
 Rails tests are provided via Minitest and frontend tests with Jest.
 
-#### Rails
+##### Rails
 
 To run backend tests:
 
@@ -86,7 +99,7 @@ To run backend tests:
 bundle exec rake test
 ```
 
-#### Jest
+##### Jest
 
 To run frontend tests:
 

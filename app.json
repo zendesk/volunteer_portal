@@ -29,13 +29,13 @@
       "description": "The application domain. For standard heroku apps, it will look like https://[app-name].herokuapp.com",
       "required": true
     },
+    "ATTR_ENCRYPTION_KEY": {
+      "description": "An encryption key used to store user information",
+      "required": true
+    },
     "OAUTH_DOMAIN": {
       "description": "Restricts portal access to a specific email domain.  This can be a string or a comma separated list.",
       "required": false
-    },
-    "ATTR_ENCRYPTION_KEY": {
-      "description": "An encryption key used to store user information",
-      "generator": "secret"
     },
     "ROLLBAR_URL": {
       "description": "If defined, it will report application exceptions to this Rollbar instance",
