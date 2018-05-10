@@ -14,7 +14,7 @@ gem 'googleauth', '0.4.2', require: false
 gem 'dotenv'
 gem 'whenever', require: false
 gem 'omniauth-google-oauth2'
-gem 'sanitize'
+gem 'sanitize', '~> 4.6.3'
 gem 'stronger_parameters'
 gem 'graphql', '~> 1.6'
 gem 'graphql-batch'
@@ -22,7 +22,7 @@ gem 'graphiql-rails'
 gem 'goldiloader', '~> 2.0'
 gem 'large_object_store', require: false
 gem 'samson_secret_puller'
-gem 'nokogiri', '1.6.8', require: false # keep in sync with Dockerfile
+gem 'nokogiri', '~> 1.8.2', require: false
 gem 'rollbar'
 gem 'responders', '~> 2.0' # TODO: remove this shit when admin UI is moved
 gem 'rails-controller-testing'
@@ -34,6 +34,8 @@ gem 'soft_deletion'
 gem 'webpacker', '~> 2.0'
 gem 'uglifier'
 gem 'sass-rails'
+gem 'loofah', '~> 2.2.1'
+gem 'rails-html-sanitizer', '~> 1.0.4'
 
 group :production do
   gem 'rails_12factor', '0.0.3'
