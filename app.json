@@ -26,7 +26,7 @@
       "required": true
     },
     "HOST": {
-      "description": "The application domain. For standard heroku apps, it will look like [app-name].herokuapp.com",
+      "description": "The application domain. For standard heroku apps, it will look like https://[app-name].herokuapp.com",
       "required": true
     },
     "OAUTH_DOMAIN": {

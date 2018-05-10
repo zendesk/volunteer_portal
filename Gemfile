@@ -4,8 +4,7 @@ ruby File.read('.ruby-version').strip
 
 gem 'rails', '~> 5.1'
 gem 'rack-cors', '0.2.9', require: 'rack/cors'
-gem 'unicorn', require: false
-gem 'unicorn-rails', require: false
+gem 'puma'
 gem 'daemons', require: false
 gem 'pg', '~> 0.21' # https://github.com/rails/rails/issues/31673
 gem 'delayed_job_active_record'
@@ -24,7 +23,6 @@ gem 'goldiloader', '~> 2.0'
 gem 'large_object_store', require: false
 gem 'samson_secret_puller'
 gem 'nokogiri', '1.6.8', require: false # keep in sync with Dockerfile
-gem 'unicorn_wrangler', require: false
 gem 'rollbar'
 gem 'responders', '~> 2.0' # TODO: remove this shit when admin UI is moved
 gem 'rails-controller-testing'
