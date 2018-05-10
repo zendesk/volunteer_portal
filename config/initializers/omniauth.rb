@@ -9,9 +9,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   #
   redirect_uri = "#{host}/auth/google_oauth2/callback"
 
-  provider :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), {
+  options = {
     scope:        'email,profile,calendar',
-    hd:           ENV['OAUTH_DOMAIN'] || '*',
     redirect_uri: redirect_uri,
     setup: ->(env) do
       env['omniauth.strategy'].options['token_params'] = {
@@ -19,6 +18,12 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       }
     end
   }
+
+  if domain = ENV['OAUTH_DOMAIN']
+    options.merge!(hd: domain)
+  end
+
+  provider :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), options
 
   # Manual setup for offline access with a refresh token.
   # The prompt must be set to 'consent'

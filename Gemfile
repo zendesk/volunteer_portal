@@ -7,12 +7,7 @@ gem 'rack-cors', '0.2.9', require: 'rack/cors'
 gem 'puma'
 gem 'daemons', require: false
 gem 'pg', '~> 0.21' # https://github.com/rails/rails/issues/31673
-gem 'delayed_job_active_record'
-gem 'httpclient', '2.6.0.1', require: false
-gem 'google-api-client', require: false
-gem 'googleauth', '0.4.2', require: false
 gem 'dotenv'
-gem 'whenever', require: false
 gem 'omniauth-google-oauth2'
 gem 'sanitize', '~> 4.6.3'
 gem 'stronger_parameters'
@@ -20,15 +15,9 @@ gem 'graphql', '~> 1.6'
 gem 'graphql-batch'
 gem 'graphiql-rails'
 gem 'goldiloader', '~> 2.0'
-gem 'large_object_store', require: false
-gem 'samson_secret_puller'
 gem 'nokogiri', '~> 1.8.2', require: false
 gem 'rollbar'
-gem 'responders', '~> 2.0' # TODO: remove this shit when admin UI is moved
-gem 'rails-controller-testing'
-gem 'dogstatsd-ruby'
 gem 'activerecord-session_store'
-gem 'redis'
 gem 'attr_encrypted'
 gem 'soft_deletion'
 gem 'webpacker', '~> 2.0'
@@ -65,4 +54,5 @@ group :test do
   gem 'mocha', require: false
   gem 'timecop', require: false
   gem 'single_cov', require: false
+  gem 'rails-controller-testing'
 end
