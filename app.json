@@ -1,8 +1,7 @@
 {
   "name": "Volunteer Portal",
   "description": "A calendar driven application to organize, sign up, and track volunteering hours.",
-  "repository": "TBD",
-  "logo": "TBD",
+  "repository": "https://github.com/zendesk/volunteer_portal",
   "keywords": ["volunteer", "zendesk", "calendar", "rails", "react", "graphql"],
   "addons": [
     "heroku-postgresql:hobby-dev"
