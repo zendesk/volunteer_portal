@@ -15,6 +15,7 @@
     {"url": "heroku/nodejs"},
     {"url": "heroku/ruby"}
   ],
+  "success_url": "/portal",
   "env": {
     "GOOGLE_CLIENT_ID": {
       "description": "Required for Google OAuth. See the README for details on how to find them",
@@ -22,6 +23,10 @@
     },
     "GOOGLE_CLIENT_SECRET": {
       "description": "Required for Google OAuth. See the README for details on how to find them",
+      "required": true
+    },
+    "HOST": {
+      "description": "The application domain. For standard heroku apps, it will look like [app-name].herokuapp.com",
       "required": true
     },
     "OAUTH_DOMAIN": {

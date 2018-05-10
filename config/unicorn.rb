@@ -18,11 +18,6 @@ before_fork do |_server, _worker|
   end
 end
 
-if (ENV['RAILS_ENV'] || 'development') != 'development'
-    require 'datadog/statsd'
-    stats = Datadog::Statsd.new(ENV.fetch('STATSD_HOST'), ENV.fetch('STATSD_PORT'), namespace: 'volunteer')
-end
-
 # dev base usage is about 150M ... production is 100M
 # (osx counts only exclusive memory, ubuntu counts shared memory too)
 # so we leave every worker about a bit of room for growth
@@ -33,8 +28,7 @@ UnicornWrangler.setup(
     check_every: 150 # requests
   },
   gc_after_request_time: (unicorn_timeout * 0.75).round, # seconds
-  logger: set.fetch(:logger),
-  stats: stats
+  logger: set.fetch(:logger)
 )
 
 # Production uses a file cache which will fill up the whole disk
