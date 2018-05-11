@@ -1,5 +1,7 @@
 # Volunteer Portal
 
+[![CircleCI](https://circleci.com/gh/zendesk/volunteer_portal/tree/master.svg?style=svg)](https://circleci.com/gh/zendesk/volunteer_portal/tree/master)
+
 Volunteer Portal is a platform designed to present, track, and report volunteering opportunities. Whether you're a large company, small business, nonprofit, or just a group of amazing people, Volunteer Portal can help you be more active in your community.
 
 * [About](#about)
