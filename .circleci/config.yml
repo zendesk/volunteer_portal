@@ -44,3 +44,9 @@ jobs:
       - run:
           name: run javascript tests
           command: npm test
+workflows:
+  version: 2
+  test_suite:
+    jobs:
+      - ruby
+      - javascript
