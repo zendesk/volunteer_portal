@@ -1,9 +1,17 @@
 version: 2
 jobs:
-  ruby:
+  minitest:
     docker:
-      - image: circleci/ruby:2.5.1
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          RAILS_ENV: test
+          # https://discuss.circleci.com/t/rails-app-cant-connect-to-postgres-server/13059
+          PGHOST: 127.0.0.1
+          PGUSER: root
       - image: circleci/postgres:10.3
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: volunteer_test
     steps:
       - checkout
       - restore_cache:
@@ -23,10 +31,10 @@ jobs:
       - run:
           name: run unit tests
           command: bundle exec rake test
-  javascript:
+
+  jest:
     docker:
-      - image: circleci/node:8.2.0
-      - image: circleci/postgres:10.3
+      - image: circleci/node:8-stretch-browsers
     steps:
       - checkout
       - restore_cache:
@@ -44,9 +52,10 @@ jobs:
       - run:
           name: run javascript tests
           command: npm test
+
 workflows:
   version: 2
   test_suite:
     jobs:
-      - ruby
-      - javascript
+      - minitest
+      - jest
