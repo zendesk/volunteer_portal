@@ -4,3 +4,5 @@ vendor
 package-lock.json
 package.json
 app.json
+_layouts
+assets

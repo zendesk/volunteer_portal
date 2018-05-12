@@ -1,7 +1,3 @@
-![main calendar screenshot](screenshots/portal.png)
-
----
-
 # Volunteer Portal
 
 [![CircleCI](https://circleci.com/gh/zendesk/volunteer_portal/tree/master.svg?style=svg)](https://circleci.com/gh/zendesk/volunteer_portal/tree/master)
