@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 title: Volunteer Portal
 favicon_file: public/favicon.ico
+demo_url: https://volunteer-portal-demo.herokuapp.com
