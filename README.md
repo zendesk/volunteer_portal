@@ -4,31 +4,29 @@
 
 Volunteer Portal is a platform designed to present, track, and report volunteering opportunities. Whether you're a large company, small business, nonprofit, or just a group of amazing people, Volunteer Portal can help you be more active in your community.
 
-[Deploying your own Volunteer Portal](docs/deploy.md)
+* [Deploying your own Volunteer Portal](docs/deploy.md)
+* [Develpment](docs/development.md)
+* [Copyright and licence](#copy-right-and-license)
 
-[Develpment](docs/development.md)
+# Screenshots
 
-[Copyright and licence](#copy-right-and-license)
-
-## Screenshots
-
-### Main Calendar
+## Main Calendar
 
 ![main calendar screenshot](screenshots/portal.png)
 
-### Quick Event View
+## Quick Event View
 
 ![event popup screenshot](screenshots/event-popover.png)
 
-### Detailed Event View
+## Detailed Event View
 
 ![event detail page screenshot](screenshots/event-page.png)
 
-### Dashboard to Track Progress
+## Dashboard to Track Progress
 
 ![user dashboard screenshot](screenshots/user-dashboard.png)
 
-## Copyright and license
+# Copyright and license
 
 Copyright 2018 Zendesk, Inc.
 
