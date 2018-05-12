@@ -1,3 +1,3 @@
 theme: jekyll-theme-cayman
 title: Volunteer Portal
-favicon_url: /public/favicon.ico
+favicon_file: public/favicon.ico
