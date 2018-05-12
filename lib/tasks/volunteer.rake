@@ -3,12 +3,12 @@ namespace :volunteer do
   task generate_test_data: :environment do
     require 'ffaker'
 
+    ActiveRecord::Base.logger = nil
+
     Rake::Task['db:seed'].invoke # ensure we have the base seeds before
 
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
-
-    OFFICES = %w{Madison Dublin Copenhagen Melbourne}
-    GROUPS = %w{Sales Sustaining Volunteer IT Orchid Bunyip Harriers Marketing}
+    OFFICES = ['San Francisco', 'Madison', 'Dublin', 'Copenhagen', 'Melbourne', Office.default.name]
+    GROUPS = %w{Sales Volunteer IT Orchid Marketing}
 
     type_ids ||= EventType.pluck(:id)
     org_ids  ||= Organization.pluck(:id)
@@ -18,6 +18,7 @@ namespace :volunteer do
     end
 
     ## Users
+    print 'Creating 100 users... '
     100.times do
       begin
         User.create!(
@@ -26,19 +27,23 @@ namespace :volunteer do
           group: GROUPS.sample,
           first_name: FFaker::Name.first_name,
           last_name: FFaker::Name.last_name,
-          role_id: (rand < 0.1 ? 2 : 1), # rougly 10% admins
+          role_id: (rand < 0.1 ? Role.admin.id : Role.volunteer.id), # rougly 10% admins
           locale: FFaker::Locale.code
         )
       rescue ActiveRecord::RecordInvalid
       end
     end
+    puts 'Done!'
 
     ## EventTypes
+    print 'Creating 10 event types... '
     10.times do
       EventType.create!(title: FFaker::Lorem.word)
     end
+    puts 'Done!'
 
     ## Organizations
+    print 'Creating 50 organizations... '
     50.times do
       Organization.create!(
         name: FFaker::Company.name,
@@ -47,11 +52,16 @@ namespace :volunteer do
         website: FFaker::Internet.http_url
       )
     end
+    puts 'Done!'
 
     ## Events
+    puts 'Creating events and signing users up'
     # create 0-5 events each day in a 1 month window on either side of now
     start = 1.month.ago
+    user_ids = User.all.pluck(:id)
+
     (0..90).each do |i|
+      print '.'
       date = start + i.send(:days)
       rand(5).times do
         event = Event.create!(
@@ -66,9 +76,11 @@ namespace :volunteer do
           office_id: office_ids.sample
         )
 
-        Signup.skip_callback(:commit, :after, :create_google_event) rescue nil
-        event.users << User.all.to_a.sample(rand(event.capacity))
+        user_ids.sample(rand(event.capacity)).each do |user_id|
+          Signup.create!(event_id: event.id, user_id: user_id)
+        end
       end
     end
+    puts "\nDone!"
   end
 end
