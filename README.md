@@ -4,15 +4,12 @@
 
 Volunteer Portal is a platform designed to present, track, and report volunteering opportunities. Whether you're a large company, small business, nonprofit, or just a group of amazing people, Volunteer Portal can help you be more active in your community.
 
+* [Screenshots](docs/screenshots.md)
 * [Deploying your own Volunteer Portal](docs/deploy.md)
 * [Develpment](docs/development.md)
 * [Copyright and licence](#copy-right-and-license)
 
-## Screenshots
-
-![main calendar screenshot](screenshots/portal.png) ![event popup screenshot](screenshots/event-popover.png)
-
-![event detail page screenshot](screenshots/event-page.png) ![user dashboard screenshot](screenshots/user-dashboard.png)
+![main calendar screenshot](screenshots/portal.png)
 
 ## Copyright and license
 
