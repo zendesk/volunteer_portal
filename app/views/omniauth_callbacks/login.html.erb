@@ -1,15 +1,14 @@
-<div class="signin-logo">
-  <%= image_tag 'hands.svg' %>
-  <span class="signin-logo-text">Volunteer Portal</span>
-</div>
+<div class="login">
+  <div class="branding">
+    <%= image_tag 'hands.svg', class: 'signin-logo' %>
+    <h1>Volunteer Portal</h1>
 
-<% if @failure %>
-  <p class="signin-error-text">We're sorry, authentication failed.</p>
-<% end %>
+    <% if @failure %>
+    <p class="signin-error-text">We're sorry, authentication failed.</p>
+  <% end %>
+  </div>
 
-<div class="login-options">
-  <div id="omniauth_login_form">
+  <div class="login-form">
     <%= button_to 'Sign in with Google', '/auth/google_oauth2', class: 'google-signin-btn' %>
   </div>
 </div>
-

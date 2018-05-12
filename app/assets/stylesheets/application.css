@@ -14,9 +14,12 @@
  *= require_self
  */
 
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+}
+
 body {
-  padding: 0 15px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 14px;
-  color: #555;
+  color: #03363D;
 }

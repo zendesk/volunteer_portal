@@ -20,34 +20,14 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjoBGXTV75LE09ql5iZ5SmajncX_JAaCk&libraries=places"></script>
 </head>
 <body>
-
-  <% if user_signed_in? %>
-    <%= nav_bar brand: "SF Volunteer", responsive: true do %>
-      <%= menu_group do %>
-        <%= menu_item 'Organizations', organizations_path %>
-        <%= menu_item 'Offices', offices_path %>
-        <%= menu_item 'Events', events_path %>
-        <%= menu_item 'Reporting', reporting_index_path %>
-        <%= menu_item 'Calendar', root_path %>
-      <% end %>
-        <%= menu_group pull: :right do %>
-          <%= menu_item 'Log Out', logout_path, method: :delete %>
-        <% end %>
-    <% end %>
-
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
-  <% end %>
-
   <%= yield %>
-
 </body>
 
 </html>

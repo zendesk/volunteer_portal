@@ -1,38 +1,35 @@
+.login {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  height: 75vh;
+}
+
+.branding {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.branding h1 {
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
 .signin-logo {
-  border-bottom: 2px solid #eee;
+  width: 50%;
+  color: #03363D;
+}
+
+.login-form {
   text-align: center;
-  width: 400px;
-  margin: 50px auto 50px;
-  padding-bottom: 30px;
-}
-
-.signin-logo-text {
-  display: block;
-  color: #78a300;
-  font-size: 35px;
-  margin-top: 10px;
-}
-
-.signin-error-text {
-  display: block;
-  text-align: center;
-  font-size: 20px;
-  margin: 20px 0;
-}
-
-.login-options {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.signin-msg {
-  color: #555;
-  display: block;
-  margin-top: 20px;
+  padding: 2rem 1rem;
 }
 
 .google-signin-btn {
   height: 36px;
+  font-size: 16px;;
   background: white;
   background-image: image-url('google.svg');
   background-repeat: no-repeat;
@@ -46,20 +43,21 @@
   &:hover {
     border: none;
     background-color: #f2f2f2;
-    background-image: image-url('google.svg');
-    background-repeat: no-repeat;
-    background-position: 15px 8px;
-    background-size: 20px;
-    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
   }
 
   &:active {
     border: none;
     background-color: #d9d9d9;
-    background-image: image-url('google.svg');
-    background-repeat: no-repeat;
-    background-position: 15px 8px;
-    background-size: 20px;
-    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .login {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .signin-logo {
+    width: 200px;
   }
 }
