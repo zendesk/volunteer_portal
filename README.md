@@ -6,7 +6,7 @@ Volunteer Portal is a platform designed to present, track, and report volunteeri
 
 * [Screenshots](docs/screenshots.md)
 * [Deploying your own Volunteer Portal](docs/deploy.md)
-* [Develpment](docs/development.md)
+* [Development](docs/development.md)
 * [Copyright and licence](#copy-right-and-license)
 
 ![main calendar screenshot](screenshots/portal.png)
