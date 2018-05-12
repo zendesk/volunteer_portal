@@ -6,10 +6,9 @@ Volunteer Portal is a platform designed to present, track, and report volunteeri
 
 **Demo:** [https://volunteer-portal-demo.herokuapp.com/](https://volunteer-portal-demo.herokuapp.com/)
 
-* [Screenshots](docs/screenshots.md)
 * [Deploying your own Volunteer Portal](docs/deploy.md)
 * [Development](docs/development.md)
-* [Copyright and licence](#copy-right-and-license)
+* [Copyright and license](#copy-right-and-license)
 
 ![main calendar screenshot](screenshots/portal.png)
 
