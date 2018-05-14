@@ -76,7 +76,7 @@ guide you through the process.
 
    `ATTR_ENCRYPTION_KEY` will need to be set to a 32 byte value (eg: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa). If this is not set you will see `ArgumentError: key must be 32 bytes` in the next step.
 
-1. Create your databases (make sure that MySQL is running)
+1. Create your databases (make sure that PostgreSQL is running)
 
    ```bash
    ./bin/rails db:setup
