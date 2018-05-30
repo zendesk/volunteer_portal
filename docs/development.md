@@ -34,7 +34,7 @@ guide you through the process.
 
    ```bash
    git clone git@github.com:zendesk/volunteer_portal.git
-   cd volunteer
+   cd volunteer_portal
    ```
 
 1. Install the right version of ruby and node
