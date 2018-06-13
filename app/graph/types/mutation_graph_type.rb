@@ -159,6 +159,11 @@ MutationGraphType = GraphQL::ObjectType.define do
     resolve EventResolver.method(:update)
   end
 
+  field :deleteEvent, EventGraphType do
+    argument :id, !types.ID
+    resolve EventResolver.method(:delete)
+  end
+
   field :createEventType, EventTypeGraphType do
     argument :input, EditEventTypeInputType
     resolve EventTypeResolver.method(:create)

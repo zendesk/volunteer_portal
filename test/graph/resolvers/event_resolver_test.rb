@@ -59,4 +59,17 @@ describe EventResolver do
       assert_equal timestamp.to_s(:db), e.starts_at.to_s(:db)
     end
   end
+
+  describe '.delete' do
+    let(:event) { events(:minimum) }
+
+    it 'deletes the event' do
+      id = event.id
+      args = { 'id' => id }
+
+      EventResolver.delete(nil, args, nil)
+
+      assert_nil Event.find_by(id: id)
+    end
+  end
 end
