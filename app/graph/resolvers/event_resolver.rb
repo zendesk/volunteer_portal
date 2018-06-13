@@ -20,6 +20,13 @@ module EventResolver
       event
     end
 
+    def delete(_, args, context)
+      event = Event.find(args['id'])
+      event.destroy!
+
+      event
+    end
+
     private
 
     def update_fields(event, attrs)
