@@ -18,6 +18,12 @@ describe User do
     it 'is valid' do
       assert_valid user
     end
+
+    it 'does not count soft deleted users for uniqueness' do
+      u2 = user.dup
+      user.soft_delete
+      assert u2.save
+    end
   end
 
   describe '#full_name' do

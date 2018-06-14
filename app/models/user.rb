@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   before_validation :set_defaults, on: :create
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: { scope: :deleted_at }
 
   validates :office, presence: true
 
