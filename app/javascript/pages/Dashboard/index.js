@@ -166,13 +166,24 @@ const mapStateToProps = (state, _ownProps) => {
 }
 
 const leaderboardWithData = graphql(LeaderboardQuery, {
-  options: {
-    variables: { count: leaderBoardSize, sortBy: leaderBoardSort, after: startOfYear, before: endOfYear },
-    fetchPolicy: 'cache-and-network',
+  options: ({ dashboardOfficeFilter }) => {
+    const variables = {
+      count: leaderBoardSize,
+      sortBy: leaderBoardSort,
+      after: startOfYear,
+      before: endOfYear,
+    }
+
+    if (dashboardOfficeFilter.value !== 'all') variables.officeId = dashboardOfficeFilter.value
+
+    return {
+      variables,
+      fetchPolicy: 'cache-and-network',
+    }
   },
 })
 const leaderboardWithActions = connect(mapStateToProps, { changeDashboardOfficeFilter })
-const Leaderboard = leaderboardWithData(leaderboardWithActions(LeaderboardContainer))
+const Leaderboard = leaderboardWithActions(leaderboardWithData(LeaderboardContainer))
 
 const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransitions }) => {
   if (networkStatus === NetworkStatus.loading) {
