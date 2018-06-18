@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount GraphiQL::Rails::Engine, at: '/graphiql'
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
 
   root 'standalone#portal'
 
