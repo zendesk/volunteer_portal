@@ -16,16 +16,16 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-ruby-dependencies-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v1-ruby-dependencies-
       - run:
           name: install dependencies
           command: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          key: v1-ruby-dependencies-{{ checksum "Gemfile.lock" }}
       - run: bundle exec rake db:create db:schema:load
       - run:
           name: run unit tests
@@ -38,16 +38,16 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
+          - v1-js-dependencies-{{ checksum "package-lock.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v1-js-dependencies-
       - run:
           name: install dependencies
           command: npm install
       - save_cache:
           paths:
             - ./node_modules
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v1-js-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: run javascript tests
           command: npm test
