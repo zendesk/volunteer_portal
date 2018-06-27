@@ -83,4 +83,13 @@ Zendesk's Web Widget is embedded at the bottom of pages in case your volunteers 
 
 ## Redeploying your Portal
 
-People will probably want to change things (branding, etc). We need to explain how to install heroku cli and redeploy
+If you've made any updates to your Volunteer Portal following [our Development documentation](https://github.com/zendesk/volunteer_portal/blob/master/docs/development.md), you'll want to redeploy your Portal so it reflects the changes you've made.
+
+The easiest way to see your changes is to deploy using git. The following instructions are cherry-picked from [the official Heroku documentation](https://devcenter.heroku.com/articles/git), so feel free to browse them directly for more in depth instructions or troubleshooting.
+
+1. The first step is to download [the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli). Follow the instructions for installation for the appropriate platform.
+2. Log in to with the Heroku CLI by running `heroku login`. 
+3. Find your app name, and make sure your shell's current directory is in your portal with your desired changes on a git branch.
+4. Add your Heroku app to git's remote origin by running `heroku git:remote -a [APP NAME HERE].`
+5. Deploy the changes with `git push heroku [BRANCH NAME]`.
+6. If everything worked you should see your changes live!
