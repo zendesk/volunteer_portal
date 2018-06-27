@@ -87,7 +87,7 @@ If you've made any updates to your Volunteer Portal following [our Development d
 
 The easiest way to see your changes is to deploy using git. The following instructions are cherry-picked from [the official Heroku documentation](https://devcenter.heroku.com/articles/git), so feel free to browse them directly for more in depth instructions or troubleshooting.
 
-1. The first step is to download [the Heroku CLI](https://github.com/zendesk/volunteer_portal/blob/master/docs/development.md).  Follow the instructions for installation for the appropriate platform.
+1. The first step is to download [the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli). Follow the instructions for installation for the appropriate platform.
 2. Log in to with the Heroku CLI by running `heroku login`. 
 3. Find your app name, and make sure your shell's current directory is in your portal with your desired changes on a git branch.
 4. Add your Heroku app to git's remote origin by running `heroku git:remote -a [APP NAME HERE].`
