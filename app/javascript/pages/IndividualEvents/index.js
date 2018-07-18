@@ -189,6 +189,7 @@ const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popove
               name="duration"
               label="Duration (minutes)"
               type="number"
+              normalize={value => (value >= 0 ? value : 0)}
               component={renderField}
               className={s.input}
             />
