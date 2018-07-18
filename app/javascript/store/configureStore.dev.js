@@ -4,10 +4,11 @@ import createLogger from 'redux-logger'
 import createRootReducer from '../reducers'
 
 export default function configureStore(apolloClient, initialState = {}) {
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const store = createStore(
     createRootReducer(apolloClient),
     initialState,
-    compose(applyMiddleware(thunk, createLogger()))
+    composeEnhancers(applyMiddleware(thunk, createLogger()))
   )
 
   if (module.hot) {
