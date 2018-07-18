@@ -344,11 +344,12 @@ const IndividualEvents = props => {
 const mapStateToProps = (state, _ownProps) => {
   const { popover } = state.model
   const { locationBeforeTransitions } = state.routing
-
-  return {
+  const props = {
     popover,
     locationBeforeTransitions,
   }
+
+  return R.isNil(popover) ? props : R.merge({ initialValues: popover.data }, props)
 }
 
 const formDataToIndividualEventInput = data => {
