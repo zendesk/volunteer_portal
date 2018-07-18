@@ -78,8 +78,8 @@ const Dashboard = props => {
   const spotsThisWeek = R.mapAccum(spotsAppender, 0, eventsThisWeek)[0]
   const spotsThisMonth = R.mapAccum(spotsAppender, 0, eventsThisMonth)[0]
 
-  const spotsFilledThisWeek = spotsThisWeek > 0 ? Math.round(volunteersThisWeek / spotsThisWeek * 100) : 0
-  const spotsFilledThisMonth = spotsThisMonth > 0 ? Math.round(volunteersThisMonth / spotsThisMonth * 100) : 0
+  const spotsFilledThisWeek = spotsThisWeek > 0 ? Math.round((volunteersThisWeek / spotsThisWeek) * 100) : 0
+  const spotsFilledThisMonth = spotsThisMonth > 0 ? Math.round((volunteersThisMonth / spotsThisMonth) * 100) : 0
 
   return (
     <div>
@@ -154,17 +154,14 @@ const Dashboard = props => {
   )
 }
 
-const filterByOffice = (adminOfficeFilter, data) =>
-  adminOfficeFilter.value === 'all' ? null : R.find(office => office.id === input.officeId, data.offices)
-
 const withData = graphql(AttendanceQuery, {
-  options: ({ adminOfficeFilter, data }) => ({
+  options: ({ adminOfficeFilter: { value: officeId } }) => ({
     variables: {
       weekStart: startOfWeek,
       weekEnd: endOfWeek,
       monthStart: startOfMonth,
       monthEnd: endOfMonth,
-      officeId: filterByOffice(adminOfficeFilter, data),
+      officeId: officeId || null,
     },
   }),
 })
@@ -173,6 +170,9 @@ const mapStateToProps = (state, _ownProps) => ({
   adminOfficeFilter: state.model.adminOfficeFilter,
 })
 
-const withActions = connect(mapStateToProps, {})
+const withActions = connect(
+  mapStateToProps,
+  {}
+)
 
 export default withActions(withData(Dashboard))
