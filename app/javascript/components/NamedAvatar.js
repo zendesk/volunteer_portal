@@ -16,6 +16,10 @@ const styles = {
   name: {
     fontWeight: 600,
   },
+  remove: {
+    marginLeft: '20px',
+    cursor: 'pointer',
+  },
   subtitle: {},
 }
 
@@ -26,6 +30,11 @@ const NamedAvatar = props => (
       <span style={styles.name}>{props.name}</span>
       <span style={styles.subtitle}>{props.subtitle || '\u00a0'}</span>
     </div>
+    {props.showRemove && (
+      <a style={styles.remove} onClick={props.onRemove}>
+        Remove
+      </a>
+    )}
   </div>
 )
 

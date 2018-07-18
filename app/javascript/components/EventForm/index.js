@@ -9,6 +9,7 @@ import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
 import Loading from 'components/LoadingIcon'
+import UserList from 'components/UserList'
 
 import s from './main.css'
 
@@ -64,7 +65,15 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
 const renderError = error => <span className={s.fieldError}>{error}</span>
 
 const renderField = props => {
-  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
+  const {
+    input,
+    label,
+    type,
+    Custom,
+    meta: { touched, error, warning },
+    className,
+    required,
+  } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
   return (
     <div>
@@ -145,7 +154,16 @@ const TimeField = ({ input: { value, onChange } }) => (
   />
 )
 
-const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, organizations, offices }) => (
+const EventForm = ({
+  handleSubmit,
+  disableSubmit,
+  errors,
+  eventTypes,
+  organizations,
+  offices,
+  users,
+  destroySignup,
+}) => (
   <form className={s.form} onSubmit={handleSubmit}>
     {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
@@ -230,6 +248,7 @@ const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, organizati
         Save
       </button>
     </div>
+    <UserList users={users} destroySignup={destroySignup} />
   </form>
 )
 

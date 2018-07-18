@@ -8,11 +8,21 @@ import { graphQLError } from 'actions'
 
 import EventForm from './form'
 import Loading from 'components/LoadingIcon'
+import DropDownMenu from 'material-ui/DropDownMenu'
+import MenuItem from 'material-ui/MenuItem'
 
 import EventQuery from './queries/show.gql'
 import UpdateEventMutation from './mutations/update.gql'
+import NamedAvatar from 'components/NamedAvatar'
+import DestroySignupMutation from 'mutations/DestroySignupMutation.gql'
+import CreateSignupMutation from 'mutations/CreateSignupMutation.gql'
 
-const EditEvent = ({ data: { networkStatus, event, eventTypes, offices, organizations }, updateEvent }) =>
+const EditEvent = ({
+  data: { networkStatus, event, eventTypes, offices, organizations },
+  updateEvent,
+  destroySignup,
+  createSignup,
+}) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
@@ -20,6 +30,8 @@ const EditEvent = ({ data: { networkStatus, event, eventTypes, offices, organiza
       event={event}
       eventTypes={eventTypes}
       offices={offices}
+      users={event.users}
+      destroySignup={user => destroySignup(event, user)}
       organizations={organizations}
       onSubmit={updateEvent}
     />
@@ -62,13 +74,33 @@ const withData = compose(
             ownProps.graphQLError('event', graphQLErrors)
           }),
     }),
+  }),
+  graphql(DestroySignupMutation, {
+    props: ({ mutate }) => ({
+      destroySignup: (event, user) =>
+        mutate({
+          variables: { eventId: event.id, userId: user.id },
+          optimisticResponse: {
+            __typename: 'Mutation',
+            destroySignup: {
+              __typename: 'Signup',
+              event: R.merge(event, {
+                users: R.reject(u => u.id === user.id, event.users),
+              }),
+            },
+          },
+        }),
+    }),
   })
 )
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(EditEvent))
