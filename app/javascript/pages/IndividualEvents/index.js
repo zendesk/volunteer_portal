@@ -379,6 +379,23 @@ const individualEventInputToOptimisticResponse = (data, input) => {
   }
 }
 
+const buildOptimisticResponse = (newEvent, currentUser) => {
+  const { id: currentUserId, individualEvents: existingEvents } = currentUser
+  const arrIdx = R.find(R.propEq('id', newEvent.id), existingEvents)
+  const individualEvents = R.isNil(arrIdx)
+    ? R.append(newEvent, existingEvents)
+    : R.update(arrIdx, newEvent, existingEvents)
+
+  return {
+    __typename: 'Mutation',
+    createEditIndividualEvent: {
+      __typename: 'User',
+      id: currentUserId,
+      individualEvents,
+    },
+  }
+}
+
 const withData = compose(
   graphql(IndividualEventsQuery, {
     options: {
@@ -394,14 +411,7 @@ const withData = compose(
 
         return mutate({
           variables: { input: individualEventInput },
-          optimisticResponse: {
-            __typename: 'Mutation',
-            createEditIndividualEvent: {
-              __typename: 'User',
-              id: currentUser.id,
-              individualEvents: R.append(newEvent, currentUser.individualEvents),
-            },
-          },
+          optimisticResponse: buildOptimisticResponse(newEvent, currentUser),
         })
       },
     }),
