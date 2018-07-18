@@ -170,7 +170,7 @@
 
   <%# the mainfest.json file will references the assets as `main.js`, we should be able to configure this to portal %>
   <% if Rails.env.development? %>
-    <script src="//localhost:8080/assets/portal/portal.js"></script>
+    <script src="//<%= ENV['PUBLIC_ASSET_HOST'] %>:8080/assets/portal/portal.js"></script>
   <% else %>
     <%= javascript_pack_tag 'main' %>
   <% end %>
