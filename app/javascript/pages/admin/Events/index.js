@@ -156,9 +156,9 @@ const buildOptimisticResponse = event => ({
 
 const withData = compose(
   graphql(EventsQuery, {
-    options: ({ adminOfficeFilter: { value: officeId } }) => ({
+    options: ({ adminOfficeFilter: { value: officeId = 'current' } }) => ({
       variables: {
-        officeId: officeId || 'current',
+        officeId: officeId,
       },
       fetchPolicy: 'cache-and-network',
     }),
