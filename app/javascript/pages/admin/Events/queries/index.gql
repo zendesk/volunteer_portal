@@ -1,8 +1,8 @@
 #import "fragments/EventEntry.gql"
 #import "fragments/OfficeEntry.gql"
 
-query EventsQuery {
-  events {
+query EventsQuery($officeId: ID) {
+  events(officeId: $officeId) {
     ...EventEntry
     office {
       ...OfficeEntry

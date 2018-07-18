@@ -155,7 +155,15 @@ const buildOptimisticResponse = event => ({
 })
 
 const withData = compose(
-  graphql(EventsQuery, {}),
+  graphql(EventsQuery, {
+    options: ({ adminOfficeFilter: { value: officeId } }) => ({
+      variables: {
+        officeId: officeId || 'current',
+      },
+      fetchPolicy: 'cache-and-network',
+    }),
+  }),
+
   graphql(DeleteEventMutation, {
     props: ({ ownProps, mutate }) => ({
       deleteEvent: event =>
@@ -177,7 +185,6 @@ const withData = compose(
 function mapStateToProps(state, _ownProps) {
   const {
     currentUser,
-    events,
     eventTypes,
     offices,
     organizations,
@@ -186,11 +193,9 @@ function mapStateToProps(state, _ownProps) {
     destroyEventPopover,
   } = state.model
 
-  const filteredEvents = filterByOffice(events, adminOfficeFilter.value)
-
   return {
     currentUser,
-    events: filteredEvents,
+    adminOfficeFilter,
     eventTypes,
     offices,
     organizations,
