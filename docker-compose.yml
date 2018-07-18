@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: bundle exec foreman start
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - "5000:5000"
+      - "8080:8080"
+    networks:
+      - backend
+    env_file:
+      - .env.development
+
+  db:
+    image: postgres:10.4
+    env_file:
+      - .env.development
+    networks:
+      - backend
+
+networks:
+  backend:
