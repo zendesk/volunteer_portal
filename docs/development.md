@@ -44,6 +44,20 @@ guide you through the process.
    nvm install
    ```
 
+1. Install PostgreSQL
+
+   The pg gem will need all the postgres libraries on your system in order to build the native exensions so it's probably easier in this context to install postgres with Homebrew:
+
+   ```bash
+   brew install postgresql
+   ```
+
+   Once installed then you can create a database and user for yourself with the following command:
+
+   ```bash
+   createdb `whoami`
+   ```
+
 1. Install dependencies
 
    ```bash
@@ -51,10 +65,6 @@ guide you through the process.
    bundle install
    npm install
    ```
-
-1. Install PostgreSQL
-
-   The easiest thing is probably to use their app. http://postgresapp.com/
 
 1. Create the `volunteer` database role
 
@@ -84,7 +94,11 @@ guide you through the process.
 
 ## Start the App
 
-Make sure that PostgreSQL is running.
+Make sure that PostgreSQL is running. If you have installed via Homebrew you can do this with the following command:
+
+```bash
+postgres -D /usr/local/var/postgres
+```
 
 We use `foreman` to run both the rails server and the webpack dev server in development.
 
@@ -93,6 +107,14 @@ bundle exec foreman start
 ```
 
 The server will be running on [localhost:5000](http://localhost:5000/) by default.
+
+## Making a user admin
+
+If you want to test features of the application that are only available to administrators, you can upgrade an account by executing the following command:
+
+```bash
+psql -d volunteer_development -c "UPDATE public.users SET role_id = 1 WHERE email='user@example.com';"
+```
 
 ## Running tests
 
