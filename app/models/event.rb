@@ -16,6 +16,7 @@ class Event < ApplicationRecord
   validates :capacity, numericality: { only_integer: true }
 
   validate :max_capacity
+  validate :time_sequentiality
 
   scope :before,     ->(time) { where("starts_at < ?", time) }
   scope :after,      ->(time) { where("starts_at > ?", time) }
@@ -46,6 +47,12 @@ class Event < ApplicationRecord
   def max_capacity
     if capacity && users.size > capacity
       errors.add(:users, "total can't be above capacity")
+    end
+  end
+
+  def time_sequentiality
+    if (starts_at && ends_at) && (starts_at > ends_at)
+      errors.add(:ends_at, "should not end before it starts")
     end
   end
 

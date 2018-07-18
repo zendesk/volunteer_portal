@@ -1,6 +1,6 @@
 require_relative '../test_helper'
 
-SingleCov.covered! uncovered: 46
+SingleCov.covered! uncovered: 4
 
 describe Event do
   fixtures :events, :users, :offices
@@ -82,6 +82,14 @@ describe Event do
       title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
       location: 'Location', office: sf)
     assert event.save, event.errors.full_messages
+  end
+
+  it "ensure event ends after it starts" do
+    event = Event.new(
+      organization: organizations(:kittens), type: event_types(:group),
+      title: 'イベント', starts_at: (Time.now + 2.hours), ends_at: Time.now, capacity: 60,
+      location: 'Location', office: sf)
+    assert_not event.save, event.errors.full_messages
   end
 
   it "does not save event without organization" do
