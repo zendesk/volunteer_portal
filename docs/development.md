@@ -43,6 +43,15 @@ guide you through the process.
    rbenv install
    nvm install
    ```
+   
+1. Install PostgreSQL
+
+   The easiest thing is probably to use their app. http://postgresapp.com/
+   Alternatively, install it via the command line - for example, with Homebrew:
+
+   ```bash
+   brew install postgresql
+   ```
 
 1. Install dependencies
 
@@ -52,11 +61,7 @@ guide you through the process.
    npm install
    ```
 
-1. Install PostgreSQL
-
-   The easiest thing is probably to use their app. http://postgresapp.com/
-
-1. Create the `volunteer` database role
+1. 1. Create the `volunteer` database role
 
    ```bash
    psql -c 'CREATE ROLE volunteer WITH LOGIN SUPERUSER'
