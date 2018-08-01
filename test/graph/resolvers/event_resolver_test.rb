@@ -72,4 +72,79 @@ describe EventResolver do
       assert_nil Event.find_by(id: id)
     end
   end
+
+  describe '.all' do
+    let(:organization) { organizations(:minimum) }
+    let(:event_type) { event_types(:minimum) }
+    let(:office) { offices(:san_francisco) }
+    let(:event1) do
+      Event.create!(
+        organization: organization,
+        title: 'test1',
+        type: event_type,
+        starts_at: event1_start,
+        ends_at: event1_start + 1.hour,
+        capacity: 10,
+        location: 'somewhere',
+        office: office
+      )
+    end
+    let(:event2) do
+      Event.create!(
+        organization: organization,
+        title: 'test2',
+        type: event_type,
+        starts_at: event2_start,
+        ends_at: event3_start + 1.hour,
+        capacity: 10,
+        location: 'somewhere',
+        office: office
+      )
+    end
+    let(:event3) do
+      Event.create!(
+        organization: organization,
+        title: 'test3',
+        type: event_type,
+        starts_at: event3_start,
+        ends_at: event3_start + 1.hour,
+        capacity: 10,
+        location: 'somewhere',
+        office: office
+      )
+    end
+    let(:event1_start) { Time.new(2018, 1, 1, 1, 0) }
+    let(:event2_start) { Time.new(2018, 1, 1, 3, 0) }
+    let(:event3_start) { Time.new(2018, 1, 1, 2, 0) }
+
+    let(:args) { {} }
+    let(:all_events) { EventResolver.all(nil, args, nil) }
+
+    before {
+      Event.delete_all
+      event1
+      event2
+      event3
+    }
+
+    it 'returns all events' do
+      assert_equal [event1, event2, event3].map(&:title), all_events.pluck(:title)
+    end
+
+    describe 'when sorting by descending' do
+      let(:args) { { sortBy: 'STARTS_AT_DESC' } }
+
+      it 'returns latest events first' do
+        assert_equal [event2, event3, event1].map(&:title), all_events.pluck(:title)
+      end
+    end
+
+    describe 'when sorting by ascending' do
+      let(:args) { { sortBy: 'STARTS_AT_ASC' } }
+
+      it 'returns oldest events first' do
+        assert_equal [event1, event3, event2].map(&:title), all_events.pluck(:title)
+      end
+    end
+  end
 end
