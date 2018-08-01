@@ -1,8 +1,24 @@
 module EventResolver
+  STARTS_AT_DESC = 'STARTS_AT_DESC'.freeze
+  STARTS_AT_ASC = 'STARTS_AT_ASC'.freeze
+
   class << self
-    def all(_, args, _)
-      scope = Event.all
-      scope = scope_with_sort_by(scope, args[:sortBy])
+    def all(_, args, context)
+      office_id = case args[:officeId]
+      when 'all'
+        nil
+      when 'current'
+        context[:current_user].office_id
+      else
+        args[:officeId]
+      end
+
+      events = Event.all
+      events = events.for_office(office_id)          if office_id
+      events = events.before(Time.at(args[:before])) if args[:before]
+      events = events.after(Time.at(args[:after]))   if args[:after]
+      events = scope_with_sort_by(events, args[:sortBy])
+      events
     end
 
     def create(_, args, context)

@@ -19,6 +19,8 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
+const eventsSort = 'STARTS_AT_ASC'
+
 const actionLinks = (event, deleteEvent) => (
   <div className={s.actionColumn}>
     <Link to={`/portal/admin/events/${event.id}/edit`}>Edit</Link>
@@ -159,6 +161,7 @@ const withData = compose(
     options: ({ adminOfficeFilter: { value: officeId = 'current' } }) => ({
       variables: {
         officeId: officeId,
+        sortBy: eventsSort,
       },
       fetchPolicy: 'cache-and-network',
     }),
