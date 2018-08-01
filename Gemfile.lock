@@ -132,7 +132,7 @@ GEM
     public_suffix (2.0.5)
     puma (3.11.4)
     rack (2.0.5)
-    rack-cors (0.2.9)
+    rack-cors (0.4.1)
     rack-mini-profiler (0.10.5)
       rack (>= 1.2.0)
     rack-test (1.0.0)
@@ -245,7 +245,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   pg (~> 0.21)
   puma
-  rack-cors (= 0.2.9)
+  rack-cors (~> 0.4.1)
   rack-mini-profiler
   rails (~> 5.1)
   rails-controller-testing
@@ -268,4 +268,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.3

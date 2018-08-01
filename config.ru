@@ -21,11 +21,11 @@ run Rails.application
 use Rack::Cors do
   allow do
     origins '*'
-    resource '/assets/*', :headers => :any, :methods => :get
+    resource '/assets/*', headers: :any, methods: :get
   end
 
   allow do
     origins '*'
-    resource '/api/*', :headers => :any, :methods => :get
+    resource '/api/*', headers: :any, methods: :get
   end
 end
