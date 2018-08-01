@@ -1,5 +1,6 @@
 #import "fragments/EventEntry.gql"
 #import "fragments/OfficeEntry.gql"
+#import "fragments/UserEntry.gql"
 
 query EventsQuery($officeId: ID) {
   currentUser {
