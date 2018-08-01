@@ -77,6 +77,7 @@ describe EventResolver do
     let(:organization) { organizations(:minimum) }
     let(:event_type) { event_types(:minimum) }
     let(:office) { offices(:san_francisco) }
+    let(:other_office) { offices(:madison) }
     let(:event1) do
       Event.create!(
         organization: organization,
@@ -110,15 +111,17 @@ describe EventResolver do
         ends_at: event3_start + 1.hour,
         capacity: 10,
         location: 'somewhere',
-        office: office
+        office: other_office
       )
     end
     let(:event1_start) { Time.new(2018, 1, 1, 1, 0) }
     let(:event2_start) { Time.new(2018, 1, 1, 3, 0) }
     let(:event3_start) { Time.new(2018, 1, 1, 2, 0) }
+    let(:current_user) { users(:admin) }
+    let(:context) { { current_user: current_user } }
 
     let(:args) { {} }
-    let(:all_events) { EventResolver.all(nil, args, nil) }
+    let(:all_events) { EventResolver.all(nil, args, context) }
 
     before {
       Event.delete_all
@@ -144,6 +147,22 @@ describe EventResolver do
 
       it 'returns oldest events first' do
         assert_equal [event1, event3, event2].map(&:title), all_events.pluck(:title)
+      end
+    end
+
+    describe 'for all offices' do
+      let(:args) { { officeId: 'all' } }
+
+      it 'returns all events' do
+        assert_equal [event1, event2, event3].map(&:title), all_events.pluck(:title)
+      end
+    end
+
+    describe 'for your office' do
+      let(:args) { { officeId: 'current' } }
+
+      it 'returns some events' do
+        assert_equal [event1, event2].map(&:title), all_events.pluck(:title)
       end
     end
   end
