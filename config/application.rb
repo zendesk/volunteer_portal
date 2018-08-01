@@ -48,8 +48,6 @@ module Portal
 
     config.assets.paths << Rails.root.join("public", "assets")
 
-
-    # We always want to log to stdout because we run inside docker everywhere.
     unless Rails.env.test?
       logger           = ActiveSupport::Logger.new(STDOUT)
       logger.formatter = config.log_formatter
