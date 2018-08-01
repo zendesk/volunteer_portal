@@ -64,10 +64,12 @@ module EventResolver
 
     def scope_with_sort_by(scope, sort_by)
       return scope if sort_by.nil?
-
-      # Makes an ORDER BY string if it follows format of "[column_name]_[order]"
-      # For example: "STARTS_AT_DESC" -> "starts_at DESC"
-      query_string = [sort_by.rpartition('_').first.downcase, sort_by.rpartition('_').last].join ' '
+      query_string = case sort_by
+      when STARTS_AT_DESC
+        'starts_at DESC'
+      when STARTS_AT_ASC
+        'starts_at ASC'
+      end
       scope.order(query_string)
     end
   end
