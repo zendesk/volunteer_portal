@@ -69,6 +69,8 @@ QueryGraphType = GraphQL::ObjectType.define do
 
     argument :officeId, types.ID
     argument :sortBy,   UserSortEnum
+    argument :after,    types.Int, 'earliest start time allowed'
+    argument :before,   types.Int, 'latest start time allowed'
     argument :count,    types.Int, 'The number of users to return after sorting if sortBy is given'
 
     resolve UserResolver.method(:all)
