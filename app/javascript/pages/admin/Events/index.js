@@ -19,7 +19,7 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
-const eventsSort = 'STARTS_AT_ASC'
+const eventsSort = 'STARTS_AT_DESC'
 
 const actionLinks = (event, deleteEvent) => (
   <div className={s.actionColumn}>

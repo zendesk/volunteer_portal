@@ -115,8 +115,8 @@ describe EventResolver do
       )
     end
     let(:event1_start) { Time.new(2018, 1, 1, 1, 0) }
-    let(:event2_start) { Time.new(2018, 1, 1, 3, 0) }
-    let(:event3_start) { Time.new(2018, 1, 1, 2, 0) }
+    let(:event2_start) { Time.new(2018, 1, 1, 2, 0) }
+    let(:event3_start) { Time.new(2018, 1, 1, 3, 0) }
     let(:current_user) { users(:admin) }
     let(:context) { { current_user: current_user } }
 
@@ -125,20 +125,20 @@ describe EventResolver do
 
     before {
       Event.delete_all
-      event1
       event2
+      event1
       event3
     }
 
     it 'returns all events' do
-      assert_equal [event1, event2, event3].map(&:title), all_events.pluck(:title)
+      assert_equal [event2, event1, event3].map(&:title), all_events.pluck(:title)
     end
 
     describe 'when sorting by descending' do
       let(:args) { { sortBy: 'STARTS_AT_DESC' } }
 
       it 'returns latest events first' do
-        assert_equal [event2, event3, event1].map(&:title), all_events.pluck(:title)
+        assert_equal [event3, event2, event1].map(&:title), all_events.pluck(:title)
       end
     end
 
@@ -146,7 +146,7 @@ describe EventResolver do
       let(:args) { { sortBy: 'STARTS_AT_ASC' } }
 
       it 'returns oldest events first' do
-        assert_equal [event1, event3, event2].map(&:title), all_events.pluck(:title)
+        assert_equal [event1, event2, event3].map(&:title), all_events.pluck(:title)
       end
     end
 
@@ -154,7 +154,7 @@ describe EventResolver do
       let(:args) { { officeId: 'all' } }
 
       it 'returns all events' do
-        assert_equal [event1, event2, event3].map(&:title), all_events.pluck(:title)
+        assert_equal [event2, event1, event3].map(&:title), all_events.pluck(:title)
       end
     end
 
@@ -162,7 +162,7 @@ describe EventResolver do
       let(:args) { { officeId: 'current' } }
 
       it 'returns some events' do
-        assert_equal [event1, event2].map(&:title), all_events.pluck(:title)
+        assert_equal [event2, event1].map(&:title), all_events.pluck(:title)
       end
     end
   end
