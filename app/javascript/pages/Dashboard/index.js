@@ -35,7 +35,7 @@ const leaderBoardSort = 'HOURS_DESC'
 
 const selectMilestone = hours => R.find(m => hours < m.hours)(milestones) || R.last(milestones)
 
-const milestonePercentage = (user, milestone) => R.clamp(0, 100, Math.round(user.hours / milestone.hours * 100))
+const milestonePercentage = (user, milestone) => R.clamp(0, 100, Math.round((user.hours / milestone.hours) * 100))
 
 const hoursRemaining = (user, milestone) => {
   const computed = Math.round(milestone.hours - user.hours)
@@ -57,7 +57,7 @@ const barStyling = (segment, user, milestone) => {
 
   const inProgessWidth =
     completedMilestoneCount < milestones.length
-      ? R.clamp(0, milestoneBarWidth, milestonePercentage(user, milestone) / 100 * milestoneBarChunk)
+      ? R.clamp(0, milestoneBarWidth, (milestonePercentage(user, milestone) / 100) * milestoneBarChunk)
       : 0
 
   const incompleteWidth = R.clamp(0, milestoneBarWidth, milestoneBarWidth - inProgessWidth - completedWidth)
@@ -117,19 +117,8 @@ const milestoneLabelStyling = (item, milestone, user) => {
   return R.join(' ', classes)
 }
 
-const topUsers = (officeFilter, users) => {
-  const usersWithHours = R.filter(user => user.hours > 0)(users)
-
-  const filteredUsers =
-    officeFilter.value === 'all'
-      ? usersWithHours
-      : R.filter(user => user.office.id === officeFilter.value)(usersWithHours)
-
-  return R.take(10, R.sort((a, b) => b.hours - a.hours)(filteredUsers))
-}
-
 const LeaderboardContainer = ({
-  data: { networkStatus, users, offices },
+  data: { networkStatus, users, offices, currentUser },
   dashboardOfficeFilter,
   changeDashboardOfficeFilter,
 }) =>
@@ -141,12 +130,12 @@ const LeaderboardContainer = ({
         <div className={s.topVolunteers}>Top Volunteers</div>
         <Filter
           collection={offices}
-          value={dashboardOfficeFilter.value}
+          value={dashboardOfficeFilter.value === 'current' ? currentUser.office.id : dashboardOfficeFilter.value}
           onChange={(_event, _index, value) => changeDashboardOfficeFilter(value)}
           itemValueProp="name"
         />
       </div>
-      {topUsers(dashboardOfficeFilter, users).map((user, i) => (
+      {users.map((user, i) => (
         <div className={s.leaderboardUser} key={`user-${i}`}>
           <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
           <span className={s.leaderboardHours}>{user.hours} hours</span>
@@ -174,7 +163,7 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
       before: endOfYear,
     }
 
-    if (dashboardOfficeFilter.value !== 'all') variables.officeId = dashboardOfficeFilter.value
+    variables.officeId = dashboardOfficeFilter.value
 
     return {
       variables,
@@ -182,7 +171,10 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
     }
   },
 })
-const leaderboardWithActions = connect(mapStateToProps, { changeDashboardOfficeFilter })
+const leaderboardWithActions = connect(
+  mapStateToProps,
+  { changeDashboardOfficeFilter }
+)
 const Leaderboard = leaderboardWithActions(leaderboardWithData(LeaderboardContainer))
 
 const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransitions }) => {
@@ -224,7 +216,7 @@ const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransit
                   <div
                     key={`milestone-${i}`}
                     className={s.milestoneMarker}
-                    style={{ flexBasis: `${1 / milestones.length * 100}%` }}
+                    style={{ flexBasis: `${(1 / milestones.length) * 100}%` }}
                   >
                     <p className={milestoneLabelStyling('label', activeMilestone, currentUser)}>{`Milestone ${
                       milestone.name
