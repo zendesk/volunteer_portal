@@ -34,27 +34,28 @@ const columns = deleteEvent => [
   {
     Header: 'Title',
     accessor: 'title',
+    sortable: true,
   },
   {
     Header: 'Office',
     accessor: 'office.name',
-    sortable: false,
+    sortable: true,
   },
   {
     Header: 'Description',
     accessor: 'description',
-    sortable: false,
+    sortable: true,
   },
   {
     Header: 'Start',
     accessor: 'startsAt',
-    sortable: false,
+    sortable: true,
     Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
   },
   {
     Header: 'End',
     accessor: 'endsAt',
-    sortable: false,
+    sortable: true,
     Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
   },
   {
@@ -100,7 +101,6 @@ const thProps = () => ({
     borderBottom: '2px solid #eee',
     textAlign: 'left',
     padding: '15px 5px',
-    boxShadow: 'none',
     fontWeight: 'bold',
   },
 })
