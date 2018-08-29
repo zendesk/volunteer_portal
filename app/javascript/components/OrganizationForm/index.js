@@ -3,6 +3,7 @@ import { Field } from 'redux-form'
 import R from 'ramda'
 
 import Callout from 'components/Callout'
+import LocationField from 'components/LocationField'
 
 import s from './main.css'
 
@@ -60,7 +61,14 @@ const OrganizationForm = ({ handleSubmit, disableSubmit, errors }) => (
       <Field label="Description" className={s.field} name="description" component={renderField} type="text" />
     </div>
     <div className={s.inputGroup}>
-      <Field label="Location" className={s.field} name="location" component={renderField} type="text" />
+      <Field
+        label="Location"
+        className={s.field}
+        name="location"
+        component={renderField}
+        Custom={LocationField}
+        type="text"
+      />
     </div>
     <div className={s.inputGroup}>
       <Field label="Website" className={s.field} name="website" component={renderField} type="text" />

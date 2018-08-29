@@ -88,13 +88,6 @@ select.field {
   color: #fff;
 }
 
-.autocompleteList {
-  list-style: none;
-  color: #555;
-  padding-left: 10px;
-  margin: 0;
-}
-
 .muiTextField hr {
   display: none;
 }

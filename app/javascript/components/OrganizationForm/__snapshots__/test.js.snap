@@ -81,17 +81,35 @@ exports[`loads 1`] = `
         </span>
       </label>
       <div>
-        <input
-          className="field"
-          name="location"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onDragStart={[Function]}
-          onDrop={[Function]}
-          onFocus={[Function]}
-          type="text"
-          value=""
-        />
+        <div
+          className="geosuggest"
+        >
+          <div
+            className="geosuggest__input-wrapper"
+          >
+            <input
+              autoComplete="off"
+              className="geosuggest__input field"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              placeholder="Search places"
+              style={Object {}}
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="geosuggest__suggests-wrapper"
+          >
+            <ul
+              className="geosuggest__suggests autocompleteList geosuggest__suggests--hidden"
+              style={Object {}}
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
+import LocationField from 'components/LocationField'
 
 import s from './main.css'
 
@@ -105,16 +106,6 @@ const OrganizationField = ({ organizations, input: { value, onChange } }) => (
     className={s.muiTextField}
     textFieldStyle={styles.muiTextField}
     fullWidth
-  />
-)
-
-const LocationField = ({ input: { value, onChange } }) => (
-  <Geosuggest
-    inputClassName={s.field}
-    suggestsClassName={s.autocompleteList}
-    initialValue={value}
-    onChange={onChange}
-    onSuggestSelect={s => onChange(s.gmaps.formatted_address)}
   />
 )
 
