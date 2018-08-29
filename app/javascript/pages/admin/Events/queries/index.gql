@@ -2,12 +2,12 @@
 #import "fragments/OfficeEntry.gql"
 #import "fragments/UserEntry.gql"
 
-query EventsQuery($officeId: ID) {
+query EventsQuery($officeId: ID, $sortBy: EventSortEnum,) {
   currentUser {
     ...UserEntry
     isAdmin
   }
-  events(officeId: $officeId) {
+  events(officeId: $officeId, sortBy: $sortBy) {
     ...EventEntry
     office {
       ...OfficeEntry

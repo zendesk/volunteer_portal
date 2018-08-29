@@ -6,6 +6,14 @@ UserSortEnum = GraphQL::EnumType.define do
   value UserResolver::HOURS_ASC, 'Sort users by volunteering hours in ascending order'
 end
 
+EventSortEnum = GraphQL::EnumType.define do
+  name 'EventSortEnum'
+  description 'How to sort the resulting list of events'
+
+  value EventResolver::STARTS_AT_DESC, 'Sort events by start time in descending order'
+  value EventResolver::STARTS_AT_ASC, 'Sort events by start time in ascending order'
+end
+
 QueryGraphType = GraphQL::ObjectType.define do
   name 'Query'
   description 'The query root for this schema'
@@ -35,23 +43,9 @@ QueryGraphType = GraphQL::ObjectType.define do
     argument :officeId, types.ID,  'the officeId the events belong to, can be set to "current" to use the current users office id'
     argument :after,    types.Int, 'earliest start time allowed'
     argument :before,   types.Int, 'latest start time allowed'
+    argument :sortBy,   EventSortEnum
 
-    resolve -> (_, args, context) do
-      office_id = case args[:officeId]
-      when 'all'
-        nil
-      when 'current'
-        context[:current_user].office_id
-      else
-        args[:officeId]
-      end
-
-      events = Event.all
-      events = events.for_office(office_id)          if office_id
-      events = events.before(Time.at(args[:before])) if args[:before]
-      events = events.after(Time.at(args[:after]))   if args[:after]
-      events
-    end
+    resolve EventResolver.method(:all)
   end
 
   field :user do
