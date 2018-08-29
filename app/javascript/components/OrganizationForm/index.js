@@ -1,8 +1,6 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import moment from 'moment-timezone'
 import R from 'ramda'
-import AutoComplete from 'material-ui/AutoComplete'
 
 import Callout from 'components/Callout'
 

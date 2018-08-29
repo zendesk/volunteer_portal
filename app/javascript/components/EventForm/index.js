@@ -1,14 +1,11 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import moment from 'moment-timezone'
 import R from 'ramda'
-import Geosuggest from 'react-geosuggest'
 import AutoComplete from 'material-ui/AutoComplete'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
-import Loading from 'components/LoadingIcon'
 
 import s from './main.css'
 
