@@ -49,13 +49,13 @@ const columns = deleteEvent => [
     Header: 'Start',
     accessor: 'startsAt',
     sortable: false,
-    Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
+    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
     Header: 'End',
     accessor: 'endsAt',
     sortable: false,
-    Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
+    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
     Header: 'Actions',
