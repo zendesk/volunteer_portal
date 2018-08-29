@@ -33,6 +33,24 @@ const Section = ({ title, children }) => (
   </div>
 )
 
+const AddToGoogleCalendar = ({ event }) => {
+  const formatDateTime = R.replace(/-|:/g, '')
+  const { title, description, location, startsAt, endsAt, office: { timezone } } = event
+  const templateUrl =
+    'http://www.google.com/calendar/event?action=TEMPLATE' +
+    `&text=${title}` +
+    `&dates=${formatDateTime(startsAt)}/${formatDateTime(endsAt)}` +
+    `&ctz=${timezone}` +
+    `&details=${description}` +
+    `&location=${location}`
+
+  return (
+    <a href={templateUrl} target="_blank" rel="nofollow noreferrer">
+      Add to Google Calendar
+    </a>
+  )
+}
+
 // TODO: no local component state
 class MapPreview extends Component {
   constructor(props) {
@@ -145,8 +163,8 @@ const Event = ({ data: { loading, event, currentUser }, createSignup, destroySig
             </Section>
           </div>
           <div className={s.rightCol}>
-            <Section title="Information">
-              <div />
+            <Section title="Export">
+              <AddToGoogleCalendar event={event} />
             </Section>
           </div>
         </div>
