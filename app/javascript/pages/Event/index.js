@@ -5,9 +5,6 @@ import R from 'ramda'
 import { Link } from 'react-router'
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 
-import LocationIcon from 'material-ui/svg-icons/maps/place'
-import ClockIcon from 'material-ui/svg-icons/action/schedule'
-
 import EventLocation from 'components/EventLocation'
 import EventTime from 'components/EventTime'
 import LabeledProgress from 'components/LabeledProgress'

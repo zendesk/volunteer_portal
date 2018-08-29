@@ -2,11 +2,8 @@ import React from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import R from 'ramda'
-import moment from 'moment-timezone'
 
 import EventForm from 'components/EventForm'
-
-import s from './form.css'
 
 const validate = values => {
   const errors = {}
