@@ -5,7 +5,6 @@ import { NetworkStatus } from 'apollo-client'
 import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
-import { filterByOffice } from 'lib/utils'
 import moment from 'moment'
 
 import { graphQLError } from 'actions'
