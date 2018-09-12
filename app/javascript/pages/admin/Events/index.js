@@ -97,11 +97,11 @@ const theadProps = () => ({
 
 const thProps = () => ({
   style: {
-    border: 'none',
     borderBottom: '2px solid #eee',
     textAlign: 'left',
     padding: '15px 5px',
     fontWeight: 'bold',
+    outlineStyle: 'none',
   },
 })
 
@@ -113,7 +113,6 @@ const trProps = () => ({
 
 const tdProps = () => ({
   style: {
-    border: 'none',
     borderBottom: '1px solid #eee',
     padding: 10,
   },
@@ -207,8 +206,11 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(Events))
