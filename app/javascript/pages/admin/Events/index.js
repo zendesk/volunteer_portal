@@ -38,6 +38,7 @@ const columns = deleteEvent => [
   {
     Header: 'Office',
     accessor: 'office.name',
+    minWidth: 70,
     sortable: true,
   },
   {
