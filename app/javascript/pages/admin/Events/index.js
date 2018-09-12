@@ -5,7 +5,6 @@ import { NetworkStatus } from 'apollo-client'
 import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
-import { filterByOffice } from 'lib/utils'
 import moment from 'moment'
 
 import { graphQLError } from 'actions'
@@ -50,13 +49,13 @@ const columns = deleteEvent => [
     Header: 'Start',
     accessor: 'startsAt',
     sortable: true,
-    Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
+    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
     Header: 'End',
     accessor: 'endsAt',
     sortable: true,
-    Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
+    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
     Header: 'Actions',
