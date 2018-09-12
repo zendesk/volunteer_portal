@@ -1,5 +1,8 @@
 import React from 'react'
 import Avatar from './Avatar'
+import Dialog from 'material-ui/Dialog'
+import { connect } from 'react-redux'
+import { togglePopover } from 'actions'
 
 const styles = {
   container: {
@@ -20,22 +23,74 @@ const styles = {
     marginLeft: '20px',
     cursor: 'pointer',
   },
-  subtitle: {},
+  dialogActionsLink: {
+    padding: '15px',
+    cursor: 'pointer',
+    fontSize: '16px',
+  },
 }
 
-const NamedAvatar = props => (
+const dialogActions = (togglePopover, onRemove) => [
+  <a
+    style={styles.dialogActionsLink}
+    onClick={() => {
+      togglePopover('removeUserFromEvent', false)
+    }}
+  >
+    Cancel
+  </a>,
+  <a
+    style={styles.dialogActionsLink}
+    onClick={() => {
+      onRemove()
+      togglePopover('removeUserFromEvent', false)
+    }}
+  >
+    Delete
+  </a>,
+]
+
+const NamedAvatar = ({ name, subtitle, showRemove, onRemove, togglePopover, popover }) => (
   <div style={styles.container}>
-    <Avatar {...props} />
+    <Avatar name={name} subtitle={subtitle} />
     <div style={styles.details}>
-      <span style={styles.name}>{props.name}</span>
-      <span style={styles.subtitle}>{props.subtitle || '\u00a0'}</span>
+      <span style={styles.name}>{name}</span>
+      <span style={styles.subtitle}>{subtitle || '\u00a0'}</span>
     </div>
-    {props.showRemove && (
-      <a style={styles.remove} onClick={props.onRemove}>
+    {showRemove && (
+      <a
+        style={styles.remove}
+        onClick={() => {
+          togglePopover('removeUserFromEvent', true)
+        }}
+      >
         Remove
       </a>
     )}
+    {!!popover ? (
+      <Dialog
+        title="Remove User from Event"
+        actions={dialogActions(togglePopover, onRemove)}
+        open
+        onRequestClose={() => {
+          togglePopover('removeUserFromEvent', false)
+        }}
+        actionsContainerStyle={{ paddingBottom: 20, textAlign: 'center' }}
+      />
+    ) : null}
   </div>
 )
 
-export default NamedAvatar
+const mapStateToProps = (state, { children }) => {
+  const { popover } = state.model
+
+  return {
+    popover,
+  }
+}
+
+const withActions = connect(mapStateToProps, {
+  togglePopover,
+})
+
+export default withActions(NamedAvatar)
