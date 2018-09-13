@@ -9,6 +9,12 @@ query LeaderboardQuery($count: Int, $sortBy: UserSortEnum, $officeId: ID, $after
       ...OfficeEntry
     }
   }
+  currentUser {
+    ...UserEntry
+    office {
+      ...OfficeEntry
+    }
+  }
   offices {
     ...OfficeEntry
   }

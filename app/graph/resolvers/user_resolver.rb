@@ -3,11 +3,20 @@ module UserResolver
   HOURS_ASC = 'HOURS_ASC'.freeze
 
   class << self
-    def all(_object, args, _context)
+    def all(_object, args, context)
       scope = User.all
 
+      office_id = case args[:officeId]
+      when 'all'
+        nil
+      when 'current'
+        context[:current_user].office_id
+      else
+        args[:officeId]
+      end
+
       scope = scope_with_time(scope, args[:after], args[:before])
-      scope = scope_with_office_id(scope, args[:officeId])
+      scope = scope_with_office_id(scope, office_id)
       scope = scope_with_count(scope, args[:count])
       scope = scope_with_sort_by(scope, args[:sortBy])
 

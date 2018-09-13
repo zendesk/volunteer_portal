@@ -106,6 +106,10 @@ class Admin extends Component {
       data: { currentUser, offices },
     } = this.props
 
+    if (adminOfficeFilter.value === 'current') {
+      adminOfficeFilter.value = currentUser.office.id
+    }
+
     return (
       <div className={s.admin}>
         <div className={s.content}>
@@ -163,8 +167,11 @@ const withData = graphql(AdminQuery, {
   },
 })
 
-const withActions = connect(mapStateToProps, {
-  changeAdminOfficeFilter,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    changeAdminOfficeFilter,
+  }
+)
 
 export default withActions(withData(Admin))
