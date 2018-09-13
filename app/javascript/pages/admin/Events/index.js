@@ -33,27 +33,29 @@ const columns = deleteEvent => [
   {
     Header: 'Title',
     accessor: 'title',
+    sortable: true,
   },
   {
     Header: 'Office',
     accessor: 'office.name',
-    sortable: false,
+    minWidth: 70,
+    sortable: true,
   },
   {
     Header: 'Description',
     accessor: 'description',
-    sortable: false,
+    sortable: true,
   },
   {
     Header: 'Start',
     accessor: 'startsAt',
-    sortable: false,
+    sortable: true,
     Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
     Header: 'End',
     accessor: 'endsAt',
-    sortable: false,
+    sortable: true,
     Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
@@ -95,12 +97,11 @@ const theadProps = () => ({
 
 const thProps = () => ({
   style: {
-    border: 'none',
     borderBottom: '2px solid #eee',
     textAlign: 'left',
     padding: '15px 5px',
-    boxShadow: 'none',
     fontWeight: 'bold',
+    outlineStyle: 'none',
   },
 })
 
@@ -112,7 +113,6 @@ const trProps = () => ({
 
 const tdProps = () => ({
   style: {
-    border: 'none',
     borderBottom: '1px solid #eee',
     padding: 10,
   },
@@ -206,8 +206,11 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(Events))
