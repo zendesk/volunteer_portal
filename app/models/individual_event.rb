@@ -12,7 +12,9 @@ class IndividualEvent < ApplicationRecord
 
   validates :user, :organization, :event_type, :office,
             :description, :date, presence: true
-  validates :duration, numericality: { only_integer: true, greater_than: 0 }
+  validates :duration, numericality: { only_integer: true,
+                                       greater_than: 0,
+                                       less_than_or_equal_to: 1440 }
 
   scope :for_user, ->(user) { where(user: user) }
   scope :before,   ->(date) { where("date < ?", date) }
