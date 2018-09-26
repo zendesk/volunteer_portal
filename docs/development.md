@@ -62,10 +62,6 @@ guide you through the process.
    psql -c 'CREATE ROLE volunteer WITH LOGIN SUPERUSER'
    ```
 
-1. Install Node+NPM
-
-   https://docs.npmjs.com/getting-started/installing-node
-
 1. Copy the `.env.development.example` file to `.env.development`
 
    ```bash
