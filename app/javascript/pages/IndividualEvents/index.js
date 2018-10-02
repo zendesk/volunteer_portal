@@ -96,6 +96,8 @@ const validate = values => {
   }
   if (!values.duration) {
     errors.duration = 'is required'
+  } else if (values.duration < 24 * 60) {
+    errors.duration = 'must be less than or equal to 24 hours'
   }
   if (!values.eventType) {
     errors.eventType = {}
@@ -189,6 +191,7 @@ const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popove
               name="duration"
               label="Duration (minutes)"
               type="number"
+              normalize={value => (value >= 0 ? value : 0)}
               component={renderField}
               className={s.input}
             />
