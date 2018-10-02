@@ -1,14 +1,12 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import moment from 'moment-timezone'
 import R from 'ramda'
-import Geosuggest from 'react-geosuggest'
 import AutoComplete from 'material-ui/AutoComplete'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
-import Loading from 'components/LoadingIcon'
+import LocationField from 'components/LocationField'
 
 import s from './main.css'
 
@@ -108,16 +106,6 @@ const OrganizationField = ({ organizations, input: { value, onChange } }) => (
     className={s.muiTextField}
     textFieldStyle={styles.muiTextField}
     fullWidth
-  />
-)
-
-const LocationField = ({ input: { value, onChange } }) => (
-  <Geosuggest
-    inputClassName={s.field}
-    suggestsClassName={s.autocompleteList}
-    initialValue={value}
-    onChange={onChange}
-    onSuggestSelect={s => onChange(s.gmaps.formatted_address)}
   />
 )
 
