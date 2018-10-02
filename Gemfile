@@ -15,7 +15,7 @@ gem 'graphql', '~> 1.6'
 gem 'graphql-batch'
 gem 'graphiql-rails'
 gem 'goldiloader', '~> 2.0'
-gem 'nokogiri', '~> 1.8.2', require: false
+gem 'nokogiri', '~> 1.8.4', require: false
 gem 'rollbar'
 gem 'activerecord-session_store'
 gem 'attr_encrypted'
