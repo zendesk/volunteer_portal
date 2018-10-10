@@ -2,6 +2,7 @@ import React from 'react'
 
 import NamedAvatar from 'components/NamedAvatar'
 
+import { present } from '../../lib/utils'
 import s from './main.css'
 
 const UserList = ({ users, destroySignup }) => (
@@ -13,7 +14,7 @@ const UserList = ({ users, destroySignup }) => (
             image={user.photo}
             name={user.name}
             subtitle={user.group}
-            showRemove={!!destroySignup}
+            showRemove={present(destroySignup)}
             onRemove={() => destroySignup(user)}
           />
         </div>

@@ -3,6 +3,7 @@ import Avatar from './Avatar'
 import Dialog from 'material-ui/Dialog'
 import { connect } from 'react-redux'
 import { togglePopover } from 'actions'
+import { present } from '../lib/utils'
 
 const styles = {
   container: {
@@ -67,7 +68,7 @@ const NamedAvatar = ({ name, subtitle, showRemove, onRemove, togglePopover, popo
         Remove
       </a>
     )}
-    {!!popover ? (
+    {present(popover) && (
       <Dialog
         title="Remove User from Event"
         actions={dialogActions(togglePopover, onRemove)}
@@ -77,7 +78,7 @@ const NamedAvatar = ({ name, subtitle, showRemove, onRemove, togglePopover, popo
         }}
         actionsContainerStyle={{ paddingBottom: 20, textAlign: 'center' }}
       />
-    ) : null}
+    )}
   </div>
 )
 
