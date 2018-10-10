@@ -20,7 +20,17 @@
   border: 1px solid #ddd;
   padding: 5px;
   border-radius: 5px;
-  min-width: 300px;
+  min-width: 500px;
+  font-size: 12pt;
+  background: none;
+}
+
+.textfield {
+  height: 100px;
+  width: 500px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 5px;
   font-size: 12pt;
   background: none;
 }
