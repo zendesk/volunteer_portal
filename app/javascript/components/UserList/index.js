@@ -11,6 +11,7 @@ const UserList = ({ users, destroySignup }) => (
       users.map((user, i) => (
         <div key={i} className={s.item}>
           <NamedAvatar
+            userId={user.id}
             image={user.photo}
             name={user.name}
             subtitle={user.group}
