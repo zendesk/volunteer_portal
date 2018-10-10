@@ -34,7 +34,7 @@ const dialogActions = (togglePopover, onRemove) => [
   <a
     style={styles.dialogActionsLink}
     onClick={() => {
-      togglePopover('removeUserFromEvent', false)
+      togglePopover('removeUserFromEvent')
     }}
   >
     Cancel
@@ -43,7 +43,7 @@ const dialogActions = (togglePopover, onRemove) => [
     style={styles.dialogActionsLink}
     onClick={() => {
       onRemove()
-      togglePopover('removeUserFromEvent', false)
+      togglePopover('removeUserFromEvent')
     }}
   >
     Delete
@@ -73,7 +73,7 @@ const NamedAvatar = ({ name, subtitle, showRemove, onRemove, togglePopover, popo
         actions={dialogActions(togglePopover, onRemove)}
         open
         onRequestClose={() => {
-          togglePopover('removeUserFromEvent', false)
+          togglePopover('removeUserFromEvent')
         }}
         actionsContainerStyle={{ paddingBottom: 20, textAlign: 'center' }}
       />
