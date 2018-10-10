@@ -51,9 +51,9 @@ const dialogActions = (togglePopover, onRemove) => [
   </a>,
 ]
 
-const NamedAvatar = ({ name, subtitle, showRemove, onRemove, togglePopover, popover }) => (
+const NamedAvatar = ({ image, name, subtitle, showRemove, onRemove, togglePopover, popover }) => (
   <div style={styles.container}>
-    <Avatar name={name} subtitle={subtitle} />
+    <Avatar image={image} />
     <div style={styles.details}>
       <span style={styles.name}>{name}</span>
       <span style={styles.subtitle}>{subtitle || '\u00a0'}</span>
