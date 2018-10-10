@@ -1,0 +1,16 @@
+.field {
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 5px;
+  min-width: 300px;
+  font-size: 12pt;
+  background: none;
+  width: calc(100% - 10px); /* 100% - left and right padding */
+}
+
+.autocompleteList {
+  list-style: none;
+  color: #555;
+  padding-left: 10px;
+  margin: 0;
+}

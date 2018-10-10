@@ -117,19 +117,10 @@ const milestoneLabelStyling = (item, milestone, user) => {
   return R.join(' ', classes)
 }
 
-const topUsers = (officeFilter, users) => {
-  const usersWithHours = R.filter(user => user.hours > 0)(users)
-
-  const filteredUsers =
-    officeFilter.value === 'all'
-      ? usersWithHours
-      : R.filter(user => user.office.id === officeFilter.value)(usersWithHours)
-
-  return R.take(10, R.sort((a, b) => b.hours - a.hours)(filteredUsers))
-}
+const sortByHours = users => R.sort((a, b) => b.hours - a.hours)(users)
 
 const LeaderboardContainer = ({
-  data: { networkStatus, users, offices },
+  data: { networkStatus, users, offices, currentUser },
   dashboardOfficeFilter,
   changeDashboardOfficeFilter,
 }) =>
@@ -141,12 +132,12 @@ const LeaderboardContainer = ({
         <div className={s.topVolunteers}>Top Volunteers</div>
         <Filter
           collection={offices}
-          value={dashboardOfficeFilter.value}
+          value={dashboardOfficeFilter.value === 'current' ? currentUser.office.id : dashboardOfficeFilter.value}
           onChange={(_event, _index, value) => changeDashboardOfficeFilter(value)}
           itemValueProp="name"
         />
       </div>
-      {topUsers(dashboardOfficeFilter, users).map((user, i) => (
+      {sortByHours(users).map((user, i) => (
         <div className={s.leaderboardUser} key={`user-${i}`}>
           <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
           <span className={s.leaderboardHours}>{user.hours} hours</span>
@@ -174,7 +165,7 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
       before: endOfYear,
     }
 
-    if (dashboardOfficeFilter.value !== 'all') variables.officeId = dashboardOfficeFilter.value
+    variables.officeId = dashboardOfficeFilter.value
 
     return {
       variables,

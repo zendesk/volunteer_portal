@@ -5,7 +5,6 @@ import { NetworkStatus } from 'apollo-client'
 import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
-import { filterByOffice } from 'lib/utils'
 import moment from 'moment'
 
 import { graphQLError } from 'actions'
@@ -34,28 +33,30 @@ const columns = deleteEvent => [
   {
     Header: 'Title',
     accessor: 'title',
+    sortable: true,
   },
   {
     Header: 'Office',
     accessor: 'office.name',
-    sortable: false,
+    minWidth: 70,
+    sortable: true,
   },
   {
     Header: 'Description',
     accessor: 'description',
-    sortable: false,
+    sortable: true,
   },
   {
     Header: 'Start',
     accessor: 'startsAt',
-    sortable: false,
-    Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
+    sortable: true,
+    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
     Header: 'End',
     accessor: 'endsAt',
-    sortable: false,
-    Cell: ({ value }) => moment(value).format('MMM D, h:mm a'),
+    sortable: true,
+    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
   },
   {
     Header: 'Actions',
@@ -96,12 +97,11 @@ const theadProps = () => ({
 
 const thProps = () => ({
   style: {
-    border: 'none',
     borderBottom: '2px solid #eee',
     textAlign: 'left',
     padding: '15px 5px',
-    boxShadow: 'none',
     fontWeight: 'bold',
+    outlineStyle: 'none',
   },
 })
 
@@ -113,7 +113,6 @@ const trProps = () => ({
 
 const tdProps = () => ({
   style: {
-    border: 'none',
     borderBottom: '1px solid #eee',
     padding: 10,
   },

@@ -2,11 +2,8 @@ import React from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import R from 'ramda'
-import moment from 'moment-timezone'
 
 import EventForm from 'components/EventForm'
-
-import s from './form.css'
 
 const validate = values => {
   const errors = {}
@@ -77,9 +74,6 @@ const mapStateToProps = ({ graphQLErrors }, { event }) => {
   return R.isNil(event) ? props : R.merge({ initialValues: event }, props)
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {}
-)
+const withActions = connect(mapStateToProps, {})
 
 export default withActions(withReduxForm(EventFormPage))

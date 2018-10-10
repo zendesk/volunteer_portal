@@ -35,6 +35,23 @@ describe UserResolver do
       results.must_equal [user2, user]
     end
 
+    it 'filters by all offices' do
+      args = {officeId: 'all'}
+
+      results = UserResolver.all(nil, args, nil).to_a
+
+      results.must_equal User.all
+    end
+
+    it 'filters by current office' do
+      args = {officeId: 'current'}
+      context = {current_user: user}
+
+      results = UserResolver.all(nil, args, context).to_a
+
+      results.must_equal [user]
+    end
+
     it 'filters by office_id' do
       args = {officeId: office.id}
       results = UserResolver.all(nil, args, nil).to_a

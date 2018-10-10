@@ -1,15 +1,13 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import moment from 'moment-timezone'
 import R from 'ramda'
-import Geosuggest from 'react-geosuggest'
 import AutoComplete from 'material-ui/AutoComplete'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
-import Loading from 'components/LoadingIcon'
 import UserList from 'components/UserList'
+import LocationField from 'components/LocationField'
 
 import s from './main.css'
 
@@ -65,15 +63,7 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
 const renderError = error => <span className={s.fieldError}>{error}</span>
 
 const renderField = props => {
-  const {
-    input,
-    label,
-    type,
-    Custom,
-    meta: { touched, error, warning },
-    className,
-    required,
-  } = props
+  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
   return (
     <div>
@@ -117,16 +107,6 @@ const OrganizationField = ({ organizations, input: { value, onChange } }) => (
     className={s.muiTextField}
     textFieldStyle={styles.muiTextField}
     fullWidth
-  />
-)
-
-const LocationField = ({ input: { value, onChange } }) => (
-  <Geosuggest
-    inputClassName={s.field}
-    suggestsClassName={s.autocompleteList}
-    initialValue={value}
-    onChange={onChange}
-    onSuggestSelect={s => onChange(s.gmaps.formatted_address)}
   />
 )
 
