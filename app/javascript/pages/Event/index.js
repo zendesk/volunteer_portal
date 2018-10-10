@@ -10,7 +10,6 @@ import EventTime from 'components/EventTime'
 import LabeledProgress from 'components/LabeledProgress'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
-import NamedAvatar from 'components/NamedAvatar'
 import SignupButton from 'components/SignupButton'
 import UserList from 'components/UserList'
 
