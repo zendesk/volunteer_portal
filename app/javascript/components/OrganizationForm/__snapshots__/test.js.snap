@@ -51,15 +51,15 @@ exports[`loads 1`] = `
         </span>
       </label>
       <div>
-        <input
-          className="field"
+        <textarea
+          className="textfield"
           name="description"
           onBlur={[Function]}
           onChange={[Function]}
           onDragStart={[Function]}
           onDrop={[Function]}
           onFocus={[Function]}
-          type="text"
+          type="textarea"
           value=""
         />
       </div>
