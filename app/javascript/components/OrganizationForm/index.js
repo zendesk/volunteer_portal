@@ -25,6 +25,8 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
     case 'input':
     case 'text':
       return <input {...input} type={type} className={className} />
+    case 'textarea':
+      return <textarea {...input} type={type} className={className} />
     case 'select':
       return (
         <select {...input} className={className}>
@@ -58,7 +60,7 @@ const OrganizationForm = ({ handleSubmit, disableSubmit, errors }) => (
       <Field label="Name" className={s.field} name="name" component={renderField} type="text" />
     </div>
     <div className={s.inputGroup}>
-      <Field label="Description" className={s.field} name="description" component={renderField} type="text" />
+      <Field label="Description" className={s.textfield} name="description" component={renderField} type="textarea" />
     </div>
     <div className={s.inputGroup}>
       <Field
