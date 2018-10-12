@@ -21,23 +21,22 @@ const styles = {
     fontWeight: 600,
   },
   remove: {
-    marginLeft: '20px',
+    marginLeft: 20,
     cursor: 'pointer',
   },
   dialogActionsLink: {
-    padding: '15px',
+    padding: 15,
     cursor: 'pointer',
-    fontSize: '16px',
+    fontSize: 16,
+  },
+  actionsContainer: {
+    paddingBottom: 20,
+    textAlign: 'center',
   },
 }
 
 const dialogActions = (togglePopover, onRemove) => [
-  <a
-    style={styles.dialogActionsLink}
-    onClick={() => {
-      togglePopover('removeUserFromEvent')
-    }}
-  >
+  <a style={styles.dialogActionsLink} onClick={() => togglePopover('removeUserFromEvent')}>
     Cancel
   </a>,
   <a
@@ -59,25 +58,18 @@ const NamedAvatar = ({ userId, image, name, subtitle, showRemove, onRemove, togg
       <span style={styles.subtitle}>{subtitle || '\u00a0'}</span>
     </div>
     {showRemove && (
-      <a
-        style={styles.remove}
-        onClick={() => {
-          togglePopover('removeUserFromEvent', { userId })
-        }}
-      >
+      <a style={styles.remove} onClick={() => togglePopover('removeUserFromEvent', { userId })}>
         Remove
       </a>
     )}
     {present(popover) &&
       popover.data.userId === userId && (
         <Dialog
-          title={'Remove User ' + name + ' from Event'}
+          title={`Remove ${name} from Event`}
           actions={dialogActions(togglePopover, onRemove)}
           open
-          onRequestClose={() => {
-            togglePopover('removeUserFromEvent')
-          }}
-          actionsContainerStyle={{ paddingBottom: 20, textAlign: 'center' }}
+          onRequestClose={() => togglePopover('removeUserFromEvent')}
+          actionsContainerStyle={styles.actionsContainer}
         />
       )}
   </div>
