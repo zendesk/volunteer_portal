@@ -1,4 +1,13 @@
 namespace :volunteer do
+  desc "Promote a user to admin"
+  task make_admin: :environment do |_task, params|
+    email = params.extras.first
+    puts "Making user `#{email}` an admin..."
+    user = User.find_by_email!(email)
+    user.role = Role.admin
+    user.save!
+  end
+
   desc "Generate lots of fake data to test with"
   task generate_test_data: :environment do
     require 'ffaker'
