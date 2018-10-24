@@ -15,7 +15,7 @@ const handleSubmit = () => {}
 test('loads', () => {
   const component = renderer.create(
     <Provider store={store}>
-      <WithReduxForm handleSubmit={handleSubmit} disableSumbit={false} />
+      <WithReduxForm handleSubmit={handleSubmit} disableSubmit={false} />
     </Provider>
   )
   const tree = component.toJSON()
