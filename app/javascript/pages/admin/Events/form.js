@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import R from 'ramda'
 
 import EventForm from 'components/EventForm'
+import moment from 'moment'
 
 const validate = values => {
   const errors = {}
