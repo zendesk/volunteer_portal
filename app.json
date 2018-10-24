@@ -45,8 +45,8 @@
       "description": "If ROLLBAR_URL is defined, the access token is needed to authenticate to Rollbar",
       "required": false
     },
-    "ZENDESK_DOMAIN": {
-      "description": "If defined, a Zendesk Web Widget will be embedded to help users via your Zendesk account",
+    "ZENDESK_WIDGET_KEY": {
+      "description": "If defined, a Zendesk Web Widget will be embedded to help users via your Zendesk account. Your key can be found in the snippet url, which is displayed on the web widget admin setup page inside your Zendesk instance.",
       "required": false
     }
   }
