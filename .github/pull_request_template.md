@@ -1,7 +1,7 @@
 Short description
 
 ## Description
-Develop what, but also why this PR exists. The "Why" is as much, if not more important than the "What". I use this approach very often when I write commit messages, because if the code is clear enough it should already answer the "what" question. The "why" is often more subtle.
+Describe what, but also why this PR exists. The "Why" is as much, if not more important than the "What". I use this approach very often when I write commit messages, because if the code is clear enough it should already answer the "what" question. The "why" is often more subtle.
 
 ## References
 [Github Issue](https://github.com/zendesk/volunteer_portal/issues/XX)
