@@ -96,7 +96,7 @@ const validate = values => {
   }
   if (!values.duration) {
     errors.duration = 'is required'
-  } else if (values.duration < 24 * 60) {
+  } else if (values.duration > 24 * 60) {
     errors.duration = 'must be less than or equal to 24 hours'
   }
   if (!values.eventType) {
