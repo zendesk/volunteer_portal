@@ -8,7 +8,11 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
-const defaultStartDate = new Date(moment().startOf('year').format())
+const defaultStartDate = new Date(
+  moment()
+    .startOf('year')
+    .format()
+)
 const defaultEndDate = new Date(moment().format())
 
 const styles = {
@@ -25,6 +29,10 @@ const columnDefs = [
     filterable: true,
   },
   {
+    Header: 'Email',
+    accessor: 'email',
+  },
+  {
     Header: 'Office',
     id: 'officeName',
     accessor: 'office.name',
@@ -37,7 +45,11 @@ const columnDefs = [
 
 const filterMethod = (filter, row, column) => {
   const id = filter.pivotId || filter.id
-  return row[id] !== undefined ? String(row[id]).toLowerCase().startsWith(filter.value.toLowerCase()) : true
+  return row[id] !== undefined
+    ? String(row[id])
+        .toLowerCase()
+        .startsWith(filter.value.toLowerCase())
+    : true
 }
 
 const containerProps = () => ({
@@ -84,9 +96,12 @@ const tdProps = () => ({
 })
 
 const tableExporter = (startDate, endDate, onStartChange, onEndChange, state, makeTable, instance) => {
-  const headers = 'Name,Office,Hours\n'
+  const headers = 'Name,Email,Office,Hours\n'
 
-  const csv = state.pageRows.reduce((acc, row) => (acc += `${row.name},${row.officeName},${row.hours}\n`), headers)
+  const csv = state.pageRows.reduce(
+    (acc, row) => (acc += `${row.name},${row.email},${row.officeName},${row.hours}\n`),
+    headers
+  )
 
   const octetStream = encodeURIComponent(csv)
 
