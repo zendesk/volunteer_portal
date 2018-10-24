@@ -2,7 +2,6 @@ import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
-import { navigate } from 'react-big-calendar/lib/utils/constants'
 import R from 'ramda'
 import moment from 'moment'
 
