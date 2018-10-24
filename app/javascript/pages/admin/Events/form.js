@@ -32,6 +32,9 @@ const validate = values => {
   if (!values.endsAt) {
     errors.endsAt = 'is required'
   }
+  if (moment(values.endsAt).isBefore(moment(values.startsAt))) {
+    errors.endsAt = 'is ending before it started'
+  }
   if (!values.capacity || Number(values.capacity) === NaN) {
     errors.capacity = 'is required and must be a number'
   }
