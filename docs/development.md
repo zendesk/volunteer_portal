@@ -30,12 +30,6 @@
 
    The easiest thing is probably to use their app. http://postgresapp.com/
 
-1. Create the `volunteer` database role
-
-   ```bash
-   psql -c 'CREATE ROLE volunteer WITH LOGIN SUPERUSER'
-   ```
-
 1. Copy the `.env.development.example` file to `.env.development`
 
    ```bash
@@ -93,12 +87,11 @@ guide you through the process.
 
 Make sure that PostgreSQL is running.
 
-Create the database by running the command line below. You should only need to do this once.
+1. Create and set up your database (you should only need to do this once):
 
- ```
- ./bin/rails db:setup
- ```
-
+   ```bash
+   ./script/setup_db.sh
+   ```
 
 To start the app and run it locally, run the command line blow. `foreman` is used to run both the rails server and the webpack dev server in development.
 
