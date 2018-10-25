@@ -3,7 +3,7 @@ namespace :volunteer do
   task make_admin: :environment do |_task, params|
     email = params.extras.first
     puts "Making user `#{email}` an admin..."
-    user = User.find_by_email!(email)
+    user = User.find_by!(email: email)
     user.role = Role.admin
     user.save!
   end
