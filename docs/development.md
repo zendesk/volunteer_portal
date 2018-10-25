@@ -101,6 +101,12 @@ bundle exec foreman start
 
 The server runs on [localhost:5000](http://localhost:5000/) by default.
 
+## Become an admin:
+
+```bash
+bundle exec rake 'volunteer:make_admin[your_email_address]'
+```
+
 ## Running tests
 
 Rails tests are provided via Minitest and frontend tests with Jest.
