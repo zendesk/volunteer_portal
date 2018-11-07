@@ -41,7 +41,6 @@ const calendarComponents = (currentUser, offices, filters, filterActions) => {
 
   return {
     toolbar: R.partial(Toolbar, [offices, showFilter, eventFilter, officeFilter]),
-    // 👇 this does not get updated when `events` gets updated
     event: Event, // used by each view (Month, Day, Week)
   }
 }
