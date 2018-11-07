@@ -108,8 +108,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    nokogumbo (1.5.0)
-      nokogiri
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
       jwt (~> 1.0)
@@ -173,10 +171,6 @@ GEM
     rollbar (2.15.0)
       multi_json
     safe_yaml (1.0.4)
-    sanitize (4.6.4)
-      crass (~> 1.0.2)
-      nokogiri (>= 1.4.4)
-      nokogumbo (~> 1.4)
     sass (3.4.24)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -236,12 +230,10 @@ DEPENDENCIES
   graphiql-rails
   graphql (~> 1.6)
   graphql-batch
-  loofah (~> 2.2.1)
   maxitest
   memory_profiler
   minitest-rails
   mocha
-  nokogiri (~> 1.8.5)
   omniauth-google-oauth2
   pg (~> 0.21)
   puma
@@ -249,10 +241,8 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 5.1)
   rails-controller-testing
-  rails-html-sanitizer (~> 1.0.4)
   rails_12factor (= 0.0.3)
   rollbar
-  sanitize (~> 4.6.3)
   sass-rails
   single_cov
   soft_deletion

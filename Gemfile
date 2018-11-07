@@ -9,13 +9,11 @@ gem 'daemons', require: false
 gem 'pg', '~> 0.21' # https://github.com/rails/rails/issues/31673
 gem 'dotenv'
 gem 'omniauth-google-oauth2'
-gem 'sanitize', '~> 4.6.3'
 gem 'stronger_parameters'
 gem 'graphql', '~> 1.6'
 gem 'graphql-batch'
 gem 'graphiql-rails'
 gem 'goldiloader', '~> 2.0'
-gem 'nokogiri', '~> 1.8.5', require: false
 gem 'rollbar'
 gem 'activerecord-session_store'
 gem 'attr_encrypted'
@@ -23,8 +21,6 @@ gem 'soft_deletion'
 gem 'webpacker', '~> 2.0'
 gem 'uglifier'
 gem 'sass-rails'
-gem 'loofah', '~> 2.2.1'
-gem 'rails-html-sanitizer', '~> 1.0.4'
 
 group :production do
   gem 'rails_12factor', '0.0.3'
