@@ -10,8 +10,7 @@ import Reporting from 'components/Reporting'
 import { changeAdminReportingStart, changeAdminReportingEnd } from 'actions'
 
 import ReportingQuery from './query.gql'
-
-import adminStyle from './../Admin/main.css'
+import s from './main.css'
 
 const defaultStartDate = moment().startOf('year')
 const defaultEndDate = moment().endOf('year')
@@ -29,8 +28,8 @@ const ReportingPage = ({
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
-    <div className={adminStyle.admin}>
-      <div className={adminStyle.content}>
+    <div className={s.admin}>
+      <div className={s.content}>
         <Reporting
           users={users}
           startDate={reportingStartDate}
