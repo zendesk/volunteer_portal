@@ -34,17 +34,20 @@ const columns = deleteEvent => [
     Header: 'Title',
     accessor: 'title',
     sortable: true,
+    filterable: true,
   },
   {
     Header: 'Office',
     accessor: 'office.name',
     minWidth: 70,
     sortable: true,
+    filterable: true,
   },
   {
     Header: 'Description',
     accessor: 'description',
     sortable: true,
+    filterable: true,
   },
   {
     Header: 'Start',
@@ -67,15 +70,8 @@ const columns = deleteEvent => [
   },
 ]
 
-// TODO: most of these are copied from components/v2/Reporting/index.js and should be extracted for shared use
-const filterMethod = (filter, row, column) => {
-  const id = filter.pivotId || filter.id
-  return row[id] !== undefined
-    ? String(row[id])
-        .toLowerCase()
-        .startsWith(filter.value.toLowerCase())
-    : true
-}
+const filterMethod = (filter, row, column) =>
+  R.contains(filter.value.toLowerCase(), String(row[filter.id]).toLowerCase())
 
 const containerProps = () => ({
   style: {
@@ -206,11 +202,8 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+})
 
 export default withActions(withData(Events))
