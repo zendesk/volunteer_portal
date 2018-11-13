@@ -10,8 +10,8 @@ import EventTime from 'components/EventTime'
 import LabeledProgress from 'components/LabeledProgress'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
-import NamedAvatar from 'components/NamedAvatar'
 import SignupButton from 'components/SignupButton'
+import UserList from 'components/UserList'
 
 import EventQuery from './query.gql'
 import CreateSignupMutation from 'mutations/CreateSignupMutation.gql'
@@ -153,13 +153,7 @@ const Event = ({ data: { loading, event, currentUser }, createSignup, destroySig
                   />
                 </div>
               </div>
-              <div className={s.avatarGrid}>
-                {event.users.map((user, i) => (
-                  <div key={i} className={s.item}>
-                    <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
-                  </div>
-                ))}
-              </div>
+              <UserList users={event.users} />
             </Section>
           </div>
           <div className={s.rightCol}>

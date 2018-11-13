@@ -43,12 +43,24 @@ const validate = values => {
   return errors
 }
 
-const EventFormPage = ({ eventTypes, offices, organizations, handleSubmit, pristine, submitting, graphQLErrors }) => (
+const EventFormPage = ({
+  eventTypes,
+  offices,
+  organizations,
+  handleSubmit,
+  pristine,
+  submitting,
+  graphQLErrors,
+  users,
+  destroySignup,
+}) => (
   <EventForm
     eventTypes={eventTypes}
     offices={offices}
     organizations={organizations}
     handleSubmit={handleSubmit}
+    users={users}
+    destroySignup={destroySignup}
     disableSubmit={pristine || submitting}
     errors={graphQLErrors}
   />
