@@ -40,7 +40,7 @@ exports[`loads 1`] = `
   >
     <button
       className="btn primary"
-      disabled={undefined}
+      disabled={false}
       type="submit"
     >
       Save

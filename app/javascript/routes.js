@@ -29,6 +29,7 @@ export default (
   <div>
     <Route path="/portal" component={App}>
       {/* Admin Namespace */}
+      <Route path="/portal/admin/reporting" component={Reporting} />
       <Route path="/portal/admin" component={Admin}>
         <IndexRoute component={AdminDashboard} />
         <Route path="/portal/admin/events/new" component={NewEvent} />
@@ -46,7 +47,6 @@ export default (
         <Route path="/portal/admin/individual_events" component={IndividualEventsAdmin} />
         <Route path="/portal/admin/users/:id/edit" component={EditUser} />
         <Route path="/portal/admin/users" component={UsersAdmin} />
-        <Route path="/portal/admin/reporting" component={Reporting} />
         <Route path="*" component={AdminDashboard} />
       </Route>
       {/* Default Namespace */}

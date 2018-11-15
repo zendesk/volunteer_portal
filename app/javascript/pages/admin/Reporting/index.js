@@ -10,6 +10,7 @@ import Reporting from 'components/Reporting'
 import { changeAdminReportingStart, changeAdminReportingEnd } from 'actions'
 
 import ReportingQuery from './query.gql'
+import s from './main.css'
 
 const defaultStartDate = moment().startOf('year')
 const defaultEndDate = moment().endOf('year')
@@ -27,13 +28,17 @@ const ReportingPage = ({
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
-    <Reporting
-      users={users}
-      startDate={reportingStartDate}
-      endDate={reportingEndDate}
-      onStartChange={changeAdminReportingStart}
-      onEndChange={changeAdminReportingEnd}
-    />
+    <div className={s.admin}>
+      <div className={s.content}>
+        <Reporting
+          users={users}
+          startDate={reportingStartDate}
+          endDate={reportingEndDate}
+          onStartChange={changeAdminReportingStart}
+          onEndChange={changeAdminReportingEnd}
+        />
+      </div>
+    </div>
   )
 
 const mapStateToProps = ({ model: { adminOfficeFilter, reportingStartDate, reportingEndDate } }) => ({
