@@ -57,7 +57,10 @@ const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSele
           <div>
             <button className={s.btn} onClick={togglePopover}>
               <img className={s.img} src={currentUser.photo} />
-              <span className={s.userName}>{currentUser.name}</span>
+              <div className={s.userInfoBox}>
+                <div className={s.userName}>{currentUser.name}</div>
+                <div className={s.userOffice}>{currentUser.office && currentUser.office.name}</div>
+              </div>
               <Popover
                 className={s.popover}
                 open={present(popover)}

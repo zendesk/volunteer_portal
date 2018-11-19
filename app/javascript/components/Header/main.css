@@ -38,25 +38,31 @@
 }
 
 .btn {
-  height: 40px;
-  line-height: 40px;
   background: none;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 7px;
+  border: none;
 }
 
 .img {
-  height: 25px;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  float: left;
+  vertical-align: middle;
   margin-right: 10px;
+}
+
+.userInfoBox {
   display: inline-block;
+  line-height: 16px;
+  text-align: left;
 }
 
 .userName {
-  display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  float: right;
+  line-height: 16px;
+}
+
+.userOffice {
+  color: #555;
 }
 
 .item {
