@@ -27,14 +27,37 @@ const actionLinks = (organization, togglePopover) => (
   </div>
 )
 
+const websiteLink = ({ original: organization }) => {
+  let websiteUrl = organization.website
+  if (!/^https?:\/\//i.test(websiteUrl)) {
+    websiteUrl = 'http://' + websiteUrl
+  }
+
+  return <a href={websiteUrl}>{organization.website}</a>
+}
+
+const descriptionWithTitleText = ({ original: organization }) => {
+  return <div title={organization.description}>{organization.description}</div>
+}
+
 const columns = togglePopover => [
   {
     Header: 'Name',
     accessor: 'name',
   },
   {
-    Header: 'Timezone',
-    accessor: 'timezone',
+    Header: 'Description',
+    accessor: 'description',
+    Cell: descriptionWithTitleText,
+  },
+  {
+    Header: 'Website',
+    accessor: 'website',
+    Cell: websiteLink,
+  },
+  {
+    Header: 'Location',
+    accessor: 'location',
     sortable: false,
   },
   {
