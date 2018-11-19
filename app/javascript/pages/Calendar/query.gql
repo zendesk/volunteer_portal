@@ -21,7 +21,7 @@ query EventsQuery($after: Int, $before: Int, $officeId: ID) {
       ...UserEntry
     }
   }
-  offices {
+  offices(sortBy: ALPHABETICAL_ASC) {
     ...OfficeEntry
   }
 }

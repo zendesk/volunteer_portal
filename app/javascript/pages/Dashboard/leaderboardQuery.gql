@@ -15,7 +15,7 @@ query LeaderboardQuery($count: Int, $sortBy: UserSortEnum, $officeId: ID, $after
       ...OfficeEntry
     }
   }
-  offices {
+  offices(sortBy: ALPHABETICAL_ASC) {
     ...OfficeEntry
   }
 }

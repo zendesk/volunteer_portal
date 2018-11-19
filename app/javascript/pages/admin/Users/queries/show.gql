@@ -10,7 +10,7 @@ query UserQuery($id: ID!) {
     timezone
     isAdmin
   }
-  offices {
+  offices(sortBy: ALPHABETICAL_ASC) {
     ...OfficeEntry
   }
 }
