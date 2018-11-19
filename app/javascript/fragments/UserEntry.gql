@@ -3,4 +3,5 @@ fragment UserEntry on User {
   name
   email
   photo
+  isAdmin
 }

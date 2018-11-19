@@ -6,6 +6,7 @@ import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
+import NavigationCheck from 'material-ui/svg-icons/navigation/check'
 
 import { graphQLError, togglePopover } from 'actions'
 
@@ -27,15 +28,29 @@ const actionLinks = (user, togglePopover) => (
   </div>
 )
 
+const adminIconDimension = {
+  height: 18,
+  width: 18,
+}
+
+const showAdminIcon = user => (user.isAdmin ? <NavigationCheck style={adminIconDimension} /> : <div />)
+
 const columns = togglePopover => [
   {
     Header: 'Name',
     accessor: 'name',
   },
   {
-    Header: 'Timezone',
-    accessor: 'timezone',
-    sortable: false,
+    Header: 'Email',
+    accessor: 'email',
+    sortable: true,
+  },
+  {
+    Header: 'Admin',
+    accessor: 'isAdmin',
+    width: 130,
+    sortable: true,
+    Cell: ({ original }) => showAdminIcon(original),
   },
   {
     Header: 'Actions',
@@ -121,6 +136,7 @@ const Users = ({ data: { networkStatus, users }, deleteUser, togglePopover, dest
         data={users}
         columns={columns(togglePopover)}
         showPagination={false}
+        resizable={false}
         defaultPageSize={users.length}
         minRows={0}
         defaultFilterMethod={filterMethod}
