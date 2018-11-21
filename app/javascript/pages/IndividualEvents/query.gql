@@ -23,7 +23,7 @@ query IndividualEventsQuery {
       }
     }
   }
-  offices(sortBy: ALPHABETICAL_ASC) {
+  offices(sortBy: NAME_ASC) {
     ...OfficeEntry
   }
   eventTypes {

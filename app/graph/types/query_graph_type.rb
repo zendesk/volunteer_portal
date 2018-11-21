@@ -18,8 +18,8 @@ OfficeSortEnum = GraphQL::EnumType.define do
   name 'OfficeSortEnum'
   description 'How to sort the resulting list of offices'
 
-  value OfficeResolver::ALPHABETICAL_DESC, 'Sort offices alphabetically in descending order'
-  value OfficeResolver::ALPHABETICAL_ASC, 'Sort offices alphabetically in ascending order'
+  value OfficeResolver::NAME_DESC, 'Sort offices by name in descending order'
+  value OfficeResolver::NAME_ASC, 'Sort offices by name in ascending order'
 end
 
 QueryGraphType = GraphQL::ObjectType.define do

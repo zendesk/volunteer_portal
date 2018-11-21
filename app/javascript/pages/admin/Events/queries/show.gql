@@ -23,7 +23,7 @@ query EventQuery($id: ID!) {
   eventTypes {
     ...EventTypeEntry
   }
-  offices(sortBy: ALPHABETICAL_ASC) {
+  offices(sortBy: NAME_ASC) {
     ...OfficeEntry
   }
   organizations {

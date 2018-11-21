@@ -1,6 +1,6 @@
 module OfficeResolver
-  ALPHABETICAL_DESC = 'ALPHABETICAL_DESC'.freeze
-  ALPHABETICAL_ASC = 'ALPHABETICAL_ASC'.freeze
+  NAME_DESC = 'NAME_DESC'.freeze
+  NAME_ASC = 'NAME_ASC'.freeze
 
   class << self
     def all(_object, args, context)
@@ -35,15 +35,14 @@ module OfficeResolver
     def scope_with_sort_by(scope, sort_by)
       return scope unless sort_by
 
-      order = case sort_by
-      when ALPHABETICAL_DESC
-        :desc
-      when ALPHABETICAL_ASC
-        :asc
+      query_string = case sort_by
+      when NAME_DESC
+        'name DESC'
+      when NAME_ASC
+        'name ASC'
       end
 
-      scope
-        .order(name: order)
+      scope.order(query_string)
     end
   end
 end
