@@ -87,7 +87,10 @@ const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices }) =
 
 class Admin extends Component {
   componentDidUpdate() {
-    const { history, data: { networkStatus, currentUser } } = this.props
+    const {
+      history,
+      data: { networkStatus, currentUser },
+    } = this.props
 
     if (networkStatus !== NetworkStatus.loading && !currentUser.isAdmin) {
       history.push('/portal')
@@ -95,7 +98,13 @@ class Admin extends Component {
   }
 
   render() {
-    const { routing, children, adminOfficeFilter, changeAdminOfficeFilter, data: { currentUser, offices } } = this.props
+    const {
+      routing,
+      children,
+      adminOfficeFilter,
+      changeAdminOfficeFilter,
+      data: { currentUser, offices },
+    } = this.props
 
     if (adminOfficeFilter.value === 'current') {
       adminOfficeFilter.value = currentUser.office.id
@@ -158,8 +167,11 @@ const withData = graphql(AdminQuery, {
   },
 })
 
-const withActions = connect(mapStateToProps, {
-  changeAdminOfficeFilter,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    changeAdminOfficeFilter,
+  }
+)
 
 export default withActions(withData(Admin))
