@@ -1,7 +1,6 @@
 import React from 'react'
 import R from 'ramda'
 
-import { present } from '../../lib/utils'
 import s from './main.css'
 
 const SignupButton = ({ currentUser, event, createSignupHandler, destroySignupHandler }) => {
@@ -9,7 +8,7 @@ const SignupButton = ({ currentUser, event, createSignupHandler, destroySignupHa
     return <button disabled className={`${s.btn} ${s.primary}`} />
   }
 
-  const isRegistered = present(R.find(user => user.id === currentUser.id)(event.users))
+  const isRegistered = !!R.find(user => user.id === currentUser.id)(event.users)
   const isFull = event.users.length >= event.capacity
 
   let classNames = [s.btn, s.primary]

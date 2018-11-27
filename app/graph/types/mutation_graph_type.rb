@@ -20,10 +20,8 @@ MutationGraphType = GraphQL::ObjectType.define do
     argument :eventId, !types.ID
     argument :userId,  !types.ID
 
-    resolve -> (_, args, context) do
-      user = context[:current_user]
-      scope = user.role == Role.admin ? Signup : user.signups
-      signup = scope.find_by!(event_id: args[:eventId], user_id: args[:userId])
+    resolve -> (_, args, _) do
+      signup = Signup.find_by!(event_id: args[:eventId], user_id: args[:userId])
       signup.event.remove_user!(signup.user)
       signup
     end

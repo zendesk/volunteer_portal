@@ -35,7 +35,7 @@ const leaderBoardSort = 'HOURS_DESC'
 
 const selectMilestone = hours => R.find(m => hours < m.hours)(milestones) || R.last(milestones)
 
-const milestonePercentage = (user, milestone) => R.clamp(0, 100, Math.round(user.hours / milestone.hours * 100))
+const milestonePercentage = (user, milestone) => R.clamp(0, 100, Math.round((user.hours / milestone.hours) * 100))
 
 const hoursRemaining = (user, milestone) => {
   const computed = Math.round(milestone.hours - user.hours)
@@ -57,7 +57,7 @@ const barStyling = (segment, user, milestone) => {
 
   const inProgessWidth =
     completedMilestoneCount < milestones.length
-      ? R.clamp(0, milestoneBarWidth, milestonePercentage(user, milestone) / 100 * milestoneBarChunk)
+      ? R.clamp(0, milestoneBarWidth, (milestonePercentage(user, milestone) / 100) * milestoneBarChunk)
       : 0
 
   const incompleteWidth = R.clamp(0, milestoneBarWidth, milestoneBarWidth - inProgessWidth - completedWidth)
@@ -173,7 +173,10 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
     }
   },
 })
-const leaderboardWithActions = connect(mapStateToProps, { changeDashboardOfficeFilter })
+const leaderboardWithActions = connect(
+  mapStateToProps,
+  { changeDashboardOfficeFilter }
+)
 const Leaderboard = leaderboardWithActions(leaderboardWithData(LeaderboardContainer))
 
 const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransitions }) => {
@@ -215,7 +218,7 @@ const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransit
                   <div
                     key={`milestone-${i}`}
                     className={s.milestoneMarker}
-                    style={{ flexBasis: `${1 / milestones.length * 100}%` }}
+                    style={{ flexBasis: `${(1 / milestones.length) * 100}%` }}
                   >
                     <p className={milestoneLabelStyling('label', activeMilestone, currentUser)}>{`Milestone ${
                       milestone.name
