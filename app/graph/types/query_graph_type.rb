@@ -14,6 +14,14 @@ EventSortEnum = GraphQL::EnumType.define do
   value EventResolver::STARTS_AT_ASC, 'Sort events by start time in ascending order'
 end
 
+OfficeSortEnum = GraphQL::EnumType.define do
+  name 'OfficeSortEnum'
+  description 'How to sort the resulting list of offices'
+
+  value OfficeResolver::NAME_DESC, 'Sort offices by name in descending order'
+  value OfficeResolver::NAME_ASC, 'Sort offices by name in ascending order'
+end
+
 QueryGraphType = GraphQL::ObjectType.define do
   name 'Query'
   description 'The query root for this schema'
@@ -83,7 +91,9 @@ QueryGraphType = GraphQL::ObjectType.define do
   field :offices do
     type types[OfficeGraphType]
 
-    resolve -> (_, _, _) { Office.all }
+    argument :sortBy, OfficeSortEnum
+
+    resolve OfficeResolver.method(:all)
   end
 
   field :eventType do

@@ -1,7 +1,7 @@
 #import "fragments/OfficeEntry.gql"
 
 query OfficesQuery {
-  offices {
+  offices(sortBy: NAME_ASC) {
     ...OfficeEntry
   }
 }

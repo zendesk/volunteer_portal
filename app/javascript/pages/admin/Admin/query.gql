@@ -9,7 +9,7 @@ query AdminQuery {
     }
     isAdmin
   }
-  offices {
+  offices(sortBy: NAME_ASC) {
     ...OfficeEntry
   }
 }
