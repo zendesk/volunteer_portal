@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
+import ReportingIcon from 'material-ui/svg-icons/av/equalizer'
 
 import { changeAdminOfficeFilter } from 'actions'
 
@@ -140,6 +141,10 @@ class Admin extends Component {
             <div className={s.navSpacer} />
             <Link to="/portal/admin/users">
               <span className={btnClass(routing, 'users')}>Users</span>
+            </Link>
+            <div className={s.navSpacer} />
+            <Link to="/portal/admin/reporting">
+              <span className={btnClass(routing, 'reporting')}>Reporting</span>
             </Link>
             <div className={`${s.navSpacer} ${s.growingSpace}`} />
             <OfficeFilter

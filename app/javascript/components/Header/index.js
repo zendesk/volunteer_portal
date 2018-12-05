@@ -8,7 +8,6 @@ import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right'
 import ContentIcon from 'material-ui/svg-icons/content/create'
-import ReportingIcon from 'material-ui/svg-icons/av/equalizer'
 
 import s from './main.css'
 
@@ -25,13 +24,6 @@ const AdminActions = ({ currentUser }) =>
         <Link to="/portal/admin">
           <button className={s.btn}>
             <ContentIcon />
-          </button>
-        </Link>
-      </div>
-      <div className={s.adminBox}>
-        <Link to="/portal/admin/reporting">
-          <button className={s.btn}>
-            <ReportingIcon />
           </button>
         </Link>
       </div>
