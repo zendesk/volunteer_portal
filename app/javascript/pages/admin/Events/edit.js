@@ -17,7 +17,6 @@ const EditEvent = ({
   data: { networkStatus, event, eventTypes, offices, organizations },
   updateEvent,
   destroySignup,
-  createSignup,
 }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
@@ -60,7 +59,7 @@ const withData = compose(
     props: ({ ownProps, mutate }) => ({
       updateEvent: event =>
         mutate({
-          variables: { input: R.omit(['__typename'], extractIdFromAssociations(event)) },
+          variables: { input: R.omit(['__typename', 'users'], extractIdFromAssociations(event)) },
           optimisticResponse: buildOptimisticResponse(event),
         })
           .then(_response => {
