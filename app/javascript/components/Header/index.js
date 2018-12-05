@@ -10,6 +10,7 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right'
 import ContentIcon from 'material-ui/svg-icons/content/create'
 import ReportingIcon from 'material-ui/svg-icons/av/equalizer'
 
+import { present } from '../../lib/utils'
 import s from './main.css'
 
 const styles = {
@@ -62,7 +63,7 @@ const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSele
               </div>
               <Popover
                 className={s.popover}
-                open={!!popover}
+                open={present(popover)}
                 anchorEl={popover ? popover.anchorEl : null}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 targetOrigin={{ horizontal: 'right', vertical: 'top' }}
