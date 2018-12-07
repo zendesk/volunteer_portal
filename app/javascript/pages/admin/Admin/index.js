@@ -5,7 +5,6 @@ import { graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
-import ReportingIcon from 'material-ui/svg-icons/av/equalizer'
 
 import { changeAdminOfficeFilter } from 'actions'
 
