@@ -132,6 +132,10 @@ class Admin extends Component {
             <Link to="/portal/admin/users">
               <span className={btnClass(routing, 'users')}>Users</span>
             </Link>
+            <div className={s.navSpacer} />
+            <Link to="/portal/admin/reporting">
+              <span className={btnClass(routing, 'reporting')}>Reporting</span>
+            </Link>
             <div className={`${s.navSpacer} ${s.growingSpace}`} />
             <OfficeFilter
               adminOfficeFilter={adminOfficeFilter}
