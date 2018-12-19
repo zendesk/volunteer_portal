@@ -96,3 +96,6 @@ export const validateForm = (validations, formObj) => {
 
   return { valid, errors }
 }
+
+export const defaultFilterMethod = (filter, row, column) =>
+  R.contains(filter.value.toLowerCase(), String(row[filter.id]).toLowerCase())

@@ -6,6 +6,7 @@ import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
+import { defaultFilterMethod } from 'lib/utils'
 
 import { graphQLError, togglePopover } from 'actions'
 
@@ -31,6 +32,7 @@ const columns = togglePopover => [
   {
     Header: 'Title',
     accessor: 'title',
+    filterable: true,
   },
   {
     Header: 'Actions',
@@ -55,16 +57,6 @@ const destroyActions = (togglePopover, destroyEventTypePopover, deleteOffice) =>
     Delete
   </button>,
 ]
-
-// TODO: most of these are copied from components/v2/Reporting/index.js and should be extracted for shared use
-const filterMethod = (filter, row, column) => {
-  const id = filter.pivotId || filter.id
-  return row[id] !== undefined
-    ? String(row[id])
-        .toLowerCase()
-        .startsWith(filter.value.toLowerCase())
-    : true
-}
 
 const containerProps = () => ({
   style: {
@@ -126,7 +118,7 @@ const EventTypes = ({ data: { networkStatus, eventTypes }, deleteEventType, togg
         showPagination={false}
         defaultPageSize={eventTypes.length}
         minRows={0}
-        defaultFilterMethod={filterMethod}
+        defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
         getTableProps={tableProps}
         getTheadProps={theadProps}
@@ -186,9 +178,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-  togglePopover,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+    togglePopover,
+  }
+)
 
 export default withActions(withData(EventTypes))

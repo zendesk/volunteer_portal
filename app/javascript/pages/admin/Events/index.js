@@ -6,6 +6,7 @@ import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
 import moment from 'moment'
+import { defaultFilterMethod } from 'lib/utils'
 
 import { graphQLError } from 'actions'
 
@@ -70,9 +71,6 @@ const columns = deleteEvent => [
   },
 ]
 
-const filterMethod = (filter, row, column) =>
-  R.contains(filter.value.toLowerCase(), String(row[filter.id]).toLowerCase())
-
 const containerProps = () => ({
   style: {
     border: 'none',
@@ -131,7 +129,7 @@ const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
         showPagination={false}
         defaultPageSize={events.length}
         minRows={0}
-        defaultFilterMethod={filterMethod}
+        defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
         getTableProps={tableProps}
         getTheadProps={theadProps}
@@ -202,8 +200,11 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(Events))
