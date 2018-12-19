@@ -139,22 +139,49 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
+const momentAfter = Number(
+  moment()
+    .startOf('month')
+    .subtract(1, 'months')
+    .format('X')
+)
+
+const momentBefore = Number(
+  moment()
+    .endOf('month')
+    .add(1, 'months')
+    .format('X')
+)
+
+const updateEventsCache = (cache, eventChange, officeId) => {
+  const variables = {
+    after: momentAfter,
+    before: momentBefore,
+    officeId: officeId || 'current',
+  }
+
+  const prevCache = cache.readQuery({ query: EventsQuery, variables })
+
+  const update = {
+    ...prevCache,
+    events: [
+      ...prevCache.events.filter(event => event.id != eventChange.id),
+      {
+        ...prevCache.events.find(event => event.id == eventChange.id),
+        users: eventChange.users,
+        signupCount: eventChange.users.length,
+      },
+    ],
+  }
+  cache.writeQuery({ query: EventsQuery, variables, data: update })
+}
+
 const withData = compose(
   graphql(EventsQuery, {
     options: ({ filters: { officeFilter: { value: officeId } } }) => ({
       variables: {
-        after: Number(
-          moment()
-            .startOf('month')
-            .subtract(1, 'months')
-            .format('X')
-        ),
-        before: Number(
-          moment()
-            .endOf('month')
-            .add(1, 'months')
-            .format('X')
-        ),
+        after: momentAfter,
+        before: momentBefore,
         officeId: officeId || 'current',
       },
       fetchPolicy: 'cache-and-network',
@@ -174,6 +201,9 @@ const withData = compose(
               }),
             },
           },
+          update: (cache, { data: { createSignup: { event: eventChange } } }) => {
+            updateEventsCache(cache, eventChange, ownProps.filters.officeFilter.value)
+          },
         }),
     }),
   }),
@@ -190,6 +220,9 @@ const withData = compose(
                 users: R.reject(u => u.id === currentUser.id, event.users),
               }),
             },
+          },
+          update: (cache, { data: { destroySignup: { event: eventChange } } }) => {
+            updateEventsCache(cache, eventChange, ownProps.filters.officeFilter.value)
           },
         }),
     }),
