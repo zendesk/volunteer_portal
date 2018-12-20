@@ -3,6 +3,7 @@ import ReactTable from 'react-table'
 import R from 'ramda'
 import DatePicker from 'material-ui/DatePicker'
 import moment from 'moment'
+import { defaultFilterMethod } from 'lib/utils'
 
 import s from './main.css'
 
@@ -146,7 +147,7 @@ const Reporting = ({ users, startDate, endDate, onStartChange, onEndChange }) =>
     showPagination={false}
     defaultPageSize={users.length}
     minRows={0}
-    defaultFilterMethod={filterMethod}
+    defaultFilterMethod={defaultFilterMethod}
     getProps={containerProps}
     getTableProps={tableProps}
     getTheadProps={theadProps}
