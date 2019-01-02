@@ -240,6 +240,13 @@ EditUserInputType = GraphQL::InputObjectType.define do
   argument :officeId, !types.ID
 end
 
+EventTypeInputType = GraphQL::InputObjectType.define do
+  name 'EventTypeInputType'
+  description 'Event type'
+
+  argument :title, !types.String
+end
+
 EditEventInputType = GraphQL::InputObjectType.define do
   name "EditEventInputType"
   description "Create or Update an Event"
@@ -253,8 +260,8 @@ EditEventInputType = GraphQL::InputObjectType.define do
   argument :capacity, !types.Int
 
   input_field :office, AssociationInputType
-  input_field :eventType, AssociationInputType
   input_field :organization, AssociationInputType
+  input_field :eventType, EventTypeInputType
 end
 
 EditEventTypeInputType = GraphQL::InputObjectType.define do
