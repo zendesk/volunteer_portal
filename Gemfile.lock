@@ -129,7 +129,7 @@ GEM
     promise.rb (0.7.4)
     public_suffix (2.0.5)
     puma (3.11.4)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-cors (0.4.1)
     rack-mini-profiler (0.10.5)
       rack (>= 1.2.0)
