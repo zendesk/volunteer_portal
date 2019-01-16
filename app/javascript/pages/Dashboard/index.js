@@ -28,7 +28,7 @@ const milestoneBarChunk = milestoneBarWidth / milestones.length
 
 // The server expects seconds since epoch, not milliseconds
 const startOfYear = Math.floor(moment().startOf('year') / 1000)
-const endOfYear = Math.ceil(moment().endOf('year') / 1000)
+const nowInSec = moment().unix()
 
 const leaderBoardSize = 10
 const leaderBoardSort = 'HOURS_DESC'
@@ -117,7 +117,7 @@ const milestoneLabelStyling = (item, milestone, user) => {
   return R.join(' ', classes)
 }
 
-const sortByHours = users => R.sort((a, b) => b.hours - a.hours)(users)
+const sortByHours = users => R.sort((a, b) => b.hours - a.hours)(users) // TODO: remove
 
 const LeaderboardContainer = ({
   data: { networkStatus, users, offices, currentUser },
@@ -162,7 +162,7 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
       count: leaderBoardSize,
       sortBy: leaderBoardSort,
       after: startOfYear,
-      before: endOfYear,
+      before: nowInSec,
     }
 
     variables.officeId = dashboardOfficeFilter.value
@@ -237,7 +237,7 @@ const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransit
 
 const withData = graphql(MilestoneQuery, {
   options: {
-    variables: { after: startOfYear, before: endOfYear },
+    variables: { after: startOfYear, before: nowInSec },
     fetchPolicy: 'cache-and-network',
   },
 })
