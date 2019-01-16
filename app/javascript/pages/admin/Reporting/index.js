@@ -13,7 +13,7 @@ import ReportingQuery from './query.gql'
 import s from './main.css'
 
 const defaultStartDate = moment().startOf('year')
-const defaultEndDate = moment().endOf('year')
+const defaultEndDate = moment().valueOf() // Now in Unix millisecond timestamp
 
 const formatOrDefaultStartDate = filterValue => Number(moment(filterValue || defaultStartDate).format('X'))
 const formatOrDefaultEndDate = filterValue => Number(moment(filterValue || defaultEndDate).format('X'))
