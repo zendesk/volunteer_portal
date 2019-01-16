@@ -113,6 +113,7 @@ const OrganizationField = ({ organizations, input: { value, onChange } }) => (
 )
 // [] todo, update cache with new event type when it is created...
 // [✅] todo: default value should be title not id
+//    [] (event_type_resolver)
 const EventTypeField = ({ eventTypes, input: { value, onChange } }) => (
   <AutoComplete
     id="eventType"
