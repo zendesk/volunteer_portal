@@ -117,7 +117,8 @@ const milestoneLabelStyling = (item, milestone, user) => {
   return R.join(' ', classes)
 }
 
-const sortByHours = users => R.sort((a, b) => b.hours - a.hours)(users) // TODO: remove
+// TODO: remove; sorting should be done on server side
+const sortByHours = users => R.sort((a, b) => b.hours - a.hours)(users)
 
 const LeaderboardContainer = ({
   data: { networkStatus, users, offices, currentUser },
