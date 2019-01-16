@@ -21,7 +21,8 @@ import 'style-loader!css-loader!react-table/react-table.css'
 
 const actionLinks = (eventType, togglePopover) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/event-types/${eventType.id}/edit`}>Edit</Link>
+    <Link to={`/portal/admin/event-types/${eventType.title}/edit`}>Edit</Link>
+    {/* TODO */}
     <button className={s.deleteAction} onClick={() => togglePopover('destroyEventType', eventType)}>
       Delete
     </button>
@@ -178,12 +179,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+  togglePopover,
+})
 
 export default withActions(withData(EventTypes))

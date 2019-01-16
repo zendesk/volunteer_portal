@@ -1,7 +1,7 @@
 #import "fragments/EventTypeEntry.gql"
 
-mutation deleteEventType($id: ID!) {
-  deleteEventType(id: $id) {
+mutation deleteEventType($title: String!) {
+  deleteEventType(title: $title) {
     ...EventTypeEntry
   }
 }

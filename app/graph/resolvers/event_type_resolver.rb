@@ -9,7 +9,7 @@ module EventTypeResolver
       end
   
       def update(_, args, context)
-        event_type = EventType.find(args['input']['id'])
+        event_type = EventType.find_by!(title: args['input']['title']) # TODO: find by old title, and set to new title <- this should be old_title
         event_type.title = args['input']['title']
         event_type.save!
   
@@ -17,7 +17,7 @@ module EventTypeResolver
       end
   
       def delete(_, args, context)
-        event_type = EventType.find(args['id'])
+        event_type = EventType.find_by!(title: args['title'])
         event_type.destroy!
   
         event_type

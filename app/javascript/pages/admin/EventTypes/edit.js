@@ -29,8 +29,8 @@ const buildOptimisticResponse = eventType => ({
 
 const withData = compose(
   graphql(EventTypeQuery, {
-    options: ({ params: { id } }) => ({
-      variables: { id },
+    options: ({ params: { title } }) => ({
+      variables: { title },
     }),
   }),
   graphql(UpdateEventTypeMutation, {

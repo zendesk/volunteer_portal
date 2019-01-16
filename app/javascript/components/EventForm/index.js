@@ -111,12 +111,12 @@ const OrganizationField = ({ organizations, input: { value, onChange } }) => (
     openOnFocus
   />
 )
-// todo, update cache with new event type when it is created...
-// todo: default value should be title not id
+// [] todo, update cache with new event type when it is created...
+// [✅] todo: default value should be title not id
 const EventTypeField = ({ eventTypes, input: { value, onChange } }) => (
   <AutoComplete
     id="eventType"
-    searchText={R.isNil(value.id) || R.isEmpty(value.id) ? '' : R.find(e => e.id === value.id, eventTypes).title}
+    searchText={value && value.title}
     dataSource={eventTypes}
     dataSourceConfig={{ text: 'title', value: 'title' }}
     filter={AutoComplete.fuzzyFilter}

@@ -34,7 +34,6 @@ module EventResolver
     def update(_, args, context)
       attrs = args[:input].to_h
       event = Event.find(attrs['id'])
-      print event
       ActiveRecord::Base.transaction do
         update_fields(event, attrs)
         event.save!

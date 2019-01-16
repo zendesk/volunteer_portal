@@ -99,10 +99,10 @@ QueryGraphType = GraphQL::ObjectType.define do
   field :eventType do
     type EventTypeGraphType
 
-    argument :id, !types.ID
+    argument :title, !types.String
 
     resolve -> (_, args, _) do
-      RecordLoader.for(EventType).load(args[:id])
+      EventType.find_by!(title: args[:title])
     end
   end
 

@@ -64,7 +64,7 @@ MutationGraphType = GraphQL::ObjectType.define do
       ie.user = user
       ie.date = Time.at(attrs["date"])
       ie.duration = attrs["duration"]
-      ie.event_type_id = attrs["eventTypeId"]
+      ie.event_type_id = attrs["eventTypeId"] # TODO
       ie.organization_id = attrs["organizationId"]
       ie.save!
 
@@ -177,7 +177,7 @@ MutationGraphType = GraphQL::ObjectType.define do
   end
 
   field :deleteEventType, EventTypeGraphType do
-    argument :id, !types.ID
+    argument :title, !types.String
     resolve EventTypeResolver.method(:delete)
   end
 end
@@ -268,6 +268,5 @@ EditEventTypeInputType = GraphQL::InputObjectType.define do
   name "EditEventTypeInputType"
   description "Create or Update an Event Type"
 
-  argument :id, types.ID, "Provide an id to update an event type, or no id to create one"
   argument :title, !types.String
 end

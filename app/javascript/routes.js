@@ -41,7 +41,7 @@ export default (
         <Route path="/portal/admin/organizations/:id/edit" component={EditOrg} />
         <Route path="/portal/admin/organizations" component={OrgsAdmin} />
         <Route path="/portal/admin/event-types/new" component={NewEventType} />
-        <Route path="/portal/admin/event-types/:id/edit" component={EditEventType} />
+        <Route path="/portal/admin/event-types/:title/edit" component={EditEventType} />
         <Route path="/portal/admin/event-types" component={EventTypesAdmin} />
         <Route path="/portal/admin/individual_events" component={IndividualEventsAdmin} />
         <Route path="/portal/admin/users/:id/edit" component={EditUser} />
