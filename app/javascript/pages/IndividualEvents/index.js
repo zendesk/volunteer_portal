@@ -78,6 +78,8 @@ const AutoCompleteField = ({ input: { value, onChange }, label, type, meta, data
       className={s.muiTextField}
       textFieldStyle={styles.muiTextField}
       fullWidth
+      menuStyle={{ overflowY: 'scroll', height: 200 }}
+      openOnFocus
     />
   </div>
 )

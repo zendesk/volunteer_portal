@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 require_relative '../app/middleware/portal_redirect_middleware'
+require_relative '../app/jobs/zendesk_job.rb'
 
 dotenv_file = File.expand_path("../.env.#{Rails.env}", __dir__)
 
@@ -53,5 +54,8 @@ module Portal
       logger.formatter = config.log_formatter
       config.logger    = ActiveSupport::TaggedLogging.new(logger)
     end
+
+    ZendeskJob.bootstrap()
+    
   end
 end

@@ -1,3 +1,4 @@
+require_relative '../../jobs/zendesk_job.rb'
 MutationGraphType = GraphQL::ObjectType.define do
   name "Mutation"
 
@@ -67,6 +68,8 @@ MutationGraphType = GraphQL::ObjectType.define do
       ie.event_type_id = attrs["eventTypeId"]
       ie.organization_id = attrs["organizationId"]
       ie.save!
+
+      ZendeskJob.create_ticket(attrs["description"])
 
       user
     end
