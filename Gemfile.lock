@@ -75,7 +75,7 @@ GEM
       activesupport (>= 4.2, < 5.2)
     graphiql-rails (1.4.2)
       rails
-    graphql (1.7.8)
+    graphql (1.8.13)
     graphql-batch (0.3.9)
       graphql (>= 0.8, < 2)
       promise.rb (~> 0.7.2)
@@ -214,6 +214,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-17
 
 DEPENDENCIES
   activerecord-session_store
@@ -228,7 +229,7 @@ DEPENDENCIES
   foreman
   goldiloader (~> 2.0)
   graphiql-rails
-  graphql (~> 1.6)
+  graphql (~> 1.8)
   graphql-batch
   maxitest
   memory_profiler
@@ -258,4 +259,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.3
+   1.17.1
