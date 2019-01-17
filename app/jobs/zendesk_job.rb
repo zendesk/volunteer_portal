@@ -1,5 +1,9 @@
 # Zendesk Integrations
 class ZendeskJob
+  cattr_accessor :hostname
+  cattr_accessor :username
+  cattr_accessor :password
+
   def self.bootstrap()
     @@hostname = ENV['ZENDESK_HOSTNAME']
     @@username = ENV['ZENDESK_USERNAME']
@@ -11,8 +15,10 @@ class ZendeskJob
   end
 
   def self.create_ticket(description)
-    # TODO: async this action, currently takes almost 2s to finish request. Modal is open for too long, confusing users whether action occurred or not.
-    # ^ ALTERNATIVELY: add a loading spinner
+    # TODO: 
+    # ^ Preferred: async this action, currently takes almost 2s to finish request. Modal is open for too long, confusing users whether action occurred or not.
+    # ^ Alternative 1: add a loading spinner to suggest to user their request is being processed
+    # ^ Alternative 2: force client to close modal even if ack not received for instant feedback
     if(!has_zendesk_integration?())
       return
     end
@@ -31,5 +37,6 @@ class ZendeskJob
         :password => @@password
       })
     puts "HTTParty result:", @result
+    @result
   end
 end
