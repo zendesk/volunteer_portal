@@ -1,20 +1,45 @@
 class GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  rescue_from 'ActiveRecord::RecordInvalid' do |exception|
-    exception.record.errors.messages
-    render json: {
-      errors: exception.record.errors,
+  def execute
+    variables = ensure_hash(params[:variables])
+    context = {
+      current_user: current_user
     }
+
+    render json: PortalSchema.execute(params[:query],
+      variables: variables,
+      context: context,
+      operation_name: params[:operationName])
+  rescue => e
+    raise e unless Rails.env.development?
+    handle_error_in_development e
   end
 
-  def create
-    query_string = params[:query]
-    query_variables = params[:variables] || {}
-    query_context = { current_user: current_user }
+  private
 
-    query = GraphQL::Query.new(::VolunteerSchema, query_string, variables: query_variables, context: query_context)
+  # Handle form data, JSON body, or a blank value
+  def ensure_hash(ambiguous_param)
+    case ambiguous_param
+    when String
+      if ambiguous_param.present?
+        ensure_hash(JSON.parse(ambiguous_param))
+      else
+        {}
+      end
+    when Hash, ActionController::Parameters
+      ambiguous_param
+    when nil
+      {}
+    else
+      raise ArgumentError, "Unexpected parameter: #{ambiguous_param}"
+    end
+  end
 
-    render json: query.result
+  def handle_error_in_development(e)
+    logger.error e.message
+    logger.error e.backtrace.join("\n")
+
+    render json: { error: { message: e.message, backtrace: e.backtrace }, data: {} }, status: 500
   end
 end

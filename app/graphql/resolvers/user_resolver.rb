@@ -6,33 +6,32 @@ module UserResolver
     def all(_object, args, context)
       scope = User.all
 
-      office_id = case args[:officeId]
+      office_id = case args[:office_id]
       when 'all'
         nil
       when 'current'
         context[:current_user].office_id
       else
-        args[:officeId]
+        args[:office_id]
       end
 
       scope = scope_with_time(scope, args[:after], args[:before])
       scope = scope_with_office_id(scope, office_id)
       scope = scope_with_count(scope, args[:count])
-      scope = scope_with_sort_by(scope, args[:sortBy])
+      scope = scope_with_sort_by(scope, args[:sort_by])
 
       scope
     end
 
     def update(_, args, context)
-      user = User.find(args[:input][:id])
-
-      attrs = args[:input].to_h
+      input = args[:input]
+      user = User.find(input.id)
 
       if context[:current_user].role == Role.admin
-        user.role_id = attrs["isAdmin"] ? Role.admin.id : Role.volunteer.id
-        user.office_id = attrs["officeId"]
-      elsif context[:current_user].id.to_s == args[:input][:id].to_s
-        user.office_id = attrs["officeId"]
+        user.role_id = input.is_admin ? Role.admin.id : Role.volunteer.id
+        user.office_id = input.office_id
+      elsif context[:current_user].id.to_s == input.id.to_s
+        user.office_id = input.office_id
       end
 
       user.save!

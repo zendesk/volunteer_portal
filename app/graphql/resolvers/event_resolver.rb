@@ -4,45 +4,43 @@ module EventResolver
 
   class << self
     def all(_, args, context)
-      office_id = case args[:officeId]
+      office_id = case args[:office_id]
       when 'all'
         nil
       when 'current'
         context[:current_user].office_id
       else
-        args[:officeId]
+        args[:office_id]
       end
 
       events = Event.all
       events = events.for_office(office_id)          if office_id
       events = events.before(Time.at(args[:before])) if args[:before]
       events = events.after(Time.at(args[:after]))   if args[:after]
-      events = scope_with_sort_by(events, args[:sortBy])
+      events = scope_with_sort_by(events, args[:sort_by])
       events
     end
 
     def create(_, args, context)
-      attrs = args[:input].to_h
-
       event = Event.new
-      update_fields(event, attrs)
+      update_fields(event, args[:input])
       event.save!
 
       event
     end
 
     def update(_, args, context)
-      attrs = args[:input].to_h
+      input = args[:input]
 
-      event = Event.find(attrs['id'])
-      update_fields(event, attrs)
+      event = Event.find(input.id)
+      update_fields(event, input)
       event.save!
 
       event
     end
 
     def delete(_, args, context)
-      event = Event.find(args['id'])
+      event = Event.find(args[:id])
       event.destroy!
 
       event
@@ -50,16 +48,16 @@ module EventResolver
 
     private
 
-    def update_fields(event, attrs)
-      event.title = attrs['title']
-      event.description = attrs['description']
-      event.event_type_id = attrs['eventType']['id']
-      event.organization_id = attrs['organization']['id']
-      event.office_id = attrs['office']['id']
-      event.location = attrs['location']
-      event.capacity = attrs['capacity']
-      event.starts_at = Time.parse(attrs['startsAt'])
-      event.ends_at = Time.parse(attrs['endsAt'])
+    def update_fields(event, input)
+      event.title = input.title
+      event.description = input.description
+      event.event_type_id = input.event_type.id
+      event.organization_id = input.organization.id
+      event.office_id = input.office.id
+      event.location = input.location
+      event.capacity = input.capacity
+      event.starts_at = Time.parse(input.starts_at)
+      event.ends_at = Time.parse(input.ends_at)
     end
 
     def scope_with_sort_by(scope, sort_by)
