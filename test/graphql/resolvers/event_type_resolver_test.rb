@@ -5,11 +5,9 @@ SingleCov.covered!
 describe EventTypeResolver do
   describe '.create' do
     it 'creates a new event type' do
-      attrs = {
-        'title' => 'Test Type'
-      }
+      input = stub(title: 'Test Type')
 
-      EventTypeResolver.create(nil, {'input' => attrs}, nil)
+      EventTypeResolver.create(nil, {input: input}, nil)
 
       e = EventType.last
 
@@ -21,12 +19,9 @@ describe EventTypeResolver do
     let(:event_type) { event_types(:minimum) }
 
     it 'updates the given event type' do
-      attrs = {
-        'id'    => event_type.id,
-        'title' => 'Another Type'
-      }
+      input = stub(id: event_type.id, title: 'Another Type')
 
-      EventTypeResolver.update(nil, {'input' => attrs}, nil)
+      EventTypeResolver.update(nil, {input: input}, nil)
 
       e = EventType.find(event_type.id)
 
@@ -37,7 +32,7 @@ describe EventTypeResolver do
   describe '.delete' do
     let(:event_type) { event_types(:minimum) }
     it 'deletes the given event type' do
-      EventTypeResolver.delete(nil, {'id' => event_type.id}, nil)
+      EventTypeResolver.delete(nil, {id: event_type.id}, nil)
 
       e = EventType.where(id: event_type.id)
 

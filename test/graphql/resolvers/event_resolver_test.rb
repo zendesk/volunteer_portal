@@ -10,19 +10,19 @@ describe EventResolver do
   describe '.create' do
     it 'creates a new event' do
       timestamp = Time.now.utc
-      attrs = {
-        'title' => 'new',
-        'description' => 'newd',
-        'eventType' => { 'id' => type.id },
-        'organization' => { 'id' => org.id },
-        'office' => { 'id' => office.id },
-        'location' => 'newl',
-        'startsAt' => timestamp.iso8601,
-        'endsAt' => (timestamp + 10.minutes).iso8601,
-        'capacity' => 10,
-      }
+      input = stub(
+        title: 'new',
+        description: 'newd',
+        event_type: stub(id: type.id),
+        organization: stub(id: org.id),
+        office: stub(id: office.id),
+        location: 'newl',
+        starts_at: timestamp.iso8601,
+        ends_at: (timestamp + 10.minutes).iso8601,
+        capacity: 10,
+      )
 
-      EventResolver.create(nil, {input: attrs}, nil)
+      EventResolver.create(nil, {input: input}, nil)
 
       e = Event.last
 
@@ -37,20 +37,20 @@ describe EventResolver do
 
     it 'updates the given event id' do
       timestamp = Time.now.utc
-      attrs = {
-        'id' => event.id,
-        'title' => 'new',
-        'description' => 'newd',
-        'eventType' => { 'id' => type.id },
-        'organization' => { 'id' => org.id },
-        'office' => { 'id' => office.id },
-        'location' => 'newl',
-        'startsAt' => timestamp.iso8601,
-        'endsAt' => (timestamp + 10.minutes).iso8601,
-        'capacity' => 10,
-      }
+      input = stub(
+        id: event.id,
+        title: 'new',
+        description: 'newd',
+        event_type: stub(id: type.id),
+        organization: stub(id: org.id),
+        office: stub(id: office.id),
+        location: 'newl',
+        starts_at: timestamp.iso8601,
+        ends_at: (timestamp + 10.minutes).iso8601,
+        capacity: 10,
+      )
 
-      EventResolver.update(nil, {input: attrs}, nil)
+      EventResolver.update(nil, {input: input}, nil)
 
       e = Event.find(event.id)
 
@@ -65,7 +65,7 @@ describe EventResolver do
 
     it 'deletes the event' do
       id = event.id
-      args = { 'id' => id }
+      args = { id: id }
 
       EventResolver.delete(nil, args, nil)
 
@@ -135,7 +135,7 @@ describe EventResolver do
     end
 
     describe 'when sorting by descending' do
-      let(:args) { { sortBy: 'STARTS_AT_DESC' } }
+      let(:args) { { sort_by: 'STARTS_AT_DESC' } }
 
       it 'returns latest events first' do
         assert_equal [event3, event2, event1].map(&:title), all_events.pluck(:title)
@@ -143,7 +143,7 @@ describe EventResolver do
     end
 
     describe 'when sorting by ascending' do
-      let(:args) { { sortBy: 'STARTS_AT_ASC' } }
+      let(:args) { { sort_by: 'STARTS_AT_ASC' } }
 
       it 'returns oldest events first' do
         assert_equal [event1, event2, event3].map(&:title), all_events.pluck(:title)
@@ -151,7 +151,7 @@ describe EventResolver do
     end
 
     describe 'for all offices' do
-      let(:args) { { officeId: 'all' } }
+      let(:args) { { office_id: 'all' } }
 
       it 'returns all events' do
         assert_equal [event2, event1, event3].map(&:title), all_events.pluck(:title)
@@ -159,7 +159,7 @@ describe EventResolver do
     end
 
     describe 'for your office' do
-      let(:args) { { officeId: 'current' } }
+      let(:args) { { office_id: 'current' } }
 
       it 'returns some events' do
         assert_equal [event2, event1].map(&:title), all_events.pluck(:title)

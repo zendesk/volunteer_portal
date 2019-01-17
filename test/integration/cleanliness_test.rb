@@ -22,20 +22,39 @@ describe 'cleanliness' do
         app/controllers/omniauth_callbacks_controller.rb
         app/controllers/ping_controller.rb
         app/controllers/standalone_controller.rb
-        app/graph/resolvers/office_resolver.rb
-        app/graph/resolvers/organization_resolver.rb
-        app/graph/types/datetime_type.rb
-        app/graph/types/event_graph_type.rb
-        app/graph/types/event_type_graph_type.rb
-        app/graph/types/individual_event_graph_type.rb
-        app/graph/types/mutation_graph_type.rb
-        app/graph/types/office_graph_type.rb
-        app/graph/types/organization_graph_type.rb
-        app/graph/types/query_graph_type.rb
-        app/graph/types/role_graph_type.rb
-        app/graph/types/signup_graph_type.rb
-        app/graph/types/user_graph_type.rb
-        app/graph/volunteer_schema.rb
+        app/graphql/mutations/base_mutation.rb
+        app/graphql/portal_schema.rb
+        app/graphql/resolvers/office_resolver.rb
+        app/graphql/resolvers/organization_resolver.rb
+        app/graphql/types/base_interface.rb
+        app/graphql/types/base_object.rb
+        app/graphql/types/base_scalar.rb
+        app/graphql/types/base_union.rb
+        app/graphql/types/datetime_type.rb
+        app/graphql/types/enum/base_enum.rb
+        app/graphql/types/enum/event_sort_enum.rb
+        app/graphql/types/enum/individual_event_status_enum.rb
+        app/graphql/types/enum/office_sort_enum.rb
+        app/graphql/types/enum/user_sort_enum.rb
+        app/graphql/types/event_graph_type.rb
+        app/graphql/types/event_type_graph_type.rb
+        app/graphql/types/individual_event_graph_type.rb
+        app/graphql/types/input/association_input_type.rb
+        app/graphql/types/input/base_input_object.rb
+        app/graphql/types/input/create_edit_individual_event_input_type.rb
+        app/graphql/types/input/delete_individual_event_input_type.rb
+        app/graphql/types/input/edit_event_input_type.rb
+        app/graphql/types/input/edit_event_type_input_type.rb
+        app/graphql/types/input/edit_office_input_type.rb
+        app/graphql/types/input/edit_organization_input_type.rb
+        app/graphql/types/input/edit_user_input_type.rb
+        app/graphql/types/mutation_type.rb
+        app/graphql/types/office_graph_type.rb
+        app/graphql/types/organization_graph_type.rb
+        app/graphql/types/query_type.rb
+        app/graphql/types/role_graph_type.rb
+        app/graphql/types/signup_graph_type.rb
+        app/graphql/types/user_graph_type.rb
         app/helpers/application_helper.rb
       ]
     )

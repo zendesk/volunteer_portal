@@ -29,14 +29,14 @@ describe UserResolver do
       Signup.create!(user: user, event: event2)
       Signup.create!(user: user2, event: event3)
 
-      args = {after: 1.week.ago.to_i, before: 2.days.ago.to_i, sortBy: 'HOURS_DESC'}
+      args = {after: 1.week.ago.to_i, before: 2.days.ago.to_i, sort_by: 'HOURS_DESC'}
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2, user]
     end
 
     it 'filters by all offices' do
-      args = {officeId: 'all'}
+      args = {office_id: 'all'}
 
       results = UserResolver.all(nil, args, nil).to_a
 
@@ -44,7 +44,7 @@ describe UserResolver do
     end
 
     it 'filters by current office' do
-      args = {officeId: 'current'}
+      args = {office_id: 'current'}
       context = {current_user: user}
 
       results = UserResolver.all(nil, args, context).to_a
@@ -53,7 +53,7 @@ describe UserResolver do
     end
 
     it 'filters by office_id' do
-      args = {officeId: office.id}
+      args = {office_id: office.id}
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user]
@@ -73,12 +73,12 @@ describe UserResolver do
       Signup.create!(event: event1, user: user)
       Signup.create!(event: event2, user: user2)
 
-      args = {sortBy: 'HOURS_ASC'}
+      args = {sort_by: 'HOURS_ASC'}
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user, user2]
 
-      args = {sortBy: 'HOURS_DESC'}
+      args = {sort_by: 'HOURS_DESC'}
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2, user]
@@ -91,12 +91,12 @@ describe UserResolver do
       Signup.create!(event: event1, user: user)
       Signup.create!(event: event2, user: user2)
 
-      args = {count: 1, sortBy: 'HOURS_ASC'}
+      args = {count: 1, sort_by: 'HOURS_ASC'}
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user]
 
-      args = {count: 1, sortBy: 'HOURS_DESC'}
+      args = {count: 1, sort_by: 'HOURS_DESC'}
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2]
@@ -106,9 +106,10 @@ describe UserResolver do
   describe '.update' do
     describe 'when current user is an admin' do
       it 'updates with editable fields' do
-        edits = {id: user2.id, "isAdmin" => false, "officeId" => office2.id}
-        args = {input: edits}
         context = { current_user: user }
+        args = {
+          input: stub(id: user2.id, is_admin: false, office_id: office2.id)
+        }
 
         newUser = UserResolver.update(nil, args, context)
         assert_equal Role.volunteer.id, newUser.role.id
@@ -118,9 +119,10 @@ describe UserResolver do
 
     describe 'when current user is updating self' do
       it 'updates with editable fields' do
-        edits = {id: user2.id, "isAdmin" => true, "officeId" => office2.id}
-        args = {input: edits}
         context = { current_user: user2 }
+        args = {
+          input: stub(id: user2.id, is_admin: true, office_id: office2.id)
+        }
 
         newUser = UserResolver.update(nil, args, context)
         refute_equal Role.admin, newUser.role
