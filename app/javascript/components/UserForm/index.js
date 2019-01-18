@@ -71,19 +71,6 @@ const renderField = props => {
 
 const isNoErrors = errors => R.isNil(errors) || R.isEmpty(errors)
 
-const OfficeField = ({ offices, input: { value, onChange } }) => (
-  <AutoComplete
-    id="office"
-    searchText={R.isNil(value) || R.isEmpty(value) ? value : R.find(o => o.id === value, offices).name}
-    dataSource={offices}
-    dataSourceConfig={{ text: 'name', value: 'id' }}
-    filter={AutoComplete.fuzzyFilter}
-    onNewRequest={(chosen, _i) => onChange(chosen.id)}
-    className={s.muiTextField}
-    textFieldStyle={styles.muiTextField}
-  />
-)
-
 const UserForm = ({ handleSubmit, disableSubmit, errors, offices }) => {
   return (
     <form className={s.form} onSubmit={handleSubmit}>
@@ -111,15 +98,19 @@ const UserForm = ({ handleSubmit, disableSubmit, errors, offices }) => {
         <Field label="Admin" className={s.field} name="isAdmin" component={renderField} type="checkbox" />
       </div>
       <div className={s.inputGroup}>
-        <Field
-          label="Office"
-          className={s.field}
-          name="office.id"
-          component={renderField}
-          type="select"
-          offices={offices}
-          Custom={OfficeField}
-        />
+        <div className={s.column}>
+          <Field label="Office" className={s.field} name="office.id" component={renderField} type="select">
+            <option value="-" key="-" />
+            {R.map(
+              office => (
+                <option value={office.id} key={`office-${office.id}`}>
+                  {office.name}
+                </option>
+              ),
+              offices
+            )}
+          </Field>
+        </div>
       </div>
       <div className={s.inputGroup}>
         <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
