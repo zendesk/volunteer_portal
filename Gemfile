@@ -10,7 +10,7 @@ gem 'pg', '~> 0.21' # https://github.com/rails/rails/issues/31673
 gem 'dotenv'
 gem 'omniauth-google-oauth2'
 gem 'stronger_parameters'
-gem 'graphql', '~> 1.6'
+gem 'graphql', '~> 1.8'
 gem 'graphql-batch'
 gem 'graphiql-rails'
 gem 'goldiloader', '~> 2.0'

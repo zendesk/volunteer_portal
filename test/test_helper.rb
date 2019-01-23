@@ -6,7 +6,7 @@ require 'single_cov'
 SingleCov.setup :minitest
 SingleCov::APP_FOLDERS.concat %w[
   presenters
-  graph
+  graphql
   middleware
 ]
 

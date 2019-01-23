@@ -41,9 +41,9 @@ module Portal
 
     # Load all graphql types
     config.autoload_paths.concat [
-      Rails.root.join('app', 'graph', 'types'),
-      Rails.root.join('app', 'graph', 'loaders'),
-      Rails.root.join('app', 'graph', 'resolvers'),
+      Rails.root.join('app', 'graphql', 'types'),
+      Rails.root.join('app', 'graphql', 'loaders'),
+      Rails.root.join('app', 'graphql', 'resolvers'),
     ]
 
     config.assets.paths << Rails.root.join("public", "assets")

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     delete :logout
   end
 
-  post   '/graphql', to: 'graphql#create'
+  post   '/graphql', to: 'graphql#execute'
   get    '/users/sign_out', to: 'omniauth_callbacks#logout'
   delete '/users/sign_out', to: 'omniauth_callbacks#logout'
 
