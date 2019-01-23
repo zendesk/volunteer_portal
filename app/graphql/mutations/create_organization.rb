@@ -1,5 +1,7 @@
 module Mutations
   class CreateOrganization < BaseMutation
+    require_admin
+
     null true
 
     argument :input, Types::Input::EditOrganizationInputType, required: true

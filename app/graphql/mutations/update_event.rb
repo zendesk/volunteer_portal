@@ -1,5 +1,7 @@
 module Mutations
   class UpdateEvent < BaseMutation
+    require_admin
+
     null true
 
     argument :input, Types::Input::EditEventInputType, required: true

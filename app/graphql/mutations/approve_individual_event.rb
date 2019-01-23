@@ -1,5 +1,7 @@
 module Mutations
   class ApproveIndividualEvent < BaseMutation
+    require_admin
+
     description 'Mark an individual event as approved'
 
     null true

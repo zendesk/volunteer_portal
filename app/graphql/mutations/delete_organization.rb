@@ -1,5 +1,7 @@
 module Mutations
   class DeleteOrganization < BaseMutation
+    require_admin
+
     null true
 
     argument :id, ID, required: true

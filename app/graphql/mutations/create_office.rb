@@ -1,5 +1,7 @@
 module Mutations
   class CreateOffice < BaseMutation
+    require_admin
+
     null true
 
     argument :input, Types::Input::EditOfficeInputType, required: true

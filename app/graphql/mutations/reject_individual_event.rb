@@ -1,5 +1,7 @@
 module Mutations
   class RejectIndividualEvent < BaseMutation
+    require_admin
+
     description 'Mark an individual event as rejected'
 
     null true
