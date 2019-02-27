@@ -67,10 +67,10 @@ const Dashboard = props => {
   const hoursThisWeek = Math.max(0, Math.round(minutesThisWeek / 60))
   const hoursThisMonth = Math.max(0, Math.round(minutesThisMonth / 60))
 
-  const spotsAppender = (spots, e) => [spots + e.capacity, e]
+  const accumCapacity = (acc, event) => acc + event.capacity
 
-  const spotsThisWeek = R.mapAccum(spotsAppender, 0, eventsThisWeek)[0]
-  const spotsThisMonth = R.mapAccum(spotsAppender, 0, eventsThisMonth)[0]
+  const spotsThisWeek = R.reduce(accumCapacity, 0, eventsThisWeek)
+  const spotsThisMonth = R.reduce(accumCapacity, 0, eventsThisMonth)
 
   const accumSignups = (acc, event) => acc + event.signupCount
 
