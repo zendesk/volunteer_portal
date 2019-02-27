@@ -59,16 +59,10 @@ const Dashboard = props => {
     return <Callout type="error" />
   }
 
-  const signupsThisWeek = R.flatten(R.map(event => event.signups, eventsThisWeek))
-  const signupsThisMonth = R.flatten(R.map(event => event.signups, eventsThisMonth))
+  const accumTotalMinutes = (acc, event) => acc + event.duration * event.signupCount
 
-  const volunteersThisWeek = R.length(signupsThisWeek)
-  const volunteersThisMonth = R.length(signupsThisMonth)
-
-  const hoursAppender = (hours, s) => [hours + R.find(e => e.id === s.event.id, allEvents).duration, s]
-
-  const minutesThisWeek = R.mapAccum(hoursAppender, 0, signupsThisWeek)[0]
-  const minutesThisMonth = R.mapAccum(hoursAppender, 0, signupsThisMonth)[0]
+  const minutesThisWeek = R.reduce(accumTotalMinutes, 0, eventsThisWeek)
+  const minutesThisMonth = R.reduce(accumTotalMinutes, 0, eventsThisMonth)
 
   const hoursThisWeek = Math.max(0, Math.round(minutesThisWeek / 60))
   const hoursThisMonth = Math.max(0, Math.round(minutesThisMonth / 60))
@@ -78,8 +72,12 @@ const Dashboard = props => {
   const spotsThisWeek = R.mapAccum(spotsAppender, 0, eventsThisWeek)[0]
   const spotsThisMonth = R.mapAccum(spotsAppender, 0, eventsThisMonth)[0]
 
-  const spotsFilledThisWeek = spotsThisWeek > 0 ? Math.round((volunteersThisWeek / spotsThisWeek) * 100) : 0
-  const spotsFilledThisMonth = spotsThisMonth > 0 ? Math.round((volunteersThisMonth / spotsThisMonth) * 100) : 0
+  const accumSignups = (acc, event) => acc + event.signupCount
+
+  const volunteersThisWeek = R.reduce(accumSignups, 0, eventsThisWeek)
+  const volunteersThisMonth = R.reduce(accumSignups, 0, eventsThisMonth)
+  const spotsFilledThisWeek = spotsThisWeek > 0 ? Math.round(volunteersThisWeek / spotsThisWeek * 100) : 0
+  const spotsFilledThisMonth = spotsThisMonth > 0 ? Math.round(volunteersThisMonth / spotsThisMonth * 100) : 0
 
   return (
     <div>
@@ -170,9 +168,6 @@ const mapStateToProps = (state, _ownProps) => ({
   adminOfficeFilter: state.model.adminOfficeFilter,
 })
 
-const withActions = connect(
-  mapStateToProps,
-  {}
-)
+const withActions = connect(mapStateToProps, {})
 
 export default withActions(withData(Dashboard))
