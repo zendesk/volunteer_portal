@@ -141,15 +141,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const momentAfter = Number(
   moment()
-    .startOf('month')
     .subtract(1, 'months')
+    .startOf('month')
     .format('X')
 )
 
 const momentBefore = Number(
   moment()
-    .endOf('month')
     .add(1, 'months')
+    .endOf('month')
     .format('X')
 )
 
