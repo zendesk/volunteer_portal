@@ -5,7 +5,8 @@
   "scripts": {
     "build": "NODE_ENV=production webpack -p --progress --config webpack.config.prod.js",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "heroku-postbuild": "echo npm build is run by webpacker during rake assets:precompile"
   },
   "lint-staged": {
     "**/*.js": [
