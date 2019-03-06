@@ -6,11 +6,13 @@ class GraphqlController < ApplicationController
       variables: variables,
       context: context,
       operation_name: params[:operationName])
+  rescue ActiveRecord::RecordNotFound => e
+    handle_record_not_found(e)
   rescue PortalSchema::MutationForbiddenError
     handle_forbidden_mutation
   rescue => e
     raise e unless Rails.env.development?
-    handle_error_in_development e
+    handle_error_in_development(e)
   end
 
   private
@@ -41,6 +43,14 @@ class GraphqlController < ApplicationController
     else
       raise ArgumentError, "Unexpected parameter: #{ambiguous_param}"
     end
+  end
+
+  def handle_record_not_found(exception)
+    render json: {
+      errors: [
+        { message: exception.message }
+      ]
+    }, status: :not_found
   end
 
   def handle_error_in_development(e)
