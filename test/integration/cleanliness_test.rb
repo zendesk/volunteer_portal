@@ -23,6 +23,27 @@ describe 'cleanliness' do
         app/controllers/ping_controller.rb
         app/controllers/standalone_controller.rb
         app/graphql/mutations/base_mutation.rb
+        app/graphql/mutations/create_event_type.rb
+        app/graphql/mutations/approve_individual_event.rb
+        app/graphql/mutations/create_signup.rb
+        app/graphql/mutations/delete_individual_event.rb
+        app/graphql/mutations/update_user.rb
+        app/graphql/mutations/delete_organization.rb
+        app/graphql/mutations/destroy_signup.rb
+        app/graphql/mutations/create_organization.rb
+        app/graphql/mutations/create_office.rb
+        app/graphql/mutations/update_organization.rb
+        app/graphql/mutations/reject_individual_event.rb
+        app/graphql/mutations/update_office.rb
+        app/graphql/mutations/delete_user.rb
+        app/graphql/mutations/create_edit_individual_event.rb
+        app/graphql/mutations/delete_event_type.rb
+        app/graphql/mutations/create_event.rb
+        app/graphql/mutations/delete_event.rb
+        app/graphql/mutations/delete_office.rb
+        app/graphql/mutations/update_event_type.rb
+        app/graphql/mutations/update_event.rb
+        app/graphql/mutations/update_user_office.rb
         app/graphql/portal_schema.rb
         app/graphql/resolvers/office_resolver.rb
         app/graphql/resolvers/organization_resolver.rb
