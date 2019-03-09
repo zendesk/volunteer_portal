@@ -16,7 +16,7 @@ require 'mocha/mini_test'
 require 'minitest/rails'
 require 'webmock/minitest'
 require 'timecop'
-require 'minitest/autorun'
+require 'maxitest/autorun'
 
 ENV["ZENDESK_SUBDOMAIN"] = "volunteer"
 ENV["ZENDESK_API_HOST"]  = "example.com"
