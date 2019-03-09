@@ -12,11 +12,11 @@ SingleCov::APP_FOLDERS.concat %w[
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'maxitest/autorun'
 require 'mocha/mini_test'
 require 'minitest/rails'
 require 'webmock/minitest'
 require 'timecop'
+require 'minitest/autorun'
 
 ENV["ZENDESK_SUBDOMAIN"] = "volunteer"
 ENV["ZENDESK_API_HOST"]  = "example.com"

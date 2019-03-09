@@ -30,6 +30,8 @@ jobs:
       - run:
           name: run unit tests
           command: bundle exec rake test
+      - store_test_results:
+          path: test/reports
 
   jest:
     docker:
