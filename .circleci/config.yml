@@ -53,7 +53,9 @@ jobs:
           key: v1-js-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: run javascript tests
-          command: npm test
+          command: npm test -- --ci --runInBand --reporters=default --reporters=jest-junit
+      - store_test_results:
+          path: test/reports
 
 workflows:
   version: 2
