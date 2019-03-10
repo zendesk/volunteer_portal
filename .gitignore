@@ -24,6 +24,3 @@
 vendor/gems
 /public/packs
 /node_modules
-
-# Ignore test reports
-/test/reports/
