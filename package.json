@@ -51,12 +51,9 @@
     ]
   },
   "jest-junit": {
-    "output": "./test/reports/jest/test-results.xml",
+    "output": "/tmp/test_reports/jest/test-results.xml",
     "suiteName": "jest tests",
-    "suiteNameTemplate": "{filepath}",
-    "classNameTemplate": "{classname}",
-    "titleTemplate": "{title}",
-    "ancestorSeparator": " › "
+    "suiteNameTemplate": "{filepath}"
   },
   "author": "Zendesk",
   "license": "Apache-2.0",

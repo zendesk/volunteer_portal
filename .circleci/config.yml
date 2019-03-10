@@ -5,7 +5,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
           RAILS_ENV: test
-          TESTOPTS: "--ci-report --ci-dir=test/reports/minitest"
+          TESTOPTS: "--ci-report --ci-dir=/tmp/test_reports/minitest"
           # https://discuss.circleci.com/t/rails-app-cant-connect-to-postgres-server/13059
           PGHOST: 127.0.0.1
           PGUSER: root
@@ -32,7 +32,7 @@ jobs:
           name: run unit tests
           command: bundle exec rake test
       - store_test_results:
-          path: test/reports
+          path: /tmp/test_reports
 
   jest:
     docker:
@@ -55,7 +55,7 @@ jobs:
           name: run javascript tests
           command: npm test -- --ci --runInBand --reporters=default --reporters=jest-junit
       - store_test_results:
-          path: test/reports
+          path: /tmp/test_reports
 
 workflows:
   version: 2
