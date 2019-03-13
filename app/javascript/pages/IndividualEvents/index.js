@@ -355,18 +355,15 @@ const mapStateToProps = (state, _ownProps) => {
   return R.isNil(popover) ? props : R.merge({ initialValues: popover.data }, props)
 }
 
-const formDataToIndividualEventInput = data => {
-  const date = moment(data.date).unix()
-  return {
-    id: data.id,
-    description: data.description,
-    officeId: data.office.id,
-    date,
-    duration: parseInt(data.duration, 10),
-    eventTypeId: data.eventType.id,
-    organizationId: data.organization.id,
-  }
-}
+const formDataToIndividualEventInput = data => ({
+  id: data.id,
+  description: data.description,
+  officeId: data.office.id,
+  date: data.date.toString(),
+  duration: parseInt(data.duration, 10),
+  eventTypeId: data.eventType.id,
+  organizationId: data.organization.id,
+})
 
 const individualEventInputToOptimisticResponse = (data, input) => {
   return {
