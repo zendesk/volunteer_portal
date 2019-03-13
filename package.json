@@ -35,6 +35,10 @@
       "\\.(css|less)$": "identity-obj-proxy",
       "^fragments/(.+)$": "<rootDir>/app/javascript/fragments/$1"
     },
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
       ".*": "babel-jest"
@@ -45,6 +49,11 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
+  },
+  "jest-junit": {
+    "output": "/tmp/test_reports/jest/test-results.xml",
+    "suiteName": "jest tests",
+    "suiteNameTemplate": "{filepath}"
   },
   "author": "Zendesk",
   "license": "Apache-2.0",
@@ -117,6 +126,7 @@
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.4",
+    "jest-junit": "^6.3.0",
     "jest-transform-graphql": "^2.1.0",
     "lint-staged": "^6.1.0",
     "loglevel": "^1.6.0",

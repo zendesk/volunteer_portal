@@ -89,14 +89,16 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    maxitest (2.4.0)
-      minitest (>= 5.0.0, < 5.11.0)
+    maxitest (3.1.0)
+      minitest (>= 5.0.0, < 5.12.0)
     memory_profiler (0.9.8)
     metaclass (0.0.4)
     method_source (0.9.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.3)
+    minitest-ci (3.4.0)
+      minitest (>= 5.0.6)
     minitest-rails (3.0.0)
       minitest (~> 5.8)
       railties (~> 5.0)
@@ -232,6 +234,7 @@ DEPENDENCIES
   graphql-batch
   maxitest
   memory_profiler
+  minitest-ci
   minitest-rails
   mocha
   omniauth-google-oauth2
@@ -258,4 +261,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.17.1
+   1.17.3
