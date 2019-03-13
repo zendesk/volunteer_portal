@@ -81,11 +81,12 @@ GEM
       promise.rb (~> 0.7.2)
     hashdiff (0.3.4)
     hashie (3.5.5)
-    httparty (0.16.3)
+    httparty (0.16.4)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    inflection (1.0.0)
     jwt (1.5.6)
     loofah (2.2.3)
       crass (~> 1.0.2)
@@ -217,6 +218,12 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    zendesk_api (1.16.0)
+      faraday (~> 0.9)
+      hashie (>= 3.5.2, < 4.0.0)
+      inflection
+      mime-types
+      multipart-post (~> 2.0)
 
 PLATFORMS
   ruby
@@ -260,6 +267,7 @@ DEPENDENCIES
   uglifier
   webmock
   webpacker (~> 2.0)
+  zendesk_api
 
 RUBY VERSION
    ruby 2.5.1p57

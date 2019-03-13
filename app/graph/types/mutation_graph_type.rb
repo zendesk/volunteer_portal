@@ -1,4 +1,4 @@
-require_relative '../../jobs/zendesk_job.rb'
+require_relative '../../../lib/integrations/zendesk_integration.rb'
 MutationGraphType = GraphQL::ObjectType.define do
   name "Mutation"
 
@@ -69,7 +69,7 @@ MutationGraphType = GraphQL::ObjectType.define do
       ie.organization_id = attrs["organizationId"]
       ie.save!
 
-      ZendeskJob.create_ticket(attrs["description"])
+      ZendeskIntegration.create_ticket(attrs["description"])
 
       user
     end

@@ -21,7 +21,7 @@ gem 'soft_deletion'
 gem 'webpacker', '~> 2.0'
 gem 'uglifier'
 gem 'sass-rails'
-gem 'httparty'
+gem 'zendesk_api'
 
 group :production do
   gem 'rails_12factor', '0.0.3'

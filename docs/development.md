@@ -83,6 +83,17 @@ guide you through the process.
    ```
 1. [Enable the Google+ API](https://console.developers.google.com/apis/library/plus.googleapis.com/)
 
+
+## Zendesk integration
+An optional step if you wish to develop on the zendesk integration.
+Export the following environemntal variables:
+```
+export ENABLE_ZENDESK_INTEGRATION=true
+export ZENDESK_INTEGRATION_URL=https://support.zd-dev.com
+export ZENDESK_INTEGRATION_USERNAME=admin@zendesk.com
+export ZENDESK_INTEGRATION_PASSWORD=123456
+```
+
 ## Start the App
 
 Make sure that PostgreSQL is running.
