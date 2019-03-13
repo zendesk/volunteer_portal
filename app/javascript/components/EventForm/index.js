@@ -106,6 +106,8 @@ const OrganizationField = ({ organizations, input: { value, onChange } }) => (
     onNewRequest={(chosen, _i) => onChange(chosen.id)}
     className={s.muiTextField}
     textFieldStyle={styles.muiTextField}
+    menuStyle={{ overflowY: 'scroll', height: 200 }}
+    openOnFocus
     fullWidth
   />
 )
