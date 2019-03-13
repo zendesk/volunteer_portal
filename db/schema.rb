@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503042614) do
+ActiveRecord::Schema.define(version: 20190313055115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 20180503042614) do
 
   create_table "signups", id: :serial, force: :cascade do |t|
     t.string "management_level"
-    t.string "office_location"
     t.string "team"
     t.boolean "fulfilled"
     t.datetime "created_at", null: false
@@ -135,9 +134,6 @@ ActiveRecord::Schema.define(version: 20180503042614) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "photo"
-    t.string "management_level"
-    t.string "office_location"
-    t.string "interest"
     t.string "locale"
     t.string "first_name"
     t.string "last_name"
@@ -162,7 +158,6 @@ ActiveRecord::Schema.define(version: 20180503042614) do
     t.datetime "updated_at"
     t.string "photo"
     t.string "management_level"
-    t.string "office_location"
     t.string "team"
     t.string "interest"
     t.string "locale"
