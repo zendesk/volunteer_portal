@@ -1,64 +1,37 @@
-# Google's OAuth2 docs. Make sure you are familiar with all the options
-# before attempting to configure this gem.
-# https://developers.google.com/accounts/docs/OAuth2Login
 host = ENV['HOST'] || 'http://localhost:3000'
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  # Default usage, this will give you offline access and a refresh token
-  # using default scopes 'email' and 'profile'
-  #
-  redirect_uri = "#{host}/auth/google_oauth2/callback"
+  if ENV['GOOGLE_CLIENT_ID']
+    # Default usage, this will give you offline access and a refresh token
+    # using default scopes 'email' and 'profile'
+    #
+    redirect_uri = "#{host}/auth/google_oauth2/callback"
 
-  options = {
-    scope:        'email,profile,calendar',
-    redirect_uri: redirect_uri,
-    setup: ->(env) do
-      env['omniauth.strategy'].options['token_params'] = {
-        redirect_uri: redirect_uri
-      }
+    options = {
+      scope:        'email,profile,calendar',
+      redirect_uri: redirect_uri,
+      setup: ->(env) do
+        env['omniauth.strategy'].options['token_params'] = {
+          redirect_uri: redirect_uri
+        }
+      end
+    }
+
+    if domain = ENV['OAUTH_DOMAIN']
+      options.merge!(hd: domain)
     end
-  }
 
-  if domain = ENV['OAUTH_DOMAIN']
-    options.merge!(hd: domain)
+    provider :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), options
+  elsif ENV['OKTA_CLIENT_ID']
+    provider :okta, ENV['OKTA_CLIENT_ID'], ENV['OKTA_CLIENT_SECRET'], {
+      name: 'okta',
+      client_options: {
+        site:          'https://zendesk.okta.com',
+        authorize_url: 'https://zendesk.okta.com/oauth2/v1/authorize',
+        token_url:     'https://zendesk.okta.com/oauth2/v1/token'
+      }
+    }
   end
-
-  provider :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), options
-
-  # Manual setup for offline access with a refresh token.
-  # The prompt must be set to 'consent'
-  #
-  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
-  #   :access_type => 'offline',
-  #   :prompt => 'consent'
-  # }
-
-  # Custom scope supporting youtube. If you are customizing scopes, remember
-  # to include the default scopes 'email' and 'profile'
-  #
-  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
-  #   :scope => 'http://gdata.youtube.com,email,profile,plus.me'
-  # }
-
-  # Custom scope for users only using Google for account creation/auth and do not require a refresh token.
-  #
-  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
-  #   :access_type => 'online',
-  #   :prompt => ''
-  # }
-
-  # To include information about people in your circles you must include the 'plus.login' scope.
-  #
-  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
-  #   :skip_friends => false,
-  #   :scope => "email,profile,plus.login"
-  # }
-
-  # If you need to acquire whether user picture is a default one or uploaded by user.
-  #
-  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
-  #   :skip_image_info => false
-  # }
 end
 
 OmniAuth.config.full_host = host

@@ -126,6 +126,9 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    omniauth-okta (0.1.1)
+      omniauth (~> 1.5)
+      omniauth-oauth2 (>= 1.4.0, < 2.0)
     pg (0.21.0)
     promise.rb (0.7.4)
     public_suffix (2.0.5)
@@ -215,6 +218,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-16
   x86_64-darwin-17
 
 DEPENDENCIES
@@ -238,6 +242,7 @@ DEPENDENCIES
   minitest-rails
   mocha
   omniauth-google-oauth2
+  omniauth-okta
   pg (~> 0.21)
   puma
   rack-cors (~> 0.4.1)

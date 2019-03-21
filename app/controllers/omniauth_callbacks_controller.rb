@@ -12,6 +12,8 @@ class OmniauthCallbacksController < ActionController::Base
     case params[:provider]
     when 'google_oauth2'
       google_callback
+    when 'okta'
+      okta_callback
     else
       render text: 'Unknown oauth provider', status: :forbidden
       return
@@ -54,6 +56,29 @@ class OmniauthCallbacksController < ActionController::Base
 
     # Update the user's info
     user.google_token = auth['credentials']['token']
+    user.photo        = auth_info['image']
+    user.locale       = request.env.dig('omniauth.auth', 'extra', 'raw_info', 'locale')
+
+    user.save!
+
+    session[:user_id] = user.id
+
+    redirect_to params[:return_to] || :portal
+  rescue ActiveRecord::RecordInvalid => e
+    render text: e.message, status: :forbidden
+  end
+
+  def okta_callback
+    auth = request.env['omniauth.auth']
+    auth_info = auth['info']
+    email     = auth_info['email']
+
+    user = User.find_or_initialize_by(email: email) do |u|
+      u.email       = email
+      u.first_name  = auth_info['first_name']
+      u.last_name   = auth_info['last_name']
+    end
+
     user.photo        = auth_info['image']
     user.locale       = request.env.dig('omniauth.auth', 'extra', 'raw_info', 'locale')
 
