@@ -16,7 +16,6 @@ class OmniauthCallbacksController < ActionController::Base
       okta_callback
     else
       render text: 'Unknown oauth provider', status: :forbidden
-      return
     end
   end
 
