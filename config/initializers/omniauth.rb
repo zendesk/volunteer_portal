@@ -31,6 +31,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
         token_url:     'https://zendesk.okta.com/oauth2/v1/token'
       }
     }
+  else
+    raise 'Please configure either Google Authentication or Okta.'
   end
 end
 
