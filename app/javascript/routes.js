@@ -31,7 +31,7 @@ export default (
       {/* Admin Namespace */}
       <Route path="/portal/admin" component={Admin}>
         <IndexRoute component={AdminDashboard} />
-        <Route path="/portal/admin/events/new" component={NewEvent} />
+        <Route path="/portal/admin/events/new(/:id)" component={NewEvent} />
         <Route path="/portal/admin/events/:id/edit" component={EditEvent} />
         <Route path="/portal/admin/events" component={EventsAdmin} />
         <Route path="/portal/admin/offices/new" component={NewOffice} />

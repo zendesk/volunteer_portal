@@ -15,11 +15,38 @@ import CreateEventMutation from './mutations/create.gql'
 
 import Loading from 'components/LoadingIcon'
 
-const NewEvent = ({ createEvent, data: { networkStatus, eventTypes, offices, organizations } }) =>
+const formShapeTransform = event => {
+  if (event) {
+    const { endsAt, eventType, office, organization, startsAt, id, users, __typename, ...rest } = {
+      ...event,
+      id: null,
+      users: null,
+      __typename: null,
+    }
+    return {
+      ...rest,
+      endsAt: new Date(endsAt),
+      eventType: { id: eventType.id },
+      office: { id: office.id },
+      organization: { id: organization.id },
+      startsAt: new Date(startsAt),
+    }
+  } else {
+    return event
+  }
+}
+
+const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, offices, organizations } }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
-    <EventForm eventTypes={eventTypes} offices={offices} organizations={organizations} onSubmit={createEvent} />
+    <EventForm
+      event={formShapeTransform(event)}
+      eventTypes={eventTypes}
+      offices={offices}
+      organizations={organizations}
+      onSubmit={createEvent}
+    />
   )
 
 const buildOptimisticResponse = ({
@@ -54,11 +81,11 @@ const buildOptimisticResponse = ({
 
 const withData = compose(
   graphql(EventQuery, {
-    options: {
+    options: ({ params: { id } }) => ({
       variables: {
-        id: '-1',
+        id: id || '-1',
       },
-    },
+    }),
   }),
   graphql(CreateEventMutation, {
     props: ({ ownProps, mutate }) => ({
