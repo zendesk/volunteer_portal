@@ -9,6 +9,10 @@
   </div>
 
   <div class="login-form">
-    <%= button_to 'Sign in with Okta', '/auth/okta', class: 'google-signin-btn' %>
+    <% if ENV['GOOGLE_CLIENT_ID'] %>
+      <%= button_to 'Sign in with Google', '/auth/google_oauth2', class: 'signin-btn google' %>
+    <% else %>
+      <%= button_to 'Sign in with Okta', '/auth/okta', class: 'signin-btn okta' %>
+    <% end %>
   </div>
 </div>
