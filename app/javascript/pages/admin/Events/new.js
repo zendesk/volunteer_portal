@@ -15,24 +15,18 @@ import CreateEventMutation from './mutations/create.gql'
 
 import Loading from 'components/LoadingIcon'
 
-const formShapeTransform = event => {
-  if (event) {
-    const { endsAt, eventType, office, organization, startsAt, id, users, __typename, ...rest } = {
-      ...event,
-      id: null,
-      users: null,
-      __typename: null,
-    }
-    return {
-      ...rest,
-      endsAt: new Date(endsAt),
-      eventType: { id: eventType.id },
-      office: { id: office.id },
-      organization: { id: organization.id },
-      startsAt: new Date(startsAt),
-    }
-  } else {
-    return event
+const transformToReduxFormState = event => {
+  const { title, description, capacity, location, startsAt, endsAt, eventType, office, organization } = event
+  return {
+    title,
+    description,
+    location,
+    capacity,
+    startsAt: new Date(startsAt),
+    endsAt: new Date(endsAt),
+    eventType: { id: eventType.id },
+    office: { id: office.id },
+    organization: { id: organization.id },
   }
 }
 
@@ -41,7 +35,7 @@ const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, offic
     <Loading />
   ) : (
     <EventForm
-      event={formShapeTransform(event)}
+      event={event && transformToReduxFormState(event)}
       eventTypes={eventTypes}
       offices={offices}
       organizations={organizations}
