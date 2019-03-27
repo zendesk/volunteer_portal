@@ -74,7 +74,6 @@ class OmniauthCallbacksController < ActionController::Base
     email     = auth_info['email']
 
     user = User.find_or_initialize_by(email: email) do |u|
-      u.email       = email
       u.first_name  = auth_info['first_name']
       u.last_name   = auth_info['last_name']
     end
