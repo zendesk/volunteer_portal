@@ -26,9 +26,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     provider :okta, ENV['OKTA_CLIENT_ID'], ENV['OKTA_CLIENT_SECRET'], {
       name: 'okta',
       client_options: {
-        site:          'https://zendesk.okta.com',
-        authorize_url: 'https://zendesk.okta.com/oauth2/v1/authorize',
-        token_url:     'https://zendesk.okta.com/oauth2/v1/token'
+        site:          "https://#{ENV['OKTA_ORG']}.okta.com",
+        authorize_url: "https://#{ENV['OKTA_ORG']}.okta.com/oauth2/v1/authorize",
+        token_url:     "https://#{ENV['OKTA_ORG']}.okta.com/oauth2/v1/token"
       }
     }
   else
