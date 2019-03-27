@@ -14,6 +14,7 @@ const UserList = ({ users, destroySignup }) => (
             userId={user.id}
             image={user.photo}
             name={user.name}
+            subtitle={user.group}
             showRemove={present(destroySignup)}
             onRemove={() => destroySignup(user)}
           />

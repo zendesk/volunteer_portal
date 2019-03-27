@@ -140,7 +140,7 @@ const LeaderboardContainer = ({
       </div>
       {sortByHours(users).map((user, i) => (
         <div className={s.leaderboardUser} key={`user-${i}`}>
-          <NamedAvatar image={user.photo} name={user.name} />
+          <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
           <span className={s.leaderboardHours}>{user.hours} hours</span>
         </div>
       ))}
