@@ -1,10 +1,14 @@
 host = ENV['HOST'] || 'http://localhost:3000'
 
+# Omniauth will first try to use Google, and fall back to Okta if no 
+# GOOGLE_CLIENT_ID is defined.  If neither GOOGLE_CLIENT_ID nor
+# OKTA_CLIENT_ID is defined, the app will fail to boot
+#
 Rails.application.config.middleware.use OmniAuth::Builder do
   if ENV['GOOGLE_CLIENT_ID']
     # Default usage, this will give you offline access and a refresh token
     # using default scopes 'email' and 'profile'
-    #
+
     redirect_uri = "#{host}/auth/google_oauth2/callback"
 
     options = {
