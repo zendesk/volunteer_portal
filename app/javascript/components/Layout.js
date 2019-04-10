@@ -16,7 +16,7 @@ const styles = {
     width: '100%',
     display: 'flex',
     flexFlow: 'row nowrap',
-    borderBottom: '1px solid #ddd',
+    boxShadow: 'inset 0 -1px #ddd',
     marginBottom: 50,
   },
   btn: {
