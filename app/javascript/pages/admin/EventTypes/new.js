@@ -21,26 +21,31 @@ const buildOptimisticResponse = ({ title, timezone }) => ({
   },
 })
 
-const withData = graphql(CreateEventTypeMutation, {
-  props: ({ ownProps, mutate }) => ({
-    createEventType: eventType =>
-      mutate({
-        variables: { input: eventType },
-        optimisticResponse: buildOptimisticResponse(eventType),
-        update: (proxy, { data: { createEventType } }) => {
-          const { eventTypes } = proxy.readQuery({ query: EventTypesQuery })
-          const withNewEventType = R.append(createEventType, eventTypes)
-          proxy.writeQuery({ query: EventTypesQuery, data: { eventTypes: withNewEventType } })
-        },
-      })
-        .then(_response => {
-          ownProps.history.push('/portal/admin/event-types')
+const routePage = (props, {}) => {
+  props.history.push('/portal/admin/event-types')
+}
+
+export const withData = responseBehaviour =>
+  graphql(CreateEventTypeMutation, {
+    props: ({ ownProps, mutate }) => ({
+      createEventType: eventType =>
+        mutate({
+          variables: { input: eventType },
+          optimisticResponse: buildOptimisticResponse(eventType),
+          update: (proxy, { data: { createEventType } }) => {
+            const { eventTypes } = proxy.readQuery({ query: EventTypesQuery })
+            const withNewEventType = R.append(createEventType, eventTypes)
+            proxy.writeQuery({ query: EventTypesQuery, data: { eventTypes: withNewEventType } })
+          },
         })
-        .catch(({ graphQLErrors }) => {
-          ownProps.graphQLError(graphQLErrors)
-        }),
-  }),
-})
+          .then(_response => {
+            return responseBehaviour(ownProps, _response)
+          })
+          .catch(({ graphQLErrors }) => {
+            ownProps.graphQLError(graphQLErrors)
+          }),
+    }),
+  })
 
 const mapStateToProps = (state, ownProps) => ({})
 
@@ -48,4 +53,4 @@ const withActions = connect(mapStateToProps, {
   graphQLError,
 })
 
-export default withActions(withData(NewEventType))
+export default withActions(withData(routePage)(NewEventType))

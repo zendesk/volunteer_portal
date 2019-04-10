@@ -109,6 +109,27 @@ const OrganizationField = ({ organizations, input: { value, onChange } }) => (
     menuStyle={{ overflowY: 'scroll', height: 200 }}
     openOnFocus
     fullWidth
+    openOnFocus
+  />
+)
+
+const EventTypeField = ({ eventTypes, input: { value, onChange } }) => (
+  <AutoComplete
+    id="eventType"
+    searchText={
+      value.newType ||
+      (R.isNil(value.id) || R.isEmpty(value.id) ? value.id : R.find(e => e.id === value.id, eventTypes).title)
+    }
+    dataSource={eventTypes}
+    dataSourceConfig={{ text: 'title', value: 'id' }}
+    filter={AutoComplete.fuzzyFilter}
+    onUpdateInput={(searchText, {}) => onChange({ newType: searchText })}
+    onNewRequest={(chosen, _i) => onChange({ id: chosen.id })}
+    className={s.muiTextField}
+    textFieldStyle={styles.muiTextField}
+    menuStyle={{ overflowY: 'scroll', height: 200 }}
+    fullWidth
+    openOnFocus
   />
 )
 
@@ -156,17 +177,14 @@ const EventForm = ({
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
-        <Field label="Event Type" className={s.field} name="eventType.id" component={renderField} type="select">
-          <option value="-" key="-" />
-          {R.map(
-            eventType => (
-              <option value={eventType.id} key={`eventType-${eventType.id}`}>
-                {eventType.title}
-              </option>
-            ),
-            eventTypes
-          )}
-        </Field>
+        <Field
+          label="Event Type"
+          className={s.field}
+          name="eventType"
+          component={renderField}
+          eventTypes={eventTypes}
+          Custom={EventTypeField}
+        />
       </div>
       <div className={s.column}>
         <Field

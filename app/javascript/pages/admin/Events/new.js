@@ -13,6 +13,8 @@ import EventsQuery from './queries/index.gql'
 import EventQuery from './queries/show.gql'
 import CreateEventMutation from './mutations/create.gql'
 
+import { withData as withCreateEventType } from '../EventTypes/new.js'
+
 import Loading from 'components/LoadingIcon'
 
 const transformToReduxFormState = event => {
@@ -30,7 +32,25 @@ const transformToReduxFormState = event => {
   }
 }
 
-const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, offices, organizations } }) =>
+const prepareEventCreation = (event, createEventType, createEvent) => {
+  if (event.eventType.id == null) {
+    const newEventType = event.eventType.newType
+    if (newEventType == null) throw new Error('No event type specified!')
+    createEventType({ title: newEventType }).then(response => {
+      const eventWithNewEventType = {
+        ...event,
+        eventType: {
+          id: response.data.createEventType.id,
+        },
+      }
+      createEvent(eventWithNewEventType)
+    })
+  } else {
+    createEvent(event)
+  }
+}
+
+const NewEvent = ({ createEvent, createEventType, data: { networkStatus, event, eventTypes, offices, organizations } }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
@@ -39,7 +59,9 @@ const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, offic
       eventTypes={eventTypes}
       offices={offices}
       organizations={organizations}
-      onSubmit={createEvent}
+      onSubmit={event => {
+        prepareEventCreation(event, createEventType, createEvent)
+      }}
     />
   )
 
@@ -109,4 +131,4 @@ const withActions = connect(mapStateToProps, {
   graphQLError,
 })
 
-export default withActions(withData(NewEvent))
+export default withActions(withData(withCreateEventType((_, response) => response)(NewEvent)))
