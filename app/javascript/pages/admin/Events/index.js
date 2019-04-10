@@ -24,6 +24,7 @@ const eventsSort = 'STARTS_AT_DESC'
 const actionLinks = (event, deleteEvent) => (
   <div className={s.actionColumn}>
     <Link to={`/portal/admin/events/${event.id}/edit`}>Edit</Link>
+    <Link to={`/portal/admin/events/new/${event.id}`}>Clone</Link>
     <button className={`${s.deleteAction}`} onClick={() => deleteEvent(event)}>
       Delete
     </button>
@@ -66,7 +67,7 @@ const columns = deleteEvent => [
     Header: 'Actions',
     accessor: 'id',
     sortable: false,
-    width: 130,
+    width: 150,
     Cell: ({ original }) => actionLinks(original, deleteEvent),
   },
 ]
@@ -200,11 +201,8 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+})
 
 export default withActions(withData(Events))
