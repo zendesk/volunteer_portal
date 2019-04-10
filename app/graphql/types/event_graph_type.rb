@@ -51,9 +51,9 @@ module Types
       AssociationLoader.for(Event, :organization).load(object)
     end
 
-    field :event_type, EventTypeGraphType, null: true
+    field :event_type, String, null: true
     def event_type
-      AssociationLoader.for(Event, :event_type).load(object)
+      AssociationLoader.for(Event, :event_type).load(object).then { |event_type| event_type&.title }
     end
 
     field :office, OfficeGraphType, null: true

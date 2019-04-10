@@ -23,19 +23,21 @@ module EventResolver
 
     def create(_, args, context)
       event = Event.new
-      update_fields(event, args[:input])
-      event.save!
+      ActiveRecord::Base.transaction do
+        update_fields(event, args[:input])
+        event.save!
+      end
 
       event
     end
 
     def update(_, args, context)
       input = args[:input]
-
       event = Event.find(input.id)
-      update_fields(event, input)
-      event.save!
-
+      ActiveRecord::Base.transaction do
+        update_fields(event, input)
+        event.save!
+      end
       event
     end
 
@@ -51,7 +53,7 @@ module EventResolver
     def update_fields(event, input)
       event.title = input.title
       event.description = input.description
-      event.event_type_id = input.event_type.id
+      event.event_type = EventType.find_or_create_by(title: input.event_type)
       event.organization_id = input.organization.id
       event.office_id = input.office.id
       event.location = input.location

@@ -7,11 +7,9 @@
 query EventQuery($id: ID!) {
   event(id: $id) {
     ...EventEntry
+    eventType
     office {
       ...OfficeEntry
-    }
-    eventType {
-      ...EventTypeEntry
     }
     organization {
       ...OrganizationEntry

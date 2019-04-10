@@ -10,9 +10,9 @@ module Types::Input
     argument :starts_at, String, required: true
     argument :ends_at, String, required: true
     argument :capacity, Int, required: true
+    argument :event_type, String, required: true
 
     argument :office, AssociationInputType, required: true
-    argument :event_type, AssociationInputType, required: true
     argument :organization, AssociationInputType, required: true
   end
 end

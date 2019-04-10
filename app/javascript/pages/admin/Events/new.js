@@ -22,9 +22,9 @@ const transformToReduxFormState = event => {
     description,
     location,
     capacity,
+    eventType,
     startsAt: new Date(startsAt),
     endsAt: new Date(endsAt),
-    eventType: { id: eventType.id },
     office: { id: office.id },
     organization: { id: organization.id },
   }

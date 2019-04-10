@@ -156,11 +156,11 @@ const EventForm = ({
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
-        <Field label="Event Type" className={s.field} name="eventType.id" component={renderField} type="select">
+        <Field label="Event Type" className={s.field} name="eventType" component={renderField} type="select">
           <option value="-" key="-" />
           {R.map(
             eventType => (
-              <option value={eventType.id} key={`eventType-${eventType.id}`}>
+              <option value={eventType.title} key={`eventType-${eventType.id}`}>
                 {eventType.title}
               </option>
             ),
