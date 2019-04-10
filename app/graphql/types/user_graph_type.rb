@@ -57,5 +57,11 @@ module Types
     def individual_events
       AssociationLoader.for(User, :individual_events).load(object)
     end
+
+    field :signups, [SignupGraphType], null: true
+    def signups
+      AssociationLoader.for(User, :signups).load(object) # object.signups
+    end
+
   end
 end

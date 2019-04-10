@@ -11,6 +11,7 @@ import ActionDone from 'material-ui/svg-icons/action/done'
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
 import AutoComplete from 'material-ui/AutoComplete'
 import AVNotInterested from 'material-ui/svg-icons/av/not-interested'
+import ReactTable from 'react-table'
 
 import { togglePopover } from 'actions'
 
@@ -18,7 +19,7 @@ import Callout from 'components/Callout'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 
-import IndividualEventsQuery from './query.gql'
+import MyEventsQuery from './query.gql'
 import CreateEditIndividualEventMutation from 'mutations/CreateEditIndividualEventMutation.gql'
 import DeleteIndividualEventMutation from 'mutations/DeleteIndividualEventMutation.gql'
 import s from './main.css'
@@ -260,87 +261,172 @@ const DestroyDialog = ({ onDelete, onCancel, popover }) => (
   </Dialog>
 )
 
-const IndividualEvents = props => {
-  const {
-    data,
-    locationBeforeTransitions,
+const IndividualEvents = ({
+  props: {
+    data: { currentUser, offices, eventTypes, organizations },
     popover,
     togglePopover,
     handleSubmit,
     createEditIndividualEvent,
     deleteIndividualEvent,
-  } = props
+  },
+}) => (
+  <div>
+    <div className={s.personalHeader}>
+      <div className={s.actionBar}>
+        <button className={s.createAction} onClick={() => togglePopover('editIndividualEvent')}>
+          Add Event
+        </button>
+      </div>
+      <h1>Individual Events</h1>
+    </div>
+    <table className={s.table}>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Organization</th>
+          <th>Date</th>
+          <th>Duration (min)</th>
+          <th>Type</th>
+          <th>Approval</th>
+          <th className={s.actionColumn}>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {currentUser.individualEvents.map(event => (
+          <tr key={`event-${event.id}`}>
+            <td>{event.description}</td>
+            <td>{event.organization.name}</td>
+            <td>{moment(event.date).format('MMMM D, YYYY')}</td>
+            <td>{event.duration}</td>
+            <td>{event.eventType.title}</td>
+            <td>{eventStatusIcon(event)}</td>
+            <td className={s.actionColumn}>
+              <button
+                className={`${s.btn} ${s.confirmBtn} ${s.leftAligned}`}
+                onClick={() => togglePopover('editIndividualEvent', event)}
+              >
+                Edit
+              </button>
+              <button
+                className={`${s.btn} ${s.deleteBtn}`}
+                onClick={() => togglePopover('destroyIndividualEvent', event)}
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    {popover && popover.type === 'editIndividualEvent' ? (
+      <CreateEditDialog
+        offices={offices}
+        eventTypes={eventTypes}
+        organizations={organizations}
+        popover={popover}
+        onSubmit={handleSubmit(createEditIndividualEvent)}
+        onCancel={() => togglePopover('editIndividualEvent')}
+      />
+    ) : null}
+    {popover && popover.type === 'destroyIndividualEvent' ? (
+      <DestroyDialog
+        popover={popover}
+        onDelete={() => deleteIndividualEvent(popover.data.id) && togglePopover('destroyIndividualEvent')}
+        onCancel={() => togglePopover('destroyIndividualEvent')}
+      />
+    ) : null}
+  </div>
+)
 
-  const { currentUser, offices, eventTypes, organizations } = data
+const organizedEventsColumns = [
+  {
+    id: 'event',
+    Header: 'Event',
+    accessor: e => e.title,
+  },
+  {
+    id: 'organization',
+    Header: 'Organization',
+    accessor: e => e.organization.name,
+  },
+  {
+    id: 'date',
+    Header: 'Date',
+    Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
+    accessor: e => e.startsAt,
+  },
+  {
+    id: 'duration',
+    Header: 'Duration (min)',
+    accessor: e => e.duration,
+  },
+  {
+    id: 'type',
+    Header: 'Type',
+    accessor: e => e.eventType.title,
+  },
+  {
+    id: 'location',
+    Header: 'Location',
+    accessor: e => e.location,
+  },
+]
+
+const OrganizedEvents = ({ currentUser: { signups } }) => (
+  <div className={s.eventsTable}>
+    <h1>Organized Events</h1>
+    <ReactTable
+      NoDataComponent={() => null}
+      data={signups.map(signup => signup.event)}
+      columns={organizedEventsColumns}
+      showPagination={false}
+      defaultPageSize={signups.length}
+      defaultSorted={[{ id: 'date', desc: true }]}
+      minRows={0}
+    />
+    {/* <table className={s.table}>
+      <thead>
+          <tr>
+            <th>Event</th>
+            <th>Organization</th>
+            <th>Date</th>
+            <th>Duration (min)</th>
+            <th>Type</th>
+            <th>Location</th>
+          </tr>
+      </thead>
+      <tbody>
+        {signups.map(({event}) => (
+            <tr key={`event-${event.id}`}>
+              <td>{event.title}</td>
+              <td>{event.organization.name}</td>
+              <td>{moment(event.startsAt).format('MMMM D, YYYY')}</td>
+              <td>{event.duration}</td>
+              <td>{event.eventType.title}</td>
+              <td>{event.location}</td>
+            </tr>
+          ))}
+      </tbody>
+    </table> */}
+  </div>
+)
+
+const MyEvents = props => {
+  const { data, locationBeforeTransitions } = props
+
+  const { currentUser } = data
 
   if (data.loading) {
     return <Loading />
   } else if (data.error) {
+    console.log(data.error)
     return <div>Sorry, we are having trouble loading your events.</div>
   } else {
     return (
       <Layout currentPath={locationBeforeTransitions.pathname}>
-        <div className={s.actionBar}>
-          <button className={s.createAction} onClick={() => togglePopover('editIndividualEvent')}>
-            Add Event
-          </button>
-        </div>
-        <table className={s.table}>
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Organization</th>
-              <th>Date</th>
-              <th>Duration (minutes)</th>
-              <th>Type</th>
-              <th>Approval</th>
-              <th className={s.actionColumn}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentUser.individualEvents.map(event => (
-              <tr key={`event-${event.id}`}>
-                <td>{event.description}</td>
-                <td>{event.organization.name}</td>
-                <td>{moment(event.date).format('MMMM D, YYYY')}</td>
-                <td>{event.duration}</td>
-                <td>{event.eventType.title}</td>
-                <td>{eventStatusIcon(event)}</td>
-                <td className={s.actionColumn}>
-                  <button
-                    className={`${s.btn} ${s.confirmBtn} ${s.leftAligned}`}
-                    onClick={() => togglePopover('editIndividualEvent', event)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className={`${s.btn} ${s.deleteBtn}`}
-                    onClick={() => togglePopover('destroyIndividualEvent', event)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {popover && popover.type === 'editIndividualEvent' ? (
-          <CreateEditDialog
-            offices={offices}
-            eventTypes={eventTypes}
-            organizations={organizations}
-            popover={popover}
-            onSubmit={handleSubmit(createEditIndividualEvent)}
-            onCancel={() => togglePopover('editIndividualEvent')}
-          />
-        ) : null}
-        {popover && popover.type === 'destroyIndividualEvent' ? (
-          <DestroyDialog
-            popover={popover}
-            onDelete={() => deleteIndividualEvent(popover.data.id) && togglePopover('destroyIndividualEvent')}
-            onCancel={() => togglePopover('destroyIndividualEvent')}
-          />
-        ) : null}
+        <IndividualEvents props={props} />
+        <OrganizedEvents currentUser={currentUser} />
       </Layout>
     )
   }
@@ -399,7 +485,7 @@ const buildOptimisticResponse = (newEvent, currentUser) => {
 }
 
 const withData = compose(
-  graphql(IndividualEventsQuery, {
+  graphql(MyEventsQuery, {
     options: {
       fetchPolicy: 'cache-and-network',
     },
@@ -452,4 +538,4 @@ const withActions = connect(mapStateToProps, {
   togglePopover,
 })
 
-export default withActions(withData(withReduxForm(IndividualEvents)))
+export default withActions(withData(withReduxForm(MyEvents)))

@@ -6,6 +6,8 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;
+  position: absolute;
+  right: 0;
 }
 
 .createAction {
@@ -38,6 +40,13 @@
 
 .table tr:last-of-type td {
   border-bottom: none;
+}
+
+.table tr td {
+  max-width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .actionColumn {
@@ -117,6 +126,10 @@ textarea {
   height: 20px;
 }
 
+.personalHeader {
+  position: relative;
+}
+
 .row {
   display: flex;
   flex-flow: row nowrap;
@@ -134,4 +147,12 @@ textarea {
 
 .dialogActions {
   justify-content: flex-end;
+}
+
+.eventsTable > div {
+  border: none;
+}
+
+.eventsTable > div > div:nth-child(1) > div:nth-child(1) {
+  box-shadow: inset 0 -2px #eee;
 }
