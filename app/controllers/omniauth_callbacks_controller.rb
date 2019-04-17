@@ -9,13 +9,7 @@ class OmniauthCallbacksController < ActionController::Base
   end
 
   def callback
-    case params[:provider]
-    when 'google_oauth2'
-      google_callback
-    else
-      render text: 'Unknown oauth provider', status: :forbidden
-      return
-    end
+    google_callback
   end
 
   def failure
