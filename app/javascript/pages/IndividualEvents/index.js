@@ -270,28 +270,28 @@ const IndividualEvents = props => {
     {
       id: 'description',
       Header: 'Description',
-      accessor: d => d.description,
+      accessor: 'description',
     },
     {
       id: 'organization',
       Header: 'Organization',
-      accessor: d => d.organization.name,
+      accessor: 'organization.name',
     },
     {
       id: 'date',
       Header: 'Date',
       Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
-      accessor: d => d.date,
+      accessor: 'date',
     },
     {
       id: 'duration',
       Header: 'Duration (min)',
-      accessor: d => d.duration,
+      accessor: 'duration',
     },
     {
       id: 'type',
       Header: 'Type',
-      accessor: d => d.eventType.title,
+      accessor: 'eventType.title',
     },
     {
       id: 'approval',
@@ -368,33 +368,33 @@ const organizedEventsColumns = [
   {
     id: 'event',
     Header: 'Event',
-    accessor: d => d.title,
+    accessor: 'title',
   },
   {
     id: 'organization',
     Header: 'Organization',
-    accessor: d => d.organization.name,
+    accessor: 'organization.name',
   },
   {
     id: 'date',
     Header: 'Date',
     Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
-    accessor: d => d.startsAt,
+    accessor: 'startsAt',
   },
   {
     id: 'duration',
     Header: 'Duration (min)',
-    accessor: d => d.duration,
+    accessor: 'duration',
   },
   {
     id: 'type',
     Header: 'Type',
-    accessor: d => d.eventType.title,
+    accessor: 'eventType.title',
   },
   {
     id: 'location',
     Header: 'Location',
-    accessor: d => d.location,
+    accessor: 'location',
   },
 ]
 
