@@ -18,6 +18,8 @@ class Event < ApplicationRecord
   validate :max_capacity
   validate :time_sequentiality
 
+  before_save :set_duration
+
   scope :before,     ->(time) { where("starts_at < ?", time) }
   scope :after,      ->(time) { where("starts_at > ?", time) }
   scope :in_month,   ->(month) { where('EXTRACT(MONTH from starts_at) = ?', month) }
@@ -66,5 +68,11 @@ class Event < ApplicationRecord
 
   def notify_websocket(action_type)
     ActionCable.server.broadcast 'events', type: action_type, event: self
+  end
+
+  def set_duration
+    if ends_at_changed? || starts_at_changed?
+      self.duration = (ends_at - starts_at) / 60
+    end
   end
 end
