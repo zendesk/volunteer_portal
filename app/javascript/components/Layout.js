@@ -69,7 +69,7 @@ const Layout = ({ noNav, currentPath, children }) => (
           <div style={styles.btnSpacer} />
           <Tab path="/portal/dashboard" text="Dashboard" currentPath={currentPath} />
           <div style={styles.btnSpacer} />
-          <Tab path="/portal/events/individual" text="My Events" currentPath={currentPath} />
+          <Tab path="/portal/events" text="My Events" currentPath={currentPath} />
         </div>
       )}
       {children}

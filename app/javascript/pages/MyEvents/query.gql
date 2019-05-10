@@ -24,17 +24,14 @@ query MyEventsQuery {
     }
     signups {
       event {
-        id
         title
         duration
         startsAt
         description
         organization {
-          id
           name
         }
         eventType {
-          id
           title
         }
         location
