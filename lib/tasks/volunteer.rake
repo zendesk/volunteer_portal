@@ -16,7 +16,7 @@ namespace :volunteer do
 
     Rake::Task['db:seed'].invoke # ensure we have the base seeds before
 
-    OFFICES = ['San Francisco', 'Madison', 'Dublin', 'Copenhagen', 'Melbourne', Office.default.name]
+    OFFICES = ['San Francisco', 'Madison', 'Dublin', 'Copenhagen', 'Melbourne', 'Remote']
     GROUPS = %w{Sales Volunteer IT Orchid Marketing}
 
     type_ids ||= EventType.pluck(:id)

@@ -25,19 +25,4 @@ describe Office do
       assert office.identifier = 'san_fran'
     end
   end
-
-  describe '.default' do
-    let(:remote) { offices(:remote) }
-
-    it 'creates the default office if it doesnt exist' do
-      Office.delete_all
-
-      refute_nil Office.default
-      assert_equal Office::DEFAULT_NAME, Office.last.name
-    end
-
-    it 'returns the default office from the DB' do
-      assert_equal remote.id, Office.default.id
-    end
-  end
 end

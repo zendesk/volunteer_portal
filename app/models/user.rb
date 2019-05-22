@@ -11,7 +11,7 @@ class User < ApplicationRecord
   attr_accessor :google_token
   attr_encrypted :google_token, key: ENV.fetch('ATTR_ENCRYPTION_KEY')
 
-  before_validation :set_defaults, on: :create
+  before_validation :set_default_role, on: :create
 
   validates :email, presence: true, uniqueness: { scope: :deleted_at }
 
@@ -23,8 +23,7 @@ class User < ApplicationRecord
 
   private
 
-  def set_defaults
+  def set_default_role
     self.role ||= User.count.zero? ? Role.admin : Role.volunteer
-    self.office ||= Office.default
   end
 end

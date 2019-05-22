@@ -1,6 +1,4 @@
 class Office < ApplicationRecord
-  DEFAULT_NAME = 'Remote'.freeze
-
   before_validation :ensure_identifier, on: [:create, :update]
   before_save :trim_name
 
@@ -8,10 +6,6 @@ class Office < ApplicationRecord
 
   has_many :events
   has_many :users
-
-  def self.default
-    find_by(name: DEFAULT_NAME) || create!(name: DEFAULT_NAME)
-  end
 
   private
 
