@@ -146,7 +146,7 @@ const renderField = props => {
 
 const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popover, onSubmit }) => {
   const event = popover.data
-  const isNewEvent = R.isNil(event)
+  const isNewEvent = R.isNil(event) || (event && event.isNew)
   return (
     <Dialog
       title={isNewEvent ? 'Create Event' : 'Edit Event'}
@@ -305,6 +305,7 @@ const IndividualEvents = props => {
       Header: 'Actions',
       accessor: d => d,
       sortable: false,
+      width: 200,
       Cell: props => (
         <span className="s.actionColumn">
           <button
@@ -312,6 +313,23 @@ const IndividualEvents = props => {
             onClick={() => togglePopover('editIndividualEvent', props.value)}
           >
             Edit
+          </button>
+          <button
+            className={`${s.btn} ${s.confirmBtn}`}
+            onClick={() => {
+              const { description, office, date, duration, eventType, organization } = props.value
+              togglePopover('editIndividualEvent', {
+                description,
+                office,
+                date,
+                duration,
+                eventType,
+                organization,
+                isNew: true,
+              })
+            }}
+          >
+            Clone
           </button>
           <button
             className={`${s.btn} ${s.deleteBtn}`}
