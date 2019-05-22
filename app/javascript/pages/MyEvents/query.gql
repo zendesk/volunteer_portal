@@ -2,7 +2,7 @@
 #import "fragments/OfficeEntry.gql"
 #import "fragments/OrganizationEntry.gql"
 
-query IndividualEventsQuery {
+query MyEventsQuery {
   currentUser {
     ...UserEntry
     individualEvents {
@@ -20,6 +20,21 @@ query IndividualEventsQuery {
       }
       office {
         ...OfficeEntry
+      }
+    }
+    signups {
+      event {
+        title
+        duration
+        startsAt
+        description
+        organization {
+          name
+        }
+        eventType {
+          title
+        }
+        location
       }
     }
   }

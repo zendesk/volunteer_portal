@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router'
 import App from 'pages/App'
 import Calendar from 'pages/Calendar'
 import EventPage from 'pages/Event'
-import IndividualEventPage from 'pages/IndividualEvents'
+import MyEventsPage from 'pages/MyEvents'
 import Dashboard from 'pages/Dashboard'
 
 import Admin from 'pages/admin/Admin'
@@ -52,7 +52,9 @@ export default (
       {/* Default Namespace */}
       <IndexRoute component={Calendar} />
       <Route path="/portal/dashboard" component={Dashboard} />
-      <Route path="/portal/events/individual" component={IndividualEventPage} />
+      {/* Keep old route */}
+      <Route path="/portal/events/individual" component={MyEventsPage} />
+      <Route path="/portal/events" component={MyEventsPage} />
       <Route path="/portal/events/:eventId" component={EventPage} />
       <Route path="*" component={Calendar} />
     </Route>
