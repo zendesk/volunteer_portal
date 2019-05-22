@@ -76,6 +76,31 @@ describe Event do
     end
   end
 
+  describe '#set_duration' do
+    it 'sets duration when new event is created' do
+      event = Event.new(
+        organization: organizations(:kittens), type: event_types(:group),
+        title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
+        location: 'Location', office: sf)
+      assert event.save
+      assert event.duration == 120
+    end
+
+    it 'sets duration when start and end times are updated' do
+      event = events(:minimum)
+      event.starts_at = Time.now
+      event.ends_at = Time.now + 2.hours
+      assert event.save
+      assert event.duration == 120
+    end
+
+    it 'does not set duration when start and end times are not updated' do
+      event = events(:minimum)
+      assert event.save
+      assert_nil event.duration
+    end
+  end
+
   it "creates event" do
     event = Event.new(
       organization: organizations(:kittens), type: event_types(:group),
