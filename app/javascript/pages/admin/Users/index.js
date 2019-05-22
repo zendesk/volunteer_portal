@@ -35,8 +35,13 @@ const columns = togglePopover => [
     filterable: true,
   },
   {
-    Header: 'Timezone',
-    accessor: 'timezone',
+    Header: 'Email',
+    accessor: 'email',
+    filterable: true,
+  },
+  {
+    Header: 'Group',
+    accessor: 'group',
     sortable: false,
   },
   {
@@ -175,12 +180,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+  togglePopover,
+})
 
 export default withActions(withData(Users))
