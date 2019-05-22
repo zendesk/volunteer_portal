@@ -35,6 +35,16 @@ const columns = togglePopover => [
     filterable: true,
   },
   {
+    Header: 'Email',
+    accessor: 'email',
+    filterable: true,
+  },
+  {
+    Header: 'Group',
+    accessor: 'group',
+    sortable: false,
+  },
+  {
     Header: 'Actions',
     accessor: 'id',
     sortable: false,
