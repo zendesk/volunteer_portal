@@ -52,6 +52,7 @@ export default (
       {/* Default Namespace */}
       <IndexRoute component={Calendar} />
       <Route path="/portal/dashboard" component={Dashboard} />
+      {/* Keep old route */}
       <Route path="/portal/events/individual" component={MyEventsPage} />
       <Route path="/portal/events" component={MyEventsPage} />
       <Route path="/portal/events/:eventId" component={EventPage} />
