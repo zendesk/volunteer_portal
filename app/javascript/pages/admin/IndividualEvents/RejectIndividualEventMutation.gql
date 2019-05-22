@@ -1,7 +1,0 @@
-#import "fragments/IndividualEventEntry.gql"
-
-mutation rejectIndividualEvent($id: ID!) {
-  rejectIndividualEvent(id: $id) {
-    ...IndividualEventEntry
-  }
-}

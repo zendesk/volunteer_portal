@@ -178,3 +178,20 @@ textarea {
 .muiTextField hr {
   display: none;
 }
+
+.eventsTable > div {
+  border: none;
+}
+
+ .eventsTable > div > div:nth-child(1) > div:nth-child(1) {
+  box-shadow: inset 0 -2px #eee;
+}
+
+.bulkActionSelect, .bulkActionButton {
+  margin: 5px;
+  vertical-align: bottom;
+}
+.bulkActionSelect {
+  height: 22px;
+  line-height: 22px;
+}
