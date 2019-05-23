@@ -1,0 +1,12 @@
+#import "fragments/UserEntry.gql"
+#import "fragments/OfficeEntry.gql"
+
+mutation updateUserOffice($userId: ID!, $officeId: ID!) {
+  updateUserOffice(userId: $userId, officeId: $officeId) {
+    ...UserEntry
+    office {
+      ...OfficeEntry
+    }
+    isAdmin
+  }
+}

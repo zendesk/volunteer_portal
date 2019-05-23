@@ -4,6 +4,7 @@ import App from 'pages/App'
 import Calendar from 'pages/Calendar'
 import EventPage from 'pages/Event'
 import MyEventsPage from 'pages/MyEvents'
+import MyOffice from 'pages/MyOffice'
 import Dashboard from 'pages/Dashboard'
 
 import Admin from 'pages/admin/Admin'
@@ -56,6 +57,7 @@ export default (
       <Route path="/portal/events/individual" component={MyEventsPage} />
       <Route path="/portal/events" component={MyEventsPage} />
       <Route path="/portal/events/:eventId" component={EventPage} />
+      <Route path="/portal/office" component={MyOffice} />
       <Route path="*" component={Calendar} />
     </Route>
   </div>

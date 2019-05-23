@@ -1,0 +1,13 @@
+#import "fragments/OfficeEntry.gql"
+
+query MyOfficeQuery {
+  currentUser {
+    id
+    office {
+      id
+    }
+  }
+  offices(sortBy: NAME_ASC) {
+    ...OfficeEntry
+  }
+}
