@@ -152,6 +152,9 @@ const Event = ({ data: { loading, event, currentUser }, createSignup, destroySig
                     destroySignupHandler={() => destroySignup(event, currentUser)}
                   />
                 </div>
+                <div className={s.capacityAnnotation}>
+                  <span>Capacity: {event.capacity}</span>
+                </div>
               </div>
               <UserList users={event.users} />
             </Section>
