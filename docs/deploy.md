@@ -26,15 +26,15 @@ You'll need them in the steps to come. The portal's name should be concise and d
 
 1. Use Heroku's automatically generated URL.
 
-It will look like this: `[name of your app].herokuapp.com`. While this is convenient and easy, it needs to be unique among other Heroku apps and it may not be the easiest for your volunteers to remember.
+  It will look like this: `[name of your app].herokuapp.com`. While this is convenient and easy, it needs to be unique among other Heroku apps and it may not be the easiest for your volunteers to remember.
 
 2. Use a custom domain name.
 
-You can connect any custom domain name you own to your Heroku deployment. We'll go over how to link the two later in the setup, but make sure you know what it is!
+  You can connect any custom domain name you own to your Heroku deployment. We'll go over how to link the two later in the setup, but make sure you know what it is!
 
 ### Set up User Authorization
 
-Volunteer Portal currently supports two forms of user authentication:  Google Oauth and Okta.  Choose whichever one makes most sense for you, and follow the instructions below to get started.  If you have requests for more authentication methods, feel free to let us know by joining our Slack channel ([the link is in our main README](https://github.com/zendesk/volunteer_portal/blob/ahart/okta-auth/README.md#volunteer-portal)), or follow [our developer documentation](https://github.com/zendesk/volunteer_portal/blob/ahart/okta-auth/docs/development.md) to add it yourself!
+Volunteer Portal currently supports two forms of user authentication:  Google Oauth and SAML.  Choose whichever one makes most sense for you, and follow the instructions below to get started.  If you have requests for more authentication methods, feel free to let us know by joining our Slack channel ([the link is in our main README](https://github.com/zendesk/volunteer_portal/blob/ahart/okta-auth/README.md#volunteer-portal)), or follow [our developer documentation](https://github.com/zendesk/volunteer_portal/blob/ahart/okta-auth/docs/development.md) to add it yourself!
 
 #### Set up Google OAuth
 
@@ -50,18 +50,19 @@ Follow Google's [Setting up OAuth 2.0 page](https://support.google.com/cloud/ans
 Once you have setup your OAuth application, you will need to [enable the Google+ API](https://developers.google.com/+/web/signin/#enable_the_google_api).
 We use this additional API to get some extra user information like their language.
 
-#### Set up Okta Auth
+#### Set up SAML Auth
 
-[Okta](https://www.okta.com/) is a subscription SAML SSO authentication service. We won't go into the details of fully provisioning an Okta instance; if you don't already have Okta in place, we recommend using Google OAuth.  To set up your Portal with Okta, you will need to set up a new Okta application and collect the following for later:
+SAML authentication can be provided through a number of third party services.  We won't go into the details of fully provisioning a SAML provider, but if you have one you'll need the following information for later:
 
-* Client ID
-* Client Secret
-* Okta Org URL
+* Saml Issuer
+* IDP SSO Target URL
+* IDP Certificate
 
-In the application configuration, you will also need to set up your **Login redirect URIs** and **Initiate login URI**.  The URIs will be the URL for your Volunteer Portal appended with `/auth/okta/callback`.
+In your SAML application configuration, you will also need to set up your **Single sign on URL**.  The URL will be the URL for your Volunteer Portal appended with `/auth/saml/callback`.
 
-  * Ex. If your URL is `https://volunteer_portal.herokuapp.com`, you would list `https://volunteer_portal.herokuapp.com/auth/okta/callback`.
+  * Ex. If your URL is `https://volunteer_portal.herokuapp.com`, you would list `https://volunteer_portal.herokuapp.com/auth/saml/callback`.
 
+SAML authentication allows you to sync additional metadata from your Identity Provider to your Volunteer Portal.  **In order to function, the portal requires attribute statements for `first_name`, `last_name`, and `email`.**  Any additional fields passed along will be stored in each user's metadata field for your use in reporting.
 
 ### Generate a secure encryption key
 
@@ -89,11 +90,11 @@ ruby -rsecurerandom -e 'puts SecureRandom.hex(16)'
 
       * `GOOGLE_CLIENT_ID` - acquired above during [google oauth setup](#set-up-google-oauth)
       * `GOOGLE_CLIENT_SECRET` - acquired above during [google oauth setup](#set-up-google-oauth)
-  1. For Okta Auth
+  1. For SAML Auth
 
-      * `OKTA_CLIENT_ID` - acquired above during [Okta auth setup](#set-up-okta-auth)
-      * `OKTA_CLIENT_SECRET` - acquired above during [Okta auth setup](#set-up-okta-auth)
-      * `OKTA_ORG`- acquired above during [Okta auth setup](#set-up-okta-auth)
+      * `SAML_ISSUER` - acquired above during [SAML auth setup](#set-up-saml-auth)
+      * `SAML_IDP_SSO_TARGET_URL` - acquired above during [SAML auth setup](#set-up-saml-auth)
+      * `SAML_IDP_CERT`- acquired above during [SAML auth setup](#set-up-saml-auth)
 
 1. Click Deploy app!
 

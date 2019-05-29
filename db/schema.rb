@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190313055115) do
+ActiveRecord::Schema.define(version: 20190417233035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20190313055115) do
     t.string "encrypted_google_token_iv"
     t.datetime "deleted_at"
     t.string "group"
+    t.jsonb "metadata"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email", "deleted_at"], name: "index_users_on_email_and_deleted_at"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

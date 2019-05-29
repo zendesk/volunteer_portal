@@ -26,17 +26,13 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     end
 
     provider :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), options
-  elsif ENV['OKTA_CLIENT_ID']
-    provider :okta, ENV['OKTA_CLIENT_ID'], ENV['OKTA_CLIENT_SECRET'], {
-      name: 'okta',
-      client_options: {
-        site:          "https://#{ENV['OKTA_ORG']}.okta.com",
-        authorize_url: "https://#{ENV['OKTA_ORG']}.okta.com/oauth2/v1/authorize",
-        token_url:     "https://#{ENV['OKTA_ORG']}.okta.com/oauth2/v1/token"
-      }
-    }
+  elsif ENV['SAML_ISSUER']
+    provider :saml,
+    :issuer                             => ENV['SAML_ISSUER'],
+    :idp_sso_target_url                 => ENV['SAML_IDP_SSO_TARGET_URL'],
+    :idp_cert                           => ENV['SAML_IDP_CERT']
   else
-    raise 'Please configure either Google Authentication or Okta.'
+    raise 'Please configure either Google or SAML Authentication.'
   end
 end
 
