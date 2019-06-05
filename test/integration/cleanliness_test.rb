@@ -24,7 +24,7 @@ describe 'cleanliness' do
         app/controllers/standalone_controller.rb
         app/graphql/mutations/base_mutation.rb
         app/graphql/mutations/create_event_type.rb
-        app/graphql/mutations/approve_individual_event.rb
+        app/graphql/mutations/approve_individual_events.rb
         app/graphql/mutations/create_signup.rb
         app/graphql/mutations/delete_individual_event.rb
         app/graphql/mutations/update_user.rb
@@ -33,7 +33,7 @@ describe 'cleanliness' do
         app/graphql/mutations/create_organization.rb
         app/graphql/mutations/create_office.rb
         app/graphql/mutations/update_organization.rb
-        app/graphql/mutations/reject_individual_event.rb
+        app/graphql/mutations/reject_individual_events.rb
         app/graphql/mutations/update_office.rb
         app/graphql/mutations/delete_user.rb
         app/graphql/mutations/create_edit_individual_event.rb

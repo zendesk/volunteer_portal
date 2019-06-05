@@ -178,3 +178,20 @@ textarea {
 .muiTextField hr {
   display: none;
 }
+
+.eventsTable :global(.ReactTable) {
+  border: none;
+}
+
+.eventsTable :global(.ReactTable) :global(.rt-thead) {
+  box-shadow: inset 0 -2px #eee;
+}
+
+.bulkActionSelect, .bulkActionButton {
+  margin: 5px;
+  vertical-align: bottom;
+}
+.bulkActionSelect {
+  height: 22px;
+  line-height: 22px;
+}

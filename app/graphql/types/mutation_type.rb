@@ -9,8 +9,8 @@ module Types
 
     field :create_edit_individual_event, UserGraphType, mutation: Mutations::CreateEditIndividualEvent
     field :delete_individual_event, UserGraphType, mutation: Mutations::DeleteIndividualEvent
-    field :approve_individual_event, IndividualEventGraphType, mutation: Mutations::ApproveIndividualEvent
-    field :reject_individual_event, IndividualEventGraphType, mutation: Mutations::RejectIndividualEvent
+    field :approve_individual_events, [IndividualEventGraphType], mutation: Mutations::ApproveIndividualEvents
+    field :reject_individual_events, [IndividualEventGraphType], mutation: Mutations::RejectIndividualEvents
 
     field :create_office, OfficeGraphType, mutation: Mutations::CreateOffice
     field :update_office, OfficeGraphType, mutation: Mutations::UpdateOffice
