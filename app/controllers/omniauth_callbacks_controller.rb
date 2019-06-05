@@ -1,4 +1,7 @@
 class OmniauthCallbacksController < ActionController::Base
+  REQUIRED_PARAMS = ['email', 'first_name', 'last_name'].freeze
+  METADATA_IGNORED_PARAMS = (REQUIRED_PARAMS + ['fingerprint']).freeze
+
   protect_from_forgery with: :exception
   layout 'application'
 
@@ -62,7 +65,7 @@ class OmniauthCallbacksController < ActionController::Base
   def set_user_metadata
     user.metadata = saml_response_attributes.attributes.keys.each_with_object({}) do |key, metadata|
       # Ignore default fields we already capture in user or don't care about
-      next if ['first_name', 'last_name', 'email', 'fingerprint'].include?(key)
+      next if METADATA_IGNORED_PARAMS.include?(key)
       metadata[key] = saml_response_attributes[key]
     end.to_json
   end
@@ -74,7 +77,7 @@ class OmniauthCallbacksController < ActionController::Base
   helper_method :user_signed_in?
 
   def verify_callback_contents
-    return if (auth_info.keys & ['email', 'first_name', 'last_name']).size == 3
+    return if (auth_info.keys & REQUIRED_PARAMS).size == 3
 
     raise 'Authentication provider must provide email, first_name, and last_name parameters'   
   end

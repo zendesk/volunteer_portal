@@ -23,18 +23,16 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       end
     }
 
-    if domain = ENV['OAUTH_DOMAIN']
-      options.merge!(hd: domain)
-    end
+    options[:hd] = ENV['OAUTH_DOMAIN'] if ENV['OAUTH_DOMAIN']
 
     provider :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), options
   end
 
   if ENV['SAML_ISSUER']
     provider :saml,
-    :issuer                             => ENV['SAML_ISSUER'],
-    :idp_sso_target_url                 => ENV['SAML_IDP_SSO_TARGET_URL'],
-    :idp_cert                           => ENV['SAML_IDP_CERT']
+      :issuer                             => ENV.fetch('SAML_ISSUER'),
+      :idp_sso_target_url                 => ENV.fetch('SAML_IDP_SSO_TARGET_URL'),
+      :idp_cert                           => ENV.fetch('SAML_IDP_CERT')
   end
 end
 
