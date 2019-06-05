@@ -179,11 +179,11 @@ textarea {
   display: none;
 }
 
-.eventsTable > div {
+.eventsTable :global(.ReactTable) {
   border: none;
 }
 
- .eventsTable > div > div:nth-child(1) > div:nth-child(1) {
+.eventsTable :global(.ReactTable) :global(.rt-thead) {
   box-shadow: inset 0 -2px #eee;
 }
 
