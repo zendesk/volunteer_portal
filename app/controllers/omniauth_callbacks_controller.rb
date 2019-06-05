@@ -12,13 +12,17 @@ class OmniauthCallbacksController < ActionController::Base
 
   def callback
     set_user_photo
-    set_user_metadata
+    set_user_metadata if params[:saml]
 
     user.save!
 
     session[:user_id] = user.id
 
-    redirect_to params[:return_to] || :portal
+    if params[:return_to]&.include?(root_url)
+      redirect_to params[:return_to] 
+    else
+      redirect_to :portal
+    end
   rescue ActiveRecord::RecordInvalid => e
     render text: e.message, status: :forbidden
   end
@@ -52,7 +56,7 @@ class OmniauthCallbacksController < ActionController::Base
   end
 
   def set_user_photo
-    user.photo = auth_info['image'] if auth_info['image']
+    user.photo = auth_info['image'] if auth_info['image'].present?
   end
 
   def set_user_metadata
@@ -70,7 +74,8 @@ class OmniauthCallbacksController < ActionController::Base
   helper_method :user_signed_in?
 
   def verify_callback_contents
-    raise 'Authentication provider must provide email, first_name, and last_name parameters' unless (auth_info.keys & ['email', 'first_name', 'last_name']).size == 3
-  end
+    return if (auth_info.keys & ['email', 'first_name', 'last_name']).size == 3
 
+    raise 'Authentication provider must provide email, first_name, and last_name parameters'   
+  end
 end

@@ -34,7 +34,7 @@ You'll need them in the steps to come. The portal's name should be concise and d
 
 ### Set up User Authorization
 
-Volunteer Portal currently supports two forms of user authentication:  Google Oauth and SAML.  Choose whichever one makes most sense for you, and follow the instructions below to get started.  If you have requests for more authentication methods, feel free to let us know by joining our Slack channel ([the link is in our main README](https://github.com/zendesk/volunteer_portal/blob/ahart/okta-auth/README.md#volunteer-portal)), or follow [our developer documentation](https://github.com/zendesk/volunteer_portal/blob/ahart/okta-auth/docs/development.md) to add it yourself!
+Volunteer Portal currently supports two forms of user authentication:  Google Oauth and SAML.  Choose whichever one makes most sense for you, and follow the instructions below to get started.  If you have requests for more authentication methods, feel free to let us know by joining our Slack channel ([the link is in our main README](README.md)), or follow [our developer documentation](docs/development.md) to add it yourself!
 
 #### Set up Google OAuth
 

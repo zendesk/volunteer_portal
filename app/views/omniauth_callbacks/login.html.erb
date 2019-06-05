@@ -10,9 +10,14 @@
 
   <div class="login-form">
     <% if ENV['GOOGLE_CLIENT_ID'] %>
-      <%= button_to 'Sign in with Google', '/auth/google_oauth2', class: 'signin-btn google' %>
-    <% else %>
-      <%= button_to 'Sign in with SAML', '/auth/saml', class: 'signin-btn okta' %>
+      <p>
+        <%= button_to 'Sign in with Google', '/auth/google_oauth2', class: 'signin-btn google' %>
+      </p>
+    <% end %>
+    <% if ENV['SAML_ISSUER'] %>
+      <p>
+        <%= button_to 'Sign in with SAML', '/auth/saml', class: 'signin-btn okta' %>
+      </p>
     <% end %>
   </div>
 </div>

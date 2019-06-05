@@ -5,6 +5,8 @@ host = ENV['HOST'] || 'http://localhost:3000'
 # OKTA_CLIENT_ID is defined, the app will fail to boot
 #
 Rails.application.config.middleware.use OmniAuth::Builder do
+  raise 'Please configure either Google or SAML Authentication.' unless ENV['GOOGLE_CLIENT_ID'] || ENV['SAML_ISSUER']
+
   if ENV['GOOGLE_CLIENT_ID']
     # Default usage, this will give you offline access and a refresh token
     # using default scopes 'email' and 'profile'
@@ -26,13 +28,13 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     end
 
     provider :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), options
-  elsif ENV['SAML_ISSUER']
+  end
+
+  if ENV['SAML_ISSUER']
     provider :saml,
     :issuer                             => ENV['SAML_ISSUER'],
     :idp_sso_target_url                 => ENV['SAML_IDP_SSO_TARGET_URL'],
     :idp_cert                           => ENV['SAML_IDP_CERT']
-  else
-    raise 'Please configure either Google or SAML Authentication.'
   end
 end
 
