@@ -70,6 +70,7 @@ guide you through the process.
 
 1. Now that you have your *OAuth client ID* and *Service Account Key* set up, time to
    include this as your environment variables. Open `.env.development` file and insert the values as below. You should not be updating `.env.development.example`. Read _step 6_ in *Set up your Environment*.
+   
    ```
      HOST=http://localhost:5000
      PUBLIC_ASSET_HOST=localhost
@@ -79,8 +80,8 @@ guide you through the process.
      GOOGLE_CLIENT_SECRET=your_OAuth_Client_Secret
      GOOGLE_PRIVATE_KEY_ID=your_service_account_key
      GOOGLE_PRIVATE_KEY=your_service_account_key
-
    ```
+   
 1. [Enable the Google+ API](https://console.developers.google.com/apis/library/plus.googleapis.com/)
 
 ## Start the App

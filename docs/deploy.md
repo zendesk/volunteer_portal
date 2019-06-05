@@ -3,7 +3,7 @@
 * [Getting started](#getting-started)
   * [Create a Heroku account](#create-a-heroku-account)
   * [Decide on your Volunteer Portal's name and URL](#decide-on-your-volunteer-portals-name-and-url)
-  * [Set up Google OAuth](#set-up-google-oauth)
+  * [Set up user authorization](#set-up-user-authorization)
 * [Deploying your first Volunteer portal](#deploying-your-first-volunteer-portal)
 * [Configuring optional features](#configuring-optional-features)
   * [Rollbar](#rollbar)
@@ -26,25 +26,43 @@ You'll need them in the steps to come. The portal's name should be concise and d
 
 1. Use Heroku's automatically generated URL.
 
-It will look like this: `[name of your app].herokuapp.com`. While this is convenient and easy, it needs to be unique among other Heroku apps and it may not be the easiest for your volunteers to remember.
+  It will look like this: `[name of your app].herokuapp.com`. While this is convenient and easy, it needs to be unique among other Heroku apps and it may not be the easiest for your volunteers to remember.
 
 2. Use a custom domain name.
 
-You can connect any custom domain name you own to your Heroku deployment. We'll go over how to link the two later in the setup, but make sure you know what it is!
+  You can connect any custom domain name you own to your Heroku deployment. We'll go over how to link the two later in the setup, but make sure you know what it is!
 
-### Set up Google OAuth
+### Set up User Authorization
+
+Volunteer Portal currently supports two forms of user authentication:  Google Oauth and SAML.  Choose whichever one makes most sense for you, and follow the instructions below to get started.  If you have requests for more authentication methods, feel free to let us know by joining our Slack channel ([the link is in our main README](README.md)), or follow [our developer documentation](docs/development.md) to add it yourself!
+
+#### Set up Google OAuth
 
 Follow Google's [Setting up OAuth 2.0 page](https://support.google.com/cloud/answer/6158849?hl=en) documentation through the process of configuring a Google OAuth account. Please keep the following things in mind:
 
 * Make sure you have an account that has permissions to create projects. You may need to create a new google account. Make sure you're logged in as this account the whole process.
 * Your Application type should be "Web Application"
 * Under the "Authorized redirect URIs" list your Volunteer Portal's URL with the appended `/auth/google_oauth2/callback`.
-  For example, if your URL is `https://volunteer_portal.herokuapp.com`, you would list `https://volunteer_portal.herokuapp.com/auth/google_oauth2/callback`.
+  * Ex. If your URL is `https://volunteer_portal.herokuapp.com`, you would list `https://volunteer_portal.herokuapp.com/auth/google_oauth2/callback`.
 * If you have a custom domain name, also list it under "Authorized redirect URIs" with `/auth/google_oauth2/callback` appended.
 * Keep your Client ID and Client secret handy. You'll need them later.
 
 Once you have setup your OAuth application, you will need to [enable the Google+ API](https://developers.google.com/+/web/signin/#enable_the_google_api).
 We use this additional API to get some extra user information like their language.
+
+#### Set up SAML Auth
+
+SAML authentication can be provided through a number of third party services.  We won't go into the details of fully provisioning a SAML provider, but if you have one you'll need the following information for later:
+
+* Saml Issuer
+* IDP SSO Target URL
+* IDP Certificate
+
+In your SAML application configuration, you will also need to set up your **Single sign on URL**.  The URL will be the URL for your Volunteer Portal appended with `/auth/saml/callback`.
+
+  * Ex. If your URL is `https://volunteer_portal.herokuapp.com`, you would list `https://volunteer_portal.herokuapp.com/auth/saml/callback`.
+
+SAML authentication allows you to sync additional metadata from your Identity Provider to your Volunteer Portal.  **In order to function, the portal requires attribute statements for `first_name`, `last_name`, and `email`.**  Any additional fields passed along will be stored in each user's metadata field for your use in reporting.
 
 ### Generate a secure encryption key
 
@@ -64,10 +82,19 @@ ruby -rsecurerandom -e 'puts SecureRandom.hex(16)'
    The following inputs are required:
 
    * application name - you should have chosen [above](#decide-on-your-volunteer-portals-name-and-url)
-   * `GOOGLE_CLIENT_ID` - acquired above during [google oauth setup](#setup-google-oauth)
-   * `GOOGLE_CLIENT_SECRET` - acquired above during [google oauth setup](#setup-google-oauth)
    * `ATTR_ENCRYPTION_KEY` - the secure key generated [above](#generate-a-secure-encryption-key)
    * `HOST` - the absolute URL using the [name you chose or custom domain](#decide-on-your-volunteer-portals-name-and-url), for example: `https://volunteer_portal.herokuapp.com`
+
+1. Depending on which user authentication method you chose above, you will need your auth secrets.
+  1. For Google Auth
+
+      * `GOOGLE_CLIENT_ID` - acquired above during [google oauth setup](#set-up-google-oauth)
+      * `GOOGLE_CLIENT_SECRET` - acquired above during [google oauth setup](#set-up-google-oauth)
+  1. For SAML Auth
+
+      * `SAML_ISSUER` - acquired above during [SAML auth setup](#set-up-saml-auth)
+      * `SAML_IDP_SSO_TARGET_URL` - acquired above during [SAML auth setup](#set-up-saml-auth)
+      * `SAML_IDP_CERT`- acquired above during [SAML auth setup](#set-up-saml-auth)
 
 1. Click Deploy app!
 

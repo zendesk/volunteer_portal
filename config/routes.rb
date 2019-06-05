@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope :auth, controller: :omniauth_callbacks do
     get    :login
     get    ':provider/callback', action: :callback
+    post   ':saml/callback', action: :callback
     get    :failure
     get    :logout
     delete :logout
