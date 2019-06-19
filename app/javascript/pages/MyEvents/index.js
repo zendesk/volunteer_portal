@@ -351,7 +351,7 @@ const IndividualEvents = props => {
           </button>
         </div>
         <h1>Individual Events</h1>
-        <h4>Events organized by you.</h4>
+        <h4>Private events that you've attended and want to record.</h4>
       </div>
       <ReactTable
         NoDataComponent={() => null}
@@ -420,7 +420,7 @@ const organizedEventsColumns = [
 const OrganizedEvents = ({ currentUser: { signups } }) => (
   <div className={s.eventsTable}>
     <h1>Organized Events</h1>
-    <h4>Events organized by your organization.</h4>
+    <h4>Events organized by your organization, found on the calendar.</h4>
     <ReactTable
       NoDataComponent={() => null}
       data={signups.map(signup => signup.event)}
