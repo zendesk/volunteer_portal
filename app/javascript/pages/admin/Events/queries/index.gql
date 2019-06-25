@@ -9,9 +9,12 @@ query EventsQuery($officeId: ID, $sortBy: EventSortEnum,) {
   }
   events(officeId: $officeId, sortBy: $sortBy) {
     ...EventEntry
+    signupCount
     office {
       ...OfficeEntry
     }
-    duration
+    organization {
+      name
+    }
   }
 }

@@ -39,29 +39,35 @@ const columns = deleteEvent => [
     filterable: true,
   },
   {
-    Header: 'Office',
-    accessor: 'office.name',
-    minWidth: 70,
-    sortable: true,
-    filterable: true,
-  },
-  {
-    Header: 'Description',
-    accessor: 'description',
+    Header: 'Organization',
+    accessor: 'organization.name',
     sortable: true,
     filterable: true,
   },
   {
     Header: 'Start',
     accessor: 'startsAt',
+    width: 130,
     sortable: true,
-    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
+    Cell: ({ value }) => moment(value).format('MMM DD, Y'),
   },
   {
-    Header: 'End',
-    accessor: 'endsAt',
+    id: 'duration',
+    Header: 'Duration',
+    width: 80,
+    accessor: e => {
+      let start = moment(e.startsAt)
+      let end = moment(e.endsAt)
+      let diff = end.diff(start)
+      return moment.utc(diff).format('H:mm')
+    },
     sortable: true,
-    Cell: ({ value }) => moment(value).format('h:mm a, MMM D, Y'),
+  },
+  {
+    Header: 'Participants',
+    accessor: 'signupCount',
+    width: 120,
+    sortable: true,
   },
   {
     Header: 'Actions',
