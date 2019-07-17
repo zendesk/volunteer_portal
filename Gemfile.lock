@@ -172,8 +172,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.1)
-    rollbar (2.15.0)
-      multi_json
+    rollbar (2.21.0)
     ruby-saml (1.10.0)
       nokogiri (>= 1.8.2)
     safe_yaml (1.0.4)
