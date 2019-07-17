@@ -23,10 +23,10 @@
     <%= action_cable_meta_tag %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjoBGXTV75LE09ql5iZ5SmajncX_JAaCk&libraries=places"></script>
 
-    <% if ENV['ROLLBAR_URL'] %>
+    <% if ENV['ROLLBAR_ENDPOINT'] %>
       <script>
         var _rollbarConfig = {
-            endpoint: "<%= ENV['ROLLBAR_URL'] %>/api/1/",
+            endpoint: "<%= ENV['ROLLBAR_ENDPOINT'] %>",
             accessToken: "<%= ENV['ROLLBAR_CLIENT_ACCESS_TOKEN'] %>",
             captureUncaught: true,
             captureUnhandledRejections: false,

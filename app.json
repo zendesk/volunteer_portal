@@ -37,12 +37,12 @@
       "description": "Restricts portal access to a specific email domain.  This can be a string or a comma separated list.",
       "required": false
     },
-    "ROLLBAR_URL": {
+    "ROLLBAR_ENDPOINT": {
       "description": "If defined, it will report application exceptions to this Rollbar instance",
       "required": false
     },
     "ROLLBAR_CLIENT_ACCESS_TOKEN": {
-      "description": "If ROLLBAR_URL is defined, the access token is needed to authenticate to Rollbar",
+      "description": "If ROLLBAR_ENDPOINT is defined, the access token is needed to authenticate to Rollbar",
       "required": false
     },
     "ZENDESK_WIDGET_KEY": {
