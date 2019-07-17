@@ -11,6 +11,8 @@ import { syncHistoryWithStore } from 'react-router-redux'
 
 import Root from 'components/Root'
 import configureStore from './store/configureStore'
+import t from '@zendesk/client-i18n-tools'
+
 import Actions from './actions'
 
 const client = new ApolloClient({
@@ -23,9 +25,11 @@ const client = new ApolloClient({
 const store = configureStore(client)
 const history = syncHistoryWithStore(browserHistory, store)
 
-ReactDOM.render(
-  <ApolloProvider store={store} client={client}>
-    <Root store={store} history={history} />
-  </ApolloProvider>,
-  document.getElementById('root')
-)
+t.load('en-us', () => {
+  ReactDOM.render(
+    <ApolloProvider store={store} client={client}>
+      <Root store={store} history={history} />
+    </ApolloProvider>,
+    document.getElementById('root')
+  )
+})

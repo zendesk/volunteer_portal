@@ -1,0 +1,1988 @@
+title: knowledge
+packages:
+  - default
+  - knowledge
+parts:
+  - translation:
+      key: knowledge.addNewLabel
+      title: 'A hint shown in a dropdown to create a new label, used here: https://zendesk.app.box.com/s/5kycrgnjtxm12f9s4552brwmw58awycz.'
+      value: Foobar Add as new label...
+  - translation:
+      key: knowledge.addNewSearchKeyword
+      title: 'A hint shown in a dropdown to create a new search keyword https://zendesk.app.box.com/s/5kycrgnjtxm12f9s4552brwmw58awycz. A keyword to add to article for search optimization purposes (search keyword, noun)'
+      value: Add as new search keyword...
+      obsolete: '2016-06-30'
+  - translation:
+      key: knowledge.allLanguages
+      title: 'Filter: show all languages'
+      value: All
+  - translation:
+      key: knowledge.article.archived
+      title: Message displayed when article archival succeeded
+      value: Article archived
+  - translation:
+      key: knowledge.article.created
+      title: Message displayed when article creation succeeded
+      value: Article created
+  - translation:
+      key: knowledge.article.deleted
+      title: Message displayed when article deletion succeeded
+      value: Article deleted
+  - translation:
+      key: knowledge.article.not.archived
+      title: Message displayed when article archival failed
+      value: "Article wasn't archived. Please try again."
+  - translation:
+      key: knowledge.article.not.created
+      title: Message displayed when article creation failed
+      value: "Article wasn't saved. Please try again."
+  - translation:
+      key: knowledge.article.not.deleted
+      title: Message displayed when article deletion failed
+      value: "Article wasn't deleted. Please try again."
+  - translation:
+      key: knowledge.article.not.read
+      title: Message displayed when article retrieval failed
+      value: Could not retrieve the article. Please try again.
+  - translation:
+      key: knowledge.article.not.restored
+      title: Message displayed when article restore failed
+      value: "Article wasn't restored. Please try again."
+  - translation:
+      key: knowledge.article.not.updated
+      title: Message displayed when article update failed
+      value: "Article wasn't updated. Please try again."
+  - translation:
+      key: knowledge.article.restored
+      title: Message displayed when article restore succeeds
+      value: Article restored
+  - translation:
+      key: knowledge.article.updated
+      title: Message displayed when article update succeeded
+      value: Article updated
+  - translation:
+      key: knowledge.articleArchiveAction
+      title: Button to archive the article
+      value: Archive article
+  - translation:
+      key: knowledge.articleAttachmentsTitle
+      title: Title of the list of article attachments
+      value: Attachments
+  - translation:
+      key: knowledge.articleBackAction
+      title: Button to go back to the overview
+      value: Back
+      obsolete: '2016-07-05'
+  - translation:
+      key: knowledge.articleBrandSelectionDescription
+      title: Explanatory text for the brand selection when accessing the articles. If your account has mor than one brand you can select from a list which brand/Help Center you are adding the article for.
+      value: Select a brand for your article.
+  - translation:
+      key: knowledge.articleBrandSelectionTitle
+      title: Title of the brand selection dialog
+      value: Select a brand
+  - translation:
+      key: knowledge.articleCancelAction
+      title: Button to cancel the changes to the article
+      value: Cancel
+  - translation:
+      key: knowledge.articleCancelConfirmation
+      title: Confirmation message for cancelling article edit
+      value: You have unsaved changes
+      obsolete: '2016-04-04'
+  - translation:
+      key: knowledge.articleCount.many
+      title: 'Indication of the number of articles present in the list below. If your language has more than one plural please use Articles: %{count}'
+      value: '%{count} articles'
+      obsolete: '2016-03-18'
+  - translation:
+      key: knowledge.articleCount.one
+      title: 'Indication of the number of articles present in the list below. If your language has more than one plural please use Articles: %{count}'
+      value: 1 article
+      obsolete: '2016-03-18'
+  - translation:
+      key: knowledge.articleCount.zero
+      title: 'Indication of the number of articles present in the list below. If your language has more than one plural please use Articles: %{count}'
+      value: 0 articles
+      obsolete: '2016-03-18'
+  - translation:
+      key: knowledge.articleCreateAction
+      title: Button to create the article
+      value: Create
+  - translation:
+      key: knowledge.articleDefaultTitle
+      title: The default title for articles when it is not filled in by the user
+      value: Untitled
+  - translation:
+      key: knowledge.articleDeleteAction
+      title: Button to delete the article
+      value: Delete article
+  - translation:
+      key: knowledge.articleDeleteConfirmation
+      title: Confirmation message for deleting articles
+      value: Are you sure you want to delete this article?
+      obsolete: '2016-06-13'
+  - translation:
+      key: knowledge.articleDeleteConfirmationWithWarning
+      title: Confirmation message for deleting articles
+      value: Are you sure you want to delete this article? Deleted content cannot be recovered.
+  - translation:
+      key: knowledge.articleDiscardConfirmation
+      title: Confirmation message for canceling changes to an article
+      value: Are you sure you want to discard your unsaved changes?
+  - translation:
+      key: knowledge.articleForbidden.body
+      title: 'Message displayed on an error page in a deleted article, only accessible to managers. It refers to the deleted article.'
+      value: Contact a Help Center Manager if you need it restored.
+  - translation:
+      key: knowledge.articleForbidden.intro
+      title: 'Message displayed on an error page in a deleted article, only accessible to managers'
+      value: The article has been archived
+  - translation:
+      key: knowledge.articleForbidden.title
+      title: 'Message displayed on an error page in a deleted article, only accessible to managers'
+      value: Archived article
+  - translation:
+      key: knowledge.articleHelpCenterOptionsTitle
+      title: Title above the Help Center options
+      value: Help Center options
+  - translation:
+      key: knowledge.articleImagesTab
+      title: The article images tab label
+      value: Article images
+      screenshot: 'https://zendesk.box.com/s/9yqrnvdn556cymisi3ngxshxh2ev7yiz'
+  - translation:
+      key: knowledge.articleLabelsTitle
+      title: Title above the article labels
+      value: Labels
+  - translation:
+      key: knowledge.articleLeaveConfirmation
+      title: Confirmation message when leaving an article with changes
+      value: You have unsaved changes
+  - translation:
+      key: knowledge.articleOpenForCommentLabel
+      title: Option to open the article to comments
+      value: Open for comments
+  - translation:
+      key: knowledge.articlePromoteLabel
+      title: Option to promote the article
+      value: Promote article
+  - translation:
+      key: knowledge.articleRestoreAction
+      title: Button to restore the article
+      value: Restore
+      screenshot: 'https://zendesk.box.com/s/4uehzpenlwjhmd6pa0agp3biwos7y4xw'
+  - translation:
+      key: knowledge.articleSectionSelectionTitle
+      title: Title above the selection of section to publish the article in. It is followed by a drop down menu where you can select the name of the section.
+      value: Publish in section
+  - translation:
+      key: knowledge.articleSectionSelectionWarning
+      title: Warning about the consequences of selecting a section to publish the article in
+      value: Changes affect all translations
+  - translation:
+      key: knowledge.articleTitlePlaceholder
+      title: Placeholder for the article title input field
+      value: Title
+  - translation:
+      key: knowledge.articleUpdateAction
+      title: Button to update the article
+      value: Update
+  - translation:
+      key: knowledge.articlesAllHeading
+      title: Title above the listing of all the articles
+      value: All articles
+  - translation:
+      key: knowledge.attachmentInvalid
+      title: Message displayed when attaching a file failed. Match with value in knowledge.attachmentUploadAction (20MB)
+      value: 'File was not uploaded: Max size of attachments is 20MB.'
+      screenshot: 'https://zendesk.box.com/s/195zgiatocisojg344j5zg7kr1vt4tjt'
+  - translation:
+      key: knowledge.attachmentUploadAction
+      title: Upload attachment action
+      value: Upload attachment (max 20MB)
+  - translation:
+      key: knowledge.attachments.deleted
+      title: Notification shown when images are marked for deletion from the gallery.
+      value: Images scheduled for deletion.
+  - translation:
+      key: knowledge.attachmentsTitle
+      title: The title for the attachment section in the sidebar
+      value: Attachments
+  - translation:
+      key: knowledge.authorFilterField
+      title: Filter field for author
+      value: Author
+  - translation:
+      key: knowledge.authorNoResults
+      title: A placeholder shown when no items could be found on a search
+      value: No results
+  - translation:
+      key: knowledge.authorSearch
+      title: Search (verb) placeholder
+      value: Search
+  - translation:
+      key: knowledge.authorSection
+      title: A section heading for author
+      value: Author
+  - translation:
+      key: knowledge.booleanFalseFilterTerm
+      title: Filter term for no/false
+      value: 'No'
+  - translation:
+      key: knowledge.booleanTrueFilterTerm
+      title: Filter term for yes/true
+      value: 'Yes'
+  - translation:
+      key: knowledge.categoriesHeader
+      title: Categories header. HC categories (see glossary) and match knowledge.categoryFilterField
+      value: Categories
+  - translation:
+      key: knowledge.categoryBrandSelectionDescription
+      title: Explanatory text for the brand selection when accessing the categories
+      value: Select a brand to manage categories.
+      obsolete: '2016-06-28'
+  - translation:
+      key: knowledge.categoryBrandSelectionTitle
+      title: Title of the brand selection dialog
+      value: Select a brand
+      obsolete: '2016-06-28'
+  - translation:
+      key: knowledge.categoryFilterField
+      title: Filter field for category
+      value: Category
+  - translation:
+      key: knowledge.changesWillAffectAllTranslations
+      title: Notice to the user that a change will affect all translations
+      value: Changes affect all translations
+  - translation:
+      key: knowledge.chooseFileAction
+      title: Choose file action
+      value: Choose file
+  - translation:
+      key: knowledge.clickToUpload
+      title: Link to chose images to upload to the article
+      value: Click to upload
+      screenshot: 'https://zendesk.box.com/s/hnzb5sztlq4k79t2jf879txtgcn69eq7'
+  - translation:
+      key: knowledge.contentActionAt
+      title: 'Line describing some action was done on a date. Can be followed by date or 6 days ago...1 day ago. Action will be one of the following keys: contentLastEdited, contentArchived, contentCreated. An example: Created 6 days ago ({action} {date})'
+      value: '%{action} %{date}'
+  - translation:
+      key: knowledge.contentActionAtBy
+      title: 'Line describing some action was done on a date by an author. Can be followed by date or 6 days ago...1 day ago. Action will be one of the following keys: contentLastEdited, contentArchived, contentCreated.'
+      value: '%{action} %{date} by %{author}'
+      screenshot: 'https://zendesk.box.com/s/jitt26hjx4ic53nhe0b23p79ke4606fu'
+  - translation:
+      key: knowledge.contentArchived
+      title: 'Placeholder for action in contentUpdatedAtBy: Created {date} by {author}.'
+      value: Archived
+      screenshot: 'https://zendesk.box.com/s/jitt26hjx4ic53nhe0b23p79ke4606fu'
+  - translation:
+      key: knowledge.contentArchivedAtBy
+      title: 'Line describing archive date and author. Can be followed by date or 6 days ago...1 day ago. If needed use colons. Example>> Archived: '
+      value: 'Archived %{date} by %{author}'
+  - translation:
+      key: knowledge.contentCreated
+      title: 'Placeholder for action in contentUpdatedAtBy: Created {date} by {author}.'
+      value: Created
+      screenshot: 'https://zendesk.box.com/s/nrelowehs1pf83355yef82kojmvv3nig'
+  - translation:
+      key: knowledge.contentLastEdited
+      title: 'Placeholder for action in contentUpdatedAtBy: Created {date} by {author}.'
+      value: Last edited
+      screenshot: 'https://zendesk.box.com/s/jitt26hjx4ic53nhe0b23p79ke4606fu'
+  - translation:
+      key: knowledge.contentLastEditedAt
+      title: 'Line describing last edited date. Can be followed by date or 6 days ago...1 day ago. If needed use colons. Example>> Last edited: '
+      value: 'Last edited %{date}'
+  - translation:
+      key: knowledge.contentLastEditedAtBy
+      title: 'Line describing last edited date and author. Can be followed by date or 6 days ago...1 day ago. If needed use colons. Example>> Last edited: '
+      value: 'Last edited %{date} by %{author}'
+  - translation:
+      key: knowledge.creationDateFilterField
+      title: Filter field for creation date. Goes with knowledge.dateComparatorGreaterThanFilterTerm and knowledge.dateComparatorLessThanFilterTerm
+      value: Created
+  - translation:
+      key: knowledge.creationDateLessThanFilterField
+      title: 'Filter field for creation date. Goes with knowledge.relativeDateLessThan[relative]AgoFilterTerm'
+      value: Created less than
+  - translation:
+      key: knowledge.creationDateMoreThanFilterField
+      title: 'Filter field for creation date. Goes with knowledge.relativeDateMoreThan[relative]AgoFilterTerm'
+      value: Created more than
+  - translation:
+      key: knowledge.dateComparatorGreaterThanFilterTerm
+      title: 'Filter term for greater than a given date. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: More than
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.dateComparatorLessThanFilterTerm
+      title: 'Filter term for less than a given date. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: Less than
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.deleteImage
+      title: Button label for deleting images from the gallery
+      value: Delete
+      screenshot: 'https://zendesk.box.com/s/qzhv8d8srvkp91doolihroodtw27bxa8'
+  - translation:
+      key: knowledge.deleteSourceTranslation
+      title: Menu option for deleting the source translation. Always disabled.
+      value: Source translation cannot be deleted
+  - translation:
+      key: knowledge.deleteTranslation
+      title: Menu option for deleting translation
+      value: Delete translation
+  - translation:
+      key: knowledge.dropFilesHereLine1
+      title: Description for a dropzone where you can drop files (line 1)
+      value: Drop files here
+  - translation:
+      key: knowledge.dropFilesHereLine2
+      title: Description for a dropzone where you can drop files (line 2)
+      value: to attach
+  - translation:
+      key: knowledge.dropInlineImagesHereLine1
+      title: Description for a dropzone where the image will be placed within a document (line 1)
+      value: Drop images here
+  - translation:
+      key: knowledge.dropInlineImagesHereLine2
+      title: Description for a dropzone where the image will be placed within a document (line 2)
+      value: to insert in the text
+  - translation:
+      key: knowledge.editor.addOrDropFilesInfo
+      title: 'Add file via a link, or drag and drop files here'
+      value: '%{link} or drop files here'
+  - translation:
+      key: knowledge.editor.addOrDropFilesLink
+      title: The text for the link in the key editor.addOrDropFilesInfo
+      value: Add file
+  - translation:
+      key: knowledge.editor.advanced
+      title: The advanced tab for the rich text editor
+      value: Advanced
+  - translation:
+      key: knowledge.editor.alignment
+      title: Rich text editor label for table alignment
+      value: Alignment
+  - translation:
+      key: knowledge.editor.appendHttp
+      title: Rich text editor warning to append http prefix to URL
+      value: 'The URL you entered seems to be an external link. Do you want to add the required http:// prefix?'
+  - translation:
+      key: knowledge.editor.appendMailto
+      title: Rich text editor warning to append mailto prefix to email links
+      value: 'The URL you entered seems to be an email address. Do you want to add the required mailto: prefix?'
+  - translation:
+      key: knowledge.editor.backgroundColor
+      title: The cell background color label in the rich text editor
+      value: Background color
+  - translation:
+      key: knowledge.editor.body
+      title: Rich text editor label for body in table
+      value: Body
+  - translation:
+      key: knowledge.editor.bold
+      title: Rich text editor label for bold
+      value: Bold
+  - translation:
+      key: knowledge.editor.border
+      title: Rich text editor label for border in table
+      value: Border
+  - translation:
+      key: knowledge.editor.borderColor
+      title: The cell border color label in the rich text editor
+      value: Border color
+  - translation:
+      key: knowledge.editor.bottom
+      title: 'Rich text editor label for alignment bottom. https://zendesk.box.com/s/29shcvh0xp9kf97qaujdlqj7ephkialo'
+      value: Bottom
+      screenshot: 'https://zendesk.box.com/s/29shcvh0xp9kf97qaujdlqj7ephkialo'
+  - translation:
+      key: knowledge.editor.cancel
+      title: Cancel
+      value: Cancel
+  - translation:
+      key: knowledge.editor.caption
+      title: Rich text editor label for caption in table
+      value: Caption
+  - translation:
+      key: knowledge.editor.cell
+      title: Rich text editor label for table cell
+      value: Cell
+  - translation:
+      key: knowledge.editor.cellHeader
+      title: Rich text editor label for cell in case it is header cell
+      value: Header cell
+  - translation:
+      key: knowledge.editor.cellPadding
+      title: Rich text editor label for table cell padding
+      value: Cell padding
+  - translation:
+      key: knowledge.editor.cellProp
+      title: Rich text editor label for seeing table properties
+      value: Cell properties
+  - translation:
+      key: knowledge.editor.cellSpacing
+      title: Rich text editor label for table cell spacing
+      value: Cell spacing
+  - translation:
+      key: knowledge.editor.cellType
+      title: Rich text editor label for table cell type
+      value: Cell type
+  - translation:
+      key: knowledge.editor.center
+      title: Rich text editor label for alignment center
+      value: Center
+  - translation:
+      key: knowledge.editor.close
+      title: Close
+      value: Close
+  - translation:
+      key: knowledge.editor.colDelete
+      title: Rich text editor label for delete column menu item
+      value: Delete column
+  - translation:
+      key: knowledge.editor.colGroup
+      title: Rich text editor label for column group in table
+      value: Column group
+  - translation:
+      key: knowledge.editor.colInsertAfter
+      title: Rich text editor label for insert column after menu item
+      value: Insert column after
+  - translation:
+      key: knowledge.editor.colInsertBefore
+      title: Rich text editor label for insert column before menu item
+      value: Insert column before
+  - translation:
+      key: knowledge.editor.color4
+      title: Text color
+      value: Text color
+  - translation:
+      key: knowledge.editor.cols
+      title: 'Rich text editor label for several columns in table. https://zendesk.box.com/s/evx7ab8pv2q16l08zz1z7e3rd7c6rcb4. Keep as short as possible, see screenshot.'
+      value: Cols
+      screenshot: 'https://zendesk.box.com/s/evx7ab8pv2q16l08zz1z7e3rd7c6rcb4'
+  - translation:
+      key: knowledge.editor.column
+      title: Rich text editor label for column in table
+      value: Column
+  - translation:
+      key: knowledge.editor.default
+      title: Rich text editor label for default font size
+      value: Default
+  - translation:
+      key: knowledge.editor.deleteImage
+      title: Delete image
+      value: Delete
+  - translation:
+      key: knowledge.editor.footer
+      title: Rich text editor label for footer in table
+      value: Footer
+  - translation:
+      key: knowledge.editor.general
+      title: The general tab for the rich text editor
+      value: General
+  - translation:
+      key: knowledge.editor.hAlign
+      title: Horizontal cell alignment label in the rich text editor
+      value: H Align
+  - translation:
+      key: knowledge.editor.header
+      title: Rich text editor label for header in table
+      value: Header
+  - translation:
+      key: knowledge.editor.height
+      title: Rich text editor label for height
+      value: Height
+  - translation:
+      key: knowledge.editor.indentMenu
+      title: Rich text editor label for align and indent menu
+      value: Align/indent
+  - translation:
+      key: knowledge.editor.insert
+      title: Rich text editor label for insert link menu
+      value: Insert
+  - translation:
+      key: knowledge.editor.insertImage
+      title: Title for the insert image dialog
+      value: Insert image
+  - translation:
+      key: knowledge.editor.italic
+      title: Rich text editor label for italic
+      value: Italic
+  - translation:
+      key: knowledge.editor.label
+      title: Rich text editor label for insert/edit link menu
+      value: Insert/edit link
+  - translation:
+      key: knowledge.editor.large
+      title: Rich text editor label for large font size
+      value: Large
+  - translation:
+      key: knowledge.editor.left
+      title: Rich text editor label for alignment left
+      value: Left
+  - translation:
+      key: knowledge.editor.link
+      title: Rich text editor label for link
+      value: Link
+  - translation:
+      key: knowledge.editor.medium
+      title: Rich text editor label for medium font size
+      value: Normal
+  - translation:
+      key: knowledge.editor.mediumSize
+      title: Rich text editor label for medium font size
+      value: Medium
+  - translation:
+      key: knowledge.editor.mergeCells
+      title: Rich text editor label for merging table cells
+      value: Merge cells
+  - translation:
+      key: knowledge.editor.middle
+      title: 'Rich text editor label for alignment middle. https://zendesk.box.com/s/29shcvh0xp9kf97qaujdlqj7ephkialo'
+      value: Middle
+      screenshot: 'https://zendesk.box.com/s/29shcvh0xp9kf97qaujdlqj7ephkialo'
+  - translation:
+      key: knowledge.editor.newlinkUrl
+      title: "Rich text editor label for a link's URL"
+      value: Link URL
+  - translation:
+      key: knowledge.editor.ok
+      title: OK
+      value: OK
+  - translation:
+      key: knowledge.editor.orderedList
+      title: Rich text editor label for ordered list
+      value: Numbered list
+  - translation:
+      key: knowledge.editor.remove
+      title: Rich text editor label for remove link menu
+      value: Remove link
+  - translation:
+      key: knowledge.editor.right
+      title: Rich text editor label for alignment right
+      value: Right
+  - translation:
+      key: knowledge.editor.row
+      title: Rich text editor label for row in table
+      value: Row
+  - translation:
+      key: knowledge.editor.rowCopy
+      title: Rich text editor label for copy row menu item
+      value: Copy row
+  - translation:
+      key: knowledge.editor.rowCut
+      title: Rich text editor label for cut row menu item
+      value: Cut row
+  - translation:
+      key: knowledge.editor.rowDelete
+      title: Rich text editor label for delete row menu item
+      value: Delete row
+  - translation:
+      key: knowledge.editor.rowGroup
+      title: Rich text editor label for row group in table
+      value: Row group
+  - translation:
+      key: knowledge.editor.rowInsertAfter
+      title: Rich text editor label for insert row after menu item
+      value: Insert row after
+  - translation:
+      key: knowledge.editor.rowInsertBefore
+      title: Rich text editor label for insert row before menu item
+      value: Insert row before
+  - translation:
+      key: knowledge.editor.rowPasteAfter
+      title: Rich text editor label for paste row after menu item
+      value: Paste row after
+  - translation:
+      key: knowledge.editor.rowPasteBefore
+      title: Rich text editor label for paste row before menu item
+      value: Paste row before
+  - translation:
+      key: knowledge.editor.rowProp
+      title: Rich text editor label for seeing row properties
+      value: Row properties
+  - translation:
+      key: knowledge.editor.rowType
+      title: Rich text editor label for row type in table
+      value: Row type
+  - translation:
+      key: knowledge.editor.rows
+      title: 'Rich text editor label for several rows in table. https://zendesk.box.com/s/evx7ab8pv2q16l08zz1z7e3rd7c6rcb4'
+      value: Rows
+      screenshot: 'https://zendesk.box.com/s/evx7ab8pv2q16l08zz1z7e3rd7c6rcb4'
+  - translation:
+      key: knowledge.editor.scope
+      title: Rich text editor label for scope in table
+      value: Scope
+  - translation:
+      key: knowledge.editor.small
+      title: Rich text editor label for small font size
+      value: Small
+  - translation:
+      key: knowledge.editor.sourceCode
+      title: Rich text editor label for source code dialog
+      value: Source code
+  - translation:
+      key: knowledge.editor.splitCell
+      title: Rich text editor label for splitting a single table cell
+      value: Split cell
+  - translation:
+      key: knowledge.editor.style
+      title: The cell style label in the rich text editor
+      value: Style
+  - translation:
+      key: knowledge.editor.table
+      title: Rich text editor table
+      value: Table
+  - translation:
+      key: knowledge.editor.tableDelete
+      title: Rich text editor label for delete table menu item
+      value: Delete table
+  - translation:
+      key: knowledge.editor.tableInsert
+      title: Rich text editor label for insert table menu item
+      value: Insert table
+  - translation:
+      key: knowledge.editor.tableProp
+      title: Rich text editor label for table properties
+      value: Table properties
+  - translation:
+      key: knowledge.editor.target
+      title: Rich text editor label for the link target. Note - this target is destination.
+      value: Target
+  - translation:
+      key: knowledge.editor.targetNewWindow
+      title: Rich text editor label for the link target. Open link in new browser window
+      value: New window
+  - translation:
+      key: knowledge.editor.targetNone
+      title: Rich text editor label for the link target
+      value: None
+  - translation:
+      key: knowledge.editor.textSize
+      title: Rich text editor label for text size menu
+      value: Size
+  - translation:
+      key: knowledge.editor.textToDisplay
+      title: Rich text editor label for the link text
+      value: Text to display
+  - translation:
+      key: knowledge.editor.top
+      title: 'Rich text editor label for alignment top. https://zendesk.box.com/s/29shcvh0xp9kf97qaujdlqj7ephkialo'
+      value: Top
+      screenshot: 'https://zendesk.box.com/s/29shcvh0xp9kf97qaujdlqj7ephkialo'
+  - translation:
+      key: knowledge.editor.underline
+      title: Rich text editor label for underline
+      value: Underline
+  - translation:
+      key: knowledge.editor.unorderedList
+      title: Rich text editor label for unordered list
+      value: Bulleted list
+  - translation:
+      key: knowledge.editor.uploadImageError
+      title: Error message when upload image fails
+      value: There was a problem adding the image.
+  - translation:
+      key: knowledge.editor.url
+      title: Rich text editor label for url field
+      value: Url
+  - translation:
+      key: knowledge.editor.vAlign
+      title: Vertical cell alignment label in the rich text editor
+      value: V Align
+  - translation:
+      key: knowledge.editor.width
+      title: Rich text editor label for width
+      value: Width
+  - translation:
+      key: knowledge.editor.xLarge
+      title: Rich text editor label for extra large font size
+      value: Huge
+  - translation:
+      key: knowledge.editorOnboardingDescription
+      title: 'Description for editor onboarding modal. https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+      value: "We've redesigned the article editor to improve the publishing experience in Help Center. It’s also easier to manage content in multiple languages."
+      screenshot: 'https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+  - translation:
+      key: knowledge.editorOnboardingHCLink
+      title: 'Link in the editor onboarding modal, which points to a Help Center article https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+      value: 'https://support.zendesk.com/hc/en-us/articles/221071628'
+      hidden: true
+      screenshot: 'https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+  - translation:
+      key: knowledge.editorOnboardingLink
+      title: 'Link title in the editor onboarding modal, which points to a Help Center article https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+      value: Learn more about the updates
+      screenshot: 'https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+  - translation:
+      key: knowledge.editorOnboardingTitle
+      title: 'Heading for the Editor onboarding modal https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+      value: Welcome to the new article editor
+      screenshot: 'https://zendesk.box.com/s/l8p4m4pf5z3csagzfk33tzx3uxmnfvxv'
+  - translation:
+      key: knowledge.fatalApplicationLoadErrorBody
+      title: The text body for the error screen shown when the application could not be loaded
+      value: The page was unable to load. Please try again.
+  - translation:
+      key: knowledge.fatalApplicationLoadErrorTitle
+      title: The title for the error screen shown when the application could not be loaded
+      value: Something went wrong
+  - translation:
+      key: knowledge.filterAddAction
+      title: 'Add filter action. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: Add a filter
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.filterFieldSelectAction
+      title: 'Select filter field action. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: Select filter
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.filterSelectHeader
+      title: Header above the list of available filters
+      value: Select filter
+      obsolete: '2016-03-18'
+  - translation:
+      key: knowledge.filterTermSearchPlaceholder
+      title: Search placeholder. Verb.
+      value: Search...
+  - translation:
+      key: knowledge.filters.category.label
+      title: "Label for the filter by 'category' of translations"
+      value: Category
+  - translation:
+      key: knowledge.filters.created_at.label
+      title: "Label for filter by 'created at' of translations"
+      value: Created date
+  - translation:
+      key: knowledge.filters.created_at.last_day
+      title: "Filter by translations created over the last 24 hours 'Created date: {translation}'"
+      value: Last day
+  - translation:
+      key: knowledge.filters.created_at.last_month
+      title: "Filter by translations created over the last month 'Created date: {translation}'"
+      value: Last month
+  - translation:
+      key: knowledge.filters.created_at.last_six_months
+      title: "Filter by translations created over the last 6 months 'Created date: {translation}'"
+      value: Last 6 months
+  - translation:
+      key: knowledge.filters.created_at.last_three_months
+      title: "Filter by translations created over the last 3 months 'Created date: {translation}'"
+      value: Last 3 months
+  - translation:
+      key: knowledge.filters.created_at.last_week
+      title: "Filter by translations created over the last week 'Created date: {translation}'"
+      value: Last week
+  - translation:
+      key: knowledge.filters.created_at.last_year
+      title: "Filter by translations created over the last year 'Created date: {translation}'"
+      value: Last year
+  - translation:
+      key: knowledge.filters.has_comments.label
+      title: "Label for filter by 'has_comments' of translations"
+      value: Comments enabled
+  - translation:
+      key: knowledge.filters.has_comments.no
+      title: "Filter by translations that does not have comments enabled 'Comments enabled: {translation}'"
+      value: 'No'
+  - translation:
+      key: knowledge.filters.has_comments.yes
+      title: "Filter by translations that has comments enabled 'Comments enabled: {translation}'"
+      value: 'Yes'
+  - translation:
+      key: knowledge.filters.label.label
+      title: "Label for the filter by 'label' of translations"
+      value: Label
+  - translation:
+      key: knowledge.filters.last_edited.label
+      title: "Label for the filter by 'last edited' date of translations"
+      value: Last edited date
+  - translation:
+      key: knowledge.filters.last_edited.last_day
+      title: "Filter by translations edited over the last day 'Last edited date: {translation}'"
+      value: Last day
+  - translation:
+      key: knowledge.filters.last_edited.last_month
+      title: "Filter by translations edited over the last month 'Last edited date: {translation}'"
+      value: Last month
+  - translation:
+      key: knowledge.filters.last_edited.last_six_months
+      title: "Filter by translations edited over the last 6 months 'Last edited date: {translation}'"
+      value: Last 6 months
+  - translation:
+      key: knowledge.filters.last_edited.last_three_months
+      title: "Filter by translations edited over the last 3 months 'Last edited date: {translation}'"
+      value: Last 3 months
+  - translation:
+      key: knowledge.filters.last_edited.last_week
+      title: "Filter by translations edited over the last week 'Last edited date: {translation}'"
+      value: Last week
+  - translation:
+      key: knowledge.filters.last_edited.last_year
+      title: "Filter by translations edited over the last year 'Last edited date: {translation}'"
+      value: Last year
+  - translation:
+      key: knowledge.filters.not_translated_to.label
+      title: "Label for the filter by 'not translated to' of  translations 'Last edited date: {translation}'"
+      value: Not translated to
+  - translation:
+      key: knowledge.filters.promoted.label
+      title: "Label for the filter by 'promoted' state of translations"
+      value: Promoted
+  - translation:
+      key: knowledge.filters.promoted.no
+      title: "Filter by translations that are not promoted 'Promoted: {translation}'"
+      value: 'No'
+  - translation:
+      key: knowledge.filters.promoted.yes
+      title: "Filter by translations that are promoted 'Promoted: {translation}'"
+      value: 'Yes'
+  - translation:
+      key: knowledge.filters.search_keyword.label
+      title: "Label for the filter by 'search_keyword' of translations"
+      value: Search keyword
+  - translation:
+      key: knowledge.filters.status.archived
+      title: "Filter by translations in draft 'Archived: {translation}'"
+      value: Archived
+      screenshot: 'https://zendesk.box.com/s/1m2r4ces9e0t5hjx9zncrlvxwiowbgy4'
+  - translation:
+      key: knowledge.filters.status.draft
+      title: "Filter by translations in draft 'Status: {translation}'"
+      value: Draft
+  - translation:
+      key: knowledge.filters.status.label
+      title: "Label for filter by 'status' of translations"
+      value: Status
+  - translation:
+      key: knowledge.filters.status.published
+      title: "Filter by translations published 'Status: {translation}'"
+      value: Published
+  - translation:
+      key: knowledge.findSectionAction
+      title: Find section action
+      value: Find section
+  - translation:
+      key: knowledge.hasCommentsFilterField
+      title: Filter field for whether comments are enabled
+      value: Comments enabled
+  - translation:
+      key: knowledge.helpCenterNotReadyErrorBody
+      title: The text body for the error screen shown when the Help Center is not fully created
+      value: Please try again in a few minutes.
+  - translation:
+      key: knowledge.helpCenterNotReadyErrorTitle
+      title: The title for the error screen shown when the Help Center is not fully created
+      value: Your Help Center is not ready yet
+  - translation:
+      key: knowledge.helpCenterOptionsSection
+      title: A section heading for Help Center options
+      value: Help Center options
+      obsolete: '2016-06-13'
+  - translation:
+      key: knowledge.insertAnImage
+      title: Title of the image gallery.
+      value: Insert an image
+      screenshot: 'https://zendesk.box.com/s/hnzb5sztlq4k79t2jf879txtgcn69eq7'
+  - translation:
+      key: knowledge.insertImage
+      title: Button label for inserting images from the gallery
+      value: Insert
+      screenshot: 'https://zendesk.box.com/s/9yqrnvdn556cymisi3ngxshxh2ev7yiz'
+  - translation:
+      key: knowledge.isOutdatedFilterField
+      title: 'Filter field for whether outdated. Outdated articles. Be consistent with knowledge.isPromotedFilterField and knowledge.statusPublishedFilterTerm in terms of gender and number. It is a filter to show all Outdated articles. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: Outdated
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.isPromotedFilterField
+      title: 'Filter field for whether promoted. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e. Glossary term.'
+      value: Promoted
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.labelFilterField
+      title: Filter field for label
+      value: Label
+  - translation:
+      key: knowledge.labelsSection
+      title: 'A section heading for labels. Find a label from a list of your already used ones https://zendesk.box.com/s/fuqxdkdwip60wqm5cs4gzl4v2ta6k9k8.'
+      value: Labels
+      screenshot: 'https://zendesk.box.com/s/fuqxdkdwip60wqm5cs4gzl4v2ta6k9k8'
+  - translation:
+      key: knowledge.languageFilterField
+      title: Filter field for not translated to
+      value: Not translated to
+  - translation:
+      key: knowledge.languageHeading
+      title: Heading of the language dropdown
+      value: 'Language:'
+  - translation:
+      key: knowledge.list.created
+      title: Message displayed when list creation succeeded
+      value: List saved
+  - translation:
+      key: knowledge.list.deleted
+      title: Message displayed when list deletion succeeded
+      value: List deleted
+  - translation:
+      key: knowledge.list.not.created
+      title: Message displayed when list creation failed
+      value: "List wasn't saved. Please try again."
+  - translation:
+      key: knowledge.list.not.deleted
+      title: Message displayed when list deletion failed
+      value: "List wasn't deleted. Please try again."
+  - translation:
+      key: knowledge.list.not.listed
+      title: Message displayed when list retrieval failed
+      value: "Lists couldn't be retrieved. Please try again."
+  - translation:
+      key: knowledge.list.not.updated
+      title: Message displayed when list update failed
+      value: "List wasn't updated. Please try again."
+  - translation:
+      key: knowledge.list.updated
+      title: Message displayed when list update succeeded
+      value: List updated
+  - translation:
+      key: knowledge.listAchived
+      title: Name of the default list listing all archived articles
+      value: Archived articles
+      obsolete: '2016-09-05'
+      wip: true
+      screenshot: 'https://zendesk.box.com/s/1m2r4ces9e0t5hjx9zncrlvxwiowbgy4'
+  - translation:
+      key: knowledge.listAllName
+      title: Name of the default list listing all articles
+      value: All articles
+  - translation:
+      key: knowledge.listArchived
+      title: Name of the default list listing all archived articles
+      value: Archived articles
+      screenshot: 'https://zendesk.box.com/s/1m2r4ces9e0t5hjx9zncrlvxwiowbgy4'
+  - translation:
+      key: knowledge.listCancelAction
+      title: Button to reset the changes made to the list
+      value: Cancel
+  - translation:
+      key: knowledge.listDeleteAction
+      title: Button to delete a list
+      value: Delete list
+  - translation:
+      key: knowledge.listDeleteConfirmation
+      title: Confirmation message for deleting a list
+      value: Are you sure you want to delete this list?
+  - translation:
+      key: knowledge.listDraftName
+      title: Name of the default list listing all articles in draft
+      value: Drafts articles
+  - translation:
+      key: knowledge.listDraftsTitle
+      title: Name of the default list listing all drafts
+      value: Drafts
+  - translation:
+      key: knowledge.listDuplicateAction
+      title: Button to duplicate the current list
+      value: Duplicate list
+  - translation:
+      key: knowledge.listEmptyDescription
+      title: Explanation displayed when a list yield no result
+      value: You can still adjust or delete the list. Articles will automatically appear in the list when they match the search.
+  - translation:
+      key: knowledge.listEmptyHeading
+      title: Heading displayed when the current list yields no result
+      value: There are currently no results.
+  - translation:
+      key: knowledge.listInvalidError
+      title: Message displayed when a list is invalid
+      value: You need to give your list a name.
+  - translation:
+      key: knowledge.listNamePlaceholder
+      title: Placeholder for the list name input field
+      value: List name
+  - translation:
+      key: knowledge.listNewEmptyDescription
+      title: Explanation displayed when a new list yiedls no result
+      value: You can still save your search as a list. Articles will automatically appear in the list when they match the search.
+  - translation:
+      key: knowledge.listNewHeading
+      title: 'Title of the dialog to create a new list, only field is a name'
+      value: "Let's give your new list a name"
+  - translation:
+      key: knowledge.listNotArchived
+      title: Archived at column when article is not archived
+      value: Not archived
+  - translation:
+      key: knowledge.listSaveAction
+      title: Button to save the modifications made to the list
+      value: Save list
+  - translation:
+      key: knowledge.listSaveAsNewAction
+      title: Button to save the changes as a new list
+      value: Save as new list
+  - translation:
+      key: knowledge.listSaveConfirmAction
+      title: Text for the save list button
+      value: Save
+  - translation:
+      key: knowledge.listSaveSearchAction
+      title: Button to save the current search as a list
+      value: Save search as list
+  - translation:
+      key: knowledge.listsSavedHeading
+      title: Header for the list of lists
+      value: Saved lists
+  - translation:
+      key: knowledge.loadMoreArticles
+      title: Message displayed for the load more articles button
+      value: Load more articles
+  - translation:
+      key: knowledge.locale.ar
+      title: Arabic
+      value: Arabic
+      wip: true
+  - translation:
+      key: knowledge.locale.ar-eg
+      title: Arabic (Egypt)
+      value: Arabic (Egypt)
+      wip: true
+  - translation:
+      key: knowledge.locale.bg
+      title: Bulgarian
+      value: Bulgarian
+      wip: true
+  - translation:
+      key: knowledge.locale.bs
+      title: Bosnian
+      value: Bosnian
+      wip: true
+  - translation:
+      key: knowledge.locale.ca
+      title: Catalan
+      value: Catalan
+      wip: true
+  - translation:
+      key: knowledge.locale.ca-ct
+      title: Catalan
+      value: Catalan
+      wip: true
+  - translation:
+      key: knowledge.locale.cs
+      title: Czech
+      value: Czech
+      wip: true
+  - translation:
+      key: knowledge.locale.da
+      title: Danish
+      value: Danish
+      wip: true
+  - translation:
+      key: knowledge.locale.de
+      title: German
+      value: German
+      wip: true
+  - translation:
+      key: knowledge.locale.de-at
+      title: German (Austria)
+      value: German (Austria)
+      wip: true
+  - translation:
+      key: knowledge.locale.de-ch
+      title: German (Switzerland)
+      value: German (Switzerland)
+      wip: true
+  - translation:
+      key: knowledge.locale.de-de
+      title: German
+      value: German
+      wip: true
+  - translation:
+      key: knowledge.locale.el
+      title: Greek
+      value: Greek
+      wip: true
+  - translation:
+      key: knowledge.locale.en
+      title: English
+      value: English
+      wip: true
+  - translation:
+      key: knowledge.locale.en-au
+      title: English (Australia)
+      value: English (Australia)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-be
+      title: English (Belgium)
+      value: English (Belgium)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-ca
+      title: English (CA)
+      value: English (CA)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-gb
+      title: English (GB)
+      value: English (GB)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-ie
+      title: English (Ireland)
+      value: English (Ireland)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-in
+      title: English (India)
+      value: English (India)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-my
+      title: English (Malaysia)
+      value: English (Malaysia)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-nz
+      title: English (NZ)
+      value: English (NZ)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-sg
+      title: English (Singapore)
+      value: English (Singapore)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-uk
+      title: English (UK)
+      value: English (UK)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-us
+      title: English (US)
+      value: English (US)
+      wip: true
+  - translation:
+      key: knowledge.locale.en-za
+      title: English (South Africa)
+      value: English (South Africa)
+      wip: true
+  - translation:
+      key: knowledge.locale.es
+      title: Spanish
+      value: Spanish
+      wip: true
+  - translation:
+      key: knowledge.locale.es-419
+      title: Spanish (Latin America)
+      value: Spanish (Latin America)
+      wip: true
+  - translation:
+      key: knowledge.locale.es-ar
+      title: Spanish (Argentina)
+      value: Spanish (Argentina)
+      wip: true
+  - translation:
+      key: knowledge.locale.es-cl
+      title: Spanish (Chile)
+      value: Spanish (Chile)
+      wip: true
+  - translation:
+      key: knowledge.locale.es-co
+      title: Spanish (Colombia)
+      value: Spanish (Colombia)
+      wip: true
+  - translation:
+      key: knowledge.locale.es-es
+      title: Spanish (Spain)
+      value: Spanish (Spain)
+      wip: true
+  - translation:
+      key: knowledge.locale.es-pe
+      title: Spanish (Peru)
+      value: Spanish (Peru)
+      wip: true
+  - translation:
+      key: knowledge.locale.es-us
+      title: Spanish (US)
+      value: Spanish (US)
+      wip: true
+  - translation:
+      key: knowledge.locale.es-ve
+      title: Spanish (Venezuela)
+      value: Spanish (Venezuela)
+      wip: true
+  - translation:
+      key: knowledge.locale.et
+      title: Estonian
+      value: Estonian
+      wip: true
+  - translation:
+      key: knowledge.locale.fa
+      title: Persian
+      value: Persian
+      wip: true
+  - translation:
+      key: knowledge.locale.fi
+      title: Finnish
+      value: Finnish
+      wip: true
+  - translation:
+      key: knowledge.locale.fil
+      title: Filipino
+      value: Filipino
+      wip: true
+  - translation:
+      key: knowledge.locale.fr
+      title: French
+      value: French
+      wip: true
+  - translation:
+      key: knowledge.locale.fr-002
+      title: French (DT)
+      value: French (DT)
+      wip: true
+  - translation:
+      key: knowledge.locale.fr-be
+      title: French (Belgium)
+      value: French (Belgium)
+      wip: true
+  - translation:
+      key: knowledge.locale.fr-ca
+      title: French (Canada)
+      value: French (Canada)
+      wip: true
+  - translation:
+      key: knowledge.locale.fr-ch
+      title: French (Switzerland)
+      value: French (Switzerland)
+      wip: true
+  - translation:
+      key: knowledge.locale.fr-fr
+      title: French
+      value: French
+      wip: true
+  - translation:
+      key: knowledge.locale.he
+      title: Hebrew
+      value: Hebrew
+      wip: true
+  - translation:
+      key: knowledge.locale.hi
+      title: Hindi
+      value: Hindi
+      wip: true
+  - translation:
+      key: knowledge.locale.hr
+      title: Croatian
+      value: Croatian
+      wip: true
+  - translation:
+      key: knowledge.locale.hu
+      title: Hungarian
+      value: Hungarian
+      wip: true
+  - translation:
+      key: knowledge.locale.id
+      title: Indonesian
+      value: Indonesian
+      wip: true
+  - translation:
+      key: knowledge.locale.is
+      title: Icelandic
+      value: Icelandic
+      wip: true
+  - translation:
+      key: knowledge.locale.it
+      title: Italian
+      value: Italian
+      wip: true
+  - translation:
+      key: knowledge.locale.ja
+      title: Japanese
+      value: Japanese
+      wip: true
+  - translation:
+      key: knowledge.locale.ka
+      title: Georgian
+      value: Georgian
+      wip: true
+  - translation:
+      key: knowledge.locale.ko
+      title: Korean
+      value: Korean
+      wip: true
+  - translation:
+      key: knowledge.locale.lt
+      title: Lithuanian
+      value: Lithuanian
+      wip: true
+  - translation:
+      key: knowledge.locale.lv
+      title: Latvian
+      value: Latvian
+      wip: true
+  - translation:
+      key: knowledge.locale.ms
+      title: Malay
+      value: Malay
+      wip: true
+  - translation:
+      key: knowledge.locale.nl
+      title: Dutch
+      value: Dutch
+      wip: true
+  - translation:
+      key: knowledge.locale.nl-be
+      title: Flemish
+      value: Flemish
+      wip: true
+  - translation:
+      key: knowledge.locale.no
+      title: Norwegian
+      value: Norwegian
+      wip: true
+  - translation:
+      key: knowledge.locale.pl
+      title: Polish
+      value: Polish
+      wip: true
+  - translation:
+      key: knowledge.locale.pt
+      title: Portuguese
+      value: Portuguese
+      wip: true
+  - translation:
+      key: knowledge.locale.pt-br
+      title: Brazilian Portuguese
+      value: Brazilian Portuguese
+      wip: true
+  - translation:
+      key: knowledge.locale.ro
+      title: Romanian
+      value: Romanian
+      wip: true
+  - translation:
+      key: knowledge.locale.ru
+      title: Russian
+      value: Russian
+      wip: true
+  - translation:
+      key: knowledge.locale.sk
+      title: Slovak
+      value: Slovak
+      wip: true
+  - translation:
+      key: knowledge.locale.sl
+      title: Slovenian
+      value: Slovenian
+      wip: true
+  - translation:
+      key: knowledge.locale.sr
+      title: Serbian
+      value: Serbian
+      wip: true
+  - translation:
+      key: knowledge.locale.sr-ba
+      title: Serbian (Bosnia and Herzegovina)
+      value: Serbian (Bosnia and Herzegovina)
+      wip: true
+  - translation:
+      key: knowledge.locale.sr-cs
+      title: Serbian (Serbia and Montenegro)
+      value: Serbian (Serbia and Montenegro)
+      wip: true
+  - translation:
+      key: knowledge.locale.sr-me
+      title: Montenegrin
+      value: Montenegrin
+      wip: true
+  - translation:
+      key: knowledge.locale.sr-rs
+      title: Serbian (Serbia)
+      value: Serbian (Serbia)
+      wip: true
+  - translation:
+      key: knowledge.locale.sv
+      title: Swedish
+      value: Swedish
+      wip: true
+  - translation:
+      key: knowledge.locale.th
+      title: Thai
+      value: Thai
+      wip: true
+  - translation:
+      key: knowledge.locale.tl
+      title: Tagalog
+      value: Tagalog
+      wip: true
+  - translation:
+      key: knowledge.locale.tr
+      title: Turkish
+      value: Turkish
+      wip: true
+  - translation:
+      key: knowledge.locale.uk
+      title: Ukrainian
+      value: Ukrainian
+      wip: true
+  - translation:
+      key: knowledge.locale.vi
+      title: Vietnamese
+      value: Vietnamese
+      wip: true
+  - translation:
+      key: knowledge.locale.zh-cn
+      title: Simplified Chinese
+      value: Simplified Chinese
+      wip: true
+  - translation:
+      key: knowledge.locale.zh-tw
+      title: Traditional Chinese
+      value: Traditional Chinese
+      wip: true
+  - translation:
+      key: knowledge.markAllTranslationsAsOutdated
+      title: Menu option for marking all translations as outdated
+      value: Mark all translations as outdated
+  - translation:
+      key: knowledge.markTranslationAsNotOutdated
+      title: Marks the translation as no longer being outdated
+      value: Not outdated
+  - translation:
+      key: knowledge.markTranslationAsOutdated
+      title: Menu option for marking translation as outdated
+      value: Mark translation as outdated
+  - translation:
+      key: knowledge.missingCategoriesTitle.many
+      title: 'A missing category warning. If your language has more than one plural, please use: Missing translations for category "%{title}": %{count}. You can use the localized quotes for title of category placeholder'
+      value: '%{count} missing translations for this category'
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingCategoriesTitle.one
+      title: 'A missing category warning. If your language has more than one plural, please use: Missing translations for category "%{title}": %{count}. You can use the localized quotes for title of category placeholder'
+      value: 1 missing translation for this category
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingCategoryTitle.many
+      title: 'A missing category warning. If your language has more than one plural, please use: Missing translations for category "%{title}": %{count}. You can use the localized quotes for title of category placeholder'
+      value: '%{count} missing translations for category "%{title}"'
+      obsolete: '2016-07-27'
+  - translation:
+      key: knowledge.missingCategoryTitle.one
+      title: 'A missing category warning. If your language has more than one plural, please use: Missing translations for category "%{title}": %{count}. You can use the localized quotes for title of category placeholder'
+      value: '1 missing translation for category "%{title}"'
+      obsolete: '2016-07-27'
+  - translation:
+      key: knowledge.missingCategoryTranslateTo
+      title: Link to editor category translation in HC. Followed by the language you want to add the translation for.
+      value: 'Translate category to %{locale}'
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingDropdownHide
+      title: Click to close (hide) a dropdown
+      value: Hide
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingDropdownShow
+      title: Click to open (show) a dropdown
+      value: Show
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingHCLink
+      title: URL to a HC article
+      value: 'https://support.zendesk.com/hc/en-us/articles/203664336#topic_3zx_52h_xw'
+      hidden: true
+  - translation:
+      key: knowledge.missingRefresh
+      title: Clicking on this link will make the page refresh for the user
+      value: Refresh
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingSectionTitle.many
+      title: 'A missing section warning. If your language has more than one plural, please use: Missing translations for section "%{title}": %{count}. You can use the localized quotes for title of section placeholder.'
+      value: '%{count} missing translations for section "%{title}"'
+      obsolete: '2016-07-27'
+  - translation:
+      key: knowledge.missingSectionTitle.one
+      title: 'A missing section warning. If your language has more than one plural, please use: Missing translations for section "%{title}": %{count}. You can use the localized quotes for title of section placeholder.'
+      value: '1 missing translation for section "%{title}"'
+      obsolete: '2016-07-27'
+  - translation:
+      key: knowledge.missingSectionTranslateTo
+      title: Link to editor section translation in HC
+      value: 'Translate section to %{locale}'
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingSectionsTitle.many
+      title: 'A missing section warning. If your language has more than one plural, please use: Missing translations for section "%{title}": %{count}. You can use the localized quotes for title of section placeholder.'
+      value: '%{count} missing translations for this section'
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingSectionsTitle.one
+      title: 'A missing section warning. If your language has more than one plural, please use: Missing translations for section "%{title}": %{count}. You can use the localized quotes for title of section placeholder.'
+      value: 1 missing translation for this section
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingTranslations
+      title: A translation missing warning
+      value: Missing Translations
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingTranslationsWarning
+      title: A translation missing warning
+      value: "Some translations of this article won't show up in your Help Center."
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.missingWhyIsImportant
+      title: Link to help center article explaining why this is important for the user. This refers to the fact that there are missing translations that need to be fixed or added.
+      value: Why is this important?
+      screenshot: 'https://zendesk.box.com/s/r60f4mp0ahn7ky9uzzneb7ihat7hp1ox'
+  - translation:
+      key: knowledge.navigateToNewArticleAction
+      title: Button to get to the new article page
+      value: New article
+      obsolete: '2016-04-08'
+  - translation:
+      key: knowledge.noArticleImages
+      title: Blank slate message for when there are no images in the article
+      value: There are no images included in the article
+      screenshot: 'https://zendesk.box.com/s/ncr1bl9m37o7cx5wp3vywh98cl3winqn'
+  - translation:
+      key: knowledge.noResults
+      title: Message for no results when filtering articles
+      value: No results
+  - translation:
+      key: knowledge.noSectionsErrorBody
+      title: The text body for the error screen shown when user is trying to create an article without having created any section in Help Center.
+      value: 'To create an article, you need a section to save it in first.'
+  - translation:
+      key: knowledge.noSectionsErrorConclusion
+      title: "The text body for the error screen shown when the application cannot find a section. Let's create one is also ok. One refers to section."
+      value: "Let's go create one."
+  - translation:
+      key: knowledge.noSectionsErrorCreateSection
+      title: The text body for the button to create a new Help Center section
+      value: Create a section
+  - translation:
+      key: knowledge.noSectionsErrorIntroduction
+      title: The text body for the error screen shown when the application cannot find an article. Goes with nowledge.noSectionsErrorTitle
+      value: "It looks like you don't have any sections yet."
+  - translation:
+      key: knowledge.noSectionsErrorTitle
+      title: The title for the error screen shown when the application could not find any sections. You can adapt to language. It goes with knowledge.noSectionsErrorIntroduction
+      value: 'Hi there, friend!'
+  - translation:
+      key: knowledge.noUnusedImages
+      title: Blank slate message for when there are no unused images in the article
+      value: There are no unused images in the article
+      screenshot: 'https://zendesk.box.com/s/aw8uzzc3qbob3lld4v5f56mtyt54r8f2'
+  - translation:
+      key: knowledge.notFoundErrorBody
+      title: The text body for the error screen shown when the application cannot find an article.
+      value: You may have mistyped the address or the page may no longer exist.
+  - translation:
+      key: knowledge.notFoundErrorTitle
+      title: The title for the error screen shown when the application could not find an article. You can adapt to your language and culture.
+      value: "Oops. There's nothing here."
+  - translation:
+      key: knowledge.onboardingModalButton
+      title: Button text for the onboarding modal. Similar to understood and used to dismiss and onboarding message describinga  new feature.
+      value: Got it
+  - translation:
+      key: knowledge.onboardingModalHCLink
+      title: Link for the knowledge bank onboarding HC article.
+      value: 'https://support.zendesk.com/hc/en-us/articles/216207658'
+      hidden: true
+  - translation:
+      key: knowledge.onbordingModalDescriptionCanEditLists
+      title: 'Description for onboarding modal for users who can edit lists. Copy in the screeshot may be obsolete. please use current string value  UI is the same: https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+      value: >-
+        It’s now easier to find a complete overview of your articles in Help
+        Center. From here, you can see all your published and draft articles
+        across all categories and sections.
+
+        Create your own dynamic lists of articles by using the search
+        functionality. Find specific articles and refine the results by applying
+        different filters. Give it a try.
+      screenshot: 'https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+  - translation:
+      key: knowledge.onbordingModalDescriptionCannotEditLists
+      title: 'Description for onboarding modal for users who cannot edit lists. Copy in the screeshot may be obsolete. please use current string value  UI is the same: https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+      value: >-
+        It’s now easier to find a complete overview of your articles in Help
+        Center. From here, you can see all your published and draft articles
+        across all categories and sections.
+
+        You can use the search functionality to find specific articles and refine
+        the results by applying different filters. Give it a try.
+      screenshot: 'https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+  - translation:
+      key: knowledge.onbordingModalHeading
+      title: 'Heading for the onboarding modal. Copy in the screeshot may be obsolete. please use current string value  UI is the same: https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+      value: A new way to manage articles in Help Center
+      screenshot: 'https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+  - translation:
+      key: knowledge.onbordingModalLink
+      title: 'Link in the onboarding modal. Copy in the screeshot may be obsolete. please use current string value  UI is the same: https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+      value: Learn more about the new way of managing articles
+      screenshot: 'https://zendesk.box.com/s/hug75k9w4ky2wsah5o1y2bcqwtogr98w'
+  - translation:
+      key: knowledge.order.archived_at
+      title: "Selection to order translations by 'archived at'"
+      value: Archived date
+      screenshot: 'https://zendesk.box.com/s/1m2r4ces9e0t5hjx9zncrlvxwiowbgy4'
+  - translation:
+      key: knowledge.order.asc
+      title: Selection display translations in ascending order
+      value: Ascending
+  - translation:
+      key: knowledge.order.created_at
+      title: "Selection to order translations by 'created at'"
+      value: Created date
+  - translation:
+      key: knowledge.order.desc
+      title: Selection display translations in descending order
+      value: Descending
+  - translation:
+      key: knowledge.order.score
+      title: "Selection to order translations by 'best result'"
+      value: Best result
+  - translation:
+      key: knowledge.order.updated_at
+      title: "Selection to order translations by 'last edited'"
+      value: Last edited
+  - translation:
+      key: knowledge.previewInHelpCenter
+      title: Menu option for opening a draft translation in Help Center. Verb.
+      value: Preview in Help Center
+  - translation:
+      key: knowledge.publishAction
+      title: Publish action
+      value: Publish
+      obsolete: '2016-04-25'
+  - translation:
+      key: knowledge.publishActionDescription
+      title: Description of publish action
+      value: Publish article
+      obsolete: '2016-04-25'
+  - translation:
+      key: knowledge.publishInSection
+      title: Section heading for where to publish an article
+      value: Publish in section
+  - translation:
+      key: knowledge.publishedState
+      title: Published state of an article
+      value: Published
+      obsolete: '2016-04-25'
+  - translation:
+      key: knowledge.relativeDateLessThanOneDayAgoFilterTerm
+      title: Filter term for dates less than one day ago.
+      value: Less than 1 day ago
+  - translation:
+      key: knowledge.relativeDateLessThanOneMonthAgoFilterTerm
+      title: Filter term for dates less than one month ago
+      value: Less than 1 month ago
+  - translation:
+      key: knowledge.relativeDateLessThanOneWeekAgoFilterTerm
+      title: Filter term for dates less than one week ago
+      value: Less than 1 week ago
+  - translation:
+      key: knowledge.relativeDateLessThanOneYearAgoFilterTerm
+      title: Filter term for dates less than a year ago
+      value: Less than a year ago
+  - translation:
+      key: knowledge.relativeDateLessThanSixMonthsAgoFilterTerm
+      title: Filter term for dates less than six months ago
+      value: Less than 6 months ago
+  - translation:
+      key: knowledge.relativeDateLessThanThreeMonthsAgoFilterTerm
+      title: Filter term for dates less than three months ago
+      value: Less than 3 months ago
+  - translation:
+      key: knowledge.relativeDateMoreThanOneDayAgoFilterTerm
+      title: Filter term for dates more than one day ago
+      value: More than 1 day ago
+  - translation:
+      key: knowledge.relativeDateMoreThanOneMonthAgoFilterTerm
+      title: Filter term for dates more than one month ago
+      value: More than 1 month ago
+  - translation:
+      key: knowledge.relativeDateMoreThanOneWeekAgoFilterTerm
+      title: Filter term for dates more than one week ago
+      value: More than 1 week ago
+  - translation:
+      key: knowledge.relativeDateMoreThanOneYearAgoFilterTerm
+      title: Filter term for dates more than a year ago
+      value: More than a year ago
+  - translation:
+      key: knowledge.relativeDateMoreThanSixMonthsAgoFilterTerm
+      title: Filter term for dates more than six months ago
+      value: More than 6 months ago
+  - translation:
+      key: knowledge.relativeDateMoreThanThreeMonthsAgoFilterTerm
+      title: Filter term for dates more than three months ago
+      value: More than 3 months ago
+  - translation:
+      key: knowledge.relativeDateOneDayAgoFilterTerm
+      title: 'Filter term for date one day ago. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e. Goes with knowledge.dateComparatorLessThanFilterTerm and knowledge.dateComparatorGreaterThanFilterTerm'
+      value: 1 day ago
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.relativeDateOneMonthAgoFilterTerm
+      title: 'Filter term for date one month ago. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e. Goes with knowledge.dateComparatorLessThanFilterTerm and knowledge.dateComparatorGreaterThanFilterTerm'
+      value: 1 month ago
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.relativeDateOneWeekAgoFilterTerm
+      title: 'Filter term for date one week ago. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e. Goes with knowledge.dateComparatorLessThanFilterTerm and knowledge.dateComparatorGreaterThanFilterTerm'
+      value: 1 week ago
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.relativeDateOneYearAgoFilterTerm
+      title: 'Filter term for date one year ago. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e. Goes with knowledge.dateComparatorLessThanFilterTerm and knowledge.dateComparatorGreaterThanFilterTerm'
+      value: 1 year ago
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.relativeDateSixMonthsAgoFilterTerm
+      title: 'Filter term for date six months ago. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e. Goes with knowledge.dateComparatorLessThanFilterTerm and knowledge.dateComparatorGreaterThanFilterTerm'
+      value: 6 months ago
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.relativeDateThreeMonthsAgoFilterTerm
+      title: 'Filter term for date three months ago. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e. Goes with knowledge.dateComparatorLessThanFilterTerm and knowledge.dateComparatorGreaterThanFilterTerm'
+      value: 3 months ago
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.requiredSectionMissing
+      title: Error message shown when saving without having selected a section in Help Center to add the new article
+      value: Select a section to publish in
+      screenshot: 'https://zendesk.box.com/s/jjqxa9je9cvwf9mytkjungp9vsuyx7w3'
+  - translation:
+      key: knowledge.resultsCount.many
+      title: Indication of the number of results present in the list below
+      value: '%{count} results'
+  - translation:
+      key: knowledge.resultsCount.one
+      title: Indication of the number of results present in the list below
+      value: 1 result
+  - translation:
+      key: knowledge.resultsCount.zero
+      title: Indication of the number of results present in the list below
+      value: 0 results
+  - translation:
+      key: knowledge.saveDraftAction
+      title: Save draft action
+      value: Save draft
+      obsolete: '2016-04-25'
+  - translation:
+      key: knowledge.savedState
+      title: Saved state
+      value: Saved
+      obsolete: '2016-04-25'
+  - translation:
+      key: knowledge.searchKeywordFilter
+      title: 'Filter field for search keyword. It DOES NOT mean to seach for a keyword but Keyword used for seach engine. Seach keyword can be added to HC articles to list the article in search engines. https://zendesk.box.com/s/fuqxdkdwip60wqm5cs4gzl4v2ta6k9k8. http://www.wordstream.com/search-engine-keywords. It replaces the previous word Label.'
+      value: Search keyword
+      screenshot: 'https://zendesk.box.com/s/fuqxdkdwip60wqm5cs4gzl4v2ta6k9k8'
+  - translation:
+      key: knowledge.searchKeywordsSection
+      title: 'A section heading for search keywords. Here it means to search for a (search) keyword. Find a search keyword from a list of your already used ones https://zendesk.box.com/s/fuqxdkdwip60wqm5cs4gzl4v2ta6k9k8.'
+      value: Search keywords
+      obsolete: '2016-06-30'
+      screenshot: 'https://zendesk.box.com/s/fuqxdkdwip60wqm5cs4gzl4v2ta6k9k8'
+  - translation:
+      key: knowledge.searchPlaceholder
+      title: Search placeholder
+      value: Search...
+  - translation:
+      key: knowledge.searchTitlesPlaceholder
+      title: Placeholder for the search input. Ghost text for search box to search for Help Center article titles
+      value: Search titles...
+  - translation:
+      key: knowledge.sectionDeleted
+      title: Status that indicates that a section of an article has been deleted.
+      value: Section no longer exists
+  - translation:
+      key: knowledge.sectionFilterField
+      title: Filter field for section
+      value: Section
+  - translation:
+      key: knowledge.sectionModalBody
+      title: Body of a modal to select a section for an article
+      value: The previous section no longer exists. Please select a new section in which to restore the article
+  - translation:
+      key: knowledge.sectionModalDropdown
+      title: Dropdown of a modal to select a section for an article
+      value: Select section
+  - translation:
+      key: knowledge.sectionModalError
+      title: Error shown in a modal to select a section for an article
+      value: The section you selected no longer exists. Please select another section.
+  - translation:
+      key: knowledge.sectionModalTitle
+      title: Title of a modal to select a section for an article
+      value: Select new section
+  - translation:
+      key: knowledge.sectionsHeader
+      title: Sections header. Help Center sections (see glossary)
+      value: Sections
+  - translation:
+      key: knowledge.selectSectionAction
+      title: Select a section action in a dropdown
+      value: Select a section
+      screenshot: 'https://zendesk.box.com/s/xh1zzl4q8g2409g77dfai99snk53rinz'
+  - translation:
+      key: knowledge.setTranslationAsSource
+      title: 'Menu option for marking one translation as the source translation for the others. For example Set English as source language for the other translations of an article. https://zendesk.box.com/s/lroo5nukvc3uye2hdftrm65tgva591af'
+      value: 'Set %{locale} as source language'
+      screenshot: 'https://zendesk.box.com/s/lroo5nukvc3uye2hdftrm65tgva591af'
+  - translation:
+      key: knowledge.showInHelpCenter
+      title: Menu option for opening a published translation in Help Center
+      value: Show in Help Center
+  - translation:
+      key: knowledge.shownArticlesLabel
+      title: Display the count of article being displayed ouf the total
+      value: 'Showing %{shownCount} out of %{count} articles'
+  - translation:
+      key: knowledge.sortByHeading
+      title: Header of the sort by options
+      value: 'Sort by:'
+  - translation:
+      key: knowledge.sourceLanguage
+      title: Source language
+      value: Source
+  - translation:
+      key: knowledge.statusArchivedFilterTerm
+      title: 'Filter term for archived status. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: Archived
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.statusDraftFilterTerm
+      title: 'Filter term for draft status. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: Draft
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.statusFilterField
+      title: Filter field for status
+      value: Status
+  - translation:
+      key: knowledge.statusPublishedFilterTerm
+      title: 'Filter term for published status. See general UI in video: https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+      value: Published
+      screenshot: 'https://zendesk.box.com/s/mi1pnx691j87591rc6045qwme2norj3e'
+  - translation:
+      key: knowledge.translation.deleted
+      title: Message displayed when translation deletion succeeded
+      value: Translation deleted
+  - translation:
+      key: knowledge.translation.not.deleted
+      title: Message displayed when translation deletion failed
+      value: "Translation wasn't deleted. Please try again."
+  - translation:
+      key: knowledge.translation.not.listed
+      title: Message displayed when translation retrieval failed
+      value: "Translation couldn't be retrieved. Please try again."
+  - translation:
+      key: knowledge.translationArchivedCreateNavigation
+      title: Translation create navigation in a read-only mode
+      value: Not created
+      obsolete: '2016-09-08'
+  - translation:
+      key: knowledge.translationArchivedLabel
+      title: Title to show a translation as archived
+      value: Archived
+  - translation:
+      key: knowledge.translationCreateNavigation
+      title: Translation create navigation
+      value: Click to create
+  - translation:
+      key: knowledge.translationDeleteConfirmation
+      title: Confirmation message for deleting articles
+      value: Are you sure you want to delete this translation?
+  - translation:
+      key: knowledge.translationDraftLabel
+      title: Title to mark a translation as draft
+      value: Draft
+  - translation:
+      key: knowledge.translationNotCreated
+      title: Status that indicates that a translation for an article has not been created yet.
+      value: Not created
+      screenshot: 'https://zendesk.box.com/s/83cpsdyr2z15fse9n7e40r37zs7ghnse'
+  - translation:
+      key: knowledge.translationNotCreatedLabel
+      title: Title to show a translation as not created
+      value: Not created
+  - translation:
+      key: knowledge.translationOptions
+      title: 'Title of a dropdown to change different options from an article translation. https://zendesk.box.com/s/lroo5nukvc3uye2hdftrm65tgva591af'
+      value: Translation options
+      screenshot: 'https://zendesk.box.com/s/lroo5nukvc3uye2hdftrm65tgva591af'
+  - translation:
+      key: knowledge.translationOutdated
+      title: A label shown the byline when a translation is outdated
+      value: Outdated
+  - translation:
+      key: knowledge.translationPublishedLabel
+      title: Title to mark a translation as published
+      value: Published
+  - translation:
+      key: knowledge.unknownAuthor
+      title: 'Placeholder for the author field, when for some reason the author cannot be retrieved'
+      value: Unknown Author
+  - translation:
+      key: knowledge.unsupportedBrowserClickToDownload
+      title: Label that will be shown when hovering one of the supported browsers
+      value: Click to download
+  - translation:
+      key: knowledge.unsupportedBrowserDescription
+      title: Description text for the unsupported browser page
+      value: "It appears that you're using an unsupported browser. To give you the best experience we recommend using the latest version of one of the following browsers."
+  - translation:
+      key: knowledge.unsupportedBrowserHeading
+      title: Header for the unsupported browser page
+      value: Unsupported browser
+  - translation:
+      key: knowledge.unusedImagesTab
+      title: The unused images tab label
+      value: Unused images
+      screenshot: 'https://zendesk.box.com/s/qzhv8d8srvkp91doolihroodtw27bxa8'
+  - translation:
+      key: knowledge.updateDateFilterField
+      title: Filter field for update date
+      value: Last edited
+  - translation:
+      key: knowledge.updateDateLessThanFilterField
+      title: 'Filter field for update date. Goes with knowledge.relativeDateLessThan[relative]AgoFilterTerm'
+      value: Last edited less than
+  - translation:
+      key: knowledge.updateDateMoreThanFilterField
+      title: 'Filter field for update date. Goes with knowledge.relativeDateMoreThan[relative]AgoFilterTerm'
+      value: Last edited more than
+  - translation:
+      key: knowledge.upload.attachment.invalid
+      title: Message displayed when attaching a file failed
+      value: '1 file was not uploaded: Max size of attachments is 20MB'
+      screenshot: 'https://zendesk.box.com/s/1s3qsjap5aq3ulez6x0yy8qrfleupxgl'
+  - translation:
+      key: knowledge.upload.attachment.not.uploaded
+      title: Message displayed when attaching a file failed
+      value: '1 file was not uploaded: Max size of attachments is 20MB'
+  - translation:
+      key: knowledge.uploadTab
+      title: The upload tab label
+      value: Upload
+      screenshot: 'https://zendesk.box.com/s/hnzb5sztlq4k79t2jf879txtgcn69eq7'
+  - translation:
+      key: knowledge.uploading
+      title: Label shown over progress bar when uploading
+      value: Uploading...
+      screenshot: 'https://zendesk.box.com/s/4rtja62dea99xd7ruo9al1vcqiy6pfvd'

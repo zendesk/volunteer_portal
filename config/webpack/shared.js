@@ -9,6 +9,8 @@ const { sync } = require('glob')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const extname = require('path-complete-extname')
 const { env, settings, output, loadersDir } = require('./configuration.js')
+const I18nPlugin = require('@zendesk/client-i18n-tools/I18nPlugin')
+const path = require('path')
 
 const entryPath = join(settings.source_path, settings.source_entry_path)
 
@@ -30,6 +32,14 @@ module.exports = {
     new ManifestPlugin({
       publicPath: output.publicPath,
       writeToFileEmit: true,
+    }),
+    new I18nPlugin({
+      // https://github.com/zendesk/client-i18n-tools#generate-translation-files
+      locales: path.join(__dirname, '../locales/locales.json'),
+      localesDir: path.join(__dirname, '../locales'),
+      source: path.join(__dirname, '../locales/en-us.yml'),
+      intl: true,
+      bundleName: 'portal',
     }),
   ],
 

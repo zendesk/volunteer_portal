@@ -23,6 +23,7 @@ import MyEventsQuery from './query.gql'
 import CreateEditIndividualEventMutation from 'mutations/CreateEditIndividualEventMutation.gql'
 import DeleteIndividualEventMutation from 'mutations/DeleteIndividualEventMutation.gql'
 import s from './main.css'
+import t from '@zendesk/client-i18n-tools'
 
 const styles = {
   dialogBody: {

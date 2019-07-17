@@ -63,6 +63,7 @@
   },
   "homepage": "https://github.com/zendesk/volunteer_portal",
   "dependencies": {
+    "@zendesk/client-i18n-tools": "^11.3.0",
     "actioncable": "^5.1.4",
     "apollo-client": "^2.0.4",
     "apollo-client-preset": "^1.0.5",
