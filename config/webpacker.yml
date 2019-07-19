@@ -3,7 +3,7 @@
 default: &default
   source_path: app/javascript
   source_entry_path: '.'
-  public_output_path: assets/portal
+  public_output_path: assets/portal/
 
   extensions:
     - .js
@@ -16,6 +16,7 @@ default: &default
     - .jpg
     - .gql
     - .graphql
+    - .yml
 
 development:
   <<: *default

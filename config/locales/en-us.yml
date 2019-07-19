@@ -6,7 +6,7 @@ parts:
   - translation:
       key: knowledge.addNewLabel
       title: 'A hint shown in a dropdown to create a new label, used here: https://zendesk.app.box.com/s/5kycrgnjtxm12f9s4552brwmw58awycz.'
-      value: Foobar Add as new label...
+      value: Foorbar na dadasddasdadsssssssss
   - translation:
       key: knowledge.addNewSearchKeyword
       title: 'A hint shown in a dropdown to create a new search keyword https://zendesk.app.box.com/s/5kycrgnjtxm12f9s4552brwmw58awycz. A keyword to add to article for search optimization purposes (search keyword, noun)'

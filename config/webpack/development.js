@@ -33,6 +33,7 @@ module.exports = merge(sharedConfig, {
     compress: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
     historyApiFallback: true,
+    writeToDisk: true, // write function that filters for i18n files
     watchOptions: {
       ignored: /node_modules/,
     },

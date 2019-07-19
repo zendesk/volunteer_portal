@@ -346,6 +346,7 @@ const IndividualEvents = props => {
   return (
     <div className={s.eventsTable}>
       <div className={s.personalHeader}>
+        {t('knowledge.addNewLabel')}
         <div className={s.actionBar}>
           <button className={s.createAction} onClick={() => togglePopover('editIndividualEvent', { isNew: true })}>
             Add Event
