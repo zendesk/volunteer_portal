@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import R from 'ramda'
+import { withNamespaces } from 'react-i18next'
 
 const styles = {
   container: {
@@ -60,16 +61,16 @@ const Tab = ({ path, text, currentPath }) => {
   )
 }
 
-const Layout = ({ noNav, currentPath, children }) => (
+const Layout = ({ noNav, currentPath, children, t }) => (
   <div style={styles.container}>
     <div style={styles.wrapper}>
       {noNav ? null : (
         <div style={styles.navBar}>
-          <Tab path="/portal" text="Calendar" currentPath={currentPath} />
+          <Tab path="/portal" text={t('layout.tab.calendar')} currentPath={currentPath} />
           <div style={styles.btnSpacer} />
-          <Tab path="/portal/dashboard" text="Dashboard" currentPath={currentPath} />
+          <Tab path="/portal/dashboard" text={t('layout.tab.dashboard')} currentPath={currentPath} />
           <div style={styles.btnSpacer} />
-          <Tab path="/portal/events" text="My Events" currentPath={currentPath} />
+          <Tab path="/portal/events" text={t('layout.tab.events')} currentPath={currentPath} />
         </div>
       )}
       {children}
@@ -77,4 +78,4 @@ const Layout = ({ noNav, currentPath, children }) => (
   </div>
 )
 
-export default Layout
+export default withNamespaces()(Layout)
