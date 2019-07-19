@@ -19,7 +19,7 @@ module.exports = merge(sharedConfig, {
     pathinfo: true,
   },
 
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new webpack.HotModuleReplacementPlugin()], // Have a middleware that takes rosetta json files and outputs it to the public file
 
   devServer: {
     hot: true,

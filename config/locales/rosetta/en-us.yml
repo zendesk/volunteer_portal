@@ -1,0 +1,9 @@
+title: volunteerportal
+packages:
+  - volunteerportal
+
+parts:
+  - translation:
+      key: layout.tab.calendar
+      title: 'Some explaination here.'
+      value: Calendar
