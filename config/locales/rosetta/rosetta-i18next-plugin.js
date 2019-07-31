@@ -25,44 +25,22 @@ const writeFile = () => {}
 class RosettaI18nextPlugin {
   apply(compiler) {
     compiler.plugin('emit', (compilation, callback) => {
-      const readdirPromise = util.promisify(fs.readdir)
-      const readFilePromise = util.promisify(fs.readFile)
-      const writeFilePromise = util.promisify(fs.writeFile)
-      const mkdirPromise = util.promisify(fs.mkdir)
-      const existsPromise = util.promisify(fs.exists)
+      const files = fs.readdirSync(ROSETTA_DIR)
+      const jsonFileNames = getJson(files)
+      jsonFileNames.forEach(jsonFileName => {
+        const inputFile = ROSETTA_DIR + jsonFileName
+        // compilation.fileDependencies.push
+        //   ? compilation.fileDependencies.push(inputFile)
+        //   : compilation.fileDependencies.add(inputFile)
 
-      readdirPromise(ROSETTA_DIR).then(files => {
-        const jsonFileNames = getJson(files)
-        jsonFileNames.forEach(jsonFileName => {
-          const inputFile = ROSETTA_DIR + jsonFileName
-          compilation.fileDependencies.push
-            ? compilation.fileDependencies.push(inputFile)
-            : compilation.fileDependencies.add(inputFile)
+        const contents = fs.readFileSync(inputFile)
+        const translations = JSON.parse(contents).locale.translations
+        const outputDir = outputDirName(jsonFileName)
 
-          console.log(inputFile)
-          console.log(compilation.fileDependencies.find(a => a == inputFile))
-
-          readFilePromise(inputFile)
-            .then(contents => {
-              const translations = JSON.parse(contents).locale.translations
-              const outputDir = outputDirName(jsonFileName)
-              existsPromise(outputDir)
-                .then(exists => {
-                  return exists ? Promise.resolve() : mkdirPromise(outputDir, { recursive: true })
-                })
-                .then(() => {
-                  const outputFileName = outputDirName(jsonFileName) + 'translation.json'
-                  writeFilePromise(outputFileName, JSON.stringify(translations))
-                  compilation.chunks.push(outputFileName)
-                })
-                .catch(e => {
-                  console.log(e)
-                })
-            })
-            .catch(e => {
-              console.log(`Could not read translation files from ${ROSETTA_DIR} or write to ${OUTPUT_DIR}`, e)
-            })
-        })
+        !fs.existsSync(outputDir) && fs.mkdirSync(outputDir, { recursive: true })
+        const outputFileName = outputDirName(jsonFileName) + 'translation.json'
+        fs.writeFileSync(outputFileName, JSON.stringify(translations))
+        // compilation.chunks.push(outputFileName)
       })
 
       callback()
