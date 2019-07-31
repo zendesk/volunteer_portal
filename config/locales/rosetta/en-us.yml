@@ -7,3 +7,11 @@ parts:
       key: layout.tab.calendar
       title: 'Some explaination here.'
       value: Calendar
+  - translation:
+      key: layout.tab.dashboard
+      title: 'Some explaination here.'
+      value: Dashboards
+  - translation:
+      key: layout.tab.events
+      title: 'Some explaination here.'
+      value: My Events

@@ -1,8 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 const util = require('util')
+const yaml = require('js-yaml')
 
-const ROSETTA_DIR = './config/locales/rosetta/'
 const OUTPUT_DIR = './public/locales/'
 
 const getJson = files => {
@@ -10,38 +10,68 @@ const getJson = files => {
 }
 
 const getYml = files => {
-  // TODO read YMl and spit it out to the public folder
-  files.filter(file => file.match(/.*\.yml/))
+  return files.filter(file => file.match(/.*\.yml/))
 }
-
-const gatherFiles = () => {}
 
 const outputDirName = jsonFileName => {
   return OUTPUT_DIR + jsonFileName.replace('.json', '') + '/'
 }
 
-const writeFile = () => {}
+const transformYamlDefaultsToJson = (compilation, files) => {
+  const yamlFileNames = getYml(files)
+
+  if (yamlFileNames.length != 1) {
+    console.log("can't find rosetta yaml file")
+    return
+  }
+
+  yamlFileNames.forEach(yamlFileName => {
+    const inputFile = path.resolve(__dirname, yamlFileName)
+    console.log('inputFile', inputFile)
+    compilation.fileDependencies.push(inputFile)
+
+    const contents = fs.readFileSync(inputFile)
+    const yamlContents = yaml.safeLoad(contents)
+
+    const jsonDefaultName = yamlFileName.replace('yml', 'json')
+    const jsonDefaultDir = path.resolve(__dirname, jsonDefaultName)
+    const existingJsonDefault = fs.readdirSync(path.resolve(__dirname)).includes(jsonDefaultName)
+
+    if (!existingJsonDefault) {
+      fs.writeFileSync(jsonDefaultDir, JSON.stringify({ locale: { translations: {} } }))
+    }
+
+    const jsonDefault = JSON.parse(fs.readFileSync(jsonDefaultDir))
+    yamlContents.parts.forEach(part => {
+      jsonDefault.locale.translations[part.translation.key] = part.translation.value
+    })
+
+    fs.writeFileSync(jsonDefaultDir, JSON.stringify(jsonDefault))
+  })
+}
+
+const serveJsonToPublic = (compilation, files) => {
+  const jsonFileNames = getJson(files)
+  jsonFileNames.forEach(jsonFileName => {
+    const inputFile = path.resolve(__dirname, jsonFileName)
+
+    const contents = fs.readFileSync(inputFile)
+    const translations = JSON.parse(contents).locale.translations
+    const outputDir = outputDirName(jsonFileName)
+
+    !fs.existsSync(outputDir) && fs.mkdirSync(outputDir, { recursive: true })
+    const outputFileName = outputDirName(jsonFileName) + 'translation.json'
+    fs.writeFileSync(outputFileName, JSON.stringify(translations))
+  })
+}
 
 class RosettaI18nextPlugin {
   apply(compiler) {
     compiler.plugin('emit', (compilation, callback) => {
-      const files = fs.readdirSync(ROSETTA_DIR)
-      const jsonFileNames = getJson(files)
-      jsonFileNames.forEach(jsonFileName => {
-        const inputFile = ROSETTA_DIR + jsonFileName
-        // compilation.fileDependencies.push
-        //   ? compilation.fileDependencies.push(inputFile)
-        //   : compilation.fileDependencies.add(inputFile)
+      const files = fs.readdirSync(path.resolve(__dirname))
 
-        const contents = fs.readFileSync(inputFile)
-        const translations = JSON.parse(contents).locale.translations
-        const outputDir = outputDirName(jsonFileName)
-
-        !fs.existsSync(outputDir) && fs.mkdirSync(outputDir, { recursive: true })
-        const outputFileName = outputDirName(jsonFileName) + 'translation.json'
-        fs.writeFileSync(outputFileName, JSON.stringify(translations))
-        // compilation.chunks.push(outputFileName)
-      })
+      transformYamlDefaultsToJson(compilation, files)
+      serveJsonToPublic(compilation, files)
 
       callback()
     })

@@ -6,7 +6,7 @@ i18n
   .use(backend)
   .use(reactI18nextModule) // passes i18n down to react-i18next
   .init({
-    lng: 'jp',
+    lng: 'en-us',
     fallbackLng: 'en-us',
 
     keySeparator: false, // we do not use keys in form messages.welcome
