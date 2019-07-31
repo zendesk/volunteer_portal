@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import R from 'ramda'
 
@@ -13,12 +12,8 @@ import EventQuery from './queries/show.gql'
 import UpdateEventMutation from './mutations/update.gql'
 import DestroySignupMutation from 'mutations/DestroySignupMutation.gql'
 
-const EditEvent = ({
-  data: { networkStatus, event, eventTypes, offices, organizations },
-  updateEvent,
-  destroySignup,
-}) =>
-  networkStatus === NetworkStatus.loading ? (
+const EditEvent = ({ data: { loading, event, eventTypes, offices, organizations }, updateEvent, destroySignup }) =>
+  loading ? (
     <Loading />
   ) : (
     <EventForm

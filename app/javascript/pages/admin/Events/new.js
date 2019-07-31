@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
 import R from 'ramda'
-import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
 
 import { graphQLError } from 'actions'
@@ -30,8 +29,8 @@ const transformToReduxFormState = event => {
   }
 }
 
-const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, offices, organizations } }) =>
-  networkStatus === NetworkStatus.loading ? (
+const NewEvent = ({ createEvent, data: { loading, event, eventTypes, offices, organizations } }) =>
+  loading ? (
     <Loading />
   ) : (
     <EventForm

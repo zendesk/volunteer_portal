@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
 import R from 'ramda'
 import ReactTable from 'react-table'
@@ -90,8 +89,8 @@ class IndividualEvents extends React.Component {
 
   render() {
     const { data } = this.props
-    const { networkStatus, pendingIndividualEvents } = data
-    return networkStatus === NetworkStatus.loading ? (
+    const { loading, pendingIndividualEvents } = data
+    return loading ? (
       <Loading />
     ) : (
       <div className={s.eventsTable}>

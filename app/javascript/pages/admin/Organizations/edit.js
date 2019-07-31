@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import R from 'ramda'
 
@@ -12,12 +11,8 @@ import Loading from 'components/LoadingIcon'
 import OrganizationQuery from './queries/show.gql'
 import UpdateOrganizationMutation from './mutations/update.gql'
 
-const EditOrganization = ({ data: { networkStatus, organization }, updateOrganization }) =>
-  networkStatus === NetworkStatus.loading ? (
-    <Loading />
-  ) : (
-    <OrganizationForm organization={organization} onSubmit={updateOrganization} />
-  )
+const EditOrganization = ({ data: { loading, organization }, updateOrganization }) =>
+  loading ? <Loading /> : <OrganizationForm organization={organization} onSubmit={updateOrganization} />
 
 const buildOptimisticResponse = organization => ({
   __typename: 'Mutation',

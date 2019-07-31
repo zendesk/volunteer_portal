@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
-import { NetworkStatus } from 'apollo-client'
 import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
@@ -106,8 +105,8 @@ const destroyActions = (togglePopover, destroyOfficePopover, deleteOffice) => [
   </button>,
 ]
 
-const Offices = ({ data: { networkStatus, offices }, deleteOffice, destroyOfficePopover, togglePopover }) =>
-  networkStatus === NetworkStatus.loading ? (
+const Offices = ({ data: { loading, offices }, deleteOffice, destroyOfficePopover, togglePopover }) =>
+  loading ? (
     <Loading />
   ) : (
     <div>
@@ -183,12 +182,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+  togglePopover,
+})
 
 export default withActions(withData(Offices))

@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
-import { NetworkStatus } from 'apollo-client'
 import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
@@ -119,8 +118,8 @@ const tdProps = () => ({
   },
 })
 
-const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
-  networkStatus === NetworkStatus.loading ? (
+const Events = ({ data: { loading, events }, deleteEvent }) =>
+  loading ? (
     <Loading />
   ) : (
     <div>

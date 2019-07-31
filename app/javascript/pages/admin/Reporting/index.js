@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
@@ -19,13 +18,13 @@ const formatOrDefaultStartDate = filterValue => Number(moment(filterValue || def
 const formatOrDefaultEndDate = filterValue => Number(moment(filterValue || defaultEndDate).format('X'))
 
 const ReportingPage = ({
-  data: { networkStatus, users },
+  data: { loading, users },
   reportingStartDate,
   reportingEndDate,
   changeAdminReportingStart,
   changeAdminReportingEnd,
 }) =>
-  networkStatus === NetworkStatus.loading ? (
+  loading ? (
     <Loading />
   ) : (
     <div className={s.admin}>

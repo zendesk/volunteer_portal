@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import R from 'ramda'
 import { compose, graphql } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
@@ -19,17 +18,11 @@ class AppPage extends Component {
   }
 
   render() {
-    const {
-      data: { networkStatus, currentUser, offices },
-      togglePopover,
-      popover,
-      children,
-      updateUserOffice,
-    } = this.props
+    const { data: { loading, currentUser, offices }, togglePopover, popover, children, updateUserOffice } = this.props
 
     return (
       <App
-        loading={networkStatus === NetworkStatus.loading}
+        loading={loading}
         currentUser={currentUser}
         offices={offices}
         userPopover={popover && popover.type === 'user' ? popover : null}

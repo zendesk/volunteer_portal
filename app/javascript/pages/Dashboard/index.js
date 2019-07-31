@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import R from 'ramda'
 import moment from 'moment'
@@ -121,11 +120,11 @@ const milestoneLabelStyling = (item, milestone, user) => {
 const sortByHours = users => R.sort((a, b) => b.hours - a.hours)(users)
 
 const LeaderboardContainer = ({
-  data: { networkStatus, users, offices, currentUser },
+  data: { loading, users, offices, currentUser },
   dashboardOfficeFilter,
   changeDashboardOfficeFilter,
 }) =>
-  networkStatus === NetworkStatus.loading ? (
+  loading ? (
     <Loading />
   ) : (
     <div className={s.leaderboard}>
@@ -177,8 +176,8 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
 const leaderboardWithActions = connect(mapStateToProps, { changeDashboardOfficeFilter })
 const Leaderboard = leaderboardWithActions(leaderboardWithData(LeaderboardContainer))
 
-const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransitions }) => {
-  if (networkStatus === NetworkStatus.loading) {
+const Dashboard = ({ data: { loading, currentUser }, locationBeforeTransitions }) => {
+  if (loading) {
     return <Loading />
   } else {
     const activeMilestone = selectMilestone(currentUser.hours)

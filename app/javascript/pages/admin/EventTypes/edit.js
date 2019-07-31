@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import R from 'ramda'
 
@@ -12,12 +11,8 @@ import Loading from 'components/LoadingIcon'
 import EventTypeQuery from './queries/show.gql'
 import UpdateEventTypeMutation from './mutations/update.gql'
 
-const EditEventType = ({ data: { networkStatus, eventType }, updateEventType }) =>
-  networkStatus === NetworkStatus.loading ? (
-    <Loading />
-  ) : (
-    <EventTypeForm eventType={eventType} onSubmit={updateEventType} />
-  )
+const EditEventType = ({ data: { loading, eventType }, updateEventType }) =>
+  loading ? <Loading /> : <EventTypeForm eventType={eventType} onSubmit={updateEventType} />
 
 const buildOptimisticResponse = eventType => ({
   __typename: 'Mutation',

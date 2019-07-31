@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
-import { NetworkStatus } from 'apollo-client'
 import R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
@@ -107,12 +106,12 @@ const tdProps = () => ({
 })
 
 const Organizations = ({
-  data: { networkStatus, organizations },
+  data: { loading, organizations },
   deleteOrganization,
   togglePopover,
   destroyOrganizationPopover,
 }) =>
-  networkStatus === NetworkStatus.loading ? (
+  loading ? (
     <Loading />
   ) : (
     <div>

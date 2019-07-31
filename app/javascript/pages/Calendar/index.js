@@ -1,6 +1,5 @@
 import React from 'react'
 import { compose, graphql } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import R from 'ramda'
 import moment from 'moment'
@@ -47,18 +46,11 @@ const fetchMoreEvents = (fetchMore, calendarDateChange, currentDate, newDate, sc
 }
 
 const EventPopoverForData = props => {
-  const {
-    popoverState,
-    currentUser,
-    onPopoverClose,
-    createSignup,
-    destroySignup,
-    data: { networkStatus, event },
-  } = props
+  const { popoverState, currentUser, onPopoverClose, createSignup, destroySignup, data: { loading, event } } = props
 
   return (
     <EventPopover
-      loading={networkStatus === NetworkStatus.loading}
+      loading={loading}
       open
       anchorEl={popoverState.anchorEl}
       currentUser={currentUser}
@@ -81,7 +73,7 @@ const connectEventPopoverToData = graphql(EventQuery, {
 const EventPopoverWithData = connectEventPopoverToData(EventPopoverForData)
 
 const CalendarPage = ({
-  data: { networkStatus, fetchMore, currentUser, events, offices },
+  data: { loading, fetchMore, currentUser, events, offices },
   locationBeforeTransitions,
   filters,
   eventPopover,
@@ -96,7 +88,7 @@ const CalendarPage = ({
 }) => (
   <div>
     <Calendar
-      loading={networkStatus === NetworkStatus.loading}
+      loading={loading}
       currentPath={locationBeforeTransitions.pathname}
       events={events}
       offices={offices}

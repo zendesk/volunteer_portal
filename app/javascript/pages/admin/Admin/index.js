@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { graphql } from 'react-apollo'
-import { NetworkStatus } from 'apollo-client'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 
@@ -87,9 +86,9 @@ const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices }) =
 
 class Admin extends Component {
   componentDidUpdate() {
-    const { history, data: { networkStatus, currentUser } } = this.props
+    const { history, data: { loading, currentUser } } = this.props
 
-    if (networkStatus !== NetworkStatus.loading && !currentUser.isAdmin) {
+    if (!loading && !currentUser.isAdmin) {
       history.push('/portal')
     }
   }
