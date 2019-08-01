@@ -22,7 +22,6 @@ const createBaseRosettaFile = yamlFile => {
     parts: [],
   }
   const defaultRosettaContentsYml = yaml.safeLoad(JSON.stringify(defaultRosettaContents))
-  console.log(defaultRosettaContentsYml)
   fs.writeFileSync(yamlFile, yaml.safeDump(defaultRosettaContentsYml))
 }
 
