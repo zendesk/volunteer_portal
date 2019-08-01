@@ -1,1 +1,18 @@
-{"locale":{"translations":{"layout.tab.calendar":"Calendar","layout.tab.dashboard":"Dashboards","layout.tab.events":"My Events"}}}
+{
+  "locale": {
+    "url": "https://support.zendesk.com/api/v2/locales/en-US.json",
+    "id": 1,
+    "locale": "en-US",
+    "name": "English",
+    "native_name": "English",
+    "presentation_name": "English",
+    "rtl": false,
+    "created_at": null,
+    "default": true,
+    "translations": {
+      "layout.tab.calendar": "Calendar",
+      "layout.tab.dashboard": "Dashboards",
+      "layout.tab.events": "My Events"
+    }
+  }
+}

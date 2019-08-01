@@ -1,6 +1,6 @@
-title: volunteerportal
+title: volunteer_portal
 packages:
-  - volunteerportal
+  - volunteer_portal
 
 parts:
   - translation:
