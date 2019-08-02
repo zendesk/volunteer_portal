@@ -2,6 +2,7 @@ import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import R from 'ramda'
 import moment from 'moment'
+import { withNamespaces } from 'react-i18next'
 
 import Loading from 'components/LoadingIcon'
 import Layout from 'components/Layout'
@@ -21,7 +22,7 @@ const styles = {
 }
 
 // Custom components given to BigCalendar
-const calendarComponents = (currentUser, offices, filters, filterActions) => {
+const calendarComponents = (currentUser, offices, filters, filterActions, t) => {
   const { changeShowFilter, changeEventFilter, changeOfficeFilter } = filterActions
 
   const showFilter = {
@@ -40,7 +41,7 @@ const calendarComponents = (currentUser, offices, filters, filterActions) => {
   }
 
   return {
-    toolbar: R.partial(Toolbar, [offices, showFilter, eventFilter, officeFilter]),
+    toolbar: R.partial(Toolbar, [offices, showFilter, eventFilter, officeFilter, t]),
     event: Event, // used by each view (Month, Day, Week)
   }
 }
@@ -136,6 +137,7 @@ const Calendar = ({
   loadMoreEvents,
   createSignup,
   destroySignup,
+  t,
 }) =>
   loading ? (
     <Loading />
@@ -145,11 +147,17 @@ const Calendar = ({
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
-        components={calendarComponents(currentUser, offices, filters, {
-          changeShowFilter,
-          changeEventFilter,
-          changeOfficeFilter,
-        })}
+        components={calendarComponents(
+          currentUser,
+          offices,
+          filters,
+          {
+            changeShowFilter,
+            changeEventFilter,
+            changeOfficeFilter,
+          },
+          t
+        )}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup
@@ -158,4 +166,4 @@ const Calendar = ({
     </Layout>
   )
 
-export default Calendar
+export default withNamespaces()(Calendar)

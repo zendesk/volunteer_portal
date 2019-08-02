@@ -102,11 +102,18 @@ const OfficeFilter = ({ value, onChange, offices }) => (
   </div>
 )
 
-const Toolbar = (offices, showFilter, eventFilter, officeFilter, { label, view, views, onNavigate, onViewChange }) => (
+const Toolbar = (
+  offices,
+  showFilter,
+  eventFilter,
+  officeFilter,
+  t,
+  { label, view, views, onNavigate, onViewChange }
+) => (
   <div className={s.toolbar}>
     <div className={s.navBar}>
       <button className={s.todayBtn} type="button" onClick={() => onNavigate(navigate.TODAY)}>
-        Today
+        {t('calendar.today')}
       </button>
       <button className={s.btn} type="button" onClick={() => onNavigate(navigate.PREVIOUS)}>
         ‹

@@ -12,6 +12,7 @@ import NamedAvatar from 'components/NamedAvatar'
 import ProgressCircle from 'components/ProgressCircle'
 
 import { changeDashboardOfficeFilter } from 'actions'
+import { withNamespaces } from 'react-i18next'
 
 import MilestoneQuery from './milestoneQuery.gql'
 import LeaderboardQuery from './leaderboardQuery.gql'
@@ -177,7 +178,7 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
 const leaderboardWithActions = connect(mapStateToProps, { changeDashboardOfficeFilter })
 const Leaderboard = leaderboardWithActions(leaderboardWithData(LeaderboardContainer))
 
-const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransitions }) => {
+const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransitions, t }) => {
   if (networkStatus === NetworkStatus.loading) {
     return <Loading />
   } else {
@@ -200,7 +201,7 @@ const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransit
               <div className={s.headerAndBar}>
                 <div className={s.personalProgress}>
                   <div className={s.personalLabel}>
-                    <div className={s.personal}>Personal</div>
+                    <div className={s.personal}>{t('dashboard.personal')}</div>
                     <div className={s.label}>total hours</div>
                   </div>
                   <div className={s.personalTotal}>{currentUser.hours}</div>
@@ -243,4 +244,4 @@ const withData = graphql(MilestoneQuery, {
   },
 })
 
-export default connect(mapStateToProps)(withData(Dashboard))
+export default connect(mapStateToProps)(withData(withNamespaces()(Dashboard)))

@@ -15,3 +15,11 @@ parts:
       key: layout.tab.events
       title: 'Some explaination here.'
       value: My Events
+  - translation:
+      key: dashboard.personal
+      title: 'Label referring to who the number of hours belong to'
+      value: Personal
+  - translation: 
+      key: calendar.today
+      title: 'Button in calendar to jump to today'
+      value: Today

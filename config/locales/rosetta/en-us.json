@@ -12,7 +12,9 @@
     "translations": {
       "layout.tab.calendar": "Calendar",
       "layout.tab.dashboard": "Dashboards",
-      "layout.tab.events": "My Events"
+      "layout.tab.events": "My Events",
+      "dashboard.personal": "Personal",
+      "calendar.today": "Today"
     }
   }
 }
