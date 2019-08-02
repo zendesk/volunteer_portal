@@ -28,11 +28,12 @@ module.exports = merge(sharedConfig, {
     host: settings.dev_server.host,
     port: settings.dev_server.port,
     disableHostCheck: true,
-    contentBase: output.path,
+    contentBase: [output.path, join(__dirname, 'config/locales/rosetta')],
     publicPath: output.publicPath,
     compress: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
     historyApiFallback: true,
+    watchContentBase: true,
     watchOptions: {
       ignored: /node_modules/,
     },
