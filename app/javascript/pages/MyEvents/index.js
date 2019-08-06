@@ -130,7 +130,15 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
 }
 
 const renderField = props => {
-  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
+  const {
+    input,
+    label,
+    type,
+    Custom,
+    meta: { touched, error, warning },
+    className,
+    required,
+  } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
   return (
     <div>
@@ -437,7 +445,7 @@ const MyEvents = props => {
   if (data.loading) {
     return <Loading />
   } else if (data.error) {
-    console.log(data.error)
+    console.error(data.error)
     return <div>Sorry, we are having trouble loading your events.</div>
   } else {
     return (
@@ -551,8 +559,11 @@ const withReduxForm = reduxForm({
   validate,
 })
 
-const withActions = connect(mapStateToProps, {
-  togglePopover,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    togglePopover,
+  }
+)
 
 export default withActions(withData(withReduxForm(MyEvents)))
