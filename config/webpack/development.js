@@ -9,7 +9,7 @@ const { join, resolve } = require('path')
 const entryPath = join(settings.source_path, settings.source_entry_path)
 
 module.exports = merge(sharedConfig, {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'sourcemap',
 
   stats: {
     errorDetails: true,
