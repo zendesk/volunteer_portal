@@ -102,7 +102,7 @@ const OfficeFilter = ({ value, onChange, offices }) => (
   </div>
 )
 
-const Toolbar = (offices, showFilter, eventFilter, officeFilter, { label, view, views, onNavigate, onViewChange }) => (
+const Toolbar = (offices, showFilter, eventFilter, officeFilter, { label, view, views, onNavigate, onView }) => (
   <div className={s.toolbar}>
     <div className={s.navBar}>
       <button className={s.todayBtn} type="button" onClick={() => onNavigate(navigate.TODAY)}>
@@ -131,7 +131,7 @@ const Toolbar = (offices, showFilter, eventFilter, officeFilter, { label, view, 
           <button
             key={viewName}
             className={view === viewName ? `${s.btn} ${s.activeBtn}` : s.btn}
-            onClick={() => onViewChange(viewName)}
+            onClick={() => onView(viewName)}
           >
             {viewName.charAt(0).toUpperCase() + viewName.slice(1)}
           </button>

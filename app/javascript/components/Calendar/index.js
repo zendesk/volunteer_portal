@@ -1,5 +1,5 @@
 import React from 'react'
-import BigCalendar from 'react-big-calendar'
+import { Calendar as BigCalendar, momentLocalizer } from 'react-big-calendar'
 import R from 'ramda'
 import moment from 'moment'
 
@@ -10,7 +10,7 @@ import Event from 'components/Event'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
-BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
+const localizer = momentLocalizer(moment)
 
 // BigCalendar needs inline styles :(
 const styles = {
@@ -142,6 +142,7 @@ const Calendar = ({
   ) : (
     <Layout currentPath={currentPath}>
       <BigCalendar
+        localizer={localizer}
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
