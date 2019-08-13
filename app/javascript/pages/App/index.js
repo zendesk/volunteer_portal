@@ -3,7 +3,6 @@ import R from 'ramda'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import App from 'components/App'
 
@@ -12,34 +11,25 @@ import { togglePopover } from 'actions'
 import AppQuery from './query.gql'
 import UpdateUserOfficeMutation from './UpdateUserOfficeMutation.gql'
 
-class AppPage extends Component {
-  constructor(props) {
-    injectTapEventPlugin()
-    super(props)
-  }
-
-  render() {
-    const {
-      data: { networkStatus, currentUser, offices },
-      togglePopover,
-      popover,
-      children,
-      updateUserOffice,
-    } = this.props
-
-    return (
-      <App
-        loading={networkStatus === NetworkStatus.loading}
-        currentUser={currentUser}
-        offices={offices}
-        userPopover={popover && popover.type === 'user' ? popover : null}
-        toggleUserPopover={R.partial(togglePopover, ['user', {}])}
-        updateUserOffice={updateUserOffice}
-      >
-        {children}
-      </App>
-    )
-  }
+const AppPage = ({
+  data: { networkStatus, currentUser, offices },
+  togglePopover,
+  popover,
+  children,
+  updateUserOffice,
+}) => {
+  return (
+    <App
+      loading={networkStatus === NetworkStatus.loading}
+      currentUser={currentUser}
+      offices={offices}
+      userPopover={popover && popover.type === 'user' ? popover : null}
+      toggleUserPopover={R.partial(togglePopover, ['user', {}])}
+      updateUserOffice={updateUserOffice}
+    >
+      {children}
+    </App>
+  )
 }
 
 const mapStateToProps = (state, { children }) => {
