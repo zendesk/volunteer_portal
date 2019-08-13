@@ -3,7 +3,7 @@ import { compose, graphql } from 'react-apollo'
 import { connect } from 'react-redux'
 import R from 'ramda'
 import { Link } from 'react-router'
-import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
+import { GoogleMap, Marker, withGoogleMap } from 'react-google-maps'
 
 import EventLocation from 'components/EventLocation'
 import EventTime from 'components/EventTime'
@@ -64,7 +64,7 @@ class MapPreview extends Component {
     this.geocodeCallback = this.geocodeCallback.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (geocoder) {
       geocoder.geocode({ address: this.props.event.location }, this.geocodeCallback)
     }
@@ -81,16 +81,17 @@ class MapPreview extends Component {
 
   render() {
     const { lat, lng } = this.state
+    const GoogleMapLoader = withGoogleMap(props => (
+      <GoogleMap defaultZoom={15} defaultCenter={{ lat: lat, lng: lng }}>
+        <Marker position={{ lat, lng }} defaultAnimation={2} />
+      </GoogleMap>
+    ))
 
     return (
       <section style={{ height: 200, width: '100%' }}>
         <GoogleMapLoader
-          containerElement={<div style={{ height: '100%' }} />}
-          googleMapElement={
-            <GoogleMap defaultZoom={15} defaultCenter={{ lat, lng }} center={{ lat, lng }}>
-              <Marker position={{ lat, lng }} defaultAnimation={2} />
-            </GoogleMap>
-          }
+          containerElement={<div style={{ height: `100%` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
         />
       </section>
     )
