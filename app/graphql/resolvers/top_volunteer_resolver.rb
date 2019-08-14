@@ -1,8 +1,8 @@
 module TopVolunteerResolver
   class << self
     def alL(_object, args, context)
-      events_scope = User.joins(:events).select('users.id, events.duration')
-      individual_events_scope = User.joins(:individual_events).select('users.id, individual_events.duration')
+      events_scope = User.joins(:events).select('"users"."id", "events"."duration"')
+      individual_events_scope = User.joins(:individual_events).select('"users"."id", "individual_events"."duration"')
 
       office_id = case args[:office_id]
                   when 'all'
@@ -17,7 +17,7 @@ module TopVolunteerResolver
       events_scope, individual_events_scope = scope_with_office_id(events_scope, individual_events_scope, office_id)
 
       all_events_scope = events_scope.union_all(individual_events_scope)
-      all_events_scope = all_events_scope.select('id, SUM(duration) AS duration').group('id')
+      all_events_scope = all_events_scope.select('"id", SUM("duration") AS "duration"').group('"id"')
 
       all_events_scope = scope_with_count(all_events_scope, args[:count])
       all_events_scope = scope_with_sort_by(all_events_scope, args[:sort_by])
