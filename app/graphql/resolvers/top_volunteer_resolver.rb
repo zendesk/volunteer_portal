@@ -42,5 +42,33 @@ module TopVolunteerResolver
 
       return events_scope, individual_events_scope
     end
+
+    def scope_with_office_id(events_scope, individual_events_scope, office_id)
+      return events_scope, individual_events_scope unless office_id
+
+      events_scope = events_scope.where(office_id: office_id)
+      individual_events_scope = individual_events_scope.where(office_id: office_id)
+
+      return events_scope, individual_events_scope
+    end
+
+    def scope_with_count(scope, count)
+      return scope unless count
+
+      scope.limit(count)
+    end
+
+    def scope_with_sort_by(scope, sort_by)
+      return scope unless sort_by
+
+      order = case sort_by
+              when UserResolver::HOURS_DESC
+                '"duration" DESC'
+              when UserResolver::HOURS_ASC
+                '"duration" ASC'
+              end
+
+      scope.order(order)
+    end
   end
 end
