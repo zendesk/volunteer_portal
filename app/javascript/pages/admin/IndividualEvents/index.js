@@ -112,6 +112,7 @@ class IndividualEvents extends React.Component {
           </select>
           <button
             className={s.bulkActionButton}
+            disabled={!this.state.bulkAction}
             onClick={() => {
               const { selected, bulkAction } = this.state
               if (selected.length <= 0) return
