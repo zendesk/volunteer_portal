@@ -2,6 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 
+const OUTPUT_DIR = './public/locales/'
+
 const getJson = files => {
   return files.filter(file => file.match(/.*\.json/))
 }
@@ -11,7 +13,6 @@ const getYml = files => {
 }
 
 const outputDirName = jsonFileName => {
-  const OUTPUT_DIR = './public/locales/'
   return OUTPUT_DIR + jsonFileName.replace('.json', '') + '/'
 }
 
@@ -61,7 +62,9 @@ const compileBaseRosetta = (compilation, files) => {
 }
 
 const serveTranslationFiles = files => {
+  !fs.existsSync(OUTPUT_DIR) && fs.mkdirSync(OUTPUT_DIR, { recursive: true })
   const jsonFileNames = getJson(files)
+
   jsonFileNames.forEach(jsonFileName => {
     const inputFile = path.resolve(__dirname, jsonFileName)
 
