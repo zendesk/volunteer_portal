@@ -12,6 +12,8 @@ import AdminQuery from './query.gql'
 
 import s from './main.css'
 
+import { withNamespaces } from 'react-i18next'
+
 // Only declare styles in here that are needed for MUI components
 const muiStyles = {
   menuGroup: {
@@ -66,9 +68,9 @@ const btnClass = (routing, button) => {
   }
 }
 
-const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices }) => (
+const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }) => (
   <div className={s.officeFilter} style={muiStyles.menuGroup}>
-    <span style={muiStyles.menuTitle}>Office:</span>
+    <span style={muiStyles.menuTitle}>{t('admin.tab.office')}</span>
     <DropDownMenu
       value={adminOfficeFilter.value}
       onChange={(_e, _k, value) => changeAdminOfficeFilter(value)}
@@ -79,7 +81,7 @@ const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices }) =
       iconStyle={muiStyles.icon}
       menuItemStyle={muiStyles.menuitem}
     >
-      <MenuItem value="all" primaryText="All" style={muiStyles.menuitem} />
+      <MenuItem value="all" primaryText={t('admin.tab.office.all')} style={muiStyles.menuitem} />
       {offices.map((office, i) => <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} />)}
     </DropDownMenu>
   </div>
@@ -95,7 +97,14 @@ class Admin extends Component {
   }
 
   render() {
-    const { routing, children, adminOfficeFilter, changeAdminOfficeFilter, data: { currentUser, offices } } = this.props
+    const {
+      routing,
+      children,
+      adminOfficeFilter,
+      changeAdminOfficeFilter,
+      t,
+      data: { currentUser, offices },
+    } = this.props
 
     if (adminOfficeFilter.value === 'current') {
       adminOfficeFilter.value = currentUser.office.id
@@ -106,38 +115,39 @@ class Admin extends Component {
         <div className={s.content}>
           <div className={s.navBar}>
             <Link to="/portal/admin">
-              <span className={btnClass(routing, 'dashboard')}>Dashboard</span>
+              <span className={btnClass(routing, 'dashboard')}>{t('admin.tab.dashboard')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/events">
-              <span className={btnClass(routing, 'events')}>Events</span>
+              <span className={btnClass(routing, 'events')}>{t('admin.tab.events')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/event-types">
-              <span className={btnClass(routing, 'event-types')}>Event Types</span>
+              <span className={btnClass(routing, 'event-types')}>{t('admin.tab.eventtypes')}s</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/offices">
-              <span className={btnClass(routing, 'offices')}>Offices</span>
+              <span className={btnClass(routing, 'offices')}>{t('admin.tab.offices')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/organizations">
-              <span className={btnClass(routing, 'organizations')}>Organizations</span>
+              <span className={btnClass(routing, 'organizations')}>{t('admin.tab.organizations')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/individual_events">
-              <span className={btnClass(routing, 'individual_events')}>Individual Events</span>
+              <span className={btnClass(routing, 'individual_events')}>{t('admin.tab.individualevents')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/users">
-              <span className={btnClass(routing, 'users')}>Users</span>
+              <span className={btnClass(routing, 'users')}>{t('admin.tab.users')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/reporting">
-              <span className={btnClass(routing, 'reporting')}>Reporting</span>
+              <span className={btnClass(routing, 'reporting')}>{t('admin.tab.reporting')}</span>
             </Link>
             <div className={`${s.navSpacer} ${s.growingSpace}`} />
             <OfficeFilter
+              t={this.props.t}
               adminOfficeFilter={adminOfficeFilter}
               changeAdminOfficeFilter={changeAdminOfficeFilter}
               offices={offices}
@@ -166,4 +176,4 @@ const withActions = connect(mapStateToProps, {
   changeAdminOfficeFilter,
 })
 
-export default withActions(withData(Admin))
+export default withActions(withData(withNamespaces()(Admin)))
