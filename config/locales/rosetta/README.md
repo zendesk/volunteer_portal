@@ -10,11 +10,11 @@ parts:
   - translation:
       key: dashboard.personal
       title: 'Label referring to who the number of hours belong to'
-      value: Personal
+      value: 'Personal'
   - translation:
       key: dashboard.hours
       title: 'Label referring to the metric of time'
-      value: Hours
+      value: 'Hours'
 ```
 
 Import `withNamespaces` to file you wish to extract strings and translate
