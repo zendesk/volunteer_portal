@@ -1,5 +1,32 @@
 {
   "locale": {
-    "translations": {}
+    "translations": {
+      "dashboard.personal": "Personals",
+      "dashboard.layouttab.calendar": "Calendar",
+      "dashboard.layouttab.dashboard": "Dashboard",
+      "dashboard.layouttab.myevents": "My Events",
+      "dashboard.layoutdatetab.today": "Today",
+      "dashboard.layoutdatetab.previous": "<",
+      "dashboard.layoutdatetab.after": ">",
+      "dashboard.layouteventstab.show": "Show:",
+      "dashboard.layouteventstab.show.all": "All",
+      "dashboard.layouteventstab.show.myevents": "My Events",
+      "dashboard.layouteventstab.event": "Event:",
+      "dashboard.layouteventstab.event.all": "All",
+      "dashboard.layouteventstab.event.open": "Open",
+      "dashboard.layouteventstab.event.full": "Full",
+      "dashboard.layouteventstab.office": "Office:",
+      "dashboard.layouteventstab.office.all": "All",
+      "admin.tab.office": "Office:",
+      "admin.tab.office.all": "All",
+      "admin.tab.dashboard": "Dashboard",
+      "admin.tab.events": "Events",
+      "admin.tab.eventtypes": "Event Types",
+      "admin.tab.offices": "Offices",
+      "admin.tab.organizations": "Organizations",
+      "admin.tab.individualevents": "Individual Events",
+      "admin.tab.users": "Users",
+      "admin.tab.reporting": "Reporting"
+    }
   }
 }

@@ -45,9 +45,9 @@ const styles = {
   },
 }
 
-const ShowFilter = ({ value, onChange }) => (
+const ShowFilter = ({ value, onChange, t }) => (
   <div style={styles.menuGroup}>
-    <span style={styles.menuTitle}>Show:</span>
+    <span style={styles.menuTitle}>{t('dashboard.layouteventstab.show')}</span>
     <DropDownMenu
       value={value}
       onChange={onChange}
@@ -57,15 +57,15 @@ const ShowFilter = ({ value, onChange }) => (
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText="All" style={styles.menuitem} />
-      <MenuItem value="mine" primaryText="My Events" style={styles.menuitem} />
+      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.show.all')} style={styles.menuitem} />
+      <MenuItem value="mine" primaryText={t('dashboard.layouteventstab.show.myevents')} style={styles.menuitem} />
     </DropDownMenu>
   </div>
 )
 
-const EventFilter = ({ value, onChange }) => (
+const EventFilter = ({ value, onChange, t }) => (
   <div style={styles.menuGroup}>
-    <span style={styles.menuTitle}>Event:</span>
+    <span style={styles.menuTitle}>{t('dashboard.layouteventstab.event')}</span>
     <DropDownMenu
       value={value}
       onChange={onChange}
@@ -75,16 +75,16 @@ const EventFilter = ({ value, onChange }) => (
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText="All" style={styles.menuitem} />
-      <MenuItem value="open" primaryText="Open" style={styles.menuitem} />
-      <MenuItem value="full" primaryText="Full" style={styles.menuitem} />
+      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.event.all')} style={styles.menuitem} />
+      <MenuItem value="open" primaryText={t('dashboard.layouteventstab.event.open')} style={styles.menuitem} />
+      <MenuItem value="full" primaryText={t('dashboard.layouteventstab.event.full')} style={styles.menuitem} />
     </DropDownMenu>
   </div>
 )
 
-const OfficeFilter = ({ value, onChange, offices }) => (
+const OfficeFilter = ({ value, onChange, offices, t }) => (
   <div style={styles.menuGroup}>
-    <span style={styles.menuTitle}>Office:</span>
+    <span style={styles.menuTitle}>{t('dashboard.layouteventstab.office')}</span>
     <DropDownMenu
       value={value}
       onChange={onChange}
@@ -94,7 +94,7 @@ const OfficeFilter = ({ value, onChange, offices }) => (
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText="All" style={styles.menuitem} />
+      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.office')} style={styles.menuitem} />
       {offices.map((office, i) => (
         <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
       ))}
@@ -102,25 +102,33 @@ const OfficeFilter = ({ value, onChange, offices }) => (
   </div>
 )
 
-const Toolbar = (offices, showFilter, eventFilter, officeFilter, { label, view, views, onNavigate, onViewChange }) => (
+const Toolbar = (
+  offices,
+  showFilter,
+  eventFilter,
+  officeFilter,
+  t,
+  { label, view, views, onNavigate, onViewChange }
+) => (
   <div className={s.toolbar}>
     <div className={s.navBar}>
       <button className={s.todayBtn} type="button" onClick={() => onNavigate(navigate.TODAY)}>
-        Today
+        {t('dashboard.layoutdatetab.today')}
       </button>
       <button className={s.btn} type="button" onClick={() => onNavigate(navigate.PREVIOUS)}>
-        ‹
+        {t('dashboard.layoutdatetab.previous')}
       </button>
       <span className={s.label}>{label}</span>
       <button className={s.btn} type="button" onClick={() => onNavigate(navigate.NEXT)}>
-        ›
+        {t('dashboard.layoutdatetab.after')}
       </button>
     </div>
     <div className={s.filterBar}>
       <div className={s.filterDropdowns}>
-        <ShowFilter value={showFilter.value} onChange={(_e, _i, value) => showFilter.onChange(value)} />
-        <EventFilter value={eventFilter.value} onChange={(_e, _i, value) => eventFilter.onChange(value)} />
+        <ShowFilter t={t} value={showFilter.value} onChange={(_e, _i, value) => showFilter.onChange(value)} />
+        <EventFilter t={t} value={eventFilter.value} onChange={(_e, _i, value) => eventFilter.onChange(value)} />
         <OfficeFilter
+          t={t}
           value={officeFilter.value}
           onChange={(_e, _i, value) => officeFilter.onChange(value)}
           offices={offices}
