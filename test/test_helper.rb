@@ -10,7 +10,7 @@ SingleCov::APP_FOLDERS.concat %w[
   middleware
 ]
 
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
 require 'mocha/mini_test'
 require 'minitest/rails'
@@ -39,7 +39,7 @@ class ActiveSupport::TestCase
   def setup
     super
     stub_request(:get, "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest")
-      .to_return(:status => 200, :body => "", :headers => {})
+      .to_return(status: 200, body: "", headers: {})
 
     Signup.any_instance.stubs(:create_google_event).returns(true)
     Signup.any_instance.stubs(:delete_google_event).returns(true)

@@ -12,7 +12,7 @@ class PortalRedirectMiddleware
         'Cache-Control' => 'max-age=86400, public'
       }
 
-      return [301, headers, ['Redirect to the portal']]
+      [301, headers, ['Redirect to the portal']]
     else
       @app.call(env)
     end

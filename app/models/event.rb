@@ -47,15 +47,11 @@ class Event < ApplicationRecord
   private
 
   def max_capacity
-    if capacity && users.size > capacity
-      errors.add(:users, "total can't be above capacity")
-    end
+    errors.add(:users, "total can't be above capacity") if capacity && users.size > capacity
   end
 
   def time_sequentiality
-    if (starts_at && ends_at) && (starts_at > ends_at)
-      errors.add(:ends_at, "should not end before it starts")
-    end
+    errors.add(:ends_at, "should not end before it starts") if (starts_at && ends_at) && (starts_at > ends_at)
   end
 
   def notify_websocket_of_create
@@ -71,8 +67,6 @@ class Event < ApplicationRecord
   end
 
   def set_duration
-    if ends_at_changed? || starts_at_changed?
-      self.duration = (ends_at - starts_at) / 60
-    end
+    self.duration = (ends_at - starts_at) / 60 if ends_at_changed? || starts_at_changed?
   end
 end

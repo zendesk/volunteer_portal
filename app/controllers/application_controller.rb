@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) rescue nil
+    @current_user ||= begin
+                        User.find_by(id: session[:user_id])
+                      rescue StandardError
+                        nil
+                      end
   end
   helper_method :current_user
 

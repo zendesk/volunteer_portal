@@ -30,9 +30,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   if ENV['SAML_ISSUER']
     provider :saml,
-             :issuer => ENV.fetch('SAML_ISSUER'),
-             :idp_sso_target_url => ENV.fetch('SAML_IDP_SSO_TARGET_URL'),
-             :idp_cert => ENV.fetch('SAML_IDP_CERT')
+             issuer: ENV.fetch('SAML_ISSUER'),
+             idp_sso_target_url: ENV.fetch('SAML_IDP_SSO_TARGET_URL'),
+             idp_cert: ENV.fetch('SAML_IDP_CERT')
   end
 end
 

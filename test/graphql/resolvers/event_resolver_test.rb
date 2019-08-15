@@ -19,7 +19,7 @@ describe EventResolver do
         location: 'newl',
         starts_at: timestamp.iso8601,
         ends_at: (timestamp + 10.minutes).iso8601,
-        capacity: 10,
+        capacity: 10
       )
 
       EventResolver.create(nil, { input: input }, nil)
@@ -47,7 +47,7 @@ describe EventResolver do
         location: 'newl',
         starts_at: timestamp.iso8601,
         ends_at: (timestamp + 10.minutes).iso8601,
-        capacity: 10,
+        capacity: 10
       )
 
       EventResolver.update(nil, { input: input }, nil)
@@ -123,12 +123,12 @@ describe EventResolver do
     let(:args) { {} }
     let(:all_events) { EventResolver.all(nil, args, context) }
 
-    before {
+    before do
       Event.delete_all
       event2
       event1
       event3
-    }
+    end
 
     it 'returns all events' do
       assert_equal [event2, event1, event3].map(&:title), all_events.pluck(:title)

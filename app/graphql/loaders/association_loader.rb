@@ -26,9 +26,7 @@ class AssociationLoader < GraphQL::Batch::Loader
   private
 
   def validate
-    unless @model.reflect_on_association(@association_name)
-      raise ArgumentError, "No association #{@association_name} on #{@model}"
-    end
+    raise ArgumentError, "No association #{@association_name} on #{@model}" unless @model.reflect_on_association(@association_name)
   end
 
   def preload_association(records)

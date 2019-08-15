@@ -43,7 +43,7 @@ module Portal
     config.autoload_paths.concat [
       Rails.root.join('app', 'graphql', 'types'),
       Rails.root.join('app', 'graphql', 'loaders'),
-      Rails.root.join('app', 'graphql', 'resolvers'),
+      Rails.root.join('app', 'graphql', 'resolvers')
     ]
 
     config.assets.paths << Rails.root.join("public", "assets")

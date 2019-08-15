@@ -103,9 +103,7 @@ module UserResolver
                 query + ' ASC'
               end
 
-      unless scope.to_sql.include?('LEFT JOIN "individual_events"')
-        scope = scope.joins(BASE_INDIVIDUAL_EVENTS_JOIN)
-      end
+      scope = scope.joins(BASE_INDIVIDUAL_EVENTS_JOIN) unless scope.to_sql.include?('LEFT JOIN "individual_events"')
 
       scope
         .joins(:events)

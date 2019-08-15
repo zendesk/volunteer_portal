@@ -16,8 +16,8 @@ namespace :volunteer do
 
     Rake::Task['db:seed'].invoke # ensure we have the base seeds before
 
-    OFFICES = ['San Francisco', 'Madison', 'Dublin', 'Copenhagen', 'Melbourne', Office.default.name]
-    GROUPS = %w{Sales Volunteer IT Orchid Marketing}
+    OFFICES = ['San Francisco', 'Madison', 'Dublin', 'Copenhagen', 'Melbourne', Office.default.name].freeze
+    GROUPS = %w[Sales Volunteer IT Orchid Marketing].freeze
 
     type_ids ||= EventType.pluck(:id)
     org_ids  ||= Organization.pluck(:id)
@@ -29,18 +29,16 @@ namespace :volunteer do
     ## Users
     print 'Creating 100 users... '
     100.times do
-      begin
-        User.create!(
-          email: FFaker::Internet.email.gsub(/@.*?\z/, '@example.com'),
-          office_id: office_ids.sample,
-          group: GROUPS.sample,
-          first_name: FFaker::Name.first_name,
-          last_name: FFaker::Name.last_name,
-          role_id: (rand < 0.1 ? Role.admin.id : Role.volunteer.id), # rougly 10% admins
-          locale: FFaker::Locale.code
-        )
-      rescue ActiveRecord::RecordInvalid
-      end
+      User.create!(
+        email: FFaker::Internet.email.gsub(/@.*?\z/, '@example.com'),
+        office_id: office_ids.sample,
+        group: GROUPS.sample,
+        first_name: FFaker::Name.first_name,
+        last_name: FFaker::Name.last_name,
+        role_id: (rand < 0.1 ? Role.admin.id : Role.volunteer.id), # rougly 10% admins
+        locale: FFaker::Locale.code
+      )
+    rescue ActiveRecord::RecordInvalid
     end
     puts 'Done!'
 

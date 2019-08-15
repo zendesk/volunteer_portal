@@ -39,7 +39,7 @@ module Types
     def hours(after:, before:)
       Promise.all([
                     EventHoursLoader.for(after: after, before: before).load(object),
-                    IndividualEventHoursLoader.for(after: after, before: before).load(object),
+                    IndividualEventHoursLoader.for(after: after, before: before).load(object)
                   ]).then { |results| results.reduce(&:+) }
     end
 
