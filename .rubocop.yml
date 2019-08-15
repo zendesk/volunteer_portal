@@ -27,15 +27,43 @@ Bundler/OrderedGems:
 Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 
+# Test files are less critical, and have their own style preference regarding parentheses
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Lint/AmbiguousRegexpLiteral
+Lint/AmbiguousRegexpLiteral:
+  Exclude:
+    - 'test/**/*.rb'
+
+# This cop may have side effect: scopes are loaded differently with compact or nested module
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/ClassAndModuleChildren
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Documenting every method can create a lot of friction and add redundancy
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/Documentation
+Style/Documentation:
+  Enabled: false
+
 # Empty method should be declared over 2 lines, not 1
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/EmptyMethod
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+# Frozen string literal is a good thing, but not necessary
+# It may add some friction when creating a new file
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/FrozenStringLiteralComment
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 # All lambdas should be declared with ->() {} syntax
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/Lambda
 Style/Lambda:
   EnforcedStyle: literal
+
+
+# Consistent use of quote is probably a good thing, but would lead to more frustration than benefits
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/StringLiterals
+Style/StringLiterals:
+  Enabled: false
 
 # %w[] array syntax is sometimes confusing, we should not enforce it
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/SymbolArray

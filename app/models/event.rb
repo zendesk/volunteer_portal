@@ -31,7 +31,7 @@ class Event < ApplicationRecord
 
   def sign_up_user!(user)
     users << user
-  rescue ActiveRecord::RecordInvalid => e
+  rescue ActiveRecord::RecordInvalid
     if signups.last.errors.any? && signups.last.user_id == user.id
       errors.add(:users, signups.last.errors.full_messages)
     else

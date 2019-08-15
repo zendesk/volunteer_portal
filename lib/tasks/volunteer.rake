@@ -39,6 +39,7 @@ namespace :volunteer do
         locale: FFaker::Locale.code
       )
     rescue ActiveRecord::RecordInvalid
+      puts "An error occurred"
     end
     puts 'Done!'
 

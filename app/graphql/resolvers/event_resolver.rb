@@ -21,7 +21,7 @@ module EventResolver
       events
     end
 
-    def create(_, args, context)
+    def create(_, args, _context)
       event = Event.new
       update_fields(event, args[:input])
       event.save!
@@ -29,7 +29,7 @@ module EventResolver
       event
     end
 
-    def update(_, args, context)
+    def update(_, args, _context)
       input = args[:input]
 
       event = Event.find(input.id)
@@ -39,7 +39,7 @@ module EventResolver
       event
     end
 
-    def delete(_, args, context)
+    def delete(_, args, _context)
       event = Event.find(args[:id])
       event.destroy!
 

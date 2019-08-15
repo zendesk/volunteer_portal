@@ -1,6 +1,6 @@
 module EventTypeResolver
   class << self
-    def create(_, args, context)
+    def create(_, args, _context)
       event_type = EventType.new
       event_type.title = args[:input].title
       event_type.save!
@@ -8,7 +8,7 @@ module EventTypeResolver
       event_type
     end
 
-    def update(_, args, context)
+    def update(_, args, _context)
       event_type = EventType.find(args[:input].id)
       event_type.title = args[:input].title
       event_type.save!
@@ -16,7 +16,7 @@ module EventTypeResolver
       event_type
     end
 
-    def delete(_, args, context)
+    def delete(_, args, _context)
       event_type = EventType.find(args[:id])
       event_type.destroy!
 

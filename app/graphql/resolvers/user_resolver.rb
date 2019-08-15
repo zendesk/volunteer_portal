@@ -39,7 +39,7 @@ module UserResolver
       user
     end
 
-    def delete(_, args, context)
+    def delete(_, args, _context)
       user = User.find(args[:id])
       user.destroy!
 
