@@ -33,6 +33,29 @@ Lint/AmbiguousRegexpLiteral:
   Exclude:
     - 'test/**/*.rb'
 
+# This cop is hard to solve, and should be left to developer's preference
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/AbcSizeO
+Metrics/AbcSize:
+  Enabled: false
+
+# This cop catches a code smell, but is irrelevant with some DSLs
+# Feel free to exclude any DSL-based file
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/BlockLength
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*.rb'
+    - 'lib/tasks/**/*.rake'
+
+# Controllers and tests tend to have long methods
+#   Also this is a bad practice, Rubocop should be a little flexible on it
+# Feel free to exclude any file where you think the cop is holding you back
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/MethodLength
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/**/*.rb'
+    - 'db/migrate/*.rb'
+    - 'test/**/*.rb'
+
 # This cop may have side effect: scopes are loaded differently with compact or nested module
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/ClassAndModuleChildren
 Style/ClassAndModuleChildren:
