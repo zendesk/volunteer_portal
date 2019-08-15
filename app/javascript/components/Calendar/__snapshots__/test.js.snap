@@ -4,7 +4,7 @@ exports[`loads 1`] = `
 <Layout
   currentPath="/"
 >
-  <Uncontrolled(Calendar)
+  <ForwardRef
     components={
       Object {
         "event": [Function],
@@ -13,6 +13,30 @@ exports[`loads 1`] = `
     }
     eventPropGetter={[Function]}
     events={Array []}
+    localizer={
+      DateLocalizer {
+        "format": [Function],
+        "formats": Object {
+          "agendaDateFormat": "ddd MMM DD",
+          "agendaHeaderFormat": [Function],
+          "agendaTimeFormat": "LT",
+          "agendaTimeRangeFormat": [Function],
+          "dateFormat": "DD",
+          "dayFormat": "DD ddd",
+          "dayHeaderFormat": "dddd MMM DD",
+          "dayRangeHeaderFormat": [Function],
+          "eventTimeRangeEndFormat": [Function],
+          "eventTimeRangeFormat": [Function],
+          "eventTimeRangeStartFormat": [Function],
+          "monthHeaderFormat": "MMMM YYYY",
+          "selectRangeFormat": [Function],
+          "timeGutterFormat": "LT",
+          "weekdayFormat": "ddd",
+        },
+        "propType": [Function],
+        "startOfWeek": [Function],
+      }
+    }
     onNavigate={[Function]}
     onSelectEvent={[Function]}
     popup={true}

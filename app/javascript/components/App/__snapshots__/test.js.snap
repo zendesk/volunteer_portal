@@ -57,6 +57,7 @@ exports[`loads 1`] = `
           "iconSize": 24,
         },
       },
+      "borderRadius": 2,
       "bottomNavigation": Object {
         "backgroundColor": "#ffffff",
         "height": 56,
@@ -105,6 +106,7 @@ exports[`loads 1`] = `
         "calendarTextColor": "#555",
         "calendarYearBackgroundColor": "#ffffff",
         "color": "#333",
+        "headerColor": "#00bcd4",
         "selectColor": "#0097a7",
         "selectTextColor": "#ffffff",
         "textColor": "#ffffff",
@@ -401,8 +403,10 @@ exports[`loads 1`] = `
       },
       "tooltip": Object {
         "color": "#ffffff",
+        "opacity": 0.9,
         "rippleBackgroundColor": "#616161",
       },
+      "userAgent": undefined,
       "zIndex": Object {
         "appBar": 1100,
         "dialog": 1500,
