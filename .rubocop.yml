@@ -15,3 +15,8 @@ AllCops:
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/LineLength
 Metrics/LineLength:
   Enabled: false
+
+# Gems are better manually ordered
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Bundler/OrderedGems
+Bundler/OrderedGems:
+  Enabled: false
