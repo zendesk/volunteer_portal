@@ -42,6 +42,7 @@ group :development, :test do
   gem 'byebug'
   gem 'testrbl', require: false
   gem 'database_cleaner', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
