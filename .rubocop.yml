@@ -1,1 +1,17 @@
 require: rubocop-rails
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'config.ru'
+    - 'db/schema.rb'
+    - 'Rakefile'
+    - 'vendor/bundle/**/*'
+
+# LineLength metrics seems to complicate any other rules.
+# It should probably be enabled last, if ever.
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/LineLength
+Metrics/LineLength:
+  Enabled: false
