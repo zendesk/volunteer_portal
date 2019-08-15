@@ -4,7 +4,7 @@ module Types
     description 'UTC Timestamp in ISO8601 format'
 
     def self.coerce_input(value, _ctx)
-      Time.parse(value)
+      Time.zone.parse(value)
     end
 
     def self.coerce_result(value, _ctx)

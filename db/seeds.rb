@@ -52,8 +52,8 @@ end
 event1 = zendesk.events.create!(
   title: 'Zendesk Hackaton.',
   description: 'This is a Hackaton.',
-  starts_at: (Time.now + 1.hour),
-  ends_at: (Time.now + 12.hours),
+  starts_at: (Time.zone.now + 1.hour),
+  ends_at: (Time.zone.now + 12.hours),
   capacity: 600,
   type: EventType.find_by(title: 'New Hire'),
   location: 'Hacking a ton Location',
@@ -63,8 +63,8 @@ event1 = zendesk.events.create!(
 event2 = university.events.create!(
   title: 'Tutoring',
   description: 'Tutoring students',
-  starts_at: (Time.now + 1.day),
-  ends_at: (Time.now + 1.day + 2.hours),
+  starts_at: (Time.zone.now + 1.day),
+  ends_at: (Time.zone.now + 1.day + 2.hours),
   capacity: 600,
   type: EventType.find_by(title: 'New Hire'),
   location: 'University of Wisconsin-Madison',

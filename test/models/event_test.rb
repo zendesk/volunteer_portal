@@ -80,7 +80,7 @@ describe Event do
     it 'sets duration when new event is created' do
       event = Event.new(
         organization: organizations(:kittens), type: event_types(:group),
-        title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
+        title: 'イベント', starts_at: Time.zone.now, ends_at: (Time.zone.now + 2.hours), capacity: 60,
         location: 'Location', office: sf
       )
       assert event.save
@@ -89,8 +89,8 @@ describe Event do
 
     it 'sets duration when start and end times are updated' do
       event = events(:minimum)
-      event.starts_at = Time.now
-      event.ends_at = Time.now + 2.hours
+      event.starts_at = Time.zone.now
+      event.ends_at = Time.zone.now + 2.hours
       assert event.save
       assert event.duration == 120
     end
@@ -105,7 +105,7 @@ describe Event do
   it "creates event" do
     event = Event.new(
       organization: organizations(:kittens), type: event_types(:group),
-      title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
+      title: 'イベント', starts_at: Time.zone.now, ends_at: (Time.zone.now + 2.hours), capacity: 60,
       location: 'Location', office: sf
     )
     assert event.save, event.errors.full_messages
@@ -114,7 +114,7 @@ describe Event do
   it "ensure event ends after it starts" do
     event = Event.new(
       organization: organizations(:kittens), type: event_types(:group),
-      title: 'イベント', starts_at: (Time.now + 2.hours), ends_at: Time.now, capacity: 60,
+      title: 'イベント', starts_at: (Time.zone.now + 2.hours), ends_at: Time.zone.now, capacity: 60,
       location: 'Location', office: sf
     )
     assert_not event.save, event.errors.full_messages
@@ -122,7 +122,7 @@ describe Event do
 
   it "does not save event without organization" do
     event = Event.new(
-      title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
+      title: 'イベント', starts_at: Time.zone.now, ends_at: (Time.zone.now + 2.hours), capacity: 60,
       location: 'Location', office: sf
     )
     assert_not event.save, event.errors.full_messages
@@ -131,7 +131,7 @@ describe Event do
   it "does not save event without office" do
     event = Event.new(
       organization: organizations(:kittens), type: event_types(:group),
-      title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
+      title: 'イベント', starts_at: Time.zone.now, ends_at: (Time.zone.now + 2.hours), capacity: 60,
       location: 'Location'
     )
     assert_not event.save, event.errors.full_messages

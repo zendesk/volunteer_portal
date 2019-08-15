@@ -11,46 +11,6 @@
 Metrics/MethodLength:
   Max: 23
 
-# Offense count: 13
-# Cop supports --auto-correct.
-Rails/ActiveRecordAliases:
-  Exclude:
-    - 'app/graphql/resolvers/office_resolver.rb'
-    - 'app/graphql/resolvers/organization_resolver.rb'
-    - 'db/migrate/20150102212529_populate_event_types.rb'
-    - 'test/graphql/loaders/event_hours_loader_test.rb'
-    - 'test/graphql/resolvers/user_resolver_test.rb'
-
-# Offense count: 2
-# Configuration parameters: Include.
-# Include: db/migrate/*.rb
-Rails/CreateTableWithTimestamps:
-  Exclude:
-    - 'db/migrate/20140513234618_events_and_volunteers.rb'
-    - 'db/migrate/20161129184046_create_office.rb'
-
-# Offense count: 1
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: strict, flexible
-Rails/Date:
-  Exclude:
-    - 'test/models/individual_event_test.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: Whitelist.
-# Whitelist: find_by_sql
-Rails/DynamicFindBy:
-  Exclude:
-    - 'db/migrate/20150102212529_populate_event_types.rb'
-
-# Offense count: 1
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: slashes, arguments
-Rails/FilePath:
-  Exclude:
-    - 'config/environments/development.rb'
-
 # Offense count: 3
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
@@ -59,48 +19,6 @@ Rails/HasManyOrHasOneDependent:
     - 'app/models/event_group.rb'
     - 'app/models/office.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: Include.
-# Include: spec/**/*, test/**/*
-Rails/HttpPositionalArguments:
-  Exclude:
-    - 'test/test_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: numeric, symbolic
-Rails/HttpStatus:
-  Exclude:
-    - 'app/controllers/graphql_controller.rb'
-
-# Offense count: 4
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/InverseOf:
-  Exclude:
-    - 'app/models/event.rb'
-    - 'app/models/organization.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: Include.
-# Include: **/test/**/*
-Rails/RefuteMethods:
-  Exclude:
-    - 'test/graphql/resolvers/user_resolver_test.rb'
-    - 'test/models/office_test.rb'
-    - 'test/test_helper.rb'
-
-# Offense count: 2
-# Configuration parameters: Include.
-# Include: db/migrate/*.rb
-Rails/ReversibleMigration:
-  Exclude:
-    - 'db/migrate/20180411231255_drop_delayed_jobs.rb'
-    - 'db/migrate/20180418204639_remove_google_event_from_event.rb'
-
 # Offense count: 2
 # Configuration parameters: Blacklist, Whitelist.
 # Blacklist: decrement!, decrement_counter, increment!, increment_counter, toggle!, touch, update_all, update_attribute, update_column, update_columns, update_counters
@@ -108,27 +26,3 @@ Rails/SkipsModelValidations:
   Exclude:
     - 'app/graphql/mutations/approve_individual_events.rb'
     - 'app/graphql/mutations/reject_individual_events.rb'
-
-# Offense count: 38
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: strict, flexible
-Rails/TimeZone:
-  Exclude:
-    - 'app/graphql/loaders/event_hours_loader.rb'
-    - 'app/graphql/loaders/individual_event_hours_loader.rb'
-    - 'app/graphql/resolvers/event_resolver.rb'
-    - 'app/graphql/resolvers/user_resolver.rb'
-    - 'app/graphql/types/datetime_type.rb'
-    - 'db/seeds.rb'
-    - 'test/graphql/resolvers/event_resolver_test.rb'
-    - 'test/models/event_test.rb'
-    - 'test/models/organization_test.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/Validation:
-  Exclude:
-    - 'app/models/organization.rb'

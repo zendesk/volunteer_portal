@@ -19,7 +19,7 @@ describe Organization do
 
     assert_difference('organization.events.count', 1) do
       organization.events << Event.new(
-        title: 'イベント', type: event_types(:group), starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
+        title: 'イベント', type: event_types(:group), starts_at: Time.zone.now, ends_at: (Time.zone.now + 2.hours), capacity: 60,
         location: 'Location', office: sf
       )
       assert organization.save
@@ -28,11 +28,11 @@ describe Organization do
 
   it 'presents events in order' do
     event_future = Event.new(
-      title: 'Deploy', type: event_types(:group), starts_at: Time.now + 10.days, ends_at: (Time.now + 10.days + 2.hours),
+      title: 'Deploy', type: event_types(:group), starts_at: Time.zone.now + 10.days, ends_at: (Time.zone.now + 10.days + 2.hours),
       capacity: 60, location: 'Location', office: sf
     )
     event_now = Event.new(
-      title: 'Test', type: event_types(:group), starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
+      title: 'Test', type: event_types(:group), starts_at: Time.zone.now, ends_at: (Time.zone.now + 2.hours), capacity: 60,
       location: 'Location', office: sf
     )
     organization = organizations(:kittens)

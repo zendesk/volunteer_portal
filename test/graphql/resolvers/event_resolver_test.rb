@@ -114,9 +114,9 @@ describe EventResolver do
         office: other_office
       )
     end
-    let(:event1_start) { Time.new(2018, 1, 1, 1, 0) }
-    let(:event2_start) { Time.new(2018, 1, 1, 2, 0) }
-    let(:event3_start) { Time.new(2018, 1, 1, 3, 0) }
+    let(:event1_start) { Time.zone.local(2018, 1, 1, 1, 0) }
+    let(:event2_start) { Time.zone.local(2018, 1, 1, 2, 0) }
+    let(:event3_start) { Time.zone.local(2018, 1, 1, 3, 0) }
     let(:current_user) { users(:admin) }
     let(:context) { { current_user: current_user } }
 

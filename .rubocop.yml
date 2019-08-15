@@ -67,6 +67,19 @@ Naming/PredicateName:
 Naming/UncommunicativeMethodParamName:
   AllowedNames: ['io', 'id', 'to', 'by', 'on', 'in', 'at', 'ip', 'db', 'e']
 
+# These migrations will not be fixed
+# https://www.rubydoc.info/gems/rubocop-rails/RuboCop/Cop/Rails/CreateTableWithTimestamps
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/20140513234618_events_and_volunteers.rb'
+    - 'db/migrate/20161129184046_create_office.rb'
+
+# These migrations will not be fixed
+# https://www.rubydoc.info/gems/rubocop-rails/RuboCop/Cop/Rails/ReversibleMigration
+Rails/ReversibleMigration:
+  Exclude:
+    - 'db/migrate/20180411231255_drop_delayed_jobs.rb'
+    - 'db/migrate/20180418204639_remove_google_event_from_event.rb'
 
 # This cop may have side effect: scopes are loaded differently with compact or nested module
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/ClassAndModuleChildren

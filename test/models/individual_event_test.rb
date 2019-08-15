@@ -17,7 +17,7 @@ describe IndividualEvent do
       event_type: type,
       organization: org,
       user: user,
-      date: Date.today,
+      date: Time.zone.today,
       duration: 60
     )
 

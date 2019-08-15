@@ -52,7 +52,7 @@ class ActiveSupport::TestCase
     describe 'includes' do
       includes.each do |sideload|
         it "includes #{sideload} when requested" do
-          get action, params.merge(includes: sideload)
+          get action, params: params.merge(includes: sideload)
 
           _, json = JSON.parse(@response.body).first
           json = json.first if json.is_a?(Array)
@@ -93,6 +93,6 @@ class ActiveSupport::TestCase
   end
 
   def refute_valid(record)
-    refute record.valid?, record.errors.full_messages.join(", ")
+    assert_not record.valid?, record.errors.full_messages.join(", ")
   end
 end

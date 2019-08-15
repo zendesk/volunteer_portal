@@ -32,7 +32,7 @@ describe Office do
     it 'creates the default office if it doesnt exist' do
       Office.delete_all
 
-      refute_nil Office.default
+      assert_not_nil Office.default
       assert_equal Office::DEFAULT_NAME, Office.last.name
     end
 

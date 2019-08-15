@@ -20,7 +20,7 @@ module OfficeResolver
 
     def update(_, args, _context)
       office = Office.find(args[:input].id)
-      office.update_attributes!(args[:input].to_h.except(:id))
+      office.update!(args[:input].to_h.except(:id))
 
       office
     end

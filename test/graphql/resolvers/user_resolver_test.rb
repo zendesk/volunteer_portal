@@ -11,7 +11,7 @@ describe UserResolver do
   before do
     Signup.delete_all
     IndividualEvent.delete_all
-    user.update_attributes(office: office, role: Role.admin)
+    user.update(office: office, role: Role.admin)
   end
 
   describe '.all' do
@@ -20,9 +20,9 @@ describe UserResolver do
     let(:event3) { events(:late_event) }
 
     it 'limits with time bounds' do
-      event1.update_attributes(starts_at: 2.weeks.ago, ends_at: (2.weeks.ago + 120.minutes))
-      event2.update_attributes(starts_at: 4.days.ago, ends_at: (4.days.ago + 20.minutes))
-      event3.update_attributes(starts_at: 3.days.ago, ends_at: (3.days.ago + 30.minutes))
+      event1.update(starts_at: 2.weeks.ago, ends_at: (2.weeks.ago + 120.minutes))
+      event2.update(starts_at: 4.days.ago, ends_at: (4.days.ago + 20.minutes))
+      event3.update(starts_at: 3.days.ago, ends_at: (3.days.ago + 30.minutes))
 
       Signup.delete_all
       Signup.create!(user: user, event: event1)
@@ -67,8 +67,8 @@ describe UserResolver do
     end
 
     it 'sorts by sort_by' do
-      event1.update_attributes(ends_at: event1.starts_at + 10.minutes)
-      event2.update_attributes(ends_at: event2.starts_at + 20.minutes)
+      event1.update(ends_at: event1.starts_at + 10.minutes)
+      event2.update(ends_at: event2.starts_at + 20.minutes)
 
       Signup.create!(event: event1, user: user)
       Signup.create!(event: event2, user: user2)
@@ -85,8 +85,8 @@ describe UserResolver do
     end
 
     it 'uses all given parameters' do
-      event1.update_attributes(ends_at: event1.starts_at + 10.minutes)
-      event2.update_attributes(ends_at: event2.starts_at + 20.minutes)
+      event1.update(ends_at: event1.starts_at + 10.minutes)
+      event2.update(ends_at: event2.starts_at + 20.minutes)
 
       Signup.create!(event: event1, user: user)
       Signup.create!(event: event2, user: user2)
@@ -125,7 +125,7 @@ describe UserResolver do
         }
 
         new_user = UserResolver.update(nil, args, context)
-        refute_equal Role.admin, new_user.role
+        assert_not_equal Role.admin, new_user.role
         assert_equal office2.id, new_user.office.id
       end
     end

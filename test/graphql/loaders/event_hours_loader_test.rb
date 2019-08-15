@@ -10,8 +10,8 @@ describe EventHoursLoader do
   before do
     Signup.where(user_id: user.id).delete_all
 
-    event1.update_attributes(starts_at: 1.week.ago, ends_at: (1.week.ago + 1.hour))
-    event2.update_attributes(starts_at: 1.day.ago, ends_at: (1.day.ago + 75.minutes))
+    event1.update(starts_at: 1.week.ago, ends_at: (1.week.ago + 1.hour))
+    event2.update(starts_at: 1.day.ago, ends_at: (1.day.ago + 75.minutes))
 
     Signup.create!(user: user, event: event1)
   end

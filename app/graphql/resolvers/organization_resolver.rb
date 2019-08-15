@@ -9,7 +9,7 @@ module OrganizationResolver
 
     def update(_, args, _context)
       organization = Organization.find(args[:input].id)
-      organization.update_attributes!(args[:input].to_h.except(:id))
+      organization.update!(args[:input].to_h.except(:id))
 
       organization
     end

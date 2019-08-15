@@ -14,9 +14,9 @@ module EventResolver
                   end
 
       events = Event.all
-      events = events.for_office(office_id)          if office_id
-      events = events.before(Time.at(args[:before])) if args[:before]
-      events = events.after(Time.at(args[:after]))   if args[:after]
+      events = events.for_office(office_id) if office_id
+      events = events.before(Time.zone.at(args[:before])) if args[:before]
+      events = events.after(Time.zone.at(args[:after]))   if args[:after]
       events = scope_with_sort_by(events, args[:sort_by])
       events
     end
@@ -56,8 +56,8 @@ module EventResolver
       event.office_id = input.office.id
       event.location = input.location
       event.capacity = input.capacity
-      event.starts_at = Time.parse(input.starts_at)
-      event.ends_at = Time.parse(input.ends_at)
+      event.starts_at = Time.zone.parse(input.starts_at)
+      event.ends_at = Time.zone.parse(input.ends_at)
     end
 
     def scope_with_sort_by(scope, sort_by)

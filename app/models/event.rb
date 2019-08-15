@@ -1,14 +1,14 @@
 class Event < ApplicationRecord
   CALENDAR_TIME_FORMAT = '%Y%m%dT%H%M%SZ'.freeze
 
-  has_many :signups, -> { auto_include(false) }, dependent: :destroy
+  has_many :signups, -> { auto_include(false) }, dependent: :destroy, inverse_of: :event
   # this custom association is to reduce data loaded and memory used when fetching users for an event
-  has_many :signups_for_through, -> { select(:event_id, :user_id) }, class_name: 'Signup'
+  has_many :signups_for_through, -> { select(:event_id, :user_id) }, class_name: 'Signup', inverse_of: :event
   has_many :users, through: :signups_for_through
 
   belongs_to :organization
   belongs_to :event_type
-  belongs_to :type, class_name: 'EventType', foreign_key: 'event_type_id'
+  belongs_to :type, class_name: 'EventType', foreign_key: 'event_type_id', inverse_of: :events
   belongs_to :office
   belongs_to :event_group
 
