@@ -111,9 +111,9 @@ describe UserResolver do
           input: stub(id: user2.id, is_admin: false, office_id: office2.id)
         }
 
-        newUser = UserResolver.update(nil, args, context)
-        assert_equal Role.volunteer.id, newUser.role.id
-        assert_equal office2.id, newUser.office.id
+        new_user = UserResolver.update(nil, args, context)
+        assert_equal Role.volunteer.id, new_user.role.id
+        assert_equal office2.id, new_user.office.id
       end
     end
 
@@ -124,18 +124,18 @@ describe UserResolver do
           input: stub(id: user2.id, is_admin: true, office_id: office2.id)
         }
 
-        newUser = UserResolver.update(nil, args, context)
-        refute_equal Role.admin, newUser.role
-        assert_equal office2.id, newUser.office.id
+        new_user = UserResolver.update(nil, args, context)
+        refute_equal Role.admin, new_user.role
+        assert_equal office2.id, new_user.office.id
       end
     end
   end
 
   describe '.delete' do
     it 'destroys a user' do
-      newUser = UserResolver.delete(nil, { id: user.id }, nil)
+      new_user = UserResolver.delete(nil, { id: user.id }, nil)
 
-      assert newUser.destroyed?
+      assert new_user.destroyed?
     end
   end
 end

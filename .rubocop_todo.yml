@@ -11,32 +11,6 @@
 Metrics/MethodLength:
   Max: 23
 
-# Offense count: 1
-# Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist, MethodDefinitionMacros.
-# NamePrefix: is_, has_, have_
-# NamePrefixBlacklist: is_, has_, have_
-# NameWhitelist: is_a?
-# MethodDefinitionMacros: define_method, define_singleton_method
-Naming/PredicateName:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/graphql/types/user_graph_type.rb'
-
-# Offense count: 1
-# Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
-# AllowedNames: io, id, to, by, on, in, at, ip, db
-Naming/UncommunicativeMethodParamName:
-  Exclude:
-    - 'app/controllers/graphql_controller.rb'
-
-# Offense count: 5
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: snake_case, camelCase
-Naming/VariableName:
-  Exclude:
-    - 'test/graphql/resolvers/user_resolver_test.rb'
-    - 'test/models/organization_test.rb'
-
 # Offense count: 13
 # Cop supports --auto-correct.
 Rails/ActiveRecordAliases:

@@ -56,6 +56,18 @@ Metrics/MethodLength:
     - 'db/migrate/*.rb'
     - 'test/**/*.rb'
 
+# Warning: Method names in GraphQL are determined by field name
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/PredicateName
+Naming/PredicateName:
+  Exclude:
+    - 'app/graphql/**/*.rb'
+
+# Adding 'e' to the allowed short name (for error handling)
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/UncommunicativeMethodParamName
+Naming/UncommunicativeMethodParamName:
+  AllowedNames: ['io', 'id', 'to', 'by', 'on', 'in', 'at', 'ip', 'db', 'e']
+
+
 # This cop may have side effect: scopes are loaded differently with compact or nested module
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/ClassAndModuleChildren
 Style/ClassAndModuleChildren:

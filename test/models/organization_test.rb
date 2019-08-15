@@ -27,20 +27,20 @@ describe Organization do
   end
 
   it 'presents events in order' do
-    eventFuture = Event.new(
+    event_future = Event.new(
       title: 'Deploy', type: event_types(:group), starts_at: Time.now + 10.days, ends_at: (Time.now + 10.days + 2.hours),
       capacity: 60, location: 'Location', office: sf
     )
-    eventNow = Event.new(
+    event_now = Event.new(
       title: 'Test', type: event_types(:group), starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
       location: 'Location', office: sf
     )
     organization = organizations(:kittens)
     organization.events.destroy_all
-    organization.events << [eventFuture, eventNow]
+    organization.events << [event_future, event_now]
     organization.save
     organization.events.reload
 
-    assert_equal [eventNow, eventFuture], organization.events
+    assert_equal [event_now, event_future], organization.events
   end
 end
