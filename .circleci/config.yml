@@ -34,6 +34,32 @@ jobs:
       - store_test_results:
           path: /tmp/test_reports
 
+  rubocop:
+    docker:
+      - image: circleci/ruby:2.6.1-node-browsers
+        environment:
+          RAILS_ENV: development
+          TESTOPTS: "--ci-report --ci-dir=/tmp/rubocop_reports/"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-ruby-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-ruby-dependencies-
+      - run:
+          name: install dependencies
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-ruby-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: run Rubocop
+          command: bundle exec rubocop
+      - store_test_results:
+          path: /tmp/rubocop_reports
+
   jest:
     docker:
       - image: circleci/node:8-stretch-browsers
@@ -62,4 +88,5 @@ workflows:
   test_suite:
     jobs:
       - minitest
+      - rubocop
       - jest
