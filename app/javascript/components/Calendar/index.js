@@ -10,7 +10,8 @@ import Event from 'components/Event'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
-BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
+const localizer = BigCalendar.momentLocalizer(moment)
+BigCalendar.setLocalizer(localizer)
 
 // BigCalendar needs inline styles :(
 const styles = {
@@ -145,6 +146,7 @@ const Calendar = ({
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
+        culture="ja" // To change translation of Mon,Tue,Wed etc.
         components={calendarComponents(currentUser, offices, filters, {
           changeShowFilter,
           changeEventFilter,

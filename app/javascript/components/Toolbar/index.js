@@ -102,6 +102,14 @@ const OfficeFilter = ({ value, onChange, offices }) => (
   </div>
 )
 
+const viewNameMap = {
+  month: '月  ', // should be => t('someTranslationKey') etc.
+  week: 'Week',
+  work_week: 'Work Week',
+  day: 'Day',
+  agenda: 'Agenda',
+}
+
 const Toolbar = (offices, showFilter, eventFilter, officeFilter, { label, view, views, onNavigate, onViewChange }) => (
   <div className={s.toolbar}>
     <div className={s.navBar}>
@@ -133,7 +141,7 @@ const Toolbar = (offices, showFilter, eventFilter, officeFilter, { label, view, 
             className={view === viewName ? `${s.btn} ${s.activeBtn}` : s.btn}
             onClick={() => onViewChange(viewName)}
           >
-            {viewName.charAt(0).toUpperCase() + viewName.slice(1)}
+            {viewNameMap[viewName]}
           </button>
         ))}
       </div>
