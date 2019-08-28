@@ -68,6 +68,12 @@ module.exports = function(api) {
           async: false,
         },
       ],
+      [
+        require('babel-plugin-module-resolver').default,
+        {
+          root: ['./app/javascript/'],
+        },
+      ],
     ].filter(Boolean),
   }
 }
