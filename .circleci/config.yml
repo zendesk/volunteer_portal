@@ -41,7 +41,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-js-dependencies-{{ checksum "package-lock.json" }}
+          - v1-js-dependencies-{{ checksum "yarn.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-js-dependencies-
       - run:
@@ -50,7 +50,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: v1-js-dependencies-{{ checksum "package-lock.json" }}
+          key: v1-js-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: run javascript tests
           command: npm test -- --ci --runInBand --reporters=default --reporters=jest-junit

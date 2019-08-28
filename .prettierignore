@@ -1,7 +1,7 @@
 app/assets
 lib
 vendor
-package-lock.json
+yarn.lock
 package.json
 app.json
 _layouts
