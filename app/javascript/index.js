@@ -1,4 +1,4 @@
-import 'babel-polyfill'
+import '@babel/polyfill'
 import ActionCable from 'actioncable'
 import React from 'react'
 import ReactDOM from 'react-dom'
