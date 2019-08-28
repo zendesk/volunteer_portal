@@ -65,7 +65,6 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/runtime-corejs2": "^7.0.0",
     "actioncable": "^5.1.4",
     "apollo-client": "^2.0.4",
