@@ -12,6 +12,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import Root from 'components/Root'
 import configureStore from './store/configureStore'
 import Actions from './actions'
+import './i18n'
 
 const client = new ApolloClient({
   link: new HttpLink({
