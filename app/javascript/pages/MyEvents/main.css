@@ -5,9 +5,9 @@
 .actionBar {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 20px;
   position: absolute;
   right: 0;
+  bottom: 0;
 }
 
 .createAction {
