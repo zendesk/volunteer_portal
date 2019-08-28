@@ -11,7 +11,8 @@ import { withNamespaces } from 'react-i18next'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
-BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
+const localizer = BigCalendar.momentLocalizer(moment)
+BigCalendar.setLocalizer(localizer)
 
 // BigCalendar needs inline styles :(
 const styles = {
@@ -147,6 +148,7 @@ const Calendar = ({
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
+        culture="en"
         components={calendarComponents(
           currentUser,
           offices,

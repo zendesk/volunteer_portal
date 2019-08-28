@@ -155,3 +155,32 @@ parts:
       value: 'Reporting'
       screenshot:
       wip: true
+  - translation:
+      key: calendar.bigcalendar.month
+      title: 
+      value: 'Month'
+      screenshot:
+      wip: true
+  - translation:
+      key: calendar.bigcalendar.week
+      title: 
+      value: 'Week'
+      screenshot:
+      wip: true
+  - translation:
+      key: calendar.bigcalendar.work_week
+      title: 
+      value: 'Work Week'
+      screenshot:
+      wip: true
+  - translation:
+      key: calendar.bigcalendar.day
+      value: 'Day'
+      screenshot:
+      wip: true
+  - translation:
+      key: calendar.bigcalendar.agenda
+      title: 
+      value: 'Agenda'
+      screenshot:
+      wip: true

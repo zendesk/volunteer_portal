@@ -26,7 +26,12 @@
       "admin.tab.organizations": "Organizations",
       "admin.tab.individualevents": "Individual Events",
       "admin.tab.users": "Users",
-      "admin.tab.reporting": "Reporting"
+      "admin.tab.reporting": "Reporting",
+      "calendar.bigcalendar.month": "Month",
+      "calendar.bigcalendar.week": "Week",
+      "calendar.bigcalendar.work_week": "Work Week",
+      "calendar.bigcalendar.day": "Day",
+      "calendar.bigcalendar.agenda": "Agenda"
     }
   }
 }

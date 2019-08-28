@@ -102,6 +102,17 @@ const OfficeFilter = ({ value, onChange, offices, t }) => (
   </div>
 )
 
+const toolbarTextMap = (t, key) => {
+  const map = {
+    month: t('calendar.bigcalendar.month'),
+    week: t('calendar.bigcalendar.week'),
+    work_week: t('calendar.bigcalendar.work_week'),
+    day: t('calendar.bigcalendar.day'),
+    agenda: t('calendar.bigcalendar.agenda'),
+  }
+  return map[key]
+}
+
 const Toolbar = (
   offices,
   showFilter,
@@ -141,7 +152,7 @@ const Toolbar = (
             className={view === viewName ? `${s.btn} ${s.activeBtn}` : s.btn}
             onClick={() => onViewChange(viewName)}
           >
-            {viewName.charAt(0).toUpperCase() + viewName.slice(1)}
+            {toolbarTextMap(t, viewName)}
           </button>
         ))}
       </div>
