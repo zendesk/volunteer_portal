@@ -66,6 +66,8 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "@babel/runtime-corejs2": "^7.0.0",
+    "@zendeskgarden/react-dropdowns": "^6.4.4",
+    "@zendeskgarden/react-theming": "^6.2.0",
     "actioncable": "^5.1.4",
     "apollo-client": "^2.0.4",
     "apollo-client-preset": "^1.0.5",
@@ -105,7 +107,8 @@
     "redux": "^3.5.2",
     "redux-form": "^7.2.0",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
