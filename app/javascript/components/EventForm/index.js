@@ -1,13 +1,14 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import R from 'ramda'
-import AutoComplete from 'material-ui/AutoComplete'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
 import UserList from 'components/UserList'
 import LocationField from 'components/LocationField'
+
+import { Dropdown, Menu, Item, Autocomplete, Label, Hint, Field as GardenField } from '@zendeskgarden/react-dropdowns'
 
 import s from './main.css'
 
@@ -75,6 +76,22 @@ const renderField = props => {
   )
 }
 
+const renderGardenField = props => {
+  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
+  const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
+  return <div>{Custom ? <Custom {...props} /> : fieldInput}</div>
+  // return (
+  //   <GardenField>
+  //     <Label>Autocomplete with debounce</Label>
+  //     <Hint>This example includes basic debounce logic using Hooks</Hint>
+  //     {/* <label className={s.label}>
+  //       {label} <span className={s.errorMsg}>{touched && error ? renderError(error) : '*'}</span>
+  //     </label> */}
+  //     <div>{Custom ? <Custom {...props} /> : fieldInput}</div>
+  //   </GardenField>
+  // )
+}
+
 const isNoErrors = errors => R.isNil(errors) || R.isEmpty(errors)
 
 const dateTimeSplitChange = (part, currentValue, newValue, callback) => {
@@ -96,21 +113,85 @@ const dateTimeSplitChange = (part, currentValue, newValue, callback) => {
   callback(timeStamp)
 }
 
-const OrganizationField = ({ organizations, input: { value, onChange } }) => (
-  <AutoComplete
-    id="organization"
-    searchText={R.isNil(value) || R.isEmpty(value) ? value : R.find(o => o.id === value, organizations).name}
-    dataSource={organizations}
-    dataSourceConfig={{ text: 'name', value: 'id' }}
-    filter={AutoComplete.fuzzyFilter}
-    onNewRequest={(chosen, _i) => onChange(chosen.id)}
-    className={s.muiTextField}
-    textFieldStyle={styles.muiTextField}
-    menuStyle={{ overflowY: 'scroll', height: 200 }}
-    openOnFocus
-    fullWidth
-  />
-)
+const debounce = require('lodash.debounce')
+const options = ['Aster', "Bachelor's button", 'Celosia', 'Dusty miller']
+
+function OrganizationField({ organizations, input: { value, onChange } }) {
+  // <AutoComplete
+  //   id="organization"
+  //   searchText={R.isNil(value) || R.isEmpty(value) ? value : R.find(o => o.id === value, organizations).name}
+  //   dataSource={organizations}
+  //   dataSourceConfig={{ text: 'name', value: 'id' }}
+  //   filter={AutoComplete.fuzzyFilter}
+  //   onNewRequest={(chosen, _i) => onChange(chosen.id)}
+  //   className={s.muiTextField}
+  //   textFieldStyle={styles.muiTextField}
+  //   menuStyle={{ overflowY: 'scroll', height: 200 }}
+  //   openOnFocus
+  //   fullWidth
+  // />
+  const [selectedItem, setSelectedItem] = React.useState(options[0])
+  const [inputValue, setInputValue] = React.useState('')
+  const [matchingOptions, setMatchingOptions] = React.useState(options)
+
+  /**
+   * Debounce filtering
+   */
+  const filterMatchingOptionsRef = React.useRef(
+    debounce(value => {
+      const matchingOptions = options.filter(option => {
+        return (
+          option
+            .trim()
+            .toLowerCase()
+            .indexOf(value.trim().toLowerCase()) !== -1
+        )
+      })
+
+      setMatchingOptions(matchingOptions)
+    }, 300)
+  )
+
+  React.useEffect(
+    () => {
+      filterMatchingOptionsRef.current(inputValue)
+    },
+    [inputValue]
+  )
+
+  const renderOptions = () => {
+    if (matchingOptions.length === 0) {
+      return <Item disabled>No matches found</Item>
+    }
+
+    return matchingOptions.map(option => (
+      <Item key={option} value={option}>
+        <span>{option}</span>
+      </Item>
+    ))
+  }
+  return (
+    <Dropdown
+      inputValue={inputValue}
+      selectedItem={selectedItem}
+      onSelect={item => setSelectedItem(item)}
+      onInputValueChange={inputValue => setInputValue(inputValue)}
+      downshiftProps={{ defaultHighlightedIndex: 0 }}
+    >
+      <GardenField>
+        <Label>Autocomplete with debounce</Label>
+        <Hint>This example includes basic debounce logic using Hooks</Hint>
+        <Autocomplete>
+          <span aria-label="Garden emoji" role="image">
+            🌱
+          </span>
+          <span>{selectedItem}</span>
+        </Autocomplete>
+      </GardenField>
+      <Menu>{renderOptions()}</Menu>
+    </Dropdown>
+  )
+}
 
 const DateField = ({ input: { value, onChange } }) => (
   <DatePicker
@@ -173,7 +254,7 @@ const EventForm = ({
           label="Organization"
           className={s.field}
           name="organization.id"
-          component={renderField}
+          component={renderGardenField}
           organizations={organizations}
           Custom={OrganizationField}
         />
