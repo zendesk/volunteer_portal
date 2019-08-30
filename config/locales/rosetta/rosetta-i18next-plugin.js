@@ -39,7 +39,7 @@ const compileBaseRosetta = (compilation, files) => {
     createBaseRosettaFile(baseRosettaFile)
   }
 
-  compilation.fileDependencies.push(baseRosettaFile)
+  compilation.fileDependencies.add(baseRosettaFile)
 
   const contents = fs.readFileSync(baseRosettaFile)
   const baseRosettaContents = yaml.safeLoad(contents)
