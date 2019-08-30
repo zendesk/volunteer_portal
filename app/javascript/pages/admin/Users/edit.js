@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
-import R from 'ramda'
 
 import { graphQLError } from 'actions'
 
@@ -54,8 +53,11 @@ const withData = compose(
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(EditUser))
