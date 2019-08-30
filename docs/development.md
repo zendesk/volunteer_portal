@@ -21,7 +21,8 @@
    ```bash
    gem install bundler
    bundle install
-   npm install
+   brew install yarn
+   yarn install
    ```
 
    `bundle install` might stop, prompting you to manually `gem install pg`. To proceed, do `brew install postgresql` first, followed by `gem install pg`, before continuing with `bundle install`.
