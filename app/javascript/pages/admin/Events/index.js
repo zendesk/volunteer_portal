@@ -49,7 +49,7 @@ const columns = deleteEvent => [
     accessor: 'startsAt',
     width: 130,
     sortable: true,
-    Cell: ({ value }) => moment(value).format('MMM DD, Y'),
+    Cell: ({ value }) => <span>{moment(value).format('MMM DD, Y')}</span>,
   },
   {
     id: 'duration',
@@ -207,8 +207,11 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(Events))
