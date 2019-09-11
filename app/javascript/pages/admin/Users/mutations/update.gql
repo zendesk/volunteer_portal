@@ -7,5 +7,6 @@ mutation updateUser($input: EditUserInputType!) {
     office {
       ...OfficeEntry
     }
+    isAdmin
   }
 }
