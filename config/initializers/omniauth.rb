@@ -1,6 +1,6 @@
 host = ENV['HOST'] || 'http://localhost:3000'
 
-# Omniauth will first try to use Google, and fall back to Okta if no 
+# Omniauth will first try to use Google, and fall back to Okta if no
 # GOOGLE_CLIENT_ID is defined.  If neither GOOGLE_CLIENT_ID nor
 # OKTA_CLIENT_ID is defined, the app will fail to boot
 #
@@ -14,7 +14,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     redirect_uri = "#{host}/auth/google_oauth2/callback"
 
     options = {
-      scope:        'email,profile,calendar',
+      scope: 'email,profile,calendar',
       redirect_uri: redirect_uri,
       setup: ->(env) do
         env['omniauth.strategy'].options['token_params'] = {
@@ -30,9 +30,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   if ENV['SAML_ISSUER']
     provider :saml,
-      :issuer                             => ENV.fetch('SAML_ISSUER'),
-      :idp_sso_target_url                 => ENV.fetch('SAML_IDP_SSO_TARGET_URL'),
-      :idp_cert                           => ENV.fetch('SAML_IDP_CERT')
+             :issuer => ENV.fetch('SAML_ISSUER'),
+             :idp_sso_target_url => ENV.fetch('SAML_IDP_SSO_TARGET_URL'),
+             :idp_cert => ENV.fetch('SAML_IDP_CERT')
   end
 end
 

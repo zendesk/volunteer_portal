@@ -22,7 +22,7 @@ class OmniauthCallbacksController < ActionController::Base
     session[:user_id] = user.id
 
     if params[:return_to]&.include?(root_url)
-      redirect_to params[:return_to] 
+      redirect_to params[:return_to]
     else
       redirect_to :portal
     end
@@ -66,6 +66,7 @@ class OmniauthCallbacksController < ActionController::Base
     user.metadata = saml_response_attributes.attributes.keys.each_with_object({}) do |key, metadata|
       # Ignore default fields we already capture in user or don't care about
       next if METADATA_IGNORED_PARAMS.include?(key)
+
       metadata[key] = saml_response_attributes[key]
     end.to_json
   end
@@ -79,6 +80,6 @@ class OmniauthCallbacksController < ActionController::Base
   def verify_callback_contents
     return if (auth_info.keys & REQUIRED_PARAMS).size == 3
 
-    raise 'Authentication provider must provide email, first_name, and last_name parameters'   
+    raise 'Authentication provider must provide email, first_name, and last_name parameters'
   end
 end

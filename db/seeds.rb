@@ -50,25 +50,25 @@ user3 = User.find_or_create_by!(email: 'buckybadger@example.com') do |u|
 end
 
 event1 = zendesk.events.create!(
-  title:       'Zendesk Hackaton.',
+  title: 'Zendesk Hackaton.',
   description: 'This is a Hackaton.',
-  starts_at:   (Time.now + 1.hour),
-  ends_at:     (Time.now + 12.hours),
-  capacity:    600,
-  type:        EventType.find_by(title: 'New Hire'),
-  location:    'Hacking a ton Location',
-  office:      sf
+  starts_at: (Time.now + 1.hour),
+  ends_at: (Time.now + 12.hours),
+  capacity: 600,
+  type: EventType.find_by(title: 'New Hire'),
+  location: 'Hacking a ton Location',
+  office: sf
 )
 
 event2 = university.events.create!(
-  title:       'Tutoring',
+  title: 'Tutoring',
   description: 'Tutoring students',
-  starts_at:   (Time.now + 1.day),
-  ends_at:     (Time.now + 1.day + 2.hours),
-  capacity:    600,
-  type:        EventType.find_by(title: 'New Hire'),
-  location:    'University of Wisconsin-Madison',
-  office:      madison
+  starts_at: (Time.now + 1.day),
+  ends_at: (Time.now + 1.day + 2.hours),
+  capacity: 600,
+  type: EventType.find_by(title: 'New Hire'),
+  location: 'University of Wisconsin-Madison',
+  office: madison
 )
 
 event1.users << user1

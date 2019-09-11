@@ -5,13 +5,13 @@ module EventResolver
   class << self
     def all(_, args, context)
       office_id = case args[:office_id]
-      when 'all'
-        nil
-      when 'current'
-        context[:current_user].office_id
-      else
-        args[:office_id]
-      end
+                  when 'all'
+                    nil
+                  when 'current'
+                    context[:current_user].office_id
+                  else
+                    args[:office_id]
+                  end
 
       events = Event.all
       events = events.for_office(office_id)          if office_id
@@ -62,12 +62,13 @@ module EventResolver
 
     def scope_with_sort_by(scope, sort_by)
       return scope if sort_by.nil?
+
       query_string = case sort_by
-      when STARTS_AT_DESC
-        'starts_at DESC'
-      when STARTS_AT_ASC
-        'starts_at ASC'
-      end
+                     when STARTS_AT_DESC
+                       'starts_at DESC'
+                     when STARTS_AT_ASC
+                       'starts_at ASC'
+                     end
       scope.order(query_string)
     end
   end

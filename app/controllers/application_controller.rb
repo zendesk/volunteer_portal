@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
 
   def cors_preflight_check
     headers['Access-Control-Allow-Origin'] = if Rails.env.production?
-      'https://volunteer.zende.sk'
-    else
-      request.referer.include?('localhost') ? 'http://localhost:3000' : 'https://volunteer.zd-dev.com'
-    end
+                                               'https://volunteer.zende.sk'
+                                             else
+                                               request.referer.include?('localhost') ? 'http://localhost:3000' : 'https://volunteer.zd-dev.com'
+                                             end
 
     headers['Access-Control-Allow-Credentials'] = 'true'
     headers['Access-Control-Allow-Methods'] = %w[GET PUT PATCH POST DELETE].join(', ')

@@ -18,7 +18,7 @@ class IndividualEvent < ApplicationRecord
   scope :for_user, ->(user) { where(user: user) }
   scope :before,   ->(date) { where("date < ?", date) }
   scope :after,    ->(date) { where("date > ?", date) }
-  scope :pending,  ->() { where(status: PENDING)}
+  scope :pending,  ->() { where(status: PENDING) }
   scope :approved, ->() { where(status: APPROVED) }
 
   def to_status_enum

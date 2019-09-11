@@ -81,7 +81,8 @@ describe Event do
       event = Event.new(
         organization: organizations(:kittens), type: event_types(:group),
         title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
-        location: 'Location', office: sf)
+        location: 'Location', office: sf
+      )
       assert event.save
       assert event.duration == 120
     end
@@ -105,7 +106,8 @@ describe Event do
     event = Event.new(
       organization: organizations(:kittens), type: event_types(:group),
       title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
-      location: 'Location', office: sf)
+      location: 'Location', office: sf
+    )
     assert event.save, event.errors.full_messages
   end
 
@@ -113,14 +115,16 @@ describe Event do
     event = Event.new(
       organization: organizations(:kittens), type: event_types(:group),
       title: 'イベント', starts_at: (Time.now + 2.hours), ends_at: Time.now, capacity: 60,
-      location: 'Location', office: sf)
+      location: 'Location', office: sf
+    )
     assert_not event.save, event.errors.full_messages
   end
 
   it "does not save event without organization" do
     event = Event.new(
       title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
-      location: 'Location', office: sf)
+      location: 'Location', office: sf
+    )
     assert_not event.save, event.errors.full_messages
   end
 
@@ -128,7 +132,8 @@ describe Event do
     event = Event.new(
       organization: organizations(:kittens), type: event_types(:group),
       title: 'イベント', starts_at: Time.now, ends_at: (Time.now + 2.hours), capacity: 60,
-      location: 'Location')
+      location: 'Location'
+    )
     assert_not event.save, event.errors.full_messages
   end
 
@@ -144,7 +149,7 @@ describe Event do
 
   it "does not save event over capacity" do
     event = events(:find_kittens)
-    event.users << [ users(:a), users(:b) ]
+    event.users << [users(:a), users(:b)]
     assert_not event.save
   end
 end

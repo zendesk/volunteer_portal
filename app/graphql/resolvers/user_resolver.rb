@@ -7,13 +7,13 @@ module UserResolver
       scope = User.all
 
       office_id = case args[:office_id]
-      when 'all'
-        nil
-      when 'current'
-        context[:current_user].office_id
-      else
-        args[:office_id]
-      end
+                  when 'all'
+                    nil
+                  when 'current'
+                    context[:current_user].office_id
+                  else
+                    args[:office_id]
+                  end
 
       scope = scope_with_time(scope, args[:after], args[:before])
       scope = scope_with_office_id(scope, office_id)
@@ -97,11 +97,11 @@ module UserResolver
       SQL
 
       order = case sort_by
-      when HOURS_DESC
-        query + ' DESC'
-      when HOURS_ASC
-        query + ' ASC'
-      end
+              when HOURS_DESC
+                query + ' DESC'
+              when HOURS_ASC
+                query + ' ASC'
+              end
 
       unless scope.to_sql.include?('LEFT JOIN "individual_events"')
         scope = scope.joins(BASE_INDIVIDUAL_EVENTS_JOIN)

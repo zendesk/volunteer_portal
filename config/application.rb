@@ -29,12 +29,12 @@ module Portal
     # config.i18n.default_locale = :de
 
     config.secret_key_base = if Rails.env.development? || Rails.env.test?
-      '469b1e2b5472df916e0815735f99b8994ea00612af39b0b0de0a1a024896a28f76cd48d7ea7b395ccf24b87bbff6de8ef083c03e2219c7c66abd19b729f5b88f'
-    elsif ENV['PRECOMPILE']
-      'bad-temp-secret-to-make-build-work'
-    else
-      ENV.fetch('SECRET_KEY_BASE')
-    end
+                               '469b1e2b5472df916e0815735f99b8994ea00612af39b0b0de0a1a024896a28f76cd48d7ea7b395ccf24b87bbff6de8ef083c03e2219c7c66abd19b729f5b88f'
+                             elsif ENV['PRECOMPILE']
+                               'bad-temp-secret-to-make-build-work'
+                             else
+                               ENV.fetch('SECRET_KEY_BASE')
+                             end
 
     config.middleware.use PortalRedirectMiddleware
     config.middleware.use Rack::Deflater

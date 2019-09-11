@@ -36,11 +36,11 @@ module OfficeResolver
       return scope unless sort_by
 
       query_string = case sort_by
-      when NAME_DESC
-        'name DESC'
-      when NAME_ASC
-        'name ASC'
-      end
+                     when NAME_DESC
+                       'name DESC'
+                     when NAME_ASC
+                       'name ASC'
+                     end
 
       scope.order(query_string)
     end

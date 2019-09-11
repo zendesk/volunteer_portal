@@ -38,8 +38,8 @@ class ActiveSupport::TestCase
 
   def setup
     super
-    stub_request(:get, "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest").
-      to_return(:status => 200, :body => "", :headers => {})
+    stub_request(:get, "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest")
+      .to_return(:status => 200, :body => "", :headers => {})
 
     Signup.any_instance.stubs(:create_google_event).returns(true)
     Signup.any_instance.stubs(:delete_google_event).returns(true)

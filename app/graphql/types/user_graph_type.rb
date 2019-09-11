@@ -19,8 +19,8 @@ module Types
     end
 
     field :timezone, String,
-      null: false,
-      description: 'Timezone name from the [Timezone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) e.g. "America/Los_Angeles"'
+          null: false,
+          description: 'Timezone name from the [Timezone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) e.g. "America/Los_Angeles"'
     def timezone
       object.timezone || ApplicationRecord::DEFAULT_TIMEZONE
     end
@@ -38,9 +38,9 @@ module Types
     end
     def hours(after:, before:)
       Promise.all([
-        EventHoursLoader.for(after: after, before: before).load(object),
-        IndividualEventHoursLoader.for(after: after, before: before).load(object),
-      ]).then { |results| results.reduce(&:+) }
+                    EventHoursLoader.for(after: after, before: before).load(object),
+                    IndividualEventHoursLoader.for(after: after, before: before).load(object),
+                  ]).then { |results| results.reduce(&:+) }
     end
 
     field :role, RoleGraphType, null: true
@@ -62,6 +62,5 @@ module Types
     def signups
       AssociationLoader.for(User, :signups).load(object) # object.signups
     end
-
   end
 end

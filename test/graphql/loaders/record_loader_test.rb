@@ -16,7 +16,7 @@ describe RecordLoader do
 
   it 'uses the where clause when passed in' do
     offices = GraphQL::Batch.batch do
-      RecordLoader.for(Office, where: {name: office.name}).load_many([office.id, remote_office.id])
+      RecordLoader.for(Office, where: { name: office.name }).load_many([office.id, remote_office.id])
     end
 
     offices.compact.map(&:id).must_equal [office.id]

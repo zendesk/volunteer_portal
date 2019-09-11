@@ -29,14 +29,14 @@ describe UserResolver do
       Signup.create!(user: user, event: event2)
       Signup.create!(user: user2, event: event3)
 
-      args = {after: 1.week.ago.to_i, before: 2.days.ago.to_i, sort_by: 'HOURS_DESC'}
+      args = { after: 1.week.ago.to_i, before: 2.days.ago.to_i, sort_by: 'HOURS_DESC' }
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2, user]
     end
 
     it 'filters by all offices' do
-      args = {office_id: 'all'}
+      args = { office_id: 'all' }
 
       results = UserResolver.all(nil, args, nil).to_a
 
@@ -44,8 +44,8 @@ describe UserResolver do
     end
 
     it 'filters by current office' do
-      args = {office_id: 'current'}
-      context = {current_user: user}
+      args = { office_id: 'current' }
+      context = { current_user: user }
 
       results = UserResolver.all(nil, args, context).to_a
 
@@ -53,14 +53,14 @@ describe UserResolver do
     end
 
     it 'filters by office_id' do
-      args = {office_id: office.id}
+      args = { office_id: office.id }
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user]
     end
 
     it 'limits to count' do
-      args = {count: 0}
+      args = { count: 0 }
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal []
@@ -73,12 +73,12 @@ describe UserResolver do
       Signup.create!(event: event1, user: user)
       Signup.create!(event: event2, user: user2)
 
-      args = {sort_by: 'HOURS_ASC'}
+      args = { sort_by: 'HOURS_ASC' }
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user, user2]
 
-      args = {sort_by: 'HOURS_DESC'}
+      args = { sort_by: 'HOURS_DESC' }
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2, user]
@@ -91,12 +91,12 @@ describe UserResolver do
       Signup.create!(event: event1, user: user)
       Signup.create!(event: event2, user: user2)
 
-      args = {count: 1, sort_by: 'HOURS_ASC'}
+      args = { count: 1, sort_by: 'HOURS_ASC' }
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user]
 
-      args = {count: 1, sort_by: 'HOURS_DESC'}
+      args = { count: 1, sort_by: 'HOURS_DESC' }
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2]
@@ -133,7 +133,7 @@ describe UserResolver do
 
   describe '.delete' do
     it 'destroys a user' do
-      newUser = UserResolver.delete(nil, {id: user.id}, nil)
+      newUser = UserResolver.delete(nil, { id: user.id }, nil)
 
       assert newUser.destroyed?
     end

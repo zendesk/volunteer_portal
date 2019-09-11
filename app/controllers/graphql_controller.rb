@@ -3,15 +3,16 @@ class GraphqlController < ApplicationController
 
   def execute
     render json: PortalSchema.execute(params[:query],
-      variables: variables,
-      context: context,
-      operation_name: params[:operationName])
+                                      variables: variables,
+                                      context: context,
+                                      operation_name: params[:operationName])
   rescue ActiveRecord::RecordNotFound => e
     handle_record_not_found(e)
   rescue PortalSchema::MutationForbiddenError
     handle_forbidden_mutation
   rescue => e
     raise e unless Rails.env.development?
+
     handle_error_in_development(e)
   end
 

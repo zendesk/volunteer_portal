@@ -22,7 +22,7 @@ describe EventResolver do
         capacity: 10,
       )
 
-      EventResolver.create(nil, {input: input}, nil)
+      EventResolver.create(nil, { input: input }, nil)
 
       e = Event.last
 
@@ -50,7 +50,7 @@ describe EventResolver do
         capacity: 10,
       )
 
-      EventResolver.update(nil, {input: input}, nil)
+      EventResolver.update(nil, { input: input }, nil)
 
       e = Event.find(event.id)
 
