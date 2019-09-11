@@ -36,8 +36,8 @@ module TopVolunteerResolver
       end
 
       if before
-        events_scope = events_scope.where('"events"."starts_at" < ?', Time.at(after))
-        individual_events_scope = individual_events_scope.where('"individual_events"."date" < ?', Time.at(after))
+        events_scope = events_scope.where('"events"."starts_at" < ?', Time.at(before))
+        individual_events_scope = individual_events_scope.where('"individual_events"."date" < ?', Time.at(before))
       end
 
       return events_scope, individual_events_scope
