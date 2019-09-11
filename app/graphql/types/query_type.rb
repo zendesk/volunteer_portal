@@ -46,6 +46,17 @@ module Types
       UserResolver.all(object, args, context)
     end
 
+    field :top_volunteers, [UserGraphType], null: true do
+      argument :office_id, ID, required: false
+      argument :sort_by,   Enum::UserSortEnum, required: false
+      argument :after,     Int, required: false, description: 'earliest start time allowed'
+      argument :before,    Int, required: false, description: 'latest start time allowed'
+      argument :count,     Int, required: false, description: 'The number of users to return after sorting if sort_by is given'
+    end
+    def top_volunteers(**args)
+      TopVolunteerResolver.all(object, args, context)
+    end
+
     field :office, OfficeGraphType, null: true do
       argument :id, ID, required: true
     end
