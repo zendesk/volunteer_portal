@@ -121,7 +121,7 @@ const milestoneLabelStyling = (item, milestone, user) => {
 const sortByHours = users => R.sort((a, b) => b.hours - a.hours)(users)
 
 const LeaderboardContainer = ({
-  data: { networkStatus, users, offices, currentUser },
+  data: { networkStatus, topVolunteers, offices, currentUser },
   dashboardOfficeFilter,
   changeDashboardOfficeFilter,
 }) =>
@@ -137,7 +137,7 @@ const LeaderboardContainer = ({
           onChange={changeDashboardOfficeFilter}
         />
       </div>
-      {sortByHours(users).map((user, i) => (
+      {sortByHours(topVolunteers).map((user, i) => (
         <div className={s.leaderboardUser} key={`user-${i}`}>
           <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
           <span className={s.leaderboardHours}>{user.hours} hours</span>
