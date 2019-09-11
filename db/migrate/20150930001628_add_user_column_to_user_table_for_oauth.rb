@@ -9,7 +9,5 @@ class AddUserColumnToUserTableForOauth < ActiveRecord::Migration[4.2]
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     rename_column :signups, :volunteer_id, :user_id
-
   end
-
 end

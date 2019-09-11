@@ -11,7 +11,7 @@ describe IndividualEventHoursLoader do
   before do
     IndividualEvent.where(user_id: user.id).delete_all
 
-    base = {user_id: user.id, organization: organization, event_type: type, office: office}
+    base = { user_id: user.id, organization: organization, event_type: type, office: office }
     IndividualEvent.create!(**base, description: 'help', duration: 75, status: IndividualEvent::APPROVED, date: 1.month.ago)
     IndividualEvent.create!(**base, description: 'halp', duration: 60, status: IndividualEvent::APPROVED, date: 1.week.ago)
     IndividualEvent.create!(**base, description: 'holp', duration: 45, date: 1.day.ago)

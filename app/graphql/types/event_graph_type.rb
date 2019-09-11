@@ -17,8 +17,8 @@ module Types
     field :ends_at,       DatetimeType, null: false
 
     field :location, String,
-      null: false,
-      description: 'The street address where the event is being held. e.g. "1019 Market St, San Francisco, CA 94103, USA"'
+          null: false,
+          description: 'The street address where the event is being held. e.g. "1019 Market St, San Francisco, CA 94103, USA"'
 
     field :signup_count, Int, null: false, description: 'The number of users signed up for the event'
     def signup_count
@@ -26,17 +26,17 @@ module Types
     end
 
     field :duration, Int,
-      null: true,
-      description: 'Duration of the event in minutes',
-      deprecation_reason: 'Duration should be computed with `startsAt - endsAt` instead.'
+          null: true,
+          description: 'Duration of the event in minutes',
+          deprecation_reason: 'Duration should be computed with `startsAt - endsAt` instead.'
     def duration
       ((object.ends_at - object.starts_at) / 60.0).round.to_i
     end
 
     field :signups, [SignupGraphType],
-      null: true,
-      description: 'The many-to-many association that connects users to events',
-      deprecation_reason: '`Signup` is just a join of `User` and `Event` objects, use `users` directly.'
+          null: true,
+          description: 'The many-to-many association that connects users to events',
+          deprecation_reason: '`Signup` is just a join of `User` and `Event` objects, use `users` directly.'
     def signups
       AssociationLoader.for(Event, :signups).load(object)
     end

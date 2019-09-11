@@ -17,8 +17,8 @@ describe IndividualEvent do
       event_type: type,
       organization: org,
       user: user,
-      date: Date.today,
-      duration: 60,
+      date: Time.zone.today,
+      duration: 60
     )
 
     assert event.save, event.errors.full_messages
