@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 
-const OUTPUT_DIR = './public/locales/'
+const OUTPUT_DIR = './public/assets/locales/'
 
 const getJson = files => {
   return files.filter(file => file.match(/.*\.json/))
