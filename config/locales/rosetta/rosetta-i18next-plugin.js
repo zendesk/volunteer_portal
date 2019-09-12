@@ -31,7 +31,7 @@ const createCompiledRosettaFile = compiledRosettaFile => {
 }
 
 const compileBaseRosetta = (compilation, files) => {
-  const yamlFileName = 'en-us.yml'
+  const yamlFileName = 'en.yml'
   const baseRosettaFile = path.resolve(__dirname, yamlFileName)
 
   const yamlFiles = getYml(files)
