@@ -12,12 +12,12 @@ parts:
       key: dashboard.layouttab.calendar
       title: 'Clickable tab that displays the Calendar View'
       value: Calendar
-      screenshot: 
+      screenshot: https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f
   - translation:
       key: dashboard.layouttab.dashboard
       title: 'Clickable tab that displays the Dashboard View'
       value: Dashboard
-      screenshot: 
+      screenshot: https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4
   - translation:
       key: dashboard.layouttab.myevents
       title: 'Clickable tab that displays the user related events'
