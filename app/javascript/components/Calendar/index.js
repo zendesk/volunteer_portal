@@ -9,6 +9,7 @@ import Loading from 'components/LoadingIcon'
 import Toolbar from 'components/Toolbar'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
+import i18next from 'i18next'
 
 const localizer = BigCalendar.momentLocalizer(moment)
 BigCalendar.setLocalizer(localizer)
@@ -74,6 +75,7 @@ const applyShowFilter = dataAndFilters => {
 const applyEventFilter = dataAndFilters => {
   const {
     event,
+    currentUser,
     filters: { eventFilter },
     isValid,
   } = dataAndFilters
@@ -108,6 +110,7 @@ const applyOfficeFilter = dataAndFilters => {
   return dataAndFilters
 }
 
+
 const filterPipeline = (currentUser, filters, isValid) =>
   R.pipe(
     event => ({ event, currentUser, filters, isValid }),
@@ -123,6 +126,15 @@ const selectEvents = (events, currentUser, filters) =>
     R.values,
     normalizeEvents
   )(events)
+
+const getCulture = language => {
+  const cultureMap = {
+    en: 'en',
+    jp: 'ja',
+  }
+  return cultureMap[language] || 'en'
+}
+
 
 const Calendar = ({
   loading,
@@ -145,12 +157,18 @@ const Calendar = ({
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
-        culture="en"
-        components={calendarComponents(currentUser, offices, filters, {
-          changeShowFilter,
-          changeEventFilter,
-          changeOfficeFilter,
-        })}
+        culture={getCulture(i18next.language)}
+        components={calendarComponents(
+          currentUser,
+          offices,
+          filters,
+          {
+            changeShowFilter,
+            changeEventFilter,
+            changeOfficeFilter,
+          },
+          t
+        )}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup

@@ -9,8 +9,11 @@ import Divider from 'material-ui/Divider'
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right'
 import ContentIcon from 'material-ui/svg-icons/content/create'
 
+import DropDownMenu from 'material-ui/DropDownMenu'
+
 import { present } from '../../lib/utils'
 import s from './main.css'
+import i18next from 'i18next'
 
 const styles = {
   item: {
@@ -31,6 +34,29 @@ const AdminActions = ({ currentUser }) =>
     </div>
   ) : null
 
+class LanguageSelect extends React.Component {
+  state = {
+    language: i18next.language,
+  }
+  render() {
+    return (
+      <DropDownMenu
+        style={{ marginBottom: 16 }}
+        value={this.state.language}
+        onChange={(event, index, value) => {
+          this.setState(() => ({ language: i18next.language }))
+          i18next.changeLanguage(value, () => {
+            // TODO: Handle callback (error/success)
+          })
+        }}
+      >
+        <MenuItem value="en" primaryText="English" />
+        <MenuItem value="jp" primaryText="日本語" />
+      </DropDownMenu>
+    )
+  }
+}
+
 const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSelect, adminPage }) =>
   R.isNil(currentUser) || R.isEmpty(currentUser) ? null : (
     <div className={s.header}>
@@ -45,6 +71,7 @@ const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSele
               />
             </Link>
           </div>
+          <LanguageSelect />
           <AdminActions currentUser={currentUser} />
           <div>
             <button className={s.btn} onClick={togglePopover}>
