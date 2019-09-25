@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 
-const OUTPUT_DIR = './public/locales/'
+const OUTPUT_DIR = './public/assets/locales/'
 
 const getJson = files => {
   return files.filter(file => file.match(/.*\.json/))
@@ -31,7 +31,7 @@ const createCompiledRosettaFile = compiledRosettaFile => {
 }
 
 const compileBaseRosetta = (compilation, files) => {
-  const yamlFileName = 'en-us.yml'
+  const yamlFileName = 'en.yml'
   const baseRosettaFile = path.resolve(__dirname, yamlFileName)
 
   const yamlFiles = getYml(files)
@@ -53,6 +53,7 @@ const compileBaseRosetta = (compilation, files) => {
   }
 
   const compiledRosettaContents = JSON.parse(fs.readFileSync(compiledRosettaFile))
+  compiledRosettaContents.locale.translations = {}
 
   baseRosettaContents.parts.forEach(part => {
     compiledRosettaContents.locale.translations[part.translation.key] = part.translation.value
