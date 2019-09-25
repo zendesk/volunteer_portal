@@ -53,6 +53,7 @@ const compileBaseRosetta = (compilation, files) => {
   }
 
   const compiledRosettaContents = JSON.parse(fs.readFileSync(compiledRosettaFile))
+  compiledRosettaContents.locale.translations = {}
 
   baseRosettaContents.parts.forEach(part => {
     compiledRosettaContents.locale.translations[part.translation.key] = part.translation.value
