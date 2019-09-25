@@ -119,8 +119,9 @@ const tdProps = () => ({
   },
 })
 
-const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
-  networkStatus === NetworkStatus.loading ? (
+const Events = ({ data: { networkStatus, events }, deleteEvent }) => {
+  console.log(events)
+  return networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
     <div>
@@ -134,7 +135,6 @@ const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
         data={events}
         columns={columns(deleteEvent)}
         showPagination={false}
-        defaultPageSize={events.length}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -147,6 +147,7 @@ const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
       />
     </div>
   )
+}
 
 const buildOptimisticResponse = event => ({
   __typename: 'Mutation',
