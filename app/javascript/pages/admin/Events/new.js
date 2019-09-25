@@ -5,7 +5,7 @@ import R from 'ramda'
 import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
 
-import { graphQLError } from 'actions'
+import { graphQLError, changeAdminOfficeFilter } from 'actions'
 
 import EventForm from './form'
 
@@ -109,6 +109,7 @@ const withData = compose(
           },
         })
           .then(_response => {
+            ownProps.changeAdminOfficeFilter(event.office.id)
             ownProps.history.push('/portal/admin/events')
           })
           .catch(({ graphQLErrors }) => {
@@ -124,6 +125,7 @@ const withActions = connect(
   mapStateToProps,
   {
     graphQLError,
+    changeAdminOfficeFilter,
   }
 )
 
