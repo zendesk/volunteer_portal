@@ -134,7 +134,6 @@ const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
         data={events}
         columns={columns(deleteEvent)}
         showPagination={false}
-        defaultPageSize={events.length}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
