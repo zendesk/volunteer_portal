@@ -108,7 +108,7 @@ The server runs on [localhost:5000](http://localhost:5000/) by default.
 1. On [localhost:5000](http://localhost:5000/), create an account (You can use your Google ZD account), then run this rake command:
 
 ```bash
-bundle exec rake 'volunteer:make_admin[yourname@zendesk.com]'
+bundle exec rake 'volunteer:make_admin[your_email_address]'
 ```
 
 ## Create test data:
