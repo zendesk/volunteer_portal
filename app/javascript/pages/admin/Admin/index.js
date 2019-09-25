@@ -123,7 +123,7 @@ class Admin extends Component {
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/event-types">
-              <span className={btnClass(routing, 'event-types')}>{t('admin.tab.eventtypes')}s</span>
+              <span className={btnClass(routing, 'event-types')}>{t('admin.tab.eventtypes')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/offices">
