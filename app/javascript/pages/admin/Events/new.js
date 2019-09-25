@@ -88,9 +88,11 @@ const withData = compose(
           variables: { input: event },
           optimisticResponse: buildOptimisticResponse(event),
           update: (proxy, { data: { createEvent } }) => {
-            const { events } = proxy.readQuery({ query: EventsQuery })
-            const withNewEvent = R.append(createEvent, events)
-            proxy.writeQuery({ query: EventsQuery, data: { events: withNewEvent } })
+            try {
+              const { events } = proxy.readQuery({ query: EventsQuery })
+              const withNewEvent = R.append(createEvent, events)
+              proxy.writeQuery({ query: EventsQuery, data: { events: withNewEvent } })
+            } catch {}
           },
         })
           .then(_response => {
@@ -105,8 +107,11 @@ const withData = compose(
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(NewEvent))
