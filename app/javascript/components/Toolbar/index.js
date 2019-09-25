@@ -94,7 +94,7 @@ const OfficeFilter = ({ value, onChange, offices, t }) => (
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.office')} style={styles.menuitem} />
+      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.office.all')} style={styles.menuitem} />
       {offices.map((office, i) => (
         <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
       ))}
