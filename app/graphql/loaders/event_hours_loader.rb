@@ -24,8 +24,8 @@ class EventHoursLoader < GraphQL::Batch::Loader
 
   def query(user_ids)
     scope = Event.joins(:signups)
-    scope = scope.after(Time.at(@after)) if @after
-    scope = scope.before(Time.at(@before)) if @before
+    scope = scope.after(Time.zone.at(@after)) if @after
+    scope = scope.before(Time.zone.at(@before)) if @before
 
     scope
       .where(signups: { user_id: user_ids })

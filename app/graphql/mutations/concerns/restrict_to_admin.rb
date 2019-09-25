@@ -1,11 +1,9 @@
 module Mutations::Concerns
   module RestrictToAdmin
     def ready?(*)
-      if context[:current_user].role == Role.admin
-        return true
-      else
-        raise PortalSchema::MutationForbiddenError
-      end
+      raise PortalSchema::MutationForbiddenError unless context[:current_user].role == Role.admin
+
+      true
     end
   end
 end

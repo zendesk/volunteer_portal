@@ -1,7 +1,7 @@
 {
   "locale": {
     "translations": {
-      "dashboard.personal": "Personal",
+      "dashboard.personal": "Personals",
       "dashboard.layouttab.calendar": "Calendar",
       "dashboard.layouttab.dashboard": "Dashboard",
       "dashboard.layouttab.myevents": "My Events",
@@ -11,7 +11,7 @@
       "dashboard.layouteventstab.show": "Show:",
       "dashboard.layouteventstab.show.all": "All",
       "dashboard.layouteventstab.show.myevents": "My Events",
-      "dashboard.layouteventstab.event": "Events:",
+      "dashboard.layouteventstab.event": "Event:",
       "dashboard.layouteventstab.event.all": "All",
       "dashboard.layouteventstab.event.open": "Open",
       "dashboard.layouteventstab.event.full": "Full",

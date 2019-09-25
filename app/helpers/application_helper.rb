@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def available_months
     Event.connection.select_all('select extract(YEAR from time) as year from events group by year').rows.flatten
   end

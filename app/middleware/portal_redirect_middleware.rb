@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class PortalRedirectMiddleware
   def initialize(app)
     @app = app
@@ -7,11 +8,11 @@ class PortalRedirectMiddleware
   def call(env)
     if root_request?(env)
       headers = {
-        'Location'      => '/portal',
+        'Location' => '/portal',
         'Cache-Control' => 'max-age=86400, public'
       }
 
-      return [301, headers, ['Redirect to the portal']]
+      [301, headers, ['Redirect to the portal']]
     else
       @app.call(env)
     end

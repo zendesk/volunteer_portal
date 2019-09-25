@@ -1,7 +1,7 @@
 class Role < ApplicationRecord
   MAPPING = {
     1 => 'admin',
-    2 => 'volunteer',
+    2 => 'volunteer'
   }.freeze
 
   def self.admin

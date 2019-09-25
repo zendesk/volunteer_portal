@@ -19,10 +19,10 @@ describe EventResolver do
         location: 'newl',
         starts_at: timestamp.iso8601,
         ends_at: (timestamp + 10.minutes).iso8601,
-        capacity: 10,
+        capacity: 10
       )
 
-      EventResolver.create(nil, {input: input}, nil)
+      EventResolver.create(nil, { input: input }, nil)
 
       e = Event.last
 
@@ -47,10 +47,10 @@ describe EventResolver do
         location: 'newl',
         starts_at: timestamp.iso8601,
         ends_at: (timestamp + 10.minutes).iso8601,
-        capacity: 10,
+        capacity: 10
       )
 
-      EventResolver.update(nil, {input: input}, nil)
+      EventResolver.update(nil, { input: input }, nil)
 
       e = Event.find(event.id)
 
@@ -114,21 +114,21 @@ describe EventResolver do
         office: other_office
       )
     end
-    let(:event1_start) { Time.new(2018, 1, 1, 1, 0) }
-    let(:event2_start) { Time.new(2018, 1, 1, 2, 0) }
-    let(:event3_start) { Time.new(2018, 1, 1, 3, 0) }
+    let(:event1_start) { Time.zone.local(2018, 1, 1, 1, 0) }
+    let(:event2_start) { Time.zone.local(2018, 1, 1, 2, 0) }
+    let(:event3_start) { Time.zone.local(2018, 1, 1, 3, 0) }
     let(:current_user) { users(:admin) }
     let(:context) { { current_user: current_user } }
 
     let(:args) { {} }
     let(:all_events) { EventResolver.all(nil, args, context) }
 
-    before {
+    before do
       Event.delete_all
       event2
       event1
       event3
-    }
+    end
 
     it 'returns all events' do
       assert_equal [event2, event1, event3].map(&:title), all_events.pluck(:title)

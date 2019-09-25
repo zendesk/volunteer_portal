@@ -12,14 +12,16 @@ class IndividualEvent < ApplicationRecord
 
   validates :user, :organization, :event_type, :office,
             :description, :date, presence: true
-  validates :duration, numericality: { only_integer: true,
-                                       greater_than: 0 }
+  validates :duration, numericality: {
+    only_integer: true,
+    greater_than: 0
+  }
 
   scope :for_user, ->(user) { where(user: user) }
   scope :before,   ->(date) { where("date < ?", date) }
   scope :after,    ->(date) { where("date > ?", date) }
-  scope :pending,  ->() { where(status: PENDING)}
-  scope :approved, ->() { where(status: APPROVED) }
+  scope :pending,  -> { where(status: PENDING) }
+  scope :approved, -> { where(status: APPROVED) }
 
   def to_status_enum
     case status

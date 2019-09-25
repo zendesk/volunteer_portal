@@ -2,16 +2,19 @@ class GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def execute
-    render json: PortalSchema.execute(params[:query],
+    render json: PortalSchema.execute(
+      params[:query],
       variables: variables,
       context: context,
-      operation_name: params[:operationName])
+      operation_name: params[:operationName]
+    )
   rescue ActiveRecord::RecordNotFound => e
     handle_record_not_found(e)
   rescue PortalSchema::MutationForbiddenError
     handle_forbidden_mutation
-  rescue => e
+  rescue StandardError => e
     raise e unless Rails.env.development?
+
     handle_error_in_development(e)
   end
 
@@ -57,7 +60,7 @@ class GraphqlController < ApplicationController
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
-    render json: { error: { message: e.message, backtrace: e.backtrace }, data: {} }, status: 500
+    render json: { error: { message: e.message, backtrace: e.backtrace }, data: {} }, status: :internal_server_error
   end
 
   def handle_forbidden_mutation

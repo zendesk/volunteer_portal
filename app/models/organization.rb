@@ -1,6 +1,5 @@
 class Organization < ApplicationRecord
+  has_many :events, -> { order(:starts_at) }, dependent: :destroy, inverse_of: :organization
 
-  has_many :events, -> { order(:starts_at) }, dependent: :destroy
-
-  validates_presence_of :name, :description, :location
+  validates :name, :description, :location, presence: true
 end

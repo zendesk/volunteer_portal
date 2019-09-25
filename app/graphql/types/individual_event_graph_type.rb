@@ -14,7 +14,6 @@ module Types
     field :duration,    Int,    null: false, description: 'Duration of the event in minutes'
     field :status,      Enum::IndividualEventStatusEnum, null: false
 
-
     #### Associations
     field :user, UserGraphType, null: true
     def user

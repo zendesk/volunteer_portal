@@ -19,7 +19,7 @@ gem 'rollbar'
 gem 'activerecord-session_store'
 gem 'attr_encrypted'
 gem 'soft_deletion'
-gem 'webpacker', '~> 2.0'
+gem 'webpacker', '~> 4.x'
 gem 'uglifier'
 gem 'sass-rails'
 
@@ -42,6 +42,7 @@ group :development, :test do
   gem 'byebug'
   gem 'testrbl', require: false
   gem 'database_cleaner', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do

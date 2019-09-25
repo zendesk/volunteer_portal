@@ -1,14 +1,14 @@
 class Event < ApplicationRecord
   CALENDAR_TIME_FORMAT = '%Y%m%dT%H%M%SZ'.freeze
 
-  has_many :signups, -> { auto_include(false) }, dependent: :destroy
+  has_many :signups, -> { auto_include(false) }, dependent: :destroy, inverse_of: :event
   # this custom association is to reduce data loaded and memory used when fetching users for an event
-  has_many :signups_for_through, -> { select(:event_id, :user_id) }, class_name: 'Signup'
+  has_many :signups_for_through, -> { select(:event_id, :user_id) }, class_name: 'Signup', inverse_of: :event
   has_many :users, through: :signups_for_through
 
   belongs_to :organization
   belongs_to :event_type
-  belongs_to :type, class_name: 'EventType', foreign_key: 'event_type_id'
+  belongs_to :type, class_name: 'EventType', foreign_key: 'event_type_id', inverse_of: :events
   belongs_to :office
   belongs_to :event_group
 
@@ -31,7 +31,7 @@ class Event < ApplicationRecord
 
   def sign_up_user!(user)
     users << user
-  rescue ActiveRecord::RecordInvalid => e
+  rescue ActiveRecord::RecordInvalid
     if signups.last.errors.any? && signups.last.user_id == user.id
       errors.add(:users, signups.last.errors.full_messages)
     else
@@ -47,15 +47,11 @@ class Event < ApplicationRecord
   private
 
   def max_capacity
-    if capacity && users.size > capacity
-      errors.add(:users, "total can't be above capacity")
-    end
+    errors.add(:users, "total can't be above capacity") if capacity && users.size > capacity
   end
 
   def time_sequentiality
-    if (starts_at && ends_at) && (starts_at > ends_at)
-      errors.add(:ends_at, "should not end before it starts")
-    end
+    errors.add(:ends_at, "should not end before it starts") if (starts_at && ends_at) && (starts_at > ends_at)
   end
 
   def notify_websocket_of_create
@@ -71,8 +67,6 @@ class Event < ApplicationRecord
   end
 
   def set_duration
-    if ends_at_changed? || starts_at_changed?
-      self.duration = (ends_at - starts_at) / 60
-    end
+    self.duration = (ends_at - starts_at) / 60 if ends_at_changed? || starts_at_changed?
   end
 end

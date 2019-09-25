@@ -1,0 +1,124 @@
+require: rubocop-rails
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'config.ru'
+    - 'db/schema.rb'
+    - 'Rakefile'
+    - 'vendor/bundle/**/*'
+
+# LineLength metrics seems to complicate any other rules.
+# It should probably be enabled last, if ever.
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/LineLength
+Metrics/LineLength:
+  Enabled: false
+
+# Gems are better manually ordered
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Bundler/OrderedGems
+Bundler/OrderedGems:
+  Enabled: false
+
+# This cop checks for a line break before the first argument in a multi-line method call.
+# This makes it easier to add remove arguments
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Layout/FirstMethodArgumentLineBreak
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+# Test files are less critical, and have their own style preference regarding parentheses
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Lint/AmbiguousRegexpLiteral
+Lint/AmbiguousRegexpLiteral:
+  Exclude:
+    - 'test/**/*.rb'
+
+# This cop is hard to solve, and should be left to developer's preference
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/AbcSizeO
+Metrics/AbcSize:
+  Enabled: false
+
+# This cop catches a code smell, but is irrelevant with some DSLs
+# Feel free to exclude any DSL-based file
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/BlockLength
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*.rb'
+    - 'lib/tasks/**/*.rake'
+
+# Controllers and tests tend to have long methods
+#   Also this is a bad practice, Rubocop should be a little flexible on it
+# Feel free to exclude any file where you think the cop is holding you back
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/MethodLength
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/**/*.rb'
+    - 'db/migrate/*.rb'
+    - 'test/**/*.rb'
+
+# Warning: Method names in GraphQL are determined by field name
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/PredicateName
+Naming/PredicateName:
+  Exclude:
+    - 'app/graphql/**/*.rb'
+
+# Adding 'e' to the allowed short name (for error handling)
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/UncommunicativeMethodParamName
+Naming/UncommunicativeMethodParamName:
+  AllowedNames: ['io', 'id', 'to', 'by', 'on', 'in', 'at', 'ip', 'db', 'e']
+
+# These migrations will not be fixed
+# https://www.rubydoc.info/gems/rubocop-rails/RuboCop/Cop/Rails/CreateTableWithTimestamps
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/20140513234618_events_and_volunteers.rb'
+    - 'db/migrate/20161129184046_create_office.rb'
+
+# These migrations will not be fixed
+# https://www.rubydoc.info/gems/rubocop-rails/RuboCop/Cop/Rails/ReversibleMigration
+Rails/ReversibleMigration:
+  Exclude:
+    - 'db/migrate/20180411231255_drop_delayed_jobs.rb'
+    - 'db/migrate/20180418204639_remove_google_event_from_event.rb'
+
+# This cop may have side effect: scopes are loaded differently with compact or nested module
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/ClassAndModuleChildren
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Documenting every method can create a lot of friction and add redundancy
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/Documentation
+Style/Documentation:
+  Enabled: false
+
+# Empty method should be declared over 2 lines, not 1
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/EmptyMethod
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# Frozen string literal is a good thing, but not necessary
+# It may add some friction when creating a new file
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/FrozenStringLiteralComment
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# All lambdas should be declared with ->() {} syntax
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/Lambda
+Style/Lambda:
+  EnforcedStyle: literal
+
+
+# Consistent use of quote is probably a good thing, but would lead to more frustration than benefits
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/StringLiterals
+Style/StringLiterals:
+  Enabled: false
+
+# %w[] array syntax is sometimes confusing, we should not enforce it
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/SymbolArray
+Style/SymbolArray:
+  Enabled: false
+
+# %w[] array syntax is sometimes confusing, we should not enforce it
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/WordArray
+Style/WordArray:
+  Enabled: false

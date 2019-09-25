@@ -21,11 +21,9 @@ describe Signup do
     before do
       Signup.delete_all
     end
-
   end
 
   describe 'destroy' do
     subject { signups(:minimum) }
-
   end
 end

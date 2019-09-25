@@ -7,13 +7,13 @@ module UserResolver
       scope = User.all
 
       office_id = case args[:office_id]
-      when 'all'
-        nil
-      when 'current'
-        context[:current_user].office_id
-      else
-        args[:office_id]
-      end
+                  when 'all'
+                    nil
+                  when 'current'
+                    context[:current_user].office_id
+                  else
+                    args[:office_id]
+                  end
 
       scope = scope_with_time(scope, args[:after], args[:before])
       scope = scope_with_office_id(scope, office_id)
@@ -39,7 +39,7 @@ module UserResolver
       user
     end
 
-    def delete(_, args, context)
+    def delete(_, args, _context)
       user = User.find(args[:id])
       user.destroy!
 
@@ -57,13 +57,13 @@ module UserResolver
       individual_events_join = BASE_INDIVIDUAL_EVENTS_JOIN.dup
 
       if after
-        scope = scope.where('"events"."starts_at" > ?', Time.at(after))
-        individual_events_join << %( AND "individual_events"."date" > '#{Time.at(after).to_date.to_s(:db)}')
+        scope = scope.where('"events"."starts_at" > ?', Time.zone.at(after))
+        individual_events_join << %( AND "individual_events"."date" > '#{Time.zone.at(after).to_date.to_s(:db)}')
       end
 
       if before
-        scope = scope.where('"events"."starts_at" < ?', Time.at(before))
-        individual_events_join << %( AND "individual_events"."date" < '#{Time.at(before).to_date.to_s(:db)}')
+        scope = scope.where('"events"."starts_at" < ?', Time.zone.at(before))
+        individual_events_join << %( AND "individual_events"."date" < '#{Time.zone.at(before).to_date.to_s(:db)}')
       end
 
       scope.joins(individual_events_join)
@@ -97,15 +97,13 @@ module UserResolver
       SQL
 
       order = case sort_by
-      when HOURS_DESC
-        query + ' DESC'
-      when HOURS_ASC
-        query + ' ASC'
-      end
+              when HOURS_DESC
+                query + ' DESC'
+              when HOURS_ASC
+                query + ' ASC'
+              end
 
-      unless scope.to_sql.include?('LEFT JOIN "individual_events"')
-        scope = scope.joins(BASE_INDIVIDUAL_EVENTS_JOIN)
-      end
+      scope = scope.joins(BASE_INDIVIDUAL_EVENTS_JOIN) unless scope.to_sql.include?('LEFT JOIN "individual_events"')
 
       scope
         .joins(:events)
