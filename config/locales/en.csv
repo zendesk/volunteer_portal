@@ -1,4 +1,5 @@
 key,value,title,screenshot,wip
+volunteer_portal.header.admin,Admin,Label referring to a link to the admin page,,TRUE
 volunteer_portal.dashboard.personal,Personal,Label referring to who the number of hours belong to,,TRUE
 volunteer_portal.dashboard.layouttab.calendar,Calendar,Clickable tab that displays the Calendar View,https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f,TRUE
 volunteer_portal.dashboard.layouttab.dashboard,Dashboard,Clickable tab that displays the Dashboard View,https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4,TRUE

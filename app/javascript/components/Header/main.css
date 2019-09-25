@@ -30,7 +30,7 @@
 }
 
 .adminBox {
-  margin-right: 15px;
+  margin: 0px 4px;
 }
 
 .popover {
@@ -40,6 +40,7 @@
 .btn {
   background: none;
   border: none;
+  display: flex;
 }
 
 .img {

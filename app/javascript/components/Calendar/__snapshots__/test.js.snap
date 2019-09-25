@@ -1,6 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`loads 1`] = `
+<<<<<<< HEAD
 <ContextProvider
   value={
     Object {
@@ -48,4 +49,42 @@ exports[`loads 1`] = `
     />
   </FilterContextProvider>
 </ContextProvider>
+=======
+<Calendar
+  changeEventFilter={[Function]}
+  changeOfficeFilter={[Function]}
+  changeShowFilter={[Function]}
+  currentPath="/"
+  currentUser={
+    Object {
+      "email": "volunteer@example.com",
+      "id": "1",
+      "isAdmin": true,
+      "name": "Craig Day",
+      "office": Object {
+        "id": "1",
+        "identifier": "san_francisco",
+        "name": "San Francisco",
+      },
+      "photo": "https://example.com/photo.jpg",
+    }
+  }
+  eventPopover={Object {}}
+  events={Array []}
+  filters={
+    Object {
+      "eventFilter": Object {},
+      "officeFilter": Object {},
+      "showFilter": Object {},
+    }
+  }
+  i18n={Object {}}
+  loadMoreEvents={[Function]}
+  loading={false}
+  offices={Array []}
+  t={[Function]}
+  tReady={false}
+  togglePopover={[Function]}
+/>
+>>>>>>> get selection to work in the menu (+11 squashed commits)
 `;
