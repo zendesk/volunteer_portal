@@ -174,19 +174,18 @@ const withData = compose(
           optimisticResponse: buildOptimisticResponse(event),
           update: (cache, { data: { deleteEvent } }) => {
             try {
-              const queryVariables = {
-                officeId: ownProps.adminOfficeFilter.value || 'current',
-                sortBy: eventsSort,
+              const queryParams = {
+                query: EventsQuery,
+                variables: {
+                  officeId: ownProps.adminOfficeFilter.value || 'current',
+                  sortBy: eventsSort,
+                },
               }
-              const { currentUser, events } = cache.readQuery({
-                query: EventsQuery,
-                variables: queryVariables,
-              })
-              const withEventRemoved = R.reject(event => event.id === deleteEvent.id, events)
+              const data = cache.readQuery(queryParams)
+              const withEventRemoved = R.reject(event => event.id === deleteEvent.id, data.events)
               cache.writeQuery({
-                query: EventsQuery,
-                variables: queryVariables,
-                data: { currentUser, events: withEventRemoved },
+                ...queryParams,
+                data: { ...data, events: withEventRemoved },
               })
             } catch {}
           },
