@@ -111,7 +111,7 @@ The server runs on [localhost:5000](http://localhost:5000/) by default.
 bundle exec rake 'volunteer:make_admin[your_email_address]'
 ```
 
-## Create test data:
+## Create test data
 
 ```bash
 bundle exec rails volunteer:generate_test_data
