@@ -5,7 +5,7 @@ import R from 'ramda'
 import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
 
-import { graphQLError } from 'actions'
+import { graphQLError, changeAdminOfficeFilter } from 'actions'
 
 import EventForm from './form'
 
@@ -14,6 +14,8 @@ import EventQuery from './queries/show.gql'
 import CreateEventMutation from './mutations/create.gql'
 
 import Loading from 'components/LoadingIcon'
+
+const eventsSort = 'STARTS_AT_DESC'
 
 const transformToReduxFormState = event => {
   const { title, description, capacity, location, startsAt, endsAt, eventType, office, organization } = event
@@ -88,12 +90,26 @@ const withData = compose(
           variables: { input: event },
           optimisticResponse: buildOptimisticResponse(event),
           update: (proxy, { data: { createEvent } }) => {
-            const { events } = proxy.readQuery({ query: EventsQuery })
-            const withNewEvent = R.append(createEvent, events)
-            proxy.writeQuery({ query: EventsQuery, data: { events: withNewEvent } })
+            try {
+              const queryParams = {
+                query: EventsQuery,
+                variables: {
+                  officeId: event.office.id || 'current',
+                  sortBy: eventsSort,
+                },
+              }
+
+              const data = proxy.readQuery(queryParams)
+              const withNewEvent = R.append(createEvent, data.events)
+              proxy.writeQuery({
+                ...queryParams,
+                data: { ...data, events: withNewEvent },
+              })
+            } catch {}
           },
         })
           .then(_response => {
+            ownProps.changeAdminOfficeFilter(event.office.id)
             ownProps.history.push('/portal/admin/events')
           })
           .catch(({ graphQLErrors }) => {
@@ -105,8 +121,12 @@ const withData = compose(
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+    changeAdminOfficeFilter,
+  }
+)
 
 export default withActions(withData(NewEvent))
