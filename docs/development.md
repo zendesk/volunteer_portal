@@ -103,10 +103,18 @@ bundle exec foreman start
 
 The server runs on [localhost:5000](http://localhost:5000/) by default.
 
-## Become an admin:
+## Become an admin
+
+1. On [localhost:5000](http://localhost:5000/), create an account, then run this rake command:
 
 ```bash
 bundle exec rake 'volunteer:make_admin[your_email_address]'
+```
+
+## Create test data
+
+```bash
+bundle exec rails volunteer:generate_test_data
 ```
 
 ## Running tests
