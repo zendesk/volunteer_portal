@@ -311,7 +311,7 @@ const IndividualEvents = props => {
       Header: 'Actions',
       accessor: d => d,
       sortable: false,
-      width: 200,
+      width: 210,
       Cell: props => (
         <span className="s.actionColumn">
           <button
