@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 
+const ASSETS_DIR = './public/assets/'
 const OUTPUT_DIR = './public/assets/locales/'
 
 const getJson = files => {
@@ -63,7 +64,8 @@ const compileBaseRosetta = (compilation, files) => {
 }
 
 const serveTranslationFiles = files => {
-  !fs.existsSync(OUTPUT_DIR) && fs.mkdirSync(OUTPUT_DIR, { recursive: true })
+  !fs.existsSync(ASSETS_DIR) && fs.mkdirSync(ASSETS_DIR)
+  !fs.existsSync(OUTPUT_DIR) && fs.mkdirSync(OUTPUT_DIR)
   const jsonFileNames = getJson(files)
 
   jsonFileNames.forEach(jsonFileName => {
