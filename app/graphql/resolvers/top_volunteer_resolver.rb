@@ -32,6 +32,7 @@ module TopVolunteerResolver
     def scope_with_time(events_scope, individual_events_scope, after, before)
       return events_scope, individual_events_scope unless after || before
 
+      # Disabling TimeZone check for rubocop here because the frontend handles the timezone
       # rubocop:disable Rails/TimeZone
       if after
         events_scope = events_scope.where('"events"."starts_at" > ?', Time.at(after))
