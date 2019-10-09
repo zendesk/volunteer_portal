@@ -7,7 +7,6 @@ module.exports = {
     {
       loader: 'css-loader',
       options: {
-        minimize: env.NODE_ENV === 'production',
         modules: true,
         importLoaders: 1,
       },
