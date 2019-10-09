@@ -51,7 +51,7 @@ class LanguageSelect extends React.Component {
         }}
       >
         <MenuItem value="en" primaryText="English" />
-        <MenuItem value="jp" primaryText="日本語" />
+        <MenuItem value="ja" primaryText="日本語" />
       </DropDownMenu>
     )
   }
