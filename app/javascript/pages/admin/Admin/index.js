@@ -82,14 +82,19 @@ const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }
       menuItemStyle={muiStyles.menuitem}
     >
       <MenuItem value="all" primaryText={t('admin.tab.office.all')} style={muiStyles.menuitem} />
-      {offices.map((office, i) => <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} />)}
+      {offices.map((office, i) => (
+        <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} />
+      ))}
     </DropDownMenu>
   </div>
 )
 
 class Admin extends Component {
   componentDidUpdate() {
-    const { history, data: { networkStatus, currentUser } } = this.props
+    const {
+      history,
+      data: { networkStatus, currentUser },
+    } = this.props
 
     if (networkStatus !== NetworkStatus.loading && !currentUser.isAdmin) {
       history.push('/portal')
@@ -172,8 +177,11 @@ const withData = graphql(AdminQuery, {
   },
 })
 
-const withActions = connect(mapStateToProps, {
-  changeAdminOfficeFilter,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    changeAdminOfficeFilter,
+  }
+)
 
 export default withActions(withData(withNamespaces()(Admin)))
