@@ -47,7 +47,7 @@ const styles = {
 
 const ShowFilter = ({ value, onChange, t }) => (
   <div style={styles.menuGroup}>
-    <span style={styles.menuTitle}>{t('dashboard.layouteventstab.show')}</span>
+    <span style={styles.menuTitle}>{t('volunteer_portal.dashboard.layouteventstab.show')}</span>
     <DropDownMenu
       value={value}
       onChange={onChange}
@@ -57,15 +57,23 @@ const ShowFilter = ({ value, onChange, t }) => (
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.show.all')} style={styles.menuitem} />
-      <MenuItem value="mine" primaryText={t('dashboard.layouteventstab.show.myevents')} style={styles.menuitem} />
+      <MenuItem
+        value="all"
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.show.all')}
+        style={styles.menuitem}
+      />
+      <MenuItem
+        value="mine"
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.show.myevents')}
+        style={styles.menuitem}
+      />
     </DropDownMenu>
   </div>
 )
 
 const EventFilter = ({ value, onChange, t }) => (
   <div style={styles.menuGroup}>
-    <span style={styles.menuTitle}>{t('dashboard.layouteventstab.event')}</span>
+    <span style={styles.menuTitle}>{t('volunteer_portal.dashboard.layouteventstab.event')}</span>
     <DropDownMenu
       value={value}
       onChange={onChange}
@@ -75,16 +83,28 @@ const EventFilter = ({ value, onChange, t }) => (
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.event.all')} style={styles.menuitem} />
-      <MenuItem value="open" primaryText={t('dashboard.layouteventstab.event.open')} style={styles.menuitem} />
-      <MenuItem value="full" primaryText={t('dashboard.layouteventstab.event.full')} style={styles.menuitem} />
+      <MenuItem
+        value="all"
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.event.all')}
+        style={styles.menuitem}
+      />
+      <MenuItem
+        value="open"
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.event.open')}
+        style={styles.menuitem}
+      />
+      <MenuItem
+        value="full"
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.event.full')}
+        style={styles.menuitem}
+      />
     </DropDownMenu>
   </div>
 )
 
 const OfficeFilter = ({ value, onChange, offices, t }) => (
   <div style={styles.menuGroup}>
-    <span style={styles.menuTitle}>{t('dashboard.layouteventstab.office')}</span>
+    <span style={styles.menuTitle}>{t('volunteer_portal.dashboard.layouteventstab.office')}</span>
     <DropDownMenu
       value={value}
       onChange={onChange}
@@ -94,7 +114,11 @@ const OfficeFilter = ({ value, onChange, offices, t }) => (
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText={t('dashboard.layouteventstab.office.all')} style={styles.menuitem} />
+      <MenuItem
+        value="all"
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.office.all')}
+        style={styles.menuitem}
+      />
       {offices.map((office, i) => (
         <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
       ))}
@@ -104,11 +128,11 @@ const OfficeFilter = ({ value, onChange, offices, t }) => (
 
 const toolbarTextMap = (t, key) => {
   const map = {
-    month: t('calendar.bigcalendar.month'),
-    week: t('calendar.bigcalendar.week'),
-    work_week: t('calendar.bigcalendar.work_week'),
-    day: t('calendar.bigcalendar.day'),
-    agenda: t('calendar.bigcalendar.agenda'),
+    month: t('volunteer_portal.calendar.bigcalendar.month'),
+    week: t('volunteer_portal.calendar.bigcalendar.week'),
+    work_week: t('volunteer_portal.calendar.bigcalendar.work_week'),
+    day: t('volunteer_portal.calendar.bigcalendar.day'),
+    agenda: t('volunteer_portal.calendar.bigcalendar.agenda'),
   }
   return map[key]
 }
@@ -124,14 +148,14 @@ const Toolbar = (
   <div className={s.toolbar}>
     <div className={s.navBar}>
       <button className={s.todayBtn} type="button" onClick={() => onNavigate(navigate.TODAY)}>
-        {t('dashboard.layoutdatetab.today')}
+        {t('volunteer_portal.dashboard.layoutdatetab.today')}
       </button>
       <button className={s.btn} type="button" onClick={() => onNavigate(navigate.PREVIOUS)}>
-        {t('dashboard.layoutdatetab.previous')}
+        {t('volunteer_portal.dashboard.layoutdatetab.previous')}
       </button>
       <span className={s.label}>{label}</span>
       <button className={s.btn} type="button" onClick={() => onNavigate(navigate.NEXT)}>
-        {t('dashboard.layoutdatetab.after')}
+        {t('volunteer_portal.dashboard.layoutdatetab.after')}
       </button>
     </div>
     <div className={s.filterBar}>

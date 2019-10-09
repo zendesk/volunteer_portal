@@ -70,7 +70,7 @@ const btnClass = (routing, button) => {
 
 const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }) => (
   <div className={s.officeFilter} style={muiStyles.menuGroup}>
-    <span style={muiStyles.menuTitle}>{t('admin.tab.office')}</span>
+    <span style={muiStyles.menuTitle}>{t('volunteer_portal.admin.tab.office')}</span>
     <DropDownMenu
       value={adminOfficeFilter.value}
       onChange={(_e, _k, value) => changeAdminOfficeFilter(value)}
@@ -81,7 +81,7 @@ const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }
       iconStyle={muiStyles.icon}
       menuItemStyle={muiStyles.menuitem}
     >
-      <MenuItem value="all" primaryText={t('admin.tab.office.all')} style={muiStyles.menuitem} />
+      <MenuItem value="all" primaryText={t('volunteer_portal.admin.tab.office.all')} style={muiStyles.menuitem} />
       {offices.map((office, i) => (
         <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} />
       ))}
@@ -120,35 +120,39 @@ class Admin extends Component {
         <div className={s.content}>
           <div className={s.navBar}>
             <Link to="/portal/admin">
-              <span className={btnClass(routing, 'dashboard')}>{t('admin.tab.dashboard')}</span>
+              <span className={btnClass(routing, 'dashboard')}>{t('volunteer_portal.admin.tab.dashboard')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/events">
-              <span className={btnClass(routing, 'events')}>{t('admin.tab.events')}</span>
+              <span className={btnClass(routing, 'events')}>{t('volunteer_portal.admin.tab.events')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/event-types">
-              <span className={btnClass(routing, 'event-types')}>{t('admin.tab.eventtypes')}</span>
+              <span className={btnClass(routing, 'event-types')}>{t('volunteer_portal.admin.tab.eventtypes')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/offices">
-              <span className={btnClass(routing, 'offices')}>{t('admin.tab.offices')}</span>
+              <span className={btnClass(routing, 'offices')}>{t('volunteer_portal.admin.tab.offices')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/organizations">
-              <span className={btnClass(routing, 'organizations')}>{t('admin.tab.organizations')}</span>
+              <span className={btnClass(routing, 'organizations')}>
+                {t('volunteer_portal.admin.tab.organizations')}
+              </span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/individual_events">
-              <span className={btnClass(routing, 'individual_events')}>{t('admin.tab.individualevents')}</span>
+              <span className={btnClass(routing, 'individual_events')}>
+                {t('volunteer_portal.admin.tab.individualevents')}
+              </span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/users">
-              <span className={btnClass(routing, 'users')}>{t('admin.tab.users')}</span>
+              <span className={btnClass(routing, 'users')}>{t('volunteer_portal.admin.tab.users')}</span>
             </Link>
             <div className={s.navSpacer} />
             <Link to="/portal/admin/reporting">
-              <span className={btnClass(routing, 'reporting')}>{t('admin.tab.reporting')}</span>
+              <span className={btnClass(routing, 'reporting')}>{t('volunteer_portal.admin.tab.reporting')}</span>
             </Link>
             <div className={`${s.navSpacer} ${s.growingSpace}`} />
             <OfficeFilter

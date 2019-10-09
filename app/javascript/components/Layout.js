@@ -66,11 +66,19 @@ const Layout = ({ noNav, currentPath, children, t }) => (
     <div style={styles.wrapper}>
       {noNav ? null : (
         <div style={styles.navBar}>
-          <Tab path="/portal" text={t('dashboard.layouttab.calendar')} currentPath={currentPath} />
+          <Tab path="/portal" text={t('volunteer_portal.dashboard.layouttab.calendar')} currentPath={currentPath} />
           <div style={styles.btnSpacer} />
-          <Tab path="/portal/dashboard" text={t('dashboard.layouttab.dashboard')} currentPath={currentPath} />
+          <Tab
+            path="/portal/dashboard"
+            text={t('volunteer_portal.dashboard.layouttab.dashboard')}
+            currentPath={currentPath}
+          />
           <div style={styles.btnSpacer} />
-          <Tab path="/portal/events" text={t('dashboard.layouttab.myevents')} currentPath={currentPath} />
+          <Tab
+            path="/portal/events"
+            text={t('volunteer_portal.dashboard.layouttab.myevents')}
+            currentPath={currentPath}
+          />
         </div>
       )}
       {children}
