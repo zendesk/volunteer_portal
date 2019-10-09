@@ -12,7 +12,7 @@ GEM
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
     actionpack (5.1.6)
-      actionview (= 5.1.6)
+      actionview (= 5.1.6.2)
       activesupport (= 5.1.6)
       rack (~> 2.0)
       rack-test (>= 0.6.3)
