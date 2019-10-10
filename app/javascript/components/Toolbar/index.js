@@ -1,5 +1,5 @@
 import React from 'react'
-import R from 'ramda'
+import { withNamespaces } from 'react-i18next'
 
 import { navigate } from 'react-big-calendar/lib/utils/constants'
 
@@ -137,14 +137,18 @@ const toolbarTextMap = (t, key) => {
   return map[key]
 }
 
-const Toolbar = (
+const Toolbar = ({
+  label,
+  view,
+  views,
+  onNavigate,
+  onViewChange,
   offices,
   showFilter,
   eventFilter,
   officeFilter,
   t,
-  { label, view, views, onNavigate, onViewChange }
-) => (
+}) => (
   <div className={s.toolbar}>
     <div className={s.navBar}>
       <button className={s.todayBtn} type="button" onClick={() => onNavigate(navigate.TODAY)}>
@@ -184,4 +188,4 @@ const Toolbar = (
   </div>
 )
 
-export default Toolbar
+export default withNamespaces()(Toolbar)

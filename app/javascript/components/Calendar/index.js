@@ -42,7 +42,15 @@ const calendarComponents = (currentUser, offices, filters, filterActions, t) => 
   }
 
   return {
-    toolbar: R.partial(Toolbar, [offices, showFilter, eventFilter, officeFilter, t]),
+    toolbar: props => (
+      <Toolbar
+        {...props}
+        offices={offices}
+        showFilter={showFilter}
+        eventFilter={eventFilter}
+        officeFilter={officeFilter}
+      />
+    ),
     event: Event, // used by each view (Month, Day, Week)
   }
 }
@@ -63,7 +71,12 @@ const normalizeEvents = events =>
   )
 
 const applyShowFilter = dataAndFilters => {
-  const { event, currentUser, filters: { showFilter }, isValid } = dataAndFilters
+  const {
+    event,
+    currentUser,
+    filters: { showFilter },
+    isValid,
+  } = dataAndFilters
 
   if (isValid) {
     switch (showFilter.value) {
@@ -78,7 +91,12 @@ const applyShowFilter = dataAndFilters => {
 }
 
 const applyEventFilter = dataAndFilters => {
-  const { event, currentUser, filters: { eventFilter }, isValid } = dataAndFilters
+  const {
+    event,
+    currentUser,
+    filters: { eventFilter },
+    isValid,
+  } = dataAndFilters
 
   if (isValid) {
     switch (eventFilter.value) {
@@ -95,7 +113,12 @@ const applyEventFilter = dataAndFilters => {
 }
 
 const applyOfficeFilter = dataAndFilters => {
-  const { event, currentUser, filters: { officeFilter }, isValid } = dataAndFilters
+  const {
+    event,
+    currentUser,
+    filters: { officeFilter },
+    isValid,
+  } = dataAndFilters
 
   if (isValid) {
     switch (officeFilter.value) {
@@ -110,7 +133,11 @@ const applyOfficeFilter = dataAndFilters => {
 }
 
 const filterPipeline = ({ currentUser, filters, isValid }, event) =>
-  R.pipe(applyShowFilter, applyEventFilter, applyOfficeFilter)({
+  R.pipe(
+    applyShowFilter,
+    applyEventFilter,
+    applyOfficeFilter
+  )({
     event,
     currentUser,
     filters,
@@ -118,10 +145,11 @@ const filterPipeline = ({ currentUser, filters, isValid }, event) =>
   }).isValid
 
 const selectEvents = (events, currentUser, filters) =>
-  R.pipe(R.filter, R.values, normalizeEvents)(
-    R.partial(filterPipeline, [{ currentUser, filters, isValid: true }]),
-    events
-  )
+  R.pipe(
+    R.filter,
+    R.values,
+    normalizeEvents
+  )(R.partial(filterPipeline, [{ currentUser, filters, isValid: true }]), events)
 
 const Calendar = ({
   loading,
