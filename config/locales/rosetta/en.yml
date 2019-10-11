@@ -6,7 +6,7 @@ parts:
       key: volunteer_portal.dashboard.personal
       title: 'Label referring to who the number of hours belong to'
       value: Personal
-      screenshot: 
+      screenshot: ""
       wip: true
   - translation:
       key: "volunteer_portal.dashboard.layouttab.calendar"
@@ -51,13 +51,13 @@ parts:
       screenshot: "https://drive.google.com/open?id=1p9A8huzT8xpJmwKY6P_Ci4sqC6uh7r_t"
       wip: true
   - translation:
-      key: "volunteer_portal.dashboard.layouteventstab.show.all"
+      key: "volunteer_portal.dashboard.layouteventstab.show_all"
       title: "Dropdown to choose between seeing All Events or My Events only"
       value: "All"
       screenshot: "https://drive.google.com/open?id=1lsq8KegHPQ34zhTJKvUsQTXro9dV3Ic6"
       wip: true
   - translation:
-      key: "volunteer_portal.dashboard.layouteventstab.show.myevents"
+      key: "volunteer_portal.dashboard.layouteventstab.show_myevents"
       title: "Dropdown to choose between seeing All Events or My Events only"
       value: "My Events"
       screenshot: "https://drive.google.com/open?id=1gshUUNWv0KL4idMo_e4DdYweouTdLwRl"
@@ -69,19 +69,19 @@ parts:
       screenshot: "https://drive.google.com/open?id=1GgUV7v5EoMrY5NP2q3ksQRxZZM6ercUG"
       wip: true
   - translation:
-      key: "volunteer_portal.dashboard.layouteventstab.event.all"
+      key: "volunteer_portal.dashboard.layouteventstab.event_all"
       title: "Dropdown to choose between seeing All, Open or Full Events only"
       value: "All"
       screenshot: "https://drive.google.com/open?id=112x7kr7hckUNBbsXqSEbU7HwRYko8KOW"
       wip: true
   - translation:
-      key: "volunteer_portal.dashboard.layouteventstab.event.open"	
+      key: "volunteer_portal.dashboard.layouteventstab.event_open"	
       title: "Dropdown to choose between seeing All, Open or Full Events only"
       value: "Open"
       screenshot: "https://drive.google.com/open?id=1zJjGC180wYoZA_7QifaQMLtAZDnT3GBl"
       wip: true
   - translation:
-      key: "volunteer_portal.dashboard.layouteventstab.event.full"
+      key: "volunteer_portal.dashboard.layouteventstab.event_full"
       title: "Dropdown to choose between seeing All, Open or Full Events only"
       value: "Full"
       screenshot: "https://drive.google.com/open?id=1FiTovVMi8v6-GnfLeAyLVJxwkkHvI8eP"
@@ -93,7 +93,7 @@ parts:
       screenshot: "https://drive.google.com/open?id=11wK-cIUOnyBhcAUd639IXvEyhrAQ_6kK"
       wip: true
   - translation:
-      key: "volunteer_portal.dashboard.layouteventstab.office.all"
+      key: "volunteer_portal.dashboard.layouteventstab.office_all"
       title: "Dropdown to choose between seeing events in All cities or one in specific"
       value: "All"
       screenshot: "https://drive.google.com/open?id=1OzKPa8-smgMHXg8G3dnqXyw3RiB7PM8j"
@@ -105,7 +105,7 @@ parts:
       screenshot: "https://drive.google.com/open?id=1DT8S0VLfRy68pNDWZ15YmWclQYFuG5LH"
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.office.all"
+      key: "volunteer_portal.admin.tab.office_all"
       title: "Dropdown to choose between seeing events in All cities or one in specific"
       value: "All"
       screenshot: "https://drive.google.com/open?id=16hA6lNYl0pB4qoSf6EzaekQgYfEHlT40"
@@ -189,97 +189,97 @@ parts:
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thisweek"
+      key: "volunteer_portal.admin.tab.dashboard_thisweek"
       title: "Label on top of This Week events"
       value: "This Week"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thismonth"
+      key: "volunteer_portal.admin.tab.dashboard_thismonth"
       title: "Label on top of This Month events"
       value: "This Month"
       screenshot: ""
       wip: true    
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.noeventsthisweek"
+      key: "volunteer_portal.admin.tab.dashboard_noeventsthisweek"
       title: "Text when there are no events on this week"
       value: "No Events This Week"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thisweek.events"
+      key: "volunteer_portal.admin.tab.dashboard_thisweek_events"
       title: "Text title for a number of events this week"
       value: "Events"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thisweek.volunteers"
+      key: "volunteer_portal.admin.tab.dashboard_thisweek_volunteers"
       title: "Text title beginning for a number of volunteers registered this week"
       value: "Volunteers"
       screenshot: ""
       wip: true   
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thisweek.registered"
+      key: "volunteer_portal.admin.tab.dashboard_thisweek_registered"
       title: "Text title continuation for a number of volunteers registered this week"
       value: "registered"
       screenshot: ""
       wip: true 
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thisweek.hours"
+      key: "volunteer_portal.admin.tab.dashboard_thisweek_hours"
       title: "Text title beginning for a number of hours commited this week"
       value: "Hours"
       screenshot: ""
       wip: true   
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thisweek.committed"
+      key: "volunteer_portal.admin.tab.dashboard_thisweek_committed"
       title: "Text title continuation for a number of hours committed this week"
       value: "committed"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thisweek.spotsfilled"
+      key: "volunteer_portal.admin.tab.dashboard_thisweek_spotsfilled"
       title: "Text title a percentage of volunteering spots filled this week"
       value: "Spots Filled"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.noeventsthismonth"
+      key: "volunteer_portal.admin.tab.dashboard_noeventsthismonth"
       title: "Text when there are no events on this month"
       value: "No Events This Month"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thismonth.events"
+      key: "volunteer_portal.admin.tab.dashboard_thismonth_events"
       title: "Text title for a list of events this month"
       value: "Events"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thismonth.volunteers"
+      key: "volunteer_portal.admin.tab.dashboard_thismonth_volunteers"
       title: "Text title beginning for a number of volunteers registered this month"
       value: "Volunteers"
       screenshot: ""
       wip: true 
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thismonth.registered"
+      key: "volunteer_portal.admin.tab.dashboard_thismonth_registered"
       title: "Text title continuation for a number of volunteers registered this month"
       value: "registered"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thismonth.hours"
+      key: "volunteer_portal.admin.tab.dashboard_thismonth_hours"
       title: "Text title beginning for a number of hours commited this month"
       value: "Hours"
       screenshot: ""
       wip: true   
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thismonth.committed"
+      key: "volunteer_portal.admin.tab.dashboard_thismonth_committed"
       title: "Text title continuation for a number of hours committed this month"
       value: "committed"
       screenshot: ""
       wip: true
   - translation:
-      key: "volunteer_portal.admin.tab.dashboard.thismonth.spotsfilled"
+      key: "volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled"
       title: "Text title a percentage of volunteering spots filled this month"
       value: "Spots Filled"
       screenshot: ""
