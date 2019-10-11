@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://zdrepo.jfrog.io/zdrepo/api/gems/gems-local/'
 
 ruby File.read('.ruby-version').strip
 
@@ -39,6 +40,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'zendesk_i18n_dev_tools'
   gem 'byebug'
   gem 'testrbl', require: false
   gem 'database_cleaner', require: false
