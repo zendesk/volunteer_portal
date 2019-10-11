@@ -53,11 +53,8 @@ const withData = compose(
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+})
 
 export default withActions(withData(EditUser))

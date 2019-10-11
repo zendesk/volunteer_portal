@@ -7,10 +7,12 @@ import Loading from 'components/LoadingIcon'
 import Layout from 'components/Layout'
 import Toolbar from 'components/Toolbar'
 import Event from 'components/Event'
+import { withNamespaces } from 'react-i18next'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
-BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
+const localizer = BigCalendar.momentLocalizer(moment)
+BigCalendar.setLocalizer(localizer)
 
 // BigCalendar needs inline styles :(
 const styles = {
@@ -21,7 +23,7 @@ const styles = {
 }
 
 // Custom components given to BigCalendar
-const calendarComponents = (currentUser, offices, filters, filterActions) => {
+const calendarComponents = (currentUser, offices, filters, filterActions, t) => {
   const { changeShowFilter, changeEventFilter, changeOfficeFilter } = filterActions
 
   const showFilter = {
@@ -40,7 +42,7 @@ const calendarComponents = (currentUser, offices, filters, filterActions) => {
   }
 
   return {
-    toolbar: R.partial(Toolbar, [offices, showFilter, eventFilter, officeFilter]),
+    toolbar: R.partial(Toolbar, [offices, showFilter, eventFilter, officeFilter, t]),
     event: Event, // used by each view (Month, Day, Week)
   }
 }
@@ -136,6 +138,7 @@ const Calendar = ({
   loadMoreEvents,
   createSignup,
   destroySignup,
+  t,
 }) =>
   loading ? (
     <Loading />
@@ -145,11 +148,18 @@ const Calendar = ({
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
-        components={calendarComponents(currentUser, offices, filters, {
-          changeShowFilter,
-          changeEventFilter,
-          changeOfficeFilter,
-        })}
+        culture="en"
+        components={calendarComponents(
+          currentUser,
+          offices,
+          filters,
+          {
+            changeShowFilter,
+            changeEventFilter,
+            changeOfficeFilter,
+          },
+          t
+        )}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup
@@ -158,4 +168,4 @@ const Calendar = ({
     </Layout>
   )
 
-export default Calendar
+export default withNamespaces()(Calendar)

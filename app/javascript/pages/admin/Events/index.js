@@ -218,11 +218,8 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+})
 
 export default withActions(withData(Events))

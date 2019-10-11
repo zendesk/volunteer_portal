@@ -12,6 +12,8 @@ import Callout from 'components/Callout'
 import s from './main.css'
 import AttendanceQuery from './attendanceQuery.gql'
 
+import { withNamespaces } from 'react-i18next'
+
 const startOfWeek = moment()
   .startOf('week')
   .unix()
@@ -48,7 +50,7 @@ const MemoBox = ({ label, sublabel, text }) => (
 )
 
 const Dashboard = props => {
-  const { data } = props
+  const { data, t } = props
   const { eventsThisMonth, eventsThisWeek, allEvents } = data
 
   if (data.loading) {
@@ -76,33 +78,48 @@ const Dashboard = props => {
 
   const volunteersThisWeek = R.reduce(accumSignups, 0, eventsThisWeek)
   const volunteersThisMonth = R.reduce(accumSignups, 0, eventsThisMonth)
-  const spotsFilledThisWeek = spotsThisWeek > 0 ? Math.round(volunteersThisWeek / spotsThisWeek * 100) : 0
-  const spotsFilledThisMonth = spotsThisMonth > 0 ? Math.round(volunteersThisMonth / spotsThisMonth * 100) : 0
+  const spotsFilledThisWeek = spotsThisWeek > 0 ? Math.round((volunteersThisWeek / spotsThisWeek) * 100) : 0
+  const spotsFilledThisMonth = spotsThisMonth > 0 ? Math.round((volunteersThisMonth / spotsThisMonth) * 100) : 0
 
   return (
     <div>
       <div className={s.row}>
         <div className={s.column}>
-          <h2>This Week</h2>
+          <h2>{t('volunteer_portal.admin.tab.dashboard.thisweek')}</h2>
         </div>
         <div className={s.column}>
-          <h2>This Month</h2>
+          <h2>{t('volunteer_portal.admin.tab.dashboard.thismonth')}</h2>
         </div>
       </div>
       <div className={s.row}>
         <div className={s.column}>
           <Paper style={styles.paper} rounded={false}>
             {eventsThisWeek.length === 0 ? (
-              <h3>No Events This Week</h3>
+              <h3>{t('volunteer_portal.admin.tab.dashboard.noeventsthisweek')}</h3>
             ) : (
               <div className={s.row}>
                 <div className={s.column}>
-                  <MemoBox label="Events" text={R.keys(eventsThisWeek).length} />
-                  <MemoBox label="Volunteers" sublabel="registered" text={volunteersThisWeek} />
-                  <MemoBox label="Hours" sublabel="committed" text={hoursThisWeek} />
+                  <MemoBox
+                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.events')}
+                    text={R.keys(eventsThisWeek).length}
+                  />
+                  <MemoBox
+                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.volunteers')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard.thisweek.registered')}
+                    text={volunteersThisWeek}
+                  />
+                  <MemoBox
+                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.hours')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard.thisweek.committed')}
+                    text={hoursThisWeek}
+                  />
                 </div>
                 <div className={s.column}>
-                  <ProgressCircle percent={spotsFilledThisWeek} label="Spots Filled" stroke="#30AABC" />
+                  <ProgressCircle
+                    percent={spotsFilledThisWeek}
+                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.spotsfilled')}
+                    stroke="#30AABC"
+                  />
                 </div>
               </div>
             )}
@@ -111,16 +128,31 @@ const Dashboard = props => {
         <div className={s.column}>
           <Paper style={styles.paper} rounded={false}>
             {eventsThisMonth.length === 0 ? (
-              <h3>No Events This Month</h3>
+              <h3>{t('volunteer_portal.admin.tab.dashboard.noeventsthismonth')}</h3>
             ) : (
               <div className={s.row}>
                 <div className={s.column}>
-                  <MemoBox label="Events" text={R.keys(eventsThisMonth).length} />
-                  <MemoBox label="Volunteers" sublabel="registered" text={volunteersThisMonth} />
-                  <MemoBox label="Hours" sublabel="committed" text={hoursThisMonth} />
+                  <MemoBox
+                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.events')}
+                    text={R.keys(eventsThisMonth).length}
+                  />
+                  <MemoBox
+                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.volunteers')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard.thismonth.registered')}
+                    text={volunteersThisMonth}
+                  />
+                  <MemoBox
+                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.hours')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard.thismonth.committed')}
+                    text={hoursThisMonth}
+                  />
                 </div>
                 <div className={s.column}>
-                  <ProgressCircle percent={spotsFilledThisMonth} label="Spots Filled" stroke="#37B8AF" />
+                  <ProgressCircle
+                    percent={spotsFilledThisMonth}
+                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.spotsfilled')}
+                    stroke="#37B8AF"
+                  />
                 </div>
               </div>
             )}
@@ -168,6 +200,9 @@ const mapStateToProps = (state, _ownProps) => ({
   adminOfficeFilter: state.model.adminOfficeFilter,
 })
 
-const withActions = connect(mapStateToProps, {})
+const withActions = connect(
+  mapStateToProps,
+  {}
+)
 
-export default withActions(withData(Dashboard))
+export default withActions(withData(withNamespaces()(Dashboard)))
