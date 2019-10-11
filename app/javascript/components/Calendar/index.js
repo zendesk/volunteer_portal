@@ -7,7 +7,6 @@ import Loading from 'components/LoadingIcon'
 import Layout from 'components/Layout'
 import Toolbar from 'components/Toolbar'
 import Event from 'components/Event'
-import { withNamespaces } from 'react-i18next'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -23,7 +22,7 @@ const styles = {
 }
 
 // Custom components given to BigCalendar
-const calendarComponents = (currentUser, offices, filters, filterActions, t) => {
+const calendarComponents = (currentUser, offices, filters, filterActions) => {
   const { changeShowFilter, changeEventFilter, changeOfficeFilter } = filterActions
 
   const showFilter = {
@@ -42,7 +41,15 @@ const calendarComponents = (currentUser, offices, filters, filterActions, t) => 
   }
 
   return {
-    toolbar: R.partial(Toolbar, [offices, showFilter, eventFilter, officeFilter, t]),
+    toolbar: props => (
+      <Toolbar
+        {...props}
+        showFilter={showFilter}
+        eventFilter={eventFilter}
+        officeFilter={officeFilter}
+        offices={offices}
+      />
+    ),
     event: Event, // used by each view (Month, Day, Week)
   }
 }
@@ -63,7 +70,12 @@ const normalizeEvents = events =>
   )
 
 const applyShowFilter = dataAndFilters => {
-  const { event, currentUser, filters: { showFilter }, isValid } = dataAndFilters
+  const {
+    event,
+    currentUser,
+    filters: { showFilter },
+    isValid,
+  } = dataAndFilters
 
   if (isValid) {
     switch (showFilter.value) {
@@ -78,7 +90,12 @@ const applyShowFilter = dataAndFilters => {
 }
 
 const applyEventFilter = dataAndFilters => {
-  const { event, currentUser, filters: { eventFilter }, isValid } = dataAndFilters
+  const {
+    event,
+    currentUser,
+    filters: { eventFilter },
+    isValid,
+  } = dataAndFilters
 
   if (isValid) {
     switch (eventFilter.value) {
@@ -95,7 +112,12 @@ const applyEventFilter = dataAndFilters => {
 }
 
 const applyOfficeFilter = dataAndFilters => {
-  const { event, currentUser, filters: { officeFilter }, isValid } = dataAndFilters
+  const {
+    event,
+    currentUser,
+    filters: { officeFilter },
+    isValid,
+  } = dataAndFilters
 
   if (isValid) {
     switch (officeFilter.value) {
@@ -110,7 +132,11 @@ const applyOfficeFilter = dataAndFilters => {
 }
 
 const filterPipeline = ({ currentUser, filters, isValid }, event) =>
-  R.pipe(applyShowFilter, applyEventFilter, applyOfficeFilter)({
+  R.pipe(
+    applyShowFilter,
+    applyEventFilter,
+    applyOfficeFilter
+  )({
     event,
     currentUser,
     filters,
@@ -118,10 +144,11 @@ const filterPipeline = ({ currentUser, filters, isValid }, event) =>
   }).isValid
 
 const selectEvents = (events, currentUser, filters) =>
-  R.pipe(R.filter, R.values, normalizeEvents)(
-    R.partial(filterPipeline, [{ currentUser, filters, isValid: true }]),
-    events
-  )
+  R.pipe(
+    R.filter,
+    R.values,
+    normalizeEvents
+  )(R.partial(filterPipeline, [{ currentUser, filters, isValid: true }]), events)
 
 const Calendar = ({
   loading,
@@ -138,7 +165,6 @@ const Calendar = ({
   loadMoreEvents,
   createSignup,
   destroySignup,
-  t,
 }) =>
   loading ? (
     <Loading />
@@ -149,17 +175,11 @@ const Calendar = ({
         eventPropGetter={eventPropGetter}
         views={['month']}
         culture="en"
-        components={calendarComponents(
-          currentUser,
-          offices,
-          filters,
-          {
-            changeShowFilter,
-            changeEventFilter,
-            changeOfficeFilter,
-          },
-          t
-        )}
+        components={calendarComponents(currentUser, offices, filters, {
+          changeShowFilter,
+          changeEventFilter,
+          changeOfficeFilter,
+        })}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup
@@ -168,4 +188,4 @@ const Calendar = ({
     </Layout>
   )
 
-export default withNamespaces()(Calendar)
+export default Calendar
