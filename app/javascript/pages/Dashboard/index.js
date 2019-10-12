@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import R from 'ramda'
 import moment from 'moment'
 
-import Filter from 'components/Filter'
+import OfficeFilter from 'components/OfficeFilter'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 import NamedAvatar from 'components/NamedAvatar'
@@ -35,7 +35,7 @@ const leaderBoardSort = 'HOURS_DESC'
 
 const selectMilestone = hours => R.find(m => hours < m.hours)(milestones) || R.last(milestones)
 
-const milestonePercentage = (user, milestone) => R.clamp(0, 100, Math.round(user.hours / milestone.hours * 100))
+const milestonePercentage = (user, milestone) => R.clamp(0, 100, Math.round((user.hours / milestone.hours) * 100))
 
 const hoursRemaining = (user, milestone) => {
   const computed = Math.round(milestone.hours - user.hours)
@@ -57,7 +57,7 @@ const barStyling = (segment, user, milestone) => {
 
   const inProgessWidth =
     completedMilestoneCount < milestones.length
-      ? R.clamp(0, milestoneBarWidth, milestonePercentage(user, milestone) / 100 * milestoneBarChunk)
+      ? R.clamp(0, milestoneBarWidth, (milestonePercentage(user, milestone) / 100) * milestoneBarChunk)
       : 0
 
   const incompleteWidth = R.clamp(0, milestoneBarWidth, milestoneBarWidth - inProgessWidth - completedWidth)
@@ -131,11 +131,10 @@ const LeaderboardContainer = ({
     <div className={s.leaderboard}>
       <div className={s.leaderboardHeader}>
         <div className={s.topVolunteers}>Top Volunteers</div>
-        <Filter
-          collection={offices}
+        <OfficeFilter
+          offices={offices}
           value={dashboardOfficeFilter.value === 'current' ? currentUser.office.id : dashboardOfficeFilter.value}
-          onChange={(_event, _index, value) => changeDashboardOfficeFilter(value)}
-          itemValueProp="name"
+          onChange={changeDashboardOfficeFilter}
         />
       </div>
       {sortByHours(users).map((user, i) => (
@@ -174,7 +173,10 @@ const leaderboardWithData = graphql(LeaderboardQuery, {
     }
   },
 })
-const leaderboardWithActions = connect(mapStateToProps, { changeDashboardOfficeFilter })
+const leaderboardWithActions = connect(
+  mapStateToProps,
+  { changeDashboardOfficeFilter }
+)
 const Leaderboard = leaderboardWithActions(leaderboardWithData(LeaderboardContainer))
 
 const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransitions }) => {
@@ -216,14 +218,14 @@ const Dashboard = ({ data: { networkStatus, currentUser }, locationBeforeTransit
                   <div
                     key={`milestone-${i}`}
                     className={s.milestoneMarker}
-                    style={{ flexBasis: `${1 / milestones.length * 100}%` }}
+                    style={{ flexBasis: `${(1 / milestones.length) * 100}%` }}
                   >
-                    <p className={milestoneLabelStyling('label', activeMilestone, currentUser)}>{`Milestone ${
-                      milestone.name
-                    }`}</p>
-                    <p className={milestoneLabelStyling('hours', activeMilestone, currentUser)}>{`${
-                      milestone.hours
-                    } hours`}</p>
+                    <p
+                      className={milestoneLabelStyling('label', activeMilestone, currentUser)}
+                    >{`Milestone ${milestone.name}`}</p>
+                    <p
+                      className={milestoneLabelStyling('hours', activeMilestone, currentUser)}
+                    >{`${milestone.hours} hours`}</p>
                   </div>
                 ))}
               </div>

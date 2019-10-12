@@ -1,69 +1,63 @@
 import React from 'react'
 
+import R from 'ramda'
 import { navigate } from 'react-big-calendar/lib/utils/constants'
 import { withNamespaces } from 'react-i18next'
 
-import ShowFilter from 'components/Filter/ShowFilter'
-import EventFilter from 'components/Filter/EventFilter'
-import OfficeFilter from 'components/Filter/OfficeFilter'
+import ShowFilter from 'components/ShowFilter'
+import EventFilter from 'components/EventFilter'
+import OfficeFilter from 'components/OfficeFilter'
 
 import s from './main.css'
 
-const toolbarTextMap = (t, key) => {
-  const map = {
-    month: t('volunteer_portal.calendar.bigcalendar.month'),
-    week: t('volunteer_portal.calendar.bigcalendar.week'),
-    work_week: t('volunteer_portal.calendar.bigcalendar.work_week'),
-    day: t('volunteer_portal.calendar.bigcalendar.day'),
-    agenda: t('volunteer_portal.calendar.bigcalendar.agenda'),
-  }
-  return map[key]
-}
+const translations = R.flip(R.mapObjIndexed)({
+  month: 'volunteer_portal.calendar.bigcalendar.month',
+  week: 'volunteer_portal.calendar.bigcalendar.week',
+  work_week: 'volunteer_portal.calendar.bigcalendar.work_week',
+  day: 'volunteer_portal.calendar.bigcalendar.day',
+  agenda: 'volunteer_portal.calendar.bigcalendar.agenda',
+  today: 'volunteer_portal.dashboard.layoutdatetab.today',
+  previous: 'volunteer_portal.dashboard.layoutdatetab.previous',
+  after: 'volunteer_portal.dashboard.layoutdatetab.after',
+})
 
-const Toolbar = ({
-  label,
-  view,
-  views,
-  onNavigate,
-  onViewChange,
-  offices,
-  showFilter,
-  eventFilter,
-  officeFilter,
-  t,
-}) => (
-  <div className={s.toolbar}>
-    <div className={s.navBar}>
-      <button className={s.todayBtn} type="button" onClick={() => onNavigate(navigate.TODAY)}>
-        {t('volunteer_portal.dashboard.layoutdatetab.today')}
-      </button>
-      <button className={s.btn} type="button" onClick={() => onNavigate(navigate.PREVIOUS)}>
-        {t('volunteer_portal.dashboard.layoutdatetab.previous')}
-      </button>
-      <span className={s.label}>{label}</span>
-      <button className={s.btn} type="button" onClick={() => onNavigate(navigate.NEXT)}>
-        {t('volunteer_portal.dashboard.layoutdatetab.after')}
-      </button>
-    </div>
-    <div className={s.filterBar}>
-      <div className={s.filterDropdowns}>
-        <ShowFilter value={showFilter.value} onChange={showFilter.onChange} />
-        <EventFilter value={eventFilter.value} onChange={eventFilter.onChange} />
-        <OfficeFilter value={officeFilter.value} onChange={officeFilter.onChange} offices={offices} />
+const Toolbar = ({ label, view, views, onNavigate, onViewChange, filters, offices, t }) => {
+  const text = translations(t)
+
+  return (
+    <div className={s.toolbar}>
+      <div className={s.navBar}>
+        <button className={s.todayBtn} type="button" onClick={() => onNavigate(navigate.TODAY)}>
+          {text.today}
+        </button>
+        <button className={s.btn} type="button" onClick={() => onNavigate(navigate.PREVIOUS)}>
+          {text.previous}
+        </button>
+        <span className={s.label}>{label}</span>
+        <button className={s.btn} type="button" onClick={() => onNavigate(navigate.NEXT)}>
+          {text.after}
+        </button>
       </div>
-      <div className={s.viewBtns}>
-        {views.map(viewName => (
-          <button
-            key={viewName}
-            className={view === viewName ? `${s.btn} ${s.activeBtn}` : s.btn}
-            onClick={() => onViewChange(viewName)}
-          >
-            {toolbarTextMap(t, viewName)}
-          </button>
-        ))}
+      <div className={s.filterBar}>
+        <div className={s.filterDropdowns}>
+          <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
+          <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
+          <OfficeFilter value={filters.officeFilter.value} onChange={filters.officeFilter.onChange} offices={offices} />
+        </div>
+        <div className={s.viewBtns}>
+          {views.map(viewName => (
+            <button
+              key={viewName}
+              className={view === viewName ? `${s.btn} ${s.activeBtn}` : s.btn}
+              onClick={() => onViewChange(viewName)}
+            >
+              {R.prop(viewName, text)}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default withNamespaces()(Toolbar)

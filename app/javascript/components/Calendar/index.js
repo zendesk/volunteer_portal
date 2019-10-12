@@ -23,33 +23,23 @@ const styles = {
 
 // Custom components given to BigCalendar
 const calendarComponents = (currentUser, offices, filters, filterActions) => {
-  const { changeShowFilter, changeEventFilter, changeOfficeFilter } = filterActions
-
-  const showFilter = {
-    value: filters.showFilter.value,
-    onChange: changeShowFilter,
-  }
-
-  const eventFilter = {
-    value: filters.eventFilter.value,
-    onChange: changeEventFilter,
-  }
-
-  const officeFilter = {
-    value: filters.officeFilter.value || currentUser.office.id,
-    onChange: changeOfficeFilter,
+  const filtersWithActions = {
+    showFilter: {
+      value: filters.showFilter.value,
+      onChange: filterActions.changeShowFilter,
+    },
+    eventFilter: {
+      value: filters.eventFilter.value,
+      onChange: filterActions.changeEventFilter,
+    },
+    officeFilter: {
+      value: filters.officeFilter.value || currentUser.office.id,
+      onChange: filterActions.changeOfficeFilter,
+    },
   }
 
   return {
-    toolbar: props => (
-      <Toolbar
-        {...props}
-        showFilter={showFilter}
-        eventFilter={eventFilter}
-        officeFilter={officeFilter}
-        offices={offices}
-      />
-    ),
+    toolbar: props => <Toolbar {...props} offices={offices} filters={filtersWithActions} />,
     event: Event, // used by each view (Month, Day, Week)
   }
 }
@@ -92,7 +82,6 @@ const applyShowFilter = dataAndFilters => {
 const applyEventFilter = dataAndFilters => {
   const {
     event,
-    currentUser,
     filters: { eventFilter },
     isValid,
   } = dataAndFilters
@@ -160,11 +149,8 @@ const Calendar = ({
   changeShowFilter,
   changeEventFilter,
   changeOfficeFilter,
-  eventPopover,
   togglePopover,
   loadMoreEvents,
-  createSignup,
-  destroySignup,
 }) =>
   loading ? (
     <Loading />

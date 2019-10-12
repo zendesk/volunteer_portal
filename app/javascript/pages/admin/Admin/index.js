@@ -1,59 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+
 import { graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
-import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
-
-import { changeAdminOfficeFilter } from 'actions'
-
-import AdminQuery from './query.gql'
-
-import s from './main.css'
-
 import { withNamespaces } from 'react-i18next'
 
-// Only declare styles in here that are needed for MUI components
-const muiStyles = {
-  menuGroup: {
-    height: 23,
-    display: 'flex',
-    alignItems: 'center',
-  },
-  dropdown: {
-    height: 25,
-    marginLeft: -18,
-    color: '#777',
-  },
-  menuLabel: {
-    color: '#777',
-    fontWeight: 600,
-    lineHeight: '23px',
-    paddingRight: 40,
-  },
-  dropdownMenu: {
-    color: '#777',
-  },
-  menuitem: {
-    color: '#777',
-    fontWeight: 600,
-    lineHeight: '23px',
-    padding: '3px 0',
-  },
-  underline: {
-    border: 'none',
-    margin: 0,
-  },
-  icon: {
-    top: 0,
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingRight: 0,
-    height: 25,
-    right: -12,
-  },
-}
+import Filter from 'components/Filter'
+import AdminQuery from './query.gql'
+import { styles } from 'components/Filter'
+import { changeAdminOfficeFilter } from 'actions'
+
+import s from './main.css'
 
 const btnClass = (routing, button) => {
   const currentPath = routing.locationBeforeTransitions.pathname
@@ -69,23 +28,17 @@ const btnClass = (routing, button) => {
 }
 
 const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }) => (
-  <div className={s.officeFilter} style={muiStyles.menuGroup}>
-    <span style={muiStyles.menuTitle}>{t('volunteer_portal.admin.tab.office')}</span>
-    <DropDownMenu
+  <div className={s.filters}>
+    <Filter
+      title={t('volunteer_portal.admin.tab.office')}
       value={adminOfficeFilter.value}
-      onChange={(_e, _k, value) => changeAdminOfficeFilter(value)}
-      style={muiStyles.dropdown}
-      menuStyle={muiStyles.dropdownMenu}
-      labelStyle={muiStyles.menuLabel}
-      underlineStyle={muiStyles.underline}
-      iconStyle={muiStyles.icon}
-      menuItemStyle={muiStyles.menuitem}
+      onChange={changeAdminOfficeFilter}
     >
       <MenuItem value="all" primaryText={t('volunteer_portal.admin.tab.office_all')} style={muiStyles.menuitem} />
       {offices.map((office, i) => (
-        <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} />
+        <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
       ))}
-    </DropDownMenu>
+    </Filter>
   </div>
 )
 

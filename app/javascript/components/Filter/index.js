@@ -1,11 +1,11 @@
 import React from 'react'
+
 import DropDownMenu from 'material-ui/DropDownMenu'
-import MenuItem from 'material-ui/MenuItem'
 
 import s from './main.css'
 
-// Need inline styles for the material-ui components, everything else should be CSS
-const styles = {
+// Material UI components still require inline styles
+export const styles = {
   dropdown: {
     height: 25,
     marginLeft: -18,
@@ -36,22 +36,19 @@ const styles = {
   },
 }
 
-const Filter = ({ collection, value, onChange, itemValueProp }) => (
+const Filter = ({ title, value, onChange, children }) => (
   <div className={s.menuGroup}>
-    <span>Office:</span>
+    <span>{title}</span>
     <DropDownMenu
       value={value}
-      onChange={onChange}
+      onChange={(_e, _i, value) => onChange(value)}
       style={styles.dropdown}
       menuStyle={styles.dropdownMenu}
       labelStyle={styles.menuLabel}
       underlineStyle={styles.underline}
       iconStyle={styles.icon}
     >
-      <MenuItem value="all" primaryText="All" style={styles.menuitem} />
-      {collection.map((item, i) => (
-        <MenuItem key={`item-${i}`} value={item.id} primaryText={item[itemValueProp]} style={styles.menuitem} />
-      ))}
+      {children}
     </DropDownMenu>
   </div>
 )

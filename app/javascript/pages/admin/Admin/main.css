@@ -40,3 +40,7 @@
   font-weight: 500;
   border-bottom: 3px solid #30aabc;
 }
+
+.filters {
+  margin-right: -30px;
+}
