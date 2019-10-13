@@ -1,12 +1,12 @@
 import React from 'react'
-import BigCalendar from 'react-big-calendar'
-import R from 'ramda'
 import moment from 'moment'
+import R from 'ramda'
+import BigCalendar from 'react-big-calendar'
 
-import Loading from 'components/LoadingIcon'
-import Layout from 'components/Layout'
-import Toolbar from 'components/Toolbar'
 import Event from 'components/Event'
+import Layout from 'components/Layout'
+import Loading from 'components/LoadingIcon'
+import Toolbar from 'components/Toolbar'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -44,20 +44,17 @@ const calendarComponents = (currentUser, offices, filters, filterActions) => {
   }
 }
 
-const eventPropGetter = (event, start, end, isSelected) => ({
+const eventPropGetter = (_event, _start, _end, _isSelected) => ({
   style: styles.cell,
 })
 
 // Filter pipeline for selecting events to display on the calendar
-const normalizeEvents = events =>
-  R.map(
-    event =>
-      R.merge(event, {
-        start: new Date(event.startsAt),
-        end: new Date(event.endsAt),
-      }),
-    events
-  )
+const normalizeEvents = R.map(event =>
+  R.merge(event, {
+    start: new Date(event.startsAt),
+    end: new Date(event.endsAt),
+  })
+)
 
 const applyShowFilter = dataAndFilters => {
   const {
@@ -67,16 +64,11 @@ const applyShowFilter = dataAndFilters => {
     isValid,
   } = dataAndFilters
 
-  if (isValid) {
-    switch (showFilter.value) {
-      case 'mine':
-        return R.merge(dataAndFilters, { isValid: R.any(user => user.id === currentUser.id)(event.users) })
-      default:
-        return dataAndFilters
-    }
-  } else {
-    return dataAndFilters
+  if (isValid && showFilter.value == 'mine') {
+    return R.merge(dataAndFilters, { isValid: R.any(user => user.id === currentUser.id, event.users) })
   }
+
+  return dataAndFilters
 }
 
 const applyEventFilter = dataAndFilters => {
@@ -93,51 +85,43 @@ const applyEventFilter = dataAndFilters => {
       case 'full':
         return R.merge(dataAndFilters, { isValid: event.users.length >= event.capacity })
       default:
-        return dataAndFilters
+        dataAndFilters
     }
-  } else {
-    return dataAndFilters
   }
+
+  return dataAndFilters
 }
 
 const applyOfficeFilter = dataAndFilters => {
   const {
     event,
-    currentUser,
     filters: { officeFilter },
     isValid,
   } = dataAndFilters
+  const showAll = officeFilter.value === 'all'
 
-  if (isValid) {
-    switch (officeFilter.value) {
-      case 'all':
-        return dataAndFilters
-      default:
-        return R.merge(dataAndFilters, { isValid: event.office.id == (officeFilter.value || currentUser.office.id) })
-    }
-  } else {
-    return dataAndFilters
+  if (isValid && !showAll) {
+    return R.merge(dataAndFilters, { isValid: event.office.id == officeFilter.value })
   }
+
+  return dataAndFilters
 }
 
-const filterPipeline = ({ currentUser, filters, isValid }, event) =>
+const filterPipeline = (currentUser, filters, isValid) =>
   R.pipe(
+    event => ({ event, currentUser, filters, isValid }),
     applyShowFilter,
     applyEventFilter,
-    applyOfficeFilter
-  )({
-    event,
-    currentUser,
-    filters,
-    isValid,
-  }).isValid
+    applyOfficeFilter,
+    R.prop('isValid')
+  )
 
 const selectEvents = (events, currentUser, filters) =>
   R.pipe(
-    R.filter,
+    R.filter(filterPipeline(currentUser, filters, true)),
     R.values,
     normalizeEvents
-  )(R.partial(filterPipeline, [{ currentUser, filters, isValid: true }]), events)
+  )(events)
 
 const Calendar = ({
   loading,

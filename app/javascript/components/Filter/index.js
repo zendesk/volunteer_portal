@@ -4,7 +4,7 @@ import DropDownMenu from 'material-ui/DropDownMenu'
 
 import s from './main.css'
 
-// Material UI components still require inline styles
+//Need inline styles for the material-ui components, everything else should be CSS
 export const styles = {
   dropdown: {
     height: 25,
