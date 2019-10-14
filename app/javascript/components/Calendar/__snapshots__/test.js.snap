@@ -1,7 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`loads 1`] = `
-<Consumer>
-  <Component />
-</Consumer>
+<LoadNamespace(Layout)
+  currentPath="/"
+>
+  <Uncontrolled(Calendar)
+    components={
+      Object {
+        "event": [Function],
+        "toolbar": [Function],
+      }
+    }
+    culture="en"
+    eventPropGetter={[Function]}
+    events={Array []}
+    onNavigate={[Function]}
+    onSelectEvent={[Function]}
+    popup={true}
+    style={
+      Object {
+        "paddingBottom": 20,
+      }
+    }
+    views={
+      Array [
+        "month",
+      ]
+    }
+  />
+</LoadNamespace(Layout)>
 `;
