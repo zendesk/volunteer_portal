@@ -13,14 +13,14 @@ The volunteer portal is made of 2 applications. A ReactJS web client and a Ruby 
    cd volunteer_portal
    ```
 
-2. Install the right version of ruby and node
+1. Install the right version of ruby and node
 
    ```bash
    rbenv install
    nvm install
    ```
 
-3. Install dependencies
+1. Install dependencies
 
    ```bash
    gem install bundler
@@ -31,11 +31,11 @@ The volunteer portal is made of 2 applications. A ReactJS web client and a Ruby 
 
    `bundle install` might stop, prompting you to manually `gem install pg`. To proceed, do `brew install postgresql` first, followed by `gem install pg`, before continuing with `bundle install`.
 
-4. Install PostgreSQL
+1. Install PostgreSQL
 
    The easiest thing is probably to use their app. http://postgresapp.com/
 
-5. Copy the `.env.development.example` file to `.env.development`
+1. Copy the `.env.development.example` file to `.env.development`
 
    ```bash
    cp .env.development.example .env.development
