@@ -65,17 +65,16 @@ jobs:
       - image: circleci/node:8-stretch-browsers
     steps:
       - checkout
-      # - restore_cache:
-      #     keys:
-      #       # when lock file changes, use increasingly general patterns to restore cache
-      #       - yarn-packages-v2-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          keys:
+            - yarn-packages-v2-{{ checksum "yarn.lock" }}
       - run:
           name: install dependencies
           command: yarn install
-      # - save_cache:
-      #     paths:
-      #       - ~/.cache/yarn
-      #     key: yarn-packages-v2-{{ checksum "yarn.lock" }}
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v2-{{ checksum "yarn.lock" }}
       - run:
           name: run javascript tests
           command: yarn test -- --ci --runInBand --reporters=default --reporters=jest-junit

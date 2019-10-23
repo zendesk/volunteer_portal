@@ -1572,6 +1572,11 @@ exports[`loads 1`] = `
             Asia/Qatar
           </option>
           <option
+            value="Asia/Qostanay"
+          >
+            Asia/Qostanay
+          </option>
+          <option
             value="Asia/Qyzylorda"
           >
             Asia/Qyzylorda
