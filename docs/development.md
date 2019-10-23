@@ -1,5 +1,9 @@
 # Development
 
+The volunteer portal is made of 2 applications. A ReactJS web client and a Ruby on Rails GraphQL server.
+
+![Architecture](./volunteer-portal.svg)
+
 ## Set up your Environment
 
 1. Clone the project
