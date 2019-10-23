@@ -67,19 +67,18 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-js-dependencies-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-js-dependencies-
+            # when lock file changes, use increasingly general patterns to restore cache
+            - yarn-packages-v2-{{ checksum "yarn.lock" }}
       - run:
           name: install dependencies
-          command: npm install
+          command: yarn install
       - save_cache:
           paths:
-            - ./node_modules
-          key: v1-js-dependencies-{{ checksum "yarn.lock" }}
+            - ~/.cache/yarn
+          key: yarn-packages-v2-{{ checksum "yarn.lock" }}
       - run:
           name: run javascript tests
-          command: npm test -- --ci --runInBand --reporters=default --reporters=jest-junit
+          command: yarn test -- --ci --runInBand --reporters=default --reporters=jest-junit
       - store_test_results:
           path: /tmp/test_reports
 
