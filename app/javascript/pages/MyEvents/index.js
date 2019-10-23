@@ -272,6 +272,10 @@ const IndividualEvents = props => {
 
   const { currentUser, offices, eventTypes, organizations } = data
 
+  const noIndividualEventsMessage = (
+    <p className={s.noEventsMessage}>Looks like there are no individual events here. Volunteer and record your first event.</p>
+  )
+
   const individualEventsColumns = [
     {
       id: 'description',
@@ -359,15 +363,20 @@ const IndividualEvents = props => {
         <h1>Individual Events</h1>
         <h4>Private events that you've attended and want to record.</h4>
       </div>
-      <ReactTable
-        NoDataComponent={() => null}
-        data={currentUser.individualEvents}
-        columns={individualEventsColumns}
-        showPagination={false}
-        pageSize={currentUser.individualEvents.length}
-        defaultSorted={[{ id: 'date', desc: true }]}
-        minRows={0}
-      />
+      {currentUser.individualEvents.length === 0 ? (
+        noIndividualEventsMessage
+      ) : (
+        <ReactTable
+          NoDataComponent={() => null}
+          data={currentUser.individualEvents}
+          columns={individualEventsColumns}
+          showPagination={false}
+          pageSize={currentUser.individualEvents.length}
+          defaultSorted={[{ id: 'date', desc: true }]}
+          minRows={0}
+        />
+      )}
+
       {popover && popover.type === 'editIndividualEvent' ? (
         <CreateEditDialog
           offices={offices}
@@ -423,21 +432,32 @@ const organizedEventsColumns = [
   },
 ]
 
-const OrganizedEvents = ({ currentUser: { signups } }) => (
-  <div className={s.eventsTable}>
-    <h1>Organized Events</h1>
-    <h4>Events organized by your organization, found on the calendar.</h4>
-    <ReactTable
-      NoDataComponent={() => null}
-      data={signups.map(signup => signup.event)}
-      columns={organizedEventsColumns}
-      showPagination={false}
-      pageSize={signups.length}
-      defaultSorted={[{ id: 'date', desc: true }]}
-      minRows={0}
-    />
-  </div>
-)
+const OrganizedEvents = ({ currentUser: { signups } }) => {
+  const noOrganizedEventsMessage = (
+    <p className={s.noEventsMessage}>
+      Looks like you haven't signed up to any organized events yet. Checkout the calendar to join your first event!
+    </p>
+  )
+  return (
+    <div className={s.eventsTable}>
+      <h1>Organized Events</h1>
+      <h4>Events organized by your organization, found on the calendar.</h4>
+      {signups.length === 0 ? (
+        noOrganizedEventsMessage
+      ) : (
+        <ReactTable
+          NoDataComponent={() => null}
+          data={signups.map(signup => signup.event)}
+          columns={organizedEventsColumns}
+          showPagination={false}
+          pageSize={signups.length}
+          defaultSorted={[{ id: 'date', desc: true }]}
+          minRows={0}
+        />
+      )}
+    </div>
+  )
+}
 
 const MyEvents = props => {
   const { data, locationBeforeTransitions } = props
