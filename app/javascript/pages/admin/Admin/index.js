@@ -34,7 +34,7 @@ const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }
       value={adminOfficeFilter.value}
       onChange={changeAdminOfficeFilter}
     >
-      <MenuItem value="all" primaryText={t('volunteer_portal.admin.tab.office_all')} style={muiStyles.menuitem} />
+      <MenuItem value="all" primaryText={t('volunteer_portal.admin.tab.office_all')} style={styles.menuitem} />
       {offices.map((office, i) => (
         <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
       ))}

@@ -10,12 +10,12 @@ const ShowFilter = ({ value, onChange, t }) => (
   <Filter title={t('volunteer_portal.dashboard.layouteventstab.show')} value={value} onChange={onChange}>
     <MenuItem
       value="all"
-      primaryText={t('volunteer_portal.dashboard.layouteventstab.show.all')}
+      primaryText={t('volunteer_portal.dashboard.layouteventstab.show_all')}
       style={styles.menuitem}
     />
     <MenuItem
       value="mine"
-      primaryText={t('volunteer_portal.dashboard.layouteventstab.show.myevents')}
+      primaryText={t('volunteer_portal.dashboard.layouteventstab.show_myevents')}
       style={styles.menuitem}
     />
   </Filter>

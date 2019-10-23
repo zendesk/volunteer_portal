@@ -10,7 +10,7 @@ const OfficeFilter = ({ value, onChange, offices, t }) => (
   <Filter title={t('volunteer_portal.dashboard.layouteventstab.office')} value={value} onChange={onChange}>
     <MenuItem
       value="all"
-      primaryText={t('volunteer_portal.dashboard.layouteventstab.office.all')}
+      primaryText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
       style={styles.menuitem}
     />
     {offices.map((office, i) => (
