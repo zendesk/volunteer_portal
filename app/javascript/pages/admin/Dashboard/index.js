@@ -133,7 +133,7 @@ const Dashboard = props => {
               <div className={s.row}>
                 <div className={s.column}>
                   <MemoBox
-                    label={t('volunteer_portal.admin.tab.dashboard_thismonth.events')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thismonth_events')}
                     text={R.keys(eventsThisMonth).length}
                   />
                   <MemoBox
