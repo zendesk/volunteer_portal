@@ -85,39 +85,39 @@ const Dashboard = props => {
     <div>
       <div className={s.row}>
         <div className={s.column}>
-          <h2>{t('volunteer_portal.admin.tab.dashboard.thisweek')}</h2>
+          <h2>{t('volunteer_portal.admin.tab.dashboard_thisweek')}</h2>
         </div>
         <div className={s.column}>
-          <h2>{t('volunteer_portal.admin.tab.dashboard.thismonth')}</h2>
+          <h2>{t('volunteer_portal.admin.tab.dashboard_thismonth')}</h2>
         </div>
       </div>
       <div className={s.row}>
         <div className={s.column}>
           <Paper style={styles.paper} rounded={false}>
             {eventsThisWeek.length === 0 ? (
-              <h3>{t('volunteer_portal.admin.tab.dashboard.noeventsthisweek')}</h3>
+              <h3>{t('volunteer_portal.admin.tab.dashboard_noeventsthisweek')}</h3>
             ) : (
               <div className={s.row}>
                 <div className={s.column}>
                   <MemoBox
-                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.events')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thisweek_events')}
                     text={R.keys(eventsThisWeek).length}
                   />
                   <MemoBox
-                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.volunteers')}
-                    sublabel={t('volunteer_portal.admin.tab.dashboard.thisweek.registered')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thisweek_volunteers')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard_thisweek_registered')}
                     text={volunteersThisWeek}
                   />
                   <MemoBox
-                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.hours')}
-                    sublabel={t('volunteer_portal.admin.tab.dashboard.thisweek.committed')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thisweek_hours')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard_thisweek_committed')}
                     text={hoursThisWeek}
                   />
                 </div>
                 <div className={s.column}>
                   <ProgressCircle
                     percent={spotsFilledThisWeek}
-                    label={t('volunteer_portal.admin.tab.dashboard.thisweek.spotsfilled')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thisweek_spotsfilled')}
                     stroke="#30AABC"
                   />
                 </div>
@@ -128,29 +128,29 @@ const Dashboard = props => {
         <div className={s.column}>
           <Paper style={styles.paper} rounded={false}>
             {eventsThisMonth.length === 0 ? (
-              <h3>{t('volunteer_portal.admin.tab.dashboard.noeventsthismonth')}</h3>
+              <h3>{t('volunteer_portal.admin.tab.dashboard_noeventsthismonth')}</h3>
             ) : (
               <div className={s.row}>
                 <div className={s.column}>
                   <MemoBox
-                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.events')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thismonth.events')}
                     text={R.keys(eventsThisMonth).length}
                   />
                   <MemoBox
-                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.volunteers')}
-                    sublabel={t('volunteer_portal.admin.tab.dashboard.thismonth.registered')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thismonth_volunteers')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard_thismonth_registered')}
                     text={volunteersThisMonth}
                   />
                   <MemoBox
-                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.hours')}
-                    sublabel={t('volunteer_portal.admin.tab.dashboard.thismonth.committed')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thismonth_hours')}
+                    sublabel={t('volunteer_portal.admin.tab.dashboard_thismonth_committed')}
                     text={hoursThisMonth}
                   />
                 </div>
                 <div className={s.column}>
                   <ProgressCircle
                     percent={spotsFilledThisMonth}
-                    label={t('volunteer_portal.admin.tab.dashboard.thismonth.spotsfilled')}
+                    label={t('volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled')}
                     stroke="#37B8AF"
                   />
                 </div>

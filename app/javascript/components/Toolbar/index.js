@@ -59,12 +59,12 @@ const ShowFilter = ({ value, onChange, t }) => (
     >
       <MenuItem
         value="all"
-        primaryText={t('volunteer_portal.dashboard.layouteventstab.show.all')}
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.show_all')}
         style={styles.menuitem}
       />
       <MenuItem
         value="mine"
-        primaryText={t('volunteer_portal.dashboard.layouteventstab.show.myevents')}
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.show_myevents')}
         style={styles.menuitem}
       />
     </DropDownMenu>
@@ -85,17 +85,17 @@ const EventFilter = ({ value, onChange, t }) => (
     >
       <MenuItem
         value="all"
-        primaryText={t('volunteer_portal.dashboard.layouteventstab.event.all')}
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.event_all')}
         style={styles.menuitem}
       />
       <MenuItem
         value="open"
-        primaryText={t('volunteer_portal.dashboard.layouteventstab.event.open')}
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.event_open')}
         style={styles.menuitem}
       />
       <MenuItem
         value="full"
-        primaryText={t('volunteer_portal.dashboard.layouteventstab.event.full')}
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.event_full')}
         style={styles.menuitem}
       />
     </DropDownMenu>
@@ -116,7 +116,7 @@ const OfficeFilter = ({ value, onChange, offices, t }) => (
     >
       <MenuItem
         value="all"
-        primaryText={t('volunteer_portal.dashboard.layouteventstab.office.all')}
+        primaryText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
         style={styles.menuitem}
       />
       {offices.map((office, i) => (
