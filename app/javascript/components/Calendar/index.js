@@ -95,13 +95,14 @@ const applyEventFilter = dataAndFilters => {
 const applyOfficeFilter = dataAndFilters => {
   const {
     event,
+    currentUser,
     filters: { officeFilter },
     isValid,
   } = dataAndFilters
   const showAll = officeFilter.value === 'all'
 
   if (isValid && !showAll) {
-    return R.merge(dataAndFilters, { isValid: event.office.id == officeFilter.value })
+    return R.merge(dataAndFilters, { isValid: event.office.id == (officeFilter.value || currentUser.office.id) })
   }
 
   return dataAndFilters
