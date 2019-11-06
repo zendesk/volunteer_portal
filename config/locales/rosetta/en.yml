@@ -174,19 +174,19 @@ parts:
       key: "volunteer_portal.calendar.bigcalendar.week"
       title: "Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated"
       value: "Week"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_"
       wip: true
   - translation:
       key: "volunteer_portal.calendar.bigcalendar.work_week"
       title: "Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated"
       value: "Work Week"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_"
       wip: true
   - translation:
       key: "volunteer_portal.calendar.bigcalendar.day"
       title: "Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated"
       value: "Day"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_"
       wip: true
   - translation:
       key: "volunteer_portal.calendar.bigcalendar.agenda"
@@ -198,95 +198,119 @@ parts:
       key: "volunteer_portal.admin.tab.dashboard_thisweek"
       title: "Label on top of This Week events"
       value: "This Week"
-      screenshot: ""
+      screenshot: "https://drive.google.com/file/d/1XKDa1cbJTpEwiBkfT6qt_N-Zbvi1_TOA"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thismonth"
       title: "Label on top of This Month events"
       value: "This Month"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z"
       wip: true    
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_noeventsthisweek"
       title: "Text when there are no events on this week"
       value: "No Events This Week"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thisweek_events"
       title: "Text title for a number of events this week"
       value: "Events"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1ErqgKSMqsVyrsDwj_sorGCG5ofdx4iVp"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thisweek_volunteers"
       title: "Text title beginning for a number of volunteers registered this week"
       value: "Volunteers"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ"
       wip: true   
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thisweek_registered"
       title: "Text title continuation for a number of volunteers registered this week"
       value: "registered"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ"
       wip: true 
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thisweek_hours"
       title: "Text title beginning for a number of hours commited this week"
       value: "Hours"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2"
       wip: true   
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thisweek_committed"
       title: "Text title continuation for a number of hours committed this week"
       value: "committed"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thisweek_spotsfilled"
       title: "Text title a percentage of volunteering spots filled this week"
       value: "Spots Filled"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_noeventsthismonth"
       title: "Text when there are no events on this month"
       value: "No Events This Month"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1Ss1sH1AbMMWEfwuuwW-U59djPHQzRoT3"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thismonth_events"
       title: "Text title for a list of events this month"
       value: "Events"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1ErqgKSMqsVyrsDwj_sorGCG5ofdx4iVp"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thismonth_volunteers"
       title: "Text title beginning for a number of volunteers registered this month"
       value: "Volunteers"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ"
       wip: true 
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thismonth_registered"
       title: "Text title continuation for a number of volunteers registered this month"
       value: "registered"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thismonth_hours"
       title: "Text title beginning for a number of hours commited this month"
       value: "Hours"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2"
       wip: true   
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thismonth_committed"
       title: "Text title continuation for a number of hours committed this month"
       value: "committed"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2"
       wip: true
   - translation:
       key: "volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled"
       title: "Text title a percentage of volunteering spots filled this month"
       value: "Spots Filled"
-      screenshot: ""
+      screenshot: "https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL"
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_addevent"
+      title: "Button label to action add an event"
+      value: "Add Event"
+      screenshot: "https://drive.google.com/open?id=1gVgD847rRwXjXfk778mPTol_J12zE3g1"
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_editevent"
+      title: "Button label to take you to edit event page"
+      value: "Edit"
+      screenshot: "https://drive.google.com/open?id=1xZksLkPfj56nwISFbw-M1OBcwtq9l4bZ"
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_cloneevent"
+      title: "Button label to take you to clone event page"
+      value: "Clone"
+      screenshot: "https://drive.google.com/open?id=1asG_2C-G3PIyik5BYlEQjg7rgUjtPkqj"
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_deleteevent"
+      title: "Button label to delete an event"
+      value: "Delete"
+      screenshot: "https://drive.google.com/open?id=1ed0yL5peTPc4dBJmT6fZG-NHewpmLcAD"
       wip: true
