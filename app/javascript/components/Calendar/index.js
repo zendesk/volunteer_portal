@@ -56,73 +56,6 @@ const normalizeEvents = R.map(event =>
   })
 )
 
-const applyShowFilter = dataAndFilters => {
-  const {
-    event,
-    currentUser,
-    filters: { showFilter },
-    isValid,
-  } = dataAndFilters
-
-  if (isValid && showFilter.value == 'mine') {
-    return R.merge(dataAndFilters, { isValid: R.any(user => user.id === currentUser.id, event.users) })
-  }
-
-  return dataAndFilters
-}
-
-const applyEventFilter = dataAndFilters => {
-  const {
-    event,
-    filters: { eventFilter },
-    isValid,
-  } = dataAndFilters
-
-  if (isValid) {
-    switch (eventFilter.value) {
-      case 'open':
-        return R.merge(dataAndFilters, { isValid: event.users.length < event.capacity })
-      case 'full':
-        return R.merge(dataAndFilters, { isValid: event.users.length >= event.capacity })
-      default:
-        dataAndFilters
-    }
-  }
-
-  return dataAndFilters
-}
-
-const applyOfficeFilter = dataAndFilters => {
-  const {
-    event,
-    filters: { officeFilter },
-    isValid,
-  } = dataAndFilters
-  const showAll = officeFilter.value === 'all'
-
-  if (isValid && !showAll) {
-    return R.merge(dataAndFilters, { isValid: event.office.id == officeFilter.value })
-  }
-
-  return dataAndFilters
-}
-
-const filterPipeline = (currentUser, filters, isValid) =>
-  R.pipe(
-    event => ({ event, currentUser, filters, isValid }),
-    applyShowFilter,
-    applyEventFilter,
-    applyOfficeFilter,
-    R.prop('isValid')
-  )
-
-const selectEvents = (events, currentUser, filters) =>
-  R.pipe(
-    R.filter(filterPipeline(currentUser, filters, true)),
-    R.values,
-    normalizeEvents
-  )(events)
-
 const Calendar = ({
   loading,
   currentPath,
@@ -141,7 +74,7 @@ const Calendar = ({
   ) : (
     <Layout currentPath={currentPath}>
       <BigCalendar
-        events={selectEvents(events, currentUser, filters)}
+        events={normalizeEvents(events)}
         eventPropGetter={eventPropGetter}
         views={['month']}
         culture="en"

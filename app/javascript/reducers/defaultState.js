@@ -1,7 +1,7 @@
 const defaultState = {
   showFilter: { value: 'all' },
   eventFilter: { value: 'all' },
-  officeFilter: { value: null },
+  officeFilter: { value: 'current' },
   dashboardOfficeFilter: { value: 'current' },
   adminOfficeFilter: { value: 'current' },
   popover: { type: 'event', data: null, anchorEl: null },
