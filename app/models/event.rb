@@ -1,7 +1,11 @@
 class Event < ApplicationRecord
   CALENDAR_TIME_FORMAT = '%Y%m%dT%H%M%SZ'.freeze
 
-  has_many :signups, -> { auto_include(false) }, dependent: :destroy, inverse_of: :event
+  # inverse_of on signups causes duplicate Avatars when signing up. Disable rubocop until cause is found
+  # rubocop:disable Rails/InverseOf
+  has_many :signups, -> { auto_include(false) }, dependent: :destroy
+  # rubocop:enable Rails/InverseOf
+
   # this custom association is to reduce data loaded and memory used when fetching users for an event
   has_many :signups_for_through, -> { select(:event_id, :user_id) }, class_name: 'Signup', inverse_of: :event
   has_many :users, through: :signups_for_through
