@@ -10,6 +10,7 @@ import Toolbar from 'components/Toolbar'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 import i18next from 'i18next'
+import { withNamespaces } from 'react-i18next'
 
 const localizer = BigCalendar.momentLocalizer(moment)
 BigCalendar.setLocalizer(localizer)
@@ -110,7 +111,6 @@ const applyOfficeFilter = dataAndFilters => {
   return dataAndFilters
 }
 
-
 const filterPipeline = (currentUser, filters, isValid) =>
   R.pipe(
     event => ({ event, currentUser, filters, isValid }),
@@ -149,17 +149,11 @@ const Calendar = ({
         eventPropGetter={eventPropGetter}
         views={['month']}
         culture={i18next.language}
-        components={calendarComponents(
-          currentUser,
-          offices,
-          filters,
-          {
-            changeShowFilter,
-            changeEventFilter,
-            changeOfficeFilter,
-          },
-          t
-        )}
+        components={calendarComponents(currentUser, offices, filters, {
+          changeShowFilter,
+          changeEventFilter,
+          changeOfficeFilter,
+        })}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup
@@ -168,4 +162,5 @@ const Calendar = ({
     </Layout>
   )
 
-export default Calendar
+// Wrap `withNamespaces` to listen to language change event
+export default withNamespaces()(Calendar)

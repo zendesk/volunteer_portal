@@ -53,6 +53,7 @@ class LanguageSelect extends React.Component {
         <TranslateIcon />
         <DropDownMenu
           style={{ marginBottom: 0, marginLeft: -20, height: AutoComplete }}
+          underlineStyle={{ display: 'none' }}
           value={this.state.language}
           onChange={(event, index, value) => {
             this.setState(() => ({ language: i18next.language }))
