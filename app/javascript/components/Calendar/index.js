@@ -127,15 +127,6 @@ const selectEvents = (events, currentUser, filters) =>
     normalizeEvents
   )(events)
 
-const getCulture = language => {
-  const cultureMap = {
-    en: 'en',
-    jp: 'ja',
-  }
-  return cultureMap[language] || 'en'
-}
-
-
 const Calendar = ({
   loading,
   currentPath,
@@ -157,7 +148,7 @@ const Calendar = ({
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
-        culture={getCulture(i18next.language)}
+        culture={i18next.language}
         components={calendarComponents(
           currentUser,
           offices,
