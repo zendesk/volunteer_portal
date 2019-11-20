@@ -86,7 +86,7 @@
     "path-complete-extname": "^0.1.0",
     "postcss-loader": "^2.0.10",
     "postcss-smart-import": "^0.7.6",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.7.2",
     "ramda": "^0.23.0",
     "react": "^15.6.2",
     "react-apollo": "^2.0.4",
