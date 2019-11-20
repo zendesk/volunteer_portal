@@ -1,4 +1,12 @@
-module TopVolunteerResolver
+# VolunteerResolver is essentially a near duplicate of the UserResolver, but will
+# report the total hours without inflating the number of hours due to joining
+# 2 tables. This will fix the incorrect ordering in the Top Volunteers
+# Dashboard.
+#
+# It was initially decided to implement this in a seperate resolver as it would
+# take too much effort to make sure that the changes do not break in other
+# places. Ideally this should be refactored into the UserResolver over time.
+module VolunteerResolver
   class << self
     def all(_object, args, context)
       user_entry = '"users"."id", "users"."first_name", "users"."last_name", "users"."email", "users"."group", "users"."photo"'
