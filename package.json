@@ -79,7 +79,7 @@
     "is-promise": "^2.1.0",
     "isomorphic-fetch": "^2.2.1",
     "js-yaml": "^3.13.1",
-    "material-ui": "^0.16.5",
+    "material-ui": "0.20.1",
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.14",
     "normalizr": "^2.2.0",
