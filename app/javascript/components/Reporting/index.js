@@ -146,6 +146,7 @@ const Reporting = ({ users, startDate, endDate, onStartChange, onEndChange }) =>
     data={users}
     showPagination={false}
     defaultPageSize={users.length}
+    pageSize={users.length}
     minRows={0}
     defaultFilterMethod={defaultFilterMethod}
     getProps={containerProps}
