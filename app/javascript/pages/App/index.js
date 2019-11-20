@@ -3,7 +3,6 @@ import R from 'ramda'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import App from 'components/App'
 
@@ -14,7 +13,6 @@ import UpdateUserOfficeMutation from './UpdateUserOfficeMutation.gql'
 
 class AppPage extends Component {
   constructor(props) {
-    injectTapEventPlugin()
     super(props)
   }
 
@@ -82,8 +80,11 @@ const withData = compose(
   })
 )
 
-const withActions = connect(mapStateToProps, {
-  togglePopover,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    togglePopover,
+  }
+)
 
 export default withActions(withData(AppPage))
