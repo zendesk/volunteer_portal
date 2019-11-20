@@ -2723,11 +2723,6 @@ deep-diff@0.3.4:
   resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.4.tgz#aac5c39952236abe5f037a2349060ba01b00ae48"
   integrity sha1-qsXDmVIjar5fA3ojSQYLoBsArkg=
 
-deep-equal@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
-  integrity sha1-9dJgKStmDghO/0zbyfCK0yR0SLU=
-
 deep-equal@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.0.tgz#3103cdf8ab6d32cf4a8df7865458f2b8d33f3745"
@@ -3985,15 +3980,15 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-history@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/history/-/history-2.1.2.tgz#4aa2de897a0e4867e4539843be6ecdb2986bfdec"
-  integrity sha1-SqLeiXoOSGfkU5hDvm7Nsphr/ew=
+history@^3.0.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/history/-/history-3.3.0.tgz#fcedcce8f12975371545d735461033579a6dae9c"
+  integrity sha1-/O3M6PEpdTcVRdc1RhAzV5ptrpw=
   dependencies:
-    deep-equal "^1.0.0"
-    invariant "^2.0.0"
-    query-string "^3.0.0"
-    warning "^2.0.0"
+    invariant "^2.2.1"
+    loose-envify "^1.2.0"
+    query-string "^4.2.2"
+    warning "^3.0.0"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -4011,12 +4006,12 @@ hoist-non-react-statics@3.0.1:
   dependencies:
     react-is "^16.3.2"
 
-hoist-non-react-statics@^1.0.0, hoist-non-react-statics@^1.2.0:
+hoist-non-react-statics@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
   integrity sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs=
 
-hoist-non-react-statics@^2.5.4:
+hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.4:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
@@ -6991,11 +6986,12 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-query-string@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-3.0.3.tgz#ae2e14b4d05071d4e9b9eb4873c35b0dcd42e638"
-  integrity sha1-ri4UtNBQcdTpuetIc8NbDc1C5jg=
+query-string@^4.2.2:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.4.tgz#bbb693b9ca915c232515b228b1a02b609043dbeb"
+  integrity sha1-u7aTucqRXCMlFbIosaArYJBD2+s=
   dependencies:
+    object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
 querystring-es3@^0.2.0:
@@ -7223,15 +7219,18 @@ react-router-redux@^4.0.5:
   resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.8.tgz#227403596b5151e182377dab835b5d45f0f8054e"
   integrity sha1-InQDWWtRUeGCN32rg1tdRfD4BU4=
 
-react-router@^2.6.0:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-2.8.1.tgz#73e9491f6ceb316d0f779829081863e378ee4ed7"
-  integrity sha1-c+lJH2zrMW0Pd5gpCBhj43juTtc=
+react-router@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-3.2.5.tgz#6f5ce8f4f0b4ff6a6b2fc6106d7619e342fb57be"
+  integrity sha512-0/edMhPfOLRZ5IT3y6UkCpW7a13WrnGMR75ayAh2ZLynujEJOSptJt856GKnoCMW+7rk0/WYGUp/QaZNS9dTKg==
   dependencies:
-    history "^2.1.2"
-    hoist-non-react-statics "^1.2.0"
+    create-react-class "^15.5.1"
+    history "^3.0.0"
+    hoist-non-react-statics "^2.3.1"
     invariant "^2.2.1"
     loose-envify "^1.2.0"
+    prop-types "^15.7.2"
+    react-is "^16.8.6"
     warning "^3.0.0"
 
 react-table@^6.7.6:
