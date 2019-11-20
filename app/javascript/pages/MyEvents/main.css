@@ -160,3 +160,7 @@ textarea {
 .eventsTable {
   margin-bottom: 20px;
 }
+
+.noEventsMessage {
+  font-style: italic;
+}
