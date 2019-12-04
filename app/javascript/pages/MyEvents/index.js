@@ -273,7 +273,9 @@ const IndividualEvents = props => {
   const { currentUser, offices, eventTypes, organizations } = data
 
   const noIndividualEventsMessage = (
-    <p className={s.noEventsMessage}>Looks like there are no individual events here. Volunteer and record your first event.</p>
+    <p className={s.noEventsMessage}>
+      Looks like there are no individual events here. Volunteer and record your first event.
+    </p>
   )
 
   const individualEventsColumns = [
@@ -370,8 +372,7 @@ const IndividualEvents = props => {
           NoDataComponent={() => null}
           data={currentUser.individualEvents}
           columns={individualEventsColumns}
-          showPagination={false}
-          pageSize={currentUser.individualEvents.length}
+          defaultPageSize={10}
           defaultSorted={[{ id: 'date', desc: true }]}
           minRows={0}
         />
@@ -449,8 +450,7 @@ const OrganizedEvents = ({ currentUser: { signups } }) => {
           NoDataComponent={() => null}
           data={signups.map(signup => signup.event)}
           columns={organizedEventsColumns}
-          showPagination={false}
-          pageSize={signups.length}
+          defaultPageSize={10}
           defaultSorted={[{ id: 'date', desc: true }]}
           minRows={0}
         />
