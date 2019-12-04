@@ -125,8 +125,6 @@ const Organizations = ({
         NoDataComponent={() => null}
         data={organizations}
         columns={columns(togglePopover)}
-        showPagination={false}
-        defaultPageSize={organizations.length}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -191,9 +189,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-  togglePopover,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+    togglePopover,
+  }
+)
 
 export default withActions(withData(Organizations))

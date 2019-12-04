@@ -133,7 +133,6 @@ const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
         NoDataComponent={() => null}
         data={events}
         columns={columns(deleteEvent)}
-        showPagination={false}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -218,8 +217,11 @@ function mapStateToProps(state, _ownProps) {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(Events))

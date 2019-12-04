@@ -115,8 +115,6 @@ const EventTypes = ({ data: { networkStatus, eventTypes }, deleteEventType, togg
         NoDataComponent={() => null}
         data={eventTypes}
         columns={columns(togglePopover)}
-        showPagination={false}
-        defaultPageSize={eventTypes.length}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}

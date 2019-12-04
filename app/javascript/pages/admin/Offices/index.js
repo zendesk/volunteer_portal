@@ -120,8 +120,6 @@ const Offices = ({ data: { networkStatus, offices }, deleteOffice, destroyOffice
         NoDataComponent={() => null}
         data={offices}
         columns={columns(togglePopover)}
-        showPagination={false}
-        defaultPageSize={offices.length}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}

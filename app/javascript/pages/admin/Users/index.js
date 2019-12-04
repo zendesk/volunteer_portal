@@ -117,8 +117,6 @@ const Users = ({ data: { networkStatus, users }, deleteUser, togglePopover, dest
         NoDataComponent={() => null}
         data={users}
         columns={columns(togglePopover)}
-        showPagination={false}
-        defaultPageSize={users.length}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -180,9 +178,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-  togglePopover,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+    togglePopover,
+  }
+)
 
 export default withActions(withData(Users))
