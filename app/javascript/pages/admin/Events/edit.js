@@ -11,11 +11,13 @@ import Loading from 'components/LoadingIcon'
 
 import EventQuery from './queries/show.gql'
 import UpdateEventMutation from './mutations/update.gql'
+import CreateSignupMutation from 'mutations/CreateSignupMutation.gql'
 import DestroySignupMutation from 'mutations/DestroySignupMutation.gql'
 
 const EditEvent = ({
   data: { networkStatus, event, eventTypes, offices, organizations },
   updateEvent,
+  createSignup,
   destroySignup,
 }) =>
   networkStatus === NetworkStatus.loading ? (
@@ -26,6 +28,7 @@ const EditEvent = ({
       eventTypes={eventTypes}
       offices={offices}
       users={event.users}
+      createSignup={user => createSignup(event, user)}
       destroySignup={user => destroySignup(event, user)}
       organizations={organizations}
       onSubmit={updateEvent}
@@ -68,6 +71,23 @@ const withData = compose(
           .catch(({ graphQLErrors }) => {
             ownProps.graphQLError('event', graphQLErrors)
           }),
+    }),
+  }),
+  graphql(CreateSignupMutation, {
+    props: ({ mutate }) => ({
+      createSignup: (event, newUser) =>
+        mutate({
+          variables: { eventId: event.id, userEmail: newUser.email },
+          optimisticResponse: {
+            __typename: 'Mutation',
+            createSignup: {
+              __typename: 'Signup',
+              event: R.merge(event, {
+                users: R.append(newUser, event.users),
+              }),
+            },
+          },
+        }),
     }),
   }),
   graphql(DestroySignupMutation, {

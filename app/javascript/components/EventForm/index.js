@@ -63,12 +63,21 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
 const renderError = error => <span className={s.fieldError}>{error}</span>
 
 const renderField = props => {
-  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
+  const {
+    input,
+    label,
+    type,
+    Custom,
+    meta: { touched, error, warning },
+    className,
+    optional,
+  } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
   return (
     <div>
       <label className={s.label}>
-        {label} <span className={s.errorMsg}>{touched && error ? renderError(error) : '*'}</span>
+        {label}{' '}
+        <span className={s.errorMsg}>{touched && error ? renderError(error) : optional === 'true' ? '' : '*'}</span>
       </label>
       <div>{Custom ? <Custom {...props} /> : fieldInput}</div>
     </div>
@@ -144,94 +153,117 @@ const EventForm = ({
   organizations,
   offices,
   users,
+  createSignup,
   destroySignup,
-}) => (
-  <form className={s.form} onSubmit={handleSubmit}>
-    {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
-    <div className={s.inputGroup}>
-      <Field label="Title" className={s.field} name="title" component={renderField} type="text" />
-    </div>
-    <div className={s.inputGroup}>
-      <Field label="Description" className={s.field} name="description" component={renderField} type="textarea" />
-    </div>
-    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
-      <div className={s.column}>
-        <Field label="Event Type" className={s.field} name="eventType.id" component={renderField} type="select">
-          <option value="-" key="-" />
-          {R.map(
-            eventType => (
-              <option value={eventType.id} key={`eventType-${eventType.id}`}>
-                {eventType.title}
-              </option>
-            ),
-            eventTypes
-          )}
-        </Field>
+}) => {
+  return (
+    <form className={s.form} onSubmit={handleSubmit}>
+      {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
+      <div className={s.inputGroup}>
+        <Field label="Title" className={s.field} name="title" component={renderField} type="text" />
       </div>
-      <div className={s.column}>
+      <div className={s.inputGroup}>
+        <Field label="Description" className={s.field} name="description" component={renderField} type="textarea" />
+      </div>
+      <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
+        <div className={s.column}>
+          <Field label="Event Type" className={s.field} name="eventType.id" component={renderField} type="select">
+            <option value="-" key="-" />
+            {R.map(
+              eventType => (
+                <option value={eventType.id} key={`eventType-${eventType.id}`}>
+                  {eventType.title}
+                </option>
+              ),
+              eventTypes
+            )}
+          </Field>
+        </div>
+        <div className={s.column}>
+          <Field
+            label="Organization"
+            className={s.field}
+            name="organization.id"
+            component={renderField}
+            organizations={organizations}
+            Custom={OrganizationField}
+          />
+        </div>
+      </div>
+      <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
+        <div className={s.column}>
+          <Field label="Office" className={s.field} name="office.id" component={renderField} type="select">
+            <option value="-" key="-" />
+            {R.map(
+              office => (
+                <option value={office.id} key={`office-${office.id}`}>
+                  {office.name}
+                </option>
+              ),
+              offices
+            )}
+          </Field>
+        </div>
+        <div className={s.column}>
+          <Field label="Location" className={s.field} name="location" component={renderField} Custom={LocationField} />
+        </div>
+      </div>
+      <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
+        <div className={s.column}>
+          <Field label="Start Date" className={s.field} name="startsAt" component={renderField} Custom={DateField} />
+        </div>
+        <div className={s.column}>
+          <Field label="Start Time" className={s.field} name="startsAt" component={renderField} Custom={TimeField} />
+        </div>
+      </div>
+      <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
+        <div className={s.column}>
+          <Field label="End Date" className={s.field} name="endsAt" component={renderField} Custom={DateField} />
+        </div>
+        <div className={s.column}>
+          <Field label="End Time" className={s.field} name="endsAt" component={renderField} Custom={TimeField} />
+        </div>
+      </div>
+      <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
+        <div className={s.column}>
+          <Field
+            label="Capacity"
+            className={s.field}
+            name="capacity"
+            component={renderField}
+            type="number"
+            parse={value => Number(value)}
+          />
+        </div>
+      </div>
+      <div className={s.inputGroup}>
+        <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
+          Save
+        </button>
+      </div>
+      <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
         <Field
-          label="Organization"
+          label="Add Volunteer (by email)"
           className={s.field}
-          name="organization.id"
+          name="volunteerEmail"
           component={renderField}
-          organizations={organizations}
-          Custom={OrganizationField}
+          optional="true"
+          type="text"
         />
       </div>
-    </div>
-    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
-      <div className={s.column}>
-        <Field label="Office" className={s.field} name="office.id" component={renderField} type="select">
-          <option value="-" key="-" />
-          {R.map(
-            office => (
-              <option value={office.id} key={`office-${office.id}`}>
-                {office.name}
-              </option>
-            ),
-            offices
-          )}
-        </Field>
+      <div className={s.inputGroup}>
+        <button
+          className={`${s.btn} ${s.primary}`}
+          type="button"
+          name="addVolunteerButton"
+          onClick={e => createSignup({ email: e.target.form.elements.volunteerEmail.value })}
+        >
+          Add
+        </button>
       </div>
-      <div className={s.column}>
-        <Field label="Location" className={s.field} name="location" component={renderField} Custom={LocationField} />
-      </div>
-    </div>
-    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
-      <div className={s.column}>
-        <Field label="Start Date" className={s.field} name="startsAt" component={renderField} Custom={DateField} />
-      </div>
-      <div className={s.column}>
-        <Field label="Start Time" className={s.field} name="startsAt" component={renderField} Custom={TimeField} />
-      </div>
-    </div>
-    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
-      <div className={s.column}>
-        <Field label="End Date" className={s.field} name="endsAt" component={renderField} Custom={DateField} />
-      </div>
-      <div className={s.column}>
-        <Field label="End Time" className={s.field} name="endsAt" component={renderField} Custom={TimeField} />
-      </div>
-    </div>
-    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
-      <div className={s.column}>
-        <Field
-          label="Capacity"
-          className={s.field}
-          name="capacity"
-          component={renderField}
-          type="number"
-          parse={value => Number(value)}
-        />
-      </div>
-    </div>
-    <div className={s.inputGroup}>
-      <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
-        Save
-      </button>
-    </div>
-    <UserList users={users} destroySignup={destroySignup} />
-  </form>
-)
+      <UserList users={users} destroySignup={destroySignup} />
+    </form>
+  )
+}
 
 export default EventForm

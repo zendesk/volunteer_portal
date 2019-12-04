@@ -52,6 +52,7 @@ const EventFormPage = ({
   submitting,
   graphQLErrors,
   users,
+  createSignup,
   destroySignup,
 }) => (
   <EventForm
@@ -60,6 +61,7 @@ const EventFormPage = ({
     organizations={organizations}
     handleSubmit={handleSubmit}
     users={users}
+    createSignup={createSignup}
     destroySignup={destroySignup}
     disableSubmit={pristine || submitting}
     errors={graphQLErrors}

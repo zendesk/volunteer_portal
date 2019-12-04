@@ -1,8 +1,8 @@
 #import "fragments/EventEntry.gql"
 #import "fragments/UserEntry.gql"
 
-mutation createSignup($eventId: ID!) {
-  createSignup(eventId: $eventId) {
+mutation createSignup($eventId: ID!, $userEmail: String) {
+  createSignup(eventId: $eventId, userEmail: $userEmail) {
     event {
       ...EventEntry
       users {
