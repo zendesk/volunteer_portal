@@ -5,7 +5,7 @@
 #
 # It was initially decided to implement this in a seperate resolver as it would
 # take too much effort to make sure that the changes do not break in other
-# places. Ideally this should be refactored into the UserResolver over time.
+# places.
 module VolunteerResolver
   class << self
     def all(_object, args, context)
