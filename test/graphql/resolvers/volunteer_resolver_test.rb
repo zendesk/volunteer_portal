@@ -11,13 +11,13 @@ describe VolunteerResolver do
   let(:office) { offices(:remote) }
   let(:office2) { offices(:madison) }
 
-  before do
-    Signup.delete_all
-    IndividualEvent.delete_all
-    user.update(office: office, role: Role.admin)
-  end
-
   describe '.all' do
+    before do
+      Signup.delete_all
+      IndividualEvent.delete_all
+      user.update(office: office, role: Role.admin)
+    end
+
     let(:event1) { events(:minimum) }
     let(:event2) { events(:simple_event) }
     let(:event3) { events(:late_event) }
@@ -113,6 +113,51 @@ describe VolunteerResolver do
       results = VolunteerResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2]
+    end
+
+    describe 'when user only has events' do
+      it 'returns the correct duration' do
+        args = {}
+        duration = 10
+
+        event1.update(ends_at: event1.starts_at + duration.minutes)
+        Signup.create!(event: event1, user: user)
+        results = VolunteerResolver.all(nil, args, nil).to_a.first.duration
+
+        results.must_equal duration
+      end
+    end
+  end
+
+  describe 'individual_events' do
+    let(:event1) { events(:minimum) }
+    let(:individual_event1) { individual_events(:approved) }
+    let(:individual_event2) { individual_events(:minimum) }
+
+    describe 'when user only has individual events' do
+      it 'returns the correct duration' do
+        args = {}
+        duration = 10
+
+        individual_event1.update(duration: duration, user: user2)
+        results = VolunteerResolver.all(nil, args, nil).find_by(id: user2).duration
+
+        results.must_equal duration
+      end
+    end
+
+    describe 'when user has both events and individual events' do
+      it 'returns the correct duration' do
+        args = {}
+        duration = 10
+
+        event1.update(ends_at: event1.starts_at + duration.minutes)
+        individual_event1.update(duration: duration)
+        individual_event2.update(duration: duration)
+        results = VolunteerResolver.all(nil, args, nil).to_a.first.duration
+
+        results.must_equal duration*3
+      end
     end
   end
 end
