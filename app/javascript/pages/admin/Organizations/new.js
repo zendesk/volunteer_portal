@@ -36,7 +36,7 @@ const withData = graphql(CreateOrganizationMutation, {
         },
       })
         .then(_response => {
-          ownProps.history.push('/portal/admin/organizations')
+          ownProps.router.push('/portal/admin/organizations')
         })
         .catch(({ graphQLErrors }) => {
           ownProps.graphQLError(graphQLErrors)
@@ -46,8 +46,11 @@ const withData = graphql(CreateOrganizationMutation, {
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(NewOrganization))

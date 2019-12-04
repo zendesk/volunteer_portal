@@ -34,7 +34,7 @@ const withData = graphql(CreateEventTypeMutation, {
         },
       })
         .then(_response => {
-          ownProps.history.push('/portal/admin/event-types')
+          ownProps.router.push('/portal/admin/event-types')
         })
         .catch(({ graphQLErrors }) => {
           ownProps.graphQLError(graphQLErrors)
@@ -44,8 +44,11 @@ const withData = graphql(CreateEventTypeMutation, {
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(NewEventType))

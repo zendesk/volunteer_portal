@@ -110,10 +110,12 @@ const withData = compose(
         })
           .then(_response => {
             ownProps.changeAdminOfficeFilter(event.office.id)
-            ownProps.history.push('/portal/admin/events')
+            ownProps.router.push('/portal/admin/events')
           })
-          .catch(({ graphQLErrors }) => {
-            ownProps.graphQLError(graphQLErrors)
+          .catch(a => {
+            console.log('new', a)
+
+            ownProps.graphQLError(a.graphQLErrors)
           }),
     }),
   })

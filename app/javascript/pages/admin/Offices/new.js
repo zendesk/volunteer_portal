@@ -36,7 +36,7 @@ const withData = graphql(CreateOfficeMutation, {
         },
       })
         .then(_response => {
-          ownProps.history.push('/portal/admin/offices')
+          ownProps.router.push('/portal/admin/offices')
         })
         .catch(({ graphQLErrors }) => {
           ownProps.graphQLError(graphQLErrors)
@@ -46,8 +46,11 @@ const withData = graphql(CreateOfficeMutation, {
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(NewOffice))
