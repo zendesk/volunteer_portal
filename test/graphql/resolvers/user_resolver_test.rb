@@ -111,7 +111,7 @@ describe UserResolver do
 
     describe 'when user has both events and individual events' do
       it 'does not return the correct order' do
-        args = { count: 2 }
+        args = { count: 2, sort_by: 'HOURS_DESC' }
         user_duration = 10
         user2_duration = 35
 
