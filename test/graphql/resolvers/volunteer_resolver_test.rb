@@ -5,6 +5,9 @@ SingleCov.covered!
 describe VolunteerResolver do
   let(:user) { users(:admin) }
   let(:user2) { users(:a) }
+  let(:user3) { users(:b) }
+  let(:user4) { users(:cat) }
+  let(:user5) { users(:minimum_volunteer) }
   let(:office) { offices(:remote) }
   let(:office2) { offices(:madison) }
 
@@ -38,15 +41,23 @@ describe VolunteerResolver do
     it 'filters by all offices' do
       args = { office_id: 'all' }
 
-      results = VolunteerResolver.all(nil, args, nil).to_a
+      Signup.create!(event: event1, user: user)
+      Signup.create!(event: event2, user: user2)
+      Signup.create!(event: event1, user: user3)
+      Signup.create!(event: event2, user: user4)
+      Signup.create!(event: event1, user: user5)
 
-      results.must_equal User.all
+      results = Set.new(VolunteerResolver.all(nil, args, nil).to_a)
+      users = Set.new(User.all)
+
+      results.must_equal users
     end
 
     it 'filters by current office' do
       args = { office_id: 'current' }
       context = { current_user: user }
 
+      Signup.create!(event: event1, user: user)
       results = VolunteerResolver.all(nil, args, context).to_a
 
       results.must_equal [user]
@@ -54,6 +65,8 @@ describe VolunteerResolver do
 
     it 'filters by office_id' do
       args = { office_id: office.id }
+
+      Signup.create!(event: event1, user: user)
       results = VolunteerResolver.all(nil, args, nil).to_a
 
       results.must_equal [user]
