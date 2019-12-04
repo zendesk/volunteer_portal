@@ -314,3 +314,87 @@ parts:
       value: "Delete"
       screenshot: "https://drive.google.com/open?id=1ed0yL5peTPc4dBJmT6fZG-NHewpmLcAD"
       wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_columntitle"
+      title: "Column title for the field Title"
+      value: "Title"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_columnorganization"
+      title: "Column title for the field Organization"
+      value: "Organization"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_columnstart"
+      title: "Column title for the field Start as in date and time"
+      value: "Start"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_columnduration"
+      title: "Column title for the field Duration in minutes of the event"
+      value: "Duration"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_columnparticipants"
+      title: "Column title for the field Participant for a number of people"
+      value: "Participants"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.events_columnactions"
+      title: "Column title for the field Action"
+      value: "Actions"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_edit"
+      title: "Text button to edit an event type"
+      value: "Edit"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_delete"
+      title: "Text button to delete an event type"
+      value: "Delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_title"
+      title: "Column title for the field Title"
+      value: "Title"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_actions"
+      title: "Column title for the field Actions"
+      value: "Actions"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_cancel"
+      title: "Text button to cancel the deletion of an event type"
+      value: "Cancel"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_addeventtype"
+      title: "Text button to open a window to Add and new event type"
+      value: "Add Event Type"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_deleteeventtype"
+      title: "Title for the confirmation window of Delete Event Type"
+      value: "Delete Event Type"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation"
+      title: "Message for the confirmation window of Delete Event Type"
+      value: "Are you sure you want to delete"
+      screenshot: ""
+      wip: true

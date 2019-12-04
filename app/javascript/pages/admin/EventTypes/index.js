@@ -19,42 +19,44 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
-const actionLinks = (eventType, togglePopover) => (
+import { withNamespaces } from 'react-i18next'
+
+const actionLinks = (eventType, togglePopover, t) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/event-types/${eventType.id}/edit`}>Edit</Link>
+    <Link to={`/portal/admin/event-types/${eventType.id}/edit`}>{t('volunteer_portal.admin.tab.eventtypes_edit')}</Link>
     <button className={s.deleteAction} onClick={() => togglePopover('destroyEventType', eventType)}>
-      Delete
+      {t('volunteer_portal.admin.tab.eventtypes_delete')}
     </button>
   </div>
 )
 
-const columns = togglePopover => [
+const columns = (togglePopover, t) => [
   {
-    Header: 'Title',
+    Header: t('volunteer_portal.admin.tab.eventtypes_title'),
     accessor: 'title',
     filterable: true,
   },
   {
-    Header: 'Actions',
+    Header: t('volunteer_portal.admin.tab.eventtypes_actions'),
     accessor: 'id',
     sortable: false,
     width: 130,
-    Cell: ({ original }) => actionLinks(original, togglePopover),
+    Cell: ({ original }) => actionLinks(original, togglePopover, t),
   },
 ]
 
-const destroyActions = (togglePopover, destroyEventTypePopover, deleteOffice) => [
+const destroyActions = (togglePopover, destroyEventTypePopover, deleteOffice, t) => [
   <button
     className={`${s.btn} ${s.cancelBtn}`}
     onClick={() => togglePopover('destroyEventType', destroyEventTypePopover.data)}
   >
-    Cancel
+    {t('volunteer_portal.admin.tab.eventtypes_cancel')}
   </button>,
   <button
     className={`${s.btn} ${s.deleteBtn}`}
     onClick={() => deleteOffice(destroyEventTypePopover.data) && togglePopover('destroyEventType')}
   >
-    Delete
+    {t('volunteer_portal.admin.tab.eventtypes_delete')}
   </button>,
 ]
 
@@ -101,20 +103,26 @@ const tdProps = () => ({
   },
 })
 
-const EventTypes = ({ data: { networkStatus, eventTypes }, deleteEventType, togglePopover, destroyEventTypePopover }) =>
+const EventTypes = ({
+  data: { networkStatus, eventTypes },
+  t,
+  deleteEventType,
+  togglePopover,
+  destroyEventTypePopover,
+}) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
     <div>
       <div className={s.actionBar}>
         <Link to="/portal/admin/event-types/new">
-          <button className={s.createAction}>Add Event Type</button>
+          <button className={s.createAction}>{t('volunteer_portal.admin.tab.eventtypes_addeventtype')}</button>
         </Link>
       </div>
       <ReactTable
         NoDataComponent={() => null}
         data={eventTypes}
-        columns={columns(togglePopover)}
+        columns={columns(togglePopover, t)}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -127,14 +135,14 @@ const EventTypes = ({ data: { networkStatus, eventTypes }, deleteEventType, togg
       />
       {destroyEventTypePopover ? (
         <Dialog
-          title="Delete Event Type"
-          actions={destroyActions(togglePopover, destroyEventTypePopover, deleteEventType)}
+          title={t('volunteer_portal.admin.tab.eventtypes_deleteeventtype')}
+          actions={destroyActions(togglePopover, destroyEventTypePopover, deleteEventType, t)}
           modal={false}
           open
           onRequestClose={() => togglePopover('destroyEventType', destroyEventTypePopover.data)}
           actionsContainerStyle={{ paddingBottom: 20 }}
         >
-          Are you sure you want to delete {destroyEventTypePopover.data.title}?
+          {t('volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation')} {destroyEventTypePopover.data.title}?
         </Dialog>
       ) : null}
     </div>
@@ -184,4 +192,4 @@ const withActions = connect(
   }
 )
 
-export default withActions(withData(EventTypes))
+export default withActions(withData(withNamespaces()(EventTypes)))
