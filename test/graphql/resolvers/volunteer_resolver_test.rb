@@ -156,7 +156,7 @@ describe VolunteerResolver do
         individual_event2.update(duration: duration)
         results = VolunteerResolver.all(nil, args, nil).to_a.first.duration
 
-        results.must_equal duration*3
+        results.must_equal duration * 3
       end
     end
   end

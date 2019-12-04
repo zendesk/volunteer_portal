@@ -120,7 +120,7 @@ describe UserResolver do
         individual_event1.update(duration: user_duration)
         individual_event2.update(duration: user_duration)
 
-        #user2 has 1 event lasting 35 minutes
+        # user2 has 1 event lasting 35 minutes
         event2.update(ends_at: event2.starts_at + user2_duration.minutes)
         Signup.create!(event: event2, user: user2)
 
