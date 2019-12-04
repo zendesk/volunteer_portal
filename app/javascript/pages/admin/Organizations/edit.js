@@ -41,7 +41,7 @@ const withData = compose(
           optimisticResponse: buildOptimisticResponse(organization),
         })
           .then(_response => {
-            ownProps.history.push('/portal/admin/organizations')
+            ownProps.router.push('/portal/admin/organizations')
           })
           .catch(({ graphQLErrors }) => {
             ownProps.graphQLError('organization', graphQLErrors)
@@ -52,8 +52,11 @@ const withData = compose(
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(EditOrganization))

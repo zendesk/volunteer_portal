@@ -50,7 +50,7 @@ class Admin extends Component {
     } = this.props
 
     if (networkStatus !== NetworkStatus.loading && !currentUser.isAdmin) {
-      history.push('/portal')
+      router.push('/portal')
     }
   }
 

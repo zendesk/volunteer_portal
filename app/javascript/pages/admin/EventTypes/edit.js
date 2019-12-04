@@ -41,7 +41,7 @@ const withData = compose(
           optimisticResponse: buildOptimisticResponse(eventType),
         })
           .then(_response => {
-            ownProps.history.push('/portal/admin/event-types')
+            ownProps.router.push('/portal/admin/event-types')
           })
           .catch(({ graphQLErrors }) => {
             ownProps.graphQLError('eventType', graphQLErrors)
@@ -52,8 +52,11 @@ const withData = compose(
 
 const mapStateToProps = (state, ownProps) => ({})
 
-const withActions = connect(mapStateToProps, {
-  graphQLError,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    graphQLError,
+  }
+)
 
 export default withActions(withData(EditEventType))
