@@ -141,6 +141,8 @@ GEM
     public_suffix (2.0.5)
     puma (3.12.2)
     rack (2.0.7)
+    rack-attack (6.2.1)
+      rack (>= 1.0, < 3)
     rack-cors (1.0.5)
       rack (>= 1.6.0)
     rack-mini-profiler (0.10.5)
@@ -270,6 +272,7 @@ DEPENDENCIES
   omniauth-saml
   pg (~> 0.21)
   puma
+  rack-attack
   rack-cors (~> 1.0.5)
   rack-mini-profiler
   rails (~> 5.1.6.2)
