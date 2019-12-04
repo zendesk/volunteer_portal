@@ -3,7 +3,7 @@ import { compose, graphql } from 'react-apollo'
 import { connect } from 'react-redux'
 import R from 'ramda'
 import { Link } from 'react-router'
-import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 import EventLocation from 'components/EventLocation'
 import EventTime from 'components/EventTime'
@@ -35,7 +35,14 @@ const Section = ({ title, children }) => (
 
 const AddToGoogleCalendar = ({ event }) => {
   const formatDateTime = R.replace(/-|:/g, '')
-  const { title, description, location, startsAt, endsAt, office: { timezone } } = event
+  const {
+    title,
+    description,
+    location,
+    startsAt,
+    endsAt,
+    office: { timezone },
+  } = event
   const templateUrl =
     'http://www.google.com/calendar/event?action=TEMPLATE' +
     `&text=${title}` +
@@ -82,17 +89,19 @@ class MapPreview extends Component {
   render() {
     const { lat, lng } = this.state
 
+    const MapWithAMarker = withGoogleMap(() => {
+      return (
+        <GoogleMap defaultZoom={15} defaultCenter={{ lat, lng }} center={{ lat, lng }}>
+          <Marker position={{ lat, lng }} defaultAnimation={2} />
+        </GoogleMap>
+      )
+    })
+
     return (
-      <section style={{ height: 200, width: '100%' }}>
-        <GoogleMapLoader
-          containerElement={<div style={{ height: '100%' }} />}
-          googleMapElement={
-            <GoogleMap defaultZoom={15} defaultCenter={{ lat, lng }} center={{ lat, lng }}>
-              <Marker position={{ lat, lng }} defaultAnimation={2} />
-            </GoogleMap>
-          }
-        />
-      </section>
+      <MapWithAMarker
+        containerElement={<div style={{ height: '200px', width: '100%' }} />}
+        mapElement={<div style={{ height: '100%' }} />}
+      />
     )
   }
 }
