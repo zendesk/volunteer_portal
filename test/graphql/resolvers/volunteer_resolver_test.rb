@@ -72,11 +72,29 @@ describe VolunteerResolver do
       results.must_equal [user]
     end
 
-    it 'limits to count' do
-      args = { count: 0 }
-      results = VolunteerResolver.all(nil, args, nil).to_a
+    describe 'given a count parameter' do
+      before do
+        Signup.create!(event: event1, user: user)
+        Signup.create!(event: event2, user: user2)
+      end
 
-      results.must_equal []
+      describe 'when it is 0' do
+        it 'returns no record' do
+          args = { count: 0 }
+          results = VolunteerResolver.all(nil, args, nil).to_a
+
+          results.must_equal []
+        end
+      end
+
+      describe 'when it is 1' do
+        it 'returns 1 record' do
+          args = { count: 1 }
+          results = VolunteerResolver.all(nil, args, nil).to_a
+
+          results.must_equal [user]
+        end
+      end
     end
 
     it 'sorts by sort_by' do
