@@ -8,13 +8,13 @@ describe UserResolver do
   let(:office) { offices(:remote) }
   let(:office2) { offices(:madison) }
 
-  before do
-    Signup.delete_all
-    IndividualEvent.delete_all
-    user.update(office: office, role: Role.admin)
-  end
-
   describe '.all' do
+    before do
+      Signup.delete_all
+      IndividualEvent.delete_all
+      user.update(office: office, role: Role.admin)
+    end
+
     let(:event1) { events(:minimum) }
     let(:event2) { events(:simple_event) }
     let(:event3) { events(:late_event) }
@@ -100,6 +100,39 @@ describe UserResolver do
       results = UserResolver.all(nil, args, nil).to_a
 
       results.must_equal [user2]
+    end
+  end
+
+  describe 'individual_events' do
+    let(:event1) { events(:minimum) }
+    let(:event2) { events(:simple_event) }
+    let(:individual_event1) { individual_events(:approved) }
+    let(:individual_event2) { individual_events(:minimum) }
+
+    describe 'when user has both events and individual events' do
+      it 'does not return the correct order' do
+        args = { count: 2, sort_by: 'HOURS_DESC' }
+        user_duration = 10
+        user2_duration = 35
+
+        # user has 1 event and 2 individual events, each lasting 10 minutes
+        event1.update(ends_at: event1.starts_at + user_duration.minutes)
+        individual_event1.update(duration: user_duration)
+        individual_event2.update(duration: user_duration)
+
+        # user2 has 1 event lasting 35 minutes
+        event2.update(ends_at: event2.starts_at + user2_duration.minutes)
+        Signup.create!(event: event2, user: user2)
+
+        results = UserResolver.all(nil, args, nil).to_a
+
+        # A bug in the resolver causes duplicated minutes.
+        # The correct order should be [user2, user], but
+        # the bug returns an incorrect order [user, user2].
+        # Do not rely on UserResolver for sorting by hours.
+        # Use VolunteerResolver instead.
+        results.must_equal [user, user2]
+      end
     end
   end
 

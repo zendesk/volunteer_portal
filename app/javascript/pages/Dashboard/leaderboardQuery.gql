@@ -2,12 +2,9 @@
 #import "fragments/OfficeEntry.gql"
 
 query LeaderboardQuery($count: Int, $sortBy: UserSortEnum, $officeId: ID, $after: Int, $before: Int) {
-  users(count: $count, sortBy: $sortBy, officeId: $officeId, after: $after, before: $before) {
+  volunteers(count: $count, sortBy: $sortBy, officeId: $officeId, after: $after, before: $before) {
     ...UserEntry
     hours(after: $after, before: $before)
-    office {
-      ...OfficeEntry
-    }
   }
   currentUser {
     ...UserEntry
