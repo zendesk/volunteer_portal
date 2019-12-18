@@ -10,6 +10,9 @@ class IndividualEvent < ApplicationRecord
   belongs_to :event_type
   belongs_to :office
 
+  has_many :individual_event_tags
+  has_many :tags, through: :individual_event_tags
+
   validates :user, :organization, :event_type, :office,
             :description, :date, presence: true
   validates :duration, numericality: {

@@ -32,17 +32,20 @@ const transformToReduxFormState = event => {
   }
 }
 
-const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, offices, organizations } }) =>
+const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, tags, offices, organizations } }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
-    <EventForm
-      event={event && transformToReduxFormState(event)}
-      eventTypes={eventTypes}
-      offices={offices}
-      organizations={organizations}
-      onSubmit={createEvent}
-    />
+    console.log(eventTypes, tags) || (
+      <EventForm
+        event={event && transformToReduxFormState(event)}
+        eventTypes={eventTypes}
+        tags={tags}
+        offices={offices}
+        organizations={organizations}
+        onSubmit={createEvent}
+      />
+    )
   )
 
 const buildOptimisticResponse = ({

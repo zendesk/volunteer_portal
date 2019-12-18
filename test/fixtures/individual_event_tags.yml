@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_event: one
+  tag: one
+
+two:
+  individual_event: two
+  tag: two
