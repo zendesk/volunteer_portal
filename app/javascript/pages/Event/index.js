@@ -71,7 +71,7 @@ class MapPreview extends Component {
     this.geocodeCallback = this.geocodeCallback.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (geocoder) {
       geocoder.geocode({ address: this.props.event.location }, this.geocodeCallback)
     }
