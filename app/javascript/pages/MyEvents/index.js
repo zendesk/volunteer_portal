@@ -4,12 +4,12 @@ import { graphql, compose } from 'react-apollo'
 import { Field, reduxForm } from 'redux-form'
 import R from 'ramda'
 import moment from 'moment'
-
+import { Dropdown, Menu, Item, Autocomplete, Field as GardenField } from '@zendeskgarden/react-dropdowns'
+import debounce from 'lodash.debounce'
 import DatePicker from 'material-ui/DatePicker'
 import Dialog from 'material-ui/Dialog'
 import ActionDone from 'material-ui/svg-icons/action/done'
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
-import AutoComplete from 'material-ui/AutoComplete'
 import AVNotInterested from 'material-ui/svg-icons/av/not-interested'
 import ReactTable from 'react-table'
 
@@ -67,23 +67,63 @@ const DateField = ({ input: { value, onChange }, label, type, meta }) => (
   </div>
 )
 
-const AutoCompleteField = ({ input: { value, onChange }, label, type, meta, dataSource }) => (
-  <div>
-    <AutoComplete
-      id="organization"
-      searchText={value && R.find(item => item.id === value)(dataSource).name}
-      dataSource={dataSource}
-      dataSourceConfig={{ text: 'name', value: 'id' }}
-      filter={AutoComplete.fuzzyFilter}
-      onNewRequest={(chosen, _i) => onChange(chosen.id)}
-      className={s.muiTextField}
-      textFieldStyle={styles.muiTextField}
-      menuStyle={{ overflowY: 'scroll', height: 200 }}
-      openOnFocus
-      fullWidth
-    />
-  </div>
-)
+const AutoCompleteField = ({ dataSource }) => {
+  const dataSourceNames = dataSource.map(dataSource => dataSource.name)
+  const [selectedItem, setSelectedItem] = React.useState('')
+  const [inputValue, setInputValue] = React.useState('')
+  const [matchingOptions, setMatchingOptions] = React.useState(dataSourceNames)
+
+  /**
+   * Debounce filtering
+   */
+  const filterMatchingOptionsRef = React.useRef(
+    debounce(value => {
+      const matchingOptions = dataSourceNames.filter(dataSourceName => {
+        return (
+          dataSourceName
+            .trim()
+            .toLowerCase()
+            .indexOf(value.trim().toLowerCase()) !== -1
+        )
+      })
+
+      setMatchingOptions(matchingOptions)
+    }, 300)
+  )
+
+  React.useEffect(() => {
+    filterMatchingOptionsRef.current(inputValue)
+  }, [inputValue])
+
+  const renderOptions = () => {
+    if (matchingOptions.length === 0) {
+      return <Item disabled>No matches found</Item>
+    }
+
+    return matchingOptions.map(option => (
+      <Item key={option} value={option}>
+        <span>{option}</span>
+      </Item>
+    ))
+  }
+
+  return (
+    <Dropdown
+      inputValue={inputValue}
+      selectedItem={selectedItem}
+      onSelect={item => setSelectedItem(item)}
+      onInputValueChange={inputValue => setInputValue(inputValue)}
+      downshiftProps={{ defaultHighlightedIndex: 0 }}
+    >
+      <GardenField>
+        <Autocomplete>
+          <span>{selectedItem}</span>
+        </Autocomplete>
+      </GardenField>
+      <Menu>{renderOptions()}</Menu>
+    </Dropdown>
+  )
+}
 
 const validate = values => {
   const errors = {}

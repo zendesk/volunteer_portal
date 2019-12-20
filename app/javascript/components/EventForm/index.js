@@ -1,7 +1,9 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import R from 'ramda'
-import AutoComplete from 'material-ui/AutoComplete'
+import { Dropdown, Menu, Item, Autocomplete, Field as GardenField } from '@zendeskgarden/react-dropdowns'
+import debounce from 'lodash.debounce'
+
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
@@ -63,7 +65,15 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
 const renderError = error => <span className={s.fieldError}>{error}</span>
 
 const renderField = props => {
-  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
+  const {
+    input,
+    label,
+    type,
+    Custom,
+    meta: { touched, error, warning },
+    className,
+    required,
+  } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
   return (
     <div>
@@ -96,21 +106,63 @@ const dateTimeSplitChange = (part, currentValue, newValue, callback) => {
   callback(timeStamp)
 }
 
-const OrganizationField = ({ organizations, input: { value, onChange } }) => (
-  <AutoComplete
-    id="organization"
-    searchText={R.isNil(value) || R.isEmpty(value) ? value : R.find(o => o.id === value, organizations).name}
-    dataSource={organizations}
-    dataSourceConfig={{ text: 'name', value: 'id' }}
-    filter={AutoComplete.fuzzyFilter}
-    onNewRequest={(chosen, _i) => onChange(chosen.id)}
-    className={s.muiTextField}
-    textFieldStyle={styles.muiTextField}
-    menuStyle={{ overflowY: 'scroll', height: 200 }}
-    openOnFocus
-    fullWidth
-  />
-)
+const OrganizationField = ({ organizations }) => {
+  const organizationNames = organizations.map(organization => organization.name)
+  const [selectedItem, setSelectedItem] = React.useState('')
+  const [inputValue, setInputValue] = React.useState('')
+  const [matchingOptions, setMatchingOptions] = React.useState(organizationNames)
+
+  /**
+   * Debounce filtering
+   */
+  const filterMatchingOptionsRef = React.useRef(
+    debounce(value => {
+      const matchingOptions = organizationNames.filter(organizationName => {
+        return (
+          organizationName
+            .trim()
+            .toLowerCase()
+            .indexOf(value.trim().toLowerCase()) !== -1
+        )
+      })
+
+      setMatchingOptions(matchingOptions)
+    }, 300)
+  )
+
+  React.useEffect(() => {
+    filterMatchingOptionsRef.current(inputValue)
+  }, [inputValue])
+
+  const renderOptions = () => {
+    if (matchingOptions.length === 0) {
+      return <Item disabled>No matches found</Item>
+    }
+
+    return matchingOptions.map(option => (
+      <Item key={option} value={option}>
+        <span>{option}</span>
+      </Item>
+    ))
+  }
+
+  return (
+    <Dropdown
+      inputValue={inputValue}
+      selectedItem={selectedItem}
+      onSelect={item => setSelectedItem(item)}
+      onInputValueChange={inputValue => setInputValue(inputValue)}
+      downshiftProps={{ defaultHighlightedIndex: 0 }}
+    >
+      <GardenField>
+        <Autocomplete>
+          <span>{selectedItem}</span>
+        </Autocomplete>
+      </GardenField>
+      <Menu>{renderOptions()}</Menu>
+    </Dropdown>
+  )
+}
 
 const DateField = ({ input: { value, onChange } }) => (
   <DatePicker
@@ -169,6 +221,7 @@ const EventForm = ({
         </Field>
       </div>
       <div className={s.column}>
+        {/* <OrganizationField organizations={organizations} /> */}
         <Field
           label="Organization"
           className={s.field}
