@@ -10,6 +10,8 @@ import UserList from 'components/UserList'
 import LocationField from 'components/LocationField'
 import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 
+import TagField from 'components/TagField'
+
 import s from './main.css'
 
 // mui components need inline styles
@@ -134,6 +136,7 @@ const EventForm = ({
   disableSubmit,
   errors,
   eventTypes,
+  tags,
   organizations,
   offices,
   users,
@@ -146,6 +149,17 @@ const EventForm = ({
     </div>
     <div className={s.inputGroup}>
       <Field label="Description" className={s.field} name="description" component={renderField} type="textarea" />
+    </div>
+    <div className={s.inputGroup}>
+      <Field
+        label="Tags"
+        className={s.field}
+        name="tags.id"
+        component={renderField}
+        tags={tags}
+        Custom={TagField}
+        maxTags={1}
+      />
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>

@@ -14,6 +14,8 @@ const RosettaI18nextPlugin = require('../locales/rosetta/rosetta-i18next-plugin'
 
 const entryPath = join(settings.source_path, settings.source_entry_path)
 
+console.log('WEBPACK RULES', sync(join(loadersDir, '*.js')).map(loader => require(loader)))
+
 module.exports = {
   entry: resolve(entryPath, 'index.js'),
 

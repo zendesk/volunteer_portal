@@ -14,6 +14,8 @@ import configureStore from './store/configureStore'
 import Actions from './actions'
 import './i18n'
 
+import { ThemeProvider } from '@zendeskgarden/react-theming'
+
 const client = new ApolloClient({
   link: new HttpLink({
     credentials: 'include',

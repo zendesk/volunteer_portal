@@ -48,6 +48,7 @@ const validate = values => {
 
 const EventFormPage = ({
   eventTypes,
+  tags,
   offices,
   organizations,
   handleSubmit,
@@ -59,6 +60,7 @@ const EventFormPage = ({
 }) => (
   <EventForm
     eventTypes={eventTypes}
+    tags={tags}
     offices={offices}
     organizations={organizations}
     handleSubmit={handleSubmit}
