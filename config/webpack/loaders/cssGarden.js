@@ -7,11 +7,11 @@ module.exports = {
     {
       loader: 'css-loader',
       options: {
-        modules: true,
+        modules: false,
         importLoaders: 1,
       },
     },
     { loader: 'postcss-loader', options: { sourceMap: true } },
   ],
-  exclude: /react-big-calendar|react-table|@zendeskgarden/,
+  include: /@zendeskgarden/,
 }
