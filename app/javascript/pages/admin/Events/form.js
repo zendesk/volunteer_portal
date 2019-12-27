@@ -15,14 +15,17 @@ const validate = values => {
   if (!values.description) {
     errors.description = 'is required'
   }
-  if (!values.eventType || values.eventType === '-') {
-    errors.eventType = 'is required'
+  if (!values.eventType) {
+    errors.eventType = {}
+    errors.eventType.id = 'is required'
   }
-  if (!values.organization || values.organization === '-') {
-    errors.organization = 'is required'
+  if (!values.organization) {
+    errors.organization = {}
+    errors.organization.id = 'is required'
   }
-  if (!values.office || values.office === '-') {
-    errors.office = 'is required'
+  if (!values.office) {
+    errors.office = {}
+    errors.office.id = 'is required'
   }
   if (!values.location) {
     errors.location = 'is required'
@@ -78,6 +81,9 @@ const mapStateToProps = ({ graphQLErrors }, { event }) => {
   return R.isNil(event) ? props : R.merge({ initialValues: event }, props)
 }
 
-const withActions = connect(mapStateToProps, {})
+const withActions = connect(
+  mapStateToProps,
+  {}
+)
 
 export default withActions(withReduxForm(EventFormPage))
