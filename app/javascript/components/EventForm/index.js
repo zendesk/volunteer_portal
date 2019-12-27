@@ -1,8 +1,6 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import R from 'ramda'
-import { Dropdown, Menu, Item, Autocomplete, Field as GardenField } from '@zendeskgarden/react-dropdowns'
-import debounce from 'lodash.debounce'
 
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
@@ -10,6 +8,7 @@ import TimePicker from 'material-ui/TimePicker'
 import Callout from 'components/Callout'
 import UserList from 'components/UserList'
 import LocationField from 'components/LocationField'
+import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 
 import s from './main.css'
 
@@ -106,71 +105,6 @@ const dateTimeSplitChange = (part, currentValue, newValue, callback) => {
   callback(timeStamp)
 }
 
-const OrganizationField = ({ organizations, input: { value, onChange } }) => {
-  const organizationNames = organizations.map(organization => organization.name)
-  // Selected Item is the String
-  const [selectedItem, setSelectedItem] = React.useState('')
-  const [inputValue, setInputValue] = React.useState('')
-  const [matchingOptions, setMatchingOptions] = React.useState(organizationNames)
-
-  /**
-   * Debounce filtering
-   */
-  const filterMatchingOptionsRef = React.useRef(
-    debounce(value => {
-      const matchingOptions = organizationNames.filter(organizationName => {
-        return (
-          organizationName
-            .trim()
-            .toLowerCase()
-            .indexOf(value.trim().toLowerCase()) !== -1
-        )
-      })
-
-      setMatchingOptions(matchingOptions)
-    }, 300)
-  )
-
-  React.useEffect(() => {
-    filterMatchingOptionsRef.current(inputValue)
-  }, [inputValue])
-
-  const renderOptions = () => {
-    if (matchingOptions.length === 0) {
-      return <Item disabled>No matches found</Item>
-    }
-
-    return matchingOptions.map(option => (
-      <Item key={option} value={option}>
-        <span>{option}</span>
-      </Item>
-    ))
-  }
-
-  return (
-    <Dropdown
-      inputValue={inputValue}
-      selectedItem={selectedItem}
-      onSelect={item => {
-        const selectedOrganization = organizations.find(organization => organization.name === item)
-        setSelectedItem(item)
-        onChange(selectedOrganization.id)
-      }}
-      onInputValueChange={inputValue => {
-        setInputValue(inputValue)
-      }}
-      downshiftProps={{ defaultHighlightedIndex: 0 }}
-    >
-      <GardenField>
-        <Autocomplete>
-          <span>{selectedItem}</span>
-        </Autocomplete>
-      </GardenField>
-      <Menu>{renderOptions()}</Menu>
-    </Dropdown>
-  )
-}
-
 const DateField = ({ input: { value, onChange } }) => (
   <DatePicker
     id="date"
@@ -233,8 +167,9 @@ const EventForm = ({
           className={s.field}
           name="organization.id"
           component={renderField}
-          organizations={organizations}
-          Custom={OrganizationField}
+          dataSource={organizations}
+          searchField={'name'}
+          Custom={ReduxFormAutocomplete}
         />
       </div>
     </div>

@@ -4,8 +4,7 @@ import { graphql, compose } from 'react-apollo'
 import { Field, reduxForm } from 'redux-form'
 import R from 'ramda'
 import moment from 'moment'
-import { Dropdown, Menu, Item, Autocomplete, Field as GardenField } from '@zendeskgarden/react-dropdowns'
-import debounce from 'lodash.debounce'
+
 import DatePicker from 'material-ui/DatePicker'
 import Dialog from 'material-ui/Dialog'
 import ActionDone from 'material-ui/svg-icons/action/done'
@@ -18,6 +17,7 @@ import { togglePopover } from 'actions'
 import Callout from 'components/Callout'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
+import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 
 import MyEventsQuery from './query.gql'
 import CreateEditIndividualEventMutation from 'mutations/CreateEditIndividualEventMutation.gql'
@@ -66,64 +66,6 @@ const DateField = ({ input: { value, onChange }, label, type, meta }) => (
     />
   </div>
 )
-
-const AutoCompleteField = ({ dataSource }) => {
-  const dataSourceNames = dataSource.map(dataSource => dataSource.name)
-  const [selectedItem, setSelectedItem] = React.useState('')
-  const [inputValue, setInputValue] = React.useState('')
-  const [matchingOptions, setMatchingOptions] = React.useState(dataSourceNames)
-
-  /**
-   * Debounce filtering
-   */
-  const filterMatchingOptionsRef = React.useRef(
-    debounce(value => {
-      const matchingOptions = dataSourceNames.filter(dataSourceName => {
-        return (
-          dataSourceName
-            .trim()
-            .toLowerCase()
-            .indexOf(value.trim().toLowerCase()) !== -1
-        )
-      })
-
-      setMatchingOptions(matchingOptions)
-    }, 300)
-  )
-
-  React.useEffect(() => {
-    filterMatchingOptionsRef.current(inputValue)
-  }, [inputValue])
-
-  const renderOptions = () => {
-    if (matchingOptions.length === 0) {
-      return <Item disabled>No matches found</Item>
-    }
-
-    return matchingOptions.map(option => (
-      <Item key={option} value={option}>
-        <span>{option}</span>
-      </Item>
-    ))
-  }
-
-  return (
-    <Dropdown
-      inputValue={inputValue}
-      selectedItem={selectedItem}
-      onSelect={item => setSelectedItem(item)}
-      onInputValueChange={inputValue => setInputValue(inputValue)}
-      downshiftProps={{ defaultHighlightedIndex: 0 }}
-    >
-      <GardenField>
-        <Autocomplete>
-          <span>{selectedItem}</span>
-        </Autocomplete>
-      </GardenField>
-      <Menu>{renderOptions()}</Menu>
-    </Dropdown>
-  )
-}
 
 const validate = values => {
   const errors = {}
@@ -260,11 +202,12 @@ const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popove
           </div>
           <div className={s.column}>
             <Field
+              label="Organization"
               name="organization.id"
               component={renderField}
-              Custom={AutoCompleteField}
-              label="Organization"
               dataSource={organizations}
+              searchField={'name'}
+              Custom={ReduxFormAutocomplete}
             />
           </div>
         </div>
