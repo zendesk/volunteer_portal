@@ -10,7 +10,13 @@ const LocationField = ({ input: { value, onChange } }) => (
     suggestsClassName={s.autocompleteList}
     initialValue={value}
     onChange={onChange}
-    onSuggestSelect={s => onChange(s.gmaps.formatted_address)}
+    onSuggestSelect={s => {
+      try {
+        onChange(s.gmaps.formatted_address)
+      } catch {
+        onChange('')
+      }
+    }}
   />
 )
 

@@ -106,8 +106,9 @@ const dateTimeSplitChange = (part, currentValue, newValue, callback) => {
   callback(timeStamp)
 }
 
-const OrganizationField = ({ organizations }) => {
+const OrganizationField = ({ organizations, input: { value, onChange } }) => {
   const organizationNames = organizations.map(organization => organization.name)
+  // Selected Item is the String
   const [selectedItem, setSelectedItem] = React.useState('')
   const [inputValue, setInputValue] = React.useState('')
   const [matchingOptions, setMatchingOptions] = React.useState(organizationNames)
@@ -150,8 +151,14 @@ const OrganizationField = ({ organizations }) => {
     <Dropdown
       inputValue={inputValue}
       selectedItem={selectedItem}
-      onSelect={item => setSelectedItem(item)}
-      onInputValueChange={inputValue => setInputValue(inputValue)}
+      onSelect={item => {
+        const selectedOrganization = organizations.find(organization => organization.name === item)
+        setSelectedItem(item)
+        onChange(selectedOrganization.id)
+      }}
+      onInputValueChange={inputValue => {
+        setInputValue(inputValue)
+      }}
       downshiftProps={{ defaultHighlightedIndex: 0 }}
     >
       <GardenField>
@@ -221,7 +228,6 @@ const EventForm = ({
         </Field>
       </div>
       <div className={s.column}>
-        {/* <OrganizationField organizations={organizations} /> */}
         <Field
           label="Organization"
           className={s.field}
