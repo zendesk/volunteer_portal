@@ -13,11 +13,11 @@ const TagField = ({ tags, input: { value, onChange }, maxTags }) => {
       selectedItems={selectedItems}
       onSelect={items => {
         if (selectedItems.length < maxTags) {
-          console.log(items, selectedItems)
           const selectedIds = tags.filter(tag => items.includes(tag.name)).map(tag => tag.id)
           onChange(selectedIds)
           setSelectedItems(items)
-        } else if (items.length < selectedItems.length) {
+        } else if (items.length <= selectedItems.length) {
+          onChange(items)
           setSelectedItems(items)
         }
       }}

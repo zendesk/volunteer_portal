@@ -15,7 +15,7 @@ const validate = values => {
   if (!values.description) {
     errors.description = 'is required'
   }
-  if (!values.tags || values.tags.length < 1) {
+  if (!values.tags || values.tags.ids.length < 1) {
     errors.tags = {}
     errors.tags.ids = 'is required'
   }
