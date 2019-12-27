@@ -84,6 +84,10 @@ class Admin extends Component {
               <span className={btnClass(routing, 'event-types')}>{t('volunteer_portal.admin.tab.eventtypes')}</span>
             </Link>
             <div className={s.navSpacer} />
+            <Link to="/portal/admin/tags">
+              <span className={btnClass(routing, 'tags')}>{t('volunteer_portal.admin.tab.tags')}</span>
+            </Link>
+            <div className={s.navSpacer} />
             <Link to="/portal/admin/offices">
               <span className={btnClass(routing, 'offices')}>{t('volunteer_portal.admin.tab.offices')}</span>
             </Link>
