@@ -14,6 +14,6 @@ module Types::Input
     argument :office, AssociationInputType, required: true
     argument :event_type, AssociationInputType, required: true
     argument :organization, AssociationInputType, required: true
-    argument :tags, AssociationInputType, required: true
+    argument :tags, AssociationArrayInputType, required: true
   end
 end

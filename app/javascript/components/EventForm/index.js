@@ -154,7 +154,7 @@ const EventForm = ({
       <Field
         label="Tags"
         className={s.field}
-        name="tags.id"
+        name="tags.ids"
         component={renderField}
         tags={tags}
         Custom={TagField}

@@ -45,6 +45,10 @@ class Event < ApplicationRecord
     end
   end
 
+  def assign_tags(tag)
+    tags << tag
+  end
+
   def remove_user!(user)
     users.delete(user)
     save

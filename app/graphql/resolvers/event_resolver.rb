@@ -24,6 +24,11 @@ module EventResolver
     def create(_, args, _context)
       event = Event.new
       update_fields(event, args[:input])
+      tag_ids = args[:input][:tags][:ids]
+      tag_ids.each { |tag_id|
+      tag = Tag.find(tag_id)
+        event.assign_tags(tag)
+      }
       event.save!
 
       event
