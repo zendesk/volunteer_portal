@@ -24,6 +24,8 @@ module EventResolver
     def create(_, args, _context)
       event = Event.new
       update_fields(event, args[:input])
+
+      # TODO: Handle deletes.
       tag_ids = args[:input][:tags][:ids]
       tag_ids.each { |tag_id|
       tag = Tag.find(tag_id)

@@ -48,4 +48,8 @@ query MyEventsQuery {
   organizations {
     ...OrganizationEntry
   }
+  tags {
+    id
+    name
+  }
 }

@@ -34,4 +34,9 @@ class IndividualEvent < ApplicationRecord
     else 'PENDING'
     end
   end
+
+  def assign_tags(tag)
+    tags << tag
+  end
+
 end

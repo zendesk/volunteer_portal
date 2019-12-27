@@ -10,5 +10,6 @@ module Types::Input
     argument :duration, Int, required: true, description: "Duration of event in minutes"
     argument :event_type_id, ID, required: true, description: "Type of event. ex: Mentoring"
     argument :organization_id, ID, required: true, description: "Organization with which the event is associated"
+    argument :tags, [ID], required: true, description: "Tags with which the event is associated"
   end
 end
