@@ -20,7 +20,6 @@ module Mutations
         individual_event.event_type_id = input.event_type_id
         individual_event.organization_id = input.organization_id
 
-        # TODO: Handle deletes.
         tag_ids = input[:tags]
         tag_ids.each { |tag_id|
         tag = Tag.find(tag_id)
