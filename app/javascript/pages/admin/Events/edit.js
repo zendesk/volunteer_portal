@@ -14,7 +14,7 @@ import UpdateEventMutation from './mutations/update.gql'
 import DestroySignupMutation from 'mutations/DestroySignupMutation.gql'
 
 const EditEvent = ({
-  data: { networkStatus, event, eventTypes, offices, organizations },
+  data: { networkStatus, event, eventTypes, tags, offices, organizations },
   updateEvent,
   destroySignup,
 }) =>
@@ -24,6 +24,7 @@ const EditEvent = ({
     <EventForm
       event={event}
       eventTypes={eventTypes}
+      tags={tags}
       offices={offices}
       users={event.users}
       destroySignup={user => destroySignup(event, user)}

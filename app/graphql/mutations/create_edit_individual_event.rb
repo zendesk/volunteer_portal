@@ -20,10 +20,10 @@ module Mutations
         individual_event.event_type_id = input.event_type_id
         individual_event.organization_id = input.organization_id
 
-        tag_ids = input[:tags]
-        tag_ids.each { |tag_id|
-        tag = Tag.find(tag_id)
-          individual_event.assign_tags(tag)
+        tags = input[:tags]
+        tags.each { |tag|
+        myTag = Tag.find(tag[:id])
+          individual_event.assign_tags(myTag)
         }
 
         individual_event.save!

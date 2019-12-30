@@ -87,9 +87,9 @@ const validate = values => {
     errors.eventType = {}
     errors.eventType.id = 'is required'
   }
-  if (!values.tags || values.tags.ids.length < 1) {
+  if (!values.tags || values.tags.length < 1) {
     errors.tags = {}
-    errors.tags.ids = 'is required'
+    errors.tags = 'is required'
   }
   if (!values.organization) {
     errors.organization = {}
@@ -164,7 +164,7 @@ const CreateEditDialog = ({ offices, eventTypes, tags, organizations, onCancel, 
           <Field
             label="Tags"
             className={s.field}
-            name="tags.ids"
+            name="tags"
             component={renderField}
             tags={tags}
             Custom={TagField}
@@ -330,13 +330,14 @@ const IndividualEvents = props => {
           <button
             className={`${s.btn} ${s.confirmBtn}`}
             onClick={() => {
-              const { description, office, date, duration, eventType, organization } = props.value
+              const { description, office, date, duration, eventType, tags, organization } = props.value
               togglePopover('editIndividualEvent', {
                 description,
                 office,
                 date,
                 duration,
                 eventType,
+                tags: tags,
                 organization,
                 isNew: true,
               })
@@ -500,7 +501,7 @@ const formDataToIndividualEventInput = data => ({
   duration: parseInt(data.duration, 10),
   eventTypeId: data.eventType.id,
   organizationId: data.organization.id,
-  tags: data.tags.ids,
+  tags: data.tags,
 })
 
 const individualEventInputToOptimisticResponse = (data, input) => {

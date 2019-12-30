@@ -25,10 +25,10 @@ module EventResolver
       event = Event.new
       update_fields(event, args[:input])
 
-      tag_ids = args[:input][:tags][:ids]
-      tag_ids.each { |tag_id|
-      tag = Tag.find(tag_id)
-        event.assign_tags(tag)
+      tags = args[:input][:tags]
+      tags.each { |tag|
+      myTag = Tag.find(tag[:id])
+        event.assign_tags(myTag)
       }
       event.save!
 
@@ -40,6 +40,13 @@ module EventResolver
 
       event = Event.find(input.id)
       update_fields(event, input)
+      
+      EventTag.where(:event => input.id).destroy_all
+      tags = args[:input][:tags]
+      tags.each { |tag|
+      myTag = Tag.find(tag[:id])
+        event.assign_tags(myTag)
+      }
       event.save!
 
       event

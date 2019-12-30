@@ -6,4 +6,8 @@ fragment EventEntry on Event {
   location
   capacity
   description
+  tags {
+    id
+    name
+  }
 }

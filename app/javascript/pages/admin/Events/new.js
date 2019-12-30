@@ -18,7 +18,7 @@ import Loading from 'components/LoadingIcon'
 const eventsSort = 'STARTS_AT_DESC'
 
 const transformToReduxFormState = event => {
-  const { title, description, capacity, location, startsAt, endsAt, eventType, office, organization } = event
+  const { title, description, capacity, location, startsAt, endsAt, eventType, tags, office, organization } = event
   return {
     title,
     description,
@@ -27,6 +27,7 @@ const transformToReduxFormState = event => {
     startsAt: new Date(startsAt),
     endsAt: new Date(endsAt),
     eventType: { id: eventType.id },
+    tags,
     office: { id: office.id },
     organization: { id: organization.id },
   }
@@ -36,17 +37,15 @@ const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, tags,
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
-    console.log(eventTypes, tags) || (
-      <EventForm
-        event={event && transformToReduxFormState(event)}
-        tags={tags}
-        eventTypes={eventTypes}
-        tags={tags}
-        offices={offices}
-        organizations={organizations}
-        onSubmit={createEvent}
-      />
-    )
+    <EventForm
+      event={event && transformToReduxFormState(event)}
+      tags={tags}
+      eventTypes={eventTypes}
+      tags={tags}
+      offices={offices}
+      organizations={organizations}
+      onSubmit={createEvent}
+    />
   )
 
 const buildOptimisticResponse = ({

@@ -1,20 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import '@zendeskgarden/react-tags/dist/styles.css'
 import { Tag, Close } from '@zendeskgarden/react-tags'
 
 import '@zendeskgarden/react-dropdowns/dist/styles.css'
-import { Dropdown, Menu, Item, Trigger, Multiselect, Field as GardenField } from '@zendeskgarden/react-dropdowns'
+import { Dropdown, Menu, Item, Multiselect, Field as GardenField } from '@zendeskgarden/react-dropdowns'
 
 const TagField = ({ tags, input: { value, onChange }, maxTags }) => {
-  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedItems, setSelectedItems] = useState(value ? value.map(tag => tag.name) : [])
+  useEffect(() => {
+    // Handles existing value and transforms to mutatable format
+    if (value) {
+      onChange(value.map(tag => ({ id: tag.id })))
+    }
+  }, [])
   return (
     <Dropdown
       selectedItems={selectedItems}
       onSelect={items => {
         if (selectedItems.length < maxTags) {
-          const selectedIds = tags.filter(tag => items.includes(tag.name)).map(tag => tag.id)
-          onChange(selectedIds)
+          const selected = tags.filter(tag => items.includes(tag.name))
+          const newValue = selected.map(selection => ({ id: selection.id }))
+          console.log(newValue)
+          onChange(newValue)
           setSelectedItems(items)
         } else if (items.length <= selectedItems.length) {
           onChange(items)
