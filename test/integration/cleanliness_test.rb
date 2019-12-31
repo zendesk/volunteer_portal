@@ -44,6 +44,8 @@ describe 'cleanliness' do
         app/graphql/mutations/update_event_type.rb
         app/graphql/mutations/update_event.rb
         app/graphql/mutations/update_user_office.rb
+        app/graphql/mutations/delete_tag.rb
+        app/graphql/mutations/create_tag.rb
         app/graphql/portal_schema.rb
         app/graphql/resolvers/office_resolver.rb
         app/graphql/resolvers/organization_resolver.rb
@@ -69,6 +71,7 @@ describe 'cleanliness' do
         app/graphql/types/input/edit_office_input_type.rb
         app/graphql/types/input/edit_organization_input_type.rb
         app/graphql/types/input/edit_user_input_type.rb
+        app/graphql/types/input/edit_tag_input_type.rb
         app/graphql/types/mutation_type.rb
         app/graphql/types/office_graph_type.rb
         app/graphql/types/organization_graph_type.rb
@@ -76,6 +79,7 @@ describe 'cleanliness' do
         app/graphql/types/role_graph_type.rb
         app/graphql/types/signup_graph_type.rb
         app/graphql/types/user_graph_type.rb
+        app/graphql/types/tag_graph_type.rb
         app/helpers/application_helper.rb
       ]
     )

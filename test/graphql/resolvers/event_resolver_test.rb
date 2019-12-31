@@ -6,6 +6,7 @@ describe EventResolver do
   let(:type) { event_types(:minimum) }
   let(:org) { organizations(:minimum) }
   let(:office) { offices(:remote) }
+  let(:tag) { tags(:minimum) }
 
   describe '.create' do
     it 'creates a new event' do
@@ -14,6 +15,7 @@ describe EventResolver do
         title: 'new',
         description: 'newd',
         event_type: stub(id: type.id),
+        tags: [id: tag.id],
         organization: stub(id: org.id),
         office: stub(id: office.id),
         location: 'newl',
@@ -42,6 +44,7 @@ describe EventResolver do
         title: 'new',
         description: 'newd',
         event_type: stub(id: type.id),
+        tags: [id: tag.id],
         organization: stub(id: org.id),
         office: stub(id: office.id),
         location: 'newl',
@@ -83,6 +86,7 @@ describe EventResolver do
         organization: organization,
         title: 'test1',
         type: event_type,
+        tags: [],
         starts_at: event1_start,
         ends_at: event1_start + 1.hour,
         capacity: 10,
@@ -95,6 +99,7 @@ describe EventResolver do
         organization: organization,
         title: 'test2',
         type: event_type,
+        tags: [],
         starts_at: event2_start,
         ends_at: event3_start + 1.hour,
         capacity: 10,
@@ -107,6 +112,7 @@ describe EventResolver do
         organization: organization,
         title: 'test3',
         type: event_type,
+        tags: [],
         starts_at: event3_start,
         ends_at: event3_start + 1.hour,
         capacity: 10,

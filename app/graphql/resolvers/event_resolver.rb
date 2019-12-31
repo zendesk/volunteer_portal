@@ -22,14 +22,10 @@ module EventResolver
     end
 
     def create(_, args, _context)
+      input = args[:input]
       event = Event.new
-      update_fields(event, args[:input])
-
-      tags = args[:input][:tags]
-      tags.each { |tag|
-      myTag = Tag.find(tag[:id])
-        event.assign_tags(myTag)
-      }
+      update_fields(event, input)
+      assign_tags(input.tags, event)
       event.save!
 
       event
@@ -42,11 +38,7 @@ module EventResolver
       update_fields(event, input)
       
       EventTag.where(:event => input.id).destroy_all
-      tags = args[:input][:tags]
-      tags.each { |tag|
-      myTag = Tag.find(tag[:id])
-        event.assign_tags(myTag)
-      }
+      assign_tags(input.tags, event)
       event.save!
 
       event
@@ -60,6 +52,13 @@ module EventResolver
     end
 
     private
+
+    def assign_tags(tags, event)
+      tags.each { |tag|
+      myTag = Tag.find(tag[:id])
+        event.assign_tag(myTag)
+      }
+    end
 
     def update_fields(event, input)
       event.title = input.title

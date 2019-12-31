@@ -41,7 +41,6 @@ const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, tags,
       event={event && transformToReduxFormState(event)}
       tags={tags}
       eventTypes={eventTypes}
-      tags={tags}
       offices={offices}
       organizations={organizations}
       onSubmit={createEvent}

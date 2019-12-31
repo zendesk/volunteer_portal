@@ -2,7 +2,8 @@ module TagResolver
   class << self
 
     def create(_, args, _context)
-      tag = Tag.new(args[:input].to_h)
+      tag = Tag.new
+      tag.name = args[:input].name
       tag.save!
 
       tag

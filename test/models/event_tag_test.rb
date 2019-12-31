@@ -1,4 +1,6 @@
-require 'test_helper'
+require_relative '../test_helper'
+
+SingleCov.covered!
 
 class EventTagTest < ActiveSupport::TestCase
   # test "the truth" do

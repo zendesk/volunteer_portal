@@ -1,5 +1,5 @@
 module Mutations
-  class DeleteTagType < BaseMutation
+  class DeleteTag < BaseMutation
     require_admin
 
     null true

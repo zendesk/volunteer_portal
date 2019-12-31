@@ -91,11 +91,3 @@ select.field {
 .muiTextField hr {
   display: none;
 }
-
-.tagg {
-  margin-bottom: 20px;
-}
-
-.tagg > label {
-  font-size: 13pt;
-}

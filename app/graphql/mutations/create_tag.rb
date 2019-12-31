@@ -1,5 +1,5 @@
 module Mutations
-  class CreateTagType < BaseMutation
+  class CreateTag < BaseMutation
     require_admin
 
     null true

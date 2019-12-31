@@ -1,4 +1,0 @@
-fragment TagEntry on EventTag {
-  id
-  title
-}

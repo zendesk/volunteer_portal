@@ -1,7 +1,11 @@
-require 'test_helper'
+require_relative '../test_helper'
 
-class TagTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+SingleCov.covered!
+
+describe Tag do
+  fixtures :tags
+  it 'creates a tag' do
+    tag = Tag.new name: 'Teg'
+    assert tag.save
+  end
 end

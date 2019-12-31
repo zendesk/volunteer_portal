@@ -45,7 +45,7 @@ class Event < ApplicationRecord
     end
   end
 
-  def assign_tags(tag)
+  def assign_tag(tag)
     tags << tag
   end
 
