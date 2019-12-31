@@ -9,10 +9,7 @@ module TagResolver
     end
 
     # def update(_, args, _context)
-    #   organization = Organization.find(args[:input].id)
-    #   organization.update!(args[:input].to_h.except(:id))
-
-    #   organization
+    # TODO
     # end
 
     def delete(_, args, _context)
