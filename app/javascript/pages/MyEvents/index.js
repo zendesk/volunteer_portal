@@ -161,15 +161,7 @@ const CreateEditDialog = ({ offices, eventTypes, tags, organizations, onCancel, 
         />
         <div className={s.formSpace} />
         <div className={s.inputGroup}>
-          <Field
-            label="Tags"
-            className={s.field}
-            name="tags"
-            component={renderField}
-            tags={tags}
-            Custom={TagField}
-            maxTags={1}
-          />
+          <Field label="Tags" className={s.field} name="tags" component={renderField} tags={tags} Custom={TagField} />
         </div>
         <div className={s.formSpace} />
         <div>

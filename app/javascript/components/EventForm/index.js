@@ -151,15 +151,7 @@ const EventForm = ({
       <Field label="Description" className={s.field} name="description" component={renderField} type="textarea" />
     </div>
     <div className={s.inputGroup}>
-      <Field
-        label="Tags"
-        className={s.field}
-        name="tags"
-        component={renderField}
-        tags={tags}
-        Custom={TagField}
-        maxTags={1}
-      />
+      <Field label="Tags" className={s.field} name="tags" component={renderField} tags={tags} Custom={TagField} />
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
