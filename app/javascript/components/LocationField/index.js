@@ -1,6 +1,8 @@
 import React from 'react'
 import Geosuggest from 'react-geosuggest'
 
+import R from 'ramda'
+
 import s from './main.css'
 
 const LocationField = ({ input: { value, onChange } }) => (
@@ -10,13 +12,10 @@ const LocationField = ({ input: { value, onChange } }) => (
     suggestsClassName={s.autocompleteList}
     initialValue={value}
     onChange={onChange}
-    onSuggestSelect={s => {
-      try {
-        onChange(s.gmaps.formatted_address)
-      } catch {
-        onChange('')
-      }
-    }}
+    onSuggestSelect={R.pipe(
+      R.pathOr('', ['gmaps', 'formatted_address']),
+      onChange
+    )}
   />
 )
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Dropdown, Menu, Item, Autocomplete, Field as GardenField } from '@zendeskgarden/react-dropdowns'
 import debounce from 'lodash.debounce'
+import R from 'ramda'
 
 const ReduxFormAutocomplete = ({ dataSource, input: { onChange }, searchField }) => {
   const searchData = dataSource.map(data => data[searchField])
@@ -50,7 +51,7 @@ const ReduxFormAutocomplete = ({ dataSource, input: { onChange }, searchField })
       onSelect={item => {
         const itemData = dataSource.find(data => data[searchField] === item)
         setSelectedItem(item)
-        onChange(itemData.id)
+        onChange(R.prop('id', itemData))
       }}
       onInputValueChange={inputValue => {
         setInputValue(inputValue)
