@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import moment from 'moment'
 
 import OfficeFilter from 'components/OfficeFilter'

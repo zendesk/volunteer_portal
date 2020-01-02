@@ -1,13 +1,14 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
 
 import { graphQLError, changeAdminOfficeFilter } from 'actions'
 
 import EventForm from './form'
+import { extractIdFromAssociations } from './utils'
 
 import EventsQuery from './queries/index.gql'
 import EventQuery from './queries/show.gql'
@@ -87,7 +88,7 @@ const withData = compose(
     props: ({ ownProps, mutate }) => ({
       createEvent: event =>
         mutate({
-          variables: { input: event },
+          variables: { input: extractIdFromAssociations(event) },
           optimisticResponse: buildOptimisticResponse(event),
           update: (proxy, { data: { createEvent } }) => {
             try {

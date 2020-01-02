@@ -1,4 +1,4 @@
-import R from 'ramda'
+import * as R from 'ramda'
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 import deepmerge from 'deepmerge'

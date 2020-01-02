@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import moment from 'moment-timezone'
 
 import UserForm from 'components/UserForm'
@@ -43,6 +43,9 @@ const mapStateToProps = ({ graphQLErrors }, { user, offices }) => {
   return R.isNil(user) ? props : R.merge({ initialValues: user }, props)
 }
 
-const withActions = connect(mapStateToProps, {})
+const withActions = connect(
+  mapStateToProps,
+  {}
+)
 
 export default withActions(withReduxForm(UserFormPage))

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactTable from 'react-table'
-import R from 'ramda'
+import * as R from 'ramda'
 import DatePicker from 'material-ui/DatePicker'
 import moment from 'moment'
 import { defaultFilterMethod } from 'lib/utils'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import moment from 'moment-timezone'
-import R from 'ramda'
+import * as R from 'ramda'
 import AutoComplete from 'material-ui/AutoComplete'
 
 import Callout from 'components/Callout'
@@ -57,7 +57,16 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions, disab
 }
 
 const renderField = props => {
-  const { input, label, type, Custom, meta: { touched, error, warning }, className, required, disabled } = props
+  const {
+    input,
+    label,
+    type,
+    Custom,
+    meta: { touched, error, warning },
+    className,
+    required,
+    disabled,
+  } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children, disabled })
   return (
     <div>

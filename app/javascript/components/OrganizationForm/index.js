@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import Callout from 'components/Callout'
 import LocationField from 'components/LocationField'
@@ -39,7 +39,15 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
 }
 
 const renderField = props => {
-  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
+  const {
+    input,
+    label,
+    type,
+    Custom,
+    meta: { touched, error, warning },
+    className,
+    required,
+  } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
   return (
     <div>

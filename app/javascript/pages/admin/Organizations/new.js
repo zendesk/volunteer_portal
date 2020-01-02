@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import { graphQLError } from 'actions'
 
