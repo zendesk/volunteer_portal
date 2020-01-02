@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
 import { NetworkStatus } from 'apollo-client'
@@ -7,17 +8,13 @@ import ReactTable from 'react-table'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
 import { defaultFilterMethod } from 'lib/utils'
-
 import { graphQLError, togglePopover } from 'actions'
+import 'style-loader!css-loader!react-table/react-table.css'
 
 import Loading from 'components/LoadingIcon'
-
 import TagsQuery from './queries/index.gql'
 import DeleteTagMutation from './mutations/delete.gql'
-
 import s from './main.css'
-
-import 'style-loader!css-loader!react-table/react-table.css'
 
 const actionLinks = (tag, togglePopover) => (
   <div className={s.actionColumn}>

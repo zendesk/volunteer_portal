@@ -329,7 +329,7 @@ const IndividualEvents = props => {
                 date,
                 duration,
                 eventType,
-                tags: tags,
+                tags,
                 organization,
                 isNew: true,
               })
