@@ -9,7 +9,6 @@ import DatePicker from 'material-ui/DatePicker'
 import Dialog from 'material-ui/Dialog'
 import ActionDone from 'material-ui/svg-icons/action/done'
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
-import AutoComplete from 'material-ui/AutoComplete'
 import AVNotInterested from 'material-ui/svg-icons/av/not-interested'
 import ReactTable from 'react-table'
 
@@ -18,6 +17,7 @@ import { togglePopover } from 'actions'
 import Callout from 'components/Callout'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
+import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 
 import MyEventsQuery from './query.gql'
 import CreateEditIndividualEventMutation from 'mutations/CreateEditIndividualEventMutation.gql'
@@ -63,24 +63,6 @@ const DateField = ({ input: { value, onChange }, label, type, meta }) => (
       onChange={(_, date) => onChange(date)}
       defaultDate={value ? new Date(value || meta.initial) : undefined}
       autoOk
-    />
-  </div>
-)
-
-const AutoCompleteField = ({ input: { value, onChange }, label, type, meta, dataSource }) => (
-  <div>
-    <AutoComplete
-      id="organization"
-      searchText={value && R.find(item => item.id === value)(dataSource).name}
-      dataSource={dataSource}
-      dataSourceConfig={{ text: 'name', value: 'id' }}
-      filter={AutoComplete.fuzzyFilter}
-      onNewRequest={(chosen, _i) => onChange(chosen.id)}
-      className={s.muiTextField}
-      textFieldStyle={styles.muiTextField}
-      menuStyle={{ overflowY: 'scroll', height: 200 }}
-      openOnFocus
-      fullWidth
     />
   </div>
 )
@@ -220,11 +202,12 @@ const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popove
           </div>
           <div className={s.column}>
             <Field
+              label="Organization"
               name="organization.id"
               component={renderField}
-              Custom={AutoCompleteField}
-              label="Organization"
               dataSource={organizations}
+              searchField={'name'}
+              Custom={ReduxFormAutocomplete}
             />
           </div>
         </div>

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import R from 'ramda'
-import AutoComplete from 'material-ui/AutoComplete'
+
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
 import UserList from 'components/UserList'
 import LocationField from 'components/LocationField'
+import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 
 import s from './main.css'
 
@@ -63,7 +64,15 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
 const renderError = error => <span className={s.fieldError}>{error}</span>
 
 const renderField = props => {
-  const { input, label, type, Custom, meta: { touched, error, warning }, className, required } = props
+  const {
+    input,
+    label,
+    type,
+    Custom,
+    meta: { touched, error, warning },
+    className,
+    required,
+  } = props
   const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
   return (
     <div>
@@ -95,22 +104,6 @@ const dateTimeSplitChange = (part, currentValue, newValue, callback) => {
 
   callback(timeStamp)
 }
-
-const OrganizationField = ({ organizations, input: { value, onChange } }) => (
-  <AutoComplete
-    id="organization"
-    searchText={R.isNil(value) || R.isEmpty(value) ? value : R.find(o => o.id === value, organizations).name}
-    dataSource={organizations}
-    dataSourceConfig={{ text: 'name', value: 'id' }}
-    filter={AutoComplete.fuzzyFilter}
-    onNewRequest={(chosen, _i) => onChange(chosen.id)}
-    className={s.muiTextField}
-    textFieldStyle={styles.muiTextField}
-    menuStyle={{ overflowY: 'scroll', height: 200 }}
-    openOnFocus
-    fullWidth
-  />
-)
 
 const DateField = ({ input: { value, onChange } }) => (
   <DatePicker
@@ -157,7 +150,7 @@ const EventForm = ({
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
         <Field label="Event Type" className={s.field} name="eventType.id" component={renderField} type="select">
-          <option value="-" key="-" />
+          <option />
           {R.map(
             eventType => (
               <option value={eventType.id} key={`eventType-${eventType.id}`}>
@@ -174,15 +167,16 @@ const EventForm = ({
           className={s.field}
           name="organization.id"
           component={renderField}
-          organizations={organizations}
-          Custom={OrganizationField}
+          dataSource={organizations}
+          searchField={'name'}
+          Custom={ReduxFormAutocomplete}
         />
       </div>
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
         <Field label="Office" className={s.field} name="office.id" component={renderField} type="select">
-          <option value="-" key="-" />
+          <option />
           {R.map(
             office => (
               <option value={office.id} key={`office-${office.id}`}>
