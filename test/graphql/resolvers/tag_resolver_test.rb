@@ -6,7 +6,7 @@ describe TagResolver do
   describe '.create' do
     it 'creates a new tag' do
       input = stub(
-        name: 'Education',
+        name: 'Education'
       )
 
       TagResolver.create(nil, { input: input }, nil)
@@ -29,5 +29,4 @@ describe TagResolver do
       assert_nil Tag.find_by(id: id)
     end
   end
-
 end

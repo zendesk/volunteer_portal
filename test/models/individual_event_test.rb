@@ -26,7 +26,7 @@ describe IndividualEvent do
     assert event.save, event.errors.full_messages
   end
 
-    describe '.assign_tags' do
+  describe '.assign_tags' do
     it 'assigns a new tag' do
       event = IndividualEvent.new(
         description: 'グループ',

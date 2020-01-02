@@ -8,7 +8,7 @@ module Types
     global_id_field :gid
 
     #### Properties
-    field :id, ID,     null: false
+    field :id, ID, null: false
     field :name, String, null: false
   end
 end

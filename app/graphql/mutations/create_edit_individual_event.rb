@@ -21,10 +21,10 @@ module Mutations
         individual_event.organization_id = input.organization_id
 
         tags = input[:tags]
-        tags.each { |tag|
-        myTag = Tag.find(tag[:id])
-          individual_event.assign_tags(myTag)
-        }
+        tags.each do |tag|
+          my_tag = Tag.find(tag[:id])
+          individual_event.assign_tags(my_tag)
+        end
 
         individual_event.save!
       end
