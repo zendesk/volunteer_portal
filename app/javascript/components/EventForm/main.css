@@ -40,7 +40,7 @@
 
 select.field {
   min-width: 312px; /* border+padding+width+padding+border from .field */
-  height: 30px;
+  height: 40px;
   width: 100%;
 }
 

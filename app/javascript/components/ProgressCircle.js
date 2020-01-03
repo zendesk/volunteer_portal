@@ -46,7 +46,7 @@ const styles = {
 }
 
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-  const angleInRadians = (angleInDegrees + 90) * Math.PI / 180.0
+  const angleInRadians = ((angleInDegrees + 90) * Math.PI) / 180.0
 
   return {
     x: centerX + radius * Math.cos(angleInRadians),
@@ -67,7 +67,7 @@ function describeArc(x, y, radius, startAngle, endAngle) {
 
 const ProgressCircle = ({ percent, label, sublabel, stroke }) => {
   // TODO: fix this ugly ass hack to get a full color ring
-  const endAngle = R.clamp(0, 359.999, 360 * percent / 100)
+  const endAngle = R.clamp(0, 359.999, (360 * percent) / 100)
 
   return (
     <div style={styles.circularProgress}>
@@ -82,7 +82,5 @@ const ProgressCircle = ({ percent, label, sublabel, stroke }) => {
     </div>
   )
 }
-
-ProgressCircle.propTypes = {}
 
 export default ProgressCircle
