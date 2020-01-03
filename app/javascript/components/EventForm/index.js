@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'

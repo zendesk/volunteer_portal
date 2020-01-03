@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
-import R from 'ramda'
+import * as R from 'ramda'
 import ReactTable from 'react-table'
 
 import Loading from 'components/LoadingIcon'

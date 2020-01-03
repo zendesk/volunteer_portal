@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import { Link } from 'react-router'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 

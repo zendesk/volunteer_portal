@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import R from 'ramda'
+import * as R from 'ramda'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import moment from 'moment'
 import Paper from 'material-ui/Paper'
 import { graphql, compose } from 'react-apollo'

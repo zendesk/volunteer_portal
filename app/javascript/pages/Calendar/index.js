@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import moment from 'moment'
 
 import { togglePopover, changeShowFilter, changeEventFilter, changeOfficeFilter, calendarDateChange } from 'actions'
@@ -71,7 +71,11 @@ const EventPopoverForData = props => {
 }
 
 const connectEventPopoverToData = graphql(EventQuery, {
-  options: ({ popoverState: { data: { id } } }) => ({
+  options: ({
+    popoverState: {
+      data: { id },
+    },
+  }) => ({
     variables: {
       id: id,
     },
@@ -178,7 +182,11 @@ const updateEventsCache = (cache, eventChange, officeId) => {
 
 const withData = compose(
   graphql(EventsQuery, {
-    options: ({ filters: { officeFilter: { value: officeId } } }) => ({
+    options: ({
+      filters: {
+        officeFilter: { value: officeId },
+      },
+    }) => ({
       variables: {
         after: momentAfter,
         before: momentBefore,
@@ -201,7 +209,14 @@ const withData = compose(
               }),
             },
           },
-          update: (cache, { data: { createSignup: { event: eventChange } } }) => {
+          update: (
+            cache,
+            {
+              data: {
+                createSignup: { event: eventChange },
+              },
+            }
+          ) => {
             updateEventsCache(cache, eventChange, ownProps.filters.officeFilter.value)
           },
         }),
@@ -221,7 +236,14 @@ const withData = compose(
               }),
             },
           },
-          update: (cache, { data: { destroySignup: { event: eventChange } } }) => {
+          update: (
+            cache,
+            {
+              data: {
+                destroySignup: { event: eventChange },
+              },
+            }
+          ) => {
             updateEventsCache(cache, eventChange, ownProps.filters.officeFilter.value)
           },
         }),
@@ -229,12 +251,15 @@ const withData = compose(
   })
 )
 
-const withActions = connect(mapStateToProps, {
-  togglePopover,
-  changeShowFilter,
-  changeEventFilter,
-  changeOfficeFilter,
-  calendarDateChange,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    togglePopover,
+    changeShowFilter,
+    changeEventFilter,
+    changeOfficeFilter,
+    calendarDateChange,
+  }
+)
 
 export default withActions(withData(CalendarPage))

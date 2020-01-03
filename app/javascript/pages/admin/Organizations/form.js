@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import moment from 'moment-timezone'
 
 import OrganizationForm from 'components/OrganizationForm'
@@ -38,6 +38,9 @@ const mapStateToProps = ({ graphQLErrors }, { organization }) => {
   return R.isNil(organization) ? props : R.merge({ initialValues: organization }, props)
 }
 
-const withActions = connect(mapStateToProps, {})
+const withActions = connect(
+  mapStateToProps,
+  {}
+)
 
 export default withActions(withReduxForm(OrganizationFormPage))

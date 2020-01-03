@@ -1,6 +1,6 @@
 import React from 'react'
 
-import R from 'ramda'
+import * as R from 'ramda'
 import { navigate } from 'react-big-calendar/lib/utils/constants'
 import { withNamespaces } from 'react-i18next'
 

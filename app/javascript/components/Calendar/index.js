@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import R from 'ramda'
+import * as R from 'ramda'
 import BigCalendar from 'react-big-calendar'
 
 import Event from 'components/Event'

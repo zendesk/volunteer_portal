@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import R from 'ramda'
+import * as R from 'ramda'
 import LinearProgress from 'material-ui/LinearProgress'
 
 import s from './main.css'

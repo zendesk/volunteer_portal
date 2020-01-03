@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import EventForm from 'components/EventForm'
 import moment from 'moment'

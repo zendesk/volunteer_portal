@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'

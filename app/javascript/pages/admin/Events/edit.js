@@ -2,12 +2,13 @@ import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import { graphQLError } from 'actions'
 
 import EventForm from './form'
 import Loading from 'components/LoadingIcon'
+import { extractIdFromAssociations } from './utils'
 
 import EventQuery from './queries/show.gql'
 import UpdateEventMutation from './mutations/update.gql'
@@ -40,15 +41,6 @@ const buildOptimisticResponse = event => ({
   },
 })
 
-const extractIdFromAssociations = values =>
-  R.map(value => {
-    if (R.type(value) === 'Object' && R.has('id', value)) {
-      return R.pick(['id'], value)
-    } else {
-      return value
-    }
-  }, values)
-
 const withData = compose(
   graphql(EventQuery, {
     options: ({ params: { id } }) => ({
@@ -57,8 +49,8 @@ const withData = compose(
   }),
   graphql(UpdateEventMutation, {
     props: ({ ownProps, mutate }) => ({
-      updateEvent: event =>
-        mutate({
+      updateEvent: event => {
+        return mutate({
           variables: { input: R.omit(['__typename', 'users'], extractIdFromAssociations(event)) },
           optimisticResponse: buildOptimisticResponse(event),
         })
@@ -67,7 +59,8 @@ const withData = compose(
           })
           .catch(something => {
             ownProps.graphQLError('event', something.graphQLErrors)
-          }),
+          })
+      },
     }),
   }),
   graphql(DestroySignupMutation, {

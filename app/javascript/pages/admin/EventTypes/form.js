@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import R from 'ramda'
+import * as R from 'ramda'
 import moment from 'moment-timezone'
 
 import EventTypeForm from 'components/EventTypeForm'
@@ -34,6 +34,9 @@ const mapStateToProps = ({ graphQLErrors }, { eventType }) => {
   return R.isNil(eventType) ? props : R.merge({ initialValues: eventType }, props)
 }
 
-const withActions = connect(mapStateToProps, {})
+const withActions = connect(
+  mapStateToProps,
+  {}
+)
 
 export default withActions(withReduxForm(EventTypeFormPage))
