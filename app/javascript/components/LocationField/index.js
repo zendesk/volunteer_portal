@@ -1,7 +1,7 @@
 import React from 'react'
 import Geosuggest from 'react-geosuggest'
 
-import R from 'ramda'
+import * as R from 'ramda'
 
 import s from './main.css'
 
