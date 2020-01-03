@@ -49,8 +49,8 @@ const withData = compose(
   }),
   graphql(UpdateEventMutation, {
     props: ({ ownProps, mutate }) => ({
-      updateEvent: event => {
-        return mutate({
+      updateEvent: event =>
+        mutate({
           variables: { input: R.omit(['__typename', 'users'], extractIdFromAssociations(event)) },
           optimisticResponse: buildOptimisticResponse(event),
         })
@@ -59,8 +59,7 @@ const withData = compose(
           })
           .catch(something => {
             ownProps.graphQLError('event', something.graphQLErrors)
-          })
-      },
+          }),
     }),
   }),
   graphql(DestroySignupMutation, {
