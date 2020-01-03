@@ -6,7 +6,7 @@ import R from 'ramda'
 import { ThemeProvider } from '@zendeskgarden/react-theming'
 import '@zendeskgarden/react-dropdowns/dist/styles.css'
 
-const ReduxFormAutocomplete = ({ dataSource, input: { value, onChange }, searchField }) => {
+const ReduxFormAutocomplete = ({ dataSource, input: { value, onChange }, searchField, maxHeight }) => {
   const [inputValue, setInputValue] = React.useState('')
   const [matchingOptions, setMatchingOptions] = React.useState(dataSource)
 
@@ -64,7 +64,7 @@ const ReduxFormAutocomplete = ({ dataSource, input: { value, onChange }, searchF
             <span>{findDataSourceName(value)}</span>
           </Autocomplete>
         </GardenField>
-        <Menu>{renderOptions()}</Menu>
+        <Menu maxHeight={maxHeight}>{renderOptions()}</Menu>
       </Dropdown>
     </ThemeProvider>
   )

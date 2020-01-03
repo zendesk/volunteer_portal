@@ -207,6 +207,7 @@ const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popove
               component={renderField}
               dataSource={organizations}
               searchField={'name'}
+              maxHeight="200px"
               Custom={ReduxFormAutocomplete}
             />
           </div>
