@@ -8,7 +8,6 @@ import { graphQLError } from 'actions'
 
 import EventForm from './form'
 import Loading from 'components/LoadingIcon'
-import { extractIdFromAssociations } from '../../../lib/utils'
 
 import EventQuery from './queries/show.gql'
 import UpdateEventMutation from './mutations/update.gql'
@@ -40,6 +39,15 @@ const buildOptimisticResponse = event => ({
     ...event,
   },
 })
+
+const extractIdFromAssociations = values =>
+  R.map(value => {
+    if (R.type(value) === 'Object' && R.has('id', value)) {
+      return R.pick(['id'], value)
+    } else {
+      return value
+    }
+  }, values)
 
 const withData = compose(
   graphql(EventQuery, {
