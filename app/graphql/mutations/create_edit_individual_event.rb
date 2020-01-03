@@ -20,6 +20,7 @@ module Mutations
         individual_event.event_type_id = input.event_type_id
         individual_event.organization_id = input.organization_id
 
+        IndividualEventTag.where(individual_event: input.id).destroy_all
         tags = input[:tags]
         tags.each do |tag|
           my_tag = Tag.find(tag[:id])

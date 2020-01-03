@@ -8,6 +8,7 @@ import { graphQLError } from 'actions'
 
 import EventForm from './form'
 import Loading from 'components/LoadingIcon'
+import { extractIdFromAssociations } from './utils'
 
 import EventQuery from './queries/show.gql'
 import UpdateEventMutation from './mutations/update.gql'

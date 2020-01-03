@@ -493,7 +493,7 @@ const formDataToIndividualEventInput = data => ({
   duration: parseInt(data.duration, 10),
   eventTypeId: data.eventType.id,
   organizationId: data.organization.id,
-  tags: data.tags,
+  tags: R.map(R.pick(['id']), data.tags),
 })
 
 const individualEventInputToOptimisticResponse = (data, input) => {
