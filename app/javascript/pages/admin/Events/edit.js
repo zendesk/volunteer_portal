@@ -42,15 +42,6 @@ const buildOptimisticResponse = event => ({
   },
 })
 
-const extractIdFromAssociations = values =>
-  R.map(value => {
-    if (R.type(value) === 'Object' && R.has('id', value)) {
-      return R.pick(['id'], value)
-    } else {
-      return value
-    }
-  }, values)
-
 const withData = compose(
   graphql(EventQuery, {
     options: ({ params: { id } }) => ({
