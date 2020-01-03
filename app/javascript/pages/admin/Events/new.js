@@ -8,7 +8,6 @@ import moment from 'moment'
 import { graphQLError, changeAdminOfficeFilter } from 'actions'
 
 import EventForm from './form'
-import { extractIdFromAssociations } from '../../../lib/utils'
 
 import EventsQuery from './queries/index.gql'
 import EventQuery from './queries/show.gql'
@@ -88,7 +87,7 @@ const withData = compose(
     props: ({ ownProps, mutate }) => ({
       createEvent: event =>
         mutate({
-          variables: { input: extractIdFromAssociations(event) },
+          variables: { input: event },
           optimisticResponse: buildOptimisticResponse(event),
           update: (proxy, { data: { createEvent } }) => {
             try {
