@@ -8,7 +8,7 @@ import moment from 'moment'
 import { graphQLError, changeAdminOfficeFilter } from 'actions'
 
 import EventForm from './form'
-import { extractIdFromAssociations } from './utils'
+import { extractIdFromAssociations } from '../../../lib/utils'
 
 import EventsQuery from './queries/index.gql'
 import EventQuery from './queries/show.gql'
