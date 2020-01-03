@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dropdown, Menu, Item, Autocomplete, Field as GardenField } from '@zendeskgarden/react-dropdowns'
 import debounce from 'lodash.debounce'
-import R from 'ramda'
+import * as R from 'ramda'
 
 import { ThemeProvider } from '@zendeskgarden/react-theming'
 import '@zendeskgarden/react-dropdowns/dist/styles.css'
