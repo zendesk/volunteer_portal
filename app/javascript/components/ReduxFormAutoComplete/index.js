@@ -3,24 +3,24 @@ import { Dropdown, Menu, Item, Autocomplete, Field as GardenField } from '@zende
 import debounce from 'lodash.debounce'
 import R from 'ramda'
 
-const ReduxFormAutocomplete = ({ dataSource, input: { onChange }, searchField }) => {
-  const searchData = dataSource.map(data => data[searchField])
-  // Selected Item is the String
-  const [selectedItem, setSelectedItem] = React.useState('')
+import { ThemeProvider } from '@zendeskgarden/react-theming'
+import '@zendeskgarden/react-dropdowns/dist/styles.css'
+
+const ReduxFormAutocomplete = ({ dataSource, input: { value, onChange }, searchField }) => {
   const [inputValue, setInputValue] = React.useState('')
-  const [matchingOptions, setMatchingOptions] = React.useState(searchData)
+  const [matchingOptions, setMatchingOptions] = React.useState(dataSource)
 
   /**
    * Debounce filtering
    */
   const filterMatchingOptionsRef = React.useRef(
-    debounce(value => {
-      const matchingOptions = searchData.filter(data => {
+    debounce(textInput => {
+      const matchingOptions = dataSource.filter(data => {
         return (
-          data
+          data[searchField]
             .trim()
             .toLowerCase()
-            .indexOf(value.trim().toLowerCase()) !== -1
+            .indexOf(textInput.trim().toLowerCase()) !== -1
         )
       })
 
@@ -37,34 +37,36 @@ const ReduxFormAutocomplete = ({ dataSource, input: { onChange }, searchField })
       return <Item disabled>No matches found</Item>
     }
 
-    return matchingOptions.map(option => (
-      <Item key={option} value={option}>
-        <span>{option}</span>
+    return matchingOptions.map(({ id, name }, index) => (
+      <Item key={index} value={id}>
+        <span>{name}</span>
       </Item>
     ))
   }
 
+  const findDataSourceName = value =>
+    R.pipe(
+      R.find(R.propEq('id', value)),
+      R.propOr('', 'name')
+    )(dataSource)
+
   return (
-    <Dropdown
-      inputValue={inputValue}
-      selectedItem={selectedItem}
-      onSelect={item => {
-        const itemData = dataSource.find(data => data[searchField] === item)
-        setSelectedItem(item)
-        onChange(R.prop('id', itemData))
-      }}
-      onInputValueChange={inputValue => {
-        setInputValue(inputValue)
-      }}
-      downshiftProps={{ defaultHighlightedIndex: 0 }}
-    >
-      <GardenField>
-        <Autocomplete>
-          <span>{selectedItem}</span>
-        </Autocomplete>
-      </GardenField>
-      <Menu>{renderOptions()}</Menu>
-    </Dropdown>
+    <ThemeProvider>
+      <Dropdown
+        inputValue={inputValue}
+        selectedItem={value}
+        onSelect={onChange}
+        onInputValueChange={setInputValue}
+        downshiftProps={{ defaultHighlightedIndex: 0, itemToString: findDataSourceName }}
+      >
+        <GardenField>
+          <Autocomplete>
+            <span>{findDataSourceName(value)}</span>
+          </Autocomplete>
+        </GardenField>
+        <Menu>{renderOptions()}</Menu>
+      </Dropdown>
+    </ThemeProvider>
   )
 }
 
