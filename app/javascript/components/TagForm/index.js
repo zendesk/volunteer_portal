@@ -61,7 +61,7 @@ const isNoErrors = errors => R.isNil(errors) || R.isEmpty(errors)
 
 const TagForm = ({ handleSubmit, disableSubmit, errors }) => (
   <form className={s.form} onSubmit={handleSubmit}>
-    {isNoErrors(errors) && <Callout type="error" message={formatGraphQLErrors(errors)} />}
+    {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
       <Field label="Name" className={s.field} name="name" component={renderField} type="text" />
     </div>

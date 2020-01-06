@@ -505,7 +505,7 @@ const individualEventInputToOptimisticResponse = (data, input) => {
     date: moment(input.date),
     duration: input.duration,
     eventType: R.find(et => et.id === input.eventTypeId, data.eventTypes),
-    tags: R.filter(tag => R.find(inputTag => inputTag.id === tag.id, input.tags), data.tags),
+    tags: R.filter(tag => R.includes(R.pick(['id'], tag), input.tags), data.tags),
     organization: R.find(org => org.id === input.organizationId, data.organizations),
     status: 'PENDING',
   }
