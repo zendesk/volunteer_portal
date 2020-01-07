@@ -129,6 +129,12 @@ parts:
       screenshot: "https://drive.google.com/open?id=1p5l0rZo-2pFQITAXFMy45CFcc5gV0GFK"
       wip: true
   - translation:
+      key: "volunteer_portal.admin.tab.tags"
+      title: "Clickable tab that displays the administrator Tags View"
+      value: "Tags"
+      screenshot: ""
+      wip: true
+  - translation:
       key: "volunteer_portal.admin.tab.offices"
       title: "Clickable tab that displays the administrator Offices View"
       value: "Offices"

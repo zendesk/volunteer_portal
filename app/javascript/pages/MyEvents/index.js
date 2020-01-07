@@ -18,6 +18,7 @@ import Callout from 'components/Callout'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
+import TagField from 'components/TagField'
 
 import MyEventsQuery from './query.gql'
 import CreateEditIndividualEventMutation from 'mutations/CreateEditIndividualEventMutation.gql'
@@ -86,6 +87,10 @@ const validate = values => {
     errors.eventType = {}
     errors.eventType.id = 'is required'
   }
+  if (!values.tags || values.tags.length < 1) {
+    errors.tags = {}
+    errors.tags = 'is required'
+  }
   if (!values.organization) {
     errors.organization = {}
     errors.organization.id = 'is required'
@@ -132,7 +137,7 @@ const renderField = props => {
   )
 }
 
-const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popover, onSubmit }) => {
+const CreateEditDialog = ({ offices, eventTypes, tags, organizations, onCancel, popover, onSubmit }) => {
   const event = popover.data
   const isNewEvent = event.isNew
   return (
@@ -154,6 +159,10 @@ const CreateEditDialog = ({ offices, eventTypes, organizations, onCancel, popove
           label="Description"
           className={s.input}
         />
+        <div className={s.formSpace} />
+        <div className={s.inputGroup}>
+          <Field label="Tags" className={s.field} name="tags" component={renderField} tags={tags} Custom={TagField} />
+        </div>
         <div className={s.formSpace} />
         <div>
           <Field
@@ -254,7 +263,7 @@ const DestroyDialog = ({ onDelete, onCancel, popover }) => (
 const IndividualEvents = props => {
   const { data, popover, togglePopover, handleSubmit, createEditIndividualEvent, deleteIndividualEvent } = props
 
-  const { currentUser, offices, eventTypes, organizations } = data
+  const { currentUser, offices, eventTypes, organizations, tags } = data
 
   const noIndividualEventsMessage = (
     <p className={s.noEventsMessage}>
@@ -313,13 +322,14 @@ const IndividualEvents = props => {
           <button
             className={`${s.btn} ${s.confirmBtn}`}
             onClick={() => {
-              const { description, office, date, duration, eventType, organization } = props.value
+              const { description, office, date, duration, eventType, tags, organization } = props.value
               togglePopover('editIndividualEvent', {
                 description,
                 office,
                 date,
                 duration,
                 eventType,
+                tags,
                 organization,
                 isNew: true,
               })
@@ -366,6 +376,7 @@ const IndividualEvents = props => {
         <CreateEditDialog
           offices={offices}
           eventTypes={eventTypes}
+          tags={tags}
           organizations={organizations}
           popover={popover}
           onSubmit={handleSubmit(createEditIndividualEvent)}
@@ -482,6 +493,7 @@ const formDataToIndividualEventInput = data => ({
   duration: parseInt(data.duration, 10),
   eventTypeId: data.eventType.id,
   organizationId: data.organization.id,
+  tags: R.map(R.pick(['id']), data.tags),
 })
 
 const individualEventInputToOptimisticResponse = (data, input) => {
@@ -493,6 +505,7 @@ const individualEventInputToOptimisticResponse = (data, input) => {
     date: moment(input.date),
     duration: input.duration,
     eventType: R.find(et => et.id === input.eventTypeId, data.eventTypes),
+    tags: R.filter(tag => R.includes(R.pick(['id'], tag), input.tags), data.tags),
     organization: R.find(org => org.id === input.organizationId, data.organizations),
     status: 'PENDING',
   }

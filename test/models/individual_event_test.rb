@@ -9,12 +9,14 @@ describe IndividualEvent do
   let(:type) { event_types(:individual) }
   let(:org) { organizations(:minimum) }
   let(:user) { users(:admin) }
+  let(:tag) { tags(:minimum) }
 
   it 'creates individual event' do
     event = IndividualEvent.new(
       description: 'グループ',
       office: office,
       event_type: type,
+      tags: [tag],
       organization: org,
       user: user,
       date: Time.zone.today,
@@ -22,6 +24,23 @@ describe IndividualEvent do
     )
 
     assert event.save, event.errors.full_messages
+  end
+
+  describe '.assign_tags' do
+    it 'assigns a new tag' do
+      event = IndividualEvent.new(
+        description: 'グループ',
+        office: office,
+        event_type: type,
+        tags: [],
+        organization: org,
+        user: user,
+        date: Time.zone.today,
+        duration: 60
+      )
+      event.assign_tags(tag)
+      assert_equal 'Minimum Tag', event.tags.last.name
+    end
   end
 
   describe '#to_status_enum' do

@@ -9,6 +9,8 @@ class Event < ApplicationRecord
   # this custom association is to reduce data loaded and memory used when fetching users for an event
   has_many :signups_for_through, -> { select(:event_id, :user_id) }, class_name: 'Signup', inverse_of: :event
   has_many :users, through: :signups_for_through
+  has_many :event_tags, dependent: :destroy
+  has_many :tags, through: :event_tags
 
   belongs_to :organization
   belongs_to :event_type
@@ -41,6 +43,10 @@ class Event < ApplicationRecord
     else
       errors.add(:users, "Failed to signup user")
     end
+  end
+
+  def assign_tag(tag)
+    tags << tag
   end
 
   def remove_user!(user)

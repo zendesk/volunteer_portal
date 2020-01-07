@@ -10,6 +10,9 @@ class IndividualEvent < ApplicationRecord
   belongs_to :event_type
   belongs_to :office
 
+  has_many :individual_event_tags, dependent: :destroy
+  has_many :tags, through: :individual_event_tags
+
   validates :user, :organization, :event_type, :office,
             :description, :date, presence: true
   validates :duration, numericality: {
@@ -30,5 +33,9 @@ class IndividualEvent < ApplicationRecord
     when APPROVED then 'APPROVED'
     else 'PENDING'
     end
+  end
+
+  def assign_tags(tag)
+    tags << tag
   end
 end

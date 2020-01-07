@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190417233035) do
+ActiveRecord::Schema.define(version: 20191218033609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20190417233035) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "event_tags", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_tags_on_event_id"
+    t.index ["tag_id"], name: "index_event_tags_on_tag_id"
   end
 
   create_table "event_types", id: :serial, force: :cascade do |t|
@@ -53,6 +62,15 @@ ActiveRecord::Schema.define(version: 20190417233035) do
     t.integer "event_id"
     t.integer "volunteer_id"
     t.index ["event_id", "volunteer_id"], name: "by_event_and_volunteer", unique: true
+  end
+
+  create_table "individual_event_tags", force: :cascade do |t|
+    t.bigint "individual_event_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["individual_event_id"], name: "index_individual_event_tags_on_individual_event_id"
+    t.index ["tag_id"], name: "index_individual_event_tags_on_tag_id"
   end
 
   create_table "individual_events", id: :serial, force: :cascade do |t|
@@ -120,6 +138,12 @@ ActiveRecord::Schema.define(version: 20190417233035) do
     t.index ["user_id"], name: "index_signups_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -164,4 +188,8 @@ ActiveRecord::Schema.define(version: 20190417233035) do
     t.string "locale"
   end
 
+  add_foreign_key "event_tags", "events"
+  add_foreign_key "event_tags", "tags"
+  add_foreign_key "individual_event_tags", "individual_events"
+  add_foreign_key "individual_event_tags", "tags"
 end

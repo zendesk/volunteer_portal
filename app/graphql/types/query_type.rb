@@ -104,5 +104,10 @@ module Types
     def pending_individual_events
       IndividualEvent.pending.all
     end
+
+    field :tags, [TagGraphType], null: true
+    def tags
+      Tag.all
+    end
   end
 end

@@ -19,6 +19,10 @@ query EventQuery($id: ID!) {
     users {
       ...UserEntry
     }
+    tags {
+      id
+      name
+    }
   }
   eventTypes {
     ...EventTypeEntry
@@ -28,5 +32,9 @@ query EventQuery($id: ID!) {
   }
   organizations {
     ...OrganizationEntry
+  }
+  tags {
+    id
+    name
   }
 }

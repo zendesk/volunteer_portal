@@ -1373,6 +1373,20 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@zendeskgarden/container-field@^1.0.3":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-field/-/container-field-1.1.4.tgz#27fa2c63e0ef47ed4a9a1cd7c13404e4683dc094"
+  integrity sha512-BGsL0ur2PIzA/nlJxgKXEVY87myPZD4KTsQ+XjSFUwQxFYr8C/gfGigahXfVprYBsAuDarKj2gusQv6K8k/BMA==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.3.0"
+
+"@zendeskgarden/container-keyboardfocus@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-keyboardfocus/-/container-keyboardfocus-0.3.0.tgz#d10dd0687c3d384619d0866cc214dcfc6e90250a"
+  integrity sha512-JVJznEYgLzUMqPuk2dfjLI3ga2VTSMp+lvpvvbkcxg3MAU15KhIVkVujXgwggnd0VV5Ru69b5bwXogHuPJ6a3w==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.3.0"
+
 "@zendeskgarden/container-selection@^1.1.5":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-1.2.6.tgz#de4ccada40db20401bbfc2597156b3433ea1b584"
@@ -1395,6 +1409,24 @@
     classnames "^2.2.5"
     downshift "^3.2.7"
     react-popper "^1.3.4"
+
+"@zendeskgarden/react-forms@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-forms/-/react-forms-7.1.4.tgz#d6bc4e98591d91de4a3a0ad98ea4fcda346ee64d"
+  integrity sha512-8Ou2A/nL++1FeaHfsST6pWM8oakiW1fozPI1PewLwvwzBb8zFxMqqPA8GJKGzv1QcocfxQnqBTMyvf7VkoKowA==
+  dependencies:
+    "@zendeskgarden/container-field" "^1.0.3"
+    "@zendeskgarden/container-keyboardfocus" "^0.3.0"
+    "@zendeskgarden/container-utilities" "^0.3.0"
+    classnames "^2.2.5"
+    lodash.debounce "^4.0.8"
+
+"@zendeskgarden/react-tags@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-7.1.4.tgz#b2ffc12be46b9c0e1c823736b4c7d19dcf6e819c"
+  integrity sha512-DcubJwGWHTEGBV37OmPvV+MhZfPA4e0xZSZo8PAzoj+NfqnCYAEkJXRNkVRwrmPNGy9XfB1SQeUVgZ6oYVD6AQ==
+  dependencies:
+    classnames "^2.2.5"
 
 "@zendeskgarden/react-theming@^7.1.4":
   version "7.1.4"

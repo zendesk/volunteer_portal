@@ -65,6 +65,8 @@
   "dependencies": {
     "@babel/runtime-corejs2": "^7.6.3",
     "@zendeskgarden/react-dropdowns": "^7.1.4",
+    "@zendeskgarden/react-forms": "^7.1.4",
+    "@zendeskgarden/react-tags": "^7.1.4",
     "@zendeskgarden/react-theming": "^7.1.4",
     "actioncable": "^5.1.4",
     "apollo-client": "^2.0.4",

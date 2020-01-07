@@ -21,6 +21,10 @@ query MyEventsQuery {
       office {
         ...OfficeEntry
       }
+      tags {
+        id
+        name
+      }
     }
     signups {
       event {
@@ -47,5 +51,9 @@ query MyEventsQuery {
   }
   organizations {
     ...OrganizationEntry
+  }
+  tags {
+    id
+    name
   }
 }

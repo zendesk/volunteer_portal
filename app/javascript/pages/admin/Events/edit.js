@@ -8,13 +8,14 @@ import { graphQLError } from 'actions'
 
 import EventForm from './form'
 import Loading from 'components/LoadingIcon'
+import { extractIdFromAssociations } from './utils'
 
 import EventQuery from './queries/show.gql'
 import UpdateEventMutation from './mutations/update.gql'
 import DestroySignupMutation from 'mutations/DestroySignupMutation.gql'
 
 const EditEvent = ({
-  data: { networkStatus, event, eventTypes, offices, organizations },
+  data: { networkStatus, event, eventTypes, tags, offices, organizations },
   updateEvent,
   destroySignup,
 }) =>
@@ -24,6 +25,7 @@ const EditEvent = ({
     <EventForm
       event={event}
       eventTypes={eventTypes}
+      tags={tags}
       offices={offices}
       users={event.users}
       destroySignup={user => destroySignup(event, user)}
@@ -39,15 +41,6 @@ const buildOptimisticResponse = event => ({
     ...event,
   },
 })
-
-const extractIdFromAssociations = values =>
-  R.map(value => {
-    if (R.type(value) === 'Object' && R.has('id', value)) {
-      return R.pick(['id'], value)
-    } else {
-      return value
-    }
-  }, values)
 
 const withData = compose(
   graphql(EventQuery, {

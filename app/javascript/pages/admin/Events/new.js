@@ -8,6 +8,7 @@ import moment from 'moment'
 import { graphQLError, changeAdminOfficeFilter } from 'actions'
 
 import EventForm from './form'
+import { extractIdFromAssociations } from './utils'
 
 import EventsQuery from './queries/index.gql'
 import EventQuery from './queries/show.gql'
@@ -18,7 +19,7 @@ import Loading from 'components/LoadingIcon'
 const eventsSort = 'STARTS_AT_DESC'
 
 const transformToReduxFormState = event => {
-  const { title, description, capacity, location, startsAt, endsAt, eventType, office, organization } = event
+  const { title, description, capacity, location, startsAt, endsAt, eventType, tags, office, organization } = event
   return {
     title,
     description,
@@ -27,17 +28,19 @@ const transformToReduxFormState = event => {
     startsAt: new Date(startsAt),
     endsAt: new Date(endsAt),
     eventType: { id: eventType.id },
+    tags,
     office: { id: office.id },
     organization: { id: organization.id },
   }
 }
 
-const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, offices, organizations } }) =>
+const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, tags, offices, organizations } }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
     <EventForm
       event={event && transformToReduxFormState(event)}
+      tags={tags}
       eventTypes={eventTypes}
       offices={offices}
       organizations={organizations}
@@ -87,7 +90,7 @@ const withData = compose(
     props: ({ ownProps, mutate }) => ({
       createEvent: event =>
         mutate({
-          variables: { input: event },
+          variables: { input: extractIdFromAssociations(event) },
           optimisticResponse: buildOptimisticResponse(event),
           update: (proxy, { data: { createEvent } }) => {
             try {

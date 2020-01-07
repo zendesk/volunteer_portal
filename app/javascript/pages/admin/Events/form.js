@@ -15,6 +15,10 @@ const validate = values => {
   if (!values.description) {
     errors.description = 'is required'
   }
+  if (!values.tags || values.tags.length < 1) {
+    errors.tags = {}
+    errors.tags = 'is required'
+  }
   if (!values.eventType) {
     errors.eventType = {}
     errors.eventType.id = 'is required'
@@ -48,6 +52,7 @@ const validate = values => {
 
 const EventFormPage = ({
   eventTypes,
+  tags,
   offices,
   organizations,
   handleSubmit,
@@ -59,6 +64,7 @@ const EventFormPage = ({
 }) => (
   <EventForm
     eventTypes={eventTypes}
+    tags={tags}
     offices={offices}
     organizations={organizations}
     handleSubmit={handleSubmit}
@@ -77,7 +83,6 @@ const withReduxForm = reduxForm({
 
 const mapStateToProps = ({ graphQLErrors }, { event }) => {
   const props = { graphQLErrors }
-
   return R.isNil(event) ? props : R.merge({ initialValues: event }, props)
 }
 

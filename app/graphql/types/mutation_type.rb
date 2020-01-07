@@ -30,5 +30,9 @@ module Types
     field :create_event_type, EventTypeGraphType, mutation: Mutations::CreateEventType
     field :update_event_type, EventTypeGraphType, mutation: Mutations::UpdateEventType
     field :delete_event_type, EventTypeGraphType, mutation: Mutations::DeleteEventType
+
+    field :create_tag, TagGraphType, mutation: Mutations::CreateTag
+    field :delete_tag, TagGraphType, mutation: Mutations::DeleteTag
+    # TODO: update_tag
   end
 end

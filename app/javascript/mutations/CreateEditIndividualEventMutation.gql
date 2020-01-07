@@ -17,6 +17,10 @@ mutation createEditIndividualEvent($input: CreateEditIndividualEventInputType!) 
       eventType {
         ...EventTypeEntry
       }
+      tags {
+        id
+        name
+      }
       office {
         ...OfficeEntry
       }

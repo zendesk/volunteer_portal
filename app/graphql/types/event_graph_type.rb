@@ -60,5 +60,10 @@ module Types
     def office
       AssociationLoader.for(Event, :office).load(object)
     end
+
+    field :tags, [TagGraphType], null: true
+    def tags
+      AssociationLoader.for(Event, :tags).load(object)
+    end
   end
 end

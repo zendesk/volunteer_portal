@@ -20,6 +20,8 @@ import EditOrg from 'pages/admin/Organizations/edit'
 import EventTypesAdmin from 'pages/admin/EventTypes'
 import NewEventType from 'pages/admin/EventTypes/new'
 import EditEventType from 'pages/admin/EventTypes/edit'
+import TagsAdmin from 'pages/admin/Tags'
+import NewTags from 'pages/admin/Tags/new'
 import UsersAdmin from 'pages/admin/Users'
 import EditUser from 'pages/admin/Users/edit'
 import IndividualEventsAdmin from 'pages/admin/IndividualEvents'
@@ -43,6 +45,8 @@ export default (
         <Route path="/portal/admin/event-types/new" component={NewEventType} />
         <Route path="/portal/admin/event-types/:id/edit" component={EditEventType} />
         <Route path="/portal/admin/event-types" component={EventTypesAdmin} />
+        <Route path="/portal/admin/tags" component={TagsAdmin} />
+        <Route path="/portal/admin/tags/new" component={NewTags} />
         <Route path="/portal/admin/individual_events" component={IndividualEventsAdmin} />
         <Route path="/portal/admin/users/:id/edit" component={EditUser} />
         <Route path="/portal/admin/users" component={UsersAdmin} />

@@ -34,5 +34,10 @@ module Types
     def office
       AssociationLoader.for(IndividualEvent, :office).load(object)
     end
+
+    field :tags, [TagGraphType], null: true
+    def tags
+      AssociationLoader.for(IndividualEvent, :tags).load(object)
+    end
   end
 end
