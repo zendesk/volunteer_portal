@@ -38,8 +38,7 @@ const EventProperties = ({ event }) =>
   event ? (
     <div>
       <p className={s.description}>
-        <span className={s.eventTitle}>{event.title}</span>
-        <span className={s.eventType}>{event.eventType.title || 'General'}:</span>
+        <span className={s.eventType}>{event.eventType ? event.eventType.title : 'General'}</span>
         {renderEventDescription(event)}
       </p>
       <EventLocation event={event} />
