@@ -1,5 +1,12 @@
 module EventTypeResolver
   class << self
+    def all()
+      EventType
+      .all
+      .where(deleted_at: nil)
+      .order(:title)
+    end
+
     def create(_, args, _context)
       event_type = EventType.new
       event_type.title = args[:input].title
@@ -18,7 +25,7 @@ module EventTypeResolver
 
     def delete(_, args, _context)
       event_type = EventType.find(args[:id])
-      event_type.destroy!
+      event_type.soft_delete!(validate: false)
 
       event_type
     end
