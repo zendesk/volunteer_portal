@@ -7,7 +7,8 @@ module Mutations
     argument :input, Types::Input::DeleteIndividualEventInputType, required: true
 
     def resolve(input:)
-      IndividualEvent.destroy(input.id)
+      individualEvent = IndividualEvent.find(args[:id])
+      individualEvent.soft_delete!(validate: false)
       context[:current_user]
     end
   end
