@@ -34,9 +34,9 @@ describe EventTypeResolver do
     it 'deletes the given event type' do
       EventTypeResolver.delete(nil, { id: event_type.id }, nil)
 
-      e = EventType.where(id: event_type.id)
+      e = EventType.find(event_type.id)
 
-      assert_empty e
+      assert_not_nil e.deleted_at
     end
   end
 end
