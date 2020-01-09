@@ -25,6 +25,7 @@ The volunteer portal is made of 2 applications. A ReactJS web client and a Ruby 
    ```bash
    gem install bundler
    bundle install
+   brew install heroku
    brew install yarn
    yarn install
    ```
@@ -99,10 +100,10 @@ Make sure that PostgreSQL is running.
    ./script/setup_db.sh
    ```
 
-To start the app and run it locally, run the command line blow. `foreman` is used to run both the rails server and the webpack dev server in development.
+To start the app and run it locally, run the command line blow. `heroku` is used to run both the rails server and the webpack dev server in development. It will run the processes listed in the `Procfile`
 
 ```
-bundle exec foreman start
+bundle exec heroku local
 ```
 
 The server runs on [localhost:5000](http://localhost:5000/) by default.
