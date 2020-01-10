@@ -25,6 +25,7 @@ describe EventTypeResolver do
 
       e = EventType.last
 
+      assert_nil e.deleted_at
       assert_equal 'Test Type', e.title
     end
   end

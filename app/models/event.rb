@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   CALENDAR_TIME_FORMAT = '%Y%m%dT%H%M%SZ'.freeze
+  has_soft_deletion default_scope: false
 
   # inverse_of on signups causes duplicate Avatars when signing up. Disable rubocop until cause is found
   # rubocop:disable Rails/InverseOf
