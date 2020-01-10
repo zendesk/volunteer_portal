@@ -80,7 +80,7 @@ module Types
 
     field :event_types, [EventTypeGraphType], null: true
     def event_types
-      EventType.all
+      EventTypeResolver.all
     end
 
     field :roles, [RoleGraphType], null: true

@@ -3,6 +3,20 @@ require_relative '../../test_helper'
 SingleCov.covered!
 
 describe EventTypeResolver do
+  describe '.all' do
+    it 'only return active event_types in alphabetical order' do
+      EventType.delete_all
+      deleted_at = Time.zone.local(2020, 1, 1, 1, 0)
+      event1 = EventType.create!(title: 'test1')
+      event3 = EventType.create!(title: 'test3')
+      event2 = EventType.create!(title: 'test2')
+      EventType.create!(title: 'test4', deleted_at: deleted_at)
+
+      all_events = EventTypeResolver.all
+      assert_equal [event1, event2, event3], all_events
+    end
+  end
+
   describe '.create' do
     it 'creates a new event type' do
       input = stub(title: 'Test Type')
@@ -34,9 +48,9 @@ describe EventTypeResolver do
     it 'deletes the given event type' do
       EventTypeResolver.delete(nil, { id: event_type.id }, nil)
 
-      e = EventType.where(id: event_type.id)
+      e = EventType.find(event_type.id)
 
-      assert_empty e
+      assert_not_nil e.deleted_at
     end
   end
 end
