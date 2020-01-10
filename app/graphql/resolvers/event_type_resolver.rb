@@ -1,10 +1,10 @@
 module EventTypeResolver
   class << self
-    def all()
+    def all
       EventType
-      .all
-      .where(deleted_at: nil)
-      .order(:title)
+        .all
+        .where(deleted_at: nil)
+        .order(:title)
     end
 
     def create(_, args, _context)
