@@ -28,6 +28,7 @@ describe EventResolver do
 
       e = Event.last
 
+      assert_nil e.deleted_at
       assert_equal 'new', e.title
       assert_equal 10, e.capacity
       assert_equal timestamp.to_s(:db), e.starts_at.to_s(:db)
@@ -71,8 +72,9 @@ describe EventResolver do
       args = { id: id }
 
       EventResolver.delete(nil, args, nil)
+      actual = Event.find_by(id: id)
 
-      assert_nil Event.find_by(id: id)
+      assert_not_nil actual.deleted_at
     end
   end
 
@@ -120,9 +122,24 @@ describe EventResolver do
         office: other_office
       )
     end
+    let(:event4) do
+      Event.create!(
+        organization: organization,
+        title: 'test4-deleted',
+        type: event_type,
+        tags: [],
+        starts_at: event3_start,
+        ends_at: event3_start + 1.hour,
+        capacity: 10,
+        location: 'somewhere',
+        office: other_office,
+        deleted_at: deleted_at
+      )
+    end
     let(:event1_start) { Time.zone.local(2018, 1, 1, 1, 0) }
     let(:event2_start) { Time.zone.local(2018, 1, 1, 2, 0) }
     let(:event3_start) { Time.zone.local(2018, 1, 1, 3, 0) }
+    let(:deleted_at) { Time.zone.local(2018, 1, 1, 3, 0) }
     let(:current_user) { users(:admin) }
     let(:context) { { current_user: current_user } }
 
@@ -136,7 +153,7 @@ describe EventResolver do
       event3
     end
 
-    it 'returns all events' do
+    it 'returns all active events' do
       assert_equal [event2, event1, event3].map(&:title), all_events.pluck(:title)
     end
 

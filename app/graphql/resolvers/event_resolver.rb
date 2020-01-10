@@ -13,7 +13,7 @@ module EventResolver
                     args[:office_id]
                   end
 
-      events = Event.all
+      events = Event.where(deleted_at: nil)
       events = events.for_office(office_id) if office_id
       events = events.before(Time.zone.at(args[:before])) if args[:before]
       events = events.after(Time.zone.at(args[:after]))   if args[:after]
@@ -46,7 +46,7 @@ module EventResolver
 
     def delete(_, args, _context)
       event = Event.find(args[:id])
-      event.destroy!
+      event.soft_delete!
 
       event
     end
