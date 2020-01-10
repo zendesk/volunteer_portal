@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200110020955) do
+ActiveRecord::Schema.define(version: 20200110031714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,12 +58,6 @@ ActiveRecord::Schema.define(version: 20200110020955) do
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["organization_id"], name: "index_events_on_organization_id"
     t.index ["updated_at"], name: "index_events_on_updated_at"
-  end
-
-  create_table "events_volunteers", id: false, force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "volunteer_id"
-    t.index ["event_id", "volunteer_id"], name: "by_event_and_volunteer", unique: true
   end
 
   create_table "individual_event_tags", force: :cascade do |t|
@@ -176,18 +170,6 @@ ActiveRecord::Schema.define(version: 20200110020955) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["updated_at"], name: "index_users_on_updated_at"
-  end
-
-  create_table "volunteers", id: :serial, force: :cascade do |t|
-    t.text "name"
-    t.text "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "photo"
-    t.string "management_level"
-    t.string "team"
-    t.string "interest"
-    t.string "locale"
   end
 
   add_foreign_key "event_tags", "events"
