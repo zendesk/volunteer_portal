@@ -12,6 +12,7 @@ module Types
     field :locale, String, null: true, description: 'A locale string provided by Google auth, e.g. "en" or "en-US"'
     field :photo,  String, null: true, description: 'Profile photo URL'
     field :group,  String, null: true, description: 'A group name this user is associated with'
+    field :last_sign_in_at, DatetimeType, null: true
 
     field :name, String, null: true
     def name
