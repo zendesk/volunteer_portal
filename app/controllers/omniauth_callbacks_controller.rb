@@ -19,6 +19,7 @@ class OmniauthCallbacksController < ActionController::Base
     set_signin
 
     user.save!
+    set_user_preference
 
     session[:user_id] = user.id
 
@@ -57,6 +58,10 @@ class OmniauthCallbacksController < ActionController::Base
       u.first_name  = auth_info['first_name']
       u.last_name   = auth_info['last_name']
     end
+  end
+
+  def set_user_preference
+    @user_reference ||= UserPreference.find_or_create_by(user_id: user.id)
   end
 
   def set_user_photo
