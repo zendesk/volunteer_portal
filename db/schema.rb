@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20200111044933) do
   end
 
   create_table "user_preferences", force: :cascade do |t|
-    t.boolean "confirmedProfileSettings", default: false, null: false
+    t.boolean "confirmed_profile_settings", default: false, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

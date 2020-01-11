@@ -1,13 +1,17 @@
 #import "fragments/UserEntry.gql"
 #import "fragments/OfficeEntry.gql"
+#import "fragments/UserPreferenceEntry.gql"
 
 query AppQuery {
   currentUser {
     ...UserEntry
+    isAdmin
     office {
       ...OfficeEntry
     }
-    isAdmin
+    preference {
+      ...UserPreferenceEntry
+    }
   }
   offices(sortBy: NAME_ASC) {
     ...OfficeEntry

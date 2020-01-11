@@ -54,6 +54,11 @@ module Types
       AssociationLoader.for(User, :office).load(object)
     end
 
+    field :preference, UserPreferenceGraphType, null: true
+    def preference
+      AssociationLoader.for(User, :user_preference).load(object)
+    end
+
     field :individual_events, [IndividualEventGraphType], null: true
     def individual_events
       AssociationLoader.for(User, :individual_events).load(object)
