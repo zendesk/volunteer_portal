@@ -4,7 +4,6 @@ module Types
     description 'An office'
 
     implements GraphQL::Relay::Node.interface
-    
     global_id_field :gid
 
     field :id, ID, null: false

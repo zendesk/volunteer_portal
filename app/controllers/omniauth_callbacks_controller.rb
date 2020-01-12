@@ -61,7 +61,7 @@ class OmniauthCallbacksController < ActionController::Base
   end
 
   def set_user_preference
-    @user_reference ||= UserPreference.find_or_create_by(user_id: user.id)
+    @set_user_preference ||= UserPreference.find_or_create_by(user_id: user.id)
   end
 
   def set_user_photo

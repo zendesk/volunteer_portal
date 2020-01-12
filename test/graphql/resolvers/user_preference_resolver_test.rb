@@ -9,7 +9,6 @@ describe UserPreferenceResolver do
     it 'should set true' do
       context = { current_user: user }
       result = UserPreferenceResolver.confirm_profile_settings(context)
-      
       assert_not_nil result
       assert_equal true, result.confirmed_profile_settings
     end
