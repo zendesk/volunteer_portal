@@ -4,5 +4,4 @@ fragment UserEntry on User {
   email
   group
   photo
-  lastSignInAt
 }

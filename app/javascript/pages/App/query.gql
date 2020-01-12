@@ -5,6 +5,7 @@
 query AppQuery {
   currentUser {
     ...UserEntry
+    lastSignInAt
     isAdmin
     office {
       ...OfficeEntry
