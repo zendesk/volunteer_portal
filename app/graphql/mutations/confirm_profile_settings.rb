@@ -5,7 +5,7 @@ module Mutations
     null true
 
     def resolve()
-      UserPreferenceResolver.confirm_profile_setting(context)
+      UserPreferenceResolver.confirm_profile_settings(context)
     end
   end
 end
