@@ -1,7 +1,7 @@
 module Types
   class UserPreferenceGraphType < Types::BaseObject
     graphql_name 'UserPreference'
-    description 'An office'
+    description 'Contains user preference data'
 
     implements GraphQL::Relay::Node.interface
     global_id_field :gid
