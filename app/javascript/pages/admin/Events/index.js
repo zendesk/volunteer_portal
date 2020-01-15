@@ -19,33 +19,35 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
+import { withNamespaces } from 'react-i18next'
+
 const eventsSort = 'STARTS_AT_DESC'
 
-const actionLinks = (event, deleteEvent) => (
+const ActionLinks = withNamespaces()(({ event, deleteEvent, t }) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/events/${event.id}/edit`}>Edit</Link>
-    <Link to={`/portal/admin/events/new/${event.id}`}>Clone</Link>
+    <Link to={`/portal/admin/events/${event.id}/edit`}>{t('volunteer_portal.admin.tab.events_editevent')}</Link>
+    <Link to={`/portal/admin/events/new/${event.id}`}>{t('volunteer_portal.admin.tab.events_cloneevent')}</Link>
     <button className={`${s.deleteAction}`} onClick={() => deleteEvent(event)}>
-      Delete
+      {t('volunteer_portal.admin.tab.events_deleteevent')}
     </button>
   </div>
-)
+))
 
-const columns = deleteEvent => [
+const columns = (deleteEvent, t) => [
   {
-    Header: 'Title',
+    Header: t('volunteer_portal.admin.tab.events_columntitle'),
     accessor: 'title',
     sortable: true,
     filterable: true,
   },
   {
-    Header: 'Organization',
+    Header: t('volunteer_portal.admin.tab.events_columnorganization'),
     accessor: 'organization.name',
     sortable: true,
     filterable: true,
   },
   {
-    Header: 'Start',
+    Header: t('volunteer_portal.admin.tab.events_columnstart'),
     accessor: 'startsAt',
     width: 130,
     sortable: true,
@@ -53,7 +55,7 @@ const columns = deleteEvent => [
   },
   {
     id: 'duration',
-    Header: 'Duration',
+    Header: t('volunteer_portal.admin.tab.events_columnduration'),
     width: 80,
     accessor: e => {
       let start = moment(e.startsAt)
@@ -64,17 +66,17 @@ const columns = deleteEvent => [
     sortable: true,
   },
   {
-    Header: 'Participants',
+    Header: t('volunteer_portal.admin.tab.events_columnparticipants'),
     accessor: 'signupCount',
     width: 120,
     sortable: true,
   },
   {
-    Header: 'Actions',
+    Header: t('volunteer_portal.admin.tab.events_columnactions'),
     accessor: 'id',
     sortable: false,
     width: 150,
-    Cell: ({ original }) => actionLinks(original, deleteEvent),
+    Cell: ({ original }) => <ActionLinks event={original} deleteEvent={deleteEvent} />,
   },
 ]
 
@@ -119,20 +121,20 @@ const tdProps = () => ({
   },
 })
 
-const Events = ({ data: { networkStatus, events }, deleteEvent }) =>
+const Events = ({ data: { networkStatus, events }, t, deleteEvent }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
     <div>
       <div className={s.actionBar}>
         <Link to="/portal/admin/events/new">
-          <button className={s.createAction}>Add Event</button>
+          <button className={s.createAction}>{t('volunteer_portal.admin.tab.events_addevent')}</button>
         </Link>
       </div>
       <ReactTable
         NoDataComponent={() => null}
         data={events}
-        columns={columns(deleteEvent)}
+        columns={columns(deleteEvent, t)}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -224,4 +226,4 @@ const withActions = connect(
   }
 )
 
-export default withActions(withData(Events))
+export default withActions(withData(withNamespaces()(Events)))

@@ -19,47 +19,51 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
-const actionLinks = (organization, togglePopover) => (
+import { withNamespaces } from 'react-i18next'
+
+const actionLinks = (organization, togglePopover, t) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/organizations/${organization.id}/edit`}>Edit</Link>
+    <Link to={`/portal/admin/organizations/${organization.id}/edit`}>
+      {t('volunteer_portal.admin.tab.organizations.edit')}
+    </Link>
     <button className={s.deleteAction} onClick={() => togglePopover('destroyOrganization', organization)}>
-      Delete
+      {t('volunteer_portal.admin.tab.organizations.delete')}
     </button>
   </div>
 )
 
-const columns = togglePopover => [
+const columns = (togglePopover, t) => [
   {
-    Header: 'Name',
+    Header: t('volunteer_portal.admin.tab.organizations.name'),
     accessor: 'name',
     filterable: true,
   },
   {
-    Header: 'Location',
+    Header: t('volunteer_portal.admin.tab.organizations.location'),
     accessor: 'location',
     sortable: false,
   },
   {
-    Header: 'Actions',
+    Header: t('volunteer_portal.admin.tab.organizations.actions'),
     accessor: 'id',
     sortable: false,
     width: 130,
-    Cell: ({ original }) => actionLinks(original, togglePopover),
+    Cell: ({ original }) => actionLinks(original, togglePopover, t),
   },
 ]
 
-const destroyActions = (togglePopover, destroyOrganizationPopover, deleteOffice) => [
+const destroyActions = (togglePopover, destroyOrganizationPopover, deleteOffice, t) => [
   <button
     className={`${s.btn} ${s.cancelBtn}`}
     onClick={() => togglePopover('destroyOrganization', destroyOrganizationPopover.data)}
   >
-    Cancel
+    {t('volunteer_portal.admin.tab.organizations.delete.cancel')}
   </button>,
   <button
     className={`${s.btn} ${s.deleteBtn}`}
     onClick={() => deleteOffice(destroyOrganizationPopover.data) && togglePopover('destroyOrganization')}
   >
-    Delete
+    {t('volunteer_portal.admin.tab.organizations.delete.delete')}
   </button>,
 ]
 
@@ -111,6 +115,7 @@ const Organizations = ({
   deleteOrganization,
   togglePopover,
   destroyOrganizationPopover,
+  t,
 }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
@@ -118,13 +123,13 @@ const Organizations = ({
     <div>
       <div className={s.actionBar}>
         <Link to="/portal/admin/organizations/new">
-          <button className={s.createAction}>Add Organization</button>
+          <button className={s.createAction}>{t('volunteer_portal.admin.tab.organizations.add_organization')}</button>
         </Link>
       </div>
       <ReactTable
         NoDataComponent={() => null}
         data={organizations}
-        columns={columns(togglePopover)}
+        columns={columns(togglePopover, t)}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -137,14 +142,16 @@ const Organizations = ({
       />
       {destroyOrganizationPopover ? (
         <Dialog
-          title="Delete Organization"
-          actions={destroyActions(togglePopover, destroyOrganizationPopover, deleteOrganization)}
+          title={t('volunteer_portal.admin.tab.organizations.delete_organization')}
+          actions={destroyActions(togglePopover, destroyOrganizationPopover, deleteOrganization, t)}
           modal={false}
           open
           onRequestClose={() => togglePopover('destroyOrganization', destroyOrganizationPopover.data)}
           actionsContainerStyle={{ paddingBottom: 20 }}
         >
-          Are you sure you want to delete {destroyOrganizationPopover.data.name}?
+          {t('volunteer_portal.admin.tab.organization.delete.confirmation', {
+            organization: destroyOrganizationPopover.data.name,
+          })}
         </Dialog>
       ) : null}
     </div>
@@ -197,4 +204,4 @@ const withActions = connect(
   }
 )
 
-export default withActions(withData(Organizations))
+export default withActions(withData(withNamespaces()(Organizations)))

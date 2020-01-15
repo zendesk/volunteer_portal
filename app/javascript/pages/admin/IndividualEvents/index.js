@@ -13,6 +13,8 @@ import RejectIndividualEventsMutation from './RejectIndividualEventsMutation.gql
 
 import s from './main.css'
 
+import { withNamespaces } from 'react-i18next'
+
 class IndividualEvents extends React.Component {
   state = {
     selected: [],
