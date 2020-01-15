@@ -353,7 +353,7 @@ parts:
   - translation:
       key: "volunteer_portal.admin.tab.eventtypes_edit"
       title: "Text button to edit an event type"
-      value: "Edit"
+      value: "Edit1"
       screenshot: ""
       wip: true
   - translation:
@@ -396,5 +396,185 @@ parts:
       key: "volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation"
       title: "Message for the confirmation window of Delete Event Type"
       value: "Are you sure you want to delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.edit"
+      title: "Message for the confirmation window of Delete Event Type"
+      value: "Edit"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.delete"
+      title: ""
+      value: "Delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.name"
+      title: ""
+      value: "Name"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.timezone"
+      title: ""
+      value: "Timezone"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.actions"
+      title: ""
+      value: "Actions"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.delete.cancel"
+      title: ""
+      value: "Cancel"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.delete.delete"
+      title: ""
+      value: "Delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.add_office"
+      title: ""
+      value: "Add Office"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.delete.delete_office"
+      title: ""
+      value: "Delete Office"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.offices.delete.confirmation"
+      title: ""
+      value: "Are you sure you want to delete {{office}}?"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.edit"
+      title: ""
+      value: "Edit"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.delete"
+      title: ""
+      value: "Delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.name"
+      title: ""
+      value: "Name"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.location"
+      title: ""
+      value: "Location"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.actions"
+      title: ""
+      value: "Actions"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.delete.cancel"
+      title: ""
+      value: "Cancel"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.delete.delete"
+      title: ""
+      value: "Delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.add_organization"
+      title: ""
+      value: "Add Organization"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organizations.delete_organization"
+      title: ""
+      value: "Delete Organization"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.organization.delete.confirmation"
+      title: ""
+      value: "Are you sure you want to delete {{organization}}?"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.edit"
+      title: ""
+      value: "Edit"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.delete"
+      title: ""
+      value: "Delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.name"
+      title: ""
+      value: "Name"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.email"
+      title: ""
+      value: "Email"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.group"
+      title: ""
+      value: "Group"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.actions"
+      title: ""
+      value: "Actions"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.delete.cancel"
+      title: ""
+      value: "Cancel"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.delete.delete"
+      title: ""
+      value: "Delete"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.users.delete_user"
+      title: ""
+      value: "Delete User"
+      screenshot: ""
+      wip: true
+  - translation:
+      key: "volunteer_portal.admin.tab.user.delete.confirmation"
+      title: ""
+      value: "Are you sure you want to delete {{user}}?"
       screenshot: ""
       wip: true
