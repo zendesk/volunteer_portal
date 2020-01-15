@@ -37,7 +37,7 @@ const withData = compose(
     props: ({ ownProps, mutate }) => ({
       updateEventType: eventType =>
         mutate({
-          variables: { input: R.omit('__typename', eventType) },
+          variables: { input: R.omit(['__typename'], eventType) },
           optimisticResponse: buildOptimisticResponse(eventType),
         })
           .then(_response => {
