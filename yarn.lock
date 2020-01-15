@@ -830,6 +830,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.6.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.3.tgz#0811944f73a6c926bb2ad35e918dcc1bfab279f1"
+  integrity sha512-fVHx1rzEmwB130VTkLnxR+HmxcTjGzH12LYQcFFoBwakMd3aOMD4OsRN7tGG/UOYE2ektgFrS8uACAoRk1CY0w==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.1.0", "@babel/template@^7.4.4", "@babel/template@^7.6.0":
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.6.0.tgz#7f0159c7f5012230dad64cca42ec9bdb5c9536e6"
@@ -1391,12 +1398,28 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@zendeskgarden/container-buttongroup@^0.2.0":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-buttongroup/-/container-buttongroup-0.2.6.tgz#e3096d35dcd577b14c44741a60b6ea2bd45bbb6f"
+  integrity sha512-Bhn5daYI1VC24Dj/QRhLUaksZ9ot0aHwUTWSSU/ahczl3yRFY+4ORuQ9Ubdv+KIJBMFi2kY0qsmwzKVuOZ+2aQ==
+  dependencies:
+    "@zendeskgarden/container-selection" "^1.2.6"
+
 "@zendeskgarden/container-field@^1.0.3":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-field/-/container-field-1.1.4.tgz#27fa2c63e0ef47ed4a9a1cd7c13404e4683dc094"
   integrity sha512-BGsL0ur2PIzA/nlJxgKXEVY87myPZD4KTsQ+XjSFUwQxFYr8C/gfGigahXfVprYBsAuDarKj2gusQv6K8k/BMA==
   dependencies:
     "@zendeskgarden/container-utilities" "^0.3.0"
+
+"@zendeskgarden/container-focusjail@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-focusjail/-/container-focusjail-1.2.3.tgz#1412c14b067ebfcb915b078e3ef15ac3ccb84cc2"
+  integrity sha512-j7cJpyCMIt6zoW5xPiS3DQA0rvHNCIUqqjezqjpXWybblpqJ4FbZlT5Fp5k677NJqG4g/4blfVlwgbBuQ3+CQg==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.3.0"
+    dom-helpers "^5.1.0"
+    tabbable "^4.0.0"
 
 "@zendeskgarden/container-keyboardfocus@^0.3.0":
   version "0.3.0"
@@ -1405,7 +1428,15 @@
   dependencies:
     "@zendeskgarden/container-utilities" "^0.3.0"
 
-"@zendeskgarden/container-selection@^1.1.5":
+"@zendeskgarden/container-modal@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-modal/-/container-modal-0.5.0.tgz#1761a7e94015d3c0f2c9d1f3f70d2a06214f601a"
+  integrity sha512-dyZPEOVjAARLjWdBIIwJkcfBDZ0IkWlfqXJNsYpQ+PnX/LDEdaKCEwgwmtec7oHdBRaUT9KBzQGDrNe6UfFTLA==
+  dependencies:
+    "@zendeskgarden/container-focusjail" "^1.2.3"
+    "@zendeskgarden/container-utilities" "^0.3.0"
+
+"@zendeskgarden/container-selection@^1.1.5", "@zendeskgarden/container-selection@^1.2.6":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-1.2.6.tgz#de4ccada40db20401bbfc2597156b3433ea1b584"
   integrity sha512-mStRq33Iwl+WzdzDtXCGxn7+yl8f+6CBdxDOmYde9flp48AbrtKzTXYO+B18uVUU5r+FPQR4viPTM1+dXsCu5w==
@@ -1416,6 +1447,16 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.3.0.tgz#9af748ef4b29f8a57f082852d039b9aaa98cf0d3"
   integrity sha512-oZLNiJoHLznZBIASScfxanxylvczTm06HRWBqcdiiGDMSJYW0HySSlEUQFlaQqsvTwzrm02hWKGnr5cdWWtE0w==
+
+"@zendeskgarden/react-buttons@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-7.1.4.tgz#f8e0f44fcc0bba93953a81c6b939916055c9f2d9"
+  integrity sha512-9a8fDbZYOYaH5BPsLoc7BhYTdms8wr4HcLKlDn7wxjWFLwA7twa+6/KB9ZPUM6srf1aaczq1Gt4jhcWZ+CyjeQ==
+  dependencies:
+    "@zendeskgarden/container-buttongroup" "^0.2.0"
+    "@zendeskgarden/container-keyboardfocus" "^0.3.0"
+    "@zendeskgarden/react-utilities" "^7.1.4"
+    classnames "^2.2.5"
 
 "@zendeskgarden/react-dropdowns@^7.1.4":
   version "7.1.4"
@@ -1446,12 +1487,16 @@
   dependencies:
     classnames "^2.2.5"
 
-"@zendeskgarden/react-notifications@^7.1.4":
+"@zendeskgarden/react-modals@^7.1.4":
   version "7.1.4"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-7.1.4.tgz#fd8eaff8d86cc5ad7f35a82eab63e82607c2eeae"
-  integrity sha512-zBD7z97EWQlMr4REROfzMLomdSdwzHruOOCF1VirW3mN6XoTcw6r1ObHVLj5NxLtWQJNok2WVN4QywITLQKQ5Q==
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-modals/-/react-modals-7.1.4.tgz#afcb042dbb76d214c049a9c6c38d443d51a32bc3"
+  integrity sha512-mlUf5CF5E+qIRXbVeXzd46ng/w5QxMJGYSovAtNOd/8IlNYmPU0/5HdISy6tB3nSwL8ewalDxJy5IgBXbqIskg==
   dependencies:
+    "@zendeskgarden/container-modal" "^0.5.0"
+    "@zendeskgarden/container-utilities" "^0.3.0"
+    "@zendeskgarden/react-utilities" "^7.1.4"
     classnames "^2.2.5"
+    dom-helpers "^5.1.0"
 
 "@zendeskgarden/react-tags@^7.1.4":
   version "7.1.4"
@@ -1464,6 +1509,11 @@
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-7.1.4.tgz#3d03b5f5e00a4aa47ef684b27834cc88f5fa9634"
   integrity sha512-f9XdDzaydrAzs30nqUVz3NkTgVu4xyTEBDrLDPJe4CXeMmjjv4XroRME3lDg8R+T5MpcK0Je/pq2W3T9B7oIUA==
+
+"@zendeskgarden/react-utilities@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-utilities/-/react-utilities-7.1.4.tgz#bf2f49b3cb43cb7661400783250977c900fe0fd0"
+  integrity sha512-51gJwRn/MWc1AA3UUqp/H5dXW83PFV9d+001l1aQSt/heQk/1ijVE83ewBXcqEX+exY0umNeVC9+rxgWA+uEww==
 
 abab@^2.0.0:
   version "2.0.0"
@@ -2901,6 +2951,11 @@ cssstyle@^1.0.0:
   dependencies:
     cssom "0.3.x"
 
+csstype@^2.6.7:
+  version "2.6.8"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
+  integrity sha512-msVS9qTuMT5zwAGCVm4mxfrZ18BNc6Csd0oJAtiFMZ1FAx1CCvy2+5MDmYoix63LM/6NDbNtodCiGYGmFgO0dA==
+
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
@@ -3160,6 +3215,14 @@ dns-txt@^2.0.2:
   integrity sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==
   dependencies:
     "@babel/runtime" "^7.1.2"
+
+dom-helpers@^5.1.0:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.1.3.tgz#7233248eb3a2d1f74aafca31e52c5299cc8ce821"
+  integrity sha512-nZD1OtwfWGRBWlpANxacBEZrEuLa16o1nh7YopFWeoF68Zt8GGEmzHu6Xv4F3XaFIC+YXtTLrzgqKxFgLEe4jw==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
+    csstype "^2.6.7"
 
 dom-serializer@0:
   version "0.2.1"
@@ -8640,6 +8703,11 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
+
+tabbable@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-4.0.0.tgz#5bff1d1135df1482cf0f0206434f15eadbeb9261"
+  integrity sha512-H1XoH1URcBOa/rZZWxLxHCtOdVUEev+9vo5YdYhC9tCY4wnybX+VQrCYuy9ubkg69fCBxCONJOSLGfw0DWMffQ==
 
 tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"
