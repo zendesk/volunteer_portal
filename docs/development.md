@@ -25,7 +25,7 @@ The volunteer portal is made of 2 applications. A ReactJS web client and a Ruby 
    ```bash
    gem install bundler
    bundle install
-   brew install heroku
+   brew tap heroku/brew && brew install heroku
    brew install yarn
    yarn install
    ```
