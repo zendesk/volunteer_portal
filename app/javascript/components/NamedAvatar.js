@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import { togglePopover } from 'actions'
 import { present } from '../lib/utils'
 
+import RemoveIcon from '@zendeskgarden/svg-icons/src/16/trash-stroke.svg'
+import { Icon, IconButton } from '@zendeskgarden/react-buttons'
+
 const styles = {
   container: {
     display: 'flex',
@@ -50,20 +53,22 @@ const dialogActions = (togglePopover, onRemove) => [
   </a>,
 ]
 
-const NamedAvatar = ({ userId, image, name, subtitle, showRemove, onRemove, togglePopover, popover }) => (
-  <div style={styles.container}>
-    <Avatar image={image} />
-    <div style={styles.details}>
-      <span style={styles.name}>{name}</span>
-      <span style={styles.subtitle}>{subtitle || '\u00a0'}</span>
-    </div>
-    {showRemove && (
-      <a style={styles.remove} onClick={() => togglePopover('removeUserFromEvent', { userId })}>
-        Remove
-      </a>
-    )}
-    {present(popover) &&
-      popover.data.userId === userId && (
+const NamedAvatar = ({ userId, image, name, subtitle, showRemove, onRemove, togglePopover, popover }) => {
+  return (
+    <div style={styles.container}>
+      <Avatar image={image} />
+      <div style={styles.details}>
+        <span style={styles.name}>{name}</span>
+        <span style={styles.subtitle}>{subtitle || '\u00a0'}</span>
+      </div>
+      {showRemove && (
+        <IconButton size="small" aria-label="Remove" onClick={() => togglePopover('removeUserFromEvent', { userId })}>
+          <Icon>
+            <RemoveIcon />
+          </Icon>
+        </IconButton>
+      )}
+      {present(popover) && popover.data.userId === userId && (
         <Dialog
           title={`Remove ${name} from Event`}
           actions={dialogActions(togglePopover, onRemove)}
@@ -72,8 +77,9 @@ const NamedAvatar = ({ userId, image, name, subtitle, showRemove, onRemove, togg
           actionsContainerStyle={styles.actionsContainer}
         />
       )}
-  </div>
-)
+    </div>
+  )
+}
 
 const mapStateToProps = (state, { children }) => {
   const { popover } = state.model
@@ -83,8 +89,11 @@ const mapStateToProps = (state, { children }) => {
   }
 }
 
-const withActions = connect(mapStateToProps, {
-  togglePopover,
-})
+const withActions = connect(
+  mapStateToProps,
+  {
+    togglePopover,
+  }
+)
 
 export default withActions(NamedAvatar)
