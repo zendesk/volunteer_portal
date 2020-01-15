@@ -34,5 +34,7 @@ module Types
     field :create_tag, TagGraphType, mutation: Mutations::CreateTag
     field :delete_tag, TagGraphType, mutation: Mutations::DeleteTag
     # TODO: update_tag
+
+    field :confirm_profile_settings, UserPreferenceGraphType, mutation: Mutations::ConfirmProfileSettings
   end
 end

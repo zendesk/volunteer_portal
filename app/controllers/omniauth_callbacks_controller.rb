@@ -16,8 +16,10 @@ class OmniauthCallbacksController < ActionController::Base
   def callback
     set_user_photo
     set_user_metadata if params[:saml]
+    set_signin
 
     user.save!
+    set_user_preference
 
     session[:user_id] = user.id
 
@@ -58,6 +60,10 @@ class OmniauthCallbacksController < ActionController::Base
     end
   end
 
+  def set_user_preference
+    @set_user_preference ||= UserPreference.find_or_create_by(user_id: user.id)
+  end
+
   def set_user_photo
     user.photo = auth_info['image'] if auth_info['image'].present?
   end
@@ -69,6 +75,11 @@ class OmniauthCallbacksController < ActionController::Base
 
       metadata[key] = saml_response_attributes[key]
     end.to_json
+  end
+
+  def set_signin
+    user.last_sign_in_at = user.current_sign_in_at
+    user.current_sign_in_at = DateTime.now
   end
 
   # TODO: get this from a common place like ApplicationController

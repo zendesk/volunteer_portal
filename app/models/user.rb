@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :signups, dependent: :destroy
   has_many :events, through: :signups
   has_many :individual_events, dependent: :destroy
+  has_one :user_preference, dependent: :destroy
 
   belongs_to :role
   belongs_to :office
