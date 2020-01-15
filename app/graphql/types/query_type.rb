@@ -105,6 +105,13 @@ module Types
       IndividualEvent.pending.all
     end
 
+    field :tag, TagGraphType, null: true do
+      argument :id, ID, required: true
+    end
+    def tag(id:)
+      RecordLoader.for(Tag).load(id)
+    end
+
     field :tags, [TagGraphType], null: true
     def tags
       Tag.all

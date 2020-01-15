@@ -46,6 +46,7 @@ describe 'cleanliness' do
         app/graphql/mutations/update_user_office.rb
         app/graphql/mutations/delete_tag.rb
         app/graphql/mutations/create_tag.rb
+        app/graphql/mutations/update_tag.rb
         app/graphql/mutations/confirm_profile_settings.rb
         app/graphql/portal_schema.rb
         app/graphql/resolvers/office_resolver.rb

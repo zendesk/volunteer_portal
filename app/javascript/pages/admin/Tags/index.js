@@ -20,6 +20,7 @@ import s from './main.css'
 
 const actionLinks = (tag, togglePopover) => (
   <div className={s.actionColumn}>
+    <Link to={`/portal/admin/tags/${tag.id}/edit`}>Edit</Link>
     <button className={s.deleteAction} onClick={() => togglePopover('destroyTag', tag)}>
       Delete
     </button>
