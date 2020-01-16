@@ -5,7 +5,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const CompressionPlugin = require('compression-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const sharedConfig = require('./shared.js')
 
 module.exports = merge(sharedConfig, {
@@ -15,8 +15,9 @@ module.exports = merge(sharedConfig, {
   stats: 'normal',
 
   optimization: {
+    minimize: true,
     minimizer: [
-      new UglifyJsPlugin({
+      new TerserPlugin({
         sourceMap: true,
       }),
     ],
