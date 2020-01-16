@@ -146,7 +146,7 @@
     "react-svg-loader": "^3.0.3",
     "request": "^2.87.0",
     "style-loader": "^0.18.2",
-    "uglifyjs-webpack-plugin": "^2.2.0",
+    "terser-webpack-plugin": "^2.3.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
