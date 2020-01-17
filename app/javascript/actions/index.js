@@ -69,16 +69,6 @@ export function changeOfficeFilter(value) {
     })
 }
 
-export const CHANGE_DASHBOARD_OFFICE_FILTER = 'CHANGE_DASHBOARD_OFFICE_FILTER'
-
-export function changeDashboardOfficeFilter(value) {
-  return (dispatch, _getState) =>
-    dispatch({
-      type: CHANGE_DASHBOARD_OFFICE_FILTER,
-      value,
-    })
-}
-
 export const CHANGE_ADMIN_OFFICE_FILTER = 'CHANGE_ADMIN_OFFICE_FILTER'
 
 export function changeAdminOfficeFilter(value) {
@@ -121,7 +111,6 @@ export default {
   CHANGE_SHOW_FILTER,
   CHANGE_EVENT_FILTER,
   CHANGE_OFFICE_FILTER,
-  CHANGE_DASHBOARD_OFFICE_FILTER,
   CHANGE_ADMIN_OFFICE_FILTER,
   CHANGE_ADMIN_REPORTING_START,
   CHANGE_ADMIN_REPORTING_END,

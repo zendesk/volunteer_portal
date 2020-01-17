@@ -35,8 +35,6 @@ const model = (state = defaultState, action) => {
       return filterChange('eventFilter')
     case Actions.CHANGE_OFFICE_FILTER:
       return filterChange('officeFilter')
-    case Actions.CHANGE_DASHBOARD_OFFICE_FILTER:
-      return filterChange('dashboardOfficeFilter')
     case Actions.CHANGE_ADMIN_OFFICE_FILTER:
       return filterChange('adminOfficeFilter')
     case Actions.TOGGLE_POPOVER:
