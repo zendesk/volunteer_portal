@@ -8,8 +8,11 @@ import Loading from 'components/LoadingIcon'
 import Header from 'components/Header'
 import WelcomeModal from 'components/WelcomeModal'
 
-import '@zendeskgarden/react-modals/dist/styles.css'
+import '@zendeskgarden/react-avatars/dist/styles.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
+import '@zendeskgarden/react-dropdowns/dist/styles.css'
+import '@zendeskgarden/react-grid/dist/styles.css'
+import '@zendeskgarden/react-modals/dist/styles.css'
 import '@zendeskgarden/react-tags/dist/styles.css'
 
 const MuiTheme = {

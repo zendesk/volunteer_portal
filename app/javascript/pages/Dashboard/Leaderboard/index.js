@@ -1,15 +1,50 @@
 import React, { useState, useContext } from 'react'
-import { useQuery } from '@apollo/react-hooks'
+
 import * as R from 'ramda'
 import moment from 'moment'
+import styled from 'styled-components'
+import { useQuery } from '@apollo/react-hooks'
 
 import LeaderboardQuery from './leaderboardQuery.gql'
-import Loading from 'components/LoadingIcon'
 import NamedAvatar from 'components/NamedAvatar'
 import OfficeFilter from 'components/OfficeFilter'
+import { MD, LG } from '@zendeskgarden/react-typography'
+import { Skeleton } from '@zendeskgarden/react-loaders'
 import { UserContext } from '../../../context'
 
-import s from '../main.css'
+const SectionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+`
+const SectionTitle = styled(LG)`
+  align-self: flex-end;
+`
+const Volunteer = styled.div`
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-between;
+  padding 0.5rem 0;
+`
+
+const Loader = _props => (
+  <>
+    {Array(10)
+      .fill(null)
+      .map((_, i) => (
+        <Volunteer key={i}>
+          <NamedAvatar loading />
+          <div>
+            <MD>
+              <Skeleton width="6rem" />
+            </MD>
+          </div>
+        </Volunteer>
+      ))}
+  </>
+)
 
 // The server expects seconds since epoch, not milliseconds
 const startOfYear = Math.floor(moment().startOf('year') / 1000)
@@ -19,37 +54,38 @@ const leaderBoardSort = 'HOURS_DESC'
 
 const Leaderboard = _props => {
   const currentUser = useContext(UserContext)
-  const [currenOfficeId, setCurrentOfficeId] = useState(currentUser.office.id)
+  const [currenOffice, setCurrentOffice] = useState(currentUser.office)
   const { loading, error, data } = useQuery(LeaderboardQuery, {
     variables: {
-      count: leaderBoardSize,
-      sortBy: leaderBoardSort,
       after: startOfYear,
       before: nowInSec,
-      officeId: currenOfficeId,
+      count: leaderBoardSize,
+      officeId: currenOffice.id,
+      sortBy: leaderBoardSort,
     },
-    fetchPolicy: 'cache-and-network',
   })
 
-  if (loading) return <Loading />
-
-  if (error) return <div>{error}</div>
+  if (error) return <div className={s.leaderboard}>{error}</div>
 
   const ofifces = R.propOr([], 'offices', data)
   const volunteers = R.propOr([], 'volunteers', data)
 
   return (
-    <div className={s.leaderboard}>
-      <div className={s.leaderboardHeader}>
-        <div className={s.topVolunteers}>Top Volunteers</div>
-        <OfficeFilter offices={ofifces} value={currenOfficeId} onChange={setCurrentOfficeId} />
+    <div>
+      <SectionHeader>
+        <SectionTitle>Top Volunteers</SectionTitle>
+        <OfficeFilter offices={ofifces} value={currenOffice} onChange={setCurrentOffice} loading={loading} />
+      </SectionHeader>
+      <div>
+        {loading && <Loader />}
+
+        {volunteers.map((user, i) => (
+          <Volunteer key={`user-${i}`}>
+            <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
+            <MD>{user.hours} hours</MD>
+          </Volunteer>
+        ))}
       </div>
-      {volunteers.map((user, i) => (
-        <div className={s.leaderboardUser} key={`user-${i}`}>
-          <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
-          <span className={s.leaderboardHours}>{user.hours} hours</span>
-        </div>
-      ))}
     </div>
   )
 }

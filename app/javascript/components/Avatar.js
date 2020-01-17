@@ -1,60 +1,53 @@
 import React from 'react'
 
-const styles = {
-  avatar: {
-    borderRadius: 25,
-    width: 50,
-    height: 50,
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 10,
-  },
-  figure: {
-    margin: 0,
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  svg: {
-    width: 50,
-    height: 50,
-  },
-  circle: {
-    fill: '#ddd',
-  },
-  unknown: {
-    fill: 'white',
-  },
-}
+import styled from 'styled-components'
+import UserIcon from '@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg'
+import { Avatar as GardenAvatar, Text } from '@zendeskgarden/react-avatars'
+import { Skeleton } from '@zendeskgarden/react-loaders'
 
-const Anonymous = () => (
-  <svg style={styles.svg}>
-    <defs>
-      <clipPath id="cut-off-bottom">
-        <rect x="0" y="0" width="42" height="38" />
-        {/* <circle r="25" cx="25" cy="25" style={{fill: 'transparent'}} />*/}
-      </clipPath>
-    </defs>
-    <circle r="25" cx="25" cy="25" style={styles.circle} />
-    <circle r="8" cx="25" cy="18" style={styles.unknown} />
-    <circle r="14" cx="25" cy="38" clipPath="url(#cut-off-bottom)" style={styles.unknown} />
-  </svg>
+const { zdColorGrey600, zdColorSecondaryAzure600 } = require('@zendeskgarden/css-variables')
+
+const StyledSvgAvatar = styled(GardenAvatar)`
+  background-color: ${zdColorGrey600};
+`
+
+const StyledTextAvatar = styled(GardenAvatar)`
+  background-color: ${zdColorSecondaryAzure600};
+`
+
+const GardenAvatarLoader = styled(GardenAvatar)`
+  border-radius: 50%;
+  overflow: hidden;
+`
+
+const Loader = _props => (
+  <GardenAvatarLoader size="medium">
+    <Skeleton />
+  </GardenAvatarLoader>
 )
 
-const Avatar = ({ image }) => (
-  <div style={styles.container}>
-    <figure style={styles.figure}>
-      {image ? <img alt="user" style={styles.avatar} src={image} /> : <Anonymous />}
-    </figure>
-  </div>
-)
+const Avatar = ({ loading, image, text }) => {
+  if (loading) return <Loader />
 
-Avatar.defaultProps = {
-  image: null,
+  if (image)
+    return (
+      <GardenAvatar>
+        <img src={image} alt={name} />
+      </GardenAvatar>
+    )
+
+  if (text)
+    return (
+      <StyledTextAvatar>
+        <Text>{text}</Text>
+      </StyledTextAvatar>
+    )
+
+  return (
+    <StyledSvgAvatar>
+      <UserIcon />
+    </StyledSvgAvatar>
+  )
 }
 
 export default Avatar
