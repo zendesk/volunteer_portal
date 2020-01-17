@@ -353,7 +353,7 @@ parts:
   - translation:
       key: "volunteer_portal.admin.tab.eventtypes_edit"
       title: "Text button to edit an event type"
-      value: "Edit1"
+      value: "Edit"
       screenshot: ""
       wip: true
   - translation:
