@@ -15,6 +15,7 @@ import '@zendeskgarden/react-grid/dist/styles.css'
 import '@zendeskgarden/react-modals/dist/styles.css'
 import '@zendeskgarden/react-notifications/dist/styles.css'
 import '@zendeskgarden/react-tags/dist/styles.css'
+import '@zendeskgarden/css-utilities'
 
 const MuiTheme = {
   fontFamily:

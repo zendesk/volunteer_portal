@@ -23,16 +23,16 @@ const Loader = withNamespaces()(({ t }) => (
 ))
 
 const OfficeFilter = ({ loading, offices, onChange, t, value }) => {
+  const options = offices || []
   const all = { id: 'all', name: t('volunteer_portal.dashboard.layouteventstab.office_all') }
-  const selectedItem = R.find(R.propEq('id', value))(offices) || all
+  const selectedItem = R.find(R.propEq('id', value))(options) || all
 
   if (loading) return <Loader />
-
   return (
     <Dropdown
       selectedItem={selectedItem}
-      onSelect={office => onChange(office.id)}
-      downshiftProps={{ itemToString: office => office && office.name }}
+      onSelect={option => onChange(option.id)}
+      downshiftProps={{ itemToString: option => option && option.name }}
     >
       <Field>
         <Select>
@@ -40,9 +40,9 @@ const OfficeFilter = ({ loading, offices, onChange, t, value }) => {
         </Select>
       </Field>
       <Menu>
-        {[all, ...offices].map(office => (
-          <Item key={office.id} value={office}>
-            {office.name}
+        {[all, ...options].map(option => (
+          <Item key={option.id} value={option}>
+            {option.name}
           </Item>
         ))}
       </Menu>

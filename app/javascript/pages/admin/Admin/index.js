@@ -25,21 +25,6 @@ const btnClass = (routing, button) => {
   }
 }
 
-// const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }) => (
-//   <div className={s.filters}>
-//     <Filter
-//       title={t('volunteer_portal.admin.tab.office')}
-//       value={adminOfficeFilter.value}
-//       onChange={changeAdminOfficeFilter}
-//     >
-//       <MenuItem value="all" primaryText={t('volunteer_portal.admin.tab.office_all')} style={styles.menuitem} />
-//       {offices.map((office, i) => (
-//         <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
-//       ))}
-//     </Filter>
-//   </div>
-// )
-
 class Admin extends Component {
   componentDidUpdate() {
     const {
@@ -110,6 +95,8 @@ class Admin extends Component {
               <span className={btnClass(routing, 'reporting')}>{t('volunteer_portal.admin.tab.reporting')}</span>
             </Link>
             <div className={`${s.navSpacer} ${s.growingSpace}`} />
+          </div>
+          <div className={s.filters}>
             <OfficeFilter value={adminOfficeFilter.value} onChange={changeAdminOfficeFilter} offices={offices} />
           </div>
           {children}

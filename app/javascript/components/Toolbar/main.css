@@ -53,12 +53,7 @@
   justify-content: space-between;
 }
 
-.filterDropdowns {
-  display: flex;
-}
-
 .viewBtns {
   display: flex;
   align-items: flex-end;
 }
-

@@ -1638,7 +1638,14 @@
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.3.0.tgz#9af748ef4b29f8a57f082852d039b9aaa98cf0d3"
   integrity sha512-oZLNiJoHLznZBIASScfxanxylvczTm06HRWBqcdiiGDMSJYW0HySSlEUQFlaQqsvTwzrm02hWKGnr5cdWWtE0w==
 
-"@zendeskgarden/css-variables@^6.1.0", "@zendeskgarden/css-variables@^6.3.8":
+"@zendeskgarden/css-utilities@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-utilities/-/css-utilities-4.5.3.tgz#08ebd2bb9cf4acbdf5cf7d52e8e3d3237e7238f4"
+  integrity sha512-HREfvkwaB3CjNfcSePKiYeuCRZHljyzjoNlnze0ezrZMnW1COAU0ePTl2CkKqojPa5ErEIgOAJqU00tKcT4dKw==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.3"
+
+"@zendeskgarden/css-variables@^6.1.0", "@zendeskgarden/css-variables@^6.3.8", "@zendeskgarden/css-variables@^6.4.3":
   version "6.4.3"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.3.tgz#9cdfb0a0d97dc9a92e108b625d29ecc7330627ee"
   integrity sha512-YKxw63ErJKzKmpCcHSqgABuFCakpU3DQFsR1fKm3rLcHVEeXPvjEPLIp73lzG2/YY24psv0/eiSq1VJDEoeReg==

@@ -7,18 +7,20 @@ import { useQuery } from '@apollo/react-hooks'
 
 import LeaderboardQuery from './leaderboardQuery.gql'
 import NamedAvatar from 'components/NamedAvatar'
-import { Alert, Title } from '@zendeskgarden/react-notifications'
 import OfficeFilter from 'components/OfficeFilter'
+import { Alert, Title } from '@zendeskgarden/react-notifications'
 import { MD, LG } from '@zendeskgarden/react-typography'
 import { Skeleton } from '@zendeskgarden/react-loaders'
 import { UserContext } from '../../../context'
 
+const { zdSpacingXxs, zdColorGrey300 } = require('@zendeskgarden/css-variables')
+
 const SectionHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
+  border-bottom: 1px solid ${zdColorGrey300};
+  margin-bottom: ${zdSpacingXxs};
+  padding-bottom: ${zdSpacingXxs};
 `
 const SectionTitle = styled(LG)`
   align-self: flex-end;

@@ -39,12 +39,16 @@ const Toolbar = ({ label, view, views, onNavigate, onViewChange, filters, office
         </button>
       </div>
       <div className={s.filterBar}>
-        <div className={s.filterDropdowns}>
-          <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
-          <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
-          <OfficeFilter value={filters.officeFilter.value} onChange={filters.officeFilter.onChange} offices={offices} />
+        <div className="u-display-inline-flex u-mb-xxs">
+          <div className="u-mr-xxs">
+            <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
+          </div>
+          <div className="u-mr-xxs">
+            <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
+          </div>
+          <OfficeFilter offices={offices} value={filters.officeFilter.value} onChange={filters.officeFilter.onChange} />
         </div>
-        <div className={s.viewBtns}>
+        <div className="u-display-inline-flex">
           {views.map(viewName => (
             <button
               key={viewName}
