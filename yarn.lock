@@ -1710,6 +1710,13 @@
     classnames "^2.2.5"
     dom-helpers "^5.1.0"
 
+"@zendeskgarden/react-notifications@^7.1.5":
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-7.1.5.tgz#db2c08e993c5634841a1b51eee132d5311b4117f"
+  integrity sha512-VP0RAWjecMXEY4IvQQJfuwgNrxM4nQMJ3z8qpNKkb4PWnByYZT2cVPndeV02YI09j12HqPvLipfWZk0n2e6xDw==
+  dependencies:
+    classnames "^2.2.5"
+
 "@zendeskgarden/react-tags@^7.1.4":
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-7.1.4.tgz#b2ffc12be46b9c0e1c823736b4c7d19dcf6e819c"

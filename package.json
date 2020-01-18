@@ -72,6 +72,7 @@
     "@zendeskgarden/react-grid": "^7.1.4",
     "@zendeskgarden/react-loaders": "^7.1.4",
     "@zendeskgarden/react-modals": "^7.1.4",
+    "@zendeskgarden/react-notifications": "^7.1.5",
     "@zendeskgarden/react-tags": "^7.1.4",
     "@zendeskgarden/react-theming": "^7.1.4",
     "@zendeskgarden/react-typography": "^7.1.4",

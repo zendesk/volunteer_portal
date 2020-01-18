@@ -4,12 +4,10 @@ import { Link } from 'react-router'
 
 import { graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
-import MenuItem from 'material-ui/MenuItem'
 import { withNamespaces } from 'react-i18next'
 
-import Filter from 'components/Filter'
 import AdminQuery from './query.gql'
-import { styles } from 'components/Filter'
+import OfficeFilter from '../../../components/OfficeFilter'
 import { changeAdminOfficeFilter } from 'actions'
 
 import s from './main.css'
@@ -27,20 +25,20 @@ const btnClass = (routing, button) => {
   }
 }
 
-const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }) => (
-  <div className={s.filters}>
-    <Filter
-      title={t('volunteer_portal.admin.tab.office')}
-      value={adminOfficeFilter.value}
-      onChange={changeAdminOfficeFilter}
-    >
-      <MenuItem value="all" primaryText={t('volunteer_portal.admin.tab.office_all')} style={styles.menuitem} />
-      {offices.map((office, i) => (
-        <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
-      ))}
-    </Filter>
-  </div>
-)
+// const OfficeFilter = ({ adminOfficeFilter, changeAdminOfficeFilter, offices, t }) => (
+//   <div className={s.filters}>
+//     <Filter
+//       title={t('volunteer_portal.admin.tab.office')}
+//       value={adminOfficeFilter.value}
+//       onChange={changeAdminOfficeFilter}
+//     >
+//       <MenuItem value="all" primaryText={t('volunteer_portal.admin.tab.office_all')} style={styles.menuitem} />
+//       {offices.map((office, i) => (
+//         <MenuItem key={`office-${i}`} value={office.id} primaryText={office.name} style={styles.menuitem} />
+//       ))}
+//     </Filter>
+//   </div>
+// )
 
 class Admin extends Component {
   componentDidUpdate() {
@@ -112,12 +110,7 @@ class Admin extends Component {
               <span className={btnClass(routing, 'reporting')}>{t('volunteer_portal.admin.tab.reporting')}</span>
             </Link>
             <div className={`${s.navSpacer} ${s.growingSpace}`} />
-            <OfficeFilter
-              t={this.props.t}
-              adminOfficeFilter={adminOfficeFilter}
-              changeAdminOfficeFilter={changeAdminOfficeFilter}
-              offices={offices}
-            />
+            <OfficeFilter value={adminOfficeFilter.value} onChange={changeAdminOfficeFilter} offices={offices} />
           </div>
           {children}
         </div>

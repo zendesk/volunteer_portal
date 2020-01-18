@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as R from 'ramda'
 import { Dropdown, Field, Item, Menu, Select } from '@zendeskgarden/react-dropdowns'
 import { withNamespaces } from 'react-i18next'
 import { Skeleton } from '@zendeskgarden/react-loaders'
@@ -23,14 +24,14 @@ const Loader = withNamespaces()(({ t }) => (
 
 const OfficeFilter = ({ loading, offices, onChange, t, value }) => {
   const all = { id: 'all', name: t('volunteer_portal.dashboard.layouteventstab.office_all') }
-  const selectedItem = value ? value : all
+  const selectedItem = R.find(R.propEq('id', value))(offices) || all
 
   if (loading) return <Loader />
 
   return (
     <Dropdown
       selectedItem={selectedItem}
-      onSelect={onChange}
+      onSelect={office => onChange(office.id)}
       downshiftProps={{ itemToString: office => office && office.name }}
     >
       <Field>

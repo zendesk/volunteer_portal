@@ -7,6 +7,7 @@ import { useQuery } from '@apollo/react-hooks'
 
 import LeaderboardQuery from './leaderboardQuery.gql'
 import NamedAvatar from 'components/NamedAvatar'
+import { Alert, Title } from '@zendeskgarden/react-notifications'
 import OfficeFilter from 'components/OfficeFilter'
 import { MD, LG } from '@zendeskgarden/react-typography'
 import { Skeleton } from '@zendeskgarden/react-loaders'
@@ -54,29 +55,41 @@ const leaderBoardSort = 'HOURS_DESC'
 
 const Leaderboard = _props => {
   const currentUser = useContext(UserContext)
-  const [currenOffice, setCurrentOffice] = useState(currentUser.office)
+  const [currenOfficeId, setCurrentOfficeId] = useState(R.path(['office', 'Id'], currentUser))
   const { loading, error, data } = useQuery(LeaderboardQuery, {
     variables: {
       after: startOfYear,
       before: nowInSec,
       count: leaderBoardSize,
-      officeId: currenOffice.id,
+      officeId: currenOfficeId,
       sortBy: leaderBoardSort,
     },
   })
 
-  if (error) return <div className={s.leaderboard}>{error}</div>
-
   const ofifces = R.propOr([], 'offices', data)
   const volunteers = R.propOr([], 'volunteers', data)
+
+  if (error) console.log(error)
 
   return (
     <div>
       <SectionHeader>
         <SectionTitle>Top Volunteers</SectionTitle>
-        <OfficeFilter offices={ofifces} value={currenOffice} onChange={setCurrentOffice} loading={loading} />
+        <OfficeFilter
+          offices={ofifces}
+          value={currenOfficeId}
+          onChange={setCurrentOfficeId}
+          loading={error || loading}
+        />
       </SectionHeader>
       <div>
+        {error && (
+          <Alert type="error">
+            <Title>Network Error</Title>
+            Sorry, we are unable to fetch data from server at this time. Please try again later.
+          </Alert>
+        )}
+
         {loading && <Loader />}
 
         {volunteers.map((user, i) => (
