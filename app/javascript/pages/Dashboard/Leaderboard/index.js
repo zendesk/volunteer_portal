@@ -4,14 +4,16 @@ import * as R from 'ramda'
 import moment from 'moment'
 import styled from 'styled-components'
 import { useQuery } from '@apollo/react-hooks'
-
-import LeaderboardQuery from './leaderboardQuery.gql'
-import NamedAvatar from 'components/NamedAvatar'
-import OfficeFilter from 'components/OfficeFilter'
 import { Alert, Title } from '@zendeskgarden/react-notifications'
 import { MD, LG } from '@zendeskgarden/react-typography'
 import { Skeleton } from '@zendeskgarden/react-loaders'
-import { UserContext } from '../../../context'
+import { Tag } from '@zendeskgarden/react-tags'
+
+import LeaderboardQuery from './leaderboardQuery.gql'
+import ListItem from 'components/ListItem'
+import NamedAvatar from 'components/NamedAvatar'
+import OfficeFilter from 'components/OfficeFilter'
+import { UserContext } from 'context'
 
 const { zdSpacingXxs, zdColorGrey300 } = require('@zendeskgarden/css-variables')
 
@@ -25,26 +27,18 @@ const SectionHeader = styled.div`
 const SectionTitle = styled(LG)`
   align-self: flex-end;
 `
-const Volunteer = styled.div`
-  display: flex;
-  flex-direction: row nowrap;
-  justify-content: space-between;
-  padding 0.5rem 0;
-`
 
 const Loader = _props => (
   <>
     {Array(10)
       .fill(null)
       .map((_, i) => (
-        <Volunteer key={i}>
+        <ListItem key={i}>
           <NamedAvatar loading />
-          <div>
-            <MD>
-              <Skeleton width="6rem" />
-            </MD>
-          </div>
-        </Volunteer>
+          <MD>
+            <Skeleton width="6rem" />
+          </MD>
+        </ListItem>
       ))}
   </>
 )
@@ -95,10 +89,15 @@ const Leaderboard = _props => {
         {loading && <Loader />}
 
         {volunteers.map((user, i) => (
-          <Volunteer key={`user-${i}`}>
+          <ListItem key={`user-${i}`}>
             <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
-            <MD>{user.hours} hours</MD>
-          </Volunteer>
+            <MD>
+              <Tag round className="u-p-xxs">
+                {user.hours}
+              </Tag>
+              {' hours'}
+            </MD>
+          </ListItem>
         ))}
       </div>
     </div>
