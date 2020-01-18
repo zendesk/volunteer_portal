@@ -94,8 +94,8 @@ const Leaderboard = _props => {
             <MD>
               <Tag round className="u-p-xxs">
                 {user.hours}
-              </Tag>
-              {' hours'}
+              </Tag>{' '}
+              hours
             </MD>
           </ListItem>
         ))}
