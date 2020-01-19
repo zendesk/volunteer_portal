@@ -23,26 +23,26 @@ import { withNamespaces } from 'react-i18next'
 
 const actionLinks = (office, togglePopover, t) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/offices/${office.id}/edit`}>{t('volunteer_portal.admin.tab.offices.edit')}</Link>
+    <Link to={`/portal/admin/offices/${office.id}/edit`}>{t('volunteer_portal.admin.tab.offices_edit')}</Link>
     <button className={s.deleteAction} onClick={() => togglePopover('destroyOffice', office)}>
-      {t('volunteer_portal.admin.tab.offices.delete')}
+      {t('volunteer_portal.admin.tab.offices_delete')}
     </button>
   </div>
 )
 
 const columns = (togglePopover, t) => [
   {
-    Header: t('volunteer_portal.admin.tab.offices.name'),
+    Header: t('volunteer_portal.admin.tab.offices_name'),
     accessor: 'name',
     filterable: true,
   },
   {
-    Header: t('volunteer_portal.admin.tab.offices.timezone'),
+    Header: t('volunteer_portal.admin.tab.offices_timezone'),
     accessor: 'timezone',
     sortable: false,
   },
   {
-    Header: t('volunteer_portal.admin.tab.offices.actions'),
+    Header: t('volunteer_portal.admin.tab.offices_actions'),
     accessor: 'id',
     sortable: false,
     width: 130,
@@ -98,13 +98,13 @@ const destroyActions = (togglePopover, destroyOfficePopover, deleteOffice, t) =>
     className={`${s.btn} ${s.cancelBtn}`}
     onClick={() => togglePopover('destroyOffice', destroyOfficePopover.data)}
   >
-    {t('volunteer_portal.admin.tab.offices.delete.cancel')}
+    {t('volunteer_portal.admin.tab.offices_delete.cancel')}
   </button>,
   <button
     className={`${s.btn} ${s.deleteBtn}`}
     onClick={() => deleteOffice(destroyOfficePopover.data) && togglePopover('destroyOffice')}
   >
-    {t('volunteer_portal.admin.tab.offices.delete.delete')}
+    {t('volunteer_portal.admin.tab.offices_delete.delete')}
   </button>,
 ]
 
@@ -115,7 +115,7 @@ const Offices = ({ data: { networkStatus, offices }, deleteOffice, destroyOffice
     <div>
       <div className={s.actionBar}>
         <Link to="/portal/admin/offices/new">
-          <button className={s.createAction}>{t('volunteer_portal.admin.tab.offices.add_office')}</button>
+          <button className={s.createAction}>{t('volunteer_portal.admin.tab.offices_add_office')}</button>
         </Link>
       </div>
       <ReactTable
@@ -134,14 +134,14 @@ const Offices = ({ data: { networkStatus, offices }, deleteOffice, destroyOffice
       />
       {destroyOfficePopover ? (
         <Dialog
-          title={t('volunteer_portal.admin.tab.offices.delete.delete_office')}
+          title={t('volunteer_portal.admin.tab.offices_delete.delete_office')}
           actions={destroyActions(togglePopover, destroyOfficePopover, deleteOffice, t)}
           modal={false}
           open
           onRequestClose={() => togglePopover('destroyOffice', destroyOfficePopover.data)}
           actionsContainerStyle={{ paddingBottom: 20 }}
         >
-          {t('volunteer_portal.admin.tab.offices.delete.confirmation', { office: destroyOfficePopover.data.name })}
+          {t('volunteer_portal.admin.tab.offices_delete.confirmation', { office: destroyOfficePopover.data.name })}
         </Dialog>
       ) : null}
     </div>
