@@ -23,31 +23,31 @@ import { withNamespaces } from 'react-i18next'
 
 const actionLinks = (user, togglePopover, t) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/users/${user.id}/edit`}>{t('volunteer_portal.admin.tab.users.edit')}</Link>
+    <Link to={`/portal/admin/users/${user.id}/edit`}>{t('volunteer_portal.admin.tab.userse_edit')}</Link>
     <button className={s.deleteAction} onClick={() => togglePopover('destroyUser', user)}>
-      {t('volunteer_portal.admin.tab.users.delete')}
+      {t('volunteer_portal.admin.tab.users_delete')}
     </button>
   </div>
 )
 
 const columns = (togglePopover, t) => [
   {
-    Header: t('volunteer_portal.admin.tab.users.name'),
+    Header: t('volunteer_portal.admin.tab.users_name'),
     accessor: 'name',
     filterable: true,
   },
   {
-    Header: t('volunteer_portal.admin.tab.users.email'),
+    Header: t('volunteer_portal.admin.tab.users_email'),
     accessor: 'email',
     filterable: true,
   },
   {
-    Header: t('volunteer_portal.admin.tab.users.group'),
+    Header: t('volunteer_portal.admin.tab.users_group'),
     accessor: 'group',
     sortable: false,
   },
   {
-    Header: t('volunteer_portal.admin.tab.users.actions'),
+    Header: t('volunteer_portal.admin.tab.users_actions'),
     accessor: 'id',
     sortable: false,
     width: 130,
@@ -57,13 +57,13 @@ const columns = (togglePopover, t) => [
 
 const destroyActions = (togglePopover, destroyUserPopover, deleteOffice, t) => [
   <button className={`${s.btn} ${s.cancelBtn}`} onClick={() => togglePopover('destroyUser', destroyUserPopover.data)}>
-    {t('volunteer_portal.admin.tab.users.delete.cancel')}
+    {t('volunteer_portal.admin.tab.users_delete.cancel')}
   </button>,
   <button
     className={`${s.btn} ${s.deleteBtn}`}
     onClick={() => deleteOffice(destroyUserPopover.data) && togglePopover('destroyUser')}
   >
-    {t('volunteer_portal.admin.tab.users.delete.delete')}
+    {t('volunteer_portal.admin.tab.users_delete.delete')}
   </button>,
 ]
 
@@ -131,7 +131,7 @@ const Users = ({ data: { networkStatus, users }, deleteUser, togglePopover, dest
       />
       {destroyUserPopover ? (
         <Dialog
-          title={t('volunteer_portal.admin.tab.users.delete_user')}
+          title={t('volunteer_portal.admin.tab.users_delete_user')}
           actions={destroyActions(togglePopover, destroyUserPopover, deleteUser, t)}
           modal={false}
           open
