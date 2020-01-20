@@ -4,7 +4,7 @@ import * as R from 'ramda'
 import moment from 'moment'
 import styled from 'styled-components'
 import { useQuery } from '@apollo/react-hooks'
-import { Alert, Title } from '@zendeskgarden/react-notifications'
+import { Alert, Title, Paragraph } from '@zendeskgarden/react-notifications'
 import { MD, LG } from '@zendeskgarden/react-typography'
 import { Skeleton } from '@zendeskgarden/react-loaders'
 import { Tag } from '@zendeskgarden/react-tags'
@@ -99,6 +99,8 @@ const Leaderboard = _props => {
             </MD>
           </ListItem>
         ))}
+
+        {!volunteers.length && <Paragraph>🤭 No users found</Paragraph>}
       </div>
     </div>
   )

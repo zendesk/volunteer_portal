@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 
 import styled from 'styled-components'
 import RemoveIcon from '@zendeskgarden/svg-icons/src/16/trash-stroke.svg'
+import { Well } from '@zendeskgarden/react-notifications'
 import { Modal, Header, Body, Footer, FooterItem, Close } from '@zendeskgarden/react-modals'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Icon, IconButton } from '@zendeskgarden/react-buttons'
-import { XL } from '@zendeskgarden/react-typography'
+import { MD, XL } from '@zendeskgarden/react-typography'
 
 import NamedAvatar from 'components/NamedAvatar'
 import ListItem from 'components/ListItem'
@@ -36,25 +37,27 @@ const UserList = ({ users, destroySignup }) => {
     setActiveUser(null)
   }
 
+  const userData = users || []
   return (
     <>
       <Grid>
-        {users &&
-          users.map((user, i) => (
-            <User key={i}>
-              <ListItem>
-                <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
-                <IconButton
-                  aria-label={`Remove volunteer ${user.name} from this event`}
-                  onClick={() => setActiveUser(user)}
-                >
-                  <Icon>
-                    <RemoveIcon />
-                  </Icon>
-                </IconButton>
-              </ListItem>
-            </User>
-          ))}
+        {userData.map((user, i) => (
+          <User key={i}>
+            <ListItem>
+              <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
+              <IconButton
+                aria-label={`Remove volunteer ${user.name} from this event`}
+                onClick={() => setActiveUser(user)}
+              >
+                <Icon>
+                  <RemoveIcon />
+                </Icon>
+              </IconButton>
+            </ListItem>
+          </User>
+        ))}
+
+        {!userData.length && <Well>😓 There are no volunteers assigned.</Well>}
       </Grid>
 
       {activeUser && (
