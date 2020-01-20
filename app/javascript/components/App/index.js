@@ -27,9 +27,11 @@ const MuiTheme = {
   },
 }
 
+import { lightTheme } from '/themes'
+
 const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, updateUserOffice, children }) => (
   <UserContext.Provider value={currentUser}>
-    <GardenThemeProvider>
+    <GardenThemeProvider theme={lightTheme}>
       <MuiThemeProvider muiTheme={getMuiTheme(MuiTheme)}>
         {loading ? (
           <Loading />

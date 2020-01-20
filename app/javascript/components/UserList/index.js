@@ -5,6 +5,7 @@ import RemoveIcon from '@zendeskgarden/svg-icons/src/16/trash-stroke.svg'
 import { Modal, Header, Body, Footer, FooterItem, Close } from '@zendeskgarden/react-modals'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Icon, IconButton } from '@zendeskgarden/react-buttons'
+import { XL } from '@zendeskgarden/react-typography'
 
 import NamedAvatar from 'components/NamedAvatar'
 import ListItem from 'components/ListItem'
@@ -20,6 +21,11 @@ const Grid = styled.div`
 const User = styled.div`
   padding-right: 30px;
   flex-basis: calc(50% - 30px);
+`
+
+const Title = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 const UserList = ({ users, destroySignup }) => {
@@ -53,7 +59,11 @@ const UserList = ({ users, destroySignup }) => {
 
       {activeUser && (
         <Modal onClose={cancelRemove}>
-          <Header>🤔Remove volunteer from this event? </Header>
+          <Header>
+            <Title>
+              <XL tag="span">🤔</XL> <span>Remove volunteer from this event?</span>
+            </Title>
+          </Header>
           <Body>
             Please confirm you would like to remove <strong>{activeUser.name}</strong> from this event?
           </Body>

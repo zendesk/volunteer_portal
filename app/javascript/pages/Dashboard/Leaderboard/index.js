@@ -92,7 +92,7 @@ const Leaderboard = _props => {
           <ListItem key={`user-${i}`}>
             <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
             <MD>
-              <Tag round className="u-p-xxs">
+              <Tag round size="large">
                 {user.hours}
               </Tag>{' '}
               hours

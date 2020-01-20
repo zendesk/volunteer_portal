@@ -7,6 +7,7 @@ import { withNamespaces } from 'react-i18next'
 import ShowFilter from 'components/ShowFilter'
 import EventFilter from 'components/EventFilter'
 import OfficeFilter from 'components/OfficeFilter'
+import FilterGroup from 'components/FilterGroup'
 
 import s from './main.css'
 
@@ -39,16 +40,12 @@ const Toolbar = ({ label, view, views, onNavigate, onViewChange, filters, office
         </button>
       </div>
       <div className={s.filterBar}>
-        <div className="u-display-inline-flex u-mb-xxs">
-          <div className="u-mr-xxs">
-            <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
-          </div>
-          <div className="u-mr-xxs">
-            <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
-          </div>
+        <FilterGroup>
+          <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
+          <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
           <OfficeFilter offices={offices} value={filters.officeFilter.value} onChange={filters.officeFilter.onChange} />
-        </div>
-        <div className="u-display-inline-flex">
+        </FilterGroup>
+        <div>
           {views.map(viewName => (
             <button
               key={viewName}
