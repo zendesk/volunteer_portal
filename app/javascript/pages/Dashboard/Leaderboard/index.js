@@ -31,7 +31,7 @@ const SectionTitle = styled(LG)`
 const Loader = _props => (
   <>
     {Array(10)
-      .fill(null)
+      .fill()
       .map((_, i) => (
         <ListItem key={i}>
           <NamedAvatar loading />
@@ -51,13 +51,13 @@ const leaderBoardSort = 'HOURS_DESC'
 
 const Leaderboard = _props => {
   const currentUser = useContext(UserContext)
-  const [currenOfficeId, setCurrentOfficeId] = useState(R.path(['office', 'Id'], currentUser))
+  const [currentOfficeId, setCurrentOfficeId] = useState(R.path(['office', 'Id'], currentUser))
   const { loading, error, data } = useQuery(LeaderboardQuery, {
     variables: {
       after: startOfYear,
       before: nowInSec,
       count: leaderBoardSize,
-      officeId: currenOfficeId,
+      officeId: currentOfficeId,
       sortBy: leaderBoardSort,
     },
   })
@@ -73,7 +73,7 @@ const Leaderboard = _props => {
         <SectionTitle>Top Volunteers</SectionTitle>
         <OfficeFilter
           offices={ofifces}
-          value={currenOfficeId}
+          value={currentOfficeId}
           onChange={setCurrentOfficeId}
           loading={error || loading}
         />

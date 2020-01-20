@@ -13,11 +13,13 @@ const Loader = withNamespaces()(({ t }) => (
       </Select>
     </Field>
     <Menu>
-      {[1, 2, 3, 4].map(i => (
-        <Item key={i} value={i}>
-          <Skeleton />
-        </Item>
-      ))}
+      {Array(4)
+        .fill()
+        .map((_, i) => (
+          <Item key={i} value={i}>
+            <Skeleton />
+          </Item>
+        ))}
     </Menu>
   </Dropdown>
 ))
