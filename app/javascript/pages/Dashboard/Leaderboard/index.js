@@ -62,7 +62,7 @@ const Leaderboard = _props => {
     },
   })
 
-  const ofifces = R.propOr([], 'offices', data)
+  const offices = R.propOr([], 'offices', data)
   const volunteers = R.propOr([], 'volunteers', data)
 
   if (error) console.log(error)
@@ -72,7 +72,7 @@ const Leaderboard = _props => {
       <SectionHeader>
         <SectionTitle>Top Volunteers</SectionTitle>
         <OfficeFilter
-          offices={ofifces}
+          offices={offices}
           value={currentOfficeId}
           onChange={setCurrentOfficeId}
           loading={error || loading}
