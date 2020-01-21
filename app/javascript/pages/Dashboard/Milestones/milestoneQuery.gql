@@ -1,0 +1,6 @@
+query MilestoneQuery($after: Int, $before: Int) {
+  currentUser {
+    id
+    hours(after: $after, before: $before)
+  }
+}

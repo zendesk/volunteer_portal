@@ -1,24 +1,35 @@
 import React from 'react'
 
-import MenuItem from 'material-ui/MenuItem'
+import * as R from 'ramda'
+import { Dropdown, Field, Item, Menu, Select } from '@zendeskgarden/react-dropdowns'
 import { withNamespaces } from 'react-i18next'
 
-import Filter from 'components/Filter'
-import { styles } from 'components/Filter'
+const ShowFilter = ({ value, onChange, t }) => {
+  const all = { value: 'all', label: t('volunteer_portal.dashboard.layouteventstab.show_all') }
+  const options = [all, { value: 'mine', label: t('volunteer_portal.dashboard.layouteventstab.show_myevents') }]
 
-const ShowFilter = ({ value, onChange, t }) => (
-  <Filter title={t('volunteer_portal.dashboard.layouteventstab.show')} value={value} onChange={onChange}>
-    <MenuItem
-      value="all"
-      primaryText={t('volunteer_portal.dashboard.layouteventstab.show_all')}
-      style={styles.menuitem}
-    />
-    <MenuItem
-      value="mine"
-      primaryText={t('volunteer_portal.dashboard.layouteventstab.show_myevents')}
-      style={styles.menuitem}
-    />
-  </Filter>
-)
+  const selectedItem = R.find(R.propEq('value', value))(options) || all
+
+  return (
+    <Dropdown
+      selectedItem={selectedItem}
+      onSelect={option => onChange(option.value)}
+      downshiftProps={{ itemToString: option => option && option.label }}
+    >
+      <Field>
+        <Select>
+          <strong>{t('volunteer_portal.dashboard.layouteventstab.show')}</strong> {selectedItem.label}
+        </Select>
+      </Field>
+      <Menu>
+        {options.map(option => (
+          <Item key={option.value} value={option}>
+            {option.label}
+          </Item>
+        ))}
+      </Menu>
+    </Dropdown>
+  )
+}
 
 export default withNamespaces()(ShowFilter)

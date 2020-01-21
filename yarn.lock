@@ -1621,6 +1621,11 @@
     "@zendeskgarden/container-focusjail" "^1.2.3"
     "@zendeskgarden/container-utilities" "^0.3.0"
 
+"@zendeskgarden/container-schedule@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-schedule/-/container-schedule-1.2.1.tgz#3f4e4053e26fa463ed3758320e5bffbfd39c2699"
+  integrity sha512-C8LGe4i3mrlyHEh+2wG3KUYkakntMxroeBD3mBqdLMTJqaOM2Ye4o5w8N1x2GC0Ms4r7l5FNjEWR433/tTZncw==
+
 "@zendeskgarden/container-selection@^1.1.5", "@zendeskgarden/container-selection@^1.2.6":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-1.2.6.tgz#de4ccada40db20401bbfc2597156b3433ea1b584"
@@ -1632,6 +1637,25 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.3.0.tgz#9af748ef4b29f8a57f082852d039b9aaa98cf0d3"
   integrity sha512-oZLNiJoHLznZBIASScfxanxylvczTm06HRWBqcdiiGDMSJYW0HySSlEUQFlaQqsvTwzrm02hWKGnr5cdWWtE0w==
+
+"@zendeskgarden/css-utilities@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-utilities/-/css-utilities-4.5.3.tgz#08ebd2bb9cf4acbdf5cf7d52e8e3d3237e7238f4"
+  integrity sha512-HREfvkwaB3CjNfcSePKiYeuCRZHljyzjoNlnze0ezrZMnW1COAU0ePTl2CkKqojPa5ErEIgOAJqU00tKcT4dKw==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.3"
+
+"@zendeskgarden/css-variables@^6.1.0", "@zendeskgarden/css-variables@^6.3.8", "@zendeskgarden/css-variables@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.3.tgz#9cdfb0a0d97dc9a92e108b625d29ecc7330627ee"
+  integrity sha512-YKxw63ErJKzKmpCcHSqgABuFCakpU3DQFsR1fKm3rLcHVEeXPvjEPLIp73lzG2/YY24psv0/eiSq1VJDEoeReg==
+
+"@zendeskgarden/react-avatars@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-7.1.4.tgz#afd92c6739179e9e92ad5b8a845dd082564ed47c"
+  integrity sha512-jX522SpL1iAyp2HF7xdbE+DbBT1LhQuOvh5KsCB9XlJLu1kLe8OLza/vv1G/hcsHvBCcevJOXzNNo00XVRIjzw==
+  dependencies:
+    classnames "^2.2.5"
 
 "@zendeskgarden/react-buttons@^7.1.4":
   version "7.1.4"
@@ -1672,6 +1696,16 @@
   dependencies:
     classnames "^2.2.5"
 
+"@zendeskgarden/react-loaders@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-loaders/-/react-loaders-7.1.4.tgz#f3de8eca8e4d13a7f77039ba46876d3c1b54bb61"
+  integrity sha512-h1WfwaLPLzkuLHFu2k9EgwoN73R+nhsjXUaeAzqtxdGi10Fo8mzf3c9Wa45oj2kfNyezf2eyXWluDkI+rFVhxA==
+  dependencies:
+    "@zendeskgarden/container-schedule" "^1.1.0"
+    "@zendeskgarden/css-variables" "^6.1.0"
+    classnames "^2.2.5"
+    polished "^3.4.1"
+
 "@zendeskgarden/react-modals@^7.1.4":
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-modals/-/react-modals-7.1.4.tgz#afcb042dbb76d214c049a9c6c38d443d51a32bc3"
@@ -1682,6 +1716,13 @@
     "@zendeskgarden/react-utilities" "^7.1.4"
     classnames "^2.2.5"
     dom-helpers "^5.1.0"
+
+"@zendeskgarden/react-notifications@^7.1.5":
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-7.1.5.tgz#db2c08e993c5634841a1b51eee132d5311b4117f"
+  integrity sha512-VP0RAWjecMXEY4IvQQJfuwgNrxM4nQMJ3z8qpNKkb4PWnByYZT2cVPndeV02YI09j12HqPvLipfWZk0n2e6xDw==
+  dependencies:
+    classnames "^2.2.5"
 
 "@zendeskgarden/react-tags@^7.1.4":
   version "7.1.4"
@@ -1694,6 +1735,13 @@
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-7.1.4.tgz#3d03b5f5e00a4aa47ef684b27834cc88f5fa9634"
   integrity sha512-f9XdDzaydrAzs30nqUVz3NkTgVu4xyTEBDrLDPJe4CXeMmjjv4XroRME3lDg8R+T5MpcK0Je/pq2W3T9B7oIUA==
+
+"@zendeskgarden/react-typography@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-7.1.4.tgz#7da4e9118aba2b4f5047d5dfc4eaee447cb9066a"
+  integrity sha512-l2cMwMMieb3YOz3KVomOMwz2sNdqNd8LrUD3YHyLJEQVodakajKmei+nqjRYsOW3gC47Lh92fiFEH8soLo1GJg==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.3.8"
 
 "@zendeskgarden/react-utilities@^7.1.4":
   version "7.1.4"
@@ -7361,6 +7409,13 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
+
+polished@^3.4.1:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.4.2.tgz#b4780dad81d64df55615fbfc77acb52fd17d88cd"
+  integrity sha512-9Rch6iMZckABr6EFCLPZsxodeBpXMo9H4fRlfR/9VjMEyy5xpo1/WgXlJGgSjPyVhEZNycbW7UmYMNyWS5MI0g==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
 
 popper.js@^1.14.4:
   version "1.16.0"

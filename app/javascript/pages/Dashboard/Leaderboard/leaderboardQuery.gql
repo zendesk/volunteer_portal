@@ -6,12 +6,6 @@ query LeaderboardQuery($count: Int, $sortBy: UserSortEnum, $officeId: ID, $after
     ...UserEntry
     hours(after: $after, before: $before)
   }
-  currentUser {
-    ...UserEntry
-    office {
-      ...OfficeEntry
-    }
-  }
   offices(sortBy: NAME_ASC) {
     ...OfficeEntry
   }

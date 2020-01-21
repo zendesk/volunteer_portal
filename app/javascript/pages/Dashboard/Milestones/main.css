@@ -1,17 +1,7 @@
-.container {
-  display: flex;
-  justify-content: space-between;
-  flex-flow: column nowrap;
-}
-
 .progressContainer {
   display: flex;
   justify-content: space-between;
   padding-bottom: 100px;
-}
-
-.circularProgress {
-  width: 166px;
 }
 
 .overallProgress {
@@ -109,81 +99,4 @@
 
 .completedMilestone {
   color: #888;
-}
-
-/* leaderboard */
-.leaderboardHeader {
-  border-bottom: 1px solid #ddd;
-  width: 100%;
-  height: 30px;
-  line-height: 30px;
-  font-weight: 500;
-  font-size: 16px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.leaderboardUser {
-  display: flex;
-  flex-direction: row nowrap;
-  justify-content: space-between;
-  padding-bottom: 10px;
-}
-
-.leaderboardHours {
-  font-size: 16px;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-}
-
-.menuGroup {
-  height: 23px;
-  display: flex;
-  align-items: baseline;
-}
-
-.dropdown {
-  height: 25px;
-  margin-left: -18px;
-  color: #777;
-}
-
-.menuLabel {
-  color: #777;
-  font-weight: 600;
-  line-height: 23px;
-}
-
-.dropdownMenu {
-  color: #777;
-}
-
-.menuitem {
-  color: #777;
-  font-weight: 600;
-  line-height: 23px;
-  padding: 3px 0px;
-}
-
-.underline {
-  border: none;
-}
-
-.icon {
-  top: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  height: 25px;
-}
-
-.noRightBorder {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.noLeftBorder {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }

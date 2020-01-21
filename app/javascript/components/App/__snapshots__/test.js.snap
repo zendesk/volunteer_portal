@@ -18,7 +18,21 @@ exports[`loads 1`] = `
     }
   }
 >
-  <ThemeProvider>
+  <ThemeProvider
+    theme={
+      Object {
+        "spacing": Object {
+          "lg": "32px",
+          "md": "20px",
+          "sm": "12px",
+          "xl": "40px",
+          "xs": "8px",
+          "xxl": "48px",
+          "xxs": "4px",
+        },
+      }
+    }
+  >
     <MuiThemeProvider
       muiTheme={
         Object {

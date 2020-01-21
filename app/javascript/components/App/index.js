@@ -8,9 +8,14 @@ import Loading from 'components/LoadingIcon'
 import Header from 'components/Header'
 import WelcomeModal from 'components/WelcomeModal'
 
-import '@zendeskgarden/react-modals/dist/styles.css'
+import '@zendeskgarden/react-avatars/dist/styles.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
+import '@zendeskgarden/react-dropdowns/dist/styles.css'
+import '@zendeskgarden/react-grid/dist/styles.css'
+import '@zendeskgarden/react-modals/dist/styles.css'
+import '@zendeskgarden/react-notifications/dist/styles.css'
 import '@zendeskgarden/react-tags/dist/styles.css'
+import '@zendeskgarden/css-utilities/dist/index.css'
 
 const MuiTheme = {
   fontFamily:
@@ -22,9 +27,11 @@ const MuiTheme = {
   },
 }
 
+import { lightTheme } from '/themes'
+
 const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, updateUserOffice, children }) => (
   <UserContext.Provider value={currentUser}>
-    <GardenThemeProvider>
+    <GardenThemeProvider theme={lightTheme}>
       <MuiThemeProvider muiTheme={getMuiTheme(MuiTheme)}>
         {loading ? (
           <Loading />

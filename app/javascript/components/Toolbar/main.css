@@ -51,14 +51,10 @@
   border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
-}
-
-.filterDropdowns {
-  display: flex;
+  align-items: flex-end;
 }
 
 .viewBtns {
   display: flex;
   align-items: flex-end;
 }
-
