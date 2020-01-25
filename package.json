@@ -138,6 +138,8 @@
     "jest-transform-graphql": "^2.1.0",
     "lint-staged": "^6.1.0",
     "loglevel": "^1.6.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-smart-import": "^0.7.6",
     "prettier": "^1.18.2",
     "react-svg-loader": "^3.0.3",
     "react-test-renderer": "^16.12.0",
