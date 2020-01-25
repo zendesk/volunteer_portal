@@ -7,7 +7,6 @@ const webpack = require('webpack')
 const { join, resolve } = require('path')
 const { sync } = require('glob')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const extname = require('path-complete-extname')
 const { env, settings, output, loadersDir } = require('./configuration.js')
 
 const CompileI18nextPlugin = require('../locales/compile-i18next-plugin')

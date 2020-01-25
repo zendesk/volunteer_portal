@@ -92,7 +92,6 @@
     "material-ui": "0.20.1",
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.14",
-    "path-complete-extname": "^0.1.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
     "react": "^16.12.0",
