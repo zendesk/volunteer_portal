@@ -4,7 +4,6 @@ import debounce from 'lodash.debounce'
 import * as R from 'ramda'
 
 import { ThemeProvider } from '@zendeskgarden/react-theming'
-import '@zendeskgarden/react-dropdowns/dist/styles.css'
 
 const ReduxFormAutocomplete = ({ dataSource, input: { value, onChange }, searchField, maxHeight }) => {
   const [inputValue, setInputValue] = React.useState('')

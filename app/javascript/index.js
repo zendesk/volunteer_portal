@@ -9,11 +9,11 @@ import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { ThemeProvider } from '@zendeskgarden/react-theming'
-import '@zendeskgarden/react-dropdowns/dist/styles.css'
 import Root from 'components/Root'
 import configureStore from './store/configureStore'
 import Actions from './actions'
 import './i18n'
+import './styles'
 
 const client = new ApolloClient({
   link: new HttpLink({

@@ -3,10 +3,7 @@ import React from 'react'
 import debounce from 'lodash.debounce'
 import * as R from 'ramda'
 
-import '@zendeskgarden/react-tags/dist/styles.css'
 import { Tag, Close } from '@zendeskgarden/react-tags'
-
-import '@zendeskgarden/react-dropdowns/dist/styles.css'
 import { Dropdown, Menu, Item, Multiselect, Field as GardenField } from '@zendeskgarden/react-dropdowns'
 
 const TagField = ({ tags, input: { value, onChange } }) => {
