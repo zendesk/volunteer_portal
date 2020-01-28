@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 import { graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 import AdminQuery from './query.gql'
 import OfficeFilter from '../../../components/OfficeFilter'
@@ -125,4 +125,4 @@ const withActions = connect(
   }
 )
 
-export default withActions(withData(withNamespaces()(Admin)))
+export default withActions(withData(withTranslation()(Admin)))

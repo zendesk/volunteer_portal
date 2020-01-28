@@ -19,7 +19,7 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 const actionLinks = (user, togglePopover, t) => (
   <div className={s.actionColumn}>
@@ -188,4 +188,4 @@ const withActions = connect(
   }
 )
 
-export default withActions(withData(withNamespaces()(Users)))
+export default withActions(withData(withTranslation()(Users)))

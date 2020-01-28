@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import * as R from 'ramda'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 const styles = {
   container: {
@@ -86,4 +86,4 @@ const Layout = ({ noNav, currentPath, children, t }) => (
   </div>
 )
 
-export default withNamespaces()(Layout)
+export default withTranslation()(Layout)
