@@ -83,13 +83,12 @@ const serveTranslationFiles = files => {
 
 class RosettaI18nextPlugin {
   apply(compiler) {
-    compiler.plugin('emit', (compilation, callback) => {
+    compiler.hooks.shouldEmit.tap('RosettaI18NextPlugin', compilation => {
       const files = fs.readdirSync(path.resolve(__dirname))
 
       compileBaseRosetta(compilation, files)
       serveTranslationFiles(files)
-
-      callback()
+      return true
     })
   }
 }
