@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as R from 'ramda'
 import { Dropdown, Field, Item, Menu, Select } from '@zendeskgarden/react-dropdowns'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 const EventFilter = ({ value, onChange, t }) => {
   const all = { value: 'all', label: t('volunteer_portal.dashboard.layouteventstab.event_all') }
@@ -36,4 +36,4 @@ const EventFilter = ({ value, onChange, t }) => {
   )
 }
 
-export default withNamespaces()(EventFilter)
+export default withTranslation()(EventFilter)

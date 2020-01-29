@@ -19,11 +19,11 @@ import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
 
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 const eventsSort = 'STARTS_AT_DESC'
 
-const ActionLinks = withNamespaces()(({ event, deleteEvent, t }) => (
+const ActionLinks = withTranslation()(({ event, deleteEvent, t }) => (
   <div className={s.actionColumn}>
     <Link to={`/portal/admin/events/${event.id}/edit`}>{t('volunteer_portal.admin.tab.events_editevent')}</Link>
     <Link to={`/portal/admin/events/new/${event.id}`}>{t('volunteer_portal.admin.tab.events_cloneevent')}</Link>
@@ -226,4 +226,4 @@ const withActions = connect(
   }
 )
 
-export default withActions(withData(withNamespaces()(Events)))
+export default withActions(withData(withTranslation()(Events)))

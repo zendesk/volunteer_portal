@@ -12,7 +12,7 @@ import Callout from 'components/Callout'
 import s from './main.css'
 import AttendanceQuery from './attendanceQuery.gql'
 
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 const startOfWeek = moment()
   .startOf('week')
@@ -205,4 +205,4 @@ const withActions = connect(
   {}
 )
 
-export default withActions(withData(withNamespaces()(Dashboard)))
+export default withActions(withData(withTranslation()(Dashboard)))

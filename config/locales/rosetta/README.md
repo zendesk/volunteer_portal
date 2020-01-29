@@ -17,17 +17,17 @@ parts:
       value: 'Hours'
 ```
 
-Import `withNamespaces` to file you wish to extract strings and translate
+Import `withTranslation` to file you wish to extract strings and translate
 ```
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 ```
-Wrap export with withNamespaces to provide variable `t` to props
+Wrap export with withTranslation to provide variable `t` to props
 ```
 // Before
 export default Calendar
 
 // After
-export default withNamespaces()(Calendar)
+export default withTranslation()(Calendar)
 ```
 Expose `t` function to component and replace strings with `t` function call
 ```

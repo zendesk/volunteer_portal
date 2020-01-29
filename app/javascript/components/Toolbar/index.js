@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as R from 'ramda'
 import { navigate } from 'react-big-calendar/lib/utils/constants'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 import ShowFilter from 'components/ShowFilter'
 import EventFilter from 'components/EventFilter'
@@ -61,4 +61,4 @@ const Toolbar = ({ label, view, views, onNavigate, onViewChange, filters, office
   )
 }
 
-export default withNamespaces()(Toolbar)
+export default withTranslation()(Toolbar)

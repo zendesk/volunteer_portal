@@ -2,10 +2,10 @@ import React from 'react'
 
 import * as R from 'ramda'
 import { Dropdown, Field, Item, Menu, Select } from '@zendeskgarden/react-dropdowns'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import { Skeleton } from '@zendeskgarden/react-loaders'
 
-const Loader = withNamespaces()(({ t }) => (
+const Loader = withTranslation()(({ t }) => (
   <Dropdown>
     <Field>
       <Select selectedItem="">
@@ -52,4 +52,4 @@ const OfficeFilter = ({ loading, offices, onChange, t, value }) => {
   )
 }
 
-export default withNamespaces()(OfficeFilter)
+export default withTranslation()(OfficeFilter)

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`loads 1`] = `
-<LoadNamespace(Layout)
+<withI18nextTranslation(Layout)
   currentPath="/"
 >
   <Uncontrolled(Calendar)
@@ -28,5 +28,5 @@ exports[`loads 1`] = `
       ]
     }
   />
-</LoadNamespace(Layout)>
+</withI18nextTranslation(Layout)>
 `;
