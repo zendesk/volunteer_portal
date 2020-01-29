@@ -152,6 +152,19 @@ describe VolunteerResolver do
     let(:individual_event1) { individual_events(:approved) }
     let(:individual_event2) { individual_events(:minimum) }
 
+    describe 'when user has unapproved individual events' do
+      it 'does not count unapproved hours' do
+        args = {}
+        duration = 10
+
+        individual_event1.update(duration: duration, user: user2) # approved
+        individual_event2.update(duration: duration, user: user2) # unapproved
+        results = VolunteerResolver.all(nil, args, nil).find_by(id: user2).duration
+
+        results.must_equal duration
+      end
+    end
+
     describe 'when user only has individual events' do
       it 'returns the correct duration' do
         args = {}
@@ -171,7 +184,7 @@ describe VolunteerResolver do
 
         event1.update(ends_at: event1.starts_at + duration.minutes)
         individual_event1.update(duration: duration)
-        individual_event2.update(duration: duration)
+        individual_event2.update(duration: duration, status: IndividualEvent::APPROVED)
         results = VolunteerResolver.all(nil, args, nil).to_a.first.duration
 
         results.must_equal duration * 3

@@ -12,7 +12,10 @@ module VolunteerResolver
       user_entry = '"users"."id", "users"."first_name", "users"."last_name", "users"."email", "users"."group", "users"."photo"'
 
       events_scope = User.joins(:events).select("#{user_entry}, \"events\".\"duration\"")
-      individual_events_scope = User.joins(:individual_events).select("#{user_entry}, \"individual_events\".\"duration\"")
+      individual_events_scope = User
+                                .joins(:individual_events)
+                                .merge(IndividualEvent.approved)
+                                .select("#{user_entry}, \"individual_events\".\"duration\"")
 
       office_id = case args[:office_id]
                   when 'all'
