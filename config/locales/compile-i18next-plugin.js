@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const parse = require('csv-parse')
+const parse = require('csv-parse/lib/sync')
 
 const ASSETS_DIR = './public/assets/'
 const OUTPUT_DIR = './public/assets/locales/'
@@ -26,36 +26,26 @@ const compileTranslations = (compilation, files) => {
     const contents = fs.readFileSync(filePath)
 
     // Parse
-    const output = []
-    const parser = parse(contents)
-    parser.on('readable', () => {
-      let record
-      while ((record = parser.read())) {
-        output.push(record)
-      }
-    })
+    const records = parse(contents)
 
-    // Write
-    parser.on('end', () => {
-      // Prepare output files
-      const outputJson = file.replace('csv', 'json')
-      const outputPath = path.resolve(__dirname, outputJson)
-      const outputFileExists = fs.readdirSync(path.resolve(__dirname)).includes(outputJson)
-      if (!outputFileExists) {
-        fs.writeFileSync(outputPath, JSON.stringify({ locale: { translations: {} } }))
-      }
-      // Clear contents
-      const outputContents = JSON.parse(fs.readFileSync(outputPath))
-      outputContents.locale.translations = {}
+    // Prepare output files
+    const outputJson = file.replace('csv', 'json')
+    const outputPath = path.resolve(__dirname, outputJson)
+    const outputFileExists = fs.readdirSync(path.resolve(__dirname)).includes(outputJson)
+    if (!outputFileExists) {
+      fs.writeFileSync(outputPath, JSON.stringify({ locale: { translations: {} } }))
+    }
+    // Clear contents
+    const outputContents = JSON.parse(fs.readFileSync(outputPath))
+    outputContents.locale.translations = {}
 
-      // Populate output contents
-      const body = output.slice(1)
-      body.forEach(part => {
-        const [key, value, _title, _screenshot, _wip] = part
-        outputContents.locale.translations[key] = value
-      })
-      fs.writeFileSync(outputPath, JSON.stringify(outputContents, undefined, 2))
+    // Populate output contents
+    const body = records.slice(1)
+    body.forEach(part => {
+      const [key, value, _title, _screenshot, _wip] = part
+      outputContents.locale.translations[key] = value
     })
+    fs.writeFileSync(outputPath, JSON.stringify(outputContents, undefined, 2))
   })
 }
 
