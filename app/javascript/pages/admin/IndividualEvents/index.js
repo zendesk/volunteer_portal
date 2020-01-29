@@ -56,45 +56,45 @@ class IndividualEvents extends React.Component {
     },
     {
       id: 'user',
-      Header: 'User',
+      Header: this.props.t('volunteer_portal.admin.tab.individualevent.user'),
       accessor: 'user.name',
     },
     {
       id: 'description',
-      Header: 'Description',
+      Header: this.props.t('volunteer_portal.admin.tab.individualevent.description'),
       accessor: 'description',
     },
     {
       id: 'date',
-      Header: 'Date',
+      Header: this.props.t('volunteer_portal.admin.tab.individualevent.date'),
       Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
       accessor: 'date',
     },
     {
       id: 'duration',
-      Header: 'Duration (min)',
+      Header: this.props.t('volunteer_portal.admin.tab.individualevent.duration'),
       accessor: 'duration',
     },
     {
       id: 'organization',
-      Header: 'Organization',
+      Header: this.props.t('volunteer_portal.admin.tab.individualevent.organization'),
       accessor: 'organization.name',
     },
     {
       id: 'type',
-      Header: 'Type',
+      Header: this.props.t('volunteer_portal.admin.tab.individualevent.type'),
       accessor: 'eventType.title',
     },
   ]
 
   render() {
-    const { data } = this.props
+    const { data, t } = this.props
     const { networkStatus, pendingIndividualEvents } = data
     return networkStatus === NetworkStatus.loading ? (
       <Loading />
     ) : (
       <div className={s.eventsTable}>
-        <h3>Pending Approval</h3>
+        <h3>{t('volunteer_portal.admin.tab.individualevent.pendingapproval')}</h3>
         <div>
           <select
             className={s.bulkActionSelect}
@@ -104,10 +104,10 @@ class IndividualEvents extends React.Component {
             }}
           >
             <option value="actions" disabled>
-              Bulk Actions
+              {t('volunteer_portal.admin.tab.individualevent.bulkactions')}
             </option>
-            <option value="approve">Approve</option>
-            <option value="reject">Reject</option>
+            <option value="approve">{t('volunteer_portal.admin.tab.individualevent.approve')}</option>
+            <option value="reject">{t('volunteer_portal.admin.tab.individualevent.reject')}</option>
           </select>
           <button
             className={s.bulkActionButton}
@@ -128,7 +128,7 @@ class IndividualEvents extends React.Component {
               this.setState(() => ({ selectAllChecked: false, selected: [] }))
             }}
           >
-            Apply
+            {t('volunteer_portal.admin.tab.individualevent.apply')}
           </button>
         </div>
         <ReactTable
@@ -171,4 +171,4 @@ const withData = compose(
   })
 )
 
-export default withData(IndividualEvents)
+export default withData(withTranslation()(IndividualEvents))

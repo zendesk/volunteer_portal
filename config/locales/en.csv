@@ -93,9 +93,48 @@ volunteer_portal.admin.tab.users_delete_cancel,Cancel,,,TRUE
 volunteer_portal.admin.tab.users_delete_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.users_delete_user,Delete User,,,TRUE
 volunteer_portal.admin.tab.user.delete.confirmation,Are you sure you want to delete {{user}}?,,,TRUE
+<<<<<<< HEAD
 volunteer_portal.filters.office.fetch_error,Unable to load offices list,Text notifying that an error occured while fethcing the list of offices,,TRUE
 volunteer_portal.header.user_profile.default_office,Default Office,,,TRUE
 volunteer_portal.header.user_profile.language,Language,,,TRUE
 volunteer_portal.header.user_profile.admin,Admin,,,TRUE
 volunteer_portal.header.user_profile.volunteer,Volunteer,,,TRUE
 volunteer_portal.header.user_profile.sign_out,Sign Out,,,TRUE
+=======
+<<<<<<< HEAD
+=======
+volunteer_portal.admin.tab.individualevent.pendingapproval,Pending Approval,,,true
+volunteer_portal.admin.tab.individualevent.bulkactions,Bulk Actions,,,true
+volunteer_portal.admin.tab.individualevent.approve,Approve,,,true
+volunteer_portal.admin.tab.individualevent.reject,Reject,,,true
+volunteer_portal.admin.tab.individualevent.apply,Apply,,,true
+volunteer_portal.admin.tab.individualevent.user,User,,,true
+volunteer_portal.admin.tab.individualevent.description,Description,,,true
+volunteer_portal.admin.tab.individualevent.date,Date,,,true
+volunteer_portal.admin.tab.individualevent.duration,Duration, (min),,true
+volunteer_portal.admin.tab.individualevent.organization,Organization,,,true
+volunteer_portal.admin.tab.individualevent.type,Type,,,true
+volunteer_portal.admin.tab.tags.label,Tag,,,true
+volunteer_portal.admin.tab.tags.actions,Actions,,,true
+volunteer_portal.admin.tab.tags.addtag,Add Tag,,,true
+volunteer_portal.admin.tab.tags.delete,Delete,,,true
+volunteer_portal.admin.tab.tags.cancel,Cancel,,,true
+volunteer_portal.admin.tab.tags.deletetag,Delete Tag,,,true
+volunteer_portal.admin.tab.tags_delete_confirmation,Are you sure you want to delete {{tag}}?,,,true
+volunteer_portal.admin.tab.reporting.name,Name,,,true
+volunteer_portal.admin.tab.reporting.email,Email,,,true
+volunteer_portal.admin.tab.reporting.office,Office,,,true
+volunteer_portal.admin.tab.reporting.hours,Hours,,,true
+volunteer_portal.admin.tab.reporting.exportascsv,Export as csv,,,true
+volunteer_portal.admin.tab.user.dashboard.topvolunteers,Top Volunteers,,,true
+volunteer_portal.admin.tab.user.dashboard.networkerror,Network Error,,,true
+volunteer_portal.admin.tab.user.dashboard.networkerrormessage,"Sorry, we are unable to fetch data from server at this time. Please try again later.",,,true
+volunteer_portal.admin.tab.user.dashboard.totalhours,total hours,,,true
+volunteer_portal.admin.tab.user.dashboard.personal,personal,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone,Milestone,,,true
+volunteer_portal.admin.tab.user.dashboard.hours,hours,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone1,Milestone,,,true
+volunteer_portal.admin.tab.user.dashboard.hours1,hours,,,true
+volunteer_portal.admin.tab.user.dashboard.nousersfound,No users found,,,true
+>>>>>>> c1c2b77... v3
+>>>>>>> v3 (+4 squashed commits)

@@ -15,6 +15,8 @@ import NamedAvatar from 'components/NamedAvatar'
 import OfficeFilter from 'components/OfficeFilter'
 import { FilterContext, officeFilterValueLens } from 'context'
 
+import { withTranslation, useTranslation } from 'react-i18next'
+
 const { zdSpacingXxs, zdColorGrey300 } = require('@zendeskgarden/css-variables')
 
 const SectionHeader = styled.div`
@@ -68,14 +70,14 @@ const Leaderboard = _props => {
   return (
     <div>
       <SectionHeader>
-        <SectionTitle>Top Volunteers</SectionTitle>
+        <SectionTitle>{_props.t('volunteer_portal.admin.tab.user.dashboard.topvolunteers')}</SectionTitle>
         <OfficeFilter />
       </SectionHeader>
       <div>
         {error && (
           <Alert type="error">
-            <Title>Network Error</Title>
-            Sorry, we are unable to fetch data from server at this time. Please try again later.
+            <Title>{_props.t('volunteer_portal.admin.tab.user.dashboard.networkerror')}</Title>
+            {_props.t('volunteer_portal.admin.tab.user.dashboard.networkerrormessage')}
           </Alert>
         )}
 
@@ -93,10 +95,12 @@ const Leaderboard = _props => {
           </ListItem>
         ))}
 
-        {!volunteers.length && <Paragraph>🤭 No users found</Paragraph>}
+        {!volunteers.length && (
+          <Paragraph>🤭 {_props.t('volunteer_portal.admin.tab.user.dashboard.nousersfound')}</Paragraph>
+        )}
       </div>
     </div>
   )
 }
 
-export default Leaderboard
+export default withTranslation()(Leaderboard)

@@ -144,7 +144,9 @@ const EventTypes = ({
           onRequestClose={() => togglePopover('destroyEventType', destroyEventTypePopover.data)}
           actionsContainerStyle={{ paddingBottom: 20 }}
         >
-          {t('volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation')} {destroyEventTypePopover.data.title}?
+          {t('volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation', {
+            eventtype: destroyEventTypePopover.data.title,
+          })}
         </Dialog>
       ) : null}
     </div>
