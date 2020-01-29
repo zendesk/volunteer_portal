@@ -10,9 +10,9 @@ import MilestoneQuery from './milestoneQuery.gql'
 import s from './main.css'
 
 const milestones = [
-  { name: 1, hours: 4, color: '#358fb2' },
-  { name: 2, hours: 8, color: '#5ebbde' },
-  { name: 3, hours: 12, color: '#78cdec' },
+  { name: 1, hours: 2, color: '#358fb2' },
+  { name: 2, hours: 4, color: '#5ebbde' },
+  { name: 3, hours: 6, color: '#78cdec' },
 ]
 
 const milestoneBarWidth = 650 // used as inline style for the .bar class
