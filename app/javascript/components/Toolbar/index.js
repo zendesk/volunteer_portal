@@ -41,9 +41,19 @@ const Toolbar = ({ label, view, views, onNavigate, onViewChange, filters, office
       </div>
       <div className={s.filterBar}>
         <FilterGroup>
-          <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
-          <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
-          <OfficeFilter offices={offices} value={filters.officeFilter.value} onChange={filters.officeFilter.onChange} />
+          <div>
+            <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
+          </div>
+          <div>
+            <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
+          </div>
+          <div>
+            <OfficeFilter
+              offices={offices}
+              value={filters.officeFilter.value}
+              onChange={filters.officeFilter.onChange}
+            />
+          </div>
         </FilterGroup>
         <div>
           {views.map(viewName => (
