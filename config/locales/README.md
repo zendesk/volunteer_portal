@@ -13,7 +13,7 @@ volunteer_portal.dashboard.layouttab.calendar,Clickable tab that displays the Ca
 
 ```
 
-Our preffered method is using the `useTranslation` hook, but there's a lot of legacy using the `withTranslation` after converting from v9.
+Our preferred method is using the `useTranslation` hook, but there's a lot of legacy using the `withTranslation` after converting from v9.
 
 
 ```
