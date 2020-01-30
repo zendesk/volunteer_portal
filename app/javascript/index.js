@@ -1,4 +1,3 @@
-import ActionCable from 'actioncable'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloClient } from 'apollo-client'
@@ -11,7 +10,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { ThemeProvider } from '@zendeskgarden/react-theming'
 import Root from 'components/Root'
 import configureStore from './store/configureStore'
-import Actions from './actions'
+import { lightTheme } from '/themes'
 import './i18n'
 import './styles'
 
@@ -28,7 +27,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 ReactDOM.render(
   <ApolloProvider store={store} client={client}>
     <ApolloHooksProvider client={client}>
-      <ThemeProvider>
+      <ThemeProvider theme={lightTheme}>
         <Root store={store} history={history} />
       </ThemeProvider>
     </ApolloHooksProvider>

@@ -1,7 +1,6 @@
 import React from 'react'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import { ThemeProvider as GardenThemeProvider } from '@zendeskgarden/react-theming'
 
 import UserContext from '../../context/UserContext'
 import Loading from 'components/LoadingIcon'
@@ -18,29 +17,25 @@ const MuiTheme = {
   },
 }
 
-import { lightTheme } from '/themes'
-
 const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, updateUserOffice, children }) => (
   <UserContext.Provider value={currentUser}>
-    <GardenThemeProvider theme={lightTheme}>
-      <MuiThemeProvider muiTheme={getMuiTheme(MuiTheme)}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <div>
-            <Header
-              currentUser={currentUser}
-              offices={offices}
-              togglePopover={e => toggleUserPopover(e.currentTarget)}
-              popover={userPopover}
-              handleOfficeSelect={office => updateUserOffice(currentUser, office)}
-            />
-            <WelcomeModal />
-            {children}
-          </div>
-        )}
-      </MuiThemeProvider>
-    </GardenThemeProvider>
+    <MuiThemeProvider muiTheme={getMuiTheme(MuiTheme)}>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div>
+          <Header
+            currentUser={currentUser}
+            offices={offices}
+            togglePopover={e => toggleUserPopover(e.currentTarget)}
+            popover={userPopover}
+            handleOfficeSelect={office => updateUserOffice(currentUser, office)}
+          />
+          <WelcomeModal />
+          {children}
+        </div>
+      )}
+    </MuiThemeProvider>
   </UserContext.Provider>
 )
 
