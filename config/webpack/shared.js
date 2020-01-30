@@ -10,7 +10,7 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const extname = require('path-complete-extname')
 const { env, settings, output, loadersDir } = require('./configuration.js')
 
-const RosettaI18nextPlugin = require('../locales/rosetta/rosetta-i18next-plugin')
+const CompileI18nextPlugin = require('../locales/compile-i18next-plugin')
 
 const entryPath = join(settings.source_path, settings.source_entry_path)
 
@@ -33,7 +33,7 @@ module.exports = {
       publicPath: output.publicPath,
       writeToFileEmit: true,
     }),
-    new RosettaI18nextPlugin({ options: true }),
+    new CompileI18nextPlugin({ options: true }),
   ],
 
   resolve: {
