@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import styled from 'styled-components'
 import RemoveIcon from '@zendeskgarden/svg-icons/src/16/trash-stroke.svg'
@@ -6,10 +6,11 @@ import { Well } from '@zendeskgarden/react-notifications'
 import { Modal, Header, Body, Footer, FooterItem, Close } from '@zendeskgarden/react-modals'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Icon, IconButton } from '@zendeskgarden/react-buttons'
-import { MD, XL } from '@zendeskgarden/react-typography'
+import { XL } from '@zendeskgarden/react-typography'
 
 import NamedAvatar from 'components/NamedAvatar'
 import ListItem from 'components/ListItem'
+import { UserContext } from 'context'
 
 const Grid = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const Title = styled.div`
 `
 
 const UserList = ({ users, destroySignup }) => {
+  const currentUser = useContext(UserContext)
   const [activeUser, setActiveUser] = useState(null)
   const cancelRemove = () => setActiveUser(null)
   const removeUser = () => {
@@ -45,14 +47,16 @@ const UserList = ({ users, destroySignup }) => {
           <User key={i}>
             <ListItem>
               <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
-              <IconButton
-                aria-label={`Remove volunteer ${user.name} from this event`}
-                onClick={() => setActiveUser(user)}
-              >
-                <Icon>
-                  <RemoveIcon />
-                </Icon>
-              </IconButton>
+              {currentUser.isAdmin && (
+                <IconButton
+                  aria-label={`Remove volunteer ${user.name} from this event`}
+                  onClick={() => setActiveUser(user)}
+                >
+                  <Icon>
+                    <RemoveIcon />
+                  </Icon>
+                </IconButton>
+              )}
             </ListItem>
           </User>
         ))}
