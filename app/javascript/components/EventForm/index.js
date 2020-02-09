@@ -230,7 +230,7 @@ const EventForm = ({
         Save
       </button>
     </div>
-    <UserList users={users} destroySignup={destroySignup} />
+    <UserList users={users} onRemove={destroySignup} />
   </form>
 )
 
