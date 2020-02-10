@@ -106,10 +106,10 @@ class MapPreview extends Component {
   }
 }
 
-const Event = ({ data: { loading, event, currentUser }, createSignup, destroySignup, locationBeforeTransitions }) =>
-  loading ? (
-    <Loading />
-  ) : (
+const Event = ({ data: { loading, event, currentUser }, createSignup, destroySignup, locationBeforeTransitions }) => {
+  if (loading) return <Loading />
+
+  return (
     <Layout currentPath={locationBeforeTransitions.pathname}>
       <div className={s.page}>
         <div className={s.pageHeader}>
@@ -177,6 +177,7 @@ const Event = ({ data: { loading, event, currentUser }, createSignup, destroySig
       </div>
     </Layout>
   )
+}
 
 const withData = compose(
   graphql(EventQuery, {
