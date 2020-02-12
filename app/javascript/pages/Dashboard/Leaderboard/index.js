@@ -90,7 +90,7 @@ const Leaderboard = _props => {
 
         {volunteers.map((user, i) => (
           <ListItem key={`user-${i}`}>
-            <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
+            <NamedAvatar image={user.photo} name={user.name} />
             <MD>
               <Tag round size="large">
                 {user.hours}

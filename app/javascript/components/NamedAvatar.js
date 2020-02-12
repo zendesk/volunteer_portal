@@ -40,7 +40,7 @@ const NamedAvatar = ({ loading, image, name, subtitle }) => {
       <Avatar image={image} />
       <Details>
         <MD tag="strong">{name}</MD>
-        <SM>{subtitle || '\u00a0'}</SM>
+        {subtitle && <SM>{subtitle}</SM>}
       </Details>
     </Container>
   )
