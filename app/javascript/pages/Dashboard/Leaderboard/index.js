@@ -13,7 +13,7 @@ import LeaderboardQuery from './leaderboardQuery.gql'
 import ListItem from 'components/ListItem'
 import NamedAvatar from 'components/NamedAvatar'
 import OfficeFilter from 'components/OfficeFilter'
-import { UserContext } from 'context'
+import { FilterContext, officeFilterValueLens } from 'context'
 
 const { zdSpacingXxs, zdColorGrey300 } = require('@zendeskgarden/css-variables')
 
@@ -50,19 +50,17 @@ const leaderBoardSize = 10
 const leaderBoardSort = 'HOURS_DESC'
 
 const Leaderboard = _props => {
-  const { currentUser } = useContext(UserContext)
-  const [currentOfficeId, setCurrentOfficeId] = useState(R.path(['office', 'Id'], currentUser))
+  const { filters } = useContext(FilterContext)
   const { loading, error, data } = useQuery(LeaderboardQuery, {
     variables: {
       after: startOfYear,
       before: nowInSec,
       count: leaderBoardSize,
-      officeId: currentOfficeId,
+      officeId: R.view(officeFilterValueLens, filters),
       sortBy: leaderBoardSort,
     },
   })
 
-  const offices = R.propOr([], 'offices', data)
   const volunteers = R.propOr([], 'volunteers', data)
 
   if (error) console.log(error)
@@ -71,12 +69,7 @@ const Leaderboard = _props => {
     <div>
       <SectionHeader>
         <SectionTitle>Top Volunteers</SectionTitle>
-        <OfficeFilter
-          offices={offices}
-          value={currentOfficeId}
-          onChange={setCurrentOfficeId}
-          loading={error || loading}
-        />
+        <OfficeFilter />
       </SectionHeader>
       <div>
         {error && (
