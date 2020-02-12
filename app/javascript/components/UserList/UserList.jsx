@@ -38,7 +38,7 @@ const UserList = ({ users, onRemove }) => {
   const showList = R.addIndex(R.map)((user, i) => (
     <User key={i}>
       <ListItem>
-        <NamedAvatar image={user.photo} name={user.name} subtitle={user.group} />
+        <NamedAvatar image={user.photo} name={user.name} />
         {shouldShowRmBtn && <RemoveUserButton user={user} confirm={() => setActiveUser(user)} />}
       </ListItem>
     </User>
