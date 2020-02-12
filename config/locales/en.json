@@ -96,7 +96,8 @@
       "volunteer_portal.admin.tab.users_delete_cancel": "Cancel",
       "volunteer_portal.admin.tab.users_delete_delete": "Delete",
       "volunteer_portal.admin.tab.users_delete_user": "Delete User",
-      "volunteer_portal.admin.tab.user.delete.confirmation": "Are you sure you want to delete {{user}}?"
+      "volunteer_portal.admin.tab.user.delete.confirmation": "Are you sure you want to delete {{user}}?",
+      "volunteer_portal.filters.office.fetch_error": "Unable to load offices list"
     }
   }
 }

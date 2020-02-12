@@ -12,7 +12,7 @@ const OfficeFilterError = ({ t }) => (
       </Select>
     </Field>
     <Menu>
-      <Item value="error">Unable to load offices list</Item>
+      <Item value="error">{t('volunteer_portal.filters.office.fetch_error')}</Item>
     </Menu>
   </Dropdown>
 )
