@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router'
 import * as R from 'ramda'
 
@@ -7,23 +7,15 @@ import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right'
-import ContentIcon from 'material-ui/svg-icons/content/create'
-import SvgIcon from 'material-ui/SvgIcon'
-
-import DropDownMenu from 'material-ui/DropDownMenu'
 
 import { present } from '../../lib/utils'
 import s from './main.css'
 import i18next from 'i18next'
-import { AutoComplete } from 'material-ui'
 
-// TODO: Refactor to use Garden Components
-
-const TranslateIcon = props => (
-  <SvgIcon {...props} style={{ height: 16, margin: 'auto' }}>
-    <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" />
-  </SvgIcon>
-)
+import { Dropdown, Menu as GardenMenu, Item, Hint, Select, Field, Label } from '@zendeskgarden/react-dropdowns'
+import { Button } from '@zendeskgarden/react-buttons'
+import TranslationIcon from '@zendeskgarden/svg-icons/src/12/translation-exists-fill.svg'
+import PencilIcon from '@zendeskgarden/svg-icons/src/12/pencil-fill.svg'
 
 const styles = {
   item: {
@@ -36,40 +28,48 @@ const AdminActions = ({ currentUser }) =>
     <div className={s.adminActions}>
       <div className={s.adminBox}>
         <Link to="/portal/admin">
-          <button className={s.btn}>
-            <ContentIcon style={{ margin: 'auto', height: 16 }} />
-            <p style={{ fontSize: 15 }}>Admin</p>
-          </button>
+          <Button>
+            <PencilIcon /> Admin
+          </Button>
         </Link>
       </div>
     </div>
   ) : null
 
-class LanguageSelect extends React.Component {
-  state = {
-    language: i18next.language,
-  }
-  render() {
-    return (
-      <div style={{ display: 'flex' }}>
-        <TranslateIcon />
-        <DropDownMenu
-          style={{ marginBottom: 0, marginLeft: -20, height: AutoComplete }}
-          underlineStyle={{ display: 'none' }}
-          value={this.state.language}
-          onChange={(event, index, value) => {
-            this.setState(() => ({ language: i18next.language }))
-            i18next.changeLanguage(value, () => {
-              // TODO: Handle callback (error/success)
-            })
-          }}
-        >
-          <MenuItem value="en" primaryText="English" />
-          <MenuItem value="ja" primaryText="日本語" />
-        </DropDownMenu>
-      </div>
-    )
-  }
+const LanguageSelect = () => {
+  const options = [
+    { label: 'English', value: 'en' },
+    // { label: "日本語", value: "ja" }
+  ]
+  const [selectedItem, useSelectedItem] = useState(options[0])
+
+  return (
+    <div style={{ margin: '0px 4px' }}>
+      <Dropdown
+        selectedItem={selectedItem}
+        downshiftProps={{ itemToString: item => item && item.label }}
+        onSelect={selectedItem => {
+          i18next.changeLanguage(selectedItem.value, () => {
+            // TODO: Handle callback (error/success)
+          })
+          useSelectedItem(selectedItem)
+        }}
+      >
+        <Field style={{ border: 'red' }}>
+          <Select>
+            <TranslationIcon /> {selectedItem.label}
+          </Select>
+        </Field>
+        <GardenMenu>
+          {options.map(option => (
+            <Item key={option.value} value={option}>
+              {option.label}
+            </Item>
+          ))}
+        </GardenMenu>
+      </Dropdown>
+    </div>
+  )
 }
 
 const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSelect, adminPage }) =>
@@ -86,8 +86,8 @@ const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSele
               />
             </Link>
           </div>
-          <LanguageSelect />
           <AdminActions currentUser={currentUser} />
+          <LanguageSelect />
           <div>
             <button className={s.btn} onClick={togglePopover}>
               <img className={s.img} src={currentUser.photo} />
