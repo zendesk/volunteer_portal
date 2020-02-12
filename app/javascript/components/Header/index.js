@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
+
 import { Link } from 'react-router'
 import * as R from 'ramda'
-
 import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right'
-import ContentIcon from 'material-ui/svg-icons/content/create'
+import { useMutation } from '@apollo/react-hooks'
 
+import ContentIcon from 'material-ui/svg-icons/content/create'
+import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
 import { UserContext, FilterContext } from '/context'
 import { present } from '../../lib/utils'
 import s from './main.css'
@@ -35,11 +37,13 @@ const AdminActions = ({ currentUser }) =>
 const Header = ({ offices, togglePopover, popover, adminPage }) => {
   const { currentUser, setOffice } = useContext(UserContext)
   const { setOfficeValue } = useContext(FilterContext)
+  const [updateDefaultOffice] = useMutation(UpdateUserOfficeMutation)
 
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
 
   const handleOfficeSelect = office =>
-    setOffice(office)
+    updateDefaultOffice({ variables: { userId: currentUser.id, officeId: office.id } })
+      .then(response => setOffice(R.path(['data', 'updateUserOffice', 'office'], response)))
       .then(_ => setOfficeValue(office.id))
       .then(_ => togglePopover('user'))
 
