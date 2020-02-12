@@ -1,7 +1,15 @@
 #import "fragments/EventEntry.gql"
+#import "fragments/OfficeEntry.gql"
 
 mutation createEvent($input: EditEventInputType!) {
   createEvent(input: $input) {
     ...EventEntry
+    signupCount
+    office {
+      ...OfficeEntry
+    }
+    organization {
+      name
+    }
   }
 }

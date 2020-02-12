@@ -1,0 +1,19 @@
+#import "fragments/EventTypeEntry.gql"
+#import "fragments/OfficeEntry.gql"
+#import "fragments/OrganizationEntry.gql"
+
+query AssociationsQuery {
+  eventTypes {
+    ...EventTypeEntry
+  }
+  offices(sortBy: NAME_ASC) {
+    ...OfficeEntry
+  }
+  organizations {
+    ...OrganizationEntry
+  }
+  tags {
+    id
+    name
+  }
+}

@@ -6,7 +6,6 @@ import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
 import Callout from 'components/Callout'
-import UserList from 'components/UserList'
 import LocationField from 'components/LocationField'
 import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 
@@ -131,17 +130,7 @@ const TimeField = ({ input: { value, onChange } }) => (
   />
 )
 
-const EventForm = ({
-  handleSubmit,
-  disableSubmit,
-  errors,
-  eventTypes,
-  tags,
-  organizations,
-  offices,
-  users,
-  destroySignup,
-}) => (
+const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, organizations, offices, children }) => (
   <form className={s.form} onSubmit={handleSubmit}>
     {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
@@ -230,7 +219,7 @@ const EventForm = ({
         Save
       </button>
     </div>
-    <UserList users={users} onRemove={destroySignup} />
+    {children}
   </form>
 )
 

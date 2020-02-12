@@ -1,11 +1,6 @@
-import React from 'react'
-import { graphql, compose } from 'react-apollo'
-import { connect } from 'react-redux'
+import React, { useContext } from 'react'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 import * as R from 'ramda'
-import { NetworkStatus } from 'apollo-client'
-import moment from 'moment'
-
-import { graphQLError, changeAdminOfficeFilter } from 'actions'
 
 import EventForm from './form'
 import { extractIdFromAssociations } from './utils'
@@ -13,6 +8,7 @@ import { extractIdFromAssociations } from './utils'
 import EventsQuery from './queries/index.gql'
 import EventQuery from './queries/show.gql'
 import CreateEventMutation from './mutations/create.gql'
+import { FilterContext, officeFilterValueLens } from '/context'
 
 import Loading from 'components/LoadingIcon'
 
@@ -27,81 +23,35 @@ const transformToReduxFormState = event => {
     capacity,
     startsAt: new Date(startsAt),
     endsAt: new Date(endsAt),
-    eventType: { id: eventType.id },
+    eventType: R.pick(['id'], eventType || {}),
     tags,
-    office: { id: office.id },
-    organization: { id: organization.id },
+    office: R.pick(['id'], office || {}),
+    organization: R.pick(['id'], organization || {}),
   }
 }
 
-const NewEvent = ({ createEvent, data: { networkStatus, event, eventTypes, tags, offices, organizations } }) =>
-  networkStatus === NetworkStatus.loading ? (
-    <Loading />
-  ) : (
-    <EventForm
-      event={event && transformToReduxFormState(event)}
-      tags={tags}
-      eventTypes={eventTypes}
-      offices={offices}
-      organizations={organizations}
-      onSubmit={createEvent}
-    />
-  )
+const NewEvent = ({ router, params }) => {
+  const { filters, setOfficeValue } = useContext(FilterContext)
+  const { data, loading } = useQuery(EventQuery, { variables: { id: R.propOr('-1', 'id', params) } })
+  const [createEvent] = useMutation(CreateEventMutation, {
+    update: (proxy, { data: { createEvent } }) => {
+      const queryParams = {
+        query: EventsQuery,
+        variables: {
+          officeId: R.view(officeFilterValueLens, filters),
+          sortBy: eventsSort,
+        },
+      }
+      const result = proxy.readQuery(queryParams)
+      const withNewEvent = R.append(createEvent, result.events)
+      proxy.writeQuery({
+        ...queryParams,
+        data: { ...result, events: withNewEvent },
+      })
+    },
+  })
 
-const buildOptimisticResponse = ({
-  title,
-  description,
-  eventType,
-  organization,
-  office,
-  location,
-  date,
-  startsAt,
-  endsAt,
-  capacity,
-}) => ({
-  __typename: 'Mutation',
-  createEvent: {
-    __typename: 'Event',
-    id: '-1',
-    title,
-    description,
-    eventType,
-    organization,
-    office,
-    location,
-    date,
-    startsAt,
-    endsAt,
-    capacity,
-    duration: moment(endsAt).diff(startsAt, 'minutes'),
-  },
-})
-
-const withData = compose(
-  graphql(EventQuery, {
-    options: ({ params: { id } }) => ({
-      variables: {
-        id: id || '-1',
-      },
-    }),
-  }),
-  graphql(CreateEventMutation, {
-    props: ({ ownProps, mutate }) => ({
-      createEvent: event =>
-        mutate({
-          variables: { input: extractIdFromAssociations(event) },
-          optimisticResponse: buildOptimisticResponse(event),
-          update: (proxy, { data: { createEvent } }) => {
-            try {
-              const queryParams = {
-                query: EventsQuery,
-                variables: {
-                  officeId: event.office.id || 'current',
-                  sortBy: eventsSort,
-                },
-              }
-
+<<<<<<< HEAD
               const data = proxy.readQuery(queryParams)
               const withNewEvent = R.append(createEvent, data.events)
               proxy.writeQuery({
@@ -121,15 +71,31 @@ const withData = compose(
     }),
   })
 )
-
-const mapStateToProps = (state, ownProps) => ({})
-
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    changeAdminOfficeFilter,
+=======
+  const onSubmit = event => {
+    createEvent({
+      variables: { input: extractIdFromAssociations(event) },
+    }).then(({ data }) => {
+      setOfficeValue(R.path(['createEvent', 'office', 'id'], data))
+      router.push('/portal/admin/events')
+    })
   }
-)
 
-export default withActions(withData(NewEvent))
+  if (loading) return <Loading />
+>>>>>>> :construction: Remove filter state and actions from redux
+
+  const event = R.prop('event', data)
+
+  return (
+    <EventForm
+      event={event && transformToReduxFormState(event)}
+      tags={R.propOr([], 'tags', data)}
+      eventTypes={R.propOr([], 'eventTypes', data)}
+      offices={R.propOr([], 'offices', data)}
+      organizations={R.propOr([], 'organizations', data)}
+      onSubmit={onSubmit}
+    />
+  )
+}
+
+export default NewEvent

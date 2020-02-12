@@ -28,15 +28,6 @@ const model = (state = defaultState, action) => {
 
   /* eslint-disable no-fallthrough */
   switch (action.type) {
-    // Standard Filter Changes
-    case Actions.CHANGE_SHOW_FILTER:
-      return filterChange('showFilter')
-    case Actions.CHANGE_EVENT_FILTER:
-      return filterChange('eventFilter')
-    case Actions.CHANGE_OFFICE_FILTER:
-      return filterChange('officeFilter')
-    case Actions.CHANGE_ADMIN_OFFICE_FILTER:
-      return filterChange('adminOfficeFilter')
     case Actions.TOGGLE_POPOVER:
       return handlePopoverToggle(state, action.popover)
     // Non-standard Actions
@@ -61,14 +52,6 @@ const model = (state = defaultState, action) => {
     case Actions.CALENDAR_DATE_CHANGE: {
       const { date } = action
       return R.merge(state, { calendarDate: date })
-    }
-    case Actions.CHANGE_ADMIN_REPORTING_START: {
-      const { date } = action
-      return R.merge(state, { reportingStartDate: date })
-    }
-    case Actions.CHANGE_ADMIN_REPORTING_END: {
-      const { date } = action
-      return R.merge(state, { reportingEndDate: date })
     }
     case '@@router/LOCATION_CHANGE': {
       return R.merge(state, { popover: null })

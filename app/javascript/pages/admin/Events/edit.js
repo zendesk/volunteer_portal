@@ -7,6 +7,7 @@ import * as R from 'ramda'
 import { graphQLError } from 'actions'
 
 import EventForm from './form'
+import UserList from 'components/UserList'
 import Loading from 'components/LoadingIcon'
 import { extractIdFromAssociations } from './utils'
 
@@ -27,11 +28,11 @@ const EditEvent = ({
       eventTypes={eventTypes}
       tags={tags}
       offices={offices}
-      users={event.users}
-      destroySignup={user => destroySignup(event, user)}
       organizations={organizations}
       onSubmit={updateEvent}
-    />
+    >
+      <UserList users={event.users} onRemove={user => destroySignup(event, user)} />
+    </EventForm>
   )
 
 const buildOptimisticResponse = event => ({

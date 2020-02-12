@@ -59,8 +59,7 @@ const EventFormPage = ({
   pristine,
   submitting,
   graphQLErrors,
-  users,
-  destroySignup,
+  children,
 }) => (
   <EventForm
     eventTypes={eventTypes}
@@ -68,11 +67,11 @@ const EventFormPage = ({
     offices={offices}
     organizations={organizations}
     handleSubmit={handleSubmit}
-    users={users}
-    destroySignup={destroySignup}
     disableSubmit={pristine || submitting}
     errors={graphQLErrors}
-  />
+  >
+    {children}
+  </EventForm>
 )
 
 const withReduxForm = reduxForm({
