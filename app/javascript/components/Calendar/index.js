@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import moment from 'moment'
 import * as R from 'ramda'
 import BigCalendar from 'react-big-calendar'
@@ -7,6 +7,7 @@ import Event from 'components/Event'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 import Toolbar from 'components/Toolbar'
+import { FilterContext } from '/context'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -22,7 +23,7 @@ const styles = {
 }
 
 // Custom components given to BigCalendar
-const calendarComponents = (currentUser, offices, filters, filterActions) => {
+const calendarComponents = (filters, filterActions) => {
   const filtersWithActions = {
     showFilter: {
       value: filters.showFilter.value,
@@ -32,14 +33,10 @@ const calendarComponents = (currentUser, offices, filters, filterActions) => {
       value: filters.eventFilter.value,
       onChange: filterActions.changeEventFilter,
     },
-    officeFilter: {
-      value: filters.officeFilter.value || currentUser.office.id,
-      onChange: filterActions.changeOfficeFilter,
-    },
   }
 
   return {
-    toolbar: props => <Toolbar {...props} offices={offices} filters={filtersWithActions} />,
+    toolbar: props => <Toolbar {...props} filters={filtersWithActions} />,
     event: Event, // used by each view (Month, Day, Week)
   }
 }
@@ -95,14 +92,13 @@ const applyEventFilter = dataAndFilters => {
 const applyOfficeFilter = dataAndFilters => {
   const {
     event,
-    currentUser,
     filters: { officeFilter },
     isValid,
   } = dataAndFilters
   const showAll = officeFilter.value === 'all'
 
   if (isValid && !showAll) {
-    return R.merge(dataAndFilters, { isValid: event.office.id == (officeFilter.value || currentUser.office.id) })
+    return R.merge(dataAndFilters, { isValid: event.office.id == officeFilter.value })
   }
 
   return dataAndFilters
@@ -128,25 +124,25 @@ const Calendar = ({
   loading,
   currentPath,
   events,
-  offices,
   currentUser,
-  filters,
   changeShowFilter,
   changeEventFilter,
   changeOfficeFilter,
   togglePopover,
   loadMoreEvents,
-}) =>
-  loading ? (
-    <Loading />
-  ) : (
+}) => {
+  const { filters } = useContext(FilterContext)
+
+  if (loading) return <Loading />
+
+  return (
     <Layout currentPath={currentPath}>
       <BigCalendar
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
         culture="en"
-        components={calendarComponents(currentUser, offices, filters, {
+        components={calendarComponents(filters, {
           changeShowFilter,
           changeEventFilter,
           changeOfficeFilter,
@@ -158,5 +154,6 @@ const Calendar = ({
       />
     </Layout>
   )
+}
 
 export default Calendar

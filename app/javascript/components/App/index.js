@@ -2,7 +2,7 @@ import React from 'react'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import UserContext from '../../context/UserContext'
+import { UserContext, FilterProvider } from '/context'
 import Loading from 'components/LoadingIcon'
 import Header from 'components/Header'
 import WelcomeModal from 'components/WelcomeModal'
@@ -19,23 +19,25 @@ const MuiTheme = {
 
 const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, updateUserOffice, children }) => (
   <UserContext.Provider value={currentUser}>
-    <MuiThemeProvider muiTheme={getMuiTheme(MuiTheme)}>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div>
-          <Header
-            currentUser={currentUser}
-            offices={offices}
-            togglePopover={e => toggleUserPopover(e.currentTarget)}
-            popover={userPopover}
-            handleOfficeSelect={office => updateUserOffice(currentUser, office)}
-          />
-          <WelcomeModal />
-          {children}
-        </div>
-      )}
-    </MuiThemeProvider>
+    <FilterProvider user={currentUser}>
+      <MuiThemeProvider muiTheme={getMuiTheme(MuiTheme)}>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div>
+            <Header
+              currentUser={currentUser}
+              offices={offices}
+              togglePopover={e => toggleUserPopover(e.currentTarget)}
+              popover={userPopover}
+              handleOfficeSelect={office => updateUserOffice(currentUser, office)}
+            />
+            <WelcomeModal />
+            {children}
+          </div>
+        )}
+      </MuiThemeProvider>
+    </FilterProvider>
   </UserContext.Provider>
 )
 
