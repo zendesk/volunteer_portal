@@ -1,25 +1,22 @@
-import React from 'react'
-import { graphql, compose } from 'react-apollo'
-import { connect } from 'react-redux'
-import { NetworkStatus } from 'apollo-client'
+import React, { useContext, useCallback } from 'react'
 import * as R from 'ramda'
 import ReactTable from 'react-table'
-import { Link } from 'react-router'
 import moment from 'moment'
+import { Link } from 'react-router'
+import { connect } from 'react-redux'
 import { defaultFilterMethod } from 'lib/utils'
-
-import { graphQLError } from 'actions'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 
 import Loading from 'components/LoadingIcon'
 
 import EventsQuery from './queries/index.gql'
 import DeleteEventMutation from './mutations/delete.gql'
+import { withTranslation } from 'react-i18next'
+import { FilterContext, officeFilterValueLens } from '/context'
 
 import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
-
-import { withTranslation } from 'react-i18next'
 
 const eventsSort = 'STARTS_AT_DESC'
 
@@ -121,10 +118,44 @@ const tdProps = () => ({
   },
 })
 
-const Events = ({ data: { networkStatus, events }, t, deleteEvent }) =>
-  networkStatus === NetworkStatus.loading ? (
-    <Loading />
-  ) : (
+const Events = ({ t }) => {
+  const { filters } = useContext(FilterContext)
+  const queryVars = {
+    officeId: R.view(officeFilterValueLens, filters),
+    sortBy: eventsSort,
+  }
+  const { data, loading, error } = useQuery(EventsQuery, {
+    variables: queryVars,
+  })
+
+  const [deleteEvent] = useMutation(DeleteEventMutation, {
+    optimisticResponse: buildOptimisticResponse(event),
+    update: (cache, { data: { deleteEvent } }) => {
+      const queryParams = {
+        query: EventsQuery,
+        variables: queryVars,
+      }
+      const data = cache.readQuery(queryParams)
+      const withEventRemoved = R.reject(event => event.id === deleteEvent.id, data.events)
+      cache.writeQuery({
+        ...queryParams,
+        data: { ...data, events: withEventRemoved },
+      })
+    },
+  })
+
+  const onDeleteEvent = event =>
+    deleteEvent({
+      variables: { id: event.id },
+    })
+
+  if (loading) return <Loading />
+
+  if (error) console.log(error.graphQLErrors)
+
+  const events = R.propOr([], 'events', data)
+
+  return (
     <div>
       <div className={s.actionBar}>
         <Link to="/portal/admin/events/new">
@@ -134,7 +165,7 @@ const Events = ({ data: { networkStatus, events }, t, deleteEvent }) =>
       <ReactTable
         NoDataComponent={() => null}
         data={events}
-        columns={columns(deleteEvent, t)}
+        columns={columns(onDeleteEvent, t)}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -147,6 +178,7 @@ const Events = ({ data: { networkStatus, events }, t, deleteEvent }) =>
       />
     </div>
   )
+}
 
 const buildOptimisticResponse = event => ({
   __typename: 'Mutation',
@@ -156,74 +188,16 @@ const buildOptimisticResponse = event => ({
   },
 })
 
-const withData = compose(
-  graphql(EventsQuery, {
-    options: ({ adminOfficeFilter: { value: officeId = 'current' } }) => ({
-      variables: {
-        officeId: officeId,
-        sortBy: eventsSort,
-      },
-      fetchPolicy: 'cache-and-network',
-    }),
-  }),
-
-  graphql(DeleteEventMutation, {
-    props: ({ ownProps, mutate }) => ({
-      deleteEvent: event =>
-        mutate({
-          variables: { id: event.id },
-          optimisticResponse: buildOptimisticResponse(event),
-          update: (cache, { data: { deleteEvent } }) => {
-            try {
-              const queryParams = {
-                query: EventsQuery,
-                variables: {
-                  officeId: ownProps.adminOfficeFilter.value || 'current',
-                  sortBy: eventsSort,
-                },
-              }
-              const data = cache.readQuery(queryParams)
-              const withEventRemoved = R.reject(event => event.id === deleteEvent.id, data.events)
-              cache.writeQuery({
-                ...queryParams,
-                data: { ...data, events: withEventRemoved },
-              })
-            } catch {}
-          },
-        }).catch(({ graphQLErrors }) => {
-          ownProps.graphQLError(graphQLErrors)
-        }),
-    }),
-  })
-)
-
 function mapStateToProps(state, _ownProps) {
-  const {
-    currentUser,
-    eventTypes,
-    offices,
-    organizations,
-    adminOfficeFilter,
-    editEventPopover,
-    destroyEventPopover,
-  } = state.model
+  const { eventTypes, editEventPopover, destroyEventPopover } = state.model
 
   return {
-    currentUser,
-    adminOfficeFilter,
     eventTypes,
-    offices,
-    organizations,
     editEventPopover,
     destroyEventPopover,
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-  }
-)
+const withActions = connect(mapStateToProps)
 
-export default withActions(withData(withTranslation()(Events)))
+export default withActions(withTranslation()(Events))

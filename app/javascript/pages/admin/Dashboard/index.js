@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import { connect } from 'react-redux'
 import * as R from 'ramda'
 import moment from 'moment'
 import Paper from 'material-ui/Paper'
-import { graphql } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
+
 import Loading from 'components/LoadingIcon'
 import ProgressCircle from 'components/ProgressCircle'
 import Event from 'components/Event'
