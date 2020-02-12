@@ -10,7 +10,7 @@ import Toolbar from 'components/Toolbar'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 import i18next from 'i18next'
-import { withNamespaces } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 const localizer = BigCalendar.momentLocalizer(moment)
 BigCalendar.setLocalizer(localizer)
@@ -163,4 +163,4 @@ const Calendar = ({
   )
 
 // Wrap `withNamespaces` to listen to language change event
-export default withNamespaces()(Calendar)
+export default withTranslation()(Calendar)
