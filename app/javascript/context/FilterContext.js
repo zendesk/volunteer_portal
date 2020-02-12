@@ -8,20 +8,20 @@ const initialState = {
   showFilter: { value: undefined },
 }
 
-const officeValueLense = R.lensPath(['officeFilter', 'value'])
-const eventValueLense = R.lensPath(['eventFilter', 'value'])
-const showValueLense = R.lensPath(['showFilter', 'value'])
+export const officeFilterValueLens = R.lensPath(['officeFilter', 'value'])
+export const eventFilterValueLens = R.lensPath(['eventFilter', 'value'])
+export const showFilterValueLens = R.lensPath(['showFilter', 'value'])
 
-const setInitialState = user => R.set(officeValueLense, R.path(['office', 'id'], user), initialState)
+const setInitialState = user => R.set(officeFilterValueLens, R.path(['office', 'id'], user), initialState)
 
 export const FilterContext = React.createContext(initialState)
 
 export const FilterContextProvider = ({ user, children }) => {
   const [filters, setFilters] = useState(setInitialState(user))
 
-  const setOfficeValue = useCallback(id => setFilters(R.set(officeValueLense, id)), [])
-  const setEventValue = useCallback(id => setFilters(R.set(eventValueLense, id)), [])
-  const setShowValue = useCallback(v => setFilters(R.set(showValueLense, v)), [])
+  const setOfficeValue = useCallback(id => setFilters(R.set(officeFilterValueLens, id)), [])
+  const setEventValue = useCallback(id => setFilters(R.set(eventFilterValueLens, id)), [])
+  const setShowValue = useCallback(v => setFilters(R.set(showFilterValueLens, v)), [])
 
   const ctx = {
     filters,

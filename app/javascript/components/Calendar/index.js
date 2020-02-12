@@ -7,7 +7,7 @@ import Event from 'components/Event'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 import Toolbar from 'components/Toolbar'
-import { FilterContext } from '/context'
+import { FilterContext, UserContext } from '/context'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -23,22 +23,9 @@ const styles = {
 }
 
 // Custom components given to BigCalendar
-const calendarComponents = (filters, filterActions) => {
-  const filtersWithActions = {
-    showFilter: {
-      value: filters.showFilter.value,
-      onChange: filterActions.changeShowFilter,
-    },
-    eventFilter: {
-      value: filters.eventFilter.value,
-      onChange: filterActions.changeEventFilter,
-    },
-  }
-
-  return {
-    toolbar: props => <Toolbar {...props} filters={filtersWithActions} />,
-    event: Event, // used by each view (Month, Day, Week)
-  }
+const calendarComponents = {
+  toolbar: props => <Toolbar {...props} />,
+  event: Event, // used by each view (Month, Day, Week)
 }
 
 const eventPropGetter = (_event, _start, _end, _isSelected) => ({
@@ -120,17 +107,8 @@ const selectEvents = (events, currentUser, filters) =>
     normalizeEvents
   )(events)
 
-const Calendar = ({
-  loading,
-  currentPath,
-  events,
-  currentUser,
-  changeShowFilter,
-  changeEventFilter,
-  changeOfficeFilter,
-  togglePopover,
-  loadMoreEvents,
-}) => {
+const Calendar = ({ loading, currentPath, events, togglePopover, loadMoreEvents }) => {
+  const { currentUser } = useContext(UserContext)
   const { filters } = useContext(FilterContext)
 
   if (loading) return <Loading />
@@ -142,11 +120,7 @@ const Calendar = ({
         eventPropGetter={eventPropGetter}
         views={['month']}
         culture="en"
-        components={calendarComponents(filters, {
-          changeShowFilter,
-          changeEventFilter,
-          changeOfficeFilter,
-        })}
+        components={calendarComponents}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup

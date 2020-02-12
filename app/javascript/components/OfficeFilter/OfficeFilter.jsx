@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next'
 import Error from './OfficeFilterError'
 import Loading from './OfficeFilterLoading'
 import OfficesQuery from './query.gql'
-import { FilterContext } from '/context'
+import { FilterContext, officeFilterValueLens } from '/context'
 
 const OfficeFilter = ({ t }) => {
   const { filters, setOfficeValue } = useContext(FilterContext)
@@ -19,7 +19,8 @@ const OfficeFilter = ({ t }) => {
 
   const options = R.propOr([], 'offices', data)
   const all = { id: 'all', name: t('volunteer_portal.dashboard.layouteventstab.office_all') }
-  const selectedItem = R.find(R.propEq('id', filters.officeFilter.value))(options) || all
+  const value = R.view(officeFilterValueLens, filters)
+  const selectedItem = R.find(R.propEq('id', value))(options) || all
 
   return (
     <Dropdown
