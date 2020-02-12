@@ -16,7 +16,7 @@ const setInitialState = user => R.set(officeValueLense, R.path(['office', 'id'],
 
 export const FilterContext = React.createContext(initialState)
 
-export const FilterProvider = ({ user, children }) => {
+export const FilterContextProvider = ({ user, children }) => {
   const [filters, setFilters] = useState(setInitialState(user))
 
   const setOfficeValue = useCallback(id => setFilters(R.set(officeValueLense, id)), [])

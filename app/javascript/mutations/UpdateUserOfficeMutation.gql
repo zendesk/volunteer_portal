@@ -1,12 +1,17 @@
 #import "fragments/UserEntry.gql"
 #import "fragments/OfficeEntry.gql"
+#import "fragments/UserPreferenceEntry.gql"
 
 mutation updateUserOffice($userId: ID!, $officeId: ID!) {
   updateUserOffice(userId: $userId, officeId: $officeId) {
     ...UserEntry
+    lastSignInAt
+    isAdmin
     office {
       ...OfficeEntry
     }
-    isAdmin
+    preference {
+      ...UserPreferenceEntry
+    }
   }
 }

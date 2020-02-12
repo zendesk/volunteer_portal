@@ -1,2 +1,2 @@
-export { default as UserContext } from './UserContext'
-export { FilterContext, FilterProvider } from './FilterContext'
+export { UserContext, UserContextProvider } from './UserContext'
+export { FilterContext, FilterContextProvider } from './FilterContext'

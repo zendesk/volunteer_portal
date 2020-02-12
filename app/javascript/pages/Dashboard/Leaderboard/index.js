@@ -50,7 +50,7 @@ const leaderBoardSize = 10
 const leaderBoardSort = 'HOURS_DESC'
 
 const Leaderboard = _props => {
-  const currentUser = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
   const [currentOfficeId, setCurrentOfficeId] = useState(R.path(['office', 'Id'], currentUser))
   const { loading, error, data } = useQuery(LeaderboardQuery, {
     variables: {
