@@ -23,6 +23,7 @@ gem 'webpacker', '~> 4.x'
 gem 'uglifier'
 gem 'sass-rails'
 gem 'active_record_union'
+gem 'rack-attack'
 
 group :production do
   gem 'rails_12factor', '0.0.3'
