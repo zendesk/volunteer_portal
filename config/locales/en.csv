@@ -95,3 +95,4 @@ volunteer_portal.admin.tab.users_delete_cancel,Cancel,,,TRUE
 volunteer_portal.admin.tab.users_delete_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.users_delete_user,Delete User,,,TRUE
 volunteer_portal.admin.tab.user.delete.confirmation,Are you sure you want to delete {{user}}?,,,TRUE
+volunteer_portal.filters.office.fetch_error,Unable to load offices list,Text notifying that an error occured while fethcing the list of offices,,TRUE

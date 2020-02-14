@@ -1,5 +1,6 @@
 import React from 'react'
 import Calendar from './'
+import { UserContextProvider, FilterContextProvider } from '/context'
 import { shallow } from 'enzyme'
 
 const currentUser = {
@@ -16,37 +17,24 @@ const currentUser = {
 }
 
 const events = []
-const offices = []
-
-const filters = {
-  showFilter: {},
-  eventFilter: {},
-  officeFilter: {},
-}
-
-const changeShowFilter = () => {}
-const changeEventFilter = () => {}
-const changeOfficeFilter = () => {}
 const eventPopover = {}
 const togglePopover = () => {}
 const loadMoreEvents = () => {}
 
 test('loads', () => {
   const component = shallow(
-    <Calendar
-      loading={false}
-      currentPath={'/'}
-      events={events}
-      offices={offices}
-      currentUser={currentUser}
-      filters={filters}
-      changeShowFilter={changeShowFilter}
-      changeEventFilter={changeEventFilter}
-      changeOfficeFilter={changeOfficeFilter}
-      eventPopover={eventPopover}
-      togglePopover={togglePopover}
-      loadMoreEvents={loadMoreEvents}
-    />
+    <UserContextProvider user={currentUser}>
+      <FilterContextProvider user={currentUser}>
+        <Calendar
+          loading={false}
+          currentPath={'/'}
+          events={events}
+          eventPopover={eventPopover}
+          togglePopover={togglePopover}
+          loadMoreEvents={loadMoreEvents}
+        />
+      </FilterContextProvider>
+    </UserContextProvider>
   )
 
   expect(component).toMatchSnapshot()

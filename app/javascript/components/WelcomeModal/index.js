@@ -14,7 +14,7 @@ const confirmedProfileSetting = R.complement(R.path(['preference', 'confirmedPro
 const requireConfirmProfileSettings = R.allPass([isFirstSignIn, confirmedProfileSetting])
 
 const Notifications = () => {
-  const currentUser = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
   const [confirmProfileSettings, _] = useMutation(ConfirmProfileSettingsMutation)
 
   const officeName = R.path(['office', 'name'])

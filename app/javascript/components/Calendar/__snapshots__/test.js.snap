@@ -1,32 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`loads 1`] = `
-<withI18nextTranslation(Layout)
-  currentPath="/"
+<ContextProvider
+  value={
+    Object {
+      "clear": [Function],
+      "currentUser": Object {
+        "email": "volunteer@example.com",
+        "id": "1",
+        "isAdmin": true,
+        "name": "Craig Day",
+        "office": Object {
+          "id": "1",
+          "identifier": "san_francisco",
+          "name": "San Francisco",
+        },
+        "photo": "https://example.com/photo.jpg",
+      },
+      "setOffice": [Function],
+    }
+  }
 >
-  <Uncontrolled(Calendar)
-    components={
+  <FilterContextProvider
+    user={
       Object {
-        "event": [Function],
-        "toolbar": [Function],
+        "email": "volunteer@example.com",
+        "id": "1",
+        "isAdmin": true,
+        "name": "Craig Day",
+        "office": Object {
+          "id": "1",
+          "identifier": "san_francisco",
+          "name": "San Francisco",
+        },
+        "photo": "https://example.com/photo.jpg",
       }
     }
-    culture="en"
-    eventPropGetter={[Function]}
-    events={Array []}
-    onNavigate={[Function]}
-    onSelectEvent={[Function]}
-    popup={true}
-    style={
-      Object {
-        "paddingBottom": 20,
-      }
-    }
-    views={
-      Array [
-        "month",
-      ]
-    }
-  />
-</withI18nextTranslation(Layout)>
+  >
+    <Calendar
+      currentPath="/"
+      eventPopover={Object {}}
+      events={Array []}
+      loadMoreEvents={[Function]}
+      loading={false}
+      togglePopover={[Function]}
+    />
+  </FilterContextProvider>
+</ContextProvider>
 `;

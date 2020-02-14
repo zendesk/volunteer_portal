@@ -22,7 +22,7 @@ const translations = R.flip(R.mapObjIndexed)({
   after: 'volunteer_portal.dashboard.layoutdatetab.after',
 })
 
-const Toolbar = ({ label, view, views, onNavigate, onViewChange, filters, offices, t }) => {
+const Toolbar = ({ label, view, views, onNavigate, onViewChange, t }) => {
   const text = translations(t)
 
   return (
@@ -42,17 +42,13 @@ const Toolbar = ({ label, view, views, onNavigate, onViewChange, filters, office
       <div className={s.filterBar}>
         <FilterGroup>
           <div>
-            <ShowFilter value={filters.showFilter.value} onChange={filters.showFilter.onChange} />
+            <ShowFilter />
           </div>
           <div>
-            <EventFilter value={filters.eventFilter.value} onChange={filters.eventFilter.onChange} />
+            <EventFilter />
           </div>
           <div>
-            <OfficeFilter
-              offices={offices}
-              value={filters.officeFilter.value}
-              onChange={filters.officeFilter.onChange}
-            />
+            <OfficeFilter />
           </div>
         </FilterGroup>
         <div>

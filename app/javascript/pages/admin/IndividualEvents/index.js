@@ -29,7 +29,7 @@ class IndividualEvents extends React.Component {
         <input
           checked={this.state.selectAllChecked}
           type="checkbox"
-          onClick={e => {
+          onChange={e => {
             const { pendingIndividualEvents } = this.props.data
             if (this.state.selectAllChecked) {
               this.setState({ selected: [], selectAllChecked: false })
@@ -43,7 +43,7 @@ class IndividualEvents extends React.Component {
         <input
           type="checkbox"
           checked={this.state.selected.includes(props.value)}
-          onClick={e => {
+          onChange={e => {
             if (e.target.checked) {
               this.setState(prevState => ({ selected: [...prevState.selected, props.value] }))
             } else {

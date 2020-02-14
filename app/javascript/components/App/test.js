@@ -19,7 +19,6 @@ const currentUser = {
 const offices = []
 const userPopover = { type: 'user', data: null, anchorEl: null }
 const togglePopover = () => {}
-const updateUserOffice = () => {}
 
 test('loads', () => {
   const component = shallow(
@@ -29,7 +28,6 @@ test('loads', () => {
       offices={offices}
       userPopover={userPopover}
       toggleUserPopover={togglePopover}
-      updateUserOffice={updateUserOffice}
     />
   )
 

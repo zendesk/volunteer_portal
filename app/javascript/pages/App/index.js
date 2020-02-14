@@ -9,7 +9,6 @@ import App from 'components/App'
 import { togglePopover } from 'actions'
 
 import AppQuery from './query.gql'
-import UpdateUserOfficeMutation from './UpdateUserOfficeMutation.gql'
 
 class AppPage extends Component {
   constructor(props) {
@@ -22,7 +21,6 @@ class AppPage extends Component {
       togglePopover,
       popover,
       children,
-      updateUserOffice,
     } = this.props
 
     return (
@@ -32,7 +30,6 @@ class AppPage extends Component {
         offices={offices}
         userPopover={popover && popover.type === 'user' ? popover : null}
         toggleUserPopover={R.partial(togglePopover, ['user', {}])}
-        updateUserOffice={updateUserOffice}
       >
         {children}
       </App>
@@ -54,29 +51,6 @@ const withData = compose(
     options: {
       fetchPolicy: 'cache-and-network',
     },
-  }),
-  graphql(UpdateUserOfficeMutation, {
-    props: ({ ownProps, mutate }) => ({
-      updateUserOffice: (user, office) =>
-        mutate({
-          variables: { userId: user.id, officeId: office.id },
-          optimisticResponse: {
-            __typename: 'Mutation',
-            updateUserOffice: R.merge(user, {
-              __typename: 'User',
-              office: R.merge(office, {
-                __typename: 'Office',
-              }),
-            }),
-            currentUser: R.merge(user, { office }),
-          },
-          refetchQueries: [
-            {
-              query: AppQuery,
-            },
-          ],
-        }).then(() => ownProps.togglePopover('user')),
-    }),
   })
 )
 

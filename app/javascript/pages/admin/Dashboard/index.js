@@ -1,13 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useContext } from 'react'
 import * as R from 'ramda'
 import moment from 'moment'
 import Paper from 'material-ui/Paper'
-import { graphql } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
+
 import Loading from 'components/LoadingIcon'
 import ProgressCircle from 'components/ProgressCircle'
 import Event from 'components/Event'
 import Callout from 'components/Callout'
+import { FilterContext, officeFilterValueLens } from '/context'
 
 import s from './main.css'
 import AttendanceQuery from './attendanceQuery.gql'
@@ -49,17 +50,28 @@ const MemoBox = ({ label, sublabel, text }) => (
   </div>
 )
 
-const Dashboard = props => {
-  const { data, t } = props
-  const { eventsThisMonth, eventsThisWeek, allEvents } = data
+const Dashboard = ({ t }) => {
+  const { filters } = useContext(FilterContext)
+  const { data, loading, error } = useQuery(AttendanceQuery, {
+    variables: {
+      weekStart: startOfWeek,
+      weekEnd: endOfWeek,
+      monthStart: startOfMonth,
+      monthEnd: endOfMonth,
+      officeId: R.view(officeFilterValueLens, filters),
+    },
+  })
 
-  if (data.loading) {
+  if (loading) {
     return <Loading />
   }
 
-  if (data.error) {
+  if (error) {
     return <Callout type="error" />
   }
+
+  const eventsThisMonth = R.propOr([], 'eventsThisMonth', data)
+  const eventsThisWeek = R.propOr([], 'eventsThisWeek', data)
 
   const accumTotalMinutes = (acc, event) => acc + event.duration * event.signupCount
 
@@ -184,25 +196,4 @@ const Dashboard = props => {
   )
 }
 
-const withData = graphql(AttendanceQuery, {
-  options: ({ adminOfficeFilter: { value: officeId } }) => ({
-    variables: {
-      weekStart: startOfWeek,
-      weekEnd: endOfWeek,
-      monthStart: startOfMonth,
-      monthEnd: endOfMonth,
-      officeId: officeId || null,
-    },
-  }),
-})
-
-const mapStateToProps = (state, _ownProps) => ({
-  adminOfficeFilter: state.model.adminOfficeFilter,
-})
-
-const withActions = connect(
-  mapStateToProps,
-  {}
-)
-
-export default withActions(withData(withTranslation()(Dashboard)))
+export default withTranslation()(Dashboard)

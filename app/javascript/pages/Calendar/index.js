@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useQuery } from '@apollo/react-hooks'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
@@ -15,6 +16,7 @@ import EventQuery from './eventQuery.gql'
 import FetchMoreQuery from './fetchMoreQuery.gql'
 import CreateSignupMutation from 'mutations/CreateSignupMutation.gql'
 import DestroySignupMutation from 'mutations/DestroySignupMutation.gql'
+import { UserContext, FilterContext, officeFilterValueLens } from '/context'
 
 const fetchMoreEvents = (fetchMore, calendarDateChange, currentDate, newDate, scope) => {
   const startOfNewScope = moment(newDate).startOf(scope)
@@ -85,58 +87,59 @@ const connectEventPopoverToData = graphql(EventQuery, {
 const EventPopoverWithData = connectEventPopoverToData(EventPopoverForData)
 
 const CalendarPage = ({
-  data: { networkStatus, fetchMore, currentUser, events, offices },
   locationBeforeTransitions,
-  filters,
   eventPopover,
   togglePopover,
-  changeShowFilter,
-  changeEventFilter,
-  changeOfficeFilter,
   createSignup,
   destroySignup,
   calendarDateChange,
   calendarDate,
-}) => (
-  <div>
-    <Calendar
-      loading={networkStatus === NetworkStatus.loading}
-      currentPath={locationBeforeTransitions.pathname}
-      events={events}
-      offices={offices}
-      currentUser={currentUser}
-      filters={filters}
-      changeShowFilter={changeShowFilter}
-      changeEventFilter={changeEventFilter}
-      changeOfficeFilter={changeOfficeFilter}
-      eventPopover={eventPopover}
-      togglePopover={togglePopover}
-      createSignup={createSignup}
-      destroySignup={destroySignup}
-      loadMoreEvents={R.partial(fetchMoreEvents, [fetchMore, calendarDateChange, calendarDate])}
-    />
-    {eventPopover ? (
-      <EventPopoverWithData
+}) => {
+  const { currentUser } = useContext(UserContext)
+  const { filters } = useContext(FilterContext)
+  const { data, loading, fetchMore } = useQuery(EventsQuery, {
+    variables: {
+      after: momentAfter,
+      before: momentBefore,
+      officeId: R.view(officeFilterValueLens, filters),
+    },
+  })
+
+  const events = R.propOr([], 'events')(data)
+  const offices = R.propOr([], 'offices')(data)
+
+  return (
+    <div>
+      <Calendar
+        loading={loading}
+        currentPath={locationBeforeTransitions.pathname}
+        events={events}
+        offices={offices}
         currentUser={currentUser}
-        popoverState={eventPopover}
-        onPopoverClose={togglePopover}
+        eventPopover={eventPopover}
+        togglePopover={togglePopover}
         createSignup={createSignup}
         destroySignup={destroySignup}
+        loadMoreEvents={R.partial(fetchMoreEvents, [fetchMore, calendarDateChange, calendarDate])}
       />
-    ) : null}
-  </div>
-)
+      {eventPopover && (
+        <EventPopoverWithData
+          currentUser={currentUser}
+          popoverState={eventPopover}
+          onPopoverClose={togglePopover}
+          createSignup={createSignup}
+          destroySignup={destroySignup}
+        />
+      )}
+    </div>
+  )
+}
 
-const mapStateToProps = (state, ownProps) => {
-  const { showFilter, eventFilter, officeFilter, popover, calendarDate } = state.model
+const mapStateToProps = state => {
+  const { popover, calendarDate } = state.model
   const { locationBeforeTransitions } = state.routing
 
   return {
-    filters: {
-      showFilter,
-      eventFilter,
-      officeFilter,
-    },
     eventPopover: popover && popover.type === 'event' ? popover : null,
     calendarDate,
     locationBeforeTransitions,
@@ -181,20 +184,6 @@ const updateEventsCache = (cache, eventChange, officeId) => {
 }
 
 const withData = compose(
-  graphql(EventsQuery, {
-    options: ({
-      filters: {
-        officeFilter: { value: officeId },
-      },
-    }) => ({
-      variables: {
-        after: momentAfter,
-        before: momentBefore,
-        officeId: officeId || 'current',
-      },
-      fetchPolicy: 'cache-and-network',
-    }),
-  }),
   graphql(CreateSignupMutation, {
     props: ({ ownProps, mutate }) => ({
       createSignup: (event, currentUser) =>
@@ -255,9 +244,6 @@ const withActions = connect(
   mapStateToProps,
   {
     togglePopover,
-    changeShowFilter,
-    changeEventFilter,
-    changeOfficeFilter,
     calendarDateChange,
   }
 )
