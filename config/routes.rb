@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get    '/users/sign_out', to: 'omniauth_callbacks#logout'
   delete '/users/sign_out', to: 'omniauth_callbacks#logout'
 
+  post   '/gauth', to: 'gauth#verify_token'
+
   # can't connect to redis yet, so no ActionCable
   # mount ActionCable.server => '/cable'
 
