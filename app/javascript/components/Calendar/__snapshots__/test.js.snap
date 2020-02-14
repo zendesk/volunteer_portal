@@ -18,6 +18,7 @@ exports[`loads 1`] = `
         "photo": "https://example.com/photo.jpg",
       },
       "setOffice": [Function],
+      "setPreference": [Function],
     }
   }
 >
