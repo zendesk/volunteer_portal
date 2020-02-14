@@ -15,5 +15,9 @@ class GauthController < ActionController::Base
 
     # Create Session
     session[:user_id] = user.id
+
+    render json: { response: "👌" }
+    
+    # TODO: Error handling
   end
 end
