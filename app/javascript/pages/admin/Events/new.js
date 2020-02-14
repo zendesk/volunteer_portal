@@ -51,27 +51,6 @@ const NewEvent = ({ router, params }) => {
     },
   })
 
-<<<<<<< HEAD
-              const data = proxy.readQuery(queryParams)
-              const withNewEvent = R.append(createEvent, data.events)
-              proxy.writeQuery({
-                ...queryParams,
-                data: { ...data, events: withNewEvent },
-              })
-            } catch {}
-          },
-        })
-          .then(_response => {
-            ownProps.changeAdminOfficeFilter(event.office.id)
-            ownProps.router.push('/portal/admin/events')
-          })
-          .catch(response => {
-            ownProps.graphQLError(response.graphQLErrors)
-          }),
-    }),
-  })
-)
-=======
   const onSubmit = event => {
     createEvent({
       variables: { input: extractIdFromAssociations(event) },
@@ -82,7 +61,6 @@ const NewEvent = ({ router, params }) => {
   }
 
   if (loading) return <Loading />
->>>>>>> :construction: Remove filter state and actions from redux
 
   const event = R.prop('event', data)
 
