@@ -1,27 +1,26 @@
 import React from 'react'
 import ReactTable from 'react-table'
+
 import * as R from 'ramda'
-import DatePicker from 'material-ui/DatePicker'
-import moment from 'moment'
 import { defaultFilterMethod } from 'lib/utils'
+import { Field, Input, FauxInput } from '@zendeskgarden/react-forms'
+import { Datepicker } from '@zendeskgarden/react-datepickers'
+import { Button } from '@zendeskgarden/react-buttons'
+
+import FilterGroup from '/components/FilterGroup'
+import OfficeFilter from '/components/OfficeFilter'
 
 import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
+import styled from 'styled-components'
 
-const defaultStartDate = new Date(
-  moment()
-    .startOf('year')
-    .format()
-)
-const defaultEndDate = new Date(moment().format())
-
-const styles = {
-  datepicker: {},
-  textField: {
-    textAlign: 'center',
-  },
-}
+const InlineFauxInput = styled(FauxInput)`
+  display: flex;
+  align-items: center;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+`
 
 const columnDefs = [
   {
@@ -43,15 +42,6 @@ const columnDefs = [
     accessor: 'hours',
   },
 ]
-
-const filterMethod = (filter, row, column) => {
-  const id = filter.pivotId || filter.id
-  return row[id] !== undefined
-    ? String(row[id])
-        .toLowerCase()
-        .startsWith(filter.value.toLowerCase())
-    : true
-}
 
 const containerProps = () => ({
   style: {
@@ -105,35 +95,39 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, state, ma
   )
 
   const octetStream = encodeURIComponent(csv)
+  const today = new Date()
 
   return (
     <div>
       <div className={s.toolbar}>
-        <div className={s.dates}>
-          <DatePicker
-            hintText="Start"
-            className={s.datepicker}
-            style={styles.datepicker}
-            textFieldStyle={styles.textField}
-            value={startDate || defaultStartDate}
-            onChange={(_, date) => onStartChange(date)}
-            autoOk
-          />
-          <DatePicker
-            hintText="End"
-            className={s.datepicker}
-            style={styles.datepicker}
-            textFieldStyle={styles.textField}
-            value={endDate || defaultEndDate}
-            onChange={(_, date) => onEndChange(date)}
-            autoOk
-          />
-        </div>
-      </div>
-      <div style={{ textAlign: 'right' }}>
-        <a href={`data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
-          Export as CSV
-        </a>
+        <FilterGroup>
+          <OfficeFilter />
+          <div>
+            <Field>
+              <InlineFauxInput>
+                <strong>From:&nbsp;</strong>
+                <Datepicker value={startDate} onChange={onStartChange} maxValue={today}>
+                  <Input bare />
+                </Datepicker>
+              </InlineFauxInput>
+            </Field>
+          </div>
+          <div>
+            <Field>
+              <InlineFauxInput>
+                <strong>To:&nbsp;</strong>
+                <Datepicker value={endDate} onChange={onEndChange} maxValue={today}>
+                  <Input bare />
+                </Datepicker>
+              </InlineFauxInput>
+            </Field>
+          </div>
+          <div>
+            <a href={`data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
+              <Button>Export as CSV</Button>
+            </a>
+          </div>
+        </FilterGroup>
       </div>
       {makeTable()}
     </div>

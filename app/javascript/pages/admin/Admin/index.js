@@ -3,7 +3,6 @@ import React, { useContext } from 'react'
 import { Link, withRouter } from 'react-router'
 import { withTranslation } from 'react-i18next'
 
-import OfficeFilter from '/components/OfficeFilter'
 import { UserContext } from '/context'
 
 import s from './main.css'
@@ -70,9 +69,6 @@ const Admin = ({ location, router, children, t }) => {
             <span className={btnClass(location, 'reporting')}>{t('volunteer_portal.admin.tab.reporting')}</span>
           </Link>
           <div className={`${s.navSpacer} ${s.growingSpace}`} />
-        </div>
-        <div className={s.filters}>
-          <OfficeFilter />
         </div>
         {children}
       </div>

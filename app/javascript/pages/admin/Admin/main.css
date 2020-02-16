@@ -40,9 +40,3 @@
   font-weight: 500;
   border-bottom: 3px solid #30aabc;
 }
-
-.filters {
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 10px;
-}

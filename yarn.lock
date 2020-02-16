@@ -1638,6 +1638,11 @@
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.3.0.tgz#9af748ef4b29f8a57f082852d039b9aaa98cf0d3"
   integrity sha512-oZLNiJoHLznZBIASScfxanxylvczTm06HRWBqcdiiGDMSJYW0HySSlEUQFlaQqsvTwzrm02hWKGnr5cdWWtE0w==
 
+"@zendeskgarden/container-utilities@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.4.0.tgz#e5b74a1e30a270c5da744a26f570e681ef84b3f6"
+  integrity sha512-f43OnZgkfsPWHYYFsFXbrr2CS2Ev6BfeJndMhzSmpGtfRDm3+ZDxFh1OkDT6kJoXvpF6TZOHrUWty5twulmRwg==
+
 "@zendeskgarden/css-utilities@^4.5.3":
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-utilities/-/css-utilities-4.5.3.tgz#08ebd2bb9cf4acbdf5cf7d52e8e3d3237e7238f4"
@@ -1667,6 +1672,17 @@
     "@zendeskgarden/react-utilities" "^7.1.4"
     classnames "^2.2.5"
 
+"@zendeskgarden/react-datepickers@^7.1.5":
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-datepickers/-/react-datepickers-7.1.5.tgz#0f82cec407a2b825a28bb138fa965af5641f9715"
+  integrity sha512-M1OlzX2Zff/HJr6X/IWFx/9As0yt0DJr+p8fVOuC+q9QmN6K4BW6ny0dgF9GjAfu+0UoNjDXL4uXuW0pmwGF8w==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.4.0"
+    classnames "^2.2.5"
+    date-fns "^2.0.0-beta.2"
+    polished "^3.4.1"
+    react-popper "^1.3.4"
+
 "@zendeskgarden/react-dropdowns@^7.1.4":
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-dropdowns/-/react-dropdowns-7.1.4.tgz#5b56a35d1c1b9c02907d7cdd300ddd51be77c7dd"
@@ -1678,14 +1694,14 @@
     downshift "^3.2.7"
     react-popper "^1.3.4"
 
-"@zendeskgarden/react-forms@^7.1.4":
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-forms/-/react-forms-7.1.4.tgz#d6bc4e98591d91de4a3a0ad98ea4fcda346ee64d"
-  integrity sha512-8Ou2A/nL++1FeaHfsST6pWM8oakiW1fozPI1PewLwvwzBb8zFxMqqPA8GJKGzv1QcocfxQnqBTMyvf7VkoKowA==
+"@zendeskgarden/react-forms@^7.1.5":
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-forms/-/react-forms-7.1.5.tgz#4cda778e4e9d1e1b117331f46ba9a7f31c74ae80"
+  integrity sha512-cz2hXNt7+ce341JeenejyP0wj5zj24nXMO/LMn0OWdI3lYQ2wEwBhbwOPbuz9QiAGjquhB+4+wuhBzAZkj+JPA==
   dependencies:
     "@zendeskgarden/container-field" "^1.0.3"
     "@zendeskgarden/container-keyboardfocus" "^0.3.0"
-    "@zendeskgarden/container-utilities" "^0.3.0"
+    "@zendeskgarden/container-utilities" "^0.4.0"
     classnames "^2.2.5"
     lodash.debounce "^4.0.8"
 
@@ -3306,6 +3322,11 @@ date-fns@^1.27.2:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+
+date-fns@^2.0.0-beta.2:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.9.0.tgz#d0b175a5c37ed5f17b97e2272bbc1fa5aec677d2"
+  integrity sha512-khbFLu/MlzLjEzy9Gh8oY1hNt/Dvxw3J6Rbc28cVoYWQaC1S3YI4xwkF9ZWcjDLscbZlY9hISMr66RFzZagLsA==
 
 date-now@^0.1.4:
   version "0.1.4"
