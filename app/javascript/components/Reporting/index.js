@@ -86,6 +86,8 @@ const tdProps = () => ({
   },
 })
 
+const today = new Date()
+
 const tableExporter = (startDate, endDate, onStartChange, onEndChange, state, makeTable, instance) => {
   const headers = 'Name,Email,Office,Hours\n'
 
@@ -95,7 +97,6 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, state, ma
   )
 
   const octetStream = encodeURIComponent(csv)
-  const today = new Date()
 
   return (
     <div>

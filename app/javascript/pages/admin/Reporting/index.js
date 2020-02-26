@@ -9,7 +9,7 @@ import Reporting from 'components/Reporting'
 import { FilterContext, officeFilterValueLens } from '/context'
 import ReportingQuery from './query.gql'
 import s from './main.css'
-import { addDays, compareAsc } from 'date-fns'
+import { addDays } from 'date-fns'
 
 const defaultStartDate = moment().startOf('year')
 const defaultEndDate = moment().valueOf() // Now in Unix millisecond timestamp
