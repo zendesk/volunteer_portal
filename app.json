@@ -49,6 +49,10 @@
       "description": "If defined, a Zendesk Web Widget will be embedded to help users via your Zendesk account. Your key can be found in the snippet url, which is displayed on the web widget admin setup page inside your Zendesk instance.",
       "required": false
     },
+    "GOOGLE_TAG_MANAGER_ID": {
+      "description": "Google tag manager ID. Create an account to add analytics etc.",
+      "required": false
+    },
     "IP_BLOCK_ALL": {
       "description": "If enabled (IP_BLOCK_ALL='true') then all IP addresses will be blocked. Add IPs to the safe list to allow access.",
       "required": false
