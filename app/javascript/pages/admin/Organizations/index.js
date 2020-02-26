@@ -6,11 +6,13 @@ import * as R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
+import { Button } from '@zendeskgarden/react-buttons'
 import { defaultFilterMethod } from 'lib/utils'
 
 import { graphQLError, togglePopover } from 'actions'
 
 import Loading from 'components/LoadingIcon'
+import FilterGroup from 'components/FilterGroup'
 
 import OrganizationsQuery from './queries/index.gql'
 import DeleteOrganizationMutation from './mutations/delete.gql'
@@ -121,11 +123,11 @@ const Organizations = ({
     <Loading />
   ) : (
     <div>
-      <div className={s.actionBar}>
+      <FilterGroup>
         <Link to="/portal/admin/organizations/new">
-          <button className={s.createAction}>{t('volunteer_portal.admin.tab.organizations_add_organization')}</button>
+          <Button>{t('volunteer_portal.admin.tab.organizations_add_organization')}</Button>
         </Link>
-      </div>
+      </FilterGroup>
       <ReactTable
         NoDataComponent={() => null}
         data={organizations}

@@ -6,8 +6,11 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { defaultFilterMethod } from 'lib/utils'
 import { useQuery, useMutation } from '@apollo/react-hooks'
+import { Button } from '@zendeskgarden/react-buttons'
 
 import Loading from 'components/LoadingIcon'
+import OfficeFilter from '/components/OfficeFilter'
+import FilterGroup from 'components/FilterGroup'
 
 import EventsQuery from './queries/index.gql'
 import DeleteEventMutation from './mutations/delete.gql'
@@ -129,7 +132,6 @@ const Events = ({ t }) => {
   })
 
   const [deleteEvent] = useMutation(DeleteEventMutation, {
-    optimisticResponse: buildOptimisticResponse(event),
     update: (cache, { data: { deleteEvent } }) => {
       const queryParams = {
         query: EventsQuery,
@@ -146,6 +148,7 @@ const Events = ({ t }) => {
 
   const onDeleteEvent = event =>
     deleteEvent({
+      optimisticResponse: buildOptimisticResponse(event),
       variables: { id: event.id },
     })
 
@@ -157,11 +160,13 @@ const Events = ({ t }) => {
 
   return (
     <div>
-      <div className={s.actionBar}>
+      <FilterGroup>
+        <OfficeFilter />
+
         <Link to="/portal/admin/events/new">
-          <button className={s.createAction}>{t('volunteer_portal.admin.tab.events_addevent')}</button>
+          <Button>{t('volunteer_portal.admin.tab.events_addevent')}</Button>
         </Link>
-      </div>
+      </FilterGroup>
       <ReactTable
         NoDataComponent={() => null}
         data={events}

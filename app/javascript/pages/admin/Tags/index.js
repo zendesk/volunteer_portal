@@ -7,11 +7,13 @@ import * as R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
+import { Button } from '@zendeskgarden/react-buttons'
 import { defaultFilterMethod } from 'lib/utils'
 import { graphQLError, togglePopover } from 'actions'
 import 'style-loader!css-loader!react-table/react-table.css'
 
 import Loading from 'components/LoadingIcon'
+import FilterGroup from 'components/FilterGroup'
 import TagsQuery from './queries/index.gql'
 import DeleteTagMutation from './mutations/delete.gql'
 import s from './main.css'
@@ -99,11 +101,11 @@ const Tags = ({ data: { networkStatus, tags }, deleteTag, togglePopover, destroy
     <Loading />
   ) : (
     <div>
-      <div className={s.actionBar}>
+      <FilterGroup>
         <Link to="/portal/admin/tags/new">
-          <button className={s.createAction}>Add Tag</button>
+          <Button>Add Tag</Button>
         </Link>
-      </div>
+      </FilterGroup>
       <ReactTable
         NoDataComponent={() => null}
         data={tags}

@@ -6,11 +6,13 @@ import * as R from 'ramda'
 import ReactTable from 'react-table'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
+import { Button } from '@zendeskgarden/react-buttons'
 import { defaultFilterMethod } from 'lib/utils'
 
 import { graphQLError, togglePopover } from 'actions'
 
 import Loading from 'components/LoadingIcon'
+import FilterGroup from 'components/FilterGroup'
 
 import EventTypesQuery from './queries/index.gql'
 import DeleteEventTypeMutation from './mutations/delete.gql'
@@ -114,11 +116,11 @@ const EventTypes = ({
     <Loading />
   ) : (
     <div>
-      <div className={s.actionBar}>
+      <FilterGroup>
         <Link to="/portal/admin/event-types/new">
-          <button className={s.createAction}>{t('volunteer_portal.admin.tab.eventtypes_addeventtype')}</button>
+          <Button>{t('volunteer_portal.admin.tab.eventtypes_addeventtype')}</Button>
         </Link>
-      </div>
+      </FilterGroup>
       <ReactTable
         NoDataComponent={() => null}
         data={eventTypes}

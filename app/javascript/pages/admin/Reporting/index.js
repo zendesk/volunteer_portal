@@ -9,12 +9,15 @@ import Reporting from 'components/Reporting'
 import { FilterContext, officeFilterValueLens } from '/context'
 import ReportingQuery from './query.gql'
 import s from './main.css'
+import { addDays } from 'date-fns'
 
 const defaultStartDate = moment().startOf('year')
 const defaultEndDate = moment().valueOf() // Now in Unix millisecond timestamp
+const today = new Date()
+const lastFortnight = addDays(today, -14)
 const initialRange = {
-  start: undefined,
-  end: undefined,
+  start: lastFortnight,
+  end: today,
 }
 
 const formatOrDefaultStartDate = filterValue => Number(moment(filterValue || defaultStartDate).format('X'))
@@ -35,8 +38,8 @@ const ReportingPage = _props => {
   if (error) console.log(error.graphQLErrors)
 
   const users = R.propOr([], 'users', data)
-  const changeStartDate = date => setDateRange(R.set(R.lensProp('start', date)))
-  const changeEndDate = date => setDateRange(R.set(R.lensProp('end', date)))
+  const changeStartDate = date => setDateRange(R.set(R.lensProp('start'), date))
+  const changeEndDate = date => setDateRange(R.set(R.lensProp('end'), date))
 
   return (
     <div className={s.admin}>

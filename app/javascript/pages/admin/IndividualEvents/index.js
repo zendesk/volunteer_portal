@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
-import * as R from 'ramda'
 import ReactTable from 'react-table'
 
 import Loading from 'components/LoadingIcon'
@@ -12,8 +11,6 @@ import ApproveIndividualEventsMutation from './ApproveIndividualEventsMutation.g
 import RejectIndividualEventsMutation from './RejectIndividualEventsMutation.gql'
 
 import s from './main.css'
-
-import { withTranslation } from 'react-i18next'
 
 class IndividualEvents extends React.Component {
   state = {
