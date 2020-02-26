@@ -15,11 +15,8 @@ import { lightTheme } from '/themes'
 import './i18n'
 import './styles'
 
-const tagManagerArgs = {
-  gtmId: process.env.GOOGLE_TAG_MANAGER_ID,
-}
-
-TagManager.initialize(tagManagerArgs)
+const gtmId = process.env.GOOGLE_TAG_MANAGER_ID
+if (gtmId) TagManager.initialize({ gtmId })
 
 const client = new ApolloClient({
   link: new HttpLink({
