@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import TagManager from 'react-gtm-module'
 import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
@@ -13,6 +14,12 @@ import configureStore from './store/configureStore'
 import { lightTheme } from '/themes'
 import './i18n'
 import './styles'
+
+const tagManagerArgs = {
+  gtmId: process.env.GOOGLE_TAG_MANAGER_ID,
+}
+
+TagManager.initialize(tagManagerArgs)
 
 const client = new ApolloClient({
   link: new HttpLink({
