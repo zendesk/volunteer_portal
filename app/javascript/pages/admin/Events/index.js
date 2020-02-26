@@ -132,7 +132,6 @@ const Events = ({ t }) => {
   })
 
   const [deleteEvent] = useMutation(DeleteEventMutation, {
-    optimisticResponse: buildOptimisticResponse(event),
     update: (cache, { data: { deleteEvent } }) => {
       const queryParams = {
         query: EventsQuery,
@@ -149,6 +148,7 @@ const Events = ({ t }) => {
 
   const onDeleteEvent = event =>
     deleteEvent({
+      optimisticResponse: buildOptimisticResponse(event),
       variables: { id: event.id },
     })
 

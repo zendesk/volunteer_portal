@@ -1,36 +1,33 @@
-import React from 'react'
-import { graphql, compose } from 'react-apollo'
-import { connect } from 'react-redux'
-import { NetworkStatus } from 'apollo-client'
+import React, { useContext, useState } from 'react'
 import * as R from 'ramda'
 import ReactTable from 'react-table'
-import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
+import { Link } from 'react-router'
+import { withTranslation } from 'react-i18next'
 import { defaultFilterMethod } from 'lib/utils'
-
-import { graphQLError, togglePopover } from 'actions'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 
 import Loading from 'components/LoadingIcon'
+import OfficeFilter from '/components/OfficeFilter'
+import FilterGroup from 'components/FilterGroup'
+import { FilterContext, officeFilterValueLens } from '/context'
 
 import UsersQuery from './queries/index.gql'
 import DeleteUserMutation from './mutations/delete.gql'
 
 import s from './main.css'
-
 import 'style-loader!css-loader!react-table/react-table.css'
 
-import { withTranslation } from 'react-i18next'
-
-const actionLinks = (user, togglePopover, t) => (
+const actionLinks = (user, openDeleteModal, t) => (
   <div className={s.actionColumn}>
     <Link to={`/portal/admin/users/${user.id}/edit`}>{t('volunteer_portal.admin.tab.users_edit')}</Link>
-    <button className={s.deleteAction} onClick={() => togglePopover('destroyUser', user)}>
+    <button className={s.deleteAction} onClick={() => openDeleteModal(user)}>
       {t('volunteer_portal.admin.tab.users_delete')}
     </button>
   </div>
 )
 
-const columns = (togglePopover, t) => [
+const columns = (openDeleteModal, t) => [
   {
     Header: t('volunteer_portal.admin.tab.users_name'),
     accessor: 'name',
@@ -51,21 +48,26 @@ const columns = (togglePopover, t) => [
     accessor: 'id',
     sortable: false,
     width: 130,
-    Cell: ({ original }) => actionLinks(original, togglePopover, t),
+    Cell: ({ original }) => actionLinks(original, openDeleteModal, t),
   },
 ]
 
-const destroyActions = (togglePopover, destroyUserPopover, deleteOffice, t) => [
-  <button className={`${s.btn} ${s.cancelBtn}`} onClick={() => togglePopover('destroyUser', destroyUserPopover.data)}>
-    {t('volunteer_portal.admin.tab.users_delete.cancel')}
-  </button>,
-  <button
-    className={`${s.btn} ${s.deleteBtn}`}
-    onClick={() => deleteOffice(destroyUserPopover.data) && togglePopover('destroyUser')}
-  >
-    {t('volunteer_portal.admin.tab.users_delete.delete')}
-  </button>,
-]
+const destroyActions = (user, closeModal, deleteUser, t) => {
+  return [
+    <button className={`${s.btn} ${s.cancelBtn}`} onClick={closeModal}>
+      {t('volunteer_portal.admin.tab.users_delete_cancel')}
+    </button>,
+    <button
+      className={`${s.btn} ${s.deleteBtn}`}
+      onClick={() => {
+        deleteUser(user)
+        closeModal()
+      }}
+    >
+      {t('volunteer_portal.admin.tab.users_delete_delete')}
+    </button>,
+  ]
+}
 
 const containerProps = () => ({
   style: {
@@ -110,15 +112,53 @@ const tdProps = () => ({
   },
 })
 
-const Users = ({ data: { networkStatus, users }, deleteUser, togglePopover, destroyUserPopover, t }) =>
-  networkStatus === NetworkStatus.loading ? (
-    <Loading />
-  ) : (
+const Users = ({ t }) => {
+  const [userToDelete, setUserToDelete] = useState(null)
+  const { filters } = useContext(FilterContext)
+
+  const queryVars = {
+    officeId: R.view(officeFilterValueLens, filters),
+  }
+
+  const { data, error, loading } = useQuery(UsersQuery, { variables: queryVars })
+
+  const [deleteUser] = useMutation(DeleteUserMutation, {
+    update: (cache, { data: { deleteUser } }) => {
+      const queryParams = {
+        query: UsersQuery,
+        variables: queryVars,
+      }
+      const data = cache.readQuery(queryParams)
+      const withUserRemoved = R.reject(user => user.id === deleteUser.id, data.users)
+      cache.writeQuery({
+        ...queryParams,
+        data: { ...data, users: withUserRemoved },
+      })
+    },
+  })
+
+  const onDeleteUser = user =>
+    deleteUser({
+      optimisticResponse: buildOptimisticResponse(user),
+      variables: { id: user.id },
+    })
+
+  if (loading) return <Loading />
+  if (error) return console.log(error.graphQLErrors)
+
+  const users = R.propOr([], 'users', data)
+  const closeDeleteModal = () => setUserToDelete(null)
+  const openDeleteModal = user => setUserToDelete(user)
+
+  return (
     <div>
+      <FilterGroup>
+        <OfficeFilter />
+      </FilterGroup>
       <ReactTable
         NoDataComponent={() => null}
         data={users}
-        columns={columns(togglePopover, t)}
+        columns={columns(openDeleteModal, t)}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -129,20 +169,21 @@ const Users = ({ data: { networkStatus, users }, deleteUser, togglePopover, dest
         getTrProps={trProps}
         getTdProps={tdProps}
       />
-      {destroyUserPopover ? (
+      {userToDelete && (
         <Dialog
           title={t('volunteer_portal.admin.tab.users_delete_user')}
-          actions={destroyActions(togglePopover, destroyUserPopover, deleteUser, t)}
+          actions={destroyActions(userToDelete, closeDeleteModal, onDeleteUser, t)}
           modal={false}
           open
-          onRequestClose={() => togglePopover('destroyUser', destroyUserPopover.data)}
+          onRequestClose={closeDeleteModal}
           actionsContainerStyle={{ paddingBottom: 20 }}
         >
-          {t('volunteer_portal.admin.tab.user.delete.confirmation', { user: destroyUserPopover.data.name })}
+          {t('volunteer_portal.admin.tab.user.delete.confirmation', { user: userToDelete.name })}
         </Dialog>
-      ) : null}
+      )}
     </div>
   )
+}
 
 const buildOptimisticResponse = user => ({
   __typename: 'Mutation',
@@ -152,40 +193,4 @@ const buildOptimisticResponse = user => ({
   },
 })
 
-const withData = compose(
-  graphql(UsersQuery, {}),
-  graphql(DeleteUserMutation, {
-    props: ({ ownProps, mutate }) => ({
-      deleteUser: user =>
-        mutate({
-          variables: { id: user.id },
-          optimisticResponse: buildOptimisticResponse(user),
-          update: (proxy, { data: { deleteUser } }) => {
-            const { users } = proxy.readQuery({ query: UsersQuery })
-            const withUserRemoved = R.reject(user => user.id === deleteUser.id, users)
-            proxy.writeQuery({ query: UsersQuery, data: { users: withUserRemoved } })
-          },
-        }).catch(({ graphQLErrors }) => {
-          ownProps.graphQLError(graphQLErrors)
-        }),
-    }),
-  })
-)
-
-const mapStateToProps = (state, ownProps) => {
-  const { popover } = state.model
-
-  return {
-    destroyUserPopover: popover && popover.type === 'destroyUser' ? popover : null,
-  }
-}
-
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
-
-export default withActions(withData(withTranslation()(Users)))
+export default withTranslation()(Users)

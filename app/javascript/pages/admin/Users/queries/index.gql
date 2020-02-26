@@ -1,7 +1,7 @@
 #import "fragments/UserEntry.gql"
 
-query UsersQuery {
-  users {
+query UsersQuery($officeId: ID) {
+  users(officeId: $officeId) {
     ...UserEntry
   }
 }
