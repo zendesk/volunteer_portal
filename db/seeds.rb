@@ -15,10 +15,14 @@ university = Organization.find_or_create_by!(name: 'University of Wisconsin') do
 end
 
 [
-  'New Hire', 'Tutoring', 'Meal Service', 'Mock Interviews', 'Sorting Clothes',
+  'Tutoring', 'Meal Service', 'Mock Interviews', 'Sorting Clothes',
   'Event Assistance', 'Bingo', 'Cleaning/Organizing', 'Street Cleaning',
   'Kitchen Prep', 'Harm Reduction Kit Assembly', 'Gardening'
 ].each { |et| EventType.find_or_create_by(title: et) }
+
+[
+  'New Hire', 'Skilled', 'Sustainability'
+].each { |tag| Tag.find_or_create_by(name: tag) }
 
 sf = Office.find_or_create_by!(name: 'San Francisco') do |office|
   office.timezone = 'America/Los_Angeles'
@@ -55,9 +59,10 @@ event1 = zendesk.events.create!(
   starts_at: (Time.zone.now + 1.hour),
   ends_at: (Time.zone.now + 12.hours),
   capacity: 600,
-  type: EventType.find_by(title: 'New Hire'),
+  type: EventType.find_by(title: 'Tutoring'),
   location: 'Hacking a ton Location',
-  office: sf
+  office: sf,
+  tags: Tag.find_by(name: 'New Hire')
 )
 
 event2 = university.events.create!(
@@ -66,9 +71,10 @@ event2 = university.events.create!(
   starts_at: (Time.zone.now + 1.day),
   ends_at: (Time.zone.now + 1.day + 2.hours),
   capacity: 600,
-  type: EventType.find_by(title: 'New Hire'),
+  type: EventType.find_by(title: 'Tutoring'),
   location: 'University of Wisconsin-Madison',
-  office: madison
+  office: madison,
+  tags: Tag.find_by(name: 'New Hire')
 )
 
 event1.users << user1
