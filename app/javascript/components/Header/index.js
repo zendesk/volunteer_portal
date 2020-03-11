@@ -11,6 +11,8 @@ import ContentIcon from 'material-ui/svg-icons/content/create'
 import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
 import { UserContext, FilterContext } from '/context'
 import { present } from '../../lib/utils'
+import styled from 'styled-components'
+
 import s from './main.css'
 import { useTranslation } from 'react-i18next'
 
@@ -19,130 +21,38 @@ import {
   Trigger,
   Menu as GardenMenu,
   Item,
-  Hint,
-  Select,
-  Field,
-  Label,
   Separator,
   PreviousItem,
   HeaderItem,
   NextItem,
 } from '@zendeskgarden/react-dropdowns'
-import { Button } from '@zendeskgarden/react-buttons'
 import { Avatar } from '@zendeskgarden/react-avatars'
 import TranslationIcon from '@zendeskgarden/svg-icons/src/12/translation-exists-fill.svg'
-import PencilIcon from '@zendeskgarden/svg-icons/src/12/pencil-fill.svg'
+import { MD } from '@zendeskgarden/react-typography'
 
-const styles = {
-  item: {
-    fontSize: 14,
-  },
-}
+const NavigationText = styled.div`
+  color: #08c;
+`
 
-const AdminActions = ({ currentUser }) => {
-  const { t } = useTranslation()
+const UserDetails = styled.div`
+  margin-left: 10px;
+`
 
-  return (
-    currentUser.isAdmin && (
-      <div className={s.adminActions}>
-        <div className={s.adminBox}>
-          <Link to="/portal/admin">
-            <Button isLink={true}>
-              <PencilIcon /> {t('volunteer_portal.header.admin')}
-            </Button>
-          </Link>
-        </div>
-      </div>
-    )
-  )
-}
+const UserProfileContainer = styled.div`
+  display: flex;
+`
 
-const LanguageSelect = () => {
-  const { i18n } = useTranslation()
-  const options = [{ label: 'English', value: 'en' }, { label: '日本語', value: 'ja' }]
-  const [selectedItem, useSelectedItem] = useState(options[0].value)
+const UserName = styled(MD)`
+  font-weight: bold;
+`
 
-  return (
-    <div style={{ margin: '0px 4px' }}>
-      <Dropdown
-        selectedItem={selectedItem}
-        // downshiftProps={{ itemToString: item => item && item.label }}
-        onSelect={selectedItem => {
-          i18n.changeLanguage(selectedItem.value, () => {
-            // TODO: Handle callback (error/success)
-          })
-          useSelectedItem(selectedItem)
-        }}
-      >
-        {/* <Field>
-          <Select>
-            <TranslationIcon /> {selectedItem.label}
-          </Select>
-        </Field> */}
-        <Trigger>
-          <Button>hi</Button>
-        </Trigger>
-        <GardenMenu>
-          {options.map(option => (
-            <Item key={option.value} value={option.value}>
-              {option.label}
-            </Item>
-          ))}
-        </GardenMenu>
-      </Dropdown>
-    </div>
-  )
-}
-
-const UserProfile2 = ({ currentUser, offices, togglePopover, popover, handleOfficeSelect, adminPage }) => (
-  <div>
-    <button className={s.btn} onClick={togglePopover}>
-      <img className={s.img} src={currentUser.photo} />
-      <div className={s.userInfoBox}>
-        <div className={s.userName}>{currentUser.name}</div>
-        <div className={s.userOffice}>{currentUser.office && currentUser.office.name}</div>
-      </div>
-      <Popover
-        className={s.popover}
-        open={present(popover)}
-        anchorEl={popover ? popover.anchorEl : null}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-        onRequestClose={togglePopover}
-      >
-        <Menu>
-          <MenuItem
-            style={styles.item}
-            primaryText="Default Office"
-            rightIcon={<ArrowDropRight />}
-            menuItems={offices.map((o, i) => (
-              <MenuItem
-                key={`office-${i}`}
-                primaryText={o.name}
-                style={styles.item}
-                checked={currentUser.office.id === o.id}
-                onClick={() => handleOfficeSelect(o)}
-                insetChildren
-              />
-            ))}
-          />
-          <Divider />
-          <a href="/users/sign_out">
-            <MenuItem style={styles.item} primaryText="Sign out" />
-          </a>
-        </Menu>
-      </Popover>
-    </button>
-  </div>
-)
-
-const UserProfile = ({ currentUser, offices, togglePopover, popover, handleOfficeSelect, adminPage }) => {
+const UserProfile = ({ currentUser, offices, handleOfficeSelect }) => {
   const { i18n } = useTranslation()
   const languages = [{ label: 'English', value: 'en' }, { label: '日本語', value: 'ja' }]
 
   const [isOpen, setIsOpen] = useState(false)
   const [tempSelectedItem, setTempSelectedItem] = useState()
-  const [selectedItem, setSelectedItem] = useState({ office: currentUser.office })
+  const [selectedItem, setSelectedItem] = useState({ office: currentUser.office, language: languages[0] })
 
   const renderItems = () => {
     if (tempSelectedItem === 'default-office') {
@@ -151,7 +61,7 @@ const UserProfile = ({ currentUser, offices, togglePopover, popover, handleOffic
           <PreviousItem value="general-settings">Default Office</PreviousItem>
           <Separator />
           {offices.map((office, i) => (
-            <Item key={i} value={{ office }}>
+            <Item key={i} value={{ office, language: selectedItem.language }}>
               {office.name}
             </Item>
           ))}
@@ -165,7 +75,7 @@ const UserProfile = ({ currentUser, offices, togglePopover, popover, handleOffic
           <PreviousItem value="general-settings">Language Settings</PreviousItem>
           <Separator />
           {languages.map((language, i) => (
-            <Item key={i} value={language}>
+            <Item key={i} value={{ office: selectedItem.office, language }}>
               {' '}
               {language.label}{' '}
             </Item>
@@ -181,8 +91,20 @@ const UserProfile = ({ currentUser, offices, togglePopover, popover, handleOffic
           <TranslationIcon /> Language
         </NextItem>
         <Separator />
-        <Item value="admin">Admin</Item>
-        <Item value="sign-out">Sign Out</Item>
+        {currentUser.isAdmin && (
+          <Link to="/portal/admin">
+            <Item value="admin">
+              <NavigationText>Admin</NavigationText>
+            </Item>
+          </Link>
+        )}
+        <NavigationText>
+          <a href="/users/sign_out">
+            <Item value="sign-out">
+              <NavigationText>Sign Out</NavigationText>
+            </Item>
+          </a>
+        </NavigationText>
       </>
     )
   }
@@ -190,7 +112,7 @@ const UserProfile = ({ currentUser, offices, togglePopover, popover, handleOffic
   return (
     <Dropdown
       selectedItem={selectedItem}
-      downshiftProps={{ itemToString: item => item.office && item.office.id }}
+      downshiftProps={{ itemToString: item => item.office && item.office.id + item.language + item.language.value }}
       isOpen={isOpen}
       onStateChange={(changes, stateAndHelpers) => {
         if (R.hasPath(['isOpen'])(changes)) {
@@ -220,20 +142,30 @@ const UserProfile = ({ currentUser, offices, togglePopover, popover, handleOffic
       onSelect={selectedItem => {
         if (tempSelectedItem === 'default-office') {
           if (R.hasPath(['office'])(selectedItem)) {
+            console.log(selectedItem)
             handleOfficeSelect(selectedItem.office)
             setSelectedItem(selectedItem)
+          }
+        } else if (tempSelectedItem === 'language-settings') {
+          if (R.hasPath(['language'])(selectedItem)) {
+            console.log(selectedItem.language)
+            i18n.changeLanguage(selectedItem.language.value, () => {
+              // TODO: Handle callback (error/success)
+            })
           }
         }
       }}
     >
       <Trigger>
-        <div>
-          <img className={s.img} src={currentUser.photo} />
-          <div className={s.userInfoBox}>
-            <div className={s.userName}>{currentUser.name}</div>
-            <div className={s.userOffice}>{currentUser.office && currentUser.office.name}</div>
-          </div>
-        </div>
+        <UserProfileContainer>
+          <Avatar>
+            <img src={currentUser.photo} alt="User Avatar" />
+          </Avatar>
+          <UserDetails>
+            <UserName>{currentUser.name}</UserName>
+            <MD>{currentUser.office && currentUser.office.name}</MD>
+          </UserDetails>
+        </UserProfileContainer>
       </Trigger>
       <GardenMenu hasArrow>{renderItems()}</GardenMenu>
     </Dropdown>
