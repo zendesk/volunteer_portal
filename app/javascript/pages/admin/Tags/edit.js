@@ -1,12 +1,20 @@
 import * as R from 'ramda'
 import React, { useState } from 'react'
 
+import styled from 'styled-components'
+import { Alert, Title } from '@zendeskgarden/react-notifications'
 import { useMutation, useQuery } from '@apollo/react-hooks'
 
 import Loading from 'components/LoadingIcon'
 import TagForm from './form'
 import TagQuery from './queries/show.gql'
 import UpdateTagMutation from './mutations/update.gql'
+
+const spacingSm = R.pathOr('50px', ['theme', 'styles', 'spacing', 'sm'])
+
+const StyledAlert = styled(Alert)`
+  margin-bottom: ${spacingSm};
+`
 
 const EditTag = props => {
   const [updateError, setUpdateError] = useState(null)
@@ -28,10 +36,20 @@ const EditTag = props => {
   }
 
   if (loading) return <Loading />
-  if (error) return <div>Tag Not Found</div>
+  if (error)
+    return (
+      <StyledAlert type="error">
+        <Title>Tag Not Found</Title>
+      </StyledAlert>
+    )
   return (
     <>
-      {updateError && <p>Unable to update the tags</p>}
+      {updateError && (
+        <StyledAlert type="error">
+          <Title>Update Failed</Title>
+          An error occured in the server, unable to update the tag.
+        </StyledAlert>
+      )}
       <TagForm tag={data.tag} onSubmit={updateTag} />
     </>
   )
