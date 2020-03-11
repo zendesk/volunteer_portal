@@ -46,7 +46,7 @@ const UserName = styled(MD)`
   font-weight: bold;
 `
 
-const UserProfile = ({ currentUser, offices, handleOfficeSelect, location }) => {
+const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, router }) => {
   const { i18n } = useTranslation()
   const languages = [
     { label: 'English', value: 'en' },
@@ -57,6 +57,56 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location }) => 
   const [isOpen, setIsOpen] = useState(false)
   const [tempSelectedItem, setTempSelectedItem] = useState()
   const [selectedItem, setSelectedItem] = useState({ office: currentUser.office, language: languages[0] })
+
+  const handleStateChange = (changes, stateAndHelpers) => {
+    if (R.hasPath(['isOpen'])(changes)) {
+      setIsOpen(
+        changes.selectedItem === 'default-office' ||
+          changes.selectedItem === 'language-settings' ||
+          changes.selectedItem === 'general-settings' ||
+          changes.isOpen
+      )
+    }
+
+    if (R.hasPath(['selectedItem'])(changes)) {
+      const itemSelected = R.prop('selectedItem')(changes)
+      if (itemSelected === 'general-settings') {
+        switch (tempSelectedItem) {
+          case 'default-office':
+            stateAndHelpers.setHighlightedIndex(0)
+            break
+          case 'language-settings':
+            stateAndHelpers.setHighlightedIndex(1)
+        }
+      }
+      setTempSelectedItem(itemSelected)
+    }
+  }
+
+  const handleSelect = selectedItem => {
+    if (tempSelectedItem === 'default-office') {
+      if (R.hasPath(['office'])(selectedItem)) {
+        handleOfficeSelect(selectedItem.office)
+        setSelectedItem(selectedItem)
+      }
+    } else if (tempSelectedItem === 'language-settings') {
+      if (R.hasPath(['language'])(selectedItem)) {
+        i18n.changeLanguage(selectedItem.language.value, () => {
+          // TODO: Handle callback (error/success)
+        })
+        setSelectedItem(selectedItem)
+      }
+    } else if (tempSelectedItem === 'admin') {
+      // TODO
+      console.log(router)
+    } else if (tempSelectedItem === 'home') {
+      // TODO
+      console.log(router)
+    } else if (tempSelectedItem === 'sign-out') {
+      // TODO
+      console.log(router)
+    }
+  }
 
   const renderItems = () => {
     if (tempSelectedItem === 'default-office') {
@@ -125,48 +175,13 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location }) => 
   return (
     <Dropdown
       selectedItem={selectedItem}
-      downshiftProps={{ itemToString: item => item.office && item.office.id + item.language + item.language.value }}
+      // This is used to detect what items are selected with a check mark.
+      downshiftProps={{
+        itemToString: item => (item.office && item.office.id) + (item.language && item.language.value),
+      }}
       isOpen={isOpen}
-      onStateChange={(changes, stateAndHelpers) => {
-        if (R.hasPath(['isOpen'])(changes)) {
-          setIsOpen(
-            changes.selectedItem === 'default-office' ||
-              changes.selectedItem === 'language-settings' ||
-              changes.selectedItem === 'general-settings' ||
-              changes.isOpen
-          )
-        }
-
-        if (R.hasPath(['selectedItem'])(changes)) {
-          const itemSelected = R.prop('selectedItem')(changes)
-          switch (itemSelected) {
-            case 'specific-settings':
-              stateAndHelpers.setHighlightedIndex(1)
-              break
-            case 'general-settings':
-              stateAndHelpers.setHighlightedIndex(3)
-              break
-            default:
-              break
-          }
-          setTempSelectedItem(itemSelected)
-        }
-      }}
-      onSelect={selectedItem => {
-        if (tempSelectedItem === 'default-office') {
-          if (R.hasPath(['office'])(selectedItem)) {
-            handleOfficeSelect(selectedItem.office)
-            setSelectedItem(selectedItem)
-          }
-        } else if (tempSelectedItem === 'language-settings') {
-          if (R.hasPath(['language'])(selectedItem)) {
-            i18n.changeLanguage(selectedItem.language.value, () => {
-              // TODO: Handle callback (error/success)
-            })
-            setSelectedItem(selectedItem)
-          }
-        }
-      }}
+      onStateChange={handleStateChange}
+      onSelect={handleSelect}
     >
       <Trigger>
         <UserProfileContainer>
@@ -184,8 +199,7 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location }) => 
   )
 }
 
-<<<<<<< HEAD
-const Header = ({ offices, togglePopover, popover, adminPage }) => {
+const Header = ({ currentUser, offices, togglePopover, popover, adminPage, location, router }) => {
   const { currentUser, setOffice } = useContext(UserContext)
   const { setOfficeValue } = useContext(FilterContext)
   const [updateDefaultOffice] = useMutation(UpdateUserOfficeMutation)
@@ -199,10 +213,7 @@ const Header = ({ offices, togglePopover, popover, adminPage }) => {
       .then(_ => togglePopover('user'))
 
   return (
-=======
-const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSelect, adminPage, location }) =>
   R.isNil(currentUser) || R.isEmpty(currentUser) ? null : (
->>>>>>> change admin link when in admin page to link to volunteer page.
     <div className={s.header}>
       <div className={s.container}>
         <div className={adminPage ? `${s.wrapper} ${s.wrapperAdmin}` : s.wrapper}>
@@ -223,6 +234,7 @@ const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSele
             handleOfficeSelect={handleOfficeSelect}
             adminPage={adminPage}
             location={location}
+            router={router}
           />
         </div>
       </div>
