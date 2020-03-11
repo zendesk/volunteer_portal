@@ -62,7 +62,7 @@ event1 = zendesk.events.create!(
   type: EventType.find_by(title: 'Tutoring'),
   location: 'Hacking a ton Location',
   office: sf,
-  tags: Tag.find_by(name: 'New Hire')
+  tags: Tag.where(name: 'New Hire')
 )
 
 event2 = university.events.create!(
@@ -74,7 +74,7 @@ event2 = university.events.create!(
   type: EventType.find_by(title: 'Tutoring'),
   location: 'University of Wisconsin-Madison',
   office: madison,
-  tags: Tag.find_by(name: 'New Hire')
+  tags: Tag.where(name: 'New Hire')
 )
 
 event1.users << user1
