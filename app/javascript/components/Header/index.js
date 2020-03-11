@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Link } from 'react-router'
+import { Link, withRouter } from 'react-router'
 import * as R from 'ramda'
 import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
@@ -46,9 +46,13 @@ const UserName = styled(MD)`
   font-weight: bold;
 `
 
-const UserProfile = ({ currentUser, offices, handleOfficeSelect }) => {
+const UserProfile = ({ currentUser, offices, handleOfficeSelect, location }) => {
   const { i18n } = useTranslation()
-  const languages = [{ label: 'English', value: 'en' }, { label: '日本語', value: 'ja' }]
+  const languages = [
+    { label: 'English', value: 'en' },
+    // Enable when Japanense is supported
+    // { label: '日本語', value: 'ja' }
+  ]
 
   const [isOpen, setIsOpen] = useState(false)
   const [tempSelectedItem, setTempSelectedItem] = useState()
@@ -72,7 +76,9 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect }) => {
     if (tempSelectedItem === 'language-settings') {
       return (
         <>
-          <PreviousItem value="general-settings">Language Settings</PreviousItem>
+          <PreviousItem value="general-settings">
+            <TranslationIcon /> Language
+          </PreviousItem>
           <Separator />
           {languages.map((language, i) => (
             <Item key={i} value={{ office: selectedItem.office, language }}>
@@ -91,13 +97,20 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect }) => {
           <TranslationIcon /> Language
         </NextItem>
         <Separator />
-        {currentUser.isAdmin && (
-          <Link to="/portal/admin">
-            <Item value="admin">
-              <NavigationText>Admin</NavigationText>
-            </Item>
-          </Link>
-        )}
+        {currentUser.isAdmin &&
+          (R.contains('/portal/admin')(location.pathname) ? (
+            <Link to="/portal">
+              <Item value="home">
+                <NavigationText>Volunteer</NavigationText>
+              </Item>
+            </Link>
+          ) : (
+            <Link to="/portal/admin">
+              <Item value="admin">
+                <NavigationText>Admin</NavigationText>
+              </Item>
+            </Link>
+          ))}
         <NavigationText>
           <a href="/users/sign_out">
             <Item value="sign-out">
@@ -142,16 +155,15 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect }) => {
       onSelect={selectedItem => {
         if (tempSelectedItem === 'default-office') {
           if (R.hasPath(['office'])(selectedItem)) {
-            console.log(selectedItem)
             handleOfficeSelect(selectedItem.office)
             setSelectedItem(selectedItem)
           }
         } else if (tempSelectedItem === 'language-settings') {
           if (R.hasPath(['language'])(selectedItem)) {
-            console.log(selectedItem.language)
             i18n.changeLanguage(selectedItem.language.value, () => {
               // TODO: Handle callback (error/success)
             })
+            setSelectedItem(selectedItem)
           }
         }
       }}
@@ -172,6 +184,7 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect }) => {
   )
 }
 
+<<<<<<< HEAD
 const Header = ({ offices, togglePopover, popover, adminPage }) => {
   const { currentUser, setOffice } = useContext(UserContext)
   const { setOfficeValue } = useContext(FilterContext)
@@ -186,6 +199,10 @@ const Header = ({ offices, togglePopover, popover, adminPage }) => {
       .then(_ => togglePopover('user'))
 
   return (
+=======
+const Header = ({ currentUser, offices, togglePopover, popover, handleOfficeSelect, adminPage, location }) =>
+  R.isNil(currentUser) || R.isEmpty(currentUser) ? null : (
+>>>>>>> change admin link when in admin page to link to volunteer page.
     <div className={s.header}>
       <div className={s.container}>
         <div className={adminPage ? `${s.wrapper} ${s.wrapperAdmin}` : s.wrapper}>
@@ -205,6 +222,7 @@ const Header = ({ offices, togglePopover, popover, adminPage }) => {
             popover={popover}
             handleOfficeSelect={handleOfficeSelect}
             adminPage={adminPage}
+            location={location}
           />
         </div>
       </div>
@@ -213,4 +231,4 @@ const Header = ({ offices, togglePopover, popover, adminPage }) => {
   )
 }
 
-export default Header
+export default withRouter(Header)
