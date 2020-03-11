@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
+import { useQuery } from '@apollo/react-hooks'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
 import * as R from 'ramda'
@@ -12,8 +13,17 @@ import Loading from 'components/LoadingIcon'
 import TagQuery from './queries/show.gql'
 import UpdateTagMutation from './mutations/update.gql'
 
-const EditTag = ({ data: { networkStatus, tag }, updateTag }) =>
-  networkStatus === NetworkStatus.loading ? <Loading /> : <TagForm tag={tag} onSubmit={updateTag} />
+const EditTag = props => {
+  const { updateTag } = props
+  const { data, loading, error } = useQuery(TagQuery, {
+    variables: { id: props.params.id },
+  })
+
+  if (loading) return <Loading />
+  if (error) return <div>Tag Not Found</div>
+
+  return <TagForm tag={data.tag} onSubmit={updateTag} />
+}
 
 const buildOptimisticResponse = tag => ({
   __typename: 'Mutation',
@@ -24,11 +34,6 @@ const buildOptimisticResponse = tag => ({
 })
 
 const withData = compose(
-  graphql(TagQuery, {
-    options: ({ params: { id } }) => ({
-      variables: { id },
-    }),
-  }),
   graphql(UpdateTagMutation, {
     props: ({ ownProps, mutate }) => ({
       updateTag: tag =>
