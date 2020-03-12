@@ -1,18 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { Link, withRouter } from 'react-router'
 import * as R from 'ramda'
-import Popover from 'material-ui/Popover'
-import Menu from 'material-ui/Menu'
-import MenuItem from 'material-ui/MenuItem'
-import Divider from 'material-ui/Divider'
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right'
-
-import ContentIcon from 'material-ui/svg-icons/content/create'
-import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
-import { UserContext, FilterContext } from '/context'
-import { present } from '../../lib/utils'
 import styled from 'styled-components'
-
+import { useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -28,6 +18,9 @@ import {
 import { Avatar } from '@zendeskgarden/react-avatars'
 import TranslationIcon from '@zendeskgarden/svg-icons/src/12/translation-exists-fill.svg'
 import { MD } from '@zendeskgarden/react-typography'
+
+import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
+import { UserContext, FilterContext } from '/context'
 
 const NavigationText = styled.div`
   color: #08c;
@@ -238,7 +231,7 @@ const LogoSection = () => (
   </LogoBox>
 )
 
-const Header = ({ currentUser, offices, togglePopover, popover, adminPage, location, router }) => {
+const Header = ({ offices, togglePopover, popover, adminPage, location, router }) => {
   const { currentUser, setOffice } = useContext(UserContext)
   const { setOfficeValue } = useContext(FilterContext)
   const [updateDefaultOffice] = useMutation(UpdateUserOfficeMutation)
@@ -251,8 +244,7 @@ const Header = ({ currentUser, offices, togglePopover, popover, adminPage, locat
       .then(_ => setOfficeValue(office.id))
       .then(_ => togglePopover('user'))
 
-  return (
-  R.isNil(currentUser) || R.isEmpty(currentUser) ? null : (
+  return R.isNil(currentUser) || R.isEmpty(currentUser) ? null : (
     <div>
       <Container>
         <Wrapper>

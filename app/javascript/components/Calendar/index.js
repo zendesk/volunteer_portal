@@ -123,11 +123,7 @@ const Calendar = ({ loading, currentPath, events, togglePopover, loadMoreEvents 
         eventPropGetter={eventPropGetter}
         views={['month']}
         culture={i18next.language}
-        components={calendarComponents(currentUser, offices, filters, {
-          changeShowFilter,
-          changeEventFilter,
-          changeOfficeFilter,
-        })}
+        components={calendarComponents}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup
