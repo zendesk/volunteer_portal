@@ -13,7 +13,6 @@ import { UserContext, FilterContext } from '/context'
 import { present } from '../../lib/utils'
 import styled from 'styled-components'
 
-import s from './main.css'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -137,6 +136,7 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, route
         </>
       )
     }
+
     return (
       <>
         <HeaderItem>Settings</HeaderItem>
@@ -197,6 +197,44 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, route
   )
 }
 
+const LogoBox = styled.div`
+  flex-grow: 2;
+`
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100px;
+  margin: 0 0 50px 0;
+  padding: 0;
+  box-shadow: 0px 0px 5px #bbb;
+  justify-content: space-around;
+`
+
+const Wrapper = styled.div`
+  padding: 0 20px;
+  width: 935px;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  align-items: center;
+`
+
+const Logo = styled.img`
+  height: 40px;
+`
+
+const LogoSection = () => (
+  <LogoBox>
+    <Link to="/portal">
+      <Logo
+        alt="Zendesk Relationshapes Logo"
+        src="//d1eipm3vz40hy0.cloudfront.net/images/part-header/zendesk-relationshapes-logo.svg"
+      />
+    </Link>
+  </LogoBox>
+)
+
 const Header = ({ currentUser, offices, togglePopover, popover, adminPage, location, router }) => {
   const { currentUser, setOffice } = useContext(UserContext)
   const { setOfficeValue } = useContext(FilterContext)
@@ -212,18 +250,10 @@ const Header = ({ currentUser, offices, togglePopover, popover, adminPage, locat
 
   return (
   R.isNil(currentUser) || R.isEmpty(currentUser) ? null : (
-    <div className={s.header}>
-      <div className={s.container}>
-        <div className={adminPage ? `${s.wrapper} ${s.wrapperAdmin}` : s.wrapper}>
-          <div className={s.logoBox}>
-            <Link to="/portal">
-              <img
-                alt="Zendesk Relationshapes Logo"
-                className={s.logo}
-                src="//d1eipm3vz40hy0.cloudfront.net/images/part-header/zendesk-relationshapes-logo.svg"
-              />
-            </Link>
-          </div>
+    <div>
+      <Container>
+        <Wrapper>
+          <LogoSection />
           <UserProfile
             offices={offices}
             togglePopover={togglePopover}
@@ -234,8 +264,8 @@ const Header = ({ currentUser, offices, togglePopover, popover, adminPage, locat
             location={location}
             router={router}
           />
-        </div>
-      </div>
+        </Wrapper>
+      </Container>
       <div style={{ overflow: 'auto' }} />
     </div>
   )
