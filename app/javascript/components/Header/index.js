@@ -40,6 +40,7 @@ const UserDetails = styled.div`
 const UserProfileContainer = styled.button`
   display: flex;
   border: none;
+  text-align: left;
 `
 
 const UserName = styled(MD)`
