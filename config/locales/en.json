@@ -1,7 +1,6 @@
 {
   "locale": {
     "translations": {
-      "volunteer_portal.header.admin": "Admin",
       "volunteer_portal.dashboard.personal": "Personal",
       "volunteer_portal.dashboard.layouttab.calendar": "Calendar",
       "volunteer_portal.dashboard.layouttab.dashboard": "Dashboard",
