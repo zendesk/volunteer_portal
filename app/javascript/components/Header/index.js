@@ -38,8 +38,9 @@ const UserDetails = styled.div`
   margin-left: 10px;
 `
 
-const UserProfileContainer = styled.div`
+const UserProfileContainer = styled.button`
   display: flex;
+  border: none;
 `
 
 const UserName = styled(MD)`
@@ -96,15 +97,12 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, route
         })
         setSelectedItem(selectedItem)
       }
-    } else if (tempSelectedItem === 'admin') {
-      // TODO
-      console.log(router)
-    } else if (tempSelectedItem === 'home') {
-      // TODO
-      console.log(router)
-    } else if (tempSelectedItem === 'sign-out') {
-      // TODO
-      console.log(router)
+    } else if (selectedItem === 'admin') {
+      router.push('/portal/admin')
+    } else if (selectedItem === 'home') {
+      router.push('/portal')
+    } else if (selectedItem === 'sign-out') {
+      router.push('/portal/sign_out')
     }
   }
 
