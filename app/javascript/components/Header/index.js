@@ -48,7 +48,7 @@ const UserName = styled(MD)`
 `
 
 const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, router }) => {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const languages = [
     { label: 'English', value: 'en' },
     // Enable when Japanense is supported
@@ -110,7 +110,9 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, route
     if (tempSelectedItem === 'default-office') {
       return (
         <>
-          <PreviousItem value="general-settings">Default Office</PreviousItem>
+          <PreviousItem value="general-settings">
+            {t('volunteer_portal.header.user_profile.default_office')}
+          </PreviousItem>
           <Separator />
           {offices.map((office, i) => (
             <Item key={i} value={{ office, language: selectedItem.language }}>
@@ -125,7 +127,7 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, route
       return (
         <>
           <PreviousItem value="general-settings">
-            <TranslationIcon /> Language
+            <TranslationIcon /> {t('volunteer_portal.header.user_profile.language')}
           </PreviousItem>
           <Separator />
           {languages.map((language, i) => (
@@ -141,29 +143,29 @@ const UserProfile = ({ currentUser, offices, handleOfficeSelect, location, route
     return (
       <>
         <HeaderItem>Settings</HeaderItem>
-        <NextItem value="default-office">Default Office</NextItem>
+        <NextItem value="default-office">{t('volunteer_portal.header.user_profile.default_office')}</NextItem>
         <NextItem value="language-settings">
-          <TranslationIcon /> Language
+          <TranslationIcon /> {t('volunteer_portal.header.user_profile.language')}
         </NextItem>
         <Separator />
         {currentUser.isAdmin &&
           (R.contains('/portal/admin')(location.pathname) ? (
             <Link to="/portal">
               <Item value="home">
-                <NavigationText>Volunteer</NavigationText>
+                <NavigationText>{t('volunteer_portal.header.user_profile.volunteer')}</NavigationText>
               </Item>
             </Link>
           ) : (
             <Link to="/portal/admin">
               <Item value="admin">
-                <NavigationText>Admin</NavigationText>
+                <NavigationText>{t('volunteer_portal.header.user_profile.admin')}</NavigationText>
               </Item>
             </Link>
           ))}
         <NavigationText>
           <a href="/users/sign_out">
             <Item value="sign-out">
-              <NavigationText>Sign Out</NavigationText>
+              <NavigationText>{t('volunteer_portal.header.user_profile.sign_out')}</NavigationText>
             </Item>
           </a>
         </NavigationText>
