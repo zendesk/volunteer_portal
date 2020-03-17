@@ -1,7 +1,0 @@
-# Refer here for more directives - https://www.sourceclear.com/docs/scan-directives/
-
-# Prevent scanning of non production libraries, need production group in ruby for it to work and works out of the box for yarn or npm dependencies.
-# scope: production
-
-# Do not fail yet since we cannot mark false-positives.
-# fail_on: high 
