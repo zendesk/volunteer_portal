@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 20200114001524) do
     t.index ["updated_at"], name: "index_events_on_updated_at"
   end
 
+  create_table "events_tags", id: false, force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "tag_id", null: false
+  end
+
   create_table "individual_event_tags", force: :cascade do |t|
     t.bigint "individual_event_id"
     t.bigint "tag_id"

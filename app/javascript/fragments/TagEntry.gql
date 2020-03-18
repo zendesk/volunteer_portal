@@ -1,0 +1,4 @@
+fragment TagEntry on Tag {
+  id
+  name
+}

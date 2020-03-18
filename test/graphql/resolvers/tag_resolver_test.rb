@@ -17,6 +17,20 @@ describe TagResolver do
     end
   end
 
+  describe '.update' do
+    let(:tag) { tags(:minimum) }
+
+    it 'updates the given tag' do
+      input = stub(id: tag.id, name: 'Sustainability')
+
+      TagResolver.update(nil, { input: input }, nil)
+
+      t = Tag.find(tag.id)
+
+      assert_equal 'Sustainability', t.name
+    end
+  end
+
   describe '.delete' do
     let(:tag) { tags(:minimum) }
 

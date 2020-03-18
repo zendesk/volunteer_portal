@@ -1,7 +1,7 @@
 module Types
   class TagGraphType < BaseObject
-    graphql_name 'Tags'
-    description 'Tags for events'
+    graphql_name 'Tag'
+    description 'Tag for events'
 
     implements GraphQL::Relay::Node.interface
 

@@ -8,9 +8,13 @@ module TagResolver
       tag
     end
 
-    # def update(_, args, _context)
-    # TODO
-    # end
+    def update(_, args, _context)
+      tag = Tag.find(args[:input].id)
+      tag.name = args[:input].name
+      tag.save!
+
+      tag
+    end
 
     def delete(_, args, _context)
       tag = Tag.find(args[:id])
