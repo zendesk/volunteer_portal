@@ -6,8 +6,6 @@
       "volunteer_portal.dashboard.layouttab.dashboard": "Dashboard",
       "volunteer_portal.dashboard.layouttab.myevents": "My Events",
       "volunteer_portal.dashboard.layoutdatetab.today": "Today",
-      "volunteer_portal.dashboard.layoutdatetab.previous": "<",
-      "volunteer_portal.dashboard.layoutdatetab.after": ">",
       "volunteer_portal.dashboard.layouteventstab.show": "Show:",
       "volunteer_portal.dashboard.layouteventstab.show_all": "All",
       "volunteer_portal.dashboard.layouteventstab.show_myevents": "My Events",
