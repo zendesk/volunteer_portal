@@ -9,6 +9,9 @@ import EventFilter from 'components/EventFilter'
 import OfficeFilter from 'components/OfficeFilter'
 import FilterGroup from 'components/FilterGroup'
 
+import LeftIcon from '@zendeskgarden/svg-icons/src/12/chevron-left-fill.svg'
+import RightIcon from '@zendeskgarden/svg-icons/src/12/chevron-right-fill.svg'
+
 import s from './main.css'
 
 const translations = R.flip(R.mapObjIndexed)({
@@ -18,8 +21,6 @@ const translations = R.flip(R.mapObjIndexed)({
   day: 'volunteer_portal.calendar.bigcalendar.day',
   agenda: 'volunteer_portal.calendar.bigcalendar.agenda',
   today: 'volunteer_portal.dashboard.layoutdatetab.today',
-  previous: 'volunteer_portal.dashboard.layoutdatetab.previous',
-  after: 'volunteer_portal.dashboard.layoutdatetab.after',
 })
 
 const Toolbar = ({ label, view, views, onNavigate, onViewChange, t }) => {
@@ -32,11 +33,11 @@ const Toolbar = ({ label, view, views, onNavigate, onViewChange, t }) => {
           {text.today}
         </button>
         <button className={s.btn} type="button" onClick={() => onNavigate(navigate.PREVIOUS)}>
-          {text.previous}
+          <LeftIcon />
         </button>
         <span className={s.label}>{label}</span>
         <button className={s.btn} type="button" onClick={() => onNavigate(navigate.NEXT)}>
-          {text.after}
+          <RightIcon />
         </button>
       </div>
       <div className={s.filterBar}>
