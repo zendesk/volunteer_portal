@@ -95,7 +95,12 @@
       "volunteer_portal.admin.tab.users_delete_delete": "Delete",
       "volunteer_portal.admin.tab.users_delete_user": "Delete User",
       "volunteer_portal.admin.tab.user.delete.confirmation": "Are you sure you want to delete {{user}}?",
-      "volunteer_portal.filters.office.fetch_error": "Unable to load offices list"
+      "volunteer_portal.filters.office.fetch_error": "Unable to load offices list",
+      "volunteer_portal.header.user_profile.default_office": "Default Office",
+      "volunteer_portal.header.user_profile.language": "Language",
+      "volunteer_portal.header.user_profile.admin": "Admin",
+      "volunteer_portal.header.user_profile.volunteer": "Volunteer",
+      "volunteer_portal.header.user_profile.sign_out": "Sign Out"
     }
   }
 }

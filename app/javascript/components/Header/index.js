@@ -1,110 +1,51 @@
-import React, { useContext } from 'react'
-
+import React from 'react'
 import { Link } from 'react-router'
-import * as R from 'ramda'
-import Popover from 'material-ui/Popover'
-import Menu from 'material-ui/Menu'
-import MenuItem from 'material-ui/MenuItem'
-import Divider from 'material-ui/Divider'
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right'
-import { useMutation } from '@apollo/react-hooks'
+import styled from 'styled-components'
 
-import ContentIcon from 'material-ui/svg-icons/content/create'
-import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
-import { UserContext, FilterContext } from '/context'
-import { present } from '../../lib/utils'
-import s from './main.css'
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100px;
+  margin: 0 0 50px 0;
+  padding: 0;
+  box-shadow: 0px 0px 5px #bbb;
+  justify-content: space-around;
+`
 
-const styles = {
-  item: {
-    fontSize: 14,
-  },
-}
+const Wrapper = styled.div`
+  padding: 0 20px;
+  width: 935px;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  align-items: center;
+`
 
-const AdminActions = ({ currentUser }) =>
-  currentUser.isAdmin ? (
-    <div className={s.adminActions}>
-      <div className={s.adminBox}>
-        <Link to="/portal/admin">
-          <button className={s.btn}>
-            <ContentIcon />
-          </button>
-        </Link>
-      </div>
-    </div>
-  ) : null
+const Logo = styled.img`
+  height: 40px;
+`
 
-const Header = ({ offices, togglePopover, popover, adminPage }) => {
-  const { currentUser, setOffice } = useContext(UserContext)
-  const { setOfficeValue } = useContext(FilterContext)
-  const [updateDefaultOffice] = useMutation(UpdateUserOfficeMutation)
+const LogoBox = styled.div`
+  flex-grow: 2;
+`
 
-  if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
-
-  const handleOfficeSelect = office =>
-    updateDefaultOffice({ variables: { userId: currentUser.id, officeId: office.id } })
-      .then(response => setOffice(R.path(['data', 'updateUserOffice', 'office'], response)))
-      .then(_ => setOfficeValue(office.id))
-      .then(_ => togglePopover('user'))
-
-  return (
-    <div className={s.header}>
-      <div className={s.container}>
-        <div className={adminPage ? `${s.wrapper} ${s.wrapperAdmin}` : s.wrapper}>
-          <div className={s.logoBox}>
-            <Link to="/portal">
-              <img
-                alt="Zendesk Relationshapes Logo"
-                className={s.logo}
-                src="//d1eipm3vz40hy0.cloudfront.net/images/part-header/zendesk-relationshapes-logo.svg"
-              />
-            </Link>
-          </div>
-          <AdminActions currentUser={currentUser} />
-          <div>
-            <button className={s.btn} onClick={togglePopover}>
-              <img className={s.img} src={currentUser.photo} />
-              <div className={s.userInfoBox}>
-                <div className={s.userName}>{currentUser.name}</div>
-                <div className={s.userOffice}>{currentUser.office && currentUser.office.name}</div>
-              </div>
-              <Popover
-                className={s.popover}
-                open={present(popover)}
-                anchorEl={popover ? popover.anchorEl : null}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-                onRequestClose={togglePopover}
-              >
-                <Menu>
-                  <MenuItem
-                    style={styles.item}
-                    primaryText="Default Office"
-                    rightIcon={<ArrowDropRight />}
-                    menuItems={offices.map((o, i) => (
-                      <MenuItem
-                        key={`office-${i}`}
-                        primaryText={o.name}
-                        style={styles.item}
-                        checked={currentUser.office.id === o.id}
-                        onClick={() => handleOfficeSelect(o)}
-                        insetChildren
-                      />
-                    ))}
-                  />
-                  <Divider />
-                  <a href="/users/sign_out">
-                    <MenuItem style={styles.item} primaryText="Sign out" />
-                  </a>
-                </Menu>
-              </Popover>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div style={{ overflow: 'auto' }} />
-    </div>
-  )
-}
+const Header = ({ children }) => (
+  <div>
+    <Container>
+      <Wrapper>
+        <LogoBox>
+          <Link to="/portal">
+            <Logo
+              alt="Zendesk Relationshapes Logo"
+              src="//d1eipm3vz40hy0.cloudfront.net/images/part-header/zendesk-relationshapes-logo.svg"
+            />
+          </Link>
+        </LogoBox>
+        {children}
+      </Wrapper>
+    </Container>
+    <div style={{ overflow: 'auto' }} />
+  </div>
+)
 
 export default Header

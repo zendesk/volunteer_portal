@@ -10,6 +10,8 @@ import Toolbar from 'components/Toolbar'
 import { FilterContext, UserContext } from '/context'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
+import i18next from 'i18next'
+import { withTranslation } from 'react-i18next'
 
 const localizer = BigCalendar.momentLocalizer(moment)
 BigCalendar.setLocalizer(localizer)
@@ -58,6 +60,7 @@ const applyShowFilter = dataAndFilters => {
 const applyEventFilter = dataAndFilters => {
   const {
     event,
+    currentUser,
     filters: { eventFilter },
     isValid,
   } = dataAndFilters
@@ -119,7 +122,7 @@ const Calendar = ({ loading, currentPath, events, togglePopover, loadMoreEvents 
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
-        culture="en"
+        culture={i18next.language}
         components={calendarComponents}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
@@ -130,4 +133,5 @@ const Calendar = ({ loading, currentPath, events, togglePopover, loadMoreEvents 
   )
 }
 
-export default Calendar
+// Wrap `withTranslation` to listen to language change event
+export default withTranslation()(Calendar)
