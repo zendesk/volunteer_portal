@@ -15,7 +15,9 @@ import { MD } from '@zendeskgarden/react-typography'
 
 import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
 import { UserContext, FilterContext } from '/context'
-import { DefaultOfficeMenu, LanguageMenu, GeneralSettingsMenu } from './Menus'
+import GeneralSettingsMenu from './GeneralSettingsMenu'
+import DefaultOfficeMenu from './DefaultOfficeMenu'
+import LanguageMenu from './LanguageMenu'
 
 const UserDetails = styled.div`
   margin-left: ${({ theme }) => theme.styles.spacing.sm};
@@ -57,7 +59,6 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
 
   const handleStateChange = (changes, stateAndHelpers) => {
     if (R.hasPath(['isOpen'])(changes)) {
-      console.log(changes.selectedItem)
       setIsOpen(
         changes.selectedItem === 'default-office' ||
         changes.selectedItem === 'language-settings' ||
@@ -94,6 +95,7 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
         })
         setSelectedItem(selectedItem)
       }
+      // The following are for accessibility support for Link navigation
     } else if (selectedItem === 'admin') {
       router.push('/portal/admin')
     } else if (selectedItem === 'home') {
@@ -114,7 +116,6 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
   }
 
   return (
-    R.isNil(currentUser) || R.isEmpty(currentUser) ? null :
     <Dropdown
       selectedItem={selectedItem}
       // This is used to detect what items are selected with a check mark.
@@ -126,15 +127,18 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
       onSelect={handleSelect}
     >
       <Trigger>
-        <UserProfileContainer>
-          <Avatar>
-            <img src={currentUser.photo} alt="User Avatar" />
-          </Avatar>
-          <UserDetails>
-            <UserName>{currentUser.name}</UserName>
-            <MD>{currentUser.office && currentUser.office.name}</MD>
-          </UserDetails>
-        </UserProfileContainer>
+        {
+          R.isNil(currentUser) || R.isEmpty(currentUser) ? null :
+          <UserProfileContainer>
+            <Avatar>
+              <img src={currentUser.photo} alt="User Avatar" />
+            </Avatar>
+            <UserDetails>
+              <UserName>{currentUser.name}</UserName>
+              <MD>{currentUser.office && currentUser.office.name}</MD>
+            </UserDetails>
+          </UserProfileContainer>
+        }
       </Trigger>
       <GardenMenu hasArrow>{renderItems()}</GardenMenu>
     </Dropdown>

@@ -4,38 +4,10 @@ import { Link } from 'react-router'
 import {
   Item,
   Separator,
-  PreviousItem,
   HeaderItem,
   NextItem,
 } from '@zendeskgarden/react-dropdowns'
 import TranslationIcon from '@zendeskgarden/svg-icons/src/12/translation-exists-fill.svg'
-
-export const DefaultOfficeMenu = ({ offices, previousMenuValue, selectedItem, t }) =>
-<>
-  <PreviousItem value={previousMenuValue}>
-    {t('volunteer_portal.header.user_profile.default_office')}
-  </PreviousItem>
-  <Separator />
-  {offices.map((office, i) => (
-    <Item key={i} value={{ office, language: selectedItem.language }}>
-      {office.name}
-    </Item>
-  ))}
-</>
-
-export const LanguageMenu = ( { languages, previousMenuValue, selectedItem, t }) =>
-<>
-  <PreviousItem value={previousMenuValue}>
-    <TranslationIcon /> {t('volunteer_portal.header.user_profile.language')}
-  </PreviousItem>
-  <Separator />
-  {languages.map((language, i) => (
-    <Item key={i} value={{ office: selectedItem.office, language }}>
-      {' '}
-      {language.label}{' '}
-    </Item>
-  ))}
-</>
 
 export const GeneralSettingsMenu = ({ menuValues: { defaultOffice, languageSettings }, isAdmin, pathname, t }) =>
 <>
@@ -59,11 +31,11 @@ export const GeneralSettingsMenu = ({ menuValues: { defaultOffice, languageSetti
         </Item>
       </Link>
     ))}
-  <div>
-    <a href="/users/sign_out">
-      <Item value="sign-out">
+  <Link to="/users/sign_out">
+    <Item value="sign-out">
         {t('volunteer_portal.header.user_profile.sign_out')}
-      </Item>
-    </a>
-  </div>
+    </Item>
+  </Link>
 </>
+
+export default GeneralSettingsMenu
