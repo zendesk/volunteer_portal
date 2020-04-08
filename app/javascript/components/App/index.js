@@ -6,6 +6,7 @@ import { UserContextProvider, FilterContextProvider } from '/context'
 import Loading from 'components/LoadingIcon'
 import Header from 'components/Header'
 import WelcomeModal from 'components/WelcomeModal'
+import UserProfileMenu from 'components/UserProfileMenu'
 
 const MuiTheme = {
   fontFamily:
@@ -28,7 +29,13 @@ const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, ch
             <Loading />
           ) : (
             <div>
-              <Header offices={offices} togglePopover={e => toggleUserPopover(e.currentTarget)} popover={userPopover} />
+              <Header>
+                <UserProfileMenu
+                  offices={offices}
+                  togglePopover={e => toggleUserPopover(e.currentTarget)}
+                  popover={userPopover}
+                />
+              </Header>
               <WelcomeModal />
               {children}
             </div>

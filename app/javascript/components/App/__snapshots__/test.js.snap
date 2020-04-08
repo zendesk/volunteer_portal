@@ -457,17 +457,19 @@ exports[`loads 1`] = `
       }
     >
       <div>
-        <withRouter(Header)
-          offices={Array []}
-          popover={
-            Object {
-              "anchorEl": null,
-              "data": null,
-              "type": "user",
+        <Header>
+          <withRouter(UserProfileMenu)
+            offices={Array []}
+            popover={
+              Object {
+                "anchorEl": null,
+                "data": null,
+                "type": "user",
+              }
             }
-          }
-          togglePopover={[Function]}
-        />
+            togglePopover={[Function]}
+          />
+        </Header>
         <Notifications />
       </div>
     </MuiThemeProvider>
