@@ -34,8 +34,18 @@ const UserName = styled(MD)`
 `
 
 const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
+  const languages = [
+    { label: 'English', value: 'en' },
+    // Enable when Japanense is supported
+    // { label: '日本語', value: 'ja' }
+  ]
+  
+  const { i18n, t } = useTranslation()
   const { currentUser, setOffice } = useContext(UserContext)
   const { setOfficeValue } = useContext(FilterContext)
+  const [ isOpen, setIsOpen ] = useState(false)
+  const [ tempSelectedItem, setTempSelectedItem ] = useState()
+  const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office, language: languages[0] })
   const [ updateDefaultOffice ] = useMutation(UpdateUserOfficeMutation)
 
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
@@ -46,16 +56,6 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
       .then(_ => setOfficeValue(office.id))
       .then(_ => togglePopover('user'))
 
-  const { i18n, t } = useTranslation()
-  const languages = [
-    { label: 'English', value: 'en' },
-    // Enable when Japanense is supported
-    // { label: '日本語', value: 'ja' }
-  ]
-
-  const [isOpen, setIsOpen] = useState(false)
-  const [tempSelectedItem, setTempSelectedItem] = useState()
-  const [selectedItem, setSelectedItem] = useState({ office: currentUser.office, language: languages[0] })
 
   const handleStateChange = (changes, stateAndHelpers) => {
     if (R.hasPath(['isOpen'])(changes)) {
