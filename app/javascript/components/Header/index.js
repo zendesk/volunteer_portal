@@ -29,22 +29,18 @@ const LogoBox = styled.div`
   flex-grow: 2;
 `
 
-const LogoSection = () => (
-  <LogoBox>
-    <Link to="/portal">
-      <Logo
-        alt="Zendesk Relationshapes Logo"
-        src="//d1eipm3vz40hy0.cloudfront.net/images/part-header/zendesk-relationshapes-logo.svg"
-      />
-    </Link>
-  </LogoBox>
-)
-
 const Header = ({ children }) => (
   <div>
     <Container>
       <Wrapper>
-        <LogoSection />
+        <LogoBox>
+          <Link to="/portal">
+            <Logo
+              alt="Zendesk Relationshapes Logo"
+              src="//d1eipm3vz40hy0.cloudfront.net/images/part-header/zendesk-relationshapes-logo.svg"
+            />
+          </Link>
+        </LogoBox>
         {children}
       </Wrapper>
     </Container>
