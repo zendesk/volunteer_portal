@@ -1,0 +1,6 @@
+query OrganisationHoursReportingQuery($after: Int, $before: Int, $organisatonId: Int) {
+  organisation { {
+      name
+      hours
+  }
+}
