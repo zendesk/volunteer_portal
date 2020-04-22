@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { connect } from 'react-redux'
 import { graphql, compose } from 'react-apollo'
 import { Field, reduxForm } from 'redux-form'
@@ -19,27 +19,19 @@ import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 import TagField from 'components/TagField'
+import { UserContext } from '../../context/UserContext'
 
 import MyEventsQuery from './query.gql'
 import CreateEditIndividualEventMutation from 'mutations/CreateEditIndividualEventMutation.gql'
 import DeleteIndividualEventMutation from 'mutations/DeleteIndividualEventMutation.gql'
 import s from './main.css'
 
-const styles = {
-  dialogBody: {
-    maxHeight: 500,
-  },
-  dialogNoBorder: {
-    border: 'none',
-  },
-  muiTextField: {
-    height: 20,
-    width: 'calc(100% - 8px)',
-    border: '1px solid #ddd',
-    borderRadius: 4,
-    padding: 5,
-  },
-}
+import { Modal, Header, Body, Footer, FooterItem, Close } from '@zendeskgarden/react-modals'
+import { Field as GField, Label, Hint, Input, Message, Range } from '@zendeskgarden/react-forms'
+import { Datepicker } from '@zendeskgarden/react-datepickers'
+import { Dots } from '@zendeskgarden/react-loaders'
+
+import { Button } from '@zendeskgarden/react-buttons'
 
 const eventStatusIcon = event => {
   switch (event.status) {
@@ -54,216 +46,191 @@ const eventStatusIcon = event => {
   }
 }
 
-const DateField = ({ input: { value, onChange }, label, type, meta }) => (
-  <div>
-    <DatePicker
-      id="date"
-      hintText=""
-      className={s.muiTextField}
-      textFieldStyle={styles.muiTextField}
-      onChange={(_, date) => onChange(date)}
-      defaultDate={value ? new Date(value || meta.initial) : undefined}
-      autoOk
-    />
-  </div>
-)
+const CreateEditModalContents = ({
+  offices,
+  eventTypes,
+  tags,
+  organizations,
+  createEditIndividualEvent,
+  isNew,
+  setShowCreateEditModal,
+  modalEventData,
+}) => {
+  const currentUserOffice = useContext(UserContext).currentUser.office
 
-const validate = values => {
-  const errors = {}
-  if (!values.description) {
-    errors.description = 'is required'
-  }
-  if (!values.office) {
-    errors.office = {}
-    errors.office.id = 'is required'
-  }
-  if (!values.date) {
-    errors.date = 'is required'
-  }
-  if (!values.duration) {
-    errors.duration = 'is required'
-  }
-  if (!values.eventType) {
-    errors.eventType = {}
-    errors.eventType.id = 'is required'
-  }
-  if (!values.tags || values.tags.length < 1) {
-    errors.tags = {}
-    errors.tags = 'is required'
-  }
-  if (!values.organization) {
-    errors.organization = {}
-    errors.organization.id = 'is required'
-  }
-  return errors
-}
+  const [description, setDescription] = useState(modalEventData?.description || '')
+  const [selectedTags, setSelectedTags] = useState(modalEventData?.tags || [])
+  const [selectedOffice, setSelectedOffice] = useState(modalEventData?.office || currentUserOffice.id)
+  const [date, setDate] = useState(modalEventData?.date || new Date())
+  const [duration, setDuration] = useState(modalEventData?.duration || 0)
+  const [selectedEventType, setSelectedEventType] = useState(modalEventData?.eventType)
+  const [selectedOrg, setSelectedOrg] = useState(modalEventData?.organization)
 
-const renderFieldHelper = ({ input, type, label, className, selectOptions }) => {
-  switch (type) {
-    case 'input':
-    case 'number':
-      return <input {...input} type={type} className={className} />
-    case 'textarea':
-      return <textarea {...input} className={className} />
-    case 'select':
-      return (
-        <select {...input} className={className}>
-          {selectOptions}
-        </select>
-      )
-    default:
-      return <Callout type="error" />
-  }
-}
+  const [showFieldErrors, setShowFieldErrors] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-const renderField = props => {
-  const {
-    input,
-    label,
-    type,
-    Custom,
-    meta: { touched, error, warning },
-    className,
-    required,
-  } = props
-  const fieldInput = renderFieldHelper({ input, type, label, className, selectOptions: props.children })
+  const isValidText = value => (value.length === 0 ? false : true)
+  const isValidMultiSelect = selection => (selection.length < 1 ? false : true)
+  const isValidSelect = selection => !!selection
+  const isValidNumber = number => (number > 0 ? true : false)
+
+  const handleSubmit = () => {
+    if (
+      isValidText(description) &&
+      isValidMultiSelect(selectedTags) &&
+      isValidSelect(date) &&
+      isValidNumber(duration) &&
+      isValidSelect(selectedEventType) &&
+      isValidSelect(selectedOrg)
+    ) {
+      const data = {
+        id: modalEventData?.id,
+        description,
+        tags: selectedTags,
+        officeId: selectedOffice,
+        date,
+        duration,
+        eventTypeId: selectedEventType,
+        organizationId: selectedOrg,
+      }
+      setLoading(true)
+      createEditIndividualEvent(data).then(() => {
+        setLoading(false)
+        setShowCreateEditModal(false)
+      })
+    } else {
+      setShowFieldErrors(true)
+    }
+  }
+
   return (
-    <div>
-      <label>
-        {label} <span className={s.errorMsg}>{touched && error ? error : '*'}</span>
-      </label>
-      <div>{Custom ? <Custom {...props} /> : fieldInput}</div>
-    </div>
+    <>
+      <Header>{isNew ? 'Record Event' : 'Edit Event'}</Header>
+      <Body>
+        <GField>
+          <Label>Description</Label>
+          <Input value={description} onChange={event => setDescription(event.target.value)} />
+          {showFieldErrors && !isValidText(description) && (
+            <Message validation={'error'}>{'Must not be empty'}</Message>
+          )}
+        </GField>
+        <GField>
+          <Label>Office</Label>
+          <ReduxFormAutocomplete
+            dataSource={offices}
+            input={{ value: selectedOffice, onChange: setSelectedOffice }}
+            searchField="name"
+          />
+          {showFieldErrors && !isValidSelect(selectedOffice) && (
+            <Message validation={'error'}>{'Must have selection'}</Message>
+          )}
+        </GField>
+        <GField>
+          <Label>Event type</Label>
+          <ReduxFormAutocomplete
+            dataSource={eventTypes}
+            input={{ value: selectedEventType, onChange: setSelectedEventType }}
+            searchField="title"
+          />
+          {showFieldErrors && !isValidSelect(selectedEventType) && (
+            <Message validation={'error'}>{'Must have selection'}</Message>
+          )}
+        </GField>
+        <GField>
+          <Label>Organization</Label>
+          <ReduxFormAutocomplete
+            dataSource={organizations}
+            input={{ value: selectedOrg, onChange: setSelectedOrg }}
+            searchField="name"
+          />
+          {showFieldErrors && !isValidSelect(selectedOrg) && (
+            <Message validation={'error'}>{'Must have selection'}</Message>
+          )}
+        </GField>
+        <GField>
+          <Label>Date</Label>
+          <Datepicker value={date} onChange={setDate}>
+            <Input />
+          </Datepicker>
+          {showFieldErrors && !isValidSelect(date) && <Message validation={'error'}>{'Must have selection'}</Message>}
+        </GField>
+        <GField>
+          <Label>Duration</Label>
+          <Hint>{duration / 60} hours</Hint>
+          <Range
+            step={30}
+            value={duration}
+            onChange={event => {
+              const duration = parseInt(event.target.value)
+              if (!!duration) setDuration(duration)
+            }}
+            max={480}
+          />
+          {showFieldErrors && !isValidNumber(duration) && (
+            <Message validation={'error'}>{'Must be greater than 0'}</Message>
+          )}
+        </GField>
+        <GField>
+          <Label>Tags</Label>
+          <TagField tags={tags} input={{ value: selectedTags, onChange: setSelectedTags }} />
+          {showFieldErrors && !isValidMultiSelect(selectedTags) && (
+            <Message validation={'error'}>{'Select one tag'}</Message>
+          )}
+        </GField>
+      </Body>
+      <Footer>
+        <FooterItem>
+          <Button disabled={loading} onClick={handleSubmit}>
+            {loading ? <Dots /> : isNew ? 'Record' : 'Edit'}
+          </Button>
+        </FooterItem>
+      </Footer>
+    </>
   )
 }
 
-const CreateEditDialog = ({ offices, eventTypes, tags, organizations, onCancel, popover, onSubmit }) => {
-  const event = popover.data
-  const isNewEvent = event.isNew
+const DeleteModalContents = ({ toDelete, deleteIndividualEvent, setShowDeleteModal }) => {
+  const [loading, setLoading] = useState(false)
+
+  const handleDelete = () => {
+    setLoading(true)
+    deleteIndividualEvent(toDelete).then(() => {
+      setLoading(false)
+      setShowDeleteModal(false)
+    })
+  }
+
   return (
-    <Dialog
-      title={isNewEvent ? 'Create Event' : 'Edit Event'}
-      open
-      titleStyle={R.merge(styles.dialogNoBorder, { paddingTop: 10 })}
-      actionsContainerStyle={R.merge(styles.dialogNoBorder, { paddingBottom: 20 })}
-      modal
-      autoScrollBodyContent
-    >
-      <form className={s.form} onSubmit={onSubmit}>
-        <Field name="id" label="id" component="input" value={event ? event.id : -1} type="hidden" />
-        <Field
-          name="description"
-          label="Description"
-          component={renderField}
-          type="textarea"
-          label="Description"
-          className={s.input}
-        />
-        <div className={s.formSpace} />
-        <div className={s.inputGroup}>
-          <Field label="Tags" className={s.field} name="tags" component={renderField} tags={tags} Custom={TagField} />
-        </div>
-        <div className={s.formSpace} />
-        <div>
-          <Field
-            name="office.id"
-            label="Office"
-            component={renderField}
-            type="select"
-            label="Office"
-            className={s.input}
-          >
-            <option />
-            {offices.map(office => (
-              <option key={`office-${office.id}`} value={office.id}>
-                {office.name}
-              </option>
-            ))}
-          </Field>
-        </div>
-        <div className={s.formSpace} />
-        <div className={s.row}>
-          <div className={s.column}>
-            <Field name="date" Custom={DateField} component={renderField} label="Date" />
-          </div>
-          <div className={s.column}>
-            <Field
-              name="duration"
-              label="Duration (minutes)"
-              type="number"
-              normalize={value => (value >= 0 ? value : 0)}
-              component={renderField}
-              className={s.input}
-            />
-          </div>
-        </div>
-        <div className={s.formSpace} />
-        <div className={s.row}>
-          <div className={s.column}>
-            <Field name="eventType.id" label="Type" type="select" component={renderField} className={s.input}>
-              <option />
-              {eventTypes.map(type => (
-                <option key={`type-${type.id}`} value={type.id}>
-                  {type.title}
-                </option>
-              ))}
-            </Field>
-          </div>
-          <div className={s.column}>
-            <Field
-              label="Organization"
-              name="organization.id"
-              component={renderField}
-              dataSource={organizations}
-              searchField={'name'}
-              maxHeight="200px"
-              Custom={ReduxFormAutocomplete}
-            />
-          </div>
-        </div>
-        <div className={`${s.row} ${s.dialogBottomBar}`}>
-          <div className={s.errorMsg}>
-            Required <span className={s.errorMsg}>*</span>
-          </div>
-          <div className={`${s.row} ${s.dialogActions}`}>
-            <button className={`${s.btn} ${s.cancelBtn}`} onClick={onCancel} type="button">
-              Cancel
-            </button>
-            <button className={`${s.btn} ${s.confirmBtn}`} type="submit">
-              {isNewEvent ? 'Create' : 'Save'}
-            </button>
-          </div>
-        </div>
-      </form>
-    </Dialog>
+    <>
+      <Header isDanger>Delete Event</Header>
+      <Body>Are you sure you want to delete this event?</Body>
+      <Footer>
+        <FooterItem>
+          <Button onClick={() => setShowDeleteModal(false)} isBasic>
+            Cancel
+          </Button>
+        </FooterItem>
+        <FooterItem>
+          <Button isDanger={true} disabled={loading} onClick={handleDelete}>
+            {loading ? <Dots /> : 'Delete'}
+          </Button>
+        </FooterItem>
+      </Footer>
+    </>
   )
 }
-
-const DestroyDialog = ({ onDelete, onCancel, popover }) => (
-  <Dialog
-    title="Delete Event"
-    modal={false}
-    actions={[
-      <button className={`${s.btn} ${s.cancelBtn}`} onClick={onCancel}>
-        Cancel
-      </button>,
-      <button className={`${s.btn} ${s.deleteBtn}`} onClick={onDelete}>
-        Delete
-      </button>,
-    ]}
-    open
-    onRequestClose={() => togglePopover('destroyIndividualEvent', popover.data)}
-    actionsContainerStyle={{ paddingBottom: 20 }}
-  >
-    <p>Are you sure you want to delete this event?</p>
-    <p>{popover.data.description}</p>
-  </Dialog>
-)
 
 const IndividualEvents = props => {
   const { data, popover, togglePopover, handleSubmit, createEditIndividualEvent, deleteIndividualEvent } = props
 
   const { currentUser, offices, eventTypes, organizations, tags } = data
+
+  const [showCreateEditModal, setShowCreateEditModal] = useState(false)
+  const [isNew, setIsNew] = useState(true)
+  const [modalEventData, setModalEventData] = useState()
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [toDelete, setToDelete] = useState(false)
 
   const noIndividualEventsMessage = (
     <p className={s.noEventsMessage}>
@@ -315,7 +282,21 @@ const IndividualEvents = props => {
         <span className="s.actionColumn">
           <button
             className={`${s.btn} ${s.confirmBtn} ${s.leftAligned}`}
-            onClick={() => togglePopover('editIndividualEvent', props.value)}
+            onClick={() => {
+              const { id, description, office, date, duration, eventType, tags, organization } = props.value
+              setIsNew(false)
+              setModalEventData({
+                id,
+                description,
+                office: office.id,
+                date: new Date(date),
+                duration,
+                eventType: eventType.id,
+                tags: R.map(R.pick(['id']), tags),
+                organization: organization.id,
+              })
+              setShowCreateEditModal(true)
+            }}
           >
             Edit
           </button>
@@ -323,23 +304,27 @@ const IndividualEvents = props => {
             className={`${s.btn} ${s.confirmBtn}`}
             onClick={() => {
               const { description, office, date, duration, eventType, tags, organization } = props.value
-              togglePopover('editIndividualEvent', {
+              setIsNew(true)
+              setModalEventData({
                 description,
-                office,
-                date,
+                office: office.id,
+                date: new Date(date),
                 duration,
-                eventType,
-                tags,
-                organization,
-                isNew: true,
+                eventType: eventType.id,
+                tags: R.map(R.pick(['id']), tags),
+                organization: organization.id,
               })
+              setShowCreateEditModal(true)
             }}
           >
             Clone
           </button>
           <button
             className={`${s.btn} ${s.deleteBtn}`}
-            onClick={() => togglePopover('destroyIndividualEvent', props.value)}
+            onClick={() => {
+              setToDelete(props.value.id)
+              setShowDeleteModal(true)
+            }}
           >
             Delete
           </button>
@@ -352,8 +337,15 @@ const IndividualEvents = props => {
     <div className={s.eventsTable}>
       <div className={s.personalHeader}>
         <div className={s.actionBar}>
-          <button className={s.createAction} onClick={() => togglePopover('editIndividualEvent', { isNew: true })}>
-            Add Event
+          <button
+            className={s.createAction}
+            onClick={() => {
+              setIsNew(true)
+              setModalEventData()
+              setShowCreateEditModal(true)
+            }}
+          >
+            Record Event
           </button>
         </div>
         <h1>Individual Events</h1>
@@ -390,6 +382,43 @@ const IndividualEvents = props => {
           onCancel={() => togglePopover('destroyIndividualEvent')}
         />
       ) : null}
+      {showCreateEditModal && (
+        <Modal
+          onClose={() => {
+            setShowCreateEditModal(false)
+            setModalEventData()
+          }}
+          isLarge
+        >
+          <CreateEditModalContents
+            offices={offices}
+            eventTypes={eventTypes}
+            tags={tags}
+            organizations={organizations}
+            popover={popover}
+            createEditIndividualEvent={createEditIndividualEvent}
+            setShowCreateEditModal={setShowCreateEditModal}
+            isNew={isNew}
+            modalEventData={modalEventData}
+          />
+          <Close aria-label="Close modal" />
+        </Modal>
+      )}
+      {showDeleteModal && (
+        <Modal
+          onClose={() => {
+            setShowDeleteModal(false)
+            setToDelete()
+          }}
+        >
+          <DeleteModalContents
+            toDelete={toDelete}
+            deleteIndividualEvent={deleteIndividualEvent}
+            setShowDeleteModal={setShowDeleteModal}
+          />
+          <Close aria-label="Close modal" />
+        </Modal>
+      )}
     </div>
   )
 }
@@ -538,7 +567,7 @@ const withData = compose(
     props: ({ ownProps, mutate }) => ({
       createEditIndividualEvent: data => {
         const currentUser = ownProps.data.currentUser
-        const individualEventInput = formDataToIndividualEventInput(data)
+        const individualEventInput = data
         const newEvent = individualEventInputToOptimisticResponse(ownProps.data, individualEventInput)
 
         return mutate({
@@ -569,20 +598,8 @@ const withData = compose(
   })
 )
 
-const withReduxForm = reduxForm({
-  form: 'individualEvent',
-  enableReinitialize: true,
-  onSubmitSuccess: (result, dispatch, props) => {
-    props.togglePopover('editIndividualEvent')
-  },
-  validate,
+const withActions = connect(mapStateToProps, {
+  togglePopover,
 })
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    togglePopover,
-  }
-)
-
-export default withActions(withData(withReduxForm(MyEvents)))
+export default withActions(withData(MyEvents))

@@ -36,18 +36,14 @@ const ReduxFormAutocomplete = ({ dataSource, input: { value, onChange }, searchF
       return <Item disabled>No matches found</Item>
     }
 
-    return matchingOptions.map(({ id, name }, index) => (
-      <Item key={index} value={id}>
-        <span>{name}</span>
+    return matchingOptions.map((item, index) => (
+      <Item key={index} value={item.id}>
+        <span>{item[searchField]}</span>
       </Item>
     ))
   }
 
-  const findDataSourceName = value =>
-    R.pipe(
-      R.find(R.propEq('id', value)),
-      R.propOr('', 'name')
-    )(dataSource)
+  const findDataSourceName = value => R.pipe(R.find(R.propEq('id', value)), R.propOr('', searchField))(dataSource)
 
   return (
     <ThemeProvider>
