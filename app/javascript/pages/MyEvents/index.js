@@ -1,12 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { connect } from 'react-redux'
 import { graphql, compose } from 'react-apollo'
-import { Field, reduxForm } from 'redux-form'
 import * as R from 'ramda'
 import moment from 'moment'
 
-import DatePicker from 'material-ui/DatePicker'
-import Dialog from 'material-ui/Dialog'
 import ActionDone from 'material-ui/svg-icons/action/done'
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
 import AVNotInterested from 'material-ui/svg-icons/av/not-interested'
@@ -14,7 +11,6 @@ import ReactTable from 'react-table'
 
 import { togglePopover } from 'actions'
 
-import Callout from 'components/Callout'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
@@ -206,12 +202,12 @@ const DeleteModalContents = ({ toDelete, deleteIndividualEvent, setShowDeleteMod
       <Body>Are you sure you want to delete this event?</Body>
       <Footer>
         <FooterItem>
-          <Button onClick={() => setShowDeleteModal(false)} isBasic>
+          <Button isBasic onClick={() => setShowDeleteModal(false)}>
             Cancel
           </Button>
         </FooterItem>
         <FooterItem>
-          <Button isDanger={true} disabled={loading} onClick={handleDelete}>
+          <Button isDanger disabled={loading} onClick={handleDelete}>
             {loading ? <Dots /> : 'Delete'}
           </Button>
         </FooterItem>
