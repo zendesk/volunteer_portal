@@ -85,7 +85,7 @@ const Leaderboard = _props => {
           <ListItem key={`user-${i}`}>
             <NamedAvatar image={user.photo} name={user.name} />
             <MD>
-              <Tag round size="large">
+              <Tag isPill size="large">
                 {user.hours}
               </Tag>{' '}
               hours
