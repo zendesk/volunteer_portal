@@ -20,6 +20,8 @@ const InlineFauxInput = styled(FauxInput)`
   align-items: center;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  border: none;
+  box-shadow: none;
 `
 
 const columnDefs = [

@@ -20,6 +20,7 @@ import { FilterContext, officeFilterValueLens } from '/context'
 import s from './main.css'
 
 import 'style-loader!css-loader!react-table/react-table.css'
+import styled from 'styled-components'
 
 const eventsSort = 'STARTS_AT_DESC'
 
@@ -121,6 +122,10 @@ const tdProps = () => ({
   },
 })
 
+const MarginedLink = styled(Link)`
+  margin-left: ${({ theme }) => theme.space.xxs};
+`
+
 const Events = ({ t }) => {
   const { filters } = useContext(FilterContext)
   const queryVars = {
@@ -163,9 +168,9 @@ const Events = ({ t }) => {
       <FilterGroup>
         <OfficeFilter />
 
-        <Link to="/portal/admin/events/new">
+        <MarginedLink to="/portal/admin/events/new">
           <Button>{t('volunteer_portal.admin.tab.events_addevent')}</Button>
-        </Link>
+        </MarginedLink>
       </FilterGroup>
       <ReactTable
         NoDataComponent={() => null}

@@ -13,6 +13,7 @@ import LeftIcon from '@zendeskgarden/svg-icons/src/12/chevron-left-fill.svg'
 import RightIcon from '@zendeskgarden/svg-icons/src/12/chevron-right-fill.svg'
 
 import s from './main.css'
+import styled from 'styled-components'
 
 const translations = R.flip(R.mapObjIndexed)({
   month: 'volunteer_portal.calendar.bigcalendar.month',
@@ -22,6 +23,11 @@ const translations = R.flip(R.mapObjIndexed)({
   agenda: 'volunteer_portal.calendar.bigcalendar.agenda',
   today: 'volunteer_portal.dashboard.layoutdatetab.today',
 })
+
+const Margin = styled.div`
+  margin-left: ${({ theme }) => theme.space.xxs};
+  margin-bottom: ${({ theme }) => theme.space.xxs};
+`
 
 const Toolbar = ({ label, view, views, onNavigate, onViewChange, t }) => {
   const text = translations(t)
@@ -42,15 +48,15 @@ const Toolbar = ({ label, view, views, onNavigate, onViewChange, t }) => {
       </div>
       <div className={s.filterBar}>
         <FilterGroup>
-          <div>
+          <Margin>
             <ShowFilter />
-          </div>
-          <div>
+          </Margin>
+          <Margin>
             <EventFilter />
-          </div>
-          <div>
+          </Margin>
+          <Margin>
             <OfficeFilter />
-          </div>
+          </Margin>
         </FilterGroup>
         <div>
           {views.map(viewName => (

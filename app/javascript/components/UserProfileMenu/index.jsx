@@ -20,7 +20,7 @@ import DefaultOfficeMenu from './DefaultOfficeMenu'
 import LanguageMenu from './LanguageMenu'
 
 const UserDetails = styled.div`
-  margin-left: ${({ theme }) => theme.styles.spacing.sm};
+  margin-left: ${({ theme }) => theme.space.sm};
 `
 
 const UserProfileContainer = styled.button`

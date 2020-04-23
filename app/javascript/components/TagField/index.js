@@ -3,7 +3,7 @@ import React from 'react'
 import debounce from 'lodash.debounce'
 import * as R from 'ramda'
 
-import { Tag, Close } from '@zendeskgarden/react-tags'
+import { Tag } from '@zendeskgarden/react-tags'
 import { Dropdown, Menu, Item, Multiselect, Field as GardenField } from '@zendeskgarden/react-dropdowns'
 
 const TagField = ({ tags, input: { value, onChange } }) => {
@@ -65,7 +65,7 @@ const TagField = ({ tags, input: { value, onChange } }) => {
         <Multiselect
           renderItem={({ value, removeValue }) => (
             <Tag size="large">
-              {findTagName(value)} <Close onClick={() => removeValue()} />
+              {findTagName(value)} <Tag.Close onClick={() => removeValue()} />
             </Tag>
           )}
         />
