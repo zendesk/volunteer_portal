@@ -27,6 +27,7 @@ const UserProfileContainer = styled.button`
   display: flex;
   border: none;
   text-align: left;
+  background: none;
 `
 
 const UserName = styled(MD)`
