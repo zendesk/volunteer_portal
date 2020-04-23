@@ -28,6 +28,7 @@ import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Dots } from '@zendeskgarden/react-loaders'
 
 import { Button } from '@zendeskgarden/react-buttons'
+import styled from 'styled-components'
 
 const eventStatusIcon = event => {
   switch (event.status) {
@@ -41,6 +42,14 @@ const eventStatusIcon = event => {
       return <ActionInfoOutline color="#EFC93D" />
   }
 }
+
+const PaddedField = styled(GField)`
+  padding: ${({ theme }) => theme.space.sm} 0px;
+`
+
+const TopMargin = styled.div`
+  margin-top: ${({ theme }) => theme.space.xs};
+`
 
 const CreateEditModalContents = ({
   offices,
@@ -103,15 +112,16 @@ const CreateEditModalContents = ({
     <>
       <Header>{isNew ? 'Record Event' : 'Edit Event'}</Header>
       <Body>
-        <GField>
+        <PaddedField>
           <Label>Description</Label>
           <Input value={description} onChange={event => setDescription(event.target.value)} />
           {showFieldErrors && !isValidText(description) && (
             <Message validation={'error'}>{'Must not be empty'}</Message>
           )}
-        </GField>
-        <GField>
+        </PaddedField>
+        <PaddedField>
           <Label>Office</Label>
+          <TopMargin />
           <ReduxFormAutocomplete
             dataSource={offices}
             input={{ value: selectedOffice, onChange: setSelectedOffice }}
@@ -120,9 +130,10 @@ const CreateEditModalContents = ({
           {showFieldErrors && !isValidSelect(selectedOffice) && (
             <Message validation={'error'}>{'Must have selection'}</Message>
           )}
-        </GField>
-        <GField>
+        </PaddedField>
+        <PaddedField>
           <Label>Event type</Label>
+          <TopMargin />
           <ReduxFormAutocomplete
             dataSource={eventTypes}
             input={{ value: selectedEventType, onChange: setSelectedEventType }}
@@ -131,9 +142,11 @@ const CreateEditModalContents = ({
           {showFieldErrors && !isValidSelect(selectedEventType) && (
             <Message validation={'error'}>{'Must have selection'}</Message>
           )}
-        </GField>
-        <GField>
+        </PaddedField>
+        <PaddedField>
           <Label>Organization</Label>
+          <TopMargin />
+          <Hint>Contact us to add your organization to this list.</Hint>
           <ReduxFormAutocomplete
             dataSource={organizations}
             input={{ value: selectedOrg, onChange: setSelectedOrg }}
@@ -142,37 +155,40 @@ const CreateEditModalContents = ({
           {showFieldErrors && !isValidSelect(selectedOrg) && (
             <Message validation={'error'}>{'Must have selection'}</Message>
           )}
-        </GField>
-        <GField>
+        </PaddedField>
+        <PaddedField>
           <Label>Date</Label>
           <Datepicker value={date} onChange={setDate}>
             <Input />
           </Datepicker>
           {showFieldErrors && !isValidSelect(date) && <Message validation={'error'}>{'Must have selection'}</Message>}
-        </GField>
-        <GField>
+        </PaddedField>
+        <PaddedField>
           <Label>Duration</Label>
+          <TopMargin />
           <Hint>{duration / 60} hours</Hint>
           <Range
             step={30}
             value={duration}
             onChange={event => {
               const duration = parseInt(event.target.value)
-              if (!!duration) setDuration(duration)
+              setDuration(duration)
             }}
+            min={0}
             max={480}
           />
           {showFieldErrors && !isValidNumber(duration) && (
             <Message validation={'error'}>{'Must be greater than 0'}</Message>
           )}
-        </GField>
-        <GField>
+        </PaddedField>
+        <PaddedField>
           <Label>Tags</Label>
+          <TopMargin />
           <TagField tags={tags} input={{ value: selectedTags, onChange: setSelectedTags }} />
           {showFieldErrors && !isValidMultiSelect(selectedTags) && (
-            <Message validation={'error'}>{'Select one tag'}</Message>
+            <Message validation={'error'}>{'Must have at least one tag'}</Message>
           )}
-        </GField>
+        </PaddedField>
       </Body>
       <Footer>
         <FooterItem>
@@ -509,17 +525,6 @@ const mapStateToProps = (state, _ownProps) => {
 
   return R.isNil(popover) ? props : R.merge({ initialValues: popover.data }, props)
 }
-
-const formDataToIndividualEventInput = data => ({
-  id: data.id,
-  description: data.description,
-  officeId: data.office.id,
-  date: data.date.toString(),
-  duration: parseInt(data.duration, 10),
-  eventTypeId: data.eventType.id,
-  organizationId: data.organization.id,
-  tags: R.map(R.pick(['id']), data.tags),
-})
 
 const individualEventInputToOptimisticResponse = (data, input) => {
   return {

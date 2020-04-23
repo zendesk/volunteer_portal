@@ -845,79 +845,17 @@
     core-js "^2.5.3"
     regenerator-runtime "^0.11.1"
 
-<<<<<<< HEAD
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5":
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
-  integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.4.2":
-  version "7.6.3"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
-  integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.6.3":
-  version "7.8.3"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.3.tgz#0811944f73a6c926bb2ad35e918dcc1bfab279f1"
-  integrity sha512-fVHx1rzEmwB130VTkLnxR+HmxcTjGzH12LYQcFFoBwakMd3aOMD4OsRN7tGG/UOYE2ektgFrS8uACAoRk1CY0w==
-=======
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-  version "7.9.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
-  integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
->>>>>>> update to use react modals
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-<<<<<<< HEAD
-"@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.1":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.1", "@babel/runtime@^7.9.2":
   version "7.9.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
   integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/template@^7.1.0", "@babel/template@^7.4.4", "@babel/template@^7.6.0":
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.6.0.tgz#7f0159c7f5012230dad64cca42ec9bdb5c9536e6"
-  integrity sha512-5AEH2EXD8euCk446b7edmgFdub/qfH1SN6Nii3+fyXP807QRx9Q73A2N5hNwRRslC2H9sNzaFhsPubkS4L8oNQ==
-  dependencies:
-    "@babel/code-frame" "^7.0.0"
-    "@babel/parser" "^7.6.0"
-    "@babel/types" "^7.6.0"
-
-"@babel/template@^7.4.0":
-  version "7.4.4"
-  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.4.4.tgz#f4b88d1225689a08f5bc3a17483545be9e4ed237"
-  integrity sha512-CiGzLN9KgAvgZsnivND7rkA+AeJ9JB0ciPOD4U59GKbQP2iQl+olF1l76kJOupqidozfZ32ghwBEJDhnk9MEcw==
-  dependencies:
-    "@babel/code-frame" "^7.0.0"
-    "@babel/parser" "^7.4.4"
-    "@babel/types" "^7.4.4"
-
-"@babel/template@^7.7.4":
-  version "7.7.4"
-  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.7.4.tgz#428a7d9eecffe27deac0a98e23bf8e3675d2a77b"
-  integrity sha512-qUzihgVPguAzXCK7WXw8pqs6cEwi54s3E+HrejlkuWO6ivMKx9hZl3Y2fSXp9i5HgyWmj7RKP+ulaYnKM4yYxw==
-  dependencies:
-    "@babel/code-frame" "^7.0.0"
-    "@babel/parser" "^7.7.4"
-    "@babel/types" "^7.7.4"
-
-"@babel/template@^7.8.3":
-  version "7.8.3"
-  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.8.3.tgz#e02ad04fe262a657809327f578056ca15fd4d1b8"
-  integrity sha512-04m87AcQgAFdvuoyiQ2kgELr2tV8B4fP/xJAVUL3Yb3bkNdMedD3d0rlSQr3PegP0cms3eHjl1F7PWlvWbU8FQ==
-=======
 "@babel/template@^7.4.0", "@babel/template@^7.8.3", "@babel/template@^7.8.6":
   version "7.8.6"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.8.6.tgz#86b22af15f828dfb086474f964dcc3e39c43ce2b"
   integrity sha512-zbMsPMy/v0PWFZEhQJ66bqjhH+z0JgMoBWuikXybgG3Gkd/3t5oQ1Rw2WQhnSrsOmsKXnZOx15tkC4qON/+JPg==
->>>>>>> update to use react modals
   dependencies:
     "@babel/code-frame" "^7.8.3"
     "@babel/parser" "^7.8.6"
@@ -1435,11 +1373,7 @@
     "@babel/runtime" "^7.8.4"
     react-uid "^2.2.0"
 
-<<<<<<< HEAD
 "@zendeskgarden/container-focusjail@^1.4.2":
-=======
-"@zendeskgarden/container-focusjail@^1.4.0":
->>>>>>> update to use react modals
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-focusjail/-/container-focusjail-1.4.2.tgz#859eb7cca53524b00ce9abd296bbb53095d7da45"
   integrity sha512-0j42qRG5Pg9SP99A0O94GiraBODPZ7qhSHP09Rkz/GQNqjsVKWS9MBHrqN5cSaAo4gtUBbgq+303aYn1H0IynA==
@@ -1449,7 +1383,6 @@
     dom-helpers "^5.1.0"
     tabbable "^4.0.0"
 
-<<<<<<< HEAD
 "@zendeskgarden/container-focusvisible@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.3.tgz#9e2c1d882ecf9adc91f6e84eaca997fc9019f67a"
@@ -1473,24 +1406,6 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-focusjail" "^1.4.2"
     "@zendeskgarden/container-utilities" "^0.5.3"
-=======
-"@zendeskgarden/container-keyboardfocus@^0.4.1":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-keyboardfocus/-/container-keyboardfocus-0.4.4.tgz#f2578ba51104d013b2ed6d8450b9674784358ba9"
-  integrity sha512-01elxgD6rteEj4cf1KqGDIjmeWF18qNKI8Hs9bgqs+2N83MZvQqmA9ZYLd+kiy1nXOaLAUFuD+21o/lGKV0ptA==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@zendeskgarden/container-utilities" "^0.5.3"
-
-"@zendeskgarden/container-modal@^0.7.1":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-modal/-/container-modal-0.7.3.tgz#f861f0b8bf7164f50e104ee2b10da0d3d850fa43"
-  integrity sha512-tozmOXvWIla3OHU+gzTtaCo7bbv3evhXgbRdxXXP/IJY869WhuRsP1RJhMGubo8ybrtglPcHNff4F2xr6Tqfag==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@zendeskgarden/container-focusjail" "^1.4.0"
-    "@zendeskgarden/container-utilities" "^0.5.2"
->>>>>>> update to use react modals
     react-uid "^2.2.0"
 
 "@zendeskgarden/container-schedule@^1.3.1":
@@ -1508,52 +1423,32 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^0.5.3"
 
-<<<<<<< HEAD
 "@zendeskgarden/container-utilities@^0.5.1", "@zendeskgarden/container-utilities@^0.5.3":
-=======
-"@zendeskgarden/container-utilities@^0.5.1", "@zendeskgarden/container-utilities@^0.5.2", "@zendeskgarden/container-utilities@^0.5.3":
->>>>>>> update to use react modals
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.5.3.tgz#e6854ee5257a2b8d41ee421214337ac28b048f76"
   integrity sha512-Rz8t9amCALj+NgxbEIYiQsF1MNTYJEsfntCLik6cdsyzDnguPplury7G4V3w2+SYAudiqio4venDKFzom6LUQQ==
   dependencies:
     "@babel/runtime" "^7.8.4"
 
-<<<<<<< HEAD
 "@zendeskgarden/css-utilities@^4.5.5":
-=======
-"@zendeskgarden/css-utilities@^4.5.3":
->>>>>>> update to use react modals
   version "4.5.5"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-utilities/-/css-utilities-4.5.5.tgz#f0c4099af660894494126f5edfed40d732cfa53b"
   integrity sha512-68sFP8aJBcEY/TfT2y5qmsq28f8imRxj8k2yK3+SSFDJvhIyp9IO1ZrQF/2+O5ZAIVKq2cdV7WZkLt5n4vllvA==
   dependencies:
     "@zendeskgarden/css-variables" "^6.4.5"
 
-<<<<<<< HEAD
 "@zendeskgarden/css-variables@^6.4.5":
-=======
-"@zendeskgarden/css-variables@^6.1.0", "@zendeskgarden/css-variables@^6.3.8", "@zendeskgarden/css-variables@^6.4.5":
->>>>>>> update to use react modals
   version "6.4.5"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
   integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
 
-<<<<<<< HEAD
 "@zendeskgarden/react-avatars@^8.5.0":
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.5.0.tgz#1a84c7e143e9572f624f87dba1bbe69bafd245ed"
   integrity sha512-lcAYluojWPZqyZaJZkzcZLmH1xkcWO9OuFraJJUM+tNmRnl5nJ0CS5UOD9+jGEl2n3KAZoXap75/IXSp1RaTww==
-=======
-"@zendeskgarden/react-avatars@^7.1.4":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-7.1.10.tgz#d5bc963352bb4d57bc7c5abb5e5e251df74f1633"
-  integrity sha512-lOM0z+gpQx4WIAYCf/Eg72lICyQETCvVDayaGGJA7y7UteU7kC0GCpL1EhIQOlIsu8hiuyA8XcNVNsgXw/dD5A==
->>>>>>> update to use react modals
   dependencies:
     polished "^3.5.1"
 
-<<<<<<< HEAD
 "@zendeskgarden/react-buttons@^8.5.0":
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-8.5.0.tgz#1a411b4a80cf0509db9ce9356f48370cdfb5429b"
@@ -1569,29 +1464,9 @@
   integrity sha512-cjRrjQJNY0bvL8rhca0weS34iNNympXaHwtdAmE860hxLgjVsebYZjnLSR32uTJIx2VweiTag+G5xs3VBHFsEw==
   dependencies:
     "@zendeskgarden/container-utilities" "^0.5.1"
-=======
-"@zendeskgarden/react-buttons@^7.1.4":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-7.1.10.tgz#d15934f0c712b3701ab78273a5dd2bbeebc31409"
-  integrity sha512-g9FuXU8dNaOOT1Ep/gL1QsB4ZwP8wIDxJRpsBOG6IHINTG+cEer2Nbq1/WeEoE5qRfCETcENdRyXinee9UdiGQ==
-  dependencies:
-    "@zendeskgarden/container-buttongroup" "^0.3.1"
-    "@zendeskgarden/container-keyboardfocus" "^0.4.1"
-    "@zendeskgarden/react-utilities" "^7.1.4"
-    classnames "^2.2.5"
-
-"@zendeskgarden/react-datepickers@^7.1.5":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-datepickers/-/react-datepickers-7.1.10.tgz#805d3a94fdb3cf302143ebb16274da1ea70ea6e7"
-  integrity sha512-HQESaAwUU2T8J/44xL9eAVaZ3m1k6ADltoX0YRPMzQKNLspiX1SC3AoDw/RjVVOuMzFIQL8jZBH0Dk8ZSBlRcw==
-  dependencies:
-    "@zendeskgarden/container-utilities" "^0.5.1"
-    classnames "^2.2.5"
->>>>>>> update to use react modals
     date-fns "^2.0.0-beta.2"
     react-popper "^1.3.4"
 
-<<<<<<< HEAD
 "@zendeskgarden/react-dropdowns@^8.5.0":
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-dropdowns/-/react-dropdowns-8.5.0.tgz#9f71ea9c8c31208b6ac26434d645e0ceb27495e7"
@@ -1617,38 +1492,9 @@
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-grid/-/react-grid-8.5.0.tgz#a8ebb13dc468bfe231e8baf98c490642867fc560"
   integrity sha512-FKqDkLrEzQyh64MaOdzYzEiMBcUTO9yme0U91CP09OgLTfD+zKYnEIMGehmtAppdUf5a/oDMEDfVEuLdtAQ5YQ==
-=======
-"@zendeskgarden/react-dropdowns@^7.1.4":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-dropdowns/-/react-dropdowns-7.1.10.tgz#c0769c0b5c598628cf9017eb2418686c5c677742"
-  integrity sha512-O8mGi7WoOMqI3rDZYS28yjO/OfbhVbHdarTZV2VK4EV8u3VTywXowRqjeUVdLobuLkQmqDDECFUvZUC7DM6IaQ==
-  dependencies:
-    "@zendeskgarden/container-selection" "^1.3.1"
-    "@zendeskgarden/container-utilities" "^0.5.1"
-    classnames "^2.2.5"
-    downshift "^4.0.0"
-    react-popper "^1.3.4"
-
-"@zendeskgarden/react-forms@^7.1.5":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-forms/-/react-forms-7.1.10.tgz#a930f059a291b9fbc94764fdb86d11884e5c0ef7"
-  integrity sha512-VZCCjd9UzzAsTl9llcboUj5uJitERCL2pLj+7eR/vegKgOjvAcrrfZ/yu67Frlx9O+3hp6t1/inOwt23falKEw==
-  dependencies:
-    "@zendeskgarden/container-field" "^1.3.1"
-    "@zendeskgarden/container-keyboardfocus" "^0.4.1"
-    "@zendeskgarden/container-utilities" "^0.5.1"
-    classnames "^2.2.5"
-    lodash.debounce "^4.0.8"
-
-"@zendeskgarden/react-grid@^7.1.4":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-grid/-/react-grid-7.1.10.tgz#c62900519f32a730cbac61349c8ed9fd0ec32786"
-  integrity sha512-kUTLhSvBiL/JS5Cn81ohoPftqeVE3/Gml0Id6mM8RF22gNGknXQsR5JZ4lpKOsMAHW9X71y3RWadfJ3+VCQb2A==
->>>>>>> update to use react modals
   dependencies:
     polished "^3.5.1"
 
-<<<<<<< HEAD
 "@zendeskgarden/react-loaders@^8.5.0":
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-loaders/-/react-loaders-8.5.0.tgz#a41557496f816e0c96aedc41655577dc353388a8"
@@ -1676,55 +1522,14 @@
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-8.5.0.tgz#ce687a231d5eded747f337adb0f027d7d50d97ba"
   integrity sha512-LXo8WsMK0K0dmOUfeHCHHMxAMTf2oxuswxGOj//KzXt6uLHxYrBmHkvIUan7BEy+GaJGeH9vBTgLZEsbzEQU+Q==
-=======
-"@zendeskgarden/react-loaders@^7.1.4":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-loaders/-/react-loaders-7.1.10.tgz#8bb51661c016f6ec78f653e61f1d4aba764a39d5"
-  integrity sha512-yBwa4i80bUtvB5SyURh6X7yV/b7sCGwMu7l7SXxsnEvM2XWZxY1Cw4MsV6lll8TEU4x8StJKVvBWsqSY2s5txg==
-  dependencies:
-    "@zendeskgarden/container-schedule" "^1.3.1"
-    "@zendeskgarden/css-variables" "^6.1.0"
-    classnames "^2.2.5"
-    polished "^3.4.1"
-
-"@zendeskgarden/react-modals@^7.1.4":
-  version "7.1.11"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-modals/-/react-modals-7.1.11.tgz#4cebc2b1dcc900f3a9fe024c4fecdd885d917ac2"
-  integrity sha512-y7mpApl42GpALB4mefN0EqL5idAI0huWHG8Nx0KcRueOVjDzd5TeLiD3Coy3PBj1p0OK8HNoFqJsTAq/6sEFQg==
-  dependencies:
-    "@zendeskgarden/container-modal" "^0.7.1"
-    "@zendeskgarden/container-utilities" "^0.5.1"
-    "@zendeskgarden/react-utilities" "^7.1.4"
-    classnames "^2.2.5"
-    dom-helpers "^5.1.0"
-
-"@zendeskgarden/react-notifications@^7.1.5":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-7.1.10.tgz#9c8bc2b64c4b000a9700cda6596e6c86cf2d2767"
-  integrity sha512-rgix49XEANTUNN1js+1MRu4j6avIBfam+lHZIfV8/ykHqb/OmOnHbTH2ZD2zQKx124zMnkUJIk7ZRSHR9q4+vA==
-  dependencies:
-    classnames "^2.2.5"
-
-"@zendeskgarden/react-tags@^7.1.4":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-7.1.10.tgz#f09ca266598cda6b69d823705a55b94cced663fa"
-  integrity sha512-y0aiqGik2rUtyzM7/7rNe9dB6Mb0YH5SLJKUrhM+z37KZNHrtLNyTtI08Imy9bTBf1BFEewJ2eSgA6Ak4DTpXA==
->>>>>>> update to use react modals
   dependencies:
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
 
-<<<<<<< HEAD
 "@zendeskgarden/react-theming@^8.5.0":
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-8.5.0.tgz#956e93f386831a05d63ee4dae132571de538d12b"
   integrity sha512-lnSBUdd5VbGsRZ53rc27QumcMzaQrxntW9pbkyYuxeH+vLkNiEBDLXRDwLYyxDCQoL0gcE4GgV//EMJ2MmS4oA==
-=======
-"@zendeskgarden/react-typography@^7.1.4":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-7.1.10.tgz#b7dad1ea1729e756e2eaa25196e9bf4a5010d6f4"
-  integrity sha512-I585HQMxXoV1Zscx25MQwAuqpmBYOBQlb6FgdTW0wHFl18GI49InzksxUQV2YGZ2KOnQI9FT/+2/V9+oFRsrPg==
->>>>>>> update to use react modals
   dependencies:
     "@zendeskgarden/container-focusvisible" "^0.4.3"
     "@zendeskgarden/container-utilities" "^0.5.1"
@@ -2890,11 +2695,7 @@ compression@^1.7.4:
     safe-buffer "5.1.2"
     vary "~1.1.2"
 
-<<<<<<< HEAD
 compute-scroll-into-view@^1.0.13:
-=======
-compute-scroll-into-view@^1.0.9:
->>>>>>> update to use react modals
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.13.tgz#be1b1663b0e3f56cd5f7713082549f562a3477e2"
   integrity sha512-o+w9w7A98aAFi/GjK8cxSV+CdASuPa2rR5UWs3+yHkJzWqaKoBEufFNWYaXInCSmUfDCVhesG+v9MTWqOjsxFg==
@@ -3562,17 +3363,10 @@ domutils@^1.5.1, domutils@^1.7.0:
     dom-serializer "0"
     domelementtype "1"
 
-<<<<<<< HEAD
 downshift@^5.0.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/downshift/-/downshift-5.2.0.tgz#00b78531f5ba8518fd6adf5902ec9a2fe829ba95"
   integrity sha512-gz0HTCkodUBkRs/HH1WsfNWDQcW8oYIQAvHyJKMfBHi+JHO0E6yO9IqzkV8Qm9CeNu+E2tL2KvoGyCPxNN3v7g==
-=======
-downshift@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-4.1.0.tgz#a16c67ea965fd7c310c5f7872276e109a4de1704"
-  integrity sha512-GODZOZC65a8n8YD/S/87hR2t5PJfqZ7+lwEBJsNi/AJnhImfle+CFD/ZPde4l+nB8QNHfn0GbE1W9djEFOj1yQ==
->>>>>>> update to use react modals
   dependencies:
     "@babel/runtime" "^7.9.1"
     compute-scroll-into-view "^1.0.13"
@@ -3603,9 +3397,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.413:
-  version "1.3.414"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.414.tgz#9d0a92defefda7cc1cf8895058b892795ddd6b41"
-  integrity sha512-UfxhIvED++qLwWrAq9uYVcqF8FdeV9sU2S7qhiHYFODxzXRrd1GZRl/PjITHsTEejgibcWDraD8TQqoHb1aCBQ==
+  version "1.3.415"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.415.tgz#e50241c1e2553e46cfe956c9d95f9ab3fc9a9134"
+  integrity sha512-GbtYqKffx3sU8G0HxwXuJFfs58Q7+iwLa5rBwaULwET6jWW8IAQSrVnu7vEfiUIcMVfbYyFg7cw3zdm+EbBJmw==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -6183,9 +5977,9 @@ make-dir@^2.0.0, make-dir@^2.1.0:
     semver "^5.6.0"
 
 make-dir@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.0.2.tgz#04a1acbf22221e1d6ef43559f43e05a90dbb4392"
-  integrity sha512-rYKABKutXa6vXTXhoV18cBE7PaewPXHe/Bdq4v+ZLMhxbWApkFFplT0LcbMW+6BbjnQXzZ/sAvSE/JdguApG5w==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
+  integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
   dependencies:
     semver "^6.0.0"
 
@@ -6345,10 +6139,15 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-mime-db@1.43.0, "mime-db@>= 1.43.0 < 2":
+mime-db@1.43.0:
   version "1.43.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.43.0.tgz#0a12e0502650e473d735535050e7c8f4eb4fae58"
   integrity sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==
+
+"mime-db@>= 1.43.0 < 2":
+  version "1.44.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.44.0.tgz#fa11c5eb0aca1334b4233cb4d52f10c5a6272f92"
+  integrity sha512-/NOTfLrsPBVeH7YtFPgsVWveuL+4SjjYxaQ1xtM1KMFj7HdxlBlxeyNLzhyJVx7r4rZGJAZ/6lkKCitSc/Nmpg==
 
 mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24:
   version "2.1.26"
@@ -7297,11 +7096,7 @@ pn@^1.1.0:
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
 
-<<<<<<< HEAD
 polished@^3.5.1:
-=======
-polished@^3.4.1:
->>>>>>> update to use react modals
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/polished/-/polished-3.5.2.tgz#ca132b8cd68f7ffa95ae9d423f03e7a14fda1062"
   integrity sha512-vWoRDg3gY5RQBtUfcj9MRN10VCIf4EkdUikGxyXItg2Hnwk+eIVtdBiLajN0ldFeT3Vq4r/QNbjrQdhqBKrTug==
@@ -7808,27 +7603,10 @@ react-i18next@^11.3.1:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
 
-<<<<<<< HEAD
-react-is@^16.10.2, react-is@^16.6.0, react-is@^16.8.1:
-  version "16.12.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
-  integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
-
-react-is@^16.13.1:
+react-is@^16.12.0, react-is@^16.13.0, react-is@^16.13.1, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-is@^16.3.2, react-is@^16.7.0, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
-  version "16.9.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
-  integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
-=======
-react-is@^16.12.0, react-is@^16.13.0, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
-  version "16.13.1"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
-  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
->>>>>>> update to use react modals
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -8097,22 +7875,10 @@ regenerator-runtime@^0.13.4:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
   integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
 
-<<<<<<< HEAD
-regenerator-runtime@^0.13.4:
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
-  integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
-
-regenerator-transform@^0.14.0:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/regenerator-transform/-/regenerator-transform-0.14.1.tgz#3b2fce4e1ab7732c08f665dfdb314749c7ddd2fb"
-  integrity sha512-flVuee02C3FKRISbxhXl9mGzdbWUVHubl1SMaknjxkFB1/iqpJhArQUvRxOOPEc/9tAiX0BaQ28FJH10E4isSQ==
-=======
 regenerator-transform@^0.14.2:
   version "0.14.4"
   resolved "https://registry.yarnpkg.com/regenerator-transform/-/regenerator-transform-0.14.4.tgz#5266857896518d1616a78a0479337a30ea974cc7"
   integrity sha512-EaJaKPBI9GvKpvUz2mz4fhx7WPgvwRLY9v3hlNHWmAuJHI13T4nwKnNvm5RWJzEdnI5g5UwtOww+S8IdoUC2bw==
->>>>>>> update to use react modals
   dependencies:
     "@babel/runtime" "^7.8.4"
     private "^0.1.8"
@@ -8287,9 +8053,9 @@ resolve@1.1.7:
   integrity sha1-IDEU2CrSxe2ejgQRs5ModeiJ6Xs=
 
 resolve@^1.10.0, resolve@^1.12.0, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.8.1:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.16.1.tgz#49fac5d8bacf1fd53f200fa51247ae736175832c"
-  integrity sha512-rmAglCSqWWMrrBv/XM6sW0NuRFiKViw/W4d9EbC4pt+49H8JwHy+mcGmALTEg504AUDcLTvb1T2q3E9AnmY+ig==
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.17.0.tgz#b25941b54968231cc2d1bb76a79cb7f2c0bf8444"
+  integrity sha512-ic+7JYiV8Vi2yzQGFWOkiZD5Z9z7O2Zhm9XMaTxdJExKasieFCr+yXZ/WmXsckHiKl12ar0y6XiXDx3m4RHn1w==
   dependencies:
     path-parse "^1.0.6"
 
