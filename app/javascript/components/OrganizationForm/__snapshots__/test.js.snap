@@ -96,6 +96,7 @@ exports[`loads 1`] = `
               onKeyDown={[Function]}
               onKeyPress={[Function]}
               placeholder="Search places"
+              style={Object {}}
               type="text"
               value=""
             />
@@ -105,6 +106,7 @@ exports[`loads 1`] = `
           >
             <ul
               className="geosuggest__suggests autocompleteList geosuggest__suggests--hidden"
+              style={Object {}}
             />
           </div>
         </div>
