@@ -195,25 +195,6 @@ const IndividualEvents = props => {
           minRows={0}
         />
       )}
-
-      {popover && popover.type === 'editIndividualEvent' ? (
-        <CreateEditDialog
-          offices={offices}
-          eventTypes={eventTypes}
-          tags={tags}
-          organizations={organizations}
-          popover={popover}
-          onSubmit={handleSubmit(createEditIndividualEvent)}
-          onCancel={() => togglePopover('editIndividualEvent')}
-        />
-      ) : null}
-      {popover && popover.type === 'destroyIndividualEvent' ? (
-        <DestroyDialog
-          popover={popover}
-          onDelete={() => deleteIndividualEvent(popover.data.id) && togglePopover('destroyIndividualEvent')}
-          onCancel={() => togglePopover('destroyIndividualEvent')}
-        />
-      ) : null}
       {showCreateEditModal && (
         <Modal
           onClose={() => {
