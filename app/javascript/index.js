@@ -8,12 +8,10 @@ import { ApolloProvider } from 'react-apollo'
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import { ThemeProvider } from '@zendeskgarden/react-theming'
+import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming'
 import Root from 'components/Root'
 import configureStore from './store/configureStore'
-import { lightTheme } from '/themes'
 import './i18n'
-import './styles'
 
 const gtmId = process.env.GOOGLE_TAG_MANAGER_ID
 if (gtmId) TagManager.initialize({ gtmId })
@@ -31,7 +29,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 ReactDOM.render(
   <ApolloProvider store={store} client={client}>
     <ApolloHooksProvider client={client}>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={{ ...DEFAULT_THEME }}>
         <Root store={store} history={history} />
       </ThemeProvider>
     </ApolloHooksProvider>

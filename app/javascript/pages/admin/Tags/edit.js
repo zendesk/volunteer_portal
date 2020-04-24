@@ -10,7 +10,7 @@ import TagForm from './form'
 import TagQuery from './queries/show.gql'
 import UpdateTagMutation from './mutations/update.gql'
 
-const spacingSm = R.pathOr('50px', ['theme', 'styles', 'spacing', 'sm'])
+const spacingSm = R.pathOr('50px', ['theme', 'styles', 'space', 'sm'])
 
 const StyledAlert = styled(Alert)`
   margin-bottom: ${spacingSm};

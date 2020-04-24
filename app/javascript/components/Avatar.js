@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 import UserIcon from '@zendeskgarden/svg-icons/src/16/user-solo-stroke.svg'
-import { Avatar as GardenAvatar, Text } from '@zendeskgarden/react-avatars'
+import { Avatar as GardenAvatar } from '@zendeskgarden/react-avatars'
 import { Skeleton } from '@zendeskgarden/react-loaders'
 
 const { zdColorGrey600, zdColorSecondaryAzure600 } = require('@zendeskgarden/css-variables')
@@ -39,7 +39,7 @@ const Avatar = ({ loading, image, text }) => {
   if (text)
     return (
       <StyledTextAvatar>
-        <Text>{text}</Text>
+        <GardenAvatar.Text>{text}</GardenAvatar.Text>
       </StyledTextAvatar>
     )
 
