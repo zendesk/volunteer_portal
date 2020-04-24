@@ -155,7 +155,7 @@ const IndividualEvents = props => {
             isBasic
             isDanger
             onClick={() => {
-              setToDelete(props.value.id)
+              setToDelete(props.value)
               setShowDeleteModal(true)
             }}
           >

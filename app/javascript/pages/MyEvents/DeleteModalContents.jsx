@@ -8,7 +8,7 @@ const DeleteModalContents = ({ toDelete, deleteIndividualEvent, setShowDeleteMod
 
   const handleDelete = () => {
     setLoading(true)
-    deleteIndividualEvent(toDelete).then(() => {
+    deleteIndividualEvent(toDelete.id).then(() => {
       setLoading(false)
       setShowDeleteModal(false)
     })
@@ -17,7 +17,10 @@ const DeleteModalContents = ({ toDelete, deleteIndividualEvent, setShowDeleteMod
   return (
     <>
       <Header isDanger>Delete Event</Header>
-      <Body>Are you sure you want to delete this event?</Body>
+      <Body>
+        <p>Are you sure you want to delete this event?</p>
+        <p><b>{toDelete.description}</b></p>
+      </Body>
       <Footer>
         <FooterItem>
           <Button isBasic onClick={() => setShowDeleteModal(false)}>
