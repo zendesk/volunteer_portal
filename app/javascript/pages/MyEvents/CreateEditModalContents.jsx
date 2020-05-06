@@ -70,6 +70,11 @@ const CreateEditModalContents = ({
         eventTypeId: selectedEventType,
         organizationId: selectedOrg,
       }
+      if (!isNew && !modalEventData?.id) {
+        // This shouldn't happen, but we'll prevent creating an event.
+        setShowCreateEditModal(false)
+        return
+      }
       setLoading(true)
       createEditIndividualEvent(data).then(() => {
         setLoading(false)

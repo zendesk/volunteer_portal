@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import * as R from 'ramda'
 import moment from 'moment'
 
-import ActionDone from 'material-ui/svg-icons/action/done'
-import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
-import AVNotInterested from 'material-ui/svg-icons/av/not-interested'
+import CheckCircleIcon from '@zendeskgarden/svg-icons/src/16/check-circle-stroke.svg'
+import InfoIcon from '@zendeskgarden/svg-icons/src/16/info-stroke.svg'
+import XCircleIcon from '@zendeskgarden/svg-icons/src/16/x-circle-stroke.svg'
 import ReactTable from 'react-table'
 
 import { Modal, Close } from '@zendeskgarden/react-modals'
@@ -16,23 +16,35 @@ import { NoEventsMessage, EventsTable } from './StyledComponents'
 
 import styled from 'styled-components'
 
+const ApprovedIcon = styled(CheckCircleIcon)`
+  color: ${({theme}) => theme.palette.lime["400"]};
+`
+
+const PendingIcon = styled(InfoIcon)`
+  color: ${({theme}) => theme.palette.lemon["400"]};
+`
+
+const RejectedIcon = styled(XCircleIcon)`
+  color: ${({theme}) => theme.palette.red["400"]};
+`
+
 const eventStatusIcon = event => {
   switch (event.status) {
     case 'REJECTED':
-      return <AVNotInterested color="#A93A38" />
+      return <RejectedIcon/>
     case 'PENDING':
-      return <ActionInfoOutline color="#EFC93D" />
+      return <PendingIcon/>
     case 'APPROVED':
-      return <ActionDone color="16BA52" />
+      return <ApprovedIcon/>
     default:
-      return <ActionInfoOutline color="#EFC93D" />
+      return <PendingIcon/>
   }
 }
 
 const TableButton = styled(Button)`
-  padding: 0 ${({theme}) => theme.space.sm};
-  line-height: 26px;
-  height: 26px;
+  padding: 0 ${({theme}) => theme.space.xs};
+  line-height: 0px;
+  height: 17px;
 `
 
 const ActionBar = styled.div`
@@ -44,7 +56,6 @@ const ActionBar = styled.div`
 `
 
 const ActionColumn = styled.span`
-  max-width: 200px;
   white-space: nowrap;
 `
 
@@ -53,7 +64,7 @@ const PersonalHeader = styled.div`
 `
 
 const IndividualEvents = props => {
-  const { data, popover, togglePopover, handleSubmit, createEditIndividualEvent, deleteIndividualEvent } = props
+  const { data, popover, createEditIndividualEvent, deleteIndividualEvent } = props
 
   const { currentUser, offices, eventTypes, organizations, tags } = data
 
@@ -109,7 +120,7 @@ const IndividualEvents = props => {
       Header: 'Actions',
       accessor: d => d,
       sortable: false,
-      width: 210,
+      width: 180,
       Cell: props => (
         <ActionColumn>
           <TableButton
