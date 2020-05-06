@@ -3,6 +3,7 @@ import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
 import ReactTable from 'react-table'
+import { withTranslation } from 'react-i18next'
 
 import Loading from 'components/LoadingIcon'
 
