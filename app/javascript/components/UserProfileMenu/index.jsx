@@ -102,7 +102,7 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
     } else if (selectedItem === 'home') {
       router.push('/portal')
     } else if (selectedItem === 'sign-out') {
-      router.push('/portal/sign_out')
+      window.location.href = '/users/sign_out'
     }
   }
 
