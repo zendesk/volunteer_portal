@@ -16,7 +16,7 @@ describe PortalRedirectMiddleware do
 
       response, _headers, _body = middleware.call(env)
 
-      response.must_equal 301
+      _(response).must_equal 301
     end
 
     it 'sets the Location and Cache-Control headers' do
@@ -24,8 +24,8 @@ describe PortalRedirectMiddleware do
 
       _response, headers, _body = middleware.call(env)
 
-      headers['Location'].must_equal '/portal'
-      headers['Cache-Control'].wont_be_nil
+      _(headers['Location']).must_equal '/portal'
+      _(headers['Cache-Control']).wont_be_nil
     end
   end
 

@@ -22,7 +22,7 @@ describe IndividualEventHoursLoader do
       IndividualEventHoursLoader.load(user)
     end
 
-    result.must_equal 2
+    _(result).must_equal 2
   end
 
   it 'respects the time boundaries when given' do
@@ -30,7 +30,7 @@ describe IndividualEventHoursLoader do
       IndividualEventHoursLoader.for(after: 2.weeks.ago, before: 1.day.from_now).load(user)
     end
 
-    result.must_equal 1
+    _(result).must_equal 1
   end
 
   it 'defaults to 0 for a user with no individual events' do
@@ -40,6 +40,6 @@ describe IndividualEventHoursLoader do
       IndividualEventHoursLoader.load(user)
     end
 
-    result.must_equal 0
+    _(result).must_equal 0
   end
 end

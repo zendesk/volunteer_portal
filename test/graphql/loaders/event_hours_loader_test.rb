@@ -21,7 +21,7 @@ describe EventHoursLoader do
       EventHoursLoader.load(user)
     end
 
-    result.must_equal 1
+    _(result).must_equal 1
   end
 
   it 'respects the time boundaries when given' do
@@ -31,7 +31,7 @@ describe EventHoursLoader do
       EventHoursLoader.for(after: 1.month.ago, before: 2.days.ago).load(user)
     end
 
-    result.must_equal 1
+    _(result).must_equal 1
   end
 
   it 'defaults to 0 for a user with no individual events' do
@@ -41,6 +41,6 @@ describe EventHoursLoader do
       EventHoursLoader.load(user)
     end
 
-    result.must_equal 0
+    _(result).must_equal 0
   end
 end

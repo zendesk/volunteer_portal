@@ -12,7 +12,7 @@ SingleCov::APP_FOLDERS.concat %w[
 
 require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
-require 'mocha/mini_test'
+require 'mocha/minitest'
 require 'minitest/rails'
 require 'webmock/minitest'
 require 'timecop'

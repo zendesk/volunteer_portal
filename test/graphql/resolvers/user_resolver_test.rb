@@ -32,7 +32,7 @@ describe UserResolver do
       args = { after: 1.week.ago.to_i, before: 2.days.ago.to_i, sort_by: 'HOURS_DESC' }
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user2, user]
+      _(results).must_equal [user2, user]
     end
 
     it 'filters by all offices' do
@@ -40,7 +40,7 @@ describe UserResolver do
 
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal User.all
+      _(results).must_equal User.all
     end
 
     it 'filters by current office' do
@@ -49,21 +49,21 @@ describe UserResolver do
 
       results = UserResolver.all(nil, args, context).to_a
 
-      results.must_equal [user]
+      _(results).must_equal [user]
     end
 
     it 'filters by office_id' do
       args = { office_id: office.id }
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user]
+      _(results).must_equal [user]
     end
 
     it 'limits to count' do
       args = { count: 0 }
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal []
+      _(results).must_equal []
     end
 
     it 'sorts by sort_by' do
@@ -76,12 +76,12 @@ describe UserResolver do
       args = { sort_by: 'HOURS_ASC' }
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user, user2]
+      _(results).must_equal [user, user2]
 
       args = { sort_by: 'HOURS_DESC' }
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user2, user]
+      _(results).must_equal [user2, user]
     end
 
     it 'uses all given parameters' do
@@ -94,12 +94,12 @@ describe UserResolver do
       args = { count: 1, sort_by: 'HOURS_ASC' }
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user]
+      _(results).must_equal [user]
 
       args = { count: 1, sort_by: 'HOURS_DESC' }
       results = UserResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user2]
+      _(results).must_equal [user2]
     end
   end
 
@@ -131,7 +131,7 @@ describe UserResolver do
         # the bug returns an incorrect order [user, user2].
         # Do not rely on UserResolver for sorting by hours.
         # Use VolunteerResolver instead.
-        results.must_equal [user, user2]
+        _(results).must_equal [user, user2]
       end
     end
   end

@@ -47,7 +47,7 @@ describe IndividualEvent do
     it 'defaults to PENDING' do
       event = IndividualEvent.new
 
-      event.to_status_enum.must_equal 'PENDING'
+      _(event.to_status_enum).must_equal 'PENDING'
     end
   end
 end

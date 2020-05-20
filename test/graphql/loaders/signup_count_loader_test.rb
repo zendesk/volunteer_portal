@@ -21,6 +21,6 @@ describe SignupCountLoader do
       SignupCountLoader.load_many([event1, event2])
     end
 
-    result.must_equal [1, 2]
+    _(result).must_equal [1, 2]
   end
 end

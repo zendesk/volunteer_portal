@@ -13,14 +13,14 @@ describe Event do
 
     before do
       event.signups.delete_all
-      event.users.must_be_empty
+      _(event.users).must_be_empty
     end
 
     it 'signs the given user up for the event' do
       event.sign_up_user!(user)
       event.reload
 
-      event.users.must_include user
+      _(event.users).must_include user
     end
 
     describe 'user already signed up for event' do
@@ -35,13 +35,13 @@ describe Event do
 
         event.sign_up_user!(user)
 
-        event.reload.users.count.must_equal before
+        _(event.reload.users.count).must_equal before
       end
 
       it 'add a useful error message' do
         event.sign_up_user!(user)
 
-        event.errors.messages.to_s.must_match /Failed to signup/
+        _(event.errors.messages.to_s).must_match /Failed to signup/
       end
     end
   end
@@ -58,7 +58,7 @@ describe Event do
     it 'removes the given user from the event' do
       event.remove_user!(user)
 
-      event.users.wont_include user
+      _(event.users).wont_include user
     end
 
     describe 'user is not signed up for the event' do
@@ -71,7 +71,7 @@ describe Event do
 
         event.remove_user!(user)
 
-        event.reload.users.count.must_equal before
+        _(event.reload.users.count).must_equal before
       end
     end
   end
