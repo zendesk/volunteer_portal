@@ -5,7 +5,9 @@ class Signup < ApplicationRecord
   belongs_to :user
 
   validates :user, :event, presence: true
+  # rubocop:disable Rails/UniqueValidationWithoutIndex
   validates :user_id, uniqueness: { scope: :event_id }
+  # rubocop:enable Rails/UniqueValidationWithoutIndex
   validates_associated :event
 
   # the websocket methods need tests after they are re-enabled

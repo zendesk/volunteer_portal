@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < ActionController::Base
+class OmniauthCallbacksController < ApplicationController::Base
   REQUIRED_PARAMS = ['email', 'first_name', 'last_name'].freeze
   METADATA_IGNORED_PARAMS = (REQUIRED_PARAMS + ['fingerprint']).freeze
 
