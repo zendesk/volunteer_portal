@@ -12,7 +12,7 @@ exports[`loads 1`] = `
       <label
         className="label"
       >
-        Name
+        volunteer_portal.admin.tab.offices_addoffice_name
          
         <span
           className="errorMsg"
@@ -42,7 +42,7 @@ exports[`loads 1`] = `
       <label
         className="label"
       >
-        Timezone
+        volunteer_portal.admin.tab.offices_addoffice_timezone
          
         <span
           className="errorMsg"
@@ -64,7 +64,7 @@ exports[`loads 1`] = `
           <option
             value="-"
           >
-            Select Timezone
+            volunteer_portal.admin.tab.offices_addoffice_selecttimezone
           </option>
           <option
             value="Africa/Abidjan"
@@ -3042,7 +3042,7 @@ exports[`loads 1`] = `
       className="btn primary"
       type="submit"
     >
-      Save
+      volunteer_portal.admin.tab.offices_addoffice_save
     </button>
   </div>
 </form>
