@@ -49,7 +49,7 @@ end
 
 group :test do
   gem 'webmock', require: false
-  gem 'minitest-rails', require: false
+  gem 'minitest-rails', '3.0.0', require: false
   gem 'minitest-ci', require: false
   gem 'maxitest', require: false
   gem 'mocha', require: false
