@@ -12,8 +12,8 @@ AllCops:
 
 # LineLength metrics seems to complicate any other rules.
 # It should probably be enabled last, if ever.
-# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/LineLength
-Metrics/LineLength:
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Layout/LineLength
+Layout/LineLength:
   Enabled: false
 
 # Gems are better manually ordered
@@ -63,8 +63,8 @@ Naming/PredicateName:
     - 'app/graphql/**/*.rb'
 
 # Adding 'e' to the allowed short name (for error handling)
-# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/UncommunicativeMethodParamName
-Naming/UncommunicativeMethodParamName:
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/MethodParameterName
+Naming/MethodParameterName:
   AllowedNames: ['io', 'id', 'to', 'by', 'on', 'in', 'at', 'ip', 'db', 'e']
 
 # These migrations will not be fixed
@@ -122,3 +122,30 @@ Style/SymbolArray:
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/WordArray
 Style/WordArray:
   Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true

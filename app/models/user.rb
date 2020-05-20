@@ -10,11 +10,14 @@ class User < ApplicationRecord
   belongs_to :office
 
   attr_accessor :google_token
+
   attr_encrypted :google_token, key: ENV.fetch('ATTR_ENCRYPTION_KEY')
 
   before_validation :set_defaults, on: :create
 
+  # rubocop:disable Rails/UniqueValidationWithoutIndex
   validates :email, presence: true, uniqueness: { scope: :deleted_at }
+  # rubocop:enable Rails/UniqueValidationWithoutIndex
 
   validates :office, presence: true
 
