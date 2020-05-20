@@ -31,11 +31,9 @@ export const GeneralSettingsMenu = ({ menuValues: { defaultOffice, languageSetti
         </Item>
       </Link>
     ))}
-  <Link to="/users/sign_out">
-    <Item value="sign-out">
-        {t('volunteer_portal.header.user_profile.sign_out')}
-    </Item>
-  </Link>
+  <Item value="sign-out">
+      {t('volunteer_portal.header.user_profile.sign_out')}
+  </Item>
 </>
 
 export default GeneralSettingsMenu
