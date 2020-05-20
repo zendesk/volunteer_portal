@@ -1,3 +1,4 @@
+# rubocop:disable Rails/ApplicationController
 class OmniauthCallbacksController < ActionController::Base
   REQUIRED_PARAMS = ['email', 'first_name', 'last_name'].freeze
   METADATA_IGNORED_PARAMS = (REQUIRED_PARAMS + ['fingerprint']).freeze
@@ -94,3 +95,4 @@ class OmniauthCallbacksController < ActionController::Base
     raise 'Authentication provider must provide email, first_name, and last_name parameters'
   end
 end
+# rubocop:enable Rails/ApplicationController

@@ -35,7 +35,7 @@ describe VolunteerResolver do
       args = { after: 1.week.ago.to_i, before: 2.days.ago.to_i, sort_by: 'HOURS_DESC' }
       results = VolunteerResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user2, user]
+      _(results).must_equal [user2, user]
     end
 
     it 'filters by all offices' do
@@ -50,7 +50,7 @@ describe VolunteerResolver do
       results = Set.new(VolunteerResolver.all(nil, args, nil).to_a)
       users = Set.new(User.all)
 
-      results.must_equal users
+      _(results).must_equal users
     end
 
     it 'filters by current office' do
@@ -60,7 +60,7 @@ describe VolunteerResolver do
       Signup.create!(event: event1, user: user)
       results = VolunteerResolver.all(nil, args, context).to_a
 
-      results.must_equal [user]
+      _(results).must_equal [user]
     end
 
     it 'filters by office_id' do
@@ -69,7 +69,7 @@ describe VolunteerResolver do
       Signup.create!(event: event1, user: user)
       results = VolunteerResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user]
+      _(results).must_equal [user]
     end
 
     describe 'given a count parameter' do
@@ -83,7 +83,7 @@ describe VolunteerResolver do
           args = { count: 0 }
           results = VolunteerResolver.all(nil, args, nil).to_a
 
-          results.must_equal []
+          _(results).must_equal []
         end
       end
 
@@ -92,7 +92,7 @@ describe VolunteerResolver do
           args = { count: 1 }
           results = VolunteerResolver.all(nil, args, nil).to_a
 
-          results.must_equal [user]
+          _(results).must_equal [user]
         end
       end
     end
@@ -107,12 +107,12 @@ describe VolunteerResolver do
       args = { sort_by: 'HOURS_ASC' }
       results = VolunteerResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user, user2]
+      _(results).must_equal [user, user2]
 
       args = { sort_by: 'HOURS_DESC' }
       results = VolunteerResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user2, user]
+      _(results).must_equal [user2, user]
     end
 
     it 'uses all given parameters' do
@@ -125,12 +125,12 @@ describe VolunteerResolver do
       args = { count: 1, sort_by: 'HOURS_ASC' }
       results = VolunteerResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user]
+      _(results).must_equal [user]
 
       args = { count: 1, sort_by: 'HOURS_DESC' }
       results = VolunteerResolver.all(nil, args, nil).to_a
 
-      results.must_equal [user2]
+      _(results).must_equal [user2]
     end
 
     describe 'when user only has events' do
@@ -142,7 +142,7 @@ describe VolunteerResolver do
         Signup.create!(event: event1, user: user)
         results = VolunteerResolver.all(nil, args, nil).to_a.first.duration
 
-        results.must_equal duration
+        _(results).must_equal duration
       end
     end
   end
@@ -161,7 +161,7 @@ describe VolunteerResolver do
         individual_event2.update(duration: duration, user: user2) # unapproved
         results = VolunteerResolver.all(nil, args, nil).find_by(id: user2).duration
 
-        results.must_equal duration
+        _(results).must_equal duration
       end
     end
 
@@ -173,7 +173,7 @@ describe VolunteerResolver do
         individual_event1.update(duration: duration, user: user2)
         results = VolunteerResolver.all(nil, args, nil).find_by(id: user2).duration
 
-        results.must_equal duration
+        _(results).must_equal duration
       end
     end
 
@@ -187,7 +187,7 @@ describe VolunteerResolver do
         individual_event2.update(duration: duration, status: IndividualEvent::APPROVED)
         results = VolunteerResolver.all(nil, args, nil).to_a.first.duration
 
-        results.must_equal duration * 3
+        _(results).must_equal duration * 3
       end
     end
   end

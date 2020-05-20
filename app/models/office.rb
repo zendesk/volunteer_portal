@@ -4,7 +4,9 @@ class Office < ApplicationRecord
   before_validation :ensure_identifier, on: [:create, :update]
   before_save :trim_name
 
+  # rubocop:disable Rails/UniqueValidationWithoutIndex
   validates :name, :identifier, presence: true, uniqueness: true
+  # rubocop:enable Rails/UniqueValidationWithoutIndex
 
   has_many :events
   has_many :users
