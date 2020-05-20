@@ -54,6 +54,6 @@ group :test do
   gem 'maxitest', require: false
   gem 'mocha', require: false
   gem 'timecop', require: false
-  gem 'single_cov', require: false
+  gem 'single_cov', '0.8.4', require: false
   gem 'rails-controller-testing'
 end
