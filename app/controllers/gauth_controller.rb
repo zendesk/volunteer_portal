@@ -9,7 +9,7 @@ class GauthController < ActionController::Base
     # Verify the token
     oauth2 = Google::Apis::Oauth2V2::Oauth2Service.new
     userinfo = oauth2.tokeninfo(id_token: id_token)
-    
+
     # Find the user
     user = User.find_by(email: userinfo.email)
 
@@ -17,7 +17,7 @@ class GauthController < ActionController::Base
     session[:user_id] = user.id
 
     render json: { response: "👌" }
-    
+
     # TODO: Error handling
   end
 end
