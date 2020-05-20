@@ -46,6 +46,7 @@ volunteer_portal.admin.tab.dashboard_thismonth_hours,Hours,Text title beginning 
 volunteer_portal.admin.tab.dashboard_thismonth_committed,committed,Text title continuation for a number of hours committed this month,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
 volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled,Spots Filled,Text title a percentage of volunteering spots filled this month,https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL,TRUE
 volunteer_portal.admin.tab.events_addevent,Add Event,Button label to action add an event,https://drive.google.com/open?id=1gVgD847rRwXjXfk778mPTol_J12zE3g1,TRUE
+volunteer_portal.admin.tab.events_addevent.title,Title,,,TRUE
 volunteer_portal.admin.tab.events_editevent,Edit,Button label to take you to edit event page,https://drive.google.com/open?id=1xZksLkPfj56nwISFbw-M1OBcwtq9l4bZ,TRUE
 volunteer_portal.admin.tab.events_cloneevent,Clone,Button label to take you to clone event page,https://drive.google.com/open?id=1asG_2C-G3PIyik5BYlEQjg7rgUjtPkqj,TRUE
 volunteer_portal.admin.tab.events_deleteevent,Delete,Button label to delete an event,https://drive.google.com/open?id=1ed0yL5peTPc4dBJmT6fZG-NHewpmLcAD,TRUE
@@ -55,6 +56,7 @@ volunteer_portal.admin.tab.events_columnstart,Start,Column title for the field S
 volunteer_portal.admin.tab.events_columnduration,Duration,Column title for the field Duration in minutes of the event,,TRUE
 volunteer_portal.admin.tab.events_columnparticipants,Participants,Column title for the field Participant for a number of people,,TRUE
 volunteer_portal.admin.tab.events_columnactions,Actions,Column title for the field Action,,TRUE
+volunteer_portal.admin.tab.events.add.title,Title1,,,true
 volunteer_portal.admin.tab.eventtypes_edit,Edit,Text button to edit an event type,,TRUE
 volunteer_portal.admin.tab.eventtypes_delete,Delete,Text button to delete an event type,,TRUE
 volunteer_portal.admin.tab.eventtypes_title,Title,Column title for the field Title,,TRUE
@@ -71,6 +73,10 @@ volunteer_portal.admin.tab.offices_actions,Actions,,,TRUE
 volunteer_portal.admin.tab.offices_delete_cancel,Cancel,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.offices_add_office,Add Office,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_name,Name,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_timezone,Timezone,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_selecttimezone,Select timezone,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_save,Save,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete_office,Delete Office,,,TRUE
 volunteer_portal.admin.tab.offices_delete_confirmation,Are you sure you want to delete {{office}}?,,,TRUE
 volunteer_portal.admin.tab.organizations_edit,Edit,,,TRUE
@@ -112,7 +118,10 @@ volunteer_portal.admin.tab.individualevent.organization,Organization,,,true
 volunteer_portal.admin.tab.individualevent.type,Type,,,true
 volunteer_portal.admin.tab.tags.label,Tag,,,true
 volunteer_portal.admin.tab.tags.actions,Actions,,,true
+volunteer_portal.admin.tab.tags.edit,Edit,,,true
 volunteer_portal.admin.tab.tags.addtag,Add Tag,,,true
+volunteer_portal.admin.tab.tags_addtag_save,Save,,,true
+volunteer_portal.admin.tab.tags_addtag_name,Name,,,true
 volunteer_portal.admin.tab.tags.delete,Delete,,,true
 volunteer_portal.admin.tab.tags.cancel,Cancel,,,true
 volunteer_portal.admin.tab.tags.deletetag,Delete Tag,,,true

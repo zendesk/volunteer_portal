@@ -7,6 +7,8 @@ import Callout from 'components/Callout'
 
 import s from './main.css'
 
+import { withTranslation } from 'react-i18next'
+
 const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1)
 
 const formatGraphQLErrors = errors =>
@@ -59,18 +61,24 @@ const renderField = props => {
 
 const isNoErrors = errors => R.isNil(errors) || R.isEmpty(errors)
 
-const TagForm = ({ handleSubmit, disableSubmit, errors }) => (
+const TagForm = ({ handleSubmit, disableSubmit, errors, t }) => (
   <form className={s.form} onSubmit={handleSubmit}>
     {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
-      <Field label="Name" className={s.field} name="name" component={renderField} type="text" />
+      <Field
+        label={t('volunteer_portal.admin.tab.tags_addtag_name')}
+        className={s.field}
+        name="name"
+        component={renderField}
+        type="text"
+      />
     </div>
     <div className={s.inputGroup}>
       <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
-        Save
+        {t('volunteer_portal.admin.tab.tags_addtag_save')}
       </button>
     </div>
   </form>
 )
 
-export default TagForm
+export default withTranslation()(TagForm)

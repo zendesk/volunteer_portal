@@ -7,6 +7,7 @@ import AutoComplete from 'material-ui/AutoComplete'
 import Callout from 'components/Callout'
 
 import s from './main.css'
+import { withTranslation } from 'react-i18next'
 
 const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1)
 
@@ -60,16 +61,28 @@ const renderField = props => {
 
 const isNoErrors = errors => R.isNil(errors) || R.isEmpty(errors)
 
-const OfficeForm = ({ handleSubmit, disableSubmit, errors }) => (
+const OfficeForm = ({ handleSubmit, disableSubmit, errors, t }) => (
   <form className={s.form} onSubmit={handleSubmit}>
     {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
-      <Field label="Name" className={s.field} name="name" component={renderField} type="text" />
+      <Field
+        label={t('volunteer_portal.admin.tab.offices_addoffice_name')}
+        className={s.field}
+        name="name"
+        component={renderField}
+        type="text"
+      />
     </div>
     <div className={s.inputGroup}>
-      <Field label="Timezone" className={s.field} name="timezone" component={renderField} type="select">
+      <Field
+        label={t('volunteer_portal.admin.tab.offices_addoffice_timezone')}
+        className={s.field}
+        name="timezone"
+        component={renderField}
+        type="select"
+      >
         <option value="-" key="-">
-          Select Timezone
+          {t('volunteer_portal.admin.tab.offices_addoffice_selecttimezone')}
         </option>
         {R.map(
           zone => (
@@ -83,10 +96,10 @@ const OfficeForm = ({ handleSubmit, disableSubmit, errors }) => (
     </div>
     <div className={s.inputGroup}>
       <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
-        Save
+        {t('volunteer_portal.admin.tab.offices_addoffice_save')}
       </button>
     </div>
   </form>
 )
 
-export default OfficeForm
+export default withTranslation()(OfficeForm)

@@ -22,7 +22,7 @@ import { withTranslation } from 'react-i18next'
 
 const actionLinks = (tag, togglePopover, t) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/tags/${tag.id}/edit`}>Edit</Link>
+    <Link to={`/portal/admin/tags/${tag.id}/edit`}>{t('volunteer_portal.admin.tab.tags.edit')}</Link>
     <button className={s.deleteAction} onClick={() => togglePopover('destroyTag', tag)}>
       {t('volunteer_portal.admin.tab.tags.delete')}
     </button>
