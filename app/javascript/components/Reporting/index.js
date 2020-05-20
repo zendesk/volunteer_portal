@@ -23,24 +23,25 @@ const InlineFauxInput = styled(FauxInput)`
   border: none;
   box-shadow: none;
 `
+import { withTranslation } from 'react-i18next'
 
-const columnDefs = [
+const columnDefs = t => [
   {
-    Header: 'Name',
+    Header: t('volunteer_portal.admin.tab.reporting.name'),
     accessor: 'name',
     filterable: true,
   },
   {
-    Header: 'Email',
+    Header: t('volunteer_portal.admin.tab.reporting.email'),
     accessor: 'email',
   },
   {
-    Header: 'Office',
+    Header: t('volunteer_portal.admin.tab.reporting.office'),
     id: 'officeName',
     accessor: 'office.name',
   },
   {
-    Header: 'Hours',
+    Header: t('volunteer_portal.admin.tab.reporting.hours'),
     accessor: 'hours',
   },
 ]
@@ -90,9 +91,8 @@ const tdProps = () => ({
 
 const today = new Date()
 
-const tableExporter = (startDate, endDate, onStartChange, onEndChange, state, makeTable, instance) => {
+const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, state, makeTable, instance) => {
   const headers = 'Name,Email,Office,Hours\n'
-
   const csv = state.pageRows.reduce(
     (acc, row) => (acc += `${row.name},${row.email},${row.officeName},${row.hours}\n`),
     headers
@@ -127,7 +127,7 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, state, ma
           </div>
           <div>
             <a href={`data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
-              <Button>Export as CSV</Button>
+              <Button>{t('volunteer_portal.admin.tab.reporting.exportascsv')}</Button>
             </a>
           </div>
         </FilterGroup>
@@ -137,9 +137,9 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, state, ma
   )
 }
 
-const Reporting = ({ users, startDate, endDate, onStartChange, onEndChange }) => (
+const Reporting = ({ t, users, startDate, endDate, onStartChange, onEndChange }) => (
   <ReactTable
-    columns={columnDefs}
+    columns={columnDefs(t)}
     data={users}
     showPagination={false}
     defaultPageSize={users.length}
@@ -154,8 +154,8 @@ const Reporting = ({ users, startDate, endDate, onStartChange, onEndChange }) =>
     getTrProps={trProps}
     getTdProps={tdProps}
   >
-    {R.partial(tableExporter, [startDate, endDate, onStartChange, onEndChange])}
+    {R.partial(tableExporter, [startDate, endDate, onStartChange, onEndChange, t])}
   </ReactTable>
 )
 
-export default Reporting
+export default withTranslation()(Reporting)

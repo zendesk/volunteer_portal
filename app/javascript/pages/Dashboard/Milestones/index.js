@@ -9,6 +9,8 @@ import ProgressCircle from 'components/ProgressCircle'
 import MilestoneQuery from './milestoneQuery.gql'
 import s from './main.css'
 
+import { withTranslation, useTranslation } from 'react-i18next'
+
 const milestones = [
   { name: 1, hours: 2, color: '#358fb2' },
   { name: 2, hours: 4, color: '#5ebbde' },
@@ -26,7 +28,7 @@ const selectMilestone = hours => R.find(m => hours < m.hours)(milestones) || R.l
 
 const milestonePercentage = (hours, milestone) => R.clamp(0, 100, Math.round((hours / milestone.hours) * 100))
 
-const hoursRemaining = (hours, milestone) => {
+const hoursRemaining = (hours, milestone, t) => {
   const computed = Math.round(milestone.hours - hours)
   const remaining = R.clamp(0, milestone.hours, computed)
 
@@ -36,7 +38,7 @@ const hoursRemaining = (hours, milestone) => {
     case 1:
       return '1 hour'
     default:
-      return `${remaining} hours`
+      return `${remaining} ${t('volunteer_portal.admin.tab.user.dashboard.hours')}`
   }
 }
 
@@ -126,21 +128,22 @@ const Milestones = _props => {
   const completedBarStyling = barStyling('completed', hours, activeMilestone)
   const inProgressBarStyling = barStyling('inprogress', hours, activeMilestone)
   const incompleteBarStyling = barStyling('incomplete', hours, activeMilestone)
+  const t = _props.t
 
   return (
     <div className={s.progressContainer}>
       <ProgressCircle
         percent={milestonePercentage(hours, activeMilestone)}
-        label={`Milestone ${activeMilestone.name}`}
-        sublabel={hoursRemaining(hours, activeMilestone)}
+        label={`${t('volunteer_portal.admin.tab.user.dashboard.milestone')} ${activeMilestone.name}`}
+        sublabel={hoursRemaining(hours, activeMilestone, t)}
         stroke={activeMilestone.color}
       />
       <div className={s.overallProgress}>
         <div className={s.headerAndBar}>
           <div className={s.personalProgress}>
             <div className={s.personalLabel}>
-              <div className={s.personal}>Personal</div>
-              <div className={s.label}>total hours</div>
+              <div className={s.personal}>{t('volunteer_portal.admin.tab.user.dashboard.personal')}</div>
+              <div className={s.label}>{t('volunteer_portal.admin.tab.user.dashboard.totalhours')}</div>
             </div>
             <div className={s.personalTotal}>{hours}</div>
           </div>
@@ -157,8 +160,12 @@ const Milestones = _props => {
               className={s.milestoneMarker}
               style={{ flexBasis: `${(1 / milestones.length) * 100}%` }}
             >
-              <p className={milestoneLabelStyling('label', activeMilestone, hours)}>{`Milestone ${milestone.name}`}</p>
-              <p className={milestoneLabelStyling('hours', activeMilestone, hours)}>{`${milestone.hours} hours`}</p>
+              <p className={milestoneLabelStyling('label', activeMilestone, hours)}>{`${t(
+                'volunteer_portal.admin.tab.user.dashboard.milestone1'
+              )} ${milestone.name}`}</p>
+              <p className={milestoneLabelStyling('hours', activeMilestone, hours)}>{`${milestone.hours} ${t(
+                'volunteer_portal.admin.tab.user.dashboard.hours1'
+              )}`}</p>
             </div>
           ))}
         </div>
@@ -167,4 +174,4 @@ const Milestones = _props => {
   )
 }
 
-export default Milestones
+export default withTranslation()(Milestones)

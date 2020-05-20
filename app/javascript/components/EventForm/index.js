@@ -13,6 +13,8 @@ import TagField from 'components/TagField'
 
 import s from './main.css'
 
+import { withTranslation } from 'react-i18next'
+
 // mui components need inline styles
 const styles = {
   dialogBody: {
@@ -130,7 +132,7 @@ const TimeField = ({ input: { value, onChange } }) => (
   />
 )
 
-const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, organizations, offices, children }) => (
+const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, organizations, offices, children, t }) => (
   <form className={s.form} onSubmit={handleSubmit}>
     {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
@@ -223,4 +225,4 @@ const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, orga
   </form>
 )
 
-export default EventForm
+export default withTranslation()(EventForm)

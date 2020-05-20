@@ -18,39 +18,41 @@ import TagsQuery from './queries/index.gql'
 import DeleteTagMutation from './mutations/delete.gql'
 import s from './main.css'
 
-const actionLinks = (tag, togglePopover) => (
+import { withTranslation } from 'react-i18next'
+
+const actionLinks = (tag, togglePopover, t) => (
   <div className={s.actionColumn}>
-    <Link to={`/portal/admin/tags/${tag.id}/edit`}>Edit</Link>
+    <Link to={`/portal/admin/tags/${tag.id}/edit`}>{t('volunteer_portal.admin.tab.tags.edit')}</Link>
     <button className={s.deleteAction} onClick={() => togglePopover('destroyTag', tag)}>
-      Delete
+      {t('volunteer_portal.admin.tab.tags.delete')}
     </button>
   </div>
 )
 
-const columns = togglePopover => [
+const columns = (t, togglePopover) => [
   {
-    Header: 'Tag',
+    Header: t('volunteer_portal.admin.tab.tags.label'),
     accessor: 'name',
     filterable: true,
   },
   {
-    Header: 'Actions',
+    Header: t('volunteer_portal.admin.tab.tags.actions'),
     accessor: 'id',
     sortable: false,
     width: 130,
-    Cell: ({ original }) => actionLinks(original, togglePopover),
+    Cell: ({ original }) => actionLinks(original, togglePopover, t),
   },
 ]
 
-const destroyActions = (togglePopover, destroyTagPopover, deleteOffice) => [
+const destroyActions = (togglePopover, destroyTagPopover, deleteOffice, t) => [
   <button className={`${s.btn} ${s.cancelBtn}`} onClick={() => togglePopover('destroyTag', destroyTagPopover.data)}>
-    Cancel
+    {t('volunteer_portal.admin.tab.tags.cancel')}
   </button>,
   <button
     className={`${s.btn} ${s.deleteBtn}`}
     onClick={() => deleteOffice(destroyTagPopover.data) && togglePopover('destroyTag')}
   >
-    Delete
+    {t('volunteer_portal.admin.tab.tags.delete')}
   </button>,
 ]
 
@@ -97,20 +99,20 @@ const tdProps = () => ({
   },
 })
 
-const Tags = ({ data: { networkStatus, tags }, deleteTag, togglePopover, destroyTagPopover }) =>
+const Tags = withTranslation()(({ data: { networkStatus, tags }, deleteTag, togglePopover, destroyTagPopover, t }) =>
   networkStatus === NetworkStatus.loading ? (
     <Loading />
   ) : (
     <div>
       <FilterGroup>
         <Link to="/portal/admin/tags/new">
-          <Button>Add Tag</Button>
+          <Button>{t('volunteer_portal.admin.tab.tags.addtag')}</Button>
         </Link>
       </FilterGroup>
       <ReactTable
         NoDataComponent={() => null}
         data={tags}
-        columns={columns(togglePopover)}
+        columns={columns(t, togglePopover)}
         minRows={0}
         defaultFilterMethod={defaultFilterMethod}
         getProps={containerProps}
@@ -123,18 +125,19 @@ const Tags = ({ data: { networkStatus, tags }, deleteTag, togglePopover, destroy
       />
       {destroyTagPopover ? (
         <Dialog
-          title="Delete Tag"
-          actions={destroyActions(togglePopover, destroyTagPopover, deleteTag)}
+          title={t('volunteer_portal.admin.tab.tags.deletetag')}
+          actions={destroyActions(togglePopover, destroyTagPopover, deleteTag, t)}
           modal={false}
           open
           onRequestClose={() => togglePopover('destroyTag', destroyTagPopover.data)}
           actionsContainerStyle={{ paddingBottom: 20 }}
         >
-          Are you sure you want to delete {destroyTagPopover.data.title}?
+          {t('volunteer_portal.admin.tab.tags_delete_confirmation', { tag: destroyTagPopover.data.name })}
         </Dialog>
       ) : null}
     </div>
   )
+)
 
 const buildOptimisticResponse = tag => ({
   __typename: 'Mutation',
@@ -180,4 +183,4 @@ const withActions = connect(
   }
 )
 
-export default withActions(withData(Tags))
+export default withActions(withData(withTranslation()(Tags)))
