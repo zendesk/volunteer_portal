@@ -99,13 +99,13 @@ const destroyActions = (togglePopover, destroyOfficePopover, deleteOffice, t) =>
     className={`${s.btn} ${s.cancelBtn}`}
     onClick={() => togglePopover('destroyOffice', destroyOfficePopover.data)}
   >
-    {t('volunteer_portal.admin.tab.offices_delete.cancel')}
+    {t('volunteer_portal.admin.tab.offices_delete_cancel')}
   </button>,
   <button
     className={`${s.btn} ${s.deleteBtn}`}
     onClick={() => deleteOffice(destroyOfficePopover.data) && togglePopover('destroyOffice')}
   >
-    {t('volunteer_portal.admin.tab.offices_delete.delete')}
+    {t('volunteer_portal.admin.tab.offices_delete_delete')}
   </button>,
 ]
 
@@ -135,14 +135,14 @@ const Offices = ({ data: { networkStatus, offices }, deleteOffice, destroyOffice
       />
       {destroyOfficePopover ? (
         <Dialog
-          title={t('volunteer_portal.admin.tab.offices_delete.delete_office')}
+          title={t('volunteer_portal.admin.tab.offices_delete_delete_office')}
           actions={destroyActions(togglePopover, destroyOfficePopover, deleteOffice, t)}
           modal={false}
           open
           onRequestClose={() => togglePopover('destroyOffice', destroyOfficePopover.data)}
           actionsContainerStyle={{ paddingBottom: 20 }}
         >
-          {t('volunteer_portal.admin.tab.offices_delete.confirmation', { office: destroyOfficePopover.data.name })}
+          {t('volunteer_portal.admin.tab.offices_delete_confirmation', { office: destroyOfficePopover.data.name })}
         </Dialog>
       ) : null}
     </div>
@@ -184,12 +184,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+  togglePopover,
+})
 
 export default withActions(withData(withTranslation()(Offices)))
