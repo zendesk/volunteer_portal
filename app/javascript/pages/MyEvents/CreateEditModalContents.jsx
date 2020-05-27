@@ -65,7 +65,7 @@ const CreateEditModalContents = ({
         description,
         tags: selectedTags,
         officeId: selectedOffice,
-        date: date.toLocaleString(),
+        date: date.toISOString(),
         duration,
         eventTypeId: selectedEventType,
         organizationId: selectedOrg,
