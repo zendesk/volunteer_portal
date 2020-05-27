@@ -59,13 +59,13 @@ const destroyActions = (togglePopover, destroyOrganizationPopover, deleteOffice,
     className={`${s.btn} ${s.cancelBtn}`}
     onClick={() => togglePopover('destroyOrganization', destroyOrganizationPopover.data)}
   >
-    {t('volunteer_portal.admin.tab.organizations_delete.cancel')}
+    {t('volunteer_portal.admin.tab.organizations_delete_cancel')}
   </button>,
   <button
     className={`${s.btn} ${s.deleteBtn}`}
     onClick={() => deleteOffice(destroyOrganizationPopover.data) && togglePopover('destroyOrganization')}
   >
-    {t('volunteer_portal.admin.tab.organizations_delete.delete')}
+    {t('volunteer_portal.admin.tab.organizations_delete_delete')}
   </button>,
 ]
 
@@ -198,12 +198,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+  togglePopover,
+})
 
 export default withActions(withData(withTranslation()(Organizations)))
