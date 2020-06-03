@@ -1442,10 +1442,10 @@
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
   integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
 
-"@zendeskgarden/react-avatars@^8.5.0":
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.6.0.tgz#4a87e53bc943e63306307839857a5425aa37c0f8"
-  integrity sha512-fDcDVFYHFnFnRk7Li2+gVXCqEN3CrZ7JKnjlBnfcuxU2SdVHtCHtwSKuYeDLtb8wjdwnb9Nk8bm32EUHGmlMLg==
+"@zendeskgarden/react-avatars@^8.11.0":
+  version "8.11.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.11.0.tgz#ba3006556c770f7eafde8c0a38627b3bedf88d75"
+  integrity sha512-RtDgNQ1pTpw6OyE64cVfRf+j8vHX4yg+ZFqfKrxrokqNabaN985wLLwV539Xcx+JM72bbXO74SPSRnueW9uVog==
   dependencies:
     polished "^3.5.1"
 
