@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 
+import moment from 'moment'
 import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 import TagField from 'components/TagField'
 import { UserContext } from '../../context/UserContext'
@@ -65,7 +66,7 @@ const CreateEditModalContents = ({
         description,
         tags: selectedTags,
         officeId: selectedOffice,
-        date: date.toISOString(),
+        date: moment(date).format('YYYY-MM-DD'),
         duration,
         eventTypeId: selectedEventType,
         organizationId: selectedOrg,
