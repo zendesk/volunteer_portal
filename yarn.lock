@@ -2541,7 +2541,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.1.3, classnames@^2.2.3, classnames@^2.2.5:
+classnames@^2.1.3, classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -3840,7 +3840,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fbjs@^0.8.1, fbjs@^0.8.16, fbjs@^0.8.4, fbjs@^0.8.9:
+fbjs@^0.8.1, fbjs@^0.8.16, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -7343,14 +7343,6 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-addons-shallow-compare@^15.6.2:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
-  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
-  dependencies:
-    fbjs "^0.8.4"
-    object-assign "^4.1.0"
-
 react-apollo@^2.0.4:
   version "2.5.8"
   resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.8.tgz#c7a593b027efeefdd8399885e0ac6bec3b32623c"
@@ -7400,14 +7392,13 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
-react-geosuggest@2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/react-geosuggest/-/react-geosuggest-2.7.0.tgz#6c02ea685062cf191aca40879c17916337d16250"
-  integrity sha512-eTRqqAK7ycd9NDe9j05vgC/tbFKiXGpSdDmnOF3MCuLy970I+M4mumI9yUhj29UxVr1PpxcIcH50ghriNeWyQA==
+react-geosuggest@2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/react-geosuggest/-/react-geosuggest-2.13.0.tgz#959a04317c3f2dad4bc3be96116cd61ad2172e51"
+  integrity sha512-skwiKR5MFC5b0rFiXShhdzIa4GpxzBRKxjpMEYFKO83GaYfGvd3fjCscHzuNbVEcLvHUy1YlhR0+0PzNjCVyVw==
   dependencies:
-    classnames "^2.2.3"
+    classnames "^2.2.6"
     lodash.debounce "^4.0.6"
-    react-addons-shallow-compare "^15.6.2"
 
 react-google-maps@^9.4.5:
   version "9.4.5"
