@@ -76,7 +76,7 @@
     "@zendeskgarden/react-notifications": "^8.5.0",
     "@zendeskgarden/react-tags": "^8.5.0",
     "@zendeskgarden/react-theming": "^8.5.0",
-    "@zendeskgarden/react-typography": "^8.5.0",
+    "@zendeskgarden/react-typography": "^8.9.0",
     "@zendeskgarden/svg-icons": "^6.9.0",
     "actioncable": "^5.1.4",
     "apollo-cache-inmemory": "^1.6.5",
