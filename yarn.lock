@@ -1809,10 +1809,10 @@
   dependencies:
     polished "^3.5.1"
 
-"@zendeskgarden/svg-icons@^6.9.0":
-  version "6.15.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/svg-icons/-/svg-icons-6.15.0.tgz#cb7f890b86d3ffe83e7b6fae83db2f776594d4af"
-  integrity sha512-OMkA3pWbwY7fviZFC29ZEBJp/Ue73w+PhbB4bKQLTp6UyK97crHTZzyPhJU/GnhOp1ubOvJii3tlJgYzg4r9KA==
+"@zendeskgarden/svg-icons@^6.17.0":
+  version "6.17.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/svg-icons/-/svg-icons-6.17.0.tgz#400fc11b2ebd3f54b9d2226b370d457d87beb34c"
+  integrity sha512-hLBV2sCA1Z7fSQuFLXT39b/BawtL07UAIzQq1rs/l+m42qAkomW0TqUB+si2AAUzJ9rxUD++fJCd7yaz/F9rlA==
 
 abab@^2.0.0:
   version "2.0.3"
