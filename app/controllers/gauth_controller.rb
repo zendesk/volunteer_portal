@@ -1,6 +1,7 @@
 require 'google/apis/oauth2_v2'
 
-# READ ONLY, DOES NOT CREATE USER
+# Allows session creation with google auth (read only, does not create user)
+# rubocop:disable Rails/ApplicationController
 class GauthController < ActionController::Base
   def verify_token
     body = JSON.parse(request.body.read)
@@ -15,9 +16,7 @@ class GauthController < ActionController::Base
 
     # Create Session
     session[:user_id] = user.id
-
-    render json: { response: "👌" }
-
-    # TODO: Error handling
+    render json: { status: "ok" }
   end
 end
+# rubocop:enable Rails/ApplicationController
