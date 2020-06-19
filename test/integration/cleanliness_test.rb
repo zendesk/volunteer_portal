@@ -18,6 +18,7 @@ describe 'cleanliness' do
         app/channels/events_channel.rb
         app/channels/signups_channel.rb
         app/controllers/application_controller.rb
+        app/controllers/gauth_controller.rb
         app/controllers/graphql_controller.rb
         app/controllers/omniauth_callbacks_controller.rb
         app/controllers/ping_controller.rb
