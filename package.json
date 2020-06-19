@@ -79,7 +79,7 @@
     "@zendeskgarden/react-typography": "^8.5.0",
     "@zendeskgarden/svg-icons": "^6.9.0",
     "actioncable": "^5.1.4",
-    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.0.4",
     "apollo-link-http": "^1.5.16",
     "autoprefixer": "^7.2.4",
