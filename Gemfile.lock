@@ -245,6 +245,7 @@ PLATFORMS
   ruby
   x86_64-darwin-16
   x86_64-darwin-17
+  x86_64-darwin-19
 
 DEPENDENCIES
   active_record_union
