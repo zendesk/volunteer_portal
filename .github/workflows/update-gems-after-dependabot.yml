@@ -1,0 +1,40 @@
+---
+name: Update Gems after Dependabot
+
+on:
+  push:
+    branches:
+      - 'dependabot/bundler/**'
+    paths:
+      - 'Gemfile.lock'
+
+jobs:
+  update-gems:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Ruby and Bundler
+        uses: actions/setup-ruby@v1
+
+      - name: Cache gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: bundler-${{ runner.os }}-${{ hashFiles('.ruby-version') }}-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            bundler-${{ runner.os }}-${{ hashFiles('.ruby-version') }}-
+
+      - name: Install gems
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Push a commit with changes to vendor/cache
+        run: |
+          git config --local user.email `git show -s --format='%ae'`
+          git config --local user.name ${GITHUB_ACTOR}
+          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+          git add vendor/cache
+          git commit -m "`git log --oneline --format=%B -n 1 HEAD | head -n 1` - add gems"
+          git push github HEAD:${GITHUB_REF}
