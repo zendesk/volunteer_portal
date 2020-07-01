@@ -10,6 +10,9 @@ if %w[test development].include?(Rails.env) && File.exist?(dotenv_file)
   Dotenv.load(dotenv_file)
 end
 
+# Silence rails 6 deprecations. These deprecations need to be fixed by rails 6
+ActiveSupport::Deprecation.silenced = true
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
