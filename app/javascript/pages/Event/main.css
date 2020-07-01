@@ -48,6 +48,7 @@
 
 .details {
   min-height: 100px;
+  margin-bottom: 20px;
 }
 
 .eventType {
@@ -57,6 +58,7 @@
 
 .description {
   margin-bottom: 20px;
+  white-space: pre;
 }
 
 .organization {
