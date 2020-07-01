@@ -1,3 +1,4 @@
+# rubocop:disable Rails/BulkChangeTable
 class AddTimestampsToOffices < ActiveRecord::Migration[4.2]
   def change
     add_column :offices, :created_at, :datetime
@@ -5,3 +6,4 @@ class AddTimestampsToOffices < ActiveRecord::Migration[4.2]
     add_index :offices, :updated_at
   end
 end
+# rubocop:enable Rails/BulkChangeTable

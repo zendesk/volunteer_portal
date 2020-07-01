@@ -1,3 +1,4 @@
+# rubocop:disable Rails/BulkChangeTable
 class ChangeApprovalToStatus < ActiveRecord::Migration[5.1]
   def up
     add_column :individual_events, :status, :integer, limit: 1, null: false, default: 0
@@ -9,3 +10,4 @@ class ChangeApprovalToStatus < ActiveRecord::Migration[5.1]
     remove_column :individual_events, :status
   end
 end
+# rubocop:enable Rails/BulkChangeTable
