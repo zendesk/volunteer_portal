@@ -2,7 +2,7 @@ version: 2
 jobs:
   minitest:
     docker:
-      - image: circleci/ruby:2.7.0-node-browsers-legacy
+      - image: circleci/ruby:2.7.1-node-browsers-legacy
         environment:
           RAILS_ENV: test
           TESTOPTS: "--ci-report --ci-dir=/tmp/test_reports/minitest"
@@ -38,7 +38,7 @@ jobs:
 
   rubocop:
     docker:
-      - image: circleci/ruby:2.7.0-node-browsers
+      - image: circleci/ruby:2.7.1-node-browsers
         environment:
           RAILS_ENV: development
           TESTOPTS: "--ci-report --ci-dir=/tmp/rubocop_reports/"
