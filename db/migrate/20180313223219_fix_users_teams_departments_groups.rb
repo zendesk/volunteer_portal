@@ -1,3 +1,4 @@
+# rubocop:disable Rails/BulkChangeTable
 class FixUsersTeamsDepartmentsGroups < ActiveRecord::Migration[5.1]
   def up
     if column_exists?(:users, :department)
@@ -15,3 +16,4 @@ class FixUsersTeamsDepartmentsGroups < ActiveRecord::Migration[5.1]
     add_column :users, :team, :string
   end
 end
+# rubocop:enable Rails/BulkChangeTable

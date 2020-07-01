@@ -1,3 +1,4 @@
+# rubocop:disable Rails/BulkChangeTable
 class AddUserColumnToUserTableForOauth < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :photo, :string
@@ -11,3 +12,4 @@ class AddUserColumnToUserTableForOauth < ActiveRecord::Migration[4.2]
     rename_column :signups, :volunteer_id, :user_id
   end
 end
+# rubocop:enable Rails/BulkChangeTable

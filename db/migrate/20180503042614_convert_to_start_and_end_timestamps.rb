@@ -1,3 +1,4 @@
+# rubocop:disable Rails/BulkChangeTable
 class ConvertToStartAndEndTimestamps < ActiveRecord::Migration[5.1]
   def up
     add_column :events, :starts_at, :datetime
@@ -18,3 +19,4 @@ class ConvertToStartAndEndTimestamps < ActiveRecord::Migration[5.1]
     remove_column :events, :ends_at
   end
 end
+# rubocop:enable Rails/BulkChangeTable

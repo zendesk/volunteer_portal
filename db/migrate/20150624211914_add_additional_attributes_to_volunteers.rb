@@ -1,3 +1,4 @@
+# rubocop:disable Rails/BulkChangeTable
 class AddAdditionalAttributesToVolunteers < ActiveRecord::Migration[4.2]
   def change
     add_column :volunteers, :photo, :string
@@ -8,3 +9,4 @@ class AddAdditionalAttributesToVolunteers < ActiveRecord::Migration[4.2]
     add_column :volunteers, :locale, :string
   end
 end
+# rubocop:enable Rails/BulkChangeTable
