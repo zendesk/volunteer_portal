@@ -1734,22 +1734,22 @@
     date-fns "^2.0.0-beta.2"
     react-popper "^1.3.4"
 
-"@zendeskgarden/react-dropdowns@^8.11.0":
-  version "8.11.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-dropdowns/-/react-dropdowns-8.11.0.tgz#90b21c1bbf692e6aae476ef84e6016dc0a94ca8e"
-  integrity sha512-2tRWvc3+M0tzrE0Yj7SakvP84KynnbixAdrzKKGKYYJkqfYCXWc52MKew7ZBN47MVMJU9K71RT9CauLUKS7cGg==
+"@zendeskgarden/react-dropdowns@^8.14.1":
+  version "8.14.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-dropdowns/-/react-dropdowns-8.14.1.tgz#88867880edf9879cec3c108b98d57b8665e31cdd"
+  integrity sha512-Et/o45y5Kvv05mNCbOICTTh2a4Sq+Fp4pxWu5Foz0NjeWewizjPzKBvxwnyuHZYrsVOnGaTJ7AmSxebIihwcsQ==
   dependencies:
     "@zendeskgarden/container-selection" "^1.3.1"
     "@zendeskgarden/container-utilities" "^0.5.1"
-    "@zendeskgarden/react-forms" "^8.11.0"
+    "@zendeskgarden/react-forms" "^8.14.1"
     downshift "^5.0.0"
     polished "^3.5.1"
     react-popper "^1.3.4"
 
-"@zendeskgarden/react-forms@^8.11.0", "@zendeskgarden/react-forms@^8.5.0":
-  version "8.11.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-forms/-/react-forms-8.11.0.tgz#fe15b60bc52637cfd834a61ee1c1d0d529d5e628"
-  integrity sha512-Oiy38FUR3RCqDOQyVaN+R5W1RK0dcz/JSkI29B8X6tBROejTsKXNlO3zJejkEZoxvdb/Tbyz4v7PD+BwceSo7Q==
+"@zendeskgarden/react-forms@^8.14.1", "@zendeskgarden/react-forms@^8.5.0":
+  version "8.14.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-forms/-/react-forms-8.14.1.tgz#4f5341f4453269101659ce0e6ad4193bb63cb294"
+  integrity sha512-uUhtJ/9uQ0x6MYyRSDwSCUbM78r7gt7s4om4jeHpI+ZX9q5mU0fXPNLWqThqsEv5/8eUFrLX0NKSWGcM30caBA==
   dependencies:
     "@zendeskgarden/container-field" "^1.3.1"
     "@zendeskgarden/container-utilities" "^0.5.1"
