@@ -1755,10 +1755,10 @@
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
 
-"@zendeskgarden/react-grid@^8.5.0":
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-grid/-/react-grid-8.6.0.tgz#abd1c1d0f436309c31a962872c4cb79bcfa3b7f2"
-  integrity sha512-Tlu7swDrPFF0TBK9peLDkaDoQI5mJ6u5bV1Bo+OHaHNuBCw1t/k3I2grzQ7zM/TPnZYl80Uh7UGjSZK0hJtZRA==
+"@zendeskgarden/react-grid@^8.14.1":
+  version "8.14.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-grid/-/react-grid-8.14.1.tgz#546f24ee96ffa26568b2fefa4987ce2aa04a12c0"
+  integrity sha512-qXjCe4gJS+NaE6+/tZZnNY6IpRAsQ4e6T5sw3QE4U+HBwvjH3T9IUcgaJQVb4Dg1HK6iarnxrzHZZfBglsEy+Q==
   dependencies:
     polished "^3.5.1"
 
