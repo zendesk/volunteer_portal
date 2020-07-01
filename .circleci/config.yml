@@ -2,7 +2,7 @@ version: 2
 jobs:
   minitest:
     docker:
-      - image: circleci/ruby:2.6.1-node-browsers-legacy
+      - image: circleci/ruby:2.7.0-node-browsers-legacy
         environment:
           RAILS_ENV: test
           TESTOPTS: "--ci-report --ci-dir=/tmp/test_reports/minitest"
@@ -22,7 +22,9 @@ jobs:
           - v1-ruby-dependencies-
       - run:
           name: install dependencies
-          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+          command: |
+            gem install bundler -v 1.17.3
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -36,7 +38,7 @@ jobs:
 
   rubocop:
     docker:
-      - image: circleci/ruby:2.6.1-node-browsers
+      - image: circleci/ruby:2.7.0-node-browsers
         environment:
           RAILS_ENV: development
           TESTOPTS: "--ci-report --ci-dir=/tmp/rubocop_reports/"
@@ -49,7 +51,9 @@ jobs:
           - v1-ruby-dependencies-
       - run:
           name: install dependencies
-          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+          command:  |
+            gem install bundler -v 1.17.3
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
             - ./vendor/bundle
