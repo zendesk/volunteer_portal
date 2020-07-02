@@ -1,16 +1,18 @@
 import React, { useState, useContext } from 'react'
 
+import * as R from 'ramda'
 import moment from 'moment'
-import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
-import TagField from 'components/TagField'
-import { UserContext } from '../../context/UserContext'
+import styled from 'styled-components'
+
 import { Header, Body } from '@zendeskgarden/react-modals'
 import { Field as GField, Label, Hint, Input, Message, Range } from '@zendeskgarden/react-forms'
 import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Dots } from '@zendeskgarden/react-loaders'
-
 import { Button } from '@zendeskgarden/react-buttons'
-import styled from 'styled-components'
+
+import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
+import TagField from 'components/TagField'
+import { UserContext } from '../../context/UserContext'
 
 const PaddedField = styled(GField)`
   flex: 1;
@@ -102,7 +104,7 @@ const CreateEditModalContents = ({
           <Hint>Contact us to add your organization to this list or select 'Other'</Hint>
           <TopMargin />
           <ReduxFormAutocomplete
-            dataSource={organizations}
+            dataSource={R.sortBy((a) => a.name.toLocaleLowerCase(), organizations)}
             input={{ value: selectedOrg, onChange: setSelectedOrg }}
             searchField="name"
             />
@@ -139,7 +141,7 @@ const CreateEditModalContents = ({
             <Label>Event type</Label>
             <TopMargin />
             <ReduxFormAutocomplete
-              dataSource={eventTypes}
+              dataSource={R.sortBy((a) => a.title.toLocaleLowerCase(), eventTypes)}
               input={{ value: selectedEventType, onChange: setSelectedEventType }}
               searchField="title"
             />
@@ -159,7 +161,7 @@ const CreateEditModalContents = ({
           <Label>Office</Label>
           <TopMargin />
           <ReduxFormAutocomplete
-            dataSource={offices}
+            dataSource={R.sortBy((a) => a.name.toLocaleLowerCase(), offices)}
             input={{ value: selectedOffice, onChange: setSelectedOffice }}
             searchField="name"
           />
