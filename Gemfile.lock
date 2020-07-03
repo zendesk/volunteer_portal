@@ -79,9 +79,9 @@ GEM
     foreman (0.87.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    goldiloader (2.1.2)
-      activerecord (>= 4.2, < 5.3)
-      activesupport (>= 4.2, < 5.3)
+    goldiloader (3.1.1)
+      activerecord (>= 4.2, < 6.1)
+      activesupport (>= 4.2, < 6.1)
     google-api-client (0.41.1)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (~> 0.9)
@@ -310,7 +310,7 @@ DEPENDENCIES
   ffaker
   flamegraph
   foreman
-  goldiloader (~> 2.0)
+  goldiloader (~> 3.1)
   google-api-client (~> 0.34)
   graphiql-rails
   graphql (~> 1.8)
