@@ -14,7 +14,7 @@ Volunteer Portal is a platform designed to present, track, and report volunteeri
 
 ## About
 ### Contributing
-We're a small team at [Zendesk](http://zendesk.com/) that volunteer to maintain and launch features. If you'd like to contribute, please reach out to us on our [slack channel](https://join.slack.com/t/zendesk-volunteer/shared_invite/enQtNDczNTM5MzEwNjQwLTNmMmI3NzdlNjg4ODc4ZDFmYzBkODljZWQ2NmY0OWM3NDliOTdlMzAzOTdkZTBiYjBmMmQ3ZGFjOTFlMjdlNDk) and we'll be happy onboard you. To add changes, open a pull request for us to review.
+We're a small team at [Zendesk](http://zendesk.com/) that volunteer to maintain and launch features. If you'd like to be a regular contributor, please reach out to us on our [slack channel](https://join.slack.com/t/zendesk-volunteer/shared_invite/enQtNDczNTM5MzEwNjQwLTNmMmI3NzdlNjg4ODc4ZDFmYzBkODljZWQ2NmY0OWM3NDliOTdlMzAzOTdkZTBiYjBmMmQ3ZGFjOTFlMjdlNDk) and we'll be happy to onboard you. Otherwise, we're open to changes - open a pull request for us to review.
 
 ### Impact
 We use the volunteer portal at [Zendesk](http://zendesk.com/) to record our volunteering hours. We've also had numerous organizations run the portal on their [own infrastructure](./docs/deploy.md).
