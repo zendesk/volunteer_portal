@@ -155,6 +155,12 @@
     "prettier": "^2.1.1",
     "react-test-renderer": "^16.12.0",
     "request": "^2.87.0",
-    "webpack-dev-server": "^3.11.0"
+    "style-loader": "^0.18.2",
+    "terser-webpack-plugin": "^2.3.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-merge": "^4.2.2"
   }
 }
