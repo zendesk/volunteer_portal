@@ -113,7 +113,8 @@
     "redux-form": "^7.2.0",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "webpack": "^4.41.5"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -150,7 +151,6 @@
     "request": "^2.87.0",
     "style-loader": "^0.18.2",
     "terser-webpack-plugin": "^2.3.2",
-    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
     "webpack-manifest-plugin": "^2.2.0",
