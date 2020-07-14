@@ -152,7 +152,7 @@
     "request": "^2.87.0",
     "style-loader": "^0.18.2",
     "terser-webpack-plugin": "^2.3.2",
-    "webpack-cli": "^3.3.9",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.9.0",
     "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^4.2.2"
