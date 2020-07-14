@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A full calendar event manager with reporting.",
   "scripts": {
-    "build": "NODE_ENV=production webpack -p --progress --config webpack.config.prod.js",
+    "build": "NODE_ENV=production webpack -p --progress --config config/webpack/production.js",
     "precommit": "lint-staged",
     "test": "jest",
     "heroku-postbuild": "echo npm build is run by webpacker during rake assets:precompile"
