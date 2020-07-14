@@ -71,7 +71,7 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
-    "@babel/runtime-corejs2": "^7.8.3",
+    "@babel/runtime-corejs2": "^7.10.4",
     "@rails/webpacker": "5.1.1",
     "@zendeskgarden/css-utilities": "^4.5.5",
     "@zendeskgarden/react-avatars": "^8.11.0",
