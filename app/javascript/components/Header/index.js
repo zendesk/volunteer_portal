@@ -13,7 +13,7 @@ const Container = styled.div`
   height: 100px;
   margin: 0 0 50px 0;
   padding: 0;
-  box-shadow: inset 0px -1px 0px #ddd;
+  box-shadow: ${({ theme }) => `inset 0px -1px 0px ${theme.palette.grey['300']}`};
   justify-content: space-around;
 `
 
