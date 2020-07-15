@@ -28,7 +28,7 @@ class OmniauthCallbacksController < ActionController::Base
       redirect_to params[:return_to]
     else
       return_to = session.delete(:return_to)
-      if return_to then redirect_to return_to else redirect_to :portal end
+      return_to ? (redirect_to return_to) : (redirect_to :portal)
     end
   rescue ActiveRecord::RecordInvalid => e
     render text: e.message, status: :forbidden
