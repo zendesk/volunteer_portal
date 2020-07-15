@@ -30,10 +30,6 @@ const Logo = styled.img`
   height: 40px;
 `
 
-const LogoBox = styled.div`
-  /* flex-grow: 2; */
-`
-
 const Tab = styled.p`
   margin: 0;
   height: 100%;
@@ -67,14 +63,14 @@ const Header = ({ children, t }) => {
     <div>
       <Container>
         <Wrapper>
-          <LogoBox>
+          <div>
             <Link to="/portal">
               <Logo
                 alt="Zendesk Relationshapes Logo"
                 src="//d1eipm3vz40hy0.cloudfront.net/images/part-header/zendesk-relationshapes-logo.svg"
               />
             </Link>
-          </LogoBox>
+          </div>
           <TabList>
             <TabLink to="/portal">{t('volunteer_portal.dashboard.layouttab.calendar')}</TabLink>
             <TabLink to="/portal/dashboard">{t('volunteer_portal.dashboard.layouttab.dashboard')}</TabLink>
