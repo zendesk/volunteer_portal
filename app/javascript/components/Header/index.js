@@ -13,7 +13,7 @@ const Container = styled.div`
   height: 100px;
   margin: 0 0 50px 0;
   padding: 0;
-  box-shadow: ${({ theme }) => `inset 0px -1px 0px ${theme.palette.grey['300']}`};
+  box-shadow: ${({ theme }) => `inset 0px -${theme.borderWidths.sm} 0px ${theme.palette.grey['300']}`};
   justify-content: space-around;
 `
 
@@ -33,13 +33,14 @@ const Logo = styled.img`
 const Tab = styled.p`
   margin: 0;
   height: 100%;
-  padding: 0px 20px;
+  padding: ${({ theme }) => `0px ${theme.space.md}`};
   display: flex;
   justify-content: center;
   flex-direction: column;
   font-size: ${({ theme }) => theme.fontSizes.md};
   font-weight: ${({ theme }) => theme.fontWeights.medium};
-  box-shadow: ${({ active, theme }) => (active ? `inset 0px -3px 0px ${theme.palette.blue['600']}` : 'none')};
+  box-shadow: ${({ active, theme }) =>
+    active ? `inset 0px -${theme.borderWidths.md} 0px ${theme.palette.blue['600']}` : 'none'};
   color: ${({ active, theme }) => (active ? `${theme.palette.blue['600']}` : `${theme.palette.grey['600']}`)};
   &:hover {
     color: ${({ theme }) => `${theme.palette.blue['600']}`};
