@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     return if current_user
 
     reset_session # make sure the session isn't poluted with a user_id we couldn't find
-    session[:return_to] ||= request.env['REQUEST_PATH']
+    session[:return_to] ||= request.fullpath
     redirect_to :login
   end
 
