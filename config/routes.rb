@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'standalone#portal'
 
+  get 'legal',        to: 'legal#index'
+
   get 'volunteer/ping', to: 'ping#index'
   get 'z/ping',         to: 'ping#index'
 

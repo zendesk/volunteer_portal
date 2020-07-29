@@ -53,6 +53,10 @@
       "description": "Google tag manager ID. Create an account to add analytics etc.",
       "required": false
     },
+    "PRIVACY_POLICY_LINK": {
+      "description": "The portal privacy policy page will have a link to this link. Required for google oauth.",
+      "required": false
+    },
     "IP_BLOCK_ALL": {
       "description": "If enabled (IP_BLOCK_ALL='true') then all IP addresses will be blocked. Add IPs to the safe list to allow access.",
       "required": false

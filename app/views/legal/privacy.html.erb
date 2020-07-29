@@ -1,0 +1,9 @@
+<div id="root">
+  <div style="margin:0 auto;text-align:center;">
+    <h3>Privacy Policy</h3>
+    <% if ENV['PRIVACY_POLICY_LINK'] %>
+      <p>Please read our <a href="<%= ENV['PRIVACY_POLICY_LINK'] %>" target="_blank">privacy policy</a>.</p>
+    <% else %>
+      <p>Sorry, no policy has been crafted yet.</p>
+    <% end %>
+</div>
