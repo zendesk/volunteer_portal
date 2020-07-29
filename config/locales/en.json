@@ -134,6 +134,7 @@
       "volunteer_portal.admin.tab.reporting.hours": "Hours",
       "volunteer_portal.admin.tab.reporting.exportascsv": "Export as csv",
       "volunteer_portal.admin.tab.user.dashboard.topvolunteers": "Top Volunteers",
+      "volunteer_portal.admin.tab.user.dashboard.topvolunteers.hours": "hours",
       "volunteer_portal.admin.tab.user.dashboard.networkerror": "Network Error",
       "volunteer_portal.admin.tab.user.dashboard.networkerrormessage": "Sorry, we are unable to fetch data from server at this time. Please try again later.",
       "volunteer_portal.admin.tab.user.dashboard.totalhours": "total hours",
@@ -142,7 +143,19 @@
       "volunteer_portal.admin.tab.user.dashboard.hours": "hours",
       "volunteer_portal.admin.tab.user.dashboard.milestone1": "Milestone",
       "volunteer_portal.admin.tab.user.dashboard.hours1": "hours",
-      "volunteer_portal.admin.tab.user.dashboard.nousersfound": "No users found"
+      "volunteer_portal.admin.tab.user.dashboard.milestone.1hour": "1 hour",
+      "volunteer_portal.admin.tab.user.dashboard.milestone.complete": "Complete",
+      "volunteer_portal.admin.tab.user.dashboard.nousersfound": "No users found",
+      "volunteer_portal.admin.tab.user.myevents.individualevent": "Individual Events",
+      "volunteer_portal.admin.tab.user.myevents.individualevent.message": "Private events that you've attended and want to record.",
+      "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent": "Record Event",
+      "volunteer_portal.admin.tab.user.myevents.individualevent.clone": "Clone",
+      "volunteer_portal.admin.tab.user.myevents.organizedevents": "Organized Events",
+      "volunteer_portal.admin.tab.user.myevents.organizedevents.description": "Events organized by your organization, found on the calendar",
+      "volunteer_portal.admin.tab.user.myevents.organizedevents.noevents": "Looks like you haven't signed up to any organized events yet. Checkout the calendar to join your first event!",
+      "volunteer_portal.admin.tab.user.myevents.individualevent.noevents": "Looks like there are no individual events here. Volunteer and record your first event.",
+      "volunteer_portal.admin.tab.user.myevents.individualevent.edit": "Edit",
+      "volunteer_portal.admin.tab.user.myevents.individualevent.delete": "Delete"
     }
   }
 }

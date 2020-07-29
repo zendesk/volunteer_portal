@@ -132,6 +132,7 @@ volunteer_portal.admin.tab.reporting.office,Office,,,true
 volunteer_portal.admin.tab.reporting.hours,Hours,,,true
 volunteer_portal.admin.tab.reporting.exportascsv,Export as csv,,,true
 volunteer_portal.admin.tab.user.dashboard.topvolunteers,Top Volunteers,,,true
+volunteer_portal.admin.tab.user.dashboard.topvolunteers.hours,hours,,,true
 volunteer_portal.admin.tab.user.dashboard.networkerror,Network Error,,,true
 volunteer_portal.admin.tab.user.dashboard.networkerrormessage,"Sorry, we are unable to fetch data from server at this time. Please try again later.",,,true
 volunteer_portal.admin.tab.user.dashboard.totalhours,total hours,,,true
@@ -140,4 +141,17 @@ volunteer_portal.admin.tab.user.dashboard.milestone,Milestone,,,true
 volunteer_portal.admin.tab.user.dashboard.hours,hours,,,true
 volunteer_portal.admin.tab.user.dashboard.milestone1,Milestone,,,true
 volunteer_portal.admin.tab.user.dashboard.hours1,hours,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone.1hour,1 hour,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone.complete,Complete,,,true
 volunteer_portal.admin.tab.user.dashboard.nousersfound,No users found,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent,Individual Events,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.message,Private events that you've attended and want to record.,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent,Record Event,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clone,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents,Organized Events,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.description,"Events organized by your organization, found on the calendar",,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.noevents,Looks like you haven't signed up to any organized events yet. Checkout the calendar to join your first event!,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.noevents,Looks like there are no individual events here. Volunteer and record your first event.,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.edit,Edit,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clone,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.delete,Delete,,,true

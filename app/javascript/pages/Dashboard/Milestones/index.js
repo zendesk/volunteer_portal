@@ -34,9 +34,9 @@ const hoursRemaining = (hours, milestone, t) => {
 
   switch (remaining) {
     case 0:
-      return 'Complete'
+      return t('volunteer_portal.admin.tab.user.dashboard.milestone.complete')
     case 1:
-      return '1 hour'
+      return t('volunteer_portal.admin.tab.user.dashboard.milestone.1hour')
     default:
       return `${remaining} ${t('volunteer_portal.admin.tab.user.dashboard.hours')}`
   }
