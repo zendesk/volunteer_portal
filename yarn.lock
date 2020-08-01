@@ -2577,10 +2577,10 @@
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
 
-"@zendeskgarden/react-theming@^8.5.0":
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-8.6.0.tgz#af90885bd4af72c0f28b85c0ebe84f4997d07df5"
-  integrity sha512-fhN3JVoTMe9VXDOsW+WlpGNistRe6NyjyKyd9UF1aLu1Y+a8kEdCdv1vm0mwbQy+sq80nMkii59JuwynXJg2kQ==
+"@zendeskgarden/react-theming@^8.17.1":
+  version "8.17.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-8.17.1.tgz#4636a5dc978341cf64c789dca1d6ce6fc66e4b7f"
+  integrity sha512-4OUST2C77aSxO+XnV3QsnG/vEbIm/bRJz4olchDlzAa4DXuQvYA3Obhs6NA+ZO+Vqu++3X7/evk35/8c6wGbvQ==
   dependencies:
     "@zendeskgarden/container-focusvisible" "^0.4.3"
     "@zendeskgarden/container-utilities" "^0.5.1"
