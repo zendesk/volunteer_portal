@@ -73,7 +73,7 @@ GEM
     execjs (2.7.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
-    ffaker (2.15.0)
+    ffaker (2.16.0)
     ffi (1.13.1)
     flamegraph (0.9.5)
     foreman (0.87.1)
