@@ -20,6 +20,7 @@ describe 'cleanliness' do
         app/controllers/application_controller.rb
         app/controllers/gauth_controller.rb
         app/controllers/graphql_controller.rb
+        app/controllers/legal_controller.rb
         app/controllers/omniauth_callbacks_controller.rb
         app/controllers/ping_controller.rb
         app/controllers/standalone_controller.rb
