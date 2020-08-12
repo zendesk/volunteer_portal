@@ -7,6 +7,8 @@ import LocationField from 'components/LocationField'
 
 import s from './main.css'
 
+import { withTranslation } from 'react-i18next'
+
 const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1)
 
 const formatGraphQLErrors = errors =>
@@ -61,18 +63,30 @@ const renderField = props => {
 
 const isNoErrors = errors => R.isNil(errors) || R.isEmpty(errors)
 
-const OrganizationForm = ({ handleSubmit, disableSubmit, errors }) => (
+const OrganizationForm = ({ handleSubmit, disableSubmit, errors, t }) => (
   <form className={s.form} onSubmit={handleSubmit}>
     {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
-      <Field label="Name" className={s.field} name="name" component={renderField} type="text" />
-    </div>
-    <div className={s.inputGroup}>
-      <Field label="Description" className={s.textfield} name="description" component={renderField} type="textarea" />
+      <Field
+        label={t('volunteer_portal.admin.tab.organizations.add.name')}
+        className={s.field}
+        name="name"
+        component={renderField}
+        type="text"
+      />
     </div>
     <div className={s.inputGroup}>
       <Field
-        label="Location"
+        label={t('volunteer_portal.admin.tab.organizations.add.description')}
+        className={s.textfield}
+        name="description"
+        component={renderField}
+        type="textarea"
+      />
+    </div>
+    <div className={s.inputGroup}>
+      <Field
+        label={t('volunteer_portal.admin.tab.organizations.add.location')}
         className={s.field}
         name="location"
         component={renderField}
@@ -81,14 +95,20 @@ const OrganizationForm = ({ handleSubmit, disableSubmit, errors }) => (
       />
     </div>
     <div className={s.inputGroup}>
-      <Field label="Website" className={s.field} name="website" component={renderField} type="text" />
+      <Field
+        label={t('volunteer_portal.admin.tab.organizations.add.website')}
+        className={s.field}
+        name="website"
+        component={renderField}
+        type="text"
+      />
     </div>
     <div className={s.inputGroup}>
       <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
-        Save
+        {t('volunteer_portal.admin.tab.organizations.add.save')}
       </button>
     </div>
   </form>
 )
 
-export default OrganizationForm
+export default withTranslation()(OrganizationForm)

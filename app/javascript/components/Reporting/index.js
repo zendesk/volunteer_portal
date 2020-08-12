@@ -108,7 +108,7 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, state,
           <div>
             <Field>
               <InlineFauxInput>
-                <strong>From:&nbsp;</strong>
+                <strong>{t('volunteer_portal.admin.tab.reporting.from')}&nbsp;</strong>
                 <Datepicker value={startDate} onChange={onStartChange} maxValue={today}>
                   <Input bare />
                 </Datepicker>
@@ -118,7 +118,7 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, state,
           <div>
             <Field>
               <InlineFauxInput>
-                <strong>To:&nbsp;</strong>
+                <strong>{t('volunteer_portal.admin.tab.reporting.to')}&nbsp;</strong>
                 <Datepicker value={endDate} onChange={onEndChange} maxValue={today}>
                   <Input bare />
                 </Datepicker>

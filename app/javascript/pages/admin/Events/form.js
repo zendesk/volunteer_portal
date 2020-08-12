@@ -6,11 +6,13 @@ import * as R from 'ramda'
 import EventForm from 'components/EventForm'
 import moment from 'moment'
 
+import i18next from 'i18next'
+
 const validate = values => {
   const errors = {}
 
   if (!values.title) {
-    errors.title = 'is required'
+    errors.title = i18next.t('volunteer_portal.admin.tab.events.add.endtime') //'- required'
   }
   if (!values.description) {
     errors.description = 'is required'
@@ -85,9 +87,6 @@ const mapStateToProps = ({ graphQLErrors }, { event }) => {
   return R.isNil(event) ? props : R.merge({ initialValues: event }, props)
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {}
-)
+const withActions = connect(mapStateToProps, {})
 
 export default withActions(withReduxForm(EventFormPage))

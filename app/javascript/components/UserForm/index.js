@@ -8,6 +8,8 @@ import Callout from 'components/Callout'
 
 import s from './main.css'
 
+import { withTranslation } from 'react-i18next'
+
 // mui components need inline styles
 const styles = {
   dialogBody: {
@@ -80,19 +82,40 @@ const renderField = props => {
 
 const isNoErrors = errors => R.isNil(errors) || R.isEmpty(errors)
 
-const UserForm = ({ handleSubmit, disableSubmit, errors, offices }) => {
+const UserForm = ({ handleSubmit, disableSubmit, errors, offices, t }) => {
   return (
     <form className={s.form} onSubmit={handleSubmit}>
       {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
       <div className={s.inputGroup}>
-        <Field label="Name" className={s.field} name="name" component={renderField} type="text" disabled />
+        <Field
+          label={t('volunteer_portal.admin.tab.users_edit.name')}
+          className={s.field}
+          name="name"
+          component={renderField}
+          type="text"
+          disabled
+        />
       </div>
       <div className={s.inputGroup}>
-        <Field label="Email" className={s.field} name="email" component={renderField} type="text" disabled />
+        <Field
+          label={t('volunteer_portal.admin.tab.users_edit.email')}
+          className={s.field}
+          name="email"
+          component={renderField}
+          type="text"
+          disabled
+        />
       </div>
-      <Field label="Timezone" className={s.field} name="timezone" component={renderField} type="select" disabled>
+      <Field
+        label={t('volunteer_portal.admin.tab.users_edit.timezone')}
+        className={s.field}
+        name="timezone"
+        component={renderField}
+        type="select"
+        disabled
+      >
         <option value="-" key="-">
-          Select Timezone
+          {t('volunteer_portal.admin.tab.users_edit.timezone.select')}
         </option>
         {R.map(
           zone => (
@@ -104,11 +127,23 @@ const UserForm = ({ handleSubmit, disableSubmit, errors, offices }) => {
         )}
       </Field>
       <div className={s.inputGroup}>
-        <Field label="Admin" className={s.field} name="isAdmin" component={renderField} type="checkbox" />
+        <Field
+          label={t('volunteer_portal.admin.tab.users_edit.admin')}
+          className={s.field}
+          name="isAdmin"
+          component={renderField}
+          type="checkbox"
+        />
       </div>
       <div className={s.inputGroup}>
         <div className={s.column}>
-          <Field label="Office" className={s.field} name="office.id" component={renderField} type="select">
+          <Field
+            label={t('volunteer_portal.admin.tab.users_edit.office')}
+            className={s.field}
+            name="office.id"
+            component={renderField}
+            type="select"
+          >
             <option value="-" key="-" />
             {R.map(
               office => (
@@ -123,11 +158,11 @@ const UserForm = ({ handleSubmit, disableSubmit, errors, offices }) => {
       </div>
       <div className={s.inputGroup}>
         <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
-          Save
+          {t('volunteer_portal.admin.tab.users_edit.save')}
         </button>
       </div>
     </form>
   )
 }
 
-export default UserForm
+export default withTranslation()(UserForm)

@@ -19,20 +19,20 @@ const DeleteModalContents = ({ toDelete, deleteIndividualEvent, setShowDeleteMod
 
   return (
     <>
-      <Header isDanger>Delete Event</Header>
+      <Header isDanger>{t('volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent')}</Header>
       <Body>
-        <p>Are you sure you want to delete this event?</p>
+        <p>{t('volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.description')}</p>
         <p><b>{toDelete.description}</b></p>
       </Body>
       <Footer>
         <FooterItem>
           <Button isBasic onClick={() => setShowDeleteModal(false)}>
-            Cancel
+          {t('volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.cancel')}
           </Button>
         </FooterItem>
         <FooterItem>
           <Button isDanger disabled={loading} onClick={handleDelete}>
-            {loading ? <Dots /> : 'Delete'}
+            {loading ? <Dots /> : t('volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.delete')}
           </Button>
         </FooterItem>
       </Footer>

@@ -87,40 +87,40 @@ const IndividualEvents = props => {
   const individualEventsColumns = [
     {
       id: 'description',
-      Header: 'Description',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.description'),
       accessor: 'description',
     },
     {
       id: 'organization',
-      Header: 'Organization',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.organization'),
       accessor: 'organization.name',
     },
     {
       id: 'date',
-      Header: 'Date',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.date'),
       Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
       accessor: 'date',
     },
     {
       id: 'duration',
-      Header: 'Duration (min)',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.duration'),
       accessor: 'duration',
     },
     {
       id: 'type',
-      Header: 'Type',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.type'),
       accessor: 'eventType.title',
     },
     {
       id: 'approval',
-      Header: 'Approval',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.approval'),
       accessor: d => eventStatusIcon(d),
       width: 75,
       style: { textAlign: 'center' },
     },
     {
       id: 'actions',
-      Header: 'Actions',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.actions'),
       accessor: d => d,
       sortable: false,
       width: 180,
