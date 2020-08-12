@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../lib/i18n'
 
 import { NoEventsMessage, EventsTable } from './StyledComponents'
 
@@ -54,7 +54,7 @@ const OrganizedEvents = ({ currentUser: { signups } }) => {
       {signups.length === 0 ? (
         noOrganizedEventsMessage
       ) : (
-        <ReactTable
+        <I18nReactTable
           NoDataComponent={() => null}
           data={signups.map(signup => signup.event)}
           columns={organizedEventsColumns(t)}

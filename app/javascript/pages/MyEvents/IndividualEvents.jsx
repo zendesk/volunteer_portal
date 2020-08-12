@@ -5,7 +5,7 @@ import moment from 'moment'
 import CheckCircleIcon from '@zendeskgarden/svg-icons/src/16/check-circle-stroke.svg'
 import InfoIcon from '@zendeskgarden/svg-icons/src/16/info-stroke.svg'
 import XCircleIcon from '@zendeskgarden/svg-icons/src/16/x-circle-stroke.svg'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../lib/i18n'
 
 import { Modal, Close } from '@zendeskgarden/react-modals'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -200,7 +200,7 @@ const IndividualEvents = props => {
       {currentUser.individualEvents.length === 0 ? (
         noIndividualEventsMessage
       ) : (
-        <ReactTable
+        <I18nReactTable
           NoDataComponent={() => null}
           data={currentUser.individualEvents}
           columns={individualEventsColumns}
