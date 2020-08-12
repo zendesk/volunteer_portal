@@ -2474,10 +2474,34 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^0.5.3"
 
+"@zendeskgarden/container-selection@^1.3.6":
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-1.3.6.tgz#9962eefdb8debf98eb01741d4aaf8e10b80b1efc"
+  integrity sha512-/rTiKejNI44VviyYjLWaPZSljEJ5yp9goRhcxZe1blYE1LklZCA6ftu0UiXIKXtu0nvv5syqleN6o8LfZkwOnw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-utilities" "^0.5.4"
+
+"@zendeskgarden/container-tabs@^0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-tabs/-/container-tabs-0.5.6.tgz#86a54e554d4075d8b2f2c69515b7755ee94254e3"
+  integrity sha512-v7tj5Z7Cc868JeFrisCP/Vd+trS2uu4aOiis1c8CJvXxTw6yt8s2Z3Uvc6TXvVSMa0qWL19lx3yiZTIzJo+1Jw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-selection" "^1.3.6"
+    react-uid "^2.2.0"
+
 "@zendeskgarden/container-utilities@^0.5.1", "@zendeskgarden/container-utilities@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.5.3.tgz#e6854ee5257a2b8d41ee421214337ac28b048f76"
   integrity sha512-Rz8t9amCALj+NgxbEIYiQsF1MNTYJEsfntCLik6cdsyzDnguPplury7G4V3w2+SYAudiqio4venDKFzom6LUQQ==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
+"@zendeskgarden/container-utilities@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.5.4.tgz#8550404cafd0aab5ed80f3da0a51d424e8e3facb"
+  integrity sha512-Iz6YZ6va3JIShzKXKjK4TCf168GSX+/XeeBr6o9MTJ4K84lO0F0ZX2GIFuZmacfkBjCXfyNxj4aua/5/1ZXyPg==
   dependencies:
     "@babel/runtime" "^7.8.4"
 
@@ -2568,6 +2592,15 @@
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.6.0.tgz#aa514073578c6a58f48bf381f39f929be3237ada"
   integrity sha512-wKRgreuIzVgZUb1ULR4dZ3eGWPdZZiIoANbr9rSiR5rLN+Jkn8NYy35Jzqipi1TevLEscZsSJuUIx1VgcvaMrQ==
+
+"@zendeskgarden/react-tabs@^8.18.0":
+  version "8.18.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tabs/-/react-tabs-8.18.0.tgz#89b1e86699d76e9ccaf4430416409079a2f48639"
+  integrity sha512-1UohNeWW4DguiVaZTY0u4okwqfMn94hju0gpoX5+f3LNY0wsSnbefRzyBmOYFfi29tA8AFid5vpAS0JX2hcw8g==
+  dependencies:
+    "@zendeskgarden/container-tabs" "^0.5.6"
+    "@zendeskgarden/container-utilities" "^0.5.1"
+    polished "^3.5.1"
 
 "@zendeskgarden/react-tags@^8.5.0":
   version "8.6.0"

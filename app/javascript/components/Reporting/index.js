@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { I18nReactTable } from '../../lib/i18n'
 
 import * as R from 'ramda'

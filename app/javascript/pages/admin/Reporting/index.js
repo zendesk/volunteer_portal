@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react'
 import * as R from 'ramda'
 import moment from 'moment'
 import { useQuery } from '@apollo/react-hooks'
+import { Tabs, TabList, Tab, TabPanel } from '@zendeskgarden/react-tabs'
 
 import Loading from 'components/LoadingIcon'
 import Reporting from 'components/Reporting'
 
 import { FilterContext, officeFilterValueLens } from '/context'
-import ReportingQuery from './query.gql'
+import ReportingQuery from './queries/reportingQuery.gql'
+
 import s from './main.css'
 import { addDays } from 'date-fns'
 
@@ -34,7 +36,6 @@ const ReportingPage = _props => {
     },
   })
 
-  if (loading) return <Loading />
   if (error) console.log(error.graphQLErrors)
 
   const users = R.propOr([], 'users', data)
