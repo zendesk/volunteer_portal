@@ -3,8 +3,11 @@ import { Header, Body, Footer, FooterItem } from '@zendeskgarden/react-modals'
 import { Dots } from '@zendeskgarden/react-loaders'
 import { Button } from '@zendeskgarden/react-buttons'
 
+import { useTranslation } from 'react-i18next'
+
 const DeleteModalContents = ({ toDelete, deleteIndividualEvent, setShowDeleteModal }) => {
   const [loading, setLoading] = useState(false)
+  const { t } = useTranslation()
 
   const handleDelete = () => {
     setLoading(true)

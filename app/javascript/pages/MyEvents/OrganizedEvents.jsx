@@ -4,8 +4,9 @@ import ReactTable from 'react-table'
 
 import { NoEventsMessage, EventsTable } from './StyledComponents'
 
+import { useTranslation } from 'react-i18next'
 
-const organizedEventsColumns = [
+const organizedEventsColumns = (t) => [
   {
     id: 'event',
     Header: 'Event',
@@ -40,22 +41,23 @@ const organizedEventsColumns = [
 ]
 
 const OrganizedEvents = ({ currentUser: { signups } }) => {
+  const { t } = useTranslation() 
   const noOrganizedEventsMessage = (
     <NoEventsMessage>
-      Looks like you haven't signed up to any organized events yet. Checkout the calendar to join your first event!
+      {t('volunteer_portal.admin.tab.user.myevents.organizedevents.noevents')}
     </NoEventsMessage>
   )
   return (
     <EventsTable>
-      <h1>Organized Events</h1>
-      <h4>Events organized by your organization, found on the calendar.</h4>
+      <h1>{t('volunteer_portal.admin.tab.user.myevents.organizedevents')}</h1>
+      <h4>{t('volunteer_portal.admin.tab.user.myevents.organizedevents.description')}</h4>
       {signups.length === 0 ? (
         noOrganizedEventsMessage
       ) : (
         <ReactTable
           NoDataComponent={() => null}
           data={signups.map(signup => signup.event)}
-          columns={organizedEventsColumns}
+          columns={organizedEventsColumns(t)}
           defaultPageSize={10}
           defaultSorted={[{ id: 'date', desc: true }]}
           minRows={0}
@@ -66,3 +68,4 @@ const OrganizedEvents = ({ currentUser: { signups } }) => {
 }
 
 export default OrganizedEvents
+

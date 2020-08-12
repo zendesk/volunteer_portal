@@ -1,0 +1,156 @@
+key,value,title,screenshot,wip
+volunteer_portal.dashboard.personal,Personal,Label referring to who the number of hours belong to,,TRUE
+volunteer_portal.dashboard.layouttab.calendar,Calendario,Clickable tab that displays the Calendar View,https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f,TRUE
+volunteer_portal.dashboard.layouttab.dashboard,Panel,Clickable tab that displays the Dashboard View,https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4,TRUE
+volunteer_portal.dashboard.layouttab.myevents,Mis eventos,Clickable tab that displays the user related events,https://drive.google.com/open?id=1sbs3Uo2e764YFh40Na2DQsdahVD2W-Ne,TRUE
+volunteer_portal.dashboard.layoutdatetab.today,Hoy,Clickable text that will show the calendar with today's date,https://drive.google.com/open?id=1pO28Ugnx0UGXP5E3dM8y0LpogdPc5Cnt,TRUE
+volunteer_portal.dashboard.layouteventstab.show,Mostrar:,Text refering to what events to show My Events or All Events,https://drive.google.com/open?id=1p9A8huzT8xpJmwKY6P_Ci4sqC6uh7r_t,TRUE
+volunteer_portal.dashboard.layouteventstab.show_all,Todos,Dropdown to choose between seeing All Events or My Events only,https://drive.google.com/open?id=1lsq8KegHPQ34zhTJKvUsQTXro9dV3Ic6,TRUE
+volunteer_portal.dashboard.layouteventstab.show_myevents,Mis eventos,Dropdown to choose between seeing All Events or My Events only,https://drive.google.com/open?id=1gshUUNWv0KL4idMo_e4DdYweouTdLwRl,TRUE
+volunteer_portal.dashboard.layouteventstab.event,Eventos:,"Text refering to what events to show Open, Full or All",https://drive.google.com/open?id=1GgUV7v5EoMrY5NP2q3ksQRxZZM6ercUG,TRUE
+volunteer_portal.dashboard.layouteventstab.event_all,Todos,"Dropdown to choose between seeing All, Open or Full Events only",https://drive.google.com/open?id=112x7kr7hckUNBbsXqSEbU7HwRYko8KOW,TRUE
+volunteer_portal.dashboard.layouteventstab.event_open,Abiertos,"Dropdown to choose between seeing All, Open or Full Events only",https://drive.google.com/open?id=1zJjGC180wYoZA_7QifaQMLtAZDnT3GBl,TRUE
+volunteer_portal.dashboard.layouteventstab.event_full,Lleno,"Dropdown to choose between seeing All, Open or Full Events only",https://drive.google.com/open?id=1FiTovVMi8v6-GnfLeAyLVJxwkkHvI8eP,TRUE
+volunteer_portal.dashboard.layouteventstab.office,Oficina:,Text refering to what office events to show whether one specific city or All cities,https://drive.google.com/open?id=11wK-cIUOnyBhcAUd639IXvEyhrAQ_6kK,TRUE
+volunteer_portal.dashboard.layouteventstab.office_all,Todos,Dropdown to choose between seeing events in All cities or one in specific,https://drive.google.com/open?id=1OzKPa8-smgMHXg8G3dnqXyw3RiB7PM8j,TRUE
+volunteer_portal.admin.tab.office,Oficina:,Text refering to what office events to show whether one specific city or All cities,https://drive.google.com/open?id=1DT8S0VLfRy68pNDWZ15YmWclQYFuG5LH,TRUE
+volunteer_portal.admin.tab.office_all,Todos,Dropdown to choose between seeing events in All cities or one in specific,https://drive.google.com/open?id=16hA6lNYl0pB4qoSf6EzaekQgYfEHlT40,TRUE
+volunteer_portal.admin.tab.dashboard,Panel,Clickable tab that displays the administrator Dashboard View,https://drive.google.com/open?id=1CDtmITTBBL_oWPpSfw9WyCAZteHXh0HH,TRUE
+volunteer_portal.admin.tab.events,Eventos,Clickable tab that displays the administrator Events View,https://drive.google.com/open?id=1hog3if5Cu3egwE4G_CdoDipkZQwcpmD-,TRUE
+volunteer_portal.admin.tab.eventtypes,Tipos de eventos,Clickable tab that displays the administrator Event Types View,https://drive.google.com/open?id=1p5l0rZo-2pFQITAXFMy45CFcc5gV0GFK,TRUE
+volunteer_portal.admin.tab.tags,Etiquetas,Clickable tab that displays the administrator Tags View,,TRUE
+volunteer_portal.admin.tab.offices,Oficinas,Clickable tab that displays the administrator Offices View,https://drive.google.com/open?id=1f9nZnTUKQaMnpNquc1VqdH6sKvryNJ4W,TRUE
+volunteer_portal.admin.tab.organizations,Organizaciones,Clickable tab that displays the administrator Organizations View,https://drive.google.com/open?id=1F1sxXNsCd-2AtR-4unVZPOLK1P7l8zwt,TRUE
+volunteer_portal.admin.tab.individualevents,Eventos individuales,Clickable tab that displays the administrator Individual Events View,https://drive.google.com/open?id=1qVwYdnBDhMRR9l3eqx-yyHTWPchQDHiJ,TRUE
+volunteer_portal.admin.tab.users,Usuarios,Clickable tab that displays the administrator Users View,https://drive.google.com/open?id=1bQIlk90OYX9FDR8lZU1p_aR3o3jlr0cm,TRUE
+volunteer_portal.admin.tab.reporting,Informes,Clickable tab that displays the administrator Reporting View,https://drive.google.com/open?id=1ilxTU6f_yWopyoVEZIHPI2z6VDHY__H8,TRUE
+volunteer_portal.calendar.bigcalendar.month,Mes,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.week,Semana,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.work_week,Semana laboral,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.day,Día,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.agenda,Agenda,No need to translate,,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek,Esta semana,Label on top of This Week events,https://drive.google.com/file/d/1XKDa1cbJTpEwiBkfT6qt_N-Zbvi1_TOA,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth,Este mes,Label on top of This Month events,https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z,TRUE
+volunteer_portal.admin.tab.dashboard_noeventsthisweek,No hay eventos este mes,Text when there are no events on this week,https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_events,Eventos,Text title for a number of events this week,https://drive.google.com/open?id=1ErqgKSMqsVyrsDwj_sorGCG5ofdx4iVp,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_volunteers,Voluntarios,Text title beginning for a number of volunteers registered this week,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_registered,registrados,Text title continuation for a number of volunteers registered this week,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_hours,Horas,Text title beginning for a number of hours commited this week,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_committed,comprometidas,Text title continuation for a number of hours committed this week,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_spotsfilled,Cupos llenados,Text title a percentage of volunteering spots filled this week,https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL,TRUE
+volunteer_portal.admin.tab.dashboard_noeventsthismonth,No hay eventos este mes,Text when there are no events on this month,https://drive.google.com/open?id=1Ss1sH1AbMMWEfwuuwW-U59djPHQzRoT3,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_events,Eventos,Text title for a list of events this month,https://drive.google.com/open?id=1ErqgKSMqsVyrsDwj_sorGCG5ofdx4iVp,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_volunteers,Voluntarios,Text title beginning for a number of volunteers registered this month,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_registered,registrados,Text title continuation for a number of volunteers registered this month,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_hours,Horas,Text title beginning for a number of hours commited this month,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_committed,comprometidas,Text title continuation for a number of hours committed this month,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled,Cupos llenados,Text title a percentage of volunteering spots filled this month,https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL,TRUE
+volunteer_portal.admin.tab.events_addevent,Agregar evento,Button label to action add an event,https://drive.google.com/open?id=1gVgD847rRwXjXfk778mPTol_J12zE3g1,TRUE
+volunteer_portal.admin.tab.events_addevent.title,Cargo,,,TRUE
+volunteer_portal.admin.tab.events_editevent,Editar,Button label to take you to edit event page,https://drive.google.com/open?id=1xZksLkPfj56nwISFbw-M1OBcwtq9l4bZ,TRUE
+volunteer_portal.admin.tab.events_cloneevent,Clonar,Button label to take you to clone event page,https://drive.google.com/open?id=1asG_2C-G3PIyik5BYlEQjg7rgUjtPkqj,TRUE
+volunteer_portal.admin.tab.events_deleteevent,Borrar,Button label to delete an event,https://drive.google.com/open?id=1ed0yL5peTPc4dBJmT6fZG-NHewpmLcAD,TRUE
+volunteer_portal.admin.tab.events_columntitle,Cargo,Column title for the field Title,,TRUE
+volunteer_portal.admin.tab.events_columnorganization,Organización,Column title for the field Organization,,TRUE
+volunteer_portal.admin.tab.events_columnstart,Inicio,Column title for the field Start as in date and time,,TRUE
+volunteer_portal.admin.tab.events_columnduration,Duración,Column title for the field Duration in minutes of the event,,TRUE
+volunteer_portal.admin.tab.events_columnparticipants,Participantes,Column title for the field Participant for a number of people,,TRUE
+volunteer_portal.admin.tab.events_columnactions,Acciones,Column title for the field Action,,TRUE
+volunteer_portal.admin.tab.events.add.title,Título,,,true
+volunteer_portal.admin.tab.eventtypes_edit,Editar,Text button to edit an event type,,TRUE
+volunteer_portal.admin.tab.eventtypes_delete,Borrar,Text button to delete an event type,,TRUE
+volunteer_portal.admin.tab.eventtypes_title,Cargo,Column title for the field Title,,TRUE
+volunteer_portal.admin.tab.eventtypes_actions,Acciones,Column title for the field Actions,,TRUE
+volunteer_portal.admin.tab.eventtypes_cancel,Cancelar,Text button to cancel the deletion of an event type,,TRUE
+volunteer_portal.admin.tab.eventtypes_addeventtype,Agregar tipo de evento,Text button to open a window to Add and new event type,,TRUE
+volunteer_portal.admin.tab.eventtypes_deleteeventtype,Eliminar tipo de evento,Title for the confirmation window of Delete Event Type,,TRUE
+volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation,¿Está seguro de que desea borrarlo?,Message for the confirmation window of Delete Event Type,,TRUE
+volunteer_portal.admin.tab.offices_edit,Editar,Message for the confirmation window of Delete Event Type,,TRUE
+volunteer_portal.admin.tab.offices_delete,Borrar,,,TRUE
+volunteer_portal.admin.tab.offices_name,Nombre,,,TRUE
+volunteer_portal.admin.tab.offices_timezone,Zona horaria,,,TRUE
+volunteer_portal.admin.tab.offices_actions,Acciones,,,TRUE
+volunteer_portal.admin.tab.offices_delete_cancel,Cancelar,,,TRUE
+volunteer_portal.admin.tab.offices_delete_delete,Borrar,,,TRUE
+volunteer_portal.admin.tab.offices_add_office,Agregar oficina,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_name,Nombre,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_timezone,Zona horaria,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_selecttimezone,Seleccionar zona horaria,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_save,Guardar,,,TRUE
+volunteer_portal.admin.tab.offices_delete_delete_office,Borrar oficina,,,TRUE
+volunteer_portal.admin.tab.offices_delete_confirmation,¿Está seguro de que desea borrar {{office}}?,,,TRUE
+volunteer_portal.admin.tab.organizations_edit,Editar,,,TRUE
+volunteer_portal.admin.tab.organizations_delete,Borrar,,,TRUE
+volunteer_portal.admin.tab.organizations_name,Nombre,,,TRUE
+volunteer_portal.admin.tab.organizations_location,Ubicación,,,TRUE
+volunteer_portal.admin.tab.organizations_actions,Acciones,,,TRUE
+volunteer_portal.admin.tab.organizations_delete_cancel,Cancelar,,,TRUE
+volunteer_portal.admin.tab.organizations_delete_delete,Borrar,,,TRUE
+volunteer_portal.admin.tab.organizations_add_organization,Agregar organización,,,TRUE
+volunteer_portal.admin.tab.organizations_delete_organization,Borrar organización,,,TRUE
+volunteer_portal.admin.tab.organization.delete_confirmation,¿Está seguro de que desea borrar {{organization}}?,,,TRUE
+volunteer_portal.admin.tab.users_edit,Editar,,,TRUE
+volunteer_portal.admin.tab.users_delete,Borrar,,,TRUE
+volunteer_portal.admin.tab.users_name,Nombre,,,TRUE
+volunteer_portal.admin.tab.users_email,Correo electrónico,,,TRUE
+volunteer_portal.admin.tab.users_group,Grupo,,,TRUE
+volunteer_portal.admin.tab.users_actions,Acciones,,,TRUE
+volunteer_portal.admin.tab.users_delete_cancel,Cancelar,,,TRUE
+volunteer_portal.admin.tab.users_delete_delete,Borrar,,,TRUE
+volunteer_portal.admin.tab.users_delete_user,Eliminar usuario,,,TRUE
+volunteer_portal.admin.tab.user.delete.confirmation,¿Está seguro de que desea borrar {{user}}?,,,TRUE
+volunteer_portal.filters.office.fetch_error,No se ha podido cargar la lista de oficinas,Text notifying that an error occured while fethcing the list of offices,,TRUE
+volunteer_portal.header.user_profile.default_office,Oficina predeterminada,,,TRUE
+volunteer_portal.header.user_profile.language,Idioma,,,TRUE
+volunteer_portal.header.user_profile.admin,Administrador,,,TRUE
+volunteer_portal.header.user_profile.volunteer,Voluntario,,,TRUE
+volunteer_portal.header.user_profile.sign_out,Salir,,,TRUE
+volunteer_portal.admin.tab.individualevent.pendingapproval,Pendiente de aprobación,,,true
+volunteer_portal.admin.tab.individualevent.bulkactions,Acciones masivas,,,true
+volunteer_portal.admin.tab.individualevent.approve,Aprobar,,,true
+volunteer_portal.admin.tab.individualevent.reject,Rechazar,,,true
+volunteer_portal.admin.tab.individualevent.apply,Aplicar,,,true
+volunteer_portal.admin.tab.individualevent.user,Usuario,,,true
+volunteer_portal.admin.tab.individualevent.description,Descripción,,,true
+volunteer_portal.admin.tab.individualevent.date,Fecha,,,true
+volunteer_portal.admin.tab.individualevent.duration,Duración, (min),,true
+volunteer_portal.admin.tab.individualevent.organization,Organización,,,true
+volunteer_portal.admin.tab.individualevent.type,Tipo,,,true
+volunteer_portal.admin.tab.tags.label,Etiqueta,,,true
+volunteer_portal.admin.tab.tags.actions,Acciones,,,true
+volunteer_portal.admin.tab.tags.edit,Editar,,,true
+volunteer_portal.admin.tab.tags.addtag,Agregar etiqueta,,,true
+volunteer_portal.admin.tab.tags_addtag_save,Guardar,,,true
+volunteer_portal.admin.tab.tags_addtag_name,Nombre,,,true
+volunteer_portal.admin.tab.tags.delete,Borrar,,,true
+volunteer_portal.admin.tab.tags.cancel,Cancelar,,,true
+volunteer_portal.admin.tab.tags.deletetag,Borrar etiqueta,,,true
+volunteer_portal.admin.tab.tags_delete_confirmation,¿Está seguro de que desea borrar {{tag}}?,,,true
+volunteer_portal.admin.tab.reporting.name,Nombre,,,true
+volunteer_portal.admin.tab.reporting.email,Correo electrónico,,,true
+volunteer_portal.admin.tab.reporting.office,Oficina,,,true
+volunteer_portal.admin.tab.reporting.hours,Horas,,,true
+volunteer_portal.admin.tab.reporting.exportascsv,Exportar como CSV,,,true
+volunteer_portal.admin.tab.user.dashboard.topvolunteers,Mejores Voluntarios,,,true
+volunteer_portal.admin.tab.user.dashboard.topvolunteers.hours,horas,,,true
+volunteer_portal.admin.tab.user.dashboard.networkerror,Error de red,,,true
+volunteer_portal.admin.tab.user.dashboard.networkerrormessage,"No se han podido recuperar datos del servidor en este momento. Vuelva a intentarlo más tarde",,,true
+volunteer_portal.admin.tab.user.dashboard.totalhours,horas totales,,,true
+volunteer_portal.admin.tab.user.dashboard.personal,personal,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone,Fase,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone.complete,Completada,,,true
+volunteer_portal.admin.tab.user.dashboard.hours,horas,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone1,Fase,,,true
+volunteer_portal.admin.tab.user.dashboard.hours1,horas,,,true
+volunteer_portal.admin.tab.user.dashboard.nousersfound,No se encontraron usuarios,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent,Eventos individuales,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.message,Eventos privados que usted ha atendido y desea registrar.,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent,Registrar evento,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clonar,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents,Eventos organizados,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.description,Eventos organizados por su organización que se encuentran en su calendario.,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.noevents,Parece que no se ha registrado ha ningún evento de ninguna organización. Revise el calendario y únase a su primer evento.,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.noevents,Parece que aquí no hay eventos inviduales. Hágase voluntario y registre su primer evento.,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.edit,Editar,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clonar,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.delete,Borrar,,,true

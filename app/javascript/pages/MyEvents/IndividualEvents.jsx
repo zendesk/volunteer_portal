@@ -16,6 +16,8 @@ import { NoEventsMessage, EventsTable } from './StyledComponents'
 
 import styled from 'styled-components'
 
+import { useTranslation } from 'react-i18next'
+
 const ApprovedIcon = styled(CheckCircleIcon)`
   color: ${({theme}) => theme.palette.lime["400"]};
 `
@@ -64,6 +66,7 @@ const PersonalHeader = styled.div`
 `
 
 const IndividualEvents = props => {
+  const { t } = useTranslation()
   const { data, popover, createEditIndividualEvent, deleteIndividualEvent } = props
 
   const { currentUser, offices, eventTypes, organizations, tags } = data
@@ -77,7 +80,7 @@ const IndividualEvents = props => {
 
   const noIndividualEventsMessage = (
     <NoEventsMessage>
-      Looks like there are no individual events here. Volunteer and record your first event.
+      {t('volunteer_portal.admin.tab.user.myevents.individualevent.noevents')}
     </NoEventsMessage>
   )
 
@@ -141,7 +144,7 @@ const IndividualEvents = props => {
               setShowCreateEditModal(true)
             }}
           >
-            Edit
+            {t('volunteer_portal.admin.tab.user.myevents.individualevent.edit')}
           </TableButton>
           <TableButton
             isBasic
@@ -160,7 +163,7 @@ const IndividualEvents = props => {
               setShowCreateEditModal(true)
             }}
           >
-            Clone
+            {t('volunteer_portal.admin.tab.user.myevents.individualevent.clone')}
           </TableButton>
           <TableButton
             isBasic
@@ -170,7 +173,7 @@ const IndividualEvents = props => {
               setShowDeleteModal(true)
             }}
           >
-            Delete
+            {t('volunteer_portal.admin.tab.user.myevents.individualevent.delete')}
           </TableButton>
         </ActionColumn>
       ),
@@ -188,11 +191,11 @@ const IndividualEvents = props => {
               setShowCreateEditModal(true)
             }}
           >
-            Record Event
+            {t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent')}
           </Button>
         </ActionBar>
-        <h1>Individual Events</h1>
-        <h4>Private events that you've attended and want to record.</h4>
+        <h1>{t('volunteer_portal.admin.tab.user.myevents.individualevent')}</h1>
+        <h4>{t('volunteer_portal.admin.tab.user.myevents.individualevent.message')}</h4>
       </PersonalHeader>
       {currentUser.individualEvents.length === 0 ? (
         noIndividualEventsMessage

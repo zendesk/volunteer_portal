@@ -63,6 +63,8 @@ const Leaderboard = _props => {
     },
   })
 
+  const { t } = _props
+
   const volunteers = R.propOr([], 'volunteers', data)
 
   if (error) console.log(error)
@@ -70,14 +72,14 @@ const Leaderboard = _props => {
   return (
     <div>
       <SectionHeader>
-        <SectionTitle>{_props.t('volunteer_portal.admin.tab.user.dashboard.topvolunteers')}</SectionTitle>
+        <SectionTitle>{t('volunteer_portal.admin.tab.user.dashboard.topvolunteers')}</SectionTitle>
         <OfficeFilter />
       </SectionHeader>
       <div>
         {error && (
           <Alert type="error">
-            <Title>{_props.t('volunteer_portal.admin.tab.user.dashboard.networkerror')}</Title>
-            {_props.t('volunteer_portal.admin.tab.user.dashboard.networkerrormessage')}
+            <Title>{t('volunteer_portal.admin.tab.user.dashboard.networkerror')}</Title>
+            {t('volunteer_portal.admin.tab.user.dashboard.networkerrormessage')}
           </Alert>
         )}
 
@@ -90,14 +92,12 @@ const Leaderboard = _props => {
               <Tag isPill size="large">
                 {user.hours}
               </Tag>{' '}
-              hours
+              {t('volunteer_portal.admin.tab.user.dashboard.topvolunteers.hours')}
             </MD>
           </ListItem>
         ))}
 
-        {!volunteers.length && (
-          <Paragraph>🤭 {_props.t('volunteer_portal.admin.tab.user.dashboard.nousersfound')}</Paragraph>
-        )}
+        {!volunteers.length && <Paragraph>🤭 {t('volunteer_portal.admin.tab.user.dashboard.nousersfound')}</Paragraph>}
       </div>
     </div>
   )

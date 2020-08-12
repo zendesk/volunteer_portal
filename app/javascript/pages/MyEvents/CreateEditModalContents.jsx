@@ -14,6 +14,8 @@ import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 import TagField from 'components/TagField'
 import { UserContext } from '../../context/UserContext'
 
+import { withTranslation } from 'react-i18next'
+
 const PaddedField = styled(GField)`
   flex: 1;
   padding: ${({ theme }) => theme.space.sm} ${({ theme }) => theme.space.xs};
@@ -35,6 +37,7 @@ const CreateEditModalContents = ({
   isNew,
   setShowCreateEditModal,
   modalEventData,
+  t
 }) => {
   const currentUserOffice = useContext(UserContext).currentUser.office
 
@@ -179,4 +182,4 @@ const CreateEditModalContents = ({
   )
 }
 
-export default CreateEditModalContents
+export default withTranslation()(CreateEditModalContents)
