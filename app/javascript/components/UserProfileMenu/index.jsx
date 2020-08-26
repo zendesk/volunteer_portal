@@ -37,8 +37,8 @@ const UserName = styled(MD)`
 const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
   const languages = [
     { label: 'English', value: 'en' },
-    // Enable when Japanense is supported
-    // { label: '日本語', value: 'ja' }
+    { label: '日本語', value: 'ja' },
+    { label: 'Español', value: 'es' },
   ]
   
   const { i18n, t } = useTranslation()

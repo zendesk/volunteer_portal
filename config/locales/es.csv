@@ -1,4 +1,5 @@
 key,value,title,screenshot,wip
+volunteer_portal.menu.settings,Ajustes,,,TRUE
 volunteer_portal.dashboard.personal,Personal,Label referring to who the number of hours belong to,,TRUE
 volunteer_portal.dashboard.layouttab.calendar,Calendario,Clickable tab that displays the Calendar View,https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f,TRUE
 volunteer_portal.dashboard.layouttab.dashboard,Panel,Clickable tab that displays the Dashboard View,https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4,TRUE
@@ -46,7 +47,31 @@ volunteer_portal.admin.tab.dashboard_thismonth_hours,Horas,Text title beginning 
 volunteer_portal.admin.tab.dashboard_thismonth_committed,comprometidas,Text title continuation for a number of hours committed this month,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
 volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled,Cupos llenados,Text title a percentage of volunteering spots filled this month,https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL,TRUE
 volunteer_portal.admin.tab.events_addevent,Agregar evento,Button label to action add an event,https://drive.google.com/open?id=1gVgD847rRwXjXfk778mPTol_J12zE3g1,TRUE
-volunteer_portal.admin.tab.events_addevent.title,Cargo,,,TRUE
+volunteer_portal.admin.tab.events_addevent.title,Título,,,TRUE
+volunteer_portal.admin.tab.events.add.description,Descripción,,,true
+volunteer_portal.admin.tab.events.add.tags,Etiquetas,,,true
+volunteer_portal.admin.tab.events.add.eventtype,Tipo de evento,,,true
+volunteer_portal.admin.tab.events.add.organization,Organización,,,true
+volunteer_portal.admin.tab.events.add.office,Oficina,,,true
+volunteer_portal.admin.tab.events.add.location,Ubicación,,,true
+volunteer_portal.admin.tab.events.add.searchplaces,Buscar lugares,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.startdate,Fecha de inicio,,,true
+volunteer_portal.admin.tab.events.add.starttime,Hora de inicio,,,true
+volunteer_portal.admin.tab.events.add.enddate,Fecha de terminación,,,true
+volunteer_portal.admin.tab.events.add.endtime,Hora de terminación,,,true
+volunteer_portal.admin.tab.events.add.title.error,- es necesario,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.description.error,- es necesario,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.tags.error,- son necesarias,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.eventtype.error,- es necesario,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.organization.error,- es necesaria,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.office.error,- es necesaria,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.location.error,- es necesaria,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.starts.error,- es necesaria,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.ends.error,- es necesaria,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.capacity.error,- es necesaria y debe ser un numero,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.startsends.error,- termina antes de comenzar,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.capacity,Capacidad,,,true
+volunteer_portal.admin.tab.events.add.save,Guardar,,,true
 volunteer_portal.admin.tab.events_editevent,Editar,Button label to take you to edit event page,https://drive.google.com/open?id=1xZksLkPfj56nwISFbw-M1OBcwtq9l4bZ,TRUE
 volunteer_portal.admin.tab.events_cloneevent,Clonar,Button label to take you to clone event page,https://drive.google.com/open?id=1asG_2C-G3PIyik5BYlEQjg7rgUjtPkqj,TRUE
 volunteer_portal.admin.tab.events_deleteevent,Borrar,Button label to delete an event,https://drive.google.com/open?id=1ed0yL5peTPc4dBJmT6fZG-NHewpmLcAD,TRUE
@@ -57,6 +82,8 @@ volunteer_portal.admin.tab.events_columnduration,Duración,Column title for the 
 volunteer_portal.admin.tab.events_columnparticipants,Participantes,Column title for the field Participant for a number of people,,TRUE
 volunteer_portal.admin.tab.events_columnactions,Acciones,Column title for the field Action,,TRUE
 volunteer_portal.admin.tab.events.add.title,Título,,,true
+volunteer_portal.admin.tab.eventtype.save,Guardar,,,true
+volunteer_portal.admin.tab.eventtype.title,Título,,,true
 volunteer_portal.admin.tab.eventtypes_edit,Editar,Text button to edit an event type,,TRUE
 volunteer_portal.admin.tab.eventtypes_delete,Borrar,Text button to delete an event type,,TRUE
 volunteer_portal.admin.tab.eventtypes_title,Cargo,Column title for the field Title,,TRUE
@@ -74,7 +101,9 @@ volunteer_portal.admin.tab.offices_delete_cancel,Cancelar,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete,Borrar,,,TRUE
 volunteer_portal.admin.tab.offices_add_office,Agregar oficina,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_name,Nombre,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_name.error,- es necesario,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_timezone,Zona horaria,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_timezone.error,- es necesaria,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_selecttimezone,Seleccionar zona horaria,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_save,Guardar,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete_office,Borrar oficina,,,TRUE
@@ -84,12 +113,24 @@ volunteer_portal.admin.tab.organizations_delete,Borrar,,,TRUE
 volunteer_portal.admin.tab.organizations_name,Nombre,,,TRUE
 volunteer_portal.admin.tab.organizations_location,Ubicación,,,TRUE
 volunteer_portal.admin.tab.organizations_actions,Acciones,,,TRUE
+volunteer_portal.admin.tab.organizations.add.name,Nombre,,,TRUE
+volunteer_portal.admin.tab.organizations.add.description,Descripción,,,TRUE
+volunteer_portal.admin.tab.organizations.add.location,Ubicación,,,TRUE
+volunteer_portal.admin.tab.organizations.add.website,Sitio web,,,TRUE
+volunteer_portal.admin.tab.organizations.add.save,Guardar,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_cancel,Cancelar,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_delete,Borrar,,,TRUE
 volunteer_portal.admin.tab.organizations_add_organization,Agregar organización,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_organization,Borrar organización,,,TRUE
 volunteer_portal.admin.tab.organization.delete_confirmation,¿Está seguro de que desea borrar {{organization}}?,,,TRUE
 volunteer_portal.admin.tab.users_edit,Editar,,,TRUE
+volunteer_portal.admin.tab.users_edit.name,Nombre,,,TRUE
+volunteer_portal.admin.tab.users_edit.email,Correo-e,,,TRUE
+volunteer_portal.admin.tab.users_edit.timezone,Zona horaria,,,TRUE
+volunteer_portal.admin.tab.users_edit.timezone.select,Seleccione una zona horaria,,,TRUE
+volunteer_portal.admin.tab.users_edit.admin,Administrador,,,TRUE
+volunteer_portal.admin.tab.users_edit.office,Oficina,,,TRUE
+volunteer_portal.admin.tab.users_edit.save,Guardar,,,TRUE
 volunteer_portal.admin.tab.users_delete,Borrar,,,TRUE
 volunteer_portal.admin.tab.users_name,Nombre,,,TRUE
 volunteer_portal.admin.tab.users_email,Correo electrónico,,,TRUE
@@ -129,6 +170,8 @@ volunteer_portal.admin.tab.tags_delete_confirmation,¿Está seguro de que desea 
 volunteer_portal.admin.tab.reporting.name,Nombre,,,true
 volunteer_portal.admin.tab.reporting.email,Correo electrónico,,,true
 volunteer_portal.admin.tab.reporting.office,Oficina,,,true
+volunteer_portal.admin.tab.reporting.from,Desde,,,true
+volunteer_portal.admin.tab.reporting.to,Hasta,,,true
 volunteer_portal.admin.tab.reporting.hours,Horas,,,true
 volunteer_portal.admin.tab.reporting.exportascsv,Exportar como CSV,,,true
 volunteer_portal.admin.tab.user.dashboard.topvolunteers,Mejores Voluntarios,,,true
@@ -146,11 +189,54 @@ volunteer_portal.admin.tab.user.dashboard.nousersfound,No se encontraron usuario
 volunteer_portal.admin.tab.user.myevents.individualevent,Eventos individuales,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.message,Eventos privados que usted ha atendido y desea registrar.,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.recordevent,Registrar evento,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description,Descripción,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description.error,No puede estar vacia,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization,Organización,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.hint,"Contactenos para agregar su organizacióna esta lista o seleccione 'Otra'",,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.error,Debe seleccionar una,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date,Fecha,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date.error,Debe seleccionar una,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration,Duración,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.hours,h,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.error,Debe ser mayor a 0,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type,Tipo de evento,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type.error,Debe seleccionar uno,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags,Etiquetas,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags.error,Debe tener al menos una etiqueta,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office,Oficina,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office.error,Debe seleccionar una,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.record,Registrar,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.edit,Editar,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.editevent,Editar Evento,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent,Borrar evento,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.description,¿Esta seguro de que desea borrar este evento?,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.cancel,Cancelar,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.delete,Borrar,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clonar,,,true
 volunteer_portal.admin.tab.user.myevents.organizedevents,Eventos organizados,,,true
 volunteer_portal.admin.tab.user.myevents.organizedevents.description,Eventos organizados por su organización que se encuentran en su calendario.,,,true
 volunteer_portal.admin.tab.user.myevents.organizedevents.noevents,Parece que no se ha registrado ha ningún evento de ninguna organización. Revise el calendario y únase a su primer evento.,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.events,Eventos,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.organization,Organización,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.date,Fecha,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.duration,Duración (min),,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.type,Tipo,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.location,Ubicación,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.noevents,Parece que aquí no hay eventos inviduales. Hágase voluntario y registre su primer evento.,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.edit,Editar,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clonar,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.delete,Borrar,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.description,Descripción,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.organization,Organización,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.date,Fecha,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.duration,Duración (min),,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.type,Tipo,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.approval,Aprobación,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.actions,Acciones,,,true
+volunteer_portal.reacttable.next,Siguiente,,,true
+volunteer_portal.reacttable.previous,Anterior,,,true
+volunteer_portal.reacttable.loading,Cargando...,,,true
+volunteer_portal.reacttable.nodatatext,No se encontraron resultados,,,true
+volunteer_portal.reacttable.page,Página,,,true
+volunteer_portal.reacttable.of,de,,,true
+volunteer_portal.reacttable.rows,filas,,,true

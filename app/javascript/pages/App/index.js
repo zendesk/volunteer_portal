@@ -1,14 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import * as R from 'ramda'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import { connect } from 'react-redux'
+import moment from 'moment'
+import { useTranslation } from 'react-i18next'
 
 import App from 'components/App'
 
 import { togglePopover } from 'actions'
 
 import AppQuery from './query.gql'
+
+// TODO refactor it into AppPage as a functional component
+const MomentLocale = ({ children }) => {
+  const { i18n } = useTranslation()
+  useEffect(() => {
+    moment.locale(i18n.language)
+  }, [i18n.language])
+  return <>{children}</>
+}
 
 class AppPage extends Component {
   constructor(props) {
@@ -24,15 +35,17 @@ class AppPage extends Component {
     } = this.props
 
     return (
-      <App
-        loading={networkStatus === NetworkStatus.loading}
-        currentUser={currentUser}
-        offices={offices}
-        userPopover={popover && popover.type === 'user' ? popover : null}
-        toggleUserPopover={R.partial(togglePopover, ['user', {}])}
-      >
-        {children}
-      </App>
+      <MomentLocale>
+        <App
+          loading={networkStatus === NetworkStatus.loading}
+          currentUser={currentUser}
+          offices={offices}
+          userPopover={popover && popover.type === 'user' ? popover : null}
+          toggleUserPopover={R.partial(togglePopover, ['user', {}])}
+        >
+          {children}
+        </App>
+      </MomentLocale>
     )
   }
 }
@@ -54,11 +67,8 @@ const withData = compose(
   })
 )
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  togglePopover,
+})
 
 export default withActions(withData(AppPage))

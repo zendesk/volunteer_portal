@@ -12,7 +12,7 @@ exports[`loads 1`] = `
       <label
         className="label"
       >
-        Name
+        volunteer_portal.admin.tab.organizations.add.name
          
         <span
           className="errorMsg"
@@ -42,7 +42,7 @@ exports[`loads 1`] = `
       <label
         className="label"
       >
-        Description
+        volunteer_portal.admin.tab.organizations.add.description
          
         <span
           className="errorMsg"
@@ -72,7 +72,7 @@ exports[`loads 1`] = `
       <label
         className="label"
       >
-        Location
+        volunteer_portal.admin.tab.organizations.add.location
          
         <span
           className="errorMsg"
@@ -95,7 +95,7 @@ exports[`loads 1`] = `
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
-              placeholder="Search places"
+              placeholder="volunteer_portal.admin.tab.events.add.searchplaces"
               style={Object {}}
               type="text"
               value=""
@@ -120,7 +120,7 @@ exports[`loads 1`] = `
       <label
         className="label"
       >
-        Website
+        volunteer_portal.admin.tab.organizations.add.website
          
         <span
           className="errorMsg"
@@ -150,7 +150,7 @@ exports[`loads 1`] = `
       className="btn primary"
       type="submit"
     >
-      Save
+      volunteer_portal.admin.tab.organizations.add.save
     </button>
   </div>
 </form>

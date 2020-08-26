@@ -1,5 +1,10 @@
 key,value,title,screenshot,wip
-volunteer_portal.dashboard.personal,Personal,Label referring to who the number of hours belong to,,TRUE
+volunteer_portal.menu.settings,Settings,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.default_office,Default Office,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.language,Language,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.admin,Admin,,https://drive.google.com/drive/u/0/folders/1sVF-vGBRtytyPRGT2B3RIwd6LKMkh70g,TRUE
+volunteer_portal.header.user_profile.volunteer,Volunteer,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.sign_out,Sign Out,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
 volunteer_portal.dashboard.layouttab.calendar,Calendar,Clickable tab that displays the Calendar View,https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f,TRUE
 volunteer_portal.dashboard.layouttab.dashboard,Dashboard,Clickable tab that displays the Dashboard View,https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4,TRUE
 volunteer_portal.dashboard.layouttab.myevents,My Events,Clickable tab that displays the user related events,https://drive.google.com/open?id=1sbs3Uo2e764YFh40Na2DQsdahVD2W-Ne,TRUE
@@ -18,7 +23,7 @@ volunteer_portal.admin.tab.office_all,All,Dropdown to choose between seeing even
 volunteer_portal.admin.tab.dashboard,Dashboard,Clickable tab that displays the administrator Dashboard View,https://drive.google.com/open?id=1CDtmITTBBL_oWPpSfw9WyCAZteHXh0HH,TRUE
 volunteer_portal.admin.tab.events,Events,Clickable tab that displays the administrator Events View,https://drive.google.com/open?id=1hog3if5Cu3egwE4G_CdoDipkZQwcpmD-,TRUE
 volunteer_portal.admin.tab.eventtypes,Event Types,Clickable tab that displays the administrator Event Types View,https://drive.google.com/open?id=1p5l0rZo-2pFQITAXFMy45CFcc5gV0GFK,TRUE
-volunteer_portal.admin.tab.tags,Tags,Clickable tab that displays the administrator Tags View,,TRUE
+volunteer_portal.admin.tab.tags,Tags,Clickable tab that displays the administrator Tags View,https://drive.google.com/drive/u/0/folders/1sVF-vGBRtytyPRGT2B3RIwd6LKMkh70g,TRUE
 volunteer_portal.admin.tab.offices,Offices,Clickable tab that displays the administrator Offices View,https://drive.google.com/open?id=1f9nZnTUKQaMnpNquc1VqdH6sKvryNJ4W,TRUE
 volunteer_portal.admin.tab.organizations,Organizations,Clickable tab that displays the administrator Organizations View,https://drive.google.com/open?id=1F1sxXNsCd-2AtR-4unVZPOLK1P7l8zwt,TRUE
 volunteer_portal.admin.tab.individualevents,Individual Events,Clickable tab that displays the administrator Individual Events View,https://drive.google.com/open?id=1qVwYdnBDhMRR9l3eqx-yyHTWPchQDHiJ,TRUE
@@ -46,23 +51,49 @@ volunteer_portal.admin.tab.dashboard_thismonth_hours,Hours,Text title beginning 
 volunteer_portal.admin.tab.dashboard_thismonth_committed,committed,Text title continuation for a number of hours committed this month,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
 volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled,Spots Filled,Text title a percentage of volunteering spots filled this month,https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL,TRUE
 volunteer_portal.admin.tab.events_addevent,Add Event,Button label to action add an event,https://drive.google.com/open?id=1gVgD847rRwXjXfk778mPTol_J12zE3g1,TRUE
-volunteer_portal.admin.tab.events_addevent.title,Title,,,TRUE
+volunteer_portal.admin.tab.events_addevent.title,Title,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,TRUE
 volunteer_portal.admin.tab.events_editevent,Edit,Button label to take you to edit event page,https://drive.google.com/open?id=1xZksLkPfj56nwISFbw-M1OBcwtq9l4bZ,TRUE
 volunteer_portal.admin.tab.events_cloneevent,Clone,Button label to take you to clone event page,https://drive.google.com/open?id=1asG_2C-G3PIyik5BYlEQjg7rgUjtPkqj,TRUE
 volunteer_portal.admin.tab.events_deleteevent,Delete,Button label to delete an event,https://drive.google.com/open?id=1ed0yL5peTPc4dBJmT6fZG-NHewpmLcAD,TRUE
-volunteer_portal.admin.tab.events_columntitle,Title,Column title for the field Title,,TRUE
-volunteer_portal.admin.tab.events_columnorganization,Organization,Column title for the field Organization,,TRUE
-volunteer_portal.admin.tab.events_columnstart,Start,Column title for the field Start as in date and time,,TRUE
-volunteer_portal.admin.tab.events_columnduration,Duration,Column title for the field Duration in minutes of the event,,TRUE
-volunteer_portal.admin.tab.events_columnparticipants,Participants,Column title for the field Participant for a number of people,,TRUE
-volunteer_portal.admin.tab.events_columnactions,Actions,Column title for the field Action,,TRUE
-volunteer_portal.admin.tab.events.add.title,Title1,,,true
-volunteer_portal.admin.tab.eventtypes_edit,Edit,Text button to edit an event type,,TRUE
-volunteer_portal.admin.tab.eventtypes_delete,Delete,Text button to delete an event type,,TRUE
-volunteer_portal.admin.tab.eventtypes_title,Title,Column title for the field Title,,TRUE
-volunteer_portal.admin.tab.eventtypes_actions,Actions,Column title for the field Actions,,TRUE
+volunteer_portal.admin.tab.events_columntitle,Title,Column title for the field Title,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnorganization,Organization,Column title for the field Organization,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnstart,Start,Column title for the field Start as in date and time,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnduration,Duration,Column title for the field Duration in minutes of the event,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnparticipants,Participants,Column title for the field Participant for a number of people,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnactions,Actions,Column title for the field Action,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events.add.title,Title,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.description,Description,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.tags,Tags,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.eventtype,Event Type,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.organization,Organization,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.office,Office,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.location,Location,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.searchplaces,Search places,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.startdate,Start Date,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.starttime,Start Time,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.enddate,End Date,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.endtime,End Time,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.title.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.description.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.tags.error,- are required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.eventtype.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.organization.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.office.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.location.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.starts.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.ends.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.startsends.error,- is ending before it started,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.capacity.error,- is required and must be a number,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.capacity,Capacity,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.save,Save,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.eventtype.save,Save,,,true
+volunteer_portal.admin.tab.eventtype.title,Title,,,true
+volunteer_portal.admin.tab.eventtypes_edit,Edit,Text button to edit an event type,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_delete,Delete,Text button to delete an event type,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_title,Title,Column title for the field Title,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_actions,Actions,Column title for the field Actions,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_addeventtype,Add Event Type,Text button to open a window to Add and new event type,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
 volunteer_portal.admin.tab.eventtypes_cancel,Cancel,Text button to cancel the deletion of an event type,,TRUE
-volunteer_portal.admin.tab.eventtypes_addeventtype,Add Event Type,Text button to open a window to Add and new event type,,TRUE
 volunteer_portal.admin.tab.eventtypes_deleteeventtype,Delete Event Type,Title for the confirmation window of Delete Event Type,,TRUE
 volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation,Are you sure you want to delete,Message for the confirmation window of Delete Event Type,,TRUE
 volunteer_portal.admin.tab.offices_edit,Edit,Message for the confirmation window of Delete Event Type,,TRUE
@@ -74,7 +105,9 @@ volunteer_portal.admin.tab.offices_delete_cancel,Cancel,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.offices_add_office,Add Office,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_name,Name,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_name.error,- is required,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_timezone,Timezone,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_timezone.error,- is required,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_selecttimezone,Select timezone,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_save,Save,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete_office,Delete Office,,,TRUE
@@ -84,12 +117,24 @@ volunteer_portal.admin.tab.organizations_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.organizations_name,Name,,,TRUE
 volunteer_portal.admin.tab.organizations_location,Location,,,TRUE
 volunteer_portal.admin.tab.organizations_actions,Actions,,,TRUE
+volunteer_portal.admin.tab.organizations.add.name,Name,,,TRUE
+volunteer_portal.admin.tab.organizations.add.description,Description,,,TRUE
+volunteer_portal.admin.tab.organizations.add.location,Location,,,TRUE
+volunteer_portal.admin.tab.organizations.add.website,Website,,,TRUE
+volunteer_portal.admin.tab.organizations.add.save,Save,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_cancel,Cancel,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.organizations_add_organization,Add Organization,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_organization,Delete Organization,,,TRUE
 volunteer_portal.admin.tab.organization.delete_confirmation,Are you sure you want to delete {{organization}}?,,,TRUE
 volunteer_portal.admin.tab.users_edit,Edit,,,TRUE
+volunteer_portal.admin.tab.users_edit.name,Name,,,TRUE
+volunteer_portal.admin.tab.users_edit.email,Email,,,TRUE
+volunteer_portal.admin.tab.users_edit.timezone,Timezone,,,TRUE
+volunteer_portal.admin.tab.users_edit.timezone.select,Select Timezone,,,TRUE
+volunteer_portal.admin.tab.users_edit.admin,Admin,,,TRUE
+volunteer_portal.admin.tab.users_edit.office,Office,,,TRUE
+volunteer_portal.admin.tab.users_edit.save,Save,,,TRUE
 volunteer_portal.admin.tab.users_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.users_name,Name,,,TRUE
 volunteer_portal.admin.tab.users_email,Email,,,TRUE
@@ -100,11 +145,6 @@ volunteer_portal.admin.tab.users_delete_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.users_delete_user,Delete User,,,TRUE
 volunteer_portal.admin.tab.user.delete.confirmation,Are you sure you want to delete {{user}}?,,,TRUE
 volunteer_portal.filters.office.fetch_error,Unable to load offices list,Text notifying that an error occured while fethcing the list of offices,,TRUE
-volunteer_portal.header.user_profile.default_office,Default Office,,,TRUE
-volunteer_portal.header.user_profile.language,Language,,,TRUE
-volunteer_portal.header.user_profile.admin,Admin,,,TRUE
-volunteer_portal.header.user_profile.volunteer,Volunteer,,,TRUE
-volunteer_portal.header.user_profile.sign_out,Sign Out,,,TRUE
 volunteer_portal.admin.tab.individualevent.pendingapproval,Pending Approval,,,true
 volunteer_portal.admin.tab.individualevent.bulkactions,Bulk Actions,,,true
 volunteer_portal.admin.tab.individualevent.approve,Approve,,,true
@@ -129,6 +169,8 @@ volunteer_portal.admin.tab.tags_delete_confirmation,Are you sure you want to del
 volunteer_portal.admin.tab.reporting.name,Name,,,true
 volunteer_portal.admin.tab.reporting.email,Email,,,true
 volunteer_portal.admin.tab.reporting.office,Office,,,true
+volunteer_portal.admin.tab.reporting.from,From,,,true
+volunteer_portal.admin.tab.reporting.to,To,,,true
 volunteer_portal.admin.tab.reporting.hours,Hours,,,true
 volunteer_portal.admin.tab.reporting.exportascsv,Export as csv,,,true
 volunteer_portal.admin.tab.user.dashboard.topvolunteers,Top Volunteers,,,true
@@ -147,11 +189,54 @@ volunteer_portal.admin.tab.user.dashboard.nousersfound,No users found,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent,Individual Events,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.message,Private events that you've attended and want to record.,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.recordevent,Record Event,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description,Description,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description.error,Must not be empty,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization,Organization,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.hint,"Contact us to add your organization to this list or select 'Other'",,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.error,Must select one,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date,Date,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date.error,Must select one,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration,Duration,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.hours,h,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.error,Must be greater than 0,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type,Event Type,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type.error,Must select one,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags,Tags,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags.error,Must have at least one tag,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office,Office,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office.error,Must have selection,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.record,Record,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.edit,Edit,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.editevent,Edit Event,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent,Delete event,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.description,Are you sure you want to delete this event?,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.cancel,Cancel,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.delete,Delete,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clone,,,true
 volunteer_portal.admin.tab.user.myevents.organizedevents,Organized Events,,,true
 volunteer_portal.admin.tab.user.myevents.organizedevents.description,"Events organized by your organization, found on the calendar",,,true
 volunteer_portal.admin.tab.user.myevents.organizedevents.noevents,Looks like you haven't signed up to any organized events yet. Checkout the calendar to join your first event!,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.events,Events,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.organization,Organization,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.date,Date,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.duration,Duration (min),,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.type,Type,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.location,Location,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.noevents,Looks like there are no individual events here. Volunteer and record your first event.,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.edit,Edit,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.clone,Clone,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.delete,Delete,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.description,Description,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.organization,Organization,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.date,Date,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.duration,Duration (min),,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.type,Type,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.approval,Approval,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.actions,Actions,,,true
+volunteer_portal.reacttable.next,Next,,,true
+volunteer_portal.reacttable.previous,Previous,,,true
+volunteer_portal.reacttable.loading,Loading...,,,true
+volunteer_portal.reacttable.nodatatext,No rows found,,,true
+volunteer_portal.reacttable.page,Page,,,true
+volunteer_portal.reacttable.of,of,,,true
+volunteer_portal.reacttable.rows,rows,,,true

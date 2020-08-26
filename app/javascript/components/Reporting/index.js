@@ -1,11 +1,12 @@
 import React from 'react'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../lib/i18n'
 
 import * as R from 'ramda'
 import { defaultFilterMethod } from 'lib/utils'
 import { Field, Input, FauxInput } from '@zendeskgarden/react-forms'
 import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Button } from '@zendeskgarden/react-buttons'
+import { useTranslation } from 'react-i18next'
 
 import FilterGroup from '/components/FilterGroup'
 import OfficeFilter from '/components/OfficeFilter'
@@ -23,7 +24,6 @@ const InlineFauxInput = styled(FauxInput)`
   border: none;
   box-shadow: none;
 `
-import { withTranslation } from 'react-i18next'
 
 const columnDefs = t => [
   {
@@ -91,7 +91,7 @@ const tdProps = () => ({
 
 const today = new Date()
 
-const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, state, makeTable, instance) => {
+const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, i18n, state, makeTable, instance) => {
   const headers = 'Name,Email,Office,Hours\n'
   const csv = state.pageRows.reduce(
     (acc, row) => (acc += `${row.name},${row.email},${row.officeName},${row.hours}\n`),
@@ -108,8 +108,8 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, state,
           <div>
             <Field>
               <InlineFauxInput>
-                <strong>From:&nbsp;</strong>
-                <Datepicker value={startDate} onChange={onStartChange} maxValue={today}>
+                <strong>{t('volunteer_portal.admin.tab.reporting.from')}&nbsp;</strong>
+                <Datepicker value={startDate} onChange={onStartChange} maxValue={today} locale={i18n.language}>
                   <Input bare />
                 </Datepicker>
               </InlineFauxInput>
@@ -118,8 +118,8 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, state,
           <div>
             <Field>
               <InlineFauxInput>
-                <strong>To:&nbsp;</strong>
-                <Datepicker value={endDate} onChange={onEndChange} maxValue={today}>
+                <strong>{t('volunteer_portal.admin.tab.reporting.to')}&nbsp;</strong>
+                <Datepicker value={endDate} onChange={onEndChange} maxValue={today} locale={i18n.language}>
                   <Input bare />
                 </Datepicker>
               </InlineFauxInput>
@@ -137,25 +137,28 @@ const tableExporter = (startDate, endDate, onStartChange, onEndChange, t, state,
   )
 }
 
-const Reporting = ({ t, users, startDate, endDate, onStartChange, onEndChange }) => (
-  <ReactTable
-    columns={columnDefs(t)}
-    data={users}
-    showPagination={false}
-    defaultPageSize={users.length}
-    pageSize={users.length}
-    minRows={0}
-    defaultFilterMethod={defaultFilterMethod}
-    getProps={containerProps}
-    getTableProps={tableProps}
-    getTheadProps={theadProps}
-    getTheadThProps={thProps}
-    getTrGroupProps={trProps}
-    getTrProps={trProps}
-    getTdProps={tdProps}
-  >
-    {R.partial(tableExporter, [startDate, endDate, onStartChange, onEndChange, t])}
-  </ReactTable>
-)
+const Reporting = ({ users, startDate, endDate, onStartChange, onEndChange }) => {
+  const { t, i18n } = useTranslation()
+  return (
+    <I18nReactTable
+      columns={columnDefs(t)}
+      data={users}
+      showPagination={false}
+      defaultPageSize={users.length}
+      pageSize={users.length}
+      minRows={0}
+      defaultFilterMethod={defaultFilterMethod}
+      getProps={containerProps}
+      getTableProps={tableProps}
+      getTheadProps={theadProps}
+      getTheadThProps={thProps}
+      getTrGroupProps={trProps}
+      getTrProps={trProps}
+      getTdProps={tdProps}
+    >
+      {R.partial(tableExporter, [startDate, endDate, onStartChange, onEndChange, t, i18n])}
+    </I18nReactTable>
+  )
+}
 
-export default withTranslation()(Reporting)
+export default Reporting

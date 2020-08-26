@@ -12,7 +12,7 @@ exports[`loads 1`] = `
       <label
         className="label"
       >
-        Title
+        volunteer_portal.admin.tab.eventtype.title
          
         <span
           className="errorMsg"
@@ -43,7 +43,7 @@ exports[`loads 1`] = `
       disabled={false}
       type="submit"
     >
-      Save
+      volunteer_portal.admin.tab.eventtype.save
     </button>
   </div>
 </form>

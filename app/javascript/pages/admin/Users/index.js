@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import * as R from 'ramda'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../../lib/i18n'
 import Dialog from 'material-ui/Dialog'
 import { Link } from 'react-router'
 import { withTranslation } from 'react-i18next'
@@ -155,7 +155,7 @@ const Users = ({ t }) => {
       <FilterGroup>
         <OfficeFilter />
       </FilterGroup>
-      <ReactTable
+      <I18nReactTable
         NoDataComponent={() => null}
         data={users}
         columns={columns(openDeleteModal, t)}

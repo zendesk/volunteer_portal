@@ -14,7 +14,7 @@ import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 import TagField from 'components/TagField'
 import { UserContext } from '../../context/UserContext'
 
-import { withTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 const PaddedField = styled(GField)`
   flex: 1;
@@ -36,8 +36,7 @@ const CreateEditModalContents = ({
   createEditIndividualEvent,
   isNew,
   setShowCreateEditModal,
-  modalEventData,
-  t
+  modalEventData
 }) => {
   const currentUserOffice = useContext(UserContext).currentUser.office
 
@@ -48,6 +47,8 @@ const CreateEditModalContents = ({
   const [duration, setDuration] = useState(modalEventData?.duration || 0)
   const [selectedEventType, setSelectedEventType] = useState(modalEventData?.eventType)
   const [selectedOrg, setSelectedOrg] = useState(modalEventData?.organization)
+
+  const { t, i18n } = useTranslation()
 
   const [showFieldErrors, setShowFieldErrors] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -93,18 +94,18 @@ const CreateEditModalContents = ({
 
   return (
     <>
-      <Header>{isNew ? 'Record Event' : 'Edit Event'}</Header>
+      <Header>{isNew ? t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent') : t('volunteer_portal.admin.tab.user.myevents.individualevent.editevent')}</Header>
       <Body>
         <PaddedField>
-          <Label>Description</Label>
+          <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description')}</Label>
           <Input value={description} onChange={event => setDescription(event.target.value)} />
           {showFieldErrors && !isValidText(description) && (
-            <Message validation={'error'}>{'Must not be empty'}</Message>
+            <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description.error')}</Message>
           )}
         </PaddedField>
         <PaddedField>
-          <Label>Organization</Label>
-          <Hint>Contact us to add your organization to this list or select 'Other'</Hint>
+          <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization')}</Label>
+          <Hint>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.hint')}</Hint>
           <TopMargin />
           <ReduxFormAutocomplete
             dataSource={R.sortBy((a) => a.name.toLocaleLowerCase(), organizations)}
@@ -112,20 +113,20 @@ const CreateEditModalContents = ({
             searchField="name"
             />
           {showFieldErrors && !isValidSelect(selectedOrg) && (
-            <Message validation={'error'}>{'Must have selection'}</Message>
+            <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.error')}</Message>
           )}
         </PaddedField>
         <PaddedField>
-          <Label>Date</Label>
-          <Datepicker value={date} onChange={setDate}>
+          <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date')}</Label>
+          <Datepicker value={date} onChange={setDate} locale={i18n.language}>
             <Input />
           </Datepicker>
-          {showFieldErrors && !isValidSelect(date) && <Message validation={'error'}>{'Must have selection'}</Message>}
+          {showFieldErrors && !isValidSelect(date) && <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date.error')}</Message>}
         </PaddedField>
         <PaddedField>
-          <Label>Duration</Label>
+          <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration')}</Label>
           <TopMargin />
-          <Hint>{duration / 60} hours</Hint>
+          <Hint>{duration / 60} {t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.hours')}</Hint>
           <Range
             step={30}
             value={duration}
@@ -137,11 +138,11 @@ const CreateEditModalContents = ({
             max={480}
           />
           {showFieldErrors && !isValidNumber(duration) && (
-            <Message validation={'error'}>{'Must be greater than 0'}</Message>
+            <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.error')}</Message>
           )}
         </PaddedField>
         <PaddedField>
-            <Label>Event type</Label>
+            <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type')}</Label>
             <TopMargin />
             <ReduxFormAutocomplete
               dataSource={R.sortBy((a) => a.title.toLocaleLowerCase(), eventTypes)}
@@ -149,19 +150,19 @@ const CreateEditModalContents = ({
               searchField="title"
             />
             {showFieldErrors && !isValidSelect(selectedEventType) && (
-              <Message validation={'error'}>{'Must have selection'}</Message>
+              <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type.error')}</Message>
             )}
         </PaddedField>
         <PaddedField>
-          <Label>Tags</Label>
+          <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags')}</Label>
           <TopMargin />
           <TagField tags={tags} input={{ value: selectedTags, onChange: setSelectedTags }} />
           {showFieldErrors && !isValidMultiSelect(selectedTags) && (
-            <Message validation={'error'}>{'Must have at least one tag'}</Message>
+            <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags.error')}</Message>
           )}
         </PaddedField>
         <PaddedField>
-          <Label>Office</Label>
+          <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office')}</Label>
           <TopMargin />
           <ReduxFormAutocomplete
             dataSource={R.sortBy((a) => a.name.toLocaleLowerCase(), offices)}
@@ -169,12 +170,12 @@ const CreateEditModalContents = ({
             searchField="name"
           />
           {showFieldErrors && !isValidSelect(selectedOffice) && (
-            <Message validation={'error'}>{'Must have selection'}</Message>
+            <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office.error')}</Message>
           )}
         </PaddedField>
         <PaddedField> 
           <RightFloatButton disabled={loading} onClick={handleSubmit}>
-            {loading ? <Dots /> : isNew ? 'Record' : 'Edit'}
+            {loading ? <Dots /> : isNew ? t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.record') : t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.edit')}
           </RightFloatButton>
         </PaddedField>
       </Body>
@@ -182,4 +183,4 @@ const CreateEditModalContents = ({
   )
 }
 
-export default withTranslation()(CreateEditModalContents)
+export default CreateEditModalContents

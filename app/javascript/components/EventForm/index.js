@@ -136,17 +136,42 @@ const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, orga
   <form className={s.form} onSubmit={handleSubmit}>
     {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
-      <Field label="Title" className={s.field} name="title" component={renderField} type="text" />
+      <Field
+        label={t('volunteer_portal.admin.tab.events.add.title')}
+        className={s.field}
+        name="title"
+        component={renderField}
+        type="text"
+      />
     </div>
     <div className={s.inputGroup}>
-      <Field label="Description" className={s.field} name="description" component={renderField} type="textarea" />
+      <Field
+        label={t('volunteer_portal.admin.tab.events.add.description')}
+        className={s.field}
+        name="description"
+        component={renderField}
+        type="textarea"
+      />
     </div>
     <div className={s.inputGroup}>
-      <Field label="Tags" className={s.field} name="tags" component={renderField} tags={tags} Custom={TagField} />
+      <Field
+        label={t('volunteer_portal.admin.tab.events.add.tags')}
+        className={s.field}
+        name="tags"
+        component={renderField}
+        tags={tags}
+        Custom={TagField}
+      />
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
-        <Field label="Event Type" className={s.field} name="eventType.id" component={renderField} type="select">
+        <Field
+          label={t('volunteer_portal.admin.tab.events.add.eventtype')}
+          className={s.field}
+          name="eventType.id"
+          component={renderField}
+          type="select"
+        >
           <option />
           {R.map(
             eventType => (
@@ -160,7 +185,7 @@ const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, orga
       </div>
       <div className={s.column}>
         <Field
-          label="Organization"
+          label={t('volunteer_portal.admin.tab.events.add.organization')}
           className={s.field}
           name="organization.id"
           component={renderField}
@@ -172,7 +197,13 @@ const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, orga
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
-        <Field label="Office" className={s.field} name="office.id" component={renderField} type="select">
+        <Field
+          label={t('volunteer_portal.admin.tab.events.add.office')}
+          className={s.field}
+          name="office.id"
+          component={renderField}
+          type="select"
+        >
           <option />
           {R.map(
             office => (
@@ -185,29 +216,59 @@ const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, orga
         </Field>
       </div>
       <div className={s.column}>
-        <Field label="Location" className={s.field} name="location" component={renderField} Custom={LocationField} />
-      </div>
-    </div>
-    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
-      <div className={s.column}>
-        <Field label="Start Date" className={s.field} name="startsAt" component={renderField} Custom={DateField} />
-      </div>
-      <div className={s.column}>
-        <Field label="Start Time" className={s.field} name="startsAt" component={renderField} Custom={TimeField} />
-      </div>
-    </div>
-    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
-      <div className={s.column}>
-        <Field label="End Date" className={s.field} name="endsAt" component={renderField} Custom={DateField} />
-      </div>
-      <div className={s.column}>
-        <Field label="End Time" className={s.field} name="endsAt" component={renderField} Custom={TimeField} />
+        <Field
+          label={t('volunteer_portal.admin.tab.events.add.location')}
+          className={s.field}
+          name="location"
+          component={renderField}
+          Custom={LocationField}
+        />
       </div>
     </div>
     <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
       <div className={s.column}>
         <Field
-          label="Capacity"
+          label={t('volunteer_portal.admin.tab.events.add.startdate')}
+          className={s.field}
+          name="startsAt"
+          component={renderField}
+          Custom={DateField}
+        />
+      </div>
+      <div className={s.column}>
+        <Field
+          label={t('volunteer_portal.admin.tab.events.add.starttime')}
+          className={s.field}
+          name="startsAt"
+          component={renderField}
+          Custom={TimeField}
+        />
+      </div>
+    </div>
+    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
+      <div className={s.column}>
+        <Field
+          label={t('volunteer_portal.admin.tab.events.add.enddate')}
+          className={s.field}
+          name="endsAt"
+          component={renderField}
+          Custom={DateField}
+        />
+      </div>
+      <div className={s.column}>
+        <Field
+          label={t('volunteer_portal.admin.tab.events.add.endtime')}
+          className={s.field}
+          name="endsAt"
+          component={renderField}
+          Custom={TimeField}
+        />
+      </div>
+    </div>
+    <div className={`${s.inputGroup} ${s.twoColumnForm}`}>
+      <div className={s.column}>
+        <Field
+          label={t('volunteer_portal.admin.tab.events.add.capacity')}
           className={s.field}
           name="capacity"
           component={renderField}
@@ -218,7 +279,7 @@ const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, orga
     </div>
     <div className={s.inputGroup}>
       <button className={`${s.btn} ${s.primary}`} type="submit" disabled={disableSubmit}>
-        Save
+        {t('volunteer_portal.admin.tab.events.add.save')}
       </button>
     </div>
     {children}

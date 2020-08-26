@@ -5,7 +5,7 @@ import moment from 'moment'
 import CheckCircleIcon from '@zendeskgarden/svg-icons/src/16/check-circle-stroke.svg'
 import InfoIcon from '@zendeskgarden/svg-icons/src/16/info-stroke.svg'
 import XCircleIcon from '@zendeskgarden/svg-icons/src/16/x-circle-stroke.svg'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../lib/i18n'
 
 import { Modal, Close } from '@zendeskgarden/react-modals'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -87,40 +87,40 @@ const IndividualEvents = props => {
   const individualEventsColumns = [
     {
       id: 'description',
-      Header: 'Description',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.description'),
       accessor: 'description',
     },
     {
       id: 'organization',
-      Header: 'Organization',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.organization'),
       accessor: 'organization.name',
     },
     {
       id: 'date',
-      Header: 'Date',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.date'),
       Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
       accessor: 'date',
     },
     {
       id: 'duration',
-      Header: 'Duration (min)',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.duration'),
       accessor: 'duration',
     },
     {
       id: 'type',
-      Header: 'Type',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.type'),
       accessor: 'eventType.title',
     },
     {
       id: 'approval',
-      Header: 'Approval',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.approval'),
       accessor: d => eventStatusIcon(d),
       width: 75,
       style: { textAlign: 'center' },
     },
     {
       id: 'actions',
-      Header: 'Actions',
+      Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.actions'),
       accessor: d => d,
       sortable: false,
       width: 180,
@@ -200,7 +200,7 @@ const IndividualEvents = props => {
       {currentUser.individualEvents.length === 0 ? (
         noIndividualEventsMessage
       ) : (
-        <ReactTable
+        <I18nReactTable
           NoDataComponent={() => null}
           data={currentUser.individualEvents}
           columns={individualEventsColumns}

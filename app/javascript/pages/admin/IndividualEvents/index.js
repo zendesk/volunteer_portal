@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { NetworkStatus } from 'apollo-client'
 import moment from 'moment'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../../lib/i18n'
 import { withTranslation } from 'react-i18next'
 
 import Loading from 'components/LoadingIcon'
@@ -132,7 +132,7 @@ class IndividualEvents extends React.Component {
             {t('volunteer_portal.admin.tab.individualevent.apply')}
           </button>
         </div>
-        <ReactTable
+        <I18nReactTable
           NoDataComponent={() => null}
           data={pendingIndividualEvents}
           columns={this.individualEventsColumns}

@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../lib/i18n'
 
 import { NoEventsMessage, EventsTable } from './StyledComponents'
 
@@ -9,33 +9,33 @@ import { useTranslation } from 'react-i18next'
 const organizedEventsColumns = (t) => [
   {
     id: 'event',
-    Header: 'Event',
+    Header: t('volunteer_portal.admin.tab.user.myevents.organizedevents.events'),
     accessor: 'title',
   },
   {
     id: 'organization',
-    Header: 'Organization',
+    Header: t('volunteer_portal.admin.tab.user.myevents.organizedevents.organization'),
     accessor: 'organization.name',
   },
   {
     id: 'date',
-    Header: 'Date',
+    Header: t('volunteer_portal.admin.tab.user.myevents.organizedevents.date'),
     Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
     accessor: 'startsAt',
   },
   {
     id: 'duration',
-    Header: 'Duration (min)',
+    Header: t('volunteer_portal.admin.tab.user.myevents.organizedevents.duration'),
     accessor: 'duration',
   },
   {
     id: 'type',
-    Header: 'Type',
+    Header: t('volunteer_portal.admin.tab.user.myevents.organizedevents.type'),
     accessor: 'eventType.title',
   },
   {
     id: 'location',
-    Header: 'Location',
+    Header: t('volunteer_portal.admin.tab.user.myevents.organizedevents.location'),
     accessor: 'location',
   },
 ]
@@ -54,7 +54,7 @@ const OrganizedEvents = ({ currentUser: { signups } }) => {
       {signups.length === 0 ? (
         noOrganizedEventsMessage
       ) : (
-        <ReactTable
+        <I18nReactTable
           NoDataComponent={() => null}
           data={signups.map(signup => signup.event)}
           columns={organizedEventsColumns(t)}

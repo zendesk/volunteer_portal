@@ -1,6 +1,6 @@
 import React, { useContext, useCallback } from 'react'
 import * as R from 'ramda'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../../lib/i18n'
 import moment from 'moment'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
@@ -172,7 +172,7 @@ const Events = ({ t }) => {
           <Button>{t('volunteer_portal.admin.tab.events_addevent')}</Button>
         </MarginedLink>
       </FilterGroup>
-      <ReactTable
+      <I18nReactTable
         NoDataComponent={() => null}
         data={events}
         columns={columns(onDeleteEvent, t)}

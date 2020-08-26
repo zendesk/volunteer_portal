@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
 import { NetworkStatus } from 'apollo-client'
 import * as R from 'ramda'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../../lib/i18n'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -119,7 +119,7 @@ const Offices = ({ data: { networkStatus, offices }, deleteOffice, destroyOffice
           <Button>{t('volunteer_portal.admin.tab.offices_add_office')}</Button>
         </Link>
       </FilterGroup>
-      <ReactTable
+      <I18nReactTable
         NoDataComponent={() => null}
         data={offices}
         columns={columns(togglePopover, t)}
