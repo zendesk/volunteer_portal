@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
 import { NetworkStatus } from 'apollo-client'
 import * as R from 'ramda'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../../lib/i18n'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -121,7 +121,7 @@ const EventTypes = ({
           <Button>{t('volunteer_portal.admin.tab.eventtypes_addeventtype')}</Button>
         </Link>
       </FilterGroup>
-      <ReactTable
+      <I18nReactTable
         NoDataComponent={() => null}
         data={eventTypes}
         columns={columns(togglePopover, t)}
@@ -188,12 +188,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+  togglePopover,
+})
 
 export default withActions(withData(withTranslation()(EventTypes)))

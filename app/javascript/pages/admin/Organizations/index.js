@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
 import { NetworkStatus } from 'apollo-client'
 import * as R from 'ramda'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../../lib/i18n'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -128,7 +128,7 @@ const Organizations = ({
           <Button>{t('volunteer_portal.admin.tab.organizations_add_organization')}</Button>
         </Link>
       </FilterGroup>
-      <ReactTable
+      <I18nReactTable
         NoDataComponent={() => null}
         data={organizations}
         columns={columns(togglePopover, t)}

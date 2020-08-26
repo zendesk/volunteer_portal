@@ -8,15 +8,17 @@ import OfficeForm from 'components/OfficeForm'
 
 import s from './form.css'
 
+import i18next from 'i18next'
+
 const validate = values => {
   const errors = {}
 
   if (!values.name) {
-    errors.name = 'is required'
+    errors.name = i18next.t('volunteer_portal.admin.tab.offices_addoffice_name.error') //'is required'
   }
 
   if (!values.timezone || values.timezone === '-') {
-    errors.timezone = 'is required'
+    errors.timezone = i18next.t('volunteer_portal.admin.tab.offices_addoffice_timezone.error')
   }
 
   return errors
@@ -38,9 +40,6 @@ const mapStateToProps = ({ graphQLErrors }, { office }) => {
   return R.isNil(office) ? props : R.merge({ initialValues: office }, props)
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {}
-)
+const withActions = connect(mapStateToProps, {})
 
 export default withActions(withReduxForm(OfficeFormPage))

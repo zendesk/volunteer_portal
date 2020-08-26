@@ -68,10 +68,22 @@ volunteer_portal.admin.tab.events.add.eventtype,Event Type,,https://drive.google
 volunteer_portal.admin.tab.events.add.organization,Organization,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.office,Office,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.location,Location,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.searchplaces,Search places,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.startdate,Start Date,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.starttime,Start Time,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.enddate,End Date,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.endtime,End Time,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.title.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.description.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.tags.error,- are required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.eventtype.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.organization.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.office.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.location.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.starts.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.ends.error,- is required,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.startsends.error,- is ending before it started,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.capacity.error,- is required and must be a number,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.capacity,Capacity,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.save,Save,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.eventtype.save,Save,,,true
@@ -93,7 +105,9 @@ volunteer_portal.admin.tab.offices_delete_cancel,Cancel,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete,Delete,,,TRUE
 volunteer_portal.admin.tab.offices_add_office,Add Office,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_name,Name,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_name.error,- is required,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_timezone,Timezone,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_timezone.error,- is required,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_selecttimezone,Select timezone,,,TRUE
 volunteer_portal.admin.tab.offices_addoffice_save,Save,,,TRUE
 volunteer_portal.admin.tab.offices_delete_delete_office,Delete Office,,,TRUE
@@ -106,7 +120,7 @@ volunteer_portal.admin.tab.organizations_actions,Actions,,,TRUE
 volunteer_portal.admin.tab.organizations.add.name,Name,,,TRUE
 volunteer_portal.admin.tab.organizations.add.description,Description,,,TRUE
 volunteer_portal.admin.tab.organizations.add.location,Location,,,TRUE
-volunteer_portal.admin.tab.organizations.add.location,Website,,,TRUE
+volunteer_portal.admin.tab.organizations.add.website,Website,,,TRUE
 volunteer_portal.admin.tab.organizations.add.save,Save,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_cancel,Cancel,,,TRUE
 volunteer_portal.admin.tab.organizations_delete_delete,Delete,,,TRUE
@@ -219,3 +233,10 @@ volunteer_portal.admin.tab.user.myevents.individualevent.duration,Duration (min)
 volunteer_portal.admin.tab.user.myevents.individualevent.type,Type,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.approval,Approval,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.actions,Actions,,,true
+volunteer_portal.reacttable.next,Next,,,true
+volunteer_portal.reacttable.previous,Previous,,,true
+volunteer_portal.reacttable.loading,Loading...,,,true
+volunteer_portal.reacttable.nodatatext,No rows found,,,true
+volunteer_portal.reacttable.page,Page,,,true
+volunteer_portal.reacttable.of,of,,,true
+volunteer_portal.reacttable.rows,rows,,,true

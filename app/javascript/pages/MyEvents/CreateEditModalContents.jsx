@@ -14,7 +14,7 @@ import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 import TagField from 'components/TagField'
 import { UserContext } from '../../context/UserContext'
 
-import { withTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 const PaddedField = styled(GField)`
   flex: 1;
@@ -36,8 +36,7 @@ const CreateEditModalContents = ({
   createEditIndividualEvent,
   isNew,
   setShowCreateEditModal,
-  modalEventData,
-  t
+  modalEventData
 }) => {
   const currentUserOffice = useContext(UserContext).currentUser.office
 
@@ -48,6 +47,8 @@ const CreateEditModalContents = ({
   const [duration, setDuration] = useState(modalEventData?.duration || 0)
   const [selectedEventType, setSelectedEventType] = useState(modalEventData?.eventType)
   const [selectedOrg, setSelectedOrg] = useState(modalEventData?.organization)
+
+  const { t, i18n } = useTranslation()
 
   const [showFieldErrors, setShowFieldErrors] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -117,7 +118,7 @@ const CreateEditModalContents = ({
         </PaddedField>
         <PaddedField>
           <Label>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date')}</Label>
-          <Datepicker value={date} onChange={setDate}>
+          <Datepicker value={date} onChange={setDate} locale={i18n.language}>
             <Input />
           </Datepicker>
           {showFieldErrors && !isValidSelect(date) && <Message validation={'error'}>{t('volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date.error')}</Message>}
@@ -182,4 +183,4 @@ const CreateEditModalContents = ({
   )
 }
 
-export default withTranslation()(CreateEditModalContents)
+export default CreateEditModalContents

@@ -7,13 +7,13 @@ export const I18nReactTable = (props) => {
   return(
     <ReactTable
       {...props}
-      previousText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
-      nextText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
-      loadingText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
-      noDataText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
-      pageText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
-      ofText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
-      rowsText={t('volunteer_portal.dashboard.layouteventstab.office_all')}
+      previousText={t('volunteer_portal.reacttable.previous')}
+      nextText={t('volunteer_portal.reacttable.next')}
+      loadingText={t('volunteer_portal.reacttable.loading')}
+      noDataText={t('volunteer_portal.reacttable.nodatatext')}
+      pageText={t('volunteer_portal.reacttable.page')}
+      ofText={t('volunteer_portal.reacttable.of')}
+      rowsText={t('volunteer_portal.reacttable.rows')}
     />
   )
 }

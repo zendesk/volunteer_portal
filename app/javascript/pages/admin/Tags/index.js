@@ -4,7 +4,7 @@ import { graphql, compose } from 'react-apollo'
 import { connect } from 'react-redux'
 import { NetworkStatus } from 'apollo-client'
 import * as R from 'ramda'
-import ReactTable from 'react-table'
+import { I18nReactTable } from '../../../lib/i18n'
 import { Link } from 'react-router'
 import Dialog from 'material-ui/Dialog'
 import { Button } from '@zendeskgarden/react-buttons'
@@ -109,7 +109,7 @@ const Tags = withTranslation()(({ data: { networkStatus, tags }, deleteTag, togg
           <Button>{t('volunteer_portal.admin.tab.tags.addtag')}</Button>
         </Link>
       </FilterGroup>
-      <ReactTable
+      <I18nReactTable
         NoDataComponent={() => null}
         data={tags}
         columns={columns(t, togglePopover)}
@@ -175,12 +175,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    graphQLError,
-    togglePopover,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  graphQLError,
+  togglePopover,
+})
 
 export default withActions(withData(withTranslation()(Tags)))

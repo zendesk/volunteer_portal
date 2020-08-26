@@ -1,0 +1,242 @@
+key,,title,screenshot,wip
+volunteer_portal.menu.settings,設定,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.default_office,デフォルトオフィス,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.language,言語,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.admin,管理,,https://drive.google.com/drive/u/0/folders/1sVF-vGBRtytyPRGT2B3RIwd6LKMkh70g,TRUE
+volunteer_portal.header.user_profile.volunteer,ボランティア,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.header.user_profile.sign_out,サインアウト,,https://drive.google.com/file/d/1sscA9IzOk7uqy7LU6ow_iZ_6IcjfFn6K,TRUE
+volunteer_portal.dashboard.layouttab.calendar,カレンダー,Clickable tab that displays the Calendar View,https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f,TRUE
+volunteer_portal.dashboard.layouttab.dashboard,ダッシュボード,Clickable tab that displays the Dashboard View,https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4,TRUE
+volunteer_portal.dashboard.layouttab.myevents,マイイベント,Clickable tab that displays the user related events,https://drive.google.com/open?id=1sbs3Uo2e764YFh40Na2DQsdahVD2W-Ne,TRUE
+volunteer_portal.dashboard.layoutdatetab.today,今日,Clickable text that will show the calendar with today's date,https://drive.google.com/open?id=1pO28Ugnx0UGXP5E3dM8y0LpogdPc5Cnt,TRUE
+volunteer_portal.dashboard.layouteventstab.show,表示：,Text refering to what events to show My Events or All Events,https://drive.google.com/open?id=1p9A8huzT8xpJmwKY6P_Ci4sqC6uh7r_t,TRUE
+volunteer_portal.dashboard.layouteventstab.show_all,すべて,Dropdown to choose between seeing All Events or My Events only,https://drive.google.com/open?id=1lsq8KegHPQ34zhTJKvUsQTXro9dV3Ic6,TRUE
+volunteer_portal.dashboard.layouteventstab.show_myevents,マイイベント,Dropdown to choose between seeing All Events or My Events only,https://drive.google.com/open?id=1gshUUNWv0KL4idMo_e4DdYweouTdLwRl,TRUE
+volunteer_portal.dashboard.layouteventstab.event,イベント：,"Text refering to what events to show Open, Full or All",https://drive.google.com/open?id=1GgUV7v5EoMrY5NP2q3ksQRxZZM6ercUG,TRUE
+volunteer_portal.dashboard.layouteventstab.event_all,すべて,"Dropdown to choose between seeing All, Open or Full Events only",https://drive.google.com/open?id=112x7kr7hckUNBbsXqSEbU7HwRYko8KOW,TRUE
+volunteer_portal.dashboard.layouteventstab.event_open,オープン,"Dropdown to choose between seeing All, Open or Full Events only",https://drive.google.com/open?id=1zJjGC180wYoZA_7QifaQMLtAZDnT3GBl,TRUE
+volunteer_portal.dashboard.layouteventstab.event_full,満員,"Dropdown to choose between seeing All, Open or Full Events only",https://drive.google.com/open?id=1FiTovVMi8v6-GnfLeAyLVJxwkkHvI8eP,TRUE
+volunteer_portal.dashboard.layouteventstab.office,オフィス：,Text refering to what office events to show whether one specific city or All cities,https://drive.google.com/open?id=11wK-cIUOnyBhcAUd639IXvEyhrAQ_6kK,TRUE
+volunteer_portal.dashboard.layouteventstab.office_all,すべて,Dropdown to choose between seeing events in All cities or one in specific,https://drive.google.com/open?id=1OzKPa8-smgMHXg8G3dnqXyw3RiB7PM8j,TRUE
+volunteer_portal.admin.tab.office,オフィス：,Text refering to what office events to show whether one specific city or All cities,https://drive.google.com/open?id=1DT8S0VLfRy68pNDWZ15YmWclQYFuG5LH,TRUE
+volunteer_portal.admin.tab.office_all,すべて,Dropdown to choose between seeing events in All cities or one in specific,https://drive.google.com/open?id=16hA6lNYl0pB4qoSf6EzaekQgYfEHlT40,TRUE
+volunteer_portal.admin.tab.dashboard,ダッシュボード,Clickable tab that displays the administrator Dashboard View,https://drive.google.com/open?id=1CDtmITTBBL_oWPpSfw9WyCAZteHXh0HH,TRUE
+volunteer_portal.admin.tab.events,イベント,Clickable tab that displays the administrator Events View,https://drive.google.com/open?id=1hog3if5Cu3egwE4G_CdoDipkZQwcpmD-,TRUE
+volunteer_portal.admin.tab.eventtypes,イベントタイプ,Clickable tab that displays the administrator Event Types View,https://drive.google.com/open?id=1p5l0rZo-2pFQITAXFMy45CFcc5gV0GFK,TRUE
+volunteer_portal.admin.tab.tags,タグ,Clickable tab that displays the administrator Tags View,https://drive.google.com/drive/u/0/folders/1sVF-vGBRtytyPRGT2B3RIwd6LKMkh70g,TRUE
+volunteer_portal.admin.tab.offices,オフィス,Clickable tab that displays the administrator Offices View,https://drive.google.com/open?id=1f9nZnTUKQaMnpNquc1VqdH6sKvryNJ4W,TRUE
+volunteer_portal.admin.tab.organizations,組織,Clickable tab that displays the administrator Organizations View,https://drive.google.com/open?id=1F1sxXNsCd-2AtR-4unVZPOLK1P7l8zwt,TRUE
+volunteer_portal.admin.tab.individualevents,個人のイベント,Clickable tab that displays the administrator Individual Events View,https://drive.google.com/open?id=1qVwYdnBDhMRR9l3eqx-yyHTWPchQDHiJ,TRUE
+volunteer_portal.admin.tab.users,ユーザー,Clickable tab that displays the administrator Users View,https://drive.google.com/open?id=1bQIlk90OYX9FDR8lZU1p_aR3o3jlr0cm,TRUE
+volunteer_portal.admin.tab.reporting,レポーティング,Clickable tab that displays the administrator Reporting View,https://drive.google.com/open?id=1ilxTU6f_yWopyoVEZIHPI2z6VDHY__H8,TRUE
+volunteer_portal.calendar.bigcalendar.month,月,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.week,週,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.work_week,週間労働時間,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.day,日,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
+volunteer_portal.calendar.bigcalendar.agenda,アジェンダ,No need to translate,,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek,今週,Label on top of This Week events,https://drive.google.com/file/d/1XKDa1cbJTpEwiBkfT6qt_N-Zbvi1_TOA,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth,今月,Label on top of This Month events,https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z,TRUE
+volunteer_portal.admin.tab.dashboard_noeventsthisweek,今週のイベントはありません,Text when there are no events on this week,https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_events,イベント,Text title for a number of events this week,https://drive.google.com/open?id=1ErqgKSMqsVyrsDwj_sorGCG5ofdx4iVp,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_volunteers,ボランティア,Text title beginning for a number of volunteers registered this week,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_registered,申込者,Text title continuation for a number of volunteers registered this week,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_hours,時間,Text title beginning for a number of hours commited this week,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_committed,総合計,Text title continuation for a number of hours committed this week,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thisweek_spotsfilled,申し込み率,Text title a percentage of volunteering spots filled this week,https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL,TRUE
+volunteer_portal.admin.tab.dashboard_noeventsthismonth,今月のイベントはありません,Text when there are no events on this month,https://drive.google.com/open?id=1Ss1sH1AbMMWEfwuuwW-U59djPHQzRoT3,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_events,イベント,Text title for a list of events this month,https://drive.google.com/open?id=1ErqgKSMqsVyrsDwj_sorGCG5ofdx4iVp,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_volunteers,ボランティア,Text title beginning for a number of volunteers registered this month,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_registered,申込者,Text title continuation for a number of volunteers registered this month,https://drive.google.com/open?id=1ivyFAFzOoYm_I_DjERnlPTAiZwbEhzkQ,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_hours,時間,Text title beginning for a number of hours commited this month,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_committed,総合計,Text title continuation for a number of hours committed this month,https://drive.google.com/open?id=19Hbs1543LqKUjjW0YkShYlVGPgL94yd2,TRUE
+volunteer_portal.admin.tab.dashboard_thismonth_spotsfilled,申し込み率,Text title a percentage of volunteering spots filled this month,https://drive.google.com/open?id=1Y0TkntLA2PmdlniPcf1vk-mJK6W_lbLL,TRUE
+volunteer_portal.admin.tab.events_addevent,イベントの追加,Button label to action add an event,https://drive.google.com/open?id=1gVgD847rRwXjXfk778mPTol_J12zE3g1,TRUE
+volunteer_portal.admin.tab.events_addevent.title,タイトル,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,TRUE
+volunteer_portal.admin.tab.events_editevent,編集,Button label to take you to edit event page,https://drive.google.com/open?id=1xZksLkPfj56nwISFbw-M1OBcwtq9l4bZ,TRUE
+volunteer_portal.admin.tab.events_cloneevent,複製,Button label to take you to clone event page,https://drive.google.com/open?id=1asG_2C-G3PIyik5BYlEQjg7rgUjtPkqj,TRUE
+volunteer_portal.admin.tab.events_deleteevent,削除,Button label to delete an event,https://drive.google.com/open?id=1ed0yL5peTPc4dBJmT6fZG-NHewpmLcAD,TRUE
+volunteer_portal.admin.tab.events_columntitle,タイトル,Column title for the field Title,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnorganization,組織,Column title for the field Organization,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnstart,開始,Column title for the field Start as in date and time,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnduration,期間,Column title for the field Duration in minutes of the event,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnparticipants,参加者,Column title for the field Participant for a number of people,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events_columnactions,アクション,Column title for the field Action,https://drive.google.com/file/d/17jEx1VbhELmlr0lcgCewM0i86arjFY5l,TRUE
+volunteer_portal.admin.tab.events.add.title,タイトル,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.description,説明,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.tags,タグ,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.eventtype,イベントタイプ,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.organization,組織,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.office,オフィス,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.location,場所,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.searchplaces,場所を検索,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.startdate,開始日,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.starttime,開始時刻,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.enddate,終了日,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.endtime,終了時刻,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.title.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.description.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.tags.error,必須,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.eventtype.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.organization.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.office.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.location.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.starts.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.ends.error,必須項目,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.startsends.error,開始する前に終了しています,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.capacity.error,必須項目で、数字である必要があります,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.capacity,キャパシティ,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.add.save,保存,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.eventtype.save,保存,,,true
+volunteer_portal.admin.tab.eventtype.title,タイトル,,,true
+volunteer_portal.admin.tab.eventtypes_edit,編集,Text button to edit an event type,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_delete,削除,Text button to delete an event type,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_title,タイトル,Column title for the field Title,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_actions,アクション,Column title for the field Actions,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_addeventtype,イベントタイプの追加,Text button to open a window to Add and new event type,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
+volunteer_portal.admin.tab.eventtypes_cancel,キャンセル,Text button to cancel the deletion of an event type,,TRUE
+volunteer_portal.admin.tab.eventtypes_deleteeventtype,イベントタイプの削除,Title for the confirmation window of Delete Event Type,,TRUE
+volunteer_portal.admin.tab.eventtypes_deleteeventtypeconfirmation,削除してもよろしいですか？,Message for the confirmation window of Delete Event Type,,TRUE
+volunteer_portal.admin.tab.offices_edit,編集,Message for the confirmation window of Delete Event Type,,TRUE
+volunteer_portal.admin.tab.offices_delete,削除,,,TRUE
+volunteer_portal.admin.tab.offices_name,名前,,,TRUE
+volunteer_portal.admin.tab.offices_timezone,タイムゾーン,,,TRUE
+volunteer_portal.admin.tab.offices_actions,アクション,,,TRUE
+volunteer_portal.admin.tab.offices_delete_cancel,キャンセル,,,TRUE
+volunteer_portal.admin.tab.offices_delete_delete,削除,,,TRUE
+volunteer_portal.admin.tab.offices_add_office,オフィスの追加,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_name,名前,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_name.error,必須項目,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_timezone,タイムゾーン,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_timezone.error,必須項目,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_selecttimezone,タイムゾーンの選択,,,TRUE
+volunteer_portal.admin.tab.offices_addoffice_save,保存,,,TRUE
+volunteer_portal.admin.tab.offices_delete_delete_office,オフィスの削除,,,TRUE
+volunteer_portal.admin.tab.offices_delete_confirmation,{{office}}を削除してもよろしいですか?,,,TRUE
+volunteer_portal.admin.tab.organizations_edit,編集,,,TRUE
+volunteer_portal.admin.tab.organizations_delete,削除,,,TRUE
+volunteer_portal.admin.tab.organizations_name,名前,,,TRUE
+volunteer_portal.admin.tab.organizations_location,場所,,,TRUE
+volunteer_portal.admin.tab.organizations_actions,アクション,,,TRUE
+volunteer_portal.admin.tab.organizations.add.name,名前,,,TRUE
+volunteer_portal.admin.tab.organizations.add.description,説明,,,TRUE
+volunteer_portal.admin.tab.organizations.add.location,場所,,,TRUE
+volunteer_portal.admin.tab.organizations.add.website,Webサイト,,,TRUE
+volunteer_portal.admin.tab.organizations.add.save,保存,,,TRUE
+volunteer_portal.admin.tab.organizations_delete_cancel,キャンセル,,,TRUE
+volunteer_portal.admin.tab.organizations_delete_delete,削除,,,TRUE
+volunteer_portal.admin.tab.organizations_add_organization,組織を追加,,,TRUE
+volunteer_portal.admin.tab.organizations_delete_organization,組織の削除,,,TRUE
+volunteer_portal.admin.tab.organization.delete_confirmation,{{organization}}を削除してもよろしいですか?,,,TRUE
+volunteer_portal.admin.tab.users_edit,編集,,,TRUE
+volunteer_portal.admin.tab.users_edit.name,名前,,,TRUE
+volunteer_portal.admin.tab.users_edit.email,メール,,,TRUE
+volunteer_portal.admin.tab.users_edit.timezone,タイムゾーン,,,TRUE
+volunteer_portal.admin.tab.users_edit.timezone.select,タイムゾーンの選択,,,TRUE
+volunteer_portal.admin.tab.users_edit.admin,管理,,,TRUE
+volunteer_portal.admin.tab.users_edit.office,オフィス,,,TRUE
+volunteer_portal.admin.tab.users_edit.save,保存,,,TRUE
+volunteer_portal.admin.tab.users_delete,削除,,,TRUE
+volunteer_portal.admin.tab.users_name,名前,,,TRUE
+volunteer_portal.admin.tab.users_email,メール,,,TRUE
+volunteer_portal.admin.tab.users_group,グループ,,,TRUE
+volunteer_portal.admin.tab.users_actions,アクション,,,TRUE
+volunteer_portal.admin.tab.users_delete_cancel,キャンセル,,,TRUE
+volunteer_portal.admin.tab.users_delete_delete,削除,,,TRUE
+volunteer_portal.admin.tab.users_delete_user,ユーザーの削除,,,TRUE
+volunteer_portal.admin.tab.user.delete.confirmation,{{user}}を削除してもよろしいですか?,,,TRUE
+volunteer_portal.filters.office.fetch_error,オフィスリストを読み込めません,Text notifying that an error occured while fethcing the list of offices,,TRUE
+volunteer_portal.admin.tab.individualevent.pendingapproval,承認待機中,,,true
+volunteer_portal.admin.tab.individualevent.bulkactions,一括アクション,,,true
+volunteer_portal.admin.tab.individualevent.approve,承認,,,true
+volunteer_portal.admin.tab.individualevent.reject,却下,,,true
+volunteer_portal.admin.tab.individualevent.apply,適用,,,true
+volunteer_portal.admin.tab.individualevent.user,ユーザー,,,true
+volunteer_portal.admin.tab.individualevent.description,説明,,,true
+volunteer_portal.admin.tab.individualevent.date,日付,,,true
+volunteer_portal.admin.tab.individualevent.duration,期間, (min),,true
+volunteer_portal.admin.tab.individualevent.organization,組織,,,true
+volunteer_portal.admin.tab.individualevent.type,タイプ,,,true
+volunteer_portal.admin.tab.tags.label,タグ,,,true
+volunteer_portal.admin.tab.tags.actions,アクション,,,true
+volunteer_portal.admin.tab.tags.edit,編集,,,true
+volunteer_portal.admin.tab.tags.addtag,タグを追加,,,true
+volunteer_portal.admin.tab.tags_addtag_save,保存,,,true
+volunteer_portal.admin.tab.tags_addtag_name,名前,,,true
+volunteer_portal.admin.tab.tags.delete,削除,,,true
+volunteer_portal.admin.tab.tags.cancel,キャンセル,,,true
+volunteer_portal.admin.tab.tags.deletetag,タグの削除,,,true
+volunteer_portal.admin.tab.tags_delete_confirmation,{{tag}}を削除してもよろしいですか?,,,true
+volunteer_portal.admin.tab.reporting.name,名前,,,true
+volunteer_portal.admin.tab.reporting.email,メール,,,true
+volunteer_portal.admin.tab.reporting.office,オフィス,,,true
+volunteer_portal.admin.tab.reporting.from,開始日,,,true
+volunteer_portal.admin.tab.reporting.to,終了日,,,true
+volunteer_portal.admin.tab.reporting.hours,時間,,,true
+volunteer_portal.admin.tab.reporting.exportascsv,CSVにエクスポート,,,true
+volunteer_portal.admin.tab.user.dashboard.topvolunteers,トップボランティア,,,true
+volunteer_portal.admin.tab.user.dashboard.topvolunteers.hours,時間,,,true
+volunteer_portal.admin.tab.user.dashboard.networkerror,ネットワークエラー,,,true
+volunteer_portal.admin.tab.user.dashboard.networkerrormessage,"現在、サーバーからデータを取得できません。後でもう一度やり直してください。",,,true
+volunteer_portal.admin.tab.user.dashboard.totalhours,合計時間,,,true
+volunteer_portal.admin.tab.user.dashboard.personal,個人,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone,マイルストーン,,,true
+volunteer_portal.admin.tab.user.dashboard.hours,時間,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone1,マイルストーン,,,true
+volunteer_portal.admin.tab.user.dashboard.hours1,時間,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone.1hour,1時間,,,true
+volunteer_portal.admin.tab.user.dashboard.milestone.complete,完了,,,true
+volunteer_portal.admin.tab.user.dashboard.nousersfound,ユーザーが見つかりません,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent,個人のイベント,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.message,参加して記録したいプライベートイベント。,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent,レコードイベント,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description,説明,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description.error,空にすることはできません,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization,組織,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.hint,"このリストに組織を追加するには、お問い合わせいただくか、「その他」を選択してください",,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.error,1つを選択する必要があります,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date,日付,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date.error,1つを選択する必要があります,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration,期間,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.hours,時間,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.duration.error,0より大きい値を指定してください,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type,イベントタイプ,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.type.error,1つを選択する必要があります,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags,タグ,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags.error,少なくとも1つのタグを追加します,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office,オフィス,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office.error,選択が必要,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.record,記録,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.edit,編集,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.editevent,イベントの編集,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent,イベントの削除,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.description,このイベントを削除しますか?,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.cancel,キャンセル,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.delete,削除,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.clone,複製,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents,オーガナイズされたイベント,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.description,"カレンダーにある、あなたの組織によってオーガナイズされたイベント",,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.noevents,オーガナイズされたイベントに参加されていないようです。カレンダーをチェックして、初めてのイベントに参加しましょう!,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.events,イベント,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.organization,組織,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.date,日付,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.duration,期間（分）,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.type,タイプ,,,true
+volunteer_portal.admin.tab.user.myevents.organizedevents.location,場所,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.noevents,ここには個人のイベントがないようです。ボランティアとあなたの最初のイベントを記録します。,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.edit,編集,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.clone,複製,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.delete,削除,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.description,説明,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.organization,組織,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.date,日付,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.duration,期間（分）,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.type,タイプ,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.approval,承認,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.actions,アクション,,,true
+volunteer_portal.reacttable.next,次へ,,,true
+volunteer_portal.reacttable.previous,前へ,,,true
+volunteer_portal.reacttable.loading,読み込み中...,,,true
+volunteer_portal.reacttable.nodatatext,見つかりませんでした,,,true
+volunteer_portal.reacttable.page,ページ,,,true
+volunteer_portal.reacttable.of,/,,,true
+volunteer_portal.reacttable.rows,行,,,true
