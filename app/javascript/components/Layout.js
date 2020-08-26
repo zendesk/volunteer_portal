@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
 import * as R from 'ramda'
-import { withTranslation } from 'react-i18next'
 
 const styles = {
   container: {
@@ -40,50 +38,10 @@ styles.activeBtn = R.merge(styles.btn, {
   borderBottom: '3px solid #30aabc',
 })
 
-const Tab = ({ path, text, currentPath }) => {
-  let label
-  let style
-
-  if (path === currentPath) {
-    label = `${text} - Active`
-    style = styles.activeBtn
-  } else {
-    label = text
-    style = styles.btn
-  }
-
-  return (
-    <Link to={path}>
-      <span style={style} aria-labelledby={label}>
-        {text}
-      </span>
-    </Link>
-  )
-}
-
-const Layout = ({ noNav, currentPath, children, t }) => (
+const Layout = ({ children }) => (
   <div style={styles.container}>
-    <div style={styles.wrapper}>
-      {noNav ? null : (
-        <div style={styles.navBar}>
-          <Tab path="/portal" text={t('volunteer_portal.dashboard.layouttab.calendar')} currentPath={currentPath} />
-          <div style={styles.btnSpacer} />
-          <Tab
-            path="/portal/dashboard"
-            text={t('volunteer_portal.dashboard.layouttab.dashboard')}
-            currentPath={currentPath}
-          />
-          <div style={styles.btnSpacer} />
-          <Tab
-            path="/portal/events"
-            text={t('volunteer_portal.dashboard.layouttab.myevents')}
-            currentPath={currentPath}
-          />
-        </div>
-      )}
-      {children}
-    </div>
+    <div style={styles.wrapper}>{children}</div>
   </div>
 )
 
-export default withTranslation()(Layout)
+export default Layout

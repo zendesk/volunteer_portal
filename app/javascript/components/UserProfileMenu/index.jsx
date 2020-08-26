@@ -112,7 +112,7 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
     } else if (tempSelectedItem === 'language-settings') {
       return <LanguageMenu languages={languages} previousMenuValue="general-settings" selectedItem={selectedItem} t={t} />
     } else {
-      return <GeneralSettingsMenu menuValues={{ defaultOffice: 'default-office', languageSettings: 'language-settings'}} isAdmin={currentUser.isAdmin} pathname={location.pathname} t={t} />
+      return <GeneralSettingsMenu menuValues={{ defaultOffice: 'default-office', languageSettings: 'language-settings'}} pathname={location.pathname} t={t} />
     }
   }
 

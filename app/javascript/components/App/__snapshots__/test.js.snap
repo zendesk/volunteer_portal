@@ -457,7 +457,7 @@ exports[`loads 1`] = `
       }
     >
       <div>
-        <Header>
+        <withI18nextTranslation(Header)>
           <withRouter(UserProfileMenu)
             offices={Array []}
             popover={
@@ -469,7 +469,7 @@ exports[`loads 1`] = `
             }
             togglePopover={[Function]}
           />
-        </Header>
+        </withI18nextTranslation(Header)>
         <Notifications />
       </div>
     </MuiThemeProvider>
