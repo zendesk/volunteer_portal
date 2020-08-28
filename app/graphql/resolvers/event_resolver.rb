@@ -48,6 +48,8 @@ module EventResolver
       event = Event.find(args[:id])
       event.soft_delete!
 
+      signups = Signup.where(event_id: args[:id]).destroy_all
+
       event
     end
 
