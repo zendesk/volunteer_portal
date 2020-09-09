@@ -318,7 +318,7 @@ DEPENDENCIES
   maxitest
   memory_profiler
   minitest-ci
-  minitest-rails (= 5.2.0)
+  minitest-rails
   mocha
   omniauth-google-oauth2
   omniauth-saml
