@@ -942,6 +942,11 @@ exports[`loads 1`] = `
             America/North_Dakota/New_Salem
           </option>
           <option
+            value="America/Nuuk"
+          >
+            America/Nuuk
+          </option>
+          <option
             value="America/Ojinaga"
           >
             America/Ojinaga
