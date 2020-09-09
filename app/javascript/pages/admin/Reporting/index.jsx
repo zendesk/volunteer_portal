@@ -6,7 +6,6 @@ import {
   Dropdown,
   Menu,
   Item,
-  Trigger,
   Separator,
   NextItem,
   PreviousItem,
@@ -16,12 +15,11 @@ import {
 import { Field as FormField, Input, FauxInput } from '@zendeskgarden/react-forms'
 import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Button } from '@zendeskgarden/react-buttons'
+import { Skeleton } from '@zendeskgarden/react-loaders';
 
-import Loading from 'components/LoadingIcon'
-import Reporting from 'components/Reporting'
-
+import UserReporting from 'components/Reporting/User'
+import ReportingQuery from './queries/userReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
-import ReportingQuery from './queries/reportingQuery.gql'
 import { useTranslation } from 'react-i18next'
 
 import { addDays } from 'date-fns'
@@ -45,6 +43,11 @@ const AdminSection = styled.div`
 const ContentFlex = styled.div`
   display: flex;
   justify-content: space-between;
+`
+
+const Section = styled.hr`
+  margin: 16px 0px;
+  border: 1px solid ${({theme}) => theme.palette.grey["200"]};
 `
 
 const defaultStartDate = moment().startOf('year')
@@ -71,15 +74,13 @@ const ReportingPage = _props => {
   const [ dateRange, setDateRange ] = useState(initialRange)
   const { filters } = useContext(FilterContext)
   const [ getUsers, { loading: userLoading, data: userData } ] = useLazyQuery(ReportingQuery)
-
-  // if (userError /** && other errors */) console.log(userError.graphQLErrors
   
   useEffect(() => {
     switch (report) {
       case 'user':
         if (userData) {
           const headers = 'Name,Email,Office,Hours\n'
-          const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.officeName},${row.hours}\n`, headers, userData.users)
+          const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.hours}\n`, headers, userData.users)
           const octetStream = encodeURIComponent(csv)
           setOctectStream(octetStream)
         }
@@ -108,13 +109,13 @@ const ReportingPage = _props => {
   const changeStartDate = date => setDateRange(R.set(R.lensProp('start'), date))
   const changeEndDate = date => setDateRange(R.set(R.lensProp('end'), date))
 
-  const reportKeyMap = {
+  const reportKeyTitleMap = {
     "user": "User"
   }
 
   return (
     <AdminSection>
-      <div style={{ width: 935 }}>
+      <div style={{ width: "100%" }}>
         <ContentFlex>
           <Dropdown
               isOpen={dropDownIsOpen}
@@ -149,7 +150,7 @@ const ReportingPage = _props => {
               <Field>
                 <Select style={{ width: 240 }}>
                   {
-                    report === null ? "Select Report" : `Report: ${reportKeyMap[report]}`
+                    report === null ? "Select Report" : `Report: ${reportKeyTitleMap[report]}`
                   }
                 </Select>
               </Field>
@@ -208,13 +209,19 @@ const ReportingPage = _props => {
               <Button disabled={!octetStream}>{t('volunteer_portal.admin.tab.reporting.exportascsv')}</Button>
             </a>
         </ContentFlex>
+        <Section />
         {
           report === 'user' ?
           (
             userLoading ?
-            <Loading/>
+            <div>
+              <Skeleton height="60px" />
+              {
+                Array(10).fill(0).map((value, index) => <Skeleton key={index} height="40px" />)
+              }
+            </div>
             :
-            <Reporting
+            <UserReporting
               users={R.propOr([], 'users', userData)}
               startDate={dateRange.start}
               endDate={dateRange.end}
@@ -224,7 +231,7 @@ const ReportingPage = _props => {
             />
           )
           :
-          <h2 style={{ textAlign: "center" }}>😎 Select a report to begin</h2>
+          <h3 style={{ textAlign: "center", margin: 32 }}>Begin by selecting a report</h3>
         }
       </div>
     </AdminSection>
