@@ -6,7 +6,7 @@ gem 'rails', '~> 5.2.4.3'
 gem 'rack-cors', '~> 1.1.1', require: 'rack/cors'
 gem 'puma'
 gem 'daemons', require: false
-gem 'pg', '~> 0.21' # https://github.com/rails/rails/issues/31673
+gem 'pg', '~> 1.2' # https://github.com/rails/rails/issues/31673
 gem 'dotenv'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-saml'
