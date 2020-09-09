@@ -48,6 +48,7 @@ const ContentFlex = styled.div`
 const Section = styled.hr`
   margin: 16px 0px;
   border: 1px solid ${({theme}) => theme.palette.grey["200"]};
+  border-bottom: 0px;
 `
 
 const defaultStartDate = moment().startOf('year')
