@@ -2593,6 +2593,15 @@
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.6.0.tgz#aa514073578c6a58f48bf381f39f929be3237ada"
   integrity sha512-wKRgreuIzVgZUb1ULR4dZ3eGWPdZZiIoANbr9rSiR5rLN+Jkn8NYy35Jzqipi1TevLEscZsSJuUIx1VgcvaMrQ==
 
+"@zendeskgarden/react-tables@^8.21.2":
+  version "8.21.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tables/-/react-tables-8.21.2.tgz#bb295cb2e6db702a4fbdec972352cc01d26ec91a"
+  integrity sha512-IPmDPeXwhQ9jffpJa0AVD32scjeNyKHcQPBcl1Cg3UJTmxu7VRMLu9jlcu4uIkEwDeJuHYc1TRxKoHPiU5u36w==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.5.1"
+    dom-helpers "^5.1.0"
+    polished "^3.5.1"
+
 "@zendeskgarden/react-tabs@^8.18.0":
   version "8.18.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tabs/-/react-tabs-8.18.0.tgz#89b1e86699d76e9ccaf4430416409079a2f48639"
