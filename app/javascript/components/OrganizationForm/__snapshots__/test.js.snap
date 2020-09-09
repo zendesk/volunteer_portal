@@ -88,15 +88,20 @@ exports[`loads 1`] = `
             className="geosuggest__input-wrapper"
           >
             <input
+              aria-expanded={false}
+              aria-owns="geosuggest__list"
               autoComplete="off"
               className="geosuggest__input field"
+              disabled={false}
+              id="geosuggest__input"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
               placeholder="volunteer_portal.admin.tab.events.add.searchplaces"
-              style={Object {}}
+              role="combobox"
+              tabIndex={0}
               type="text"
               value=""
             />
@@ -106,7 +111,8 @@ exports[`loads 1`] = `
           >
             <ul
               className="geosuggest__suggests autocompleteList geosuggest__suggests--hidden"
-              style={Object {}}
+              id="geosuggest__list"
+              role="listbox"
             />
           </div>
         </div>
