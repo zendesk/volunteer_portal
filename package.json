@@ -103,11 +103,7 @@
     "css-loader": "^3.2.0",
     "csv-parse": "^4.8.5",
     "deepmerge": "^1.5.2",
-<<<<<<< HEAD
     "file-loader": "^6.0.0",
-=======
-    "file-loader": "^0.11.2",
->>>>>>> wip
     "glob": "^7.1.2",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
