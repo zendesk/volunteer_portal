@@ -9,8 +9,6 @@ import {
   Cell
 } from '@zendeskgarden/react-tables';
 import { useTranslation } from 'react-i18next'
-
-import OfficeFilter from '/components/OfficeFilter'
 import styled from 'styled-components'
 
 
@@ -28,7 +26,7 @@ const Reporting = ({ users }) => {
             {/* TODO: searchable name */}
             <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.name')}</BaselineHeaderCell>
             <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.email')}</BaselineHeaderCell>
-            <BaselineHeaderCell><OfficeFilter /></BaselineHeaderCell>
+            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.office')}</BaselineHeaderCell>
             {/* TODO: sort by hours */}
             <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.hours')}</BaselineHeaderCell>
           </HeaderRow>

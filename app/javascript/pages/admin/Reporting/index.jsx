@@ -16,7 +16,7 @@ import {
   Field,
   Select
 } from '@zendeskgarden/react-dropdowns';
-import { Field as FormField, Input, FauxInput } from '@zendeskgarden/react-forms'
+import { Field as FormField, Label as FormLabel, Input, FauxInput } from '@zendeskgarden/react-forms'
 import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Skeleton } from '@zendeskgarden/react-loaders';
@@ -24,15 +24,7 @@ import { Skeleton } from '@zendeskgarden/react-loaders';
 import UserReporting from 'components/Reporting/User'
 import ReportingQuery from './queries/userReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
-
-const InlineFauxInput = styled(FauxInput)`
-  display: flex;
-  align-items: center;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  border: none;
-  box-shadow: none;
-`
+import OfficeFilter from '../../../components/OfficeFilter'
 
 const AdminSection = styled.div`
   display: flex;
@@ -45,6 +37,15 @@ const ToolbarHeader = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid ${({theme}) => theme.palette.grey["200"]};
   padding-bottom: 16px;
+  & > * {
+    align-self: flex-end;
+    padding: 4px;
+  }
+`
+
+const CombinedInput = styled(Input)`
+  border-radius: ${(props) => props.left ? "4px 0 0 4px" : props.right ? "0 4px 4px 0" : "inherit"};
+  ${(props) => props.left && "border-right: 0px"};
 `
 
 const defaultStartDate = moment().startOf('year')
@@ -188,37 +189,35 @@ const ReportingPage = () => {
               onSelect={handleDropdownOnSelect}
               onStateChange={handleDropdownStateChange}
             >
-            <Field>
-              <Select style={{ width: 240 }}>
+            <Field style={{ width: 200 }}>
+              <FormLabel>{t('volunteer_portal.admin.tab.reporting.select_label')}</FormLabel>
+              <Select>
                 {
-                  report === null ? "Select Report" : `Report: ${reportKeyTitleMap[report]}`
+                  report === null ? t('volunteer_portal.admin.tab.reporting.dropdown.none') : reportKeyTitleMap[report]
                 }
               </Select>
             </Field>
             {renderMenu()}
           </Dropdown>
+          <FormField>
+            <FormLabel>{t('volunteer_portal.admin.tab.reporting.filter')}</FormLabel>
+            <div style={{ marginTop: 8 }}>
+              <OfficeFilter/>
+            </div>
+          </FormField>
           <div style={{ display: "flex" }}>
-            {/* TODO: upgrade date picker to use Datepicker.Start and Datepicker.End after garden update */}
-            <div>
-              <FormField>
-                <InlineFauxInput>
-                  <strong>{t('volunteer_portal.admin.tab.reporting.from')}&nbsp;</strong>
-                  <Datepicker value={dateRange.start} onChange={changeStartDate} maxValue={today} locale={i18n.language}>
-                    <Input bare />
-                  </Datepicker>
-                </InlineFauxInput>
-              </FormField>
-            </div>
-            <div>
-              <FormField>
-                <InlineFauxInput>
-                  <strong>{t('volunteer_portal.admin.tab.reporting.to')}&nbsp;</strong>
-                  <Datepicker value={dateRange.end} onChange={changeEndDate} maxValue={today} locale={i18n.language}>
-                    <Input bare />
-                  </Datepicker>
-                </InlineFauxInput>
-              </FormField>
-            </div>
+            <FormField>
+                <FormLabel>{t('volunteer_portal.admin.tab.reporting.from')}</FormLabel>
+                <Datepicker value={dateRange.start} onChange={changeStartDate} maxValue={today} locale={i18n.language}>
+                  <CombinedInput left bare />
+                </Datepicker>
+            </FormField>
+            <FormField>
+                <FormLabel>{t('volunteer_portal.admin.tab.reporting.to')}</FormLabel>
+                <Datepicker value={dateRange.end} onChange={changeEndDate} maxValue={today} locale={i18n.language}>
+                  <CombinedInput right bare />
+                </Datepicker>
+            </FormField>
           </div>
           <a href={octetStream && `data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
             <Button disabled={!octetStream}>{t('volunteer_portal.admin.tab.reporting.exportascsv')}</Button>

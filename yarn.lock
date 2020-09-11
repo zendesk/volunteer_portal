@@ -1689,10 +1689,10 @@
     "@zendeskgarden/container-keyboardfocus" "^0.4.1"
     polished "^3.5.1"
 
-"@zendeskgarden/react-datepickers@^8.5.0":
-  version "8.21.2"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-datepickers/-/react-datepickers-8.21.2.tgz#15d6ade2cb214248523951c9c991c21fa2e5c523"
-  integrity sha512-bG+cS/G8HX5i37FqtYtwxSXBVebVVL7E27rGe2h5uLTQMNbmMJ+JpXWdrk7Rc327UZ2Y11zKcheRVggFNuLcTg==
+"@zendeskgarden/react-datepickers@^8.22.0":
+  version "8.22.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-datepickers/-/react-datepickers-8.22.0.tgz#b305ec9e2f18bdc89bd1188ecdf80180dc24b3ba"
+  integrity sha512-vxU/C9M3aP5pbvO1KmJCz6KfYPmXkCCLx1xQ1cXBpwER73sSSIl3Z1ifrAbUPSUim/Z4pOXdRRcqiYi7UUeJxA==
   dependencies:
     "@zendeskgarden/container-utilities" "^0.5.1"
     date-fns "^2.0.0-beta.2"
