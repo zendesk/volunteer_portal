@@ -11,8 +11,6 @@ import {
 import { useTranslation } from 'react-i18next'
 
 import OfficeFilter from '/components/OfficeFilter'
-
-import 'style-loader!css-loader!react-table/react-table.css'
 import styled from 'styled-components'
 
 
@@ -21,17 +19,18 @@ const BaselineHeaderCell = styled(HeaderCell)`
 `
 
 const Reporting = ({ users }) => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   return (
     <div>
       <Table>
         <Head>
           <HeaderRow>
-            <BaselineHeaderCell>Name</BaselineHeaderCell>
-            <BaselineHeaderCell>Email</BaselineHeaderCell>
+            {/* TODO: searchable name */}
+            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.name')}</BaselineHeaderCell>
+            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.email')}</BaselineHeaderCell>
             <BaselineHeaderCell><OfficeFilter /></BaselineHeaderCell>
             {/* TODO: sort by hours */}
-            <BaselineHeaderCell>Hours</BaselineHeaderCell>
+            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.hours')}</BaselineHeaderCell>
           </HeaderRow>
         </Head>
         <Body>
@@ -47,6 +46,7 @@ const Reporting = ({ users }) => {
           }
         </Body>
       </Table>
+      {/* TODO: Pagination */}
     </div>
   )
 }

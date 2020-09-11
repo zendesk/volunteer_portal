@@ -1,7 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
 import * as R from 'ramda'
 import moment from 'moment'
+import { useTranslation } from 'react-i18next'
+import { addDays } from 'date-fns'
+import styled from 'styled-components'
 import { useLazyQuery } from '@apollo/react-hooks'
+
 import {
   Dropdown,
   Menu,
@@ -20,10 +24,6 @@ import { Skeleton } from '@zendeskgarden/react-loaders';
 import UserReporting from 'components/Reporting/User'
 import ReportingQuery from './queries/userReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
-import { useTranslation } from 'react-i18next'
-
-import { addDays } from 'date-fns'
-import styled from 'styled-components'
 
 const InlineFauxInput = styled(FauxInput)`
   display: flex;
@@ -40,15 +40,11 @@ const AdminSection = styled.div`
   padding-bottom: 50px;
 `
 
-const ContentFlex = styled.div`
+const ToolbarHeader = styled.div`
   display: flex;
   justify-content: space-between;
-`
-
-const Section = styled.hr`
-  margin: 16px 0px;
-  border: 1px solid ${({theme}) => theme.palette.grey["200"]};
-  border-bottom: 0px;
+  border-bottom: 1px solid ${({theme}) => theme.palette.grey["200"]};
+  padding-bottom: 16px;
 `
 
 const defaultStartDate = moment().startOf('year')
@@ -63,7 +59,14 @@ const initialRange = {
 const formatOrDefaultStartDate = filterValue => Number(moment(filterValue || defaultStartDate).format('X'))
 const formatOrDefaultEndDate = filterValue => Number(moment(filterValue || defaultEndDate).format('X'))
 
-const ReportingPage = _props => {
+const setUserOctectStream = (userData, setOctectStream) => {
+  const headers = 'Name,Email,Office,Hours\n'
+  const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.hours}\n`, headers, userData.users)
+  const octetStream = encodeURIComponent(csv)
+  setOctectStream(octetStream)
+}
+
+const ReportingPage = () => {
   
   const { t, i18n } = useTranslation()
   
@@ -74,18 +77,15 @@ const ReportingPage = _props => {
 
   const [ dateRange, setDateRange ] = useState(initialRange)
   const { filters } = useContext(FilterContext)
+
   const [ getUsers, { loading: userLoading, data: userData } ] = useLazyQuery(ReportingQuery)
   
   useEffect(() => {
     switch (report) {
       case 'user':
-        if (userData) {
-          const headers = 'Name,Email,Office,Hours\n'
-          const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.hours}\n`, headers, userData.users)
-          const octetStream = encodeURIComponent(csv)
-          setOctectStream(octetStream)
-        }
+        userData && setUserOctectStream(userData, setOctectStream)
         break;
+      // TODO: match on future reports
       default:
         break;
     }
@@ -102,6 +102,7 @@ const ReportingPage = _props => {
           },
         })
         break;
+      // TODO: match on future reports
       default:
         break;
     }
@@ -111,106 +112,118 @@ const ReportingPage = _props => {
   const changeEndDate = date => setDateRange(R.set(R.lensProp('end'), date))
 
   const reportKeyTitleMap = {
-    "user": "User"
+    user: t('volunteer_portal.admin.tab.reporting.dropdown.users')
   }
+
+  const handleDropdownStateChange = (changes, stateAndHelpers) => {
+    if (Object.prototype.hasOwnProperty.call(changes, 'isOpen')) {
+      const nextIsOpen =
+        changes.selectedItem === 'general' ||
+        changes.selectedItem === 'organized' ||
+        changes.selectedItem === 'individual' ||
+        changes.isOpen
+      setDropDownIsOpen(nextIsOpen)
+    }
+
+    if (Object.prototype.hasOwnProperty.call(changes, 'selectedItem')) {
+      const nextSelectedItem = changes.selectedItem
+
+      if (nextSelectedItem === 'general') {
+        switch (dropDownTempSelectedItem) {
+          case 'organized':
+            stateAndHelpers.setHighlightedIndex(1)
+            break
+          case 'individual':
+            stateAndHelpers.setHighlightedIndex(2)
+            break
+        }
+      }
+
+      setDropDownTempSelectedItem(nextSelectedItem)
+    }
+  }
+
+  const handleDropdownOnSelect = item => {
+    if (item !== 'general' && item !== 'individual'  && item !== 'organized') {
+      setReport(item)
+    }
+  }
+
+  const renderMenu = () => (
+    <Menu >
+      {dropDownTempSelectedItem === 'organized' ? (
+        <>
+          <PreviousItem value="general">{t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')}</PreviousItem>
+          <Separator />
+          <Item value="organizedEventType">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}</Item>
+          <Item value="organizedTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item>
+          <Item value="organizedOrganization">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.organization')}</Item>
+          <Item value="organizedTotal">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.total')}</Item>
+        </>
+      ) : dropDownTempSelectedItem === 'individual' ? (
+        <>
+          <PreviousItem value="general">{t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')}</PreviousItem>
+          <Separator />
+          <Item value="individualEvent-type">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}</Item>
+          <Item value="individualTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item>
+          <Item value="individualOrganization">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.organization')}</Item>
+          <Item value="individualTotal">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.total')}</Item>
+        </>
+      ) : (
+        <>
+          <Item value="user">{t('volunteer_portal.admin.tab.reporting.dropdown.users')}</Item>
+          <NextItem value="organized" disabled>{t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')}</NextItem>
+          <NextItem value="individual" disabled>{t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')}</NextItem>
+        </>
+      )}
+    </Menu>
+  )
 
   return (
     <AdminSection>
       <div style={{ width: "100%" }}>
-        <ContentFlex>
+        <ToolbarHeader>
           <Dropdown
               isOpen={dropDownIsOpen}
-              onSelect={item => {
-                if (item !== 'general' && item !== 'individual'  && item !== 'organized') {
-                  setReport(item)
-                }
-              }}
-              onStateChange={(changes, stateAndHelpers) => {
-                if (Object.prototype.hasOwnProperty.call(changes, 'isOpen')) {
-                  const nextIsOpen =
-                    changes.selectedItem === 'general' ||
-                    changes.selectedItem === 'organized' ||
-                    changes.selectedItem === 'individual' ||
-                    changes.isOpen
-                  setDropDownIsOpen(nextIsOpen)
-                }
-
-                if (Object.prototype.hasOwnProperty.call(changes, 'selectedItem')) {
-                  const nextSelectedItem = changes.selectedItem
-
-                  if (nextSelectedItem === 'flowers') {
-                    stateAndHelpers.setHighlightedIndex(1);
-                  } else if (nextSelectedItem === 'general') {
-                    stateAndHelpers.setHighlightedIndex(4);
-                  }
-
-                  setDropDownTempSelectedItem(nextSelectedItem)
-                }
-              }}
+              onSelect={handleDropdownOnSelect}
+              onStateChange={handleDropdownStateChange}
             >
-              <Field>
-                <Select style={{ width: 240 }}>
-                  {
-                    report === null ? "Select Report" : `Report: ${reportKeyTitleMap[report]}`
-                  }
-                </Select>
-              </Field>
-              <Menu >
-                {dropDownTempSelectedItem === 'organized' ? (
-                  <>
-                    <PreviousItem value="general">Organized Events</PreviousItem>
-                    <Separator />
-                    <Item value="organized-event-type">Event Type</Item>
-                    <Item value="organized-tag">Tag</Item>
-                    <Item value="organized-organization">Organization</Item>
-                    <Item value="organized-total">Total</Item>
-                  </>
-                ) : dropDownTempSelectedItem === 'individual' ? (
-                  <>
-                    <PreviousItem value="general">Individual Events</PreviousItem>
-                    <Separator />
-                    <Item value="individual-event-type">Event Type</Item>
-                    <Item value="individual-tag">Tag</Item>
-                    <Item value="individual-organization">Organization</Item>
-                    <Item value="individual-total">Total</Item>
-                  </>
-                ) : (
-                  <>
-                    <Item value="user">Users</Item>
-                    <NextItem value="organized" disabled>Organized Events</NextItem>
-                    <NextItem value="individual" disabled>Individual Events</NextItem>
-                  </>
-                )}
-              </Menu>
-            </Dropdown>
-            <div style={{ display: "flex" }}>
-              {/* TODO: upgrade date picker to use Datepicker.Start and Datepicker.End after garden update */}
-              <div>
-                <FormField>
-                  <InlineFauxInput>
-                    <strong>{t('volunteer_portal.admin.tab.reporting.from')}&nbsp;</strong>
-                    <Datepicker value={dateRange.start} onChange={changeStartDate} maxValue={today} locale={i18n.language}>
-                      <Input bare />
-                    </Datepicker>
-                  </InlineFauxInput>
-                </FormField>
-              </div>
-              <div>
-                <FormField>
-                  <InlineFauxInput>
-                    <strong>{t('volunteer_portal.admin.tab.reporting.to')}&nbsp;</strong>
-                    <Datepicker value={dateRange.end} onChange={changeEndDate} maxValue={today} locale={i18n.language}>
-                      <Input bare />
-                    </Datepicker>
-                  </InlineFauxInput>
-                </FormField>
-              </div>
+            <Field>
+              <Select style={{ width: 240 }}>
+                {
+                  report === null ? "Select Report" : `Report: ${reportKeyTitleMap[report]}`
+                }
+              </Select>
+            </Field>
+            {renderMenu()}
+          </Dropdown>
+          <div style={{ display: "flex" }}>
+            {/* TODO: upgrade date picker to use Datepicker.Start and Datepicker.End after garden update */}
+            <div>
+              <FormField>
+                <InlineFauxInput>
+                  <strong>{t('volunteer_portal.admin.tab.reporting.from')}&nbsp;</strong>
+                  <Datepicker value={dateRange.start} onChange={changeStartDate} maxValue={today} locale={i18n.language}>
+                    <Input bare />
+                  </Datepicker>
+                </InlineFauxInput>
+              </FormField>
             </div>
-            <a href={octetStream && `data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
-              <Button disabled={!octetStream}>{t('volunteer_portal.admin.tab.reporting.exportascsv')}</Button>
-            </a>
-        </ContentFlex>
-        <Section />
+            <div>
+              <FormField>
+                <InlineFauxInput>
+                  <strong>{t('volunteer_portal.admin.tab.reporting.to')}&nbsp;</strong>
+                  <Datepicker value={dateRange.end} onChange={changeEndDate} maxValue={today} locale={i18n.language}>
+                    <Input bare />
+                  </Datepicker>
+                </InlineFauxInput>
+              </FormField>
+            </div>
+          </div>
+          <a href={octetStream && `data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
+            <Button disabled={!octetStream}>{t('volunteer_portal.admin.tab.reporting.exportascsv')}</Button>
+          </a>
+        </ToolbarHeader>
         {
           report === 'user' ?
           (
@@ -232,7 +245,7 @@ const ReportingPage = _props => {
             />
           )
           :
-          <h3 style={{ textAlign: "center", margin: 32 }}>Begin by selecting a report</h3>
+          <h3 style={{ textAlign: "center", margin: 32 }}>{t('volunteer_portal.admin.tab.reporting.select_report')}</h3>
         }
       </div>
     </AdminSection>
