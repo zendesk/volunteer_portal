@@ -240,3 +240,11 @@ volunteer_portal.reacttable.nodatatext,No rows found,,,true
 volunteer_portal.reacttable.page,Page,,,true
 volunteer_portal.reacttable.of,of,,,true
 volunteer_portal.reacttable.rows,rows,,,true
+volunteer_portal.admin.tab.reporting.select_report,Begin by selecting a report,,,
+volunteer_portal.admin.tab.reporting.dropdown.organized_events,Organized Events,,,
+volunteer_portal.admin.tab.reporting.dropdown.individual_events,Individual Events,,,
+volunteer_portal.admin.tab.reporting.dropdown.users,Users,,,
+volunteer_portal.admin.tab.reporting.dropdown.nested.event_type,Event Type,,,
+volunteer_portal.admin.tab.reporting.dropdown.nested.tag,Tag,,,
+volunteer_portal.admin.tab.reporting.dropdown.nested.organization,Organization,,,
+volunteer_portal.admin.tab.reporting.dropdown.nested.event_type,Total,,,
