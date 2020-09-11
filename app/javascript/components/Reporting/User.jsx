@@ -9,12 +9,6 @@ import {
   Cell
 } from '@zendeskgarden/react-tables';
 import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
-
-
-const BaselineHeaderCell = styled(HeaderCell)`
-  vertical-align: baseline;
-`
 
 const Reporting = ({ users }) => {
   const { t } = useTranslation()
@@ -24,11 +18,11 @@ const Reporting = ({ users }) => {
         <Head>
           <HeaderRow>
             {/* TODO: searchable name */}
-            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.name')}</BaselineHeaderCell>
-            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.email')}</BaselineHeaderCell>
-            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.office')}</BaselineHeaderCell>
+            <HeaderCell>{t('volunteer_portal.admin.tab.reporting.name')}</HeaderCell>
+            <HeaderCell>{t('volunteer_portal.admin.tab.reporting.email')}</HeaderCell>
+            <HeaderCell>{t('volunteer_portal.admin.tab.reporting.office')}</HeaderCell>
             {/* TODO: sort by hours */}
-            <BaselineHeaderCell>{t('volunteer_portal.admin.tab.reporting.hours')}</BaselineHeaderCell>
+            <HeaderCell>{t('volunteer_portal.admin.tab.reporting.hours')}</HeaderCell>
           </HeaderRow>
         </Head>
         <Body>
