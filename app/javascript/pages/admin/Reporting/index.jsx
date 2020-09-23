@@ -182,9 +182,9 @@ const ReportingPage = () => {
           (
             userLoading ?
             <div>
-              <Skeleton height="60px" />
+              <Skeleton height="46px" />
               {
-                R.range(0, 10).map((_, index) => <Skeleton key={index} height="40px" />)
+                R.range(0, 10).map((_, index) => <Skeleton key={index} height="38px" />)
               }
             </div>
             :
