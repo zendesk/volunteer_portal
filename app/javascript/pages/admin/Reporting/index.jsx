@@ -10,18 +10,15 @@ import {
   Dropdown,
   Menu,
   Item,
-  Separator,
-  NextItem,
-  PreviousItem,
   Field,
   Select
 } from '@zendeskgarden/react-dropdowns';
-import { Field as FormField, Label as FormLabel, Input, FauxInput } from '@zendeskgarden/react-forms'
+import { Field as FormField, Label as FormLabel, Input } from '@zendeskgarden/react-forms'
 import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Skeleton } from '@zendeskgarden/react-loaders';
 
-import UserReporting from 'components/Reporting/User'
+import UserReporting from './User'
 import ReportingQuery from './queries/userReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
 import OfficeFilter from '../../../components/OfficeFilter'
@@ -80,18 +77,8 @@ const ReportingPage = () => {
   const { filters } = useContext(FilterContext)
 
   const [ getUsers, { loading: userLoading, data: userData } ] = useLazyQuery(ReportingQuery)
-  
-  useEffect(() => {
-    switch (report) {
-      case 'user':
-        userData && setUserOctectStream(userData, setOctectStream)
-        break;
-      // TODO: match on future reports
-      default:
-        break;
-    }
-  }, [userData])
 
+  // Updates data
   useEffect(() => {
     switch (report) {
       case 'user':
@@ -109,6 +96,18 @@ const ReportingPage = () => {
     }
   }, [ report, dateRange.start, dateRange.end, filters ])
 
+  // Updates export button
+  useEffect(() => {
+    switch (report) {
+      case 'user':
+        userData && setUserOctectStream(userData, setOctectStream)
+        break;
+      // TODO: match on future reports
+      default:
+        break;
+    }
+  }, [ userData ])
+
   const changeStartDate = date => setDateRange(R.set(R.lensProp('start'), date))
   const changeEndDate = date => setDateRange(R.set(R.lensProp('end'), date))
 
@@ -118,67 +117,19 @@ const ReportingPage = () => {
 
   const handleDropdownStateChange = (changes, stateAndHelpers) => {
     if (Object.prototype.hasOwnProperty.call(changes, 'isOpen')) {
-      const nextIsOpen =
-        changes.selectedItem === 'general' ||
-        changes.selectedItem === 'organized' ||
-        changes.selectedItem === 'individual' ||
-        changes.isOpen
+      const nextIsOpen = changes.isOpen
       setDropDownIsOpen(nextIsOpen)
     }
 
     if (Object.prototype.hasOwnProperty.call(changes, 'selectedItem')) {
       const nextSelectedItem = changes.selectedItem
-
-      if (nextSelectedItem === 'general') {
-        switch (dropDownTempSelectedItem) {
-          case 'organized':
-            stateAndHelpers.setHighlightedIndex(1)
-            break
-          case 'individual':
-            stateAndHelpers.setHighlightedIndex(2)
-            break
-        }
-      }
-
       setDropDownTempSelectedItem(nextSelectedItem)
     }
   }
 
   const handleDropdownOnSelect = item => {
-    if (item !== 'general' && item !== 'individual'  && item !== 'organized') {
-      setReport(item)
-    }
+    setReport(item)
   }
-
-  const renderMenu = () => (
-    <Menu >
-      {dropDownTempSelectedItem === 'organized' ? (
-        <>
-          <PreviousItem value="general">{t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')}</PreviousItem>
-          <Separator />
-          <Item value="organizedEventType">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}</Item>
-          <Item value="organizedTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item>
-          <Item value="organizedOrganization">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.organization')}</Item>
-          <Item value="organizedTotal">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.total')}</Item>
-        </>
-      ) : dropDownTempSelectedItem === 'individual' ? (
-        <>
-          <PreviousItem value="general">{t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')}</PreviousItem>
-          <Separator />
-          <Item value="individualEvent-type">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}</Item>
-          <Item value="individualTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item>
-          <Item value="individualOrganization">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.organization')}</Item>
-          <Item value="individualTotal">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.total')}</Item>
-        </>
-      ) : (
-        <>
-          <Item value="user">{t('volunteer_portal.admin.tab.reporting.dropdown.users')}</Item>
-          <NextItem value="organized" disabled>{t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')}</NextItem>
-          <NextItem value="individual" disabled>{t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')}</NextItem>
-        </>
-      )}
-    </Menu>
-  )
 
   return (
     <AdminSection>
@@ -197,11 +148,14 @@ const ReportingPage = () => {
                 }
               </Select>
             </Field>
-            {renderMenu()}
+            <Menu >
+              <Item value="user">{t('volunteer_portal.admin.tab.reporting.dropdown.users')}</Item>
+            </Menu>
           </Dropdown>
           <FormField>
             <FormLabel>{t('volunteer_portal.admin.tab.reporting.filter')}</FormLabel>
             <div style={{ marginTop: 8 }}>
+              {/* TODO: Local office filter? */}
               <OfficeFilter/>
             </div>
           </FormField>
@@ -230,7 +184,7 @@ const ReportingPage = () => {
             <div>
               <Skeleton height="60px" />
               {
-                Array(10).fill(0).map((value, index) => <Skeleton key={index} height="40px" />)
+                R.range(0, 10).map((_, index) => <Skeleton key={index} height="40px" />)
               }
             </div>
             :

@@ -83,6 +83,7 @@
     "@zendeskgarden/react-loaders": "^8.5.0",
     "@zendeskgarden/react-modals": "^8.5.0",
     "@zendeskgarden/react-notifications": "^8.5.0",
+    "@zendeskgarden/react-pagination": "^8.23.1",
     "@zendeskgarden/react-tables": "^8.21.2",
     "@zendeskgarden/react-tabs": "^8.18.0",
     "@zendeskgarden/react-tags": "^8.5.0",
