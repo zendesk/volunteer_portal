@@ -8,8 +8,6 @@ import { useLazyQuery } from '@apollo/react-hooks'
 
 import {
   Dropdown,
-  Menu,
-  Item,
   Field,
   Select
 } from '@zendeskgarden/react-dropdowns';
@@ -22,6 +20,7 @@ import ReportingQuery from './queries/userReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
 import OfficeFilter from '../../../components/OfficeFilter'
 import { Box, FlexBox } from '../../../components/StyleFoundation'
+import RenderMenu from './RenderMenu'
 
 
 const ToolbarHeader = styled(FlexBox)`
@@ -41,6 +40,10 @@ const CombinedInput = styled(Input)`
 const Prompt = styled.h3`
   text-align: center;
   margin: 32px;
+`
+
+const DropdownField = styled(Field)`
+  min-width: 200px;
 `
 
 const defaultStartDate = moment().startOf('year')
@@ -110,18 +113,40 @@ const ReportingPage = () => {
   const changeEndDate = date => setDateRange(R.set(R.lensProp('end'), date))
 
   const reportKeyTitleMap = {
-    user: t('volunteer_portal.admin.tab.reporting.dropdown.users')
+    user: t('volunteer_portal.admin.tab.reporting.dropdown.users'),
+    organizedEventType: `${t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}`,
+    individualEventType: `${t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}`
   }
 
   const handleDropdownStateChange = (changes, stateAndHelpers) => {
     if (Object.prototype.hasOwnProperty.call(changes, 'isOpen')) {
-      const nextIsOpen = changes.isOpen
+      const nextIsOpen =
+        changes.selectedItem === 'base' ||
+        changes.selectedItem === 'organized' ||
+        changes.selectedItem === 'individual' ||
+        changes.isOpen
       setDropDownIsOpen(nextIsOpen)
     }
 
     if (Object.prototype.hasOwnProperty.call(changes, 'selectedItem')) {
       const nextSelectedItem = changes.selectedItem
+      if (nextSelectedItem === 'base') {
+        switch (dropDownTempSelectedItem) {
+          case 'organized':
+            stateAndHelpers.setHighlightedIndex(1)
+            break
+          case 'individual':
+            stateAndHelpers.setHighlightedIndex(2)
+            break
+        }
+      }
       setDropDownTempSelectedItem(nextSelectedItem)
+    }
+  }
+
+  const handleDropdownOnSelect = item => {
+    if (item !== 'base' && item !== 'individual'  && item !== 'organized') {
+      setReport(item)
     }
   }
 
@@ -131,20 +156,18 @@ const ReportingPage = () => {
         <ToolbarHeader justifyContent="space-between">
           <Dropdown
               isOpen={dropDownIsOpen}
-              onSelect={setReport}
+              onSelect={handleDropdownOnSelect}
               onStateChange={handleDropdownStateChange}
             >
-            <Field>
+            <DropdownField>
               <FormLabel>{t('volunteer_portal.admin.tab.reporting.select_label')}</FormLabel>
               <Select>
                 {
                   report === null ? t('volunteer_portal.admin.tab.reporting.dropdown.none') : reportKeyTitleMap[report]
                 }
               </Select>
-            </Field>
-            <Menu >
-              <Item value="user">{t('volunteer_portal.admin.tab.reporting.dropdown.users')}</Item>
-            </Menu>
+            </DropdownField>
+            <RenderMenu dropDownTempSelectedItem={dropDownTempSelectedItem} />
           </Dropdown>
           <FormField>
             <FormLabel>{t('volunteer_portal.admin.tab.reporting.filter')}</FormLabel>

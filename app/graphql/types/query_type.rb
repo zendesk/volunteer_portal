@@ -57,6 +57,24 @@ module Types
       VolunteerResolver.all(object, args, context)
     end
 
+    field :event_type_individual_report, [EventTypeReportGraphType], null: true do
+      argument :office_id, ID, required: false
+      argument :after,     Int, required: false, description: 'earliest start time allowed'
+      argument :before,    Int, required: false, description: 'latest start time allowed'
+    end
+    def event_type_individual_report(**args)
+      EventTypeReportResolver.individual(object, args, context)
+    end
+
+    field :event_type_organized_report, [EventTypeReportGraphType], null: true do
+      argument :office_id, ID, required: false
+      argument :after,     Int, required: false, description: 'earliest start time allowed'
+      argument :before,    Int, required: false, description: 'latest start time allowed'
+    end
+    def event_type_organized_report(**args)
+      EventTypeReportResolver.organized(object, args, context)
+    end
+
     field :office, OfficeGraphType, null: true do
       argument :id, ID, required: true
     end
