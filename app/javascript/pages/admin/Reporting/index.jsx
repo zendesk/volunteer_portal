@@ -16,24 +16,17 @@ import {
 import { Field as FormField, Label as FormLabel, Input } from '@zendeskgarden/react-forms'
 import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Button } from '@zendeskgarden/react-buttons'
-import { Skeleton } from '@zendeskgarden/react-loaders';
 
 import UserReporting from './User'
 import ReportingQuery from './queries/userReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
 import OfficeFilter from '../../../components/OfficeFilter'
+import { Box, FlexBox } from '../../../components/StyleFoundation'
 
-const AdminSection = styled.div`
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 50px;
-`
 
-const ToolbarHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
+const ToolbarHeader = styled(FlexBox)`
   border-bottom: 1px solid ${({theme}) => theme.palette.grey["200"]};
-  padding-bottom: 16px;
+  padding-bottom: ${({ theme }) => theme.space.md};
   & > * {
     align-self: flex-end;
     padding: 4px;
@@ -43,6 +36,11 @@ const ToolbarHeader = styled.div`
 const CombinedInput = styled(Input)`
   border-radius: ${(props) => props.left ? "4px 0 0 4px" : props.right ? "0 4px 4px 0" : "inherit"};
   ${(props) => props.left && "border-right: 0px"};
+`
+
+const Prompt = styled.h3`
+  text-align: center;
+  margin: 32px;
 `
 
 const defaultStartDate = moment().startOf('year')
@@ -127,20 +125,16 @@ const ReportingPage = () => {
     }
   }
 
-  const handleDropdownOnSelect = item => {
-    setReport(item)
-  }
-
   return (
-    <AdminSection>
-      <div style={{ width: "100%" }}>
-        <ToolbarHeader>
+    <FlexBox justifyContent="space-around">
+      <Box width="100%">
+        <ToolbarHeader justifyContent="space-between">
           <Dropdown
               isOpen={dropDownIsOpen}
-              onSelect={handleDropdownOnSelect}
+              onSelect={setReport}
               onStateChange={handleDropdownStateChange}
             >
-            <Field style={{ width: 200 }}>
+            <Field>
               <FormLabel>{t('volunteer_portal.admin.tab.reporting.select_label')}</FormLabel>
               <Select>
                 {
@@ -154,12 +148,12 @@ const ReportingPage = () => {
           </Dropdown>
           <FormField>
             <FormLabel>{t('volunteer_portal.admin.tab.reporting.filter')}</FormLabel>
-            <div style={{ marginTop: 8 }}>
+            <Box mt="8px">
               {/* TODO: Local office filter? */}
               <OfficeFilter/>
-            </div>
+            </Box>
           </FormField>
-          <div style={{ display: "flex" }}>
+          <FlexBox>
             <FormField>
                 <FormLabel>{t('volunteer_portal.admin.tab.reporting.from')}</FormLabel>
                 <Datepicker value={dateRange.start} onChange={changeStartDate} maxValue={today} locale={i18n.language}>
@@ -172,22 +166,13 @@ const ReportingPage = () => {
                   <CombinedInput right bare />
                 </Datepicker>
             </FormField>
-          </div>
+          </FlexBox>
           <a href={octetStream && `data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
             <Button disabled={!octetStream}>{t('volunteer_portal.admin.tab.reporting.exportascsv')}</Button>
           </a>
         </ToolbarHeader>
         {
           report === 'user' ?
-          (
-            userLoading ?
-            <div>
-              <Skeleton height="46px" />
-              {
-                R.range(0, 10).map((_, index) => <Skeleton key={index} height="38px" />)
-              }
-            </div>
-            :
             <UserReporting
               users={R.propOr([], 'users', userData)}
               startDate={dateRange.start}
@@ -195,13 +180,13 @@ const ReportingPage = () => {
               onStartChange={changeStartDate}
               onEndChange={changeEndDate}
               setOctectStream={setOctectStream}
+              loading={userLoading}
             />
-          )
           :
-          <h3 style={{ textAlign: "center", margin: 32 }}>{t('volunteer_portal.admin.tab.reporting.select_report')}</h3>
+          <Prompt>{t('volunteer_portal.admin.tab.reporting.select_report')}</Prompt>
         }
-      </div>
-    </AdminSection>
+      </Box>
+    </FlexBox>
   )
 }
 
