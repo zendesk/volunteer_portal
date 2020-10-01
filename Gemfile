@@ -24,7 +24,7 @@ gem 'uglifier'
 gem 'sass-rails'
 gem 'active_record_union'
 gem 'rack-attack'
-gem 'google-api-client', '~> 0.34'
+gem 'google-api-client', '~> 0.45'
 
 group :production do
   gem 'rails_12factor', '0.0.3'
