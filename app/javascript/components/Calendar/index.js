@@ -10,8 +10,7 @@ import Toolbar from 'components/Toolbar'
 import { FilterContext, UserContext } from '/context'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
-import i18next from 'i18next'
-import { withTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 const localizer = BigCalendar.momentLocalizer(moment)
 BigCalendar.setLocalizer(localizer)
@@ -104,15 +103,12 @@ const filterPipeline = (currentUser, filters, isValid) =>
   )
 
 const selectEvents = (events, currentUser, filters) =>
-  R.pipe(
-    R.filter(filterPipeline(currentUser, filters, true)),
-    R.values,
-    normalizeEvents
-  )(events)
+  R.pipe(R.filter(filterPipeline(currentUser, filters, true)), R.values, normalizeEvents)(events)
 
 const Calendar = ({ loading, currentPath, events, togglePopover, loadMoreEvents }) => {
   const { currentUser } = useContext(UserContext)
   const { filters } = useContext(FilterContext)
+  const { t, i18n } = useTranslation()
 
   if (loading) return <Loading />
 
@@ -122,16 +118,19 @@ const Calendar = ({ loading, currentPath, events, togglePopover, loadMoreEvents 
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
         views={['month']}
-        culture={i18next.language}
+        culture={i18n.language}
         components={calendarComponents}
         onSelectEvent={(event, e) => togglePopover('event', event, e.currentTarget)}
         onNavigate={loadMoreEvents}
         popup
         style={{ paddingBottom: 20 }}
+        messages={{
+          showMore: total => t('volunteer_portal.calendar.bigcalendar.more', { total }),
+        }}
       />
     </Layout>
   )
 }
 
 // Wrap `withTranslation` to listen to language change event
-export default withTranslation()(Calendar)
+export default Calendar

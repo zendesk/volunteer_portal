@@ -98,7 +98,7 @@ const IndividualEvents = props => {
     {
       id: 'date',
       Header: t('volunteer_portal.admin.tab.user.myevents.individualevent.date'),
-      Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
+      Cell: props => <span>{moment(props.value).format('LL')}</span>,
       accessor: 'date',
     },
     {
