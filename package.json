@@ -147,7 +147,7 @@
   "devDependencies": {
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "enzyme-to-json": "^3.3.1",
+    "enzyme-to-json": "^3.6.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-junit": "^6.3.0",
