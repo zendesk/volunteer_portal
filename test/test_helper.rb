@@ -3,7 +3,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'bundler/setup'
 require 'single_cov'
 
-SingleCov.setup :minitest
+SingleCov.setup :minitest, branches: false
 SingleCov::APP_FOLDERS.concat %w[
   presenters
   graphql
