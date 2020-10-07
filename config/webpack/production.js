@@ -3,7 +3,7 @@
 /* eslint global-require: 0 */
 
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const sharedConfig = require('./shared.js')
