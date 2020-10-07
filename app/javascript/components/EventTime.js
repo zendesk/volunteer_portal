@@ -21,7 +21,7 @@ const styles = {
 }
 
 const getDate = (showDate, event) =>
-  showDate ? <span style={styles.date}>{moment(event.startsAt).format('MMMM D, YYYY')}</span> : null
+  showDate ? <span style={styles.date}>{moment(event.startsAt).format('LL')}</span> : null
 
 const getTime = event => {
   const start = moment(event.startsAt).format('h:mmA')

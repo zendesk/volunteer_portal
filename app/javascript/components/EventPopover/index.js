@@ -11,6 +11,8 @@ import Blackout from 'components/Blackout'
 
 import s from './main.css'
 
+import { useTranslation } from 'react-i18next'
+
 // Material UI components still require inline styles
 const styles = {
   popover: {
@@ -78,11 +80,11 @@ const AttendeeIcons = ({ event }) =>
     </div>
   )
 
-const Actions = ({ event, currentUser, createSignupHandler, destroySignupHandler }) =>
+const Actions = ({ event, currentUser, createSignupHandler, destroySignupHandler, t }) =>
   event ? (
     <div className={s.container}>
       <Link to={`/portal/events/${event.id}`}>
-        <button className={s.btn}>Details</button>
+        <button className={s.btn}>{t('volunteer_portal.dashboard.layouttab.eventpopover.button.details')}</button>
       </Link>
       <SignupButton
         currentUser={currentUser}
@@ -94,10 +96,10 @@ const Actions = ({ event, currentUser, createSignupHandler, destroySignupHandler
   ) : (
     <div className={s.container}>
       <button className={s.btn} disabled>
-        Details
+        {t('volunteer_portal.dashboard.layouttab.eventpopover.button.details')}
       </button>
       <button className={s.btn} disabled>
-        Sign Up
+        {t('volunteer_portal.dashboard.layouttab.eventpopover.button.signup')}
       </button>
     </div>
   )
@@ -110,35 +112,43 @@ const EventPopover = ({
   onPopoverClose,
   createSignupHandler,
   destroySignupHandler,
-}) => (
-  <Popover
-    style={styles.popover}
-    open={open}
-    anchorEl={anchorEl}
-    anchorOrigin={{ horizontal: 'middle', vertical: 'bottom' }}
-    targetOrigin={{ horizontal: 'middle', vertical: 'top' }}
-    onRequestClose={() => onPopoverClose('event')}
-  >
-    <div className={s.popover}>
-      <button className={s.closePopover} onClick={() => onPopoverClose('event')}>
-        ×
-      </button>
-      <EventProperties event={event} />
-      <div className={s.attendeeInfo}>
-        <div style={{ overflow: 'hidden' }}>
-          <span className={s.attending}>Attending</span>
-          <span className={s.availableSpots}>Available Spots</span>
+}) => {
+  const { t } = useTranslation()
+  return (
+    <Popover
+      style={styles.popover}
+      open={open}
+      anchorEl={anchorEl}
+      anchorOrigin={{ horizontal: 'middle', vertical: 'bottom' }}
+      targetOrigin={{ horizontal: 'middle', vertical: 'top' }}
+      onRequestClose={() => onPopoverClose('event')}
+    >
+      <div className={s.popover}>
+        <button className={s.closePopover} onClick={() => onPopoverClose('event')}>
+          ×
+        </button>
+        <EventProperties event={event} />
+        <div className={s.attendeeInfo}>
+          <div style={{ overflow: 'hidden' }}>
+            <span className={s.attending}>
+              {t('volunteer_portal.dashboard.layouttab.eventpopover.label.attending')}
+            </span>
+            <span className={s.availableSpots}>
+              {t('volunteer_portal.dashboard.layouttab.eventpopover.label.availablespots')}
+            </span>
+          </div>
+          <AttendeeIcons event={event} />
         </div>
-        <AttendeeIcons event={event} />
+        <Actions
+          event={event}
+          currentUser={currentUser}
+          createSignupHandler={createSignupHandler}
+          destroySignupHandler={destroySignupHandler}
+          t={t}
+        />
       </div>
-      <Actions
-        event={event}
-        currentUser={currentUser}
-        createSignupHandler={createSignupHandler}
-        destroySignupHandler={destroySignupHandler}
-      />
-    </div>
-  </Popover>
-)
+    </Popover>
+  )
+}
 
 export default EventPopover

@@ -4,6 +4,12 @@ volunteer_portal.dashboard.personal,Personal,Label referring to who the number o
 volunteer_portal.dashboard.layouttab.calendar,Calendario,Clickable tab that displays the Calendar View,https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f,TRUE
 volunteer_portal.dashboard.layouttab.dashboard,Panel,Clickable tab that displays the Dashboard View,https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4,TRUE
 volunteer_portal.dashboard.layouttab.myevents,Mis eventos,Clickable tab that displays the user related events,https://drive.google.com/open?id=1sbs3Uo2e764YFh40Na2DQsdahVD2W-Ne,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.details,Detalles,Button to see more details about the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.signup,Inscribirse,Button to sign up to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.leave,Retirarse,Button to sign up to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.full,Lleno,Button to sign up to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.label.attending,Participantes,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.label.availablespots,Disponibles,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
 volunteer_portal.dashboard.layoutdatetab.today,Hoy,Clickable text that will show the calendar with today's date,https://drive.google.com/open?id=1pO28Ugnx0UGXP5E3dM8y0LpogdPc5Cnt,TRUE
 volunteer_portal.dashboard.layouteventstab.show,Mostrar:,Text refering to what events to show My Events or All Events,https://drive.google.com/open?id=1p9A8huzT8xpJmwKY6P_Ci4sqC6uh7r_t,TRUE
 volunteer_portal.dashboard.layouteventstab.show_all,Todos,Dropdown to choose between seeing All Events or My Events only,https://drive.google.com/open?id=1lsq8KegHPQ34zhTJKvUsQTXro9dV3Ic6,TRUE

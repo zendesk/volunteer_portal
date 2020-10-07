@@ -68,7 +68,7 @@ class IndividualEvents extends React.Component {
     {
       id: 'date',
       Header: this.props.t('volunteer_portal.admin.tab.individualevent.date'),
-      Cell: props => <span>{moment(props.value).format('MMMM D, YYYY')}</span>,
+      Cell: props => <span>{moment(props.value).format('LL')}</span>,
       accessor: 'date',
     },
     {

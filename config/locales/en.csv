@@ -8,6 +8,20 @@ volunteer_portal.header.user_profile.sign_out,Sign Out,,https://drive.google.com
 volunteer_portal.dashboard.layouttab.calendar,Calendar,Clickable tab that displays the Calendar View,https://drive.google.com/open?id=1TEM84-1i6-GgF7N4cJuoTouGgCi0HC_f,TRUE
 volunteer_portal.dashboard.layouttab.dashboard,Dashboard,Clickable tab that displays the Dashboard View,https://drive.google.com/open?id=17xYrax65oH20lvlK6Cdd9flO1MVUp2-4,TRUE
 volunteer_portal.dashboard.layouttab.myevents,My Events,Clickable tab that displays the user related events,https://drive.google.com/open?id=1sbs3Uo2e764YFh40Na2DQsdahVD2W-Ne,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.details,Details,Button to see more details about the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.signup,Sign Up,Button to sign up to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.leave,Leave,Button to sign up to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.button.full,Full,Button to sign up to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.label.attending,Attending,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventpopover.label.availablespots,Available spots,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.calendar,‹ Calendar,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.overview,Overview,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.details,Details,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.attending,Attending,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.available,Available,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.capacity,Capacity:,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.export,Export,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.addtocalendar,Add to Google Calendar,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
 volunteer_portal.dashboard.layoutdatetab.today,Today,Clickable text that will show the calendar with today's date,https://drive.google.com/open?id=1pO28Ugnx0UGXP5E3dM8y0LpogdPc5Cnt,TRUE
 volunteer_portal.dashboard.layouteventstab.show,Show:,Text refering to what events to show My Events or All Events,https://drive.google.com/open?id=1p9A8huzT8xpJmwKY6P_Ci4sqC6uh7r_t,TRUE
 volunteer_portal.dashboard.layouteventstab.show_all,All,Dropdown to choose between seeing All Events or My Events only,https://drive.google.com/open?id=1lsq8KegHPQ34zhTJKvUsQTXro9dV3Ic6,TRUE
@@ -34,6 +48,7 @@ volunteer_portal.calendar.bigcalendar.week,Week,"Tab to select Month, Week, Work
 volunteer_portal.calendar.bigcalendar.work_week,Work Week,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
 volunteer_portal.calendar.bigcalendar.day,Day,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
 volunteer_portal.calendar.bigcalendar.agenda,Agenda,No need to translate,,TRUE
+volunteer_portal.calendar.bigcalendar.more,+{{total}} more,,,TRUE
 volunteer_portal.admin.tab.dashboard_thisweek,This Week,Label on top of This Week events,https://drive.google.com/file/d/1XKDa1cbJTpEwiBkfT6qt_N-Zbvi1_TOA,TRUE
 volunteer_portal.admin.tab.dashboard_thismonth,This Month,Label on top of This Month events,https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z,TRUE
 volunteer_portal.admin.tab.dashboard_noeventsthisweek,No Events This Week,Text when there are no events on this week,https://drive.google.com/open?id=1QIX2GP6auzowezJbVkiJLa-2tb89aD4Z,TRUE

@@ -19,6 +19,8 @@ import DestroySignupMutation from 'mutations/DestroySignupMutation.gql'
 
 import s from './main.css'
 
+import { useTranslation } from 'react-i18next'
+
 let geocoder = null
 try {
   geocoder = new google.maps.Geocoder()
@@ -34,6 +36,7 @@ const Section = ({ title, children }) => (
 )
 
 const AddToGoogleCalendar = ({ event }) => {
+  const { t } = useTranslation()
   const formatDateTime = R.replace(/-|:/g, '')
   const {
     title,
@@ -53,7 +56,7 @@ const AddToGoogleCalendar = ({ event }) => {
 
   return (
     <a href={templateUrl} target="_blank" rel="nofollow noreferrer">
-      Add to Google Calendar
+      {t('volunteer_portal.dashboard.layouttab.eventdetails.label.addtocalendar')}
     </a>
   )
 }
@@ -108,19 +111,20 @@ class MapPreview extends Component {
 
 const Event = ({ data: { loading, event, currentUser }, createSignup, destroySignup, locationBeforeTransitions }) => {
   if (loading) return <Loading />
+  const { t } = useTranslation()
 
   return (
     <Layout currentPath={locationBeforeTransitions.pathname}>
       <div className={s.page}>
         <div className={s.pageHeader}>
           <Link to="/portal" className={s.pageNav}>
-            ‹ Calendar
+            {t('volunteer_portal.dashboard.layouttab.eventdetails.label.calendar')}
           </Link>
           <span className={s.pageTitle}>{event.title}</span>
         </div>
         <div className={s.detailsRow}>
           <div className={s.leftCol}>
-            <Section title="Overview">
+            <Section title={t('volunteer_portal.dashboard.layouttab.eventdetails.label.overview')}>
               <div className={s.overview}>
                 <div className={s.details}>
                   <span className={s.eventType}>{event.eventType.title}</span>
@@ -134,7 +138,7 @@ const Event = ({ data: { loading, event, currentUser }, createSignup, destroySig
             </Section>
           </div>
           <div className={s.rightCol}>
-            <Section title="Details">
+            <Section title={t('volunteer_portal.dashboard.layouttab.eventdetails.label.details')}>
               <EventLocation event={event} />
               <EventTime event={event} showDate />
               <MapPreview event={event} />
@@ -143,14 +147,14 @@ const Event = ({ data: { loading, event, currentUser }, createSignup, destroySig
         </div>
         <div className={s.row}>
           <div className={s.leftCol}>
-            <Section title="Attending">
+            <Section title={t('volunteer_portal.dashboard.layouttab.eventdetails.label.attending')}>
               <div className={s.attendanceAndSignup}>
                 <div className={s.attendanceProgress}>
                   <LabeledProgress
                     max={event.capacity}
                     value={event.users.length}
-                    completedText="Attending"
-                    remainingText="Available"
+                    completedText={t('volunteer_portal.dashboard.layouttab.eventdetails.label.attending')}
+                    remainingText={t('volunteer_portal.dashboard.layouttab.eventdetails.label.available')}
                   />
                 </div>
                 <div className={s.signupBtn}>
@@ -162,14 +166,16 @@ const Event = ({ data: { loading, event, currentUser }, createSignup, destroySig
                   />
                 </div>
                 <div className={s.capacityAnnotation}>
-                  <span>Capacity: {event.capacity}</span>
+                  <span>
+                    {t('volunteer_portal.dashboard.layouttab.eventdetails.label.capacity')} {event.capacity}
+                  </span>
                 </div>
               </div>
               <UserList users={event.users} />
             </Section>
           </div>
           <div className={s.rightCol}>
-            <Section title="Export">
+            <Section title={t('volunteer_portal.dashboard.layouttab.eventdetails.label.export')}>
               <AddToGoogleCalendar event={event} />
             </Section>
           </div>
