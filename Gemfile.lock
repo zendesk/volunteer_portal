@@ -60,7 +60,7 @@ GEM
     builder (3.2.4)
     byebug (11.1.3)
     concurrent-ruby (1.1.7)
-    crack (0.4.3)
+    crack (0.4.4)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
     daemons (1.3.1)
@@ -82,14 +82,13 @@ GEM
     goldiloader (3.1.1)
       activerecord (>= 4.2, < 6.1)
       activesupport (>= 4.2, < 6.1)
-    google-api-client (0.46.0)
+    google-api-client (0.41.2)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (~> 0.9)
       httpclient (>= 2.8.1, < 3.0)
       mini_mime (~> 1.0)
       representable (~> 3.0)
       retriable (>= 2.0, < 4.0)
-      rexml
       signet (~> 0.12)
     googleauth (0.13.1)
       faraday (>= 0.17.3, < 2.0)
@@ -312,7 +311,7 @@ DEPENDENCIES
   flamegraph
   foreman
   goldiloader (~> 3.1)
-  google-api-client (~> 0.46)
+  google-api-client (~> 0.41.1)
   graphiql-rails
   graphql (~> 1.11)
   graphql-batch
