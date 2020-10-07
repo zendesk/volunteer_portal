@@ -1768,10 +1768,10 @@
     dom-helpers "^5.1.0"
     polished "^3.5.1"
 
-"@zendeskgarden/react-tags@^8.5.0":
-  version "8.21.2"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-8.21.2.tgz#19276a1e9846ebaceedc12565c5c1f1b2632d564"
-  integrity sha512-gnoq+pKdwOYpM85IJNMKxvgSzGjjk8AA+ryeca43QLIl/5qjrrGSIX/eaMWDL+9BWocwLCOslh1vpyk/QCfH+w==
+"@zendeskgarden/react-tags@^8.24.0":
+  version "8.24.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-8.24.0.tgz#1da3d8c03bcf12e476e7bdf91a5b434f94641ec8"
+  integrity sha512-B2CddFVnCFvRQn+GcblwC644iG1ZY3QB3Mr/iz4pJbR5ge41Y9k1ALz7ks+09425VWJxMxq5Tlx+Jvp6MNDSHg==
   dependencies:
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
