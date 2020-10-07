@@ -77,6 +77,7 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
             break
           case 'language-settings':
             stateAndHelpers.setHighlightedIndex(1)
+            break
         }
       }
       setTempSelectedItem(itemSelected)
