@@ -60,7 +60,7 @@ GEM
     builder (3.2.4)
     byebug (11.1.3)
     concurrent-ruby (1.1.7)
-    crack (0.4.3)
+    crack (0.4.4)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
     daemons (1.3.1)
