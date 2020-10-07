@@ -142,7 +142,7 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.9",
     "webpack-manifest-plugin": "^2.2.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^5.1.4"
   },
   "devDependencies": {
     "enzyme": "^3.6.0",
@@ -163,6 +163,6 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "^2.2.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^5.1.4"
   }
 }
