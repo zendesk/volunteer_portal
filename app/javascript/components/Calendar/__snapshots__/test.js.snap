@@ -38,7 +38,7 @@ exports[`loads 1`] = `
       }
     }
   >
-    <withI18nextTranslation(Calendar)
+    <Calendar
       currentPath="/"
       eventPopover={Object {}}
       events={Array []}
