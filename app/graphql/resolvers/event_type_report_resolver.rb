@@ -1,5 +1,8 @@
 module EventTypeReportResolver
   class << self
+
+    # Note: These queries have been taken from official Dataclips we've been using since 2019.
+    # TODO: Refactor into Active Record Queries to make it testable.
     
     def organized(_object, args, context)
       office_id = args[:office_id]
@@ -20,7 +23,7 @@ module EventTypeReportResolver
         {
           id: record["id"],
           title: record["title"],
-          hours: record["sum"]
+          minutes: record["sum"]
         }
       end
       result
@@ -44,7 +47,7 @@ module EventTypeReportResolver
         {
           id: record["id"],
           title: record["title"],
-          hours: record["sum"]
+          minutes: record["sum"]
         }
       end
       result

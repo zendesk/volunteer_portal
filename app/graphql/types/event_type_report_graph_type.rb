@@ -9,6 +9,6 @@ module Types
 
     field :id,    ID,     null: false
     field :title, String, null: false
-    field :hours, Int,    null: false
+    field :minutes, Int,    null: false
   end
 end
