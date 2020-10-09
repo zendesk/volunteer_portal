@@ -63,8 +63,8 @@ const formatOrDefaultStartDate = filterValue => Number(moment(filterValue || def
 const formatOrDefaultEndDate = filterValue => Number(moment(filterValue || defaultEndDate).format('X'))
 
 const setUserOctectStream = (data, setOctectStream) => {
-  const headers = 'Name,Email,Office,Minutes\n'
-  const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.minutes}\n`, headers, data)
+  const headers = 'Name,Email,Office,Hours\n'
+  const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.hours}\n`, headers, data)
   const octetStream = encodeURIComponent(csv)
   setOctectStream(octetStream)
 }
@@ -226,13 +226,13 @@ const ReportingPage = () => {
           report === 'organizedEventType' ?
             <EventTypeReporting
               eventTypes={R.propOr([], 'eventTypeOrganizedReport', organizedEventTypeData)}
-              loading={userLoading}
+              loading={organizedEventTypeLoading}
             />
           :
           report === 'individualEventType' ?
             <EventTypeReporting
               eventTypes={R.propOr([], 'eventTypeIndividualReport', individualEventTypeData)}
-              loading={userLoading}
+              loading={individualEventTypeLoading}
             />
           :
           <Box mt="16px">
@@ -243,7 +243,6 @@ const ReportingPage = () => {
               </Paragraph>
             </Well>
           </Box>
-
         }
       </Box>
     </FlexBox>
