@@ -53,6 +53,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - 'app/controllers/**/*.rb'
+    - 'app/graphql/types/*.rb'
     - 'db/migrate/*.rb'
     - 'test/**/*.rb'
 
