@@ -1,5 +1,5 @@
 module Types
-  class QueryType < Types::BaseObject
+  class QueryType < Types::BaseObject # rubocop:disable Metrics/ClassLength
     graphql_name 'Query'
     description 'The query root for this schema'
 

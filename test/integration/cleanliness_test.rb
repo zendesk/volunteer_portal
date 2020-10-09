@@ -53,6 +53,7 @@ describe 'cleanliness' do
         app/graphql/portal_schema.rb
         app/graphql/resolvers/office_resolver.rb
         app/graphql/resolvers/organization_resolver.rb
+        app/graphql/resolvers/event_type_report_resolver.rb
         app/graphql/types/base_interface.rb
         app/graphql/types/base_object.rb
         app/graphql/types/base_scalar.rb
@@ -65,6 +66,7 @@ describe 'cleanliness' do
         app/graphql/types/enum/user_sort_enum.rb
         app/graphql/types/event_graph_type.rb
         app/graphql/types/event_type_graph_type.rb
+        app/graphql/types/event_type_report_graph_type.rb
         app/graphql/types/individual_event_graph_type.rb
         app/graphql/types/input/association_input_type.rb
         app/graphql/types/input/base_input_object.rb
