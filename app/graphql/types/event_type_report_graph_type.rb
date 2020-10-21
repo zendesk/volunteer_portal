@@ -1,7 +1,7 @@
 module Types
   class EventTypeReportGraphType < SensitiveObject
     graphql_name 'EventTypeReport'
-    description 'A category of event and how many hours'
+    description 'A category of event and how many minutes'
 
     implements GraphQL::Relay::Node.interface
 
