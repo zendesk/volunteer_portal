@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read('.ruby-version').strip
 
-gem 'rails', '~> 5.2.4.4'
+gem 'rails', '~> 5.2.4.3'
 gem 'rack-cors', '~> 1.1.1', require: 'rack/cors'
 gem 'puma'
 gem 'daemons', require: false
