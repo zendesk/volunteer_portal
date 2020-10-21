@@ -2,7 +2,7 @@ module EventTypeReportResolver
   # Note: These queries have been taken from official Dataclips we've been using since 2019.
   # TODO: Refactor into Active Record Queries to make it testable.
   class << self
-    def organized(_object, args, _context)
+    def individual(_object, args, _context)
       office_id = args[:office_id]
       # Disabling TimeZone check for rubocop here because the frontend handles the timezone
       # rubocop:disable Rails/TimeZone
@@ -30,7 +30,7 @@ module EventTypeReportResolver
       result
     end
 
-    def individual(_object, args, _context)
+    def organized(_object, args, _context)
       office_id = args[:office_id]
       # rubocop:disable Rails/TimeZone
       sql = "
