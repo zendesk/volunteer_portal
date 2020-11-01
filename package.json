@@ -134,7 +134,7 @@
     "react-table": "^6.7.6",
     "redux": "^3.5.2",
     "redux-form": "^7.2.0",
-    "redux-logger": "^2.6.1",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.1.0",
     "style-loader": "^0.18.2",
     "styled-components": "^4.4.1",
