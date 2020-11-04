@@ -22,6 +22,7 @@ volunteer_portal.dashboard.layouttab.eventdetails.label.available,Available,Numb
 volunteer_portal.dashboard.layouttab.eventdetails.label.capacity,Capacity:,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
 volunteer_portal.dashboard.layouttab.eventdetails.label.export,Export,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
 volunteer_portal.dashboard.layouttab.eventdetails.label.addtocalendar,Add to Google Calendar,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
+volunteer_portal.dashboard.layouttab.eventdetails.label.novolunteers,There are no volunteers assigned.,Number of people attending to the event,https://drive.google.com/file/d/10wQib_0G5nTqAzYKCsatYfgGjyLnCSQP/view?usp=sharing,TRUE
 volunteer_portal.dashboard.layoutdatetab.today,Today,Clickable text that will show the calendar with today's date,https://drive.google.com/open?id=1pO28Ugnx0UGXP5E3dM8y0LpogdPc5Cnt,TRUE
 volunteer_portal.dashboard.layouteventstab.show,Show:,Text refering to what events to show My Events or All Events,https://drive.google.com/open?id=1p9A8huzT8xpJmwKY6P_Ci4sqC6uh7r_t,TRUE
 volunteer_portal.dashboard.layouteventstab.show_all,All,Dropdown to choose between seeing All Events or My Events only,https://drive.google.com/open?id=1lsq8KegHPQ34zhTJKvUsQTXro9dV3Ic6,TRUE
@@ -101,6 +102,10 @@ volunteer_portal.admin.tab.events.add.startsends.error,- is ending before it sta
 volunteer_portal.admin.tab.events.add.capacity.error,- is required and must be a number,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.capacity,Capacity,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
 volunteer_portal.admin.tab.events.add.save,Save,,https://drive.google.com/file/d/1IKWS3MAaiby0dTG09K_CfzLp2wsGIqVW,true
+volunteer_portal.admin.tab.events.edit.removeuser.title,Remove volunteer from this event?,Title for the confirmation windown,,true
+volunteer_portal.admin.tab.events.edit.removeuser.text,Would you like to remove <bold>{{volunteer_name}}</bold> from this event?,Text for the confirmation windown,,true
+volunteer_portal.admin.tab.events.edit.removeuser.confirm,Confirm,Confirm button,,true
+volunteer_portal.admin.tab.events.edit.removeuser.cancel,Cancel,Cancel button,,true
 volunteer_portal.admin.tab.eventtype.save,Save,,,true
 volunteer_portal.admin.tab.eventtype.title,Title,,,true
 volunteer_portal.admin.tab.eventtypes_edit,Edit,Text button to edit an event type,https://drive.google.com/file/d/1MCsODH0M423xPjQHX0qYecMCrrNhP1mA,TRUE
