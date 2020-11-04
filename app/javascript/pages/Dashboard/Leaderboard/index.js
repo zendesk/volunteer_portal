@@ -30,7 +30,7 @@ const SectionTitle = styled(LG)`
   align-self: flex-end;
 `
 
-const Loader = _props => (
+const Loader = (_props) => (
   <>
     {Array(10)
       .fill()
@@ -51,7 +51,7 @@ const nowInSec = moment().unix()
 const leaderBoardSize = 10
 const leaderBoardSort = 'HOURS_DESC'
 
-const Leaderboard = _props => {
+const Leaderboard = (_props) => {
   const { filters } = useContext(FilterContext)
   const { loading, error, data } = useQuery(LeaderboardQuery, {
     variables: {
@@ -90,7 +90,7 @@ const Leaderboard = _props => {
             <NamedAvatar image={user.photo} name={user.name} />
             <MD>
               <Tag isPill size="large">
-                {user.hours}
+                <span>{user.hours}</span>
               </Tag>{' '}
               {t('volunteer_portal.admin.tab.user.dashboard.topvolunteers.hours')}
             </MD>
