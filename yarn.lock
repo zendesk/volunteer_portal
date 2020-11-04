@@ -1745,10 +1745,10 @@
     dom-helpers "^5.1.0"
     react-popper "^2.2.3"
 
-"@zendeskgarden/react-notifications@^8.5.0":
-  version "8.21.2"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.21.2.tgz#2b72f4f8486aca707b6a7b9b78d9808605c65712"
-  integrity sha512-qB7dVJRcjqbzXzRIFzY7g0xWxGKNxAPpFs0p0jMftADKNEPuv5G1HUSQn4loL1QPnvQe5WQOn+7LyvX/JH+JjQ==
+"@zendeskgarden/react-notifications@^8.25.1":
+  version "8.25.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.25.1.tgz#9dd689b19faa8bdf79a4e29c8d87de5607b31084"
+  integrity sha512-T+ensxIbj/jYt7ki0rPWFAhrqeJDv9Lg3cgsxzyrHfiiQnYTRxraJRsvrTLeXemZUViA23Ro196FYOH6WGU4cQ==
 
 "@zendeskgarden/react-pagination@^8.23.1":
   version "8.23.1"
