@@ -37,7 +37,7 @@ const fetchMoreEvents = (fetchMore, calendarDateChange, currentDate, newDate, sc
 
       const existing = new Set(previousResult.events)
 
-      R.forEach(e => existing.add(e), fetchMoreResult.events)
+      R.forEach((e) => existing.add(e), fetchMoreResult.events)
 
       return R.merge(previousResult, { events: [...existing] })
     },
@@ -48,7 +48,7 @@ const fetchMoreEvents = (fetchMore, calendarDateChange, currentDate, newDate, sc
   return newDate
 }
 
-const EventPopoverForData = props => {
+const EventPopoverForData = (props) => {
   const {
     popoverState,
     currentUser,
@@ -118,8 +118,8 @@ const CalendarPage = ({
         currentUser={currentUser}
         eventPopover={eventPopover}
         togglePopover={togglePopover}
-        createSignup={createSignup}
-        destroySignup={destroySignup}
+        createSignup={createSignup(filters)}
+        destroySignup={destroySignup(filters)}
         loadMoreEvents={R.partial(fetchMoreEvents, [fetchMore, calendarDateChange, calendarDate])}
       />
       {eventPopover && (
@@ -127,15 +127,15 @@ const CalendarPage = ({
           currentUser={currentUser}
           popoverState={eventPopover}
           onPopoverClose={togglePopover}
-          createSignup={createSignup}
-          destroySignup={destroySignup}
+          createSignup={createSignup(filters)}
+          destroySignup={destroySignup(filters)}
         />
       )}
     </div>
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { popover, calendarDate } = state.model
   const { locationBeforeTransitions } = state.routing
 
@@ -146,19 +146,9 @@ const mapStateToProps = state => {
   }
 }
 
-const momentAfter = Number(
-  moment()
-    .subtract(1, 'months')
-    .startOf('month')
-    .format('X')
-)
+const momentAfter = Number(moment().subtract(1, 'months').startOf('month').format('X'))
 
-const momentBefore = Number(
-  moment()
-    .add(1, 'months')
-    .endOf('month')
-    .format('X')
-)
+const momentBefore = Number(moment().add(1, 'months').endOf('month').format('X'))
 
 const updateEventsCache = (cache, eventChange, officeId) => {
   const variables = {
@@ -172,9 +162,9 @@ const updateEventsCache = (cache, eventChange, officeId) => {
   const update = {
     ...prevCache,
     events: [
-      ...prevCache.events.filter(event => event.id != eventChange.id),
+      ...prevCache.events.filter((event) => event.id != eventChange.id),
       {
-        ...prevCache.events.find(event => event.id == eventChange.id),
+        ...prevCache.events.find((event) => event.id == eventChange.id),
         users: eventChange.users,
         signupCount: eventChange.users.length,
       },
@@ -186,7 +176,7 @@ const updateEventsCache = (cache, eventChange, officeId) => {
 const withData = compose(
   graphql(CreateSignupMutation, {
     props: ({ ownProps, mutate }) => ({
-      createSignup: (event, currentUser) =>
+      createSignup: (filters) => (event, currentUser) =>
         mutate({
           variables: { eventId: event.id },
           optimisticResponse: {
@@ -206,14 +196,14 @@ const withData = compose(
               },
             }
           ) => {
-            updateEventsCache(cache, eventChange, ownProps.filters.officeFilter.value)
+            updateEventsCache(cache, eventChange, filters.officeFilter.value)
           },
         }),
     }),
   }),
   graphql(DestroySignupMutation, {
     props: ({ ownProps, mutate }) => ({
-      destroySignup: (event, currentUser) =>
+      destroySignup: (filters) => (event, currentUser) =>
         mutate({
           variables: { eventId: event.id, userId: currentUser.id },
           optimisticResponse: {
@@ -221,7 +211,7 @@ const withData = compose(
             destroySignup: {
               __typename: 'Signup',
               event: R.merge(event, {
-                users: R.reject(u => u.id === currentUser.id, event.users),
+                users: R.reject((u) => u.id === currentUser.id, event.users),
               }),
             },
           },
@@ -233,19 +223,16 @@ const withData = compose(
               },
             }
           ) => {
-            updateEventsCache(cache, eventChange, ownProps.filters.officeFilter.value)
+            updateEventsCache(cache, eventChange, filters.officeFilter.value)
           },
         }),
     }),
   })
 )
 
-const withActions = connect(
-  mapStateToProps,
-  {
-    togglePopover,
-    calendarDateChange,
-  }
-)
+const withActions = connect(mapStateToProps, {
+  togglePopover,
+  calendarDateChange,
+})
 
 export default withActions(withData(CalendarPage))
