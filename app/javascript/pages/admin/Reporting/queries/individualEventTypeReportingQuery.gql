@@ -1,0 +1,7 @@
+query IndividualEventTypeReportingQuery($after: Int, $before: Int, $officeId: ID){
+  eventTypeIndividualReport(before: $before, after: $after, officeId: $officeId)  {
+    id
+    title
+    minutes
+  }
+}

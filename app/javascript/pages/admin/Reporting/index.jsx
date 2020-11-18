@@ -8,20 +8,23 @@ import { useLazyQuery } from '@apollo/react-hooks'
 
 import {
   Dropdown,
-  Menu,
-  Item,
   Field,
   Select
 } from '@zendeskgarden/react-dropdowns';
 import { Field as FormField, Label as FormLabel, Input } from '@zendeskgarden/react-forms'
 import { Datepicker } from '@zendeskgarden/react-datepickers'
 import { Button } from '@zendeskgarden/react-buttons'
+import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
 
 import UserReporting from './User'
-import ReportingQuery from './queries/userReportingQuery.gql'
+import EventTypeReporting from './EventType'
+import UserReportingQuery from './queries/userReportingQuery.gql'
+import OrganizedEventTypeReportingQuery from './queries/organizedEventTypeReportingQuery.gql'
+import IndividualEventTypeReportingQuery from './queries/individualEventTypeReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
 import OfficeFilter from '../../../components/OfficeFilter'
 import { Box, FlexBox } from '../../../components/StyleFoundation'
+import RenderMenu from './RenderMenu'
 
 
 const ToolbarHeader = styled(FlexBox)`
@@ -43,6 +46,10 @@ const Prompt = styled.h3`
   margin: 32px;
 `
 
+const DropdownField = styled(Field)`
+  min-width: 200px;
+`
+
 const defaultStartDate = moment().startOf('year')
 const defaultEndDate = moment().valueOf() // Now in Unix millisecond timestamp
 const today = new Date()
@@ -55,9 +62,16 @@ const initialRange = {
 const formatOrDefaultStartDate = filterValue => Number(moment(filterValue || defaultStartDate).format('X'))
 const formatOrDefaultEndDate = filterValue => Number(moment(filterValue || defaultEndDate).format('X'))
 
-const setUserOctectStream = (userData, setOctectStream) => {
+const setUserOctectStream = (data, setOctectStream) => {
   const headers = 'Name,Email,Office,Hours\n'
-  const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.hours}\n`, headers, userData.users)
+  const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.hours}\n`, headers, data)
+  const octetStream = encodeURIComponent(csv)
+  setOctectStream(octetStream)
+}
+
+const setEventTypeOctectStream = (data, setOctectStream) => {
+  const headers = 'Id,Event Type,Minutes\n'
+  const csv = R.reduce((acc, row) => acc + `${row.id},${row.title},${row.minutes}\n`, headers, data)
   const octetStream = encodeURIComponent(csv)
   setOctectStream(octetStream)
 }
@@ -74,21 +88,27 @@ const ReportingPage = () => {
   const [ dateRange, setDateRange ] = useState(initialRange)
   const { filters } = useContext(FilterContext)
 
-  const [ getUsers, { loading: userLoading, data: userData } ] = useLazyQuery(ReportingQuery)
+  const [ getUsers, { loading: userLoading, data: userData } ] = useLazyQuery(UserReportingQuery)
+  const [ getOrganizedEventTypes, { loading: organizedEventTypeLoading, data: organizedEventTypeData } ] = useLazyQuery(OrganizedEventTypeReportingQuery)
+  const [ getIndividualEventTypes, { loading: individualEventTypeLoading, data: individualEventTypeData } ] = useLazyQuery(IndividualEventTypeReportingQuery)
 
   // Updates data
   useEffect(() => {
+    const baseVariables = {
+      after: formatOrDefaultStartDate(dateRange.start),
+      before: formatOrDefaultEndDate(dateRange.end),
+      officeId: R.view(officeFilterValueLens, filters),
+    }
     switch (report) {
       case 'user':
-        getUsers({
-          variables: {
-            after: formatOrDefaultStartDate(dateRange.start),
-            before: formatOrDefaultEndDate(dateRange.end),
-            officeId: R.view(officeFilterValueLens, filters),
-          },
-        })
+        getUsers({ variables: baseVariables })
         break;
-      // TODO: match on future reports
+      case 'organizedEventType':
+        getOrganizedEventTypes({ variables: baseVariables })
+        break;
+      case 'individualEventType':
+        getIndividualEventTypes({ variables: baseVariables })
+        break;
       default:
         break;
     }
@@ -98,30 +118,57 @@ const ReportingPage = () => {
   useEffect(() => {
     switch (report) {
       case 'user':
-        userData && setUserOctectStream(userData, setOctectStream)
+        userData && setUserOctectStream(R.propOr([], 'users', userData), setOctectStream)
         break;
-      // TODO: match on future reports
+      case 'organizedEventType':
+        organizedEventTypeData && setEventTypeOctectStream(R.propOr([], 'eventTypeOrganizedReport', organizedEventTypeData), setOctectStream)
+        break;
+      case 'individualEventType':
+        individualEventTypeData && setEventTypeOctectStream(R.propOr([], 'eventTypeIndividualReport', individualEventTypeData), setOctectStream)
+        break;
       default:
         break;
     }
-  }, [ userData ])
+  }, [ userData, organizedEventTypeData, individualEventTypeData ])
 
   const changeStartDate = date => setDateRange(R.set(R.lensProp('start'), date))
   const changeEndDate = date => setDateRange(R.set(R.lensProp('end'), date))
 
   const reportKeyTitleMap = {
-    user: t('volunteer_portal.admin.tab.reporting.dropdown.users')
+    user: t('volunteer_portal.admin.tab.reporting.dropdown.users'),
+    organizedEventType: `${t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}`,
+    individualEventType: `${t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}`
   }
 
   const handleDropdownStateChange = (changes, stateAndHelpers) => {
     if (Object.prototype.hasOwnProperty.call(changes, 'isOpen')) {
-      const nextIsOpen = changes.isOpen
+      const nextIsOpen =
+        changes.selectedItem === 'base' ||
+        changes.selectedItem === 'organized' ||
+        changes.selectedItem === 'individual' ||
+        changes.isOpen
       setDropDownIsOpen(nextIsOpen)
     }
 
     if (Object.prototype.hasOwnProperty.call(changes, 'selectedItem')) {
       const nextSelectedItem = changes.selectedItem
+      if (nextSelectedItem === 'base') {
+        switch (dropDownTempSelectedItem) {
+          case 'organized':
+            stateAndHelpers.setHighlightedIndex(1)
+            break
+          case 'individual':
+            stateAndHelpers.setHighlightedIndex(2)
+            break
+        }
+      }
       setDropDownTempSelectedItem(nextSelectedItem)
+    }
+  }
+
+  const handleDropdownOnSelect = item => {
+    if (item !== 'base' && item !== 'individual'  && item !== 'organized') {
+      setReport(item)
     }
   }
 
@@ -131,20 +178,18 @@ const ReportingPage = () => {
         <ToolbarHeader justifyContent="space-between">
           <Dropdown
               isOpen={dropDownIsOpen}
-              onSelect={setReport}
+              onSelect={handleDropdownOnSelect}
               onStateChange={handleDropdownStateChange}
             >
-            <Field>
+            <DropdownField>
               <FormLabel>{t('volunteer_portal.admin.tab.reporting.select_label')}</FormLabel>
               <Select>
                 {
                   report === null ? t('volunteer_portal.admin.tab.reporting.dropdown.none') : reportKeyTitleMap[report]
                 }
               </Select>
-            </Field>
-            <Menu >
-              <Item value="user">{t('volunteer_portal.admin.tab.reporting.dropdown.users')}</Item>
-            </Menu>
+            </DropdownField>
+            <RenderMenu dropDownTempSelectedItem={dropDownTempSelectedItem} />
           </Dropdown>
           <FormField>
             <FormLabel>{t('volunteer_portal.admin.tab.reporting.filter')}</FormLabel>
@@ -175,15 +220,29 @@ const ReportingPage = () => {
           report === 'user' ?
             <UserReporting
               users={R.propOr([], 'users', userData)}
-              startDate={dateRange.start}
-              endDate={dateRange.end}
-              onStartChange={changeStartDate}
-              onEndChange={changeEndDate}
-              setOctectStream={setOctectStream}
               loading={userLoading}
             />
           :
-          <Prompt>{t('volunteer_portal.admin.tab.reporting.select_report')}</Prompt>
+          report === 'organizedEventType' ?
+            <EventTypeReporting
+              eventTypes={R.propOr([], 'eventTypeOrganizedReport', organizedEventTypeData)}
+              loading={organizedEventTypeLoading}
+            />
+          :
+          report === 'individualEventType' ?
+            <EventTypeReporting
+              eventTypes={R.propOr([], 'eventTypeIndividualReport', individualEventTypeData)}
+              loading={individualEventTypeLoading}
+            />
+          :
+          <Box mt="16px">
+            <Well>
+              <Title>{t('volunteer_portal.admin.tab.reporting.select_report')}</Title>
+              <Paragraph>
+                {t('volunteer_portal.admin.tab.reporting.select_report_prompt')}
+              </Paragraph>
+            </Well>
+          </Box>
         }
       </Box>
     </FlexBox>
