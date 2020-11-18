@@ -37,7 +37,7 @@ module TagReportResolver
       SELECT \"id\", \"name\", \"sum\" from tags INNER JOIN
         (SELECT SUM(duration), tag_id
         from events LEFT JOIN event_tags ON (events.id=event_tags.event_id) LEFT JOIN signups ON signups.event_id = events.id
-        WHERE \"events\".\"deleted_at\" IS NULL 
+        WHERE \"events\".\"deleted_at\" IS NULL
         #{office_id == 'all' ? '' : "AND events.office_id=#{office_id}"}
         AND (starts_at > '#{Time.at(args[:after])}')
         AND (starts_at < '#{Time.at(args[:before])}')
