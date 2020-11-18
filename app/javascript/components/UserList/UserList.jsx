@@ -10,6 +10,8 @@ import RemoveUserButton from './RemoveUserButton'
 import RemoveUserModal from './RemoveUserModal'
 import { present } from '/lib/utils'
 
+import { useTranslation } from 'react-i18next'
+
 const Grid = styled.div`
   display: flex;
   flex-direction: row;
@@ -31,10 +33,11 @@ const UserList = ({ users, onRemove }) => {
     setActiveUser(null)
   }
 
+  const { t } = useTranslation()
   const userData = users || []
   const shouldShowRmBtn = present(onRemove)
   const shouldShowRmModal = shouldShowRmBtn && present(activeUser)
-  const showEmpty = R.always(<Well>😓 There are no volunteers assigned.</Well>)
+  const showEmpty = R.always(<Well>😓 {t('volunteer_portal.dashboard.layouttab.eventdetails.label.novolunteers')}</Well>)
   const showList = R.addIndex(R.map)((user, i) => (
     <User key={i}>
       <ListItem>
