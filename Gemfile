@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read('.ruby-version').strip
 
-gem 'rails', '~> 5.2.4.3'
+gem 'rails', '~> 5.2.4.4'
 gem 'rack-cors', '~> 1.1.1', require: 'rack/cors'
 gem 'puma'
 gem 'daemons', require: false
@@ -11,7 +11,7 @@ gem 'dotenv'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-saml'
 gem 'stronger_parameters'
-gem 'graphql', '~> 1.8'
+gem 'graphql', '~> 1.11'
 gem 'graphql-batch'
 gem 'graphiql-rails'
 gem 'goldiloader', '~> 3.1'
@@ -24,7 +24,7 @@ gem 'uglifier'
 gem 'sass-rails'
 gem 'active_record_union'
 gem 'rack-attack'
-gem 'google-api-client', '~> 0.34'
+gem 'google-api-client', '~> 0.48.0'
 
 group :production do
   gem 'rails_12factor', '0.0.3'
@@ -55,6 +55,6 @@ group :test do
   gem 'maxitest', require: false
   gem 'mocha', require: false
   gem 'timecop', require: false
-  gem 'single_cov', '0.8.4', require: false
+  gem 'single_cov', '1.5.0', require: false
   gem 'rails-controller-testing'
 end
