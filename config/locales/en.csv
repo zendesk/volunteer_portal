@@ -185,6 +185,7 @@ volunteer_portal.admin.tab.reporting.name,Name,,,true
 volunteer_portal.admin.tab.reporting.email,Email,,,true
 volunteer_portal.admin.tab.reporting.office,Office,,,true
 volunteer_portal.admin.tab.reporting.event_type,Event Type,,,true
+volunteer_portal.admin.tab.reporting.tag,Tag,,,true
 volunteer_portal.admin.tab.reporting.from,From,,,true
 volunteer_portal.admin.tab.reporting.to,To,,,true
 volunteer_portal.admin.tab.reporting.hours,Hours,,,true

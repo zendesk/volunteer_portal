@@ -38,7 +38,7 @@ module TagReportResolver
         (SELECT SUM(duration), tag_id
         from events LEFT JOIN event_tags ON (events.id=event_tags.event_id) LEFT JOIN signups ON signups.event_id = events.id
         WHERE \"events\".\"deleted_at\" IS NULL 
-        #{office_id == 'all' ? '' : "AND individual_events.office_id=#{office_id}"}
+        #{office_id == 'all' ? '' : "AND events.office_id=#{office_id}"}
         AND (starts_at > '#{Time.at(args[:after])}')
         AND (starts_at < '#{Time.at(args[:before])}')
         GROUP BY tag_id) as tagDuration

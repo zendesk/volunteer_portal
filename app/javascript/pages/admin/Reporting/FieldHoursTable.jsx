@@ -15,17 +15,17 @@ import * as R from 'ramda'
 
 import { Box } from '../../../components/StyleFoundation'
 
-const Reporting = ({ eventTypes, loading }) => {
+const FieldHoursTable = ({ fields, loading, name, itemNameAccessor }) => {
   const pageSize = 10
   const { t } = useTranslation()
   const [ page, setPage ] = useState(1)
 
-  const eventTypeSlice = R.pipe(
+  const fieldSlice = R.pipe(
     R.slice(pageSize * (page - 1), pageSize * page),
     R.sort((a, b) => b.minutes - a.minutes),
-  )(eventTypes)
+  )(fields)
 
-  const totalPages = Math.floor(eventTypes.length / pageSize) + (eventTypes.length % pageSize > 0 ? 1 : 0)
+  const totalPages = Math.floor(fields.length / pageSize) + (fields.length % pageSize > 0 ? 1 : 0)
 
   return (
     <div>
@@ -43,16 +43,16 @@ const Reporting = ({ eventTypes, loading }) => {
             <Head>
               <HeaderRow>
                 {/* TODO: searchable name */}
-                <HeaderCell>{t('volunteer_portal.admin.tab.reporting.event_type')}</HeaderCell>
+                <HeaderCell>{name}</HeaderCell>
                 {/* TODO: toggle sort by hours */}
                 <HeaderCell>{t('volunteer_portal.admin.tab.reporting.hours')}</HeaderCell>
               </HeaderRow>
             </Head>
             <Body>
               {
-                eventTypeSlice.map((data, index) =>
+                fieldSlice.map((data, index) =>
                   <Row key={`${data.id}-${index}`}>
-                    <Cell>{data.title}</Cell>
+                    <Cell>{data[itemNameAccessor]}</Cell>
                     <Cell>{Math.floor(data.minutes / 60)}</Cell>
                   </Row>
                 )
@@ -67,4 +67,4 @@ const Reporting = ({ eventTypes, loading }) => {
   )
 }
 
-export default Reporting
+export default FieldHoursTable
