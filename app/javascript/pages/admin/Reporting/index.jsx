@@ -102,10 +102,10 @@ const ReportingPage = () => {
   const { filters } = useContext(FilterContext)
 
   const [ getUsers, { loading: userLoading, data: userData } ] = useLazyQuery(UserReportingQuery)
-  const [ getOrganizedEventTypes, { loading: organizedEventTypeLoading, data: organizedEventTypeData } ] = useLazyQuery(OrganizedEventTypeReportingQuery)
-  const [ getIndividualEventTypes, { loading: individualEventTypeLoading, data: individualEventTypeData } ] = useLazyQuery(IndividualEventTypeReportingQuery)
-  const [ getOrganizedTags, { loading: organizedTagLoading, data: organizedTagData } ] = useLazyQuery(OrganizedTagReportingQuery)
-  const [ getIndividualTags, { loading: individualTagLoading, data: individualTagData } ] = useLazyQuery(IndividualTagReportingQuery)
+  const [ getOrganizedEventTypes, { loading: organizedEventTypeLoading, data: organizedEventTypeData } ] = useLazyQuery(OrganizedEventTypeReportingQuery, { fetchPolicy: "network-only"})
+  const [ getIndividualEventTypes, { loading: individualEventTypeLoading, data: individualEventTypeData } ] = useLazyQuery(IndividualEventTypeReportingQuery, { fetchPolicy: "network-only"})
+  const [ getOrganizedTags, { loading: organizedTagLoading, data: organizedTagData } ] = useLazyQuery(OrganizedTagReportingQuery, { fetchPolicy: "network-only"})
+  const [ getIndividualTags, { loading: individualTagLoading, data: individualTagData } ] = useLazyQuery(IndividualTagReportingQuery, { fetchPolicy: "network-only"})
 
   // Updates data
   useEffect(() => {
