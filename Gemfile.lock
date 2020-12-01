@@ -269,7 +269,7 @@ GEM
     stackprof (0.2.15)
     stronger_parameters (2.12.1)
       actionpack (>= 3.2, < 6.1)
-    testrbl (0.8.0)
+    testrbl (0.9.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
