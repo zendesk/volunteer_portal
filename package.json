@@ -99,7 +99,7 @@
     "babel-plugin-macros": "^2.6.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "compression-webpack-plugin": "^6.0.4",
-    "core-js": "^2.5.3",
+    "core-js": "^3.8.0",
     "css-loader": "^3.2.0",
     "csv-parse": "^4.8.5",
     "deepmerge": "^1.5.2",
