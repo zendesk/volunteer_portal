@@ -32,7 +32,7 @@ module EventTypeReportResolver
 
     def organized(_object, args, _context)
       office_id = args[:office_id]
-      and_office = office_id == 'all' ? '' : "AND individual_events.office_id=#{office_id}"
+      and_office = office_id == 'all' ? '' : "AND events.office_id=#{office_id}"
       sql = <<-SQL
       SELECT "id", "title", "sum" from event_types INNER JOIN
         (SELECT SUM(duration), event_type_id
