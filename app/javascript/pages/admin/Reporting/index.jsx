@@ -17,10 +17,12 @@ import { Button } from '@zendeskgarden/react-buttons'
 import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
 
 import UserReporting from './User'
-import EventTypeReporting from './EventType'
+import FieldHoursTable from './FieldHoursTable'
 import UserReportingQuery from './queries/userReportingQuery.gql'
 import OrganizedEventTypeReportingQuery from './queries/organizedEventTypeReportingQuery.gql'
 import IndividualEventTypeReportingQuery from './queries/individualEventTypeReportingQuery.gql'
+import OrganizedTagReportingQuery from './queries/organizedTagReportingQuery.gql'
+import IndividualTagReportingQuery from './queries/individualTagReportingQuery.gql'
 import { FilterContext, officeFilterValueLens } from '/context'
 import OfficeFilter from '../../../components/OfficeFilter'
 import { Box, FlexBox } from '../../../components/StyleFoundation'
@@ -62,18 +64,29 @@ const initialRange = {
 const formatOrDefaultStartDate = filterValue => Number(moment(filterValue || defaultStartDate).format('X'))
 const formatOrDefaultEndDate = filterValue => Number(moment(filterValue || defaultEndDate).format('X'))
 
-const setUserOctectStream = (data, setOctectStream) => {
+const createUserOctectStream = (data) => {
   const headers = 'Name,Email,Office,Hours\n'
   const csv = R.reduce((acc, row) => acc + `${row.name},${row.email},${row.office.name},${row.hours}\n`, headers, data)
   const octetStream = encodeURIComponent(csv)
-  setOctectStream(octetStream)
+  return octetStream
 }
 
-const setEventTypeOctectStream = (data, setOctectStream) => {
+const createEventTypeOctectStream = (data) => {
   const headers = 'Id,Event Type,Minutes\n'
   const csv = R.reduce((acc, row) => acc + `${row.id},${row.title},${row.minutes}\n`, headers, data)
   const octetStream = encodeURIComponent(csv)
-  setOctectStream(octetStream)
+  return octetStream
+}
+
+const createTagOctectStream = (data) => {
+  const headers = 'Id,Tag,Minutes\n'
+  const csv = R.reduce((acc, row) => acc + `${row.id},${row.name},${row.minutes}\n`, headers, data)
+  const octetStream = encodeURIComponent(csv)
+  return octetStream
+}
+
+const generateExportFileName = (report, startDate, endDate) => {
+  return `${report}_${moment(startDate).format('YYYY_MM_DD')}-${moment(endDate).format('YYYY_MM_DD')}_export.csv`
 }
 
 const ReportingPage = () => {
@@ -89,8 +102,10 @@ const ReportingPage = () => {
   const { filters } = useContext(FilterContext)
 
   const [ getUsers, { loading: userLoading, data: userData } ] = useLazyQuery(UserReportingQuery)
-  const [ getOrganizedEventTypes, { loading: organizedEventTypeLoading, data: organizedEventTypeData } ] = useLazyQuery(OrganizedEventTypeReportingQuery)
-  const [ getIndividualEventTypes, { loading: individualEventTypeLoading, data: individualEventTypeData } ] = useLazyQuery(IndividualEventTypeReportingQuery)
+  const [ getOrganizedEventTypes, { loading: organizedEventTypeLoading, data: organizedEventTypeData } ] = useLazyQuery(OrganizedEventTypeReportingQuery, { fetchPolicy: "network-only"})
+  const [ getIndividualEventTypes, { loading: individualEventTypeLoading, data: individualEventTypeData } ] = useLazyQuery(IndividualEventTypeReportingQuery, { fetchPolicy: "network-only"})
+  const [ getOrganizedTags, { loading: organizedTagLoading, data: organizedTagData } ] = useLazyQuery(OrganizedTagReportingQuery, { fetchPolicy: "network-only"})
+  const [ getIndividualTags, { loading: individualTagLoading, data: individualTagData } ] = useLazyQuery(IndividualTagReportingQuery, { fetchPolicy: "network-only"})
 
   // Updates data
   useEffect(() => {
@@ -109,6 +124,12 @@ const ReportingPage = () => {
       case 'individualEventType':
         getIndividualEventTypes({ variables: baseVariables })
         break;
+      case 'organizedTag':
+        getOrganizedTags({ variables: baseVariables })
+        break
+      case 'individualTag':
+        getIndividualTags({ variables: baseVariables })
+        break
       default:
         break;
     }
@@ -118,18 +139,24 @@ const ReportingPage = () => {
   useEffect(() => {
     switch (report) {
       case 'user':
-        userData && setUserOctectStream(R.propOr([], 'users', userData), setOctectStream)
+        userData ? setOctectStream(createUserOctectStream(R.propOr([], 'users', userData))) : setOctectStream(null)
         break;
       case 'organizedEventType':
-        organizedEventTypeData && setEventTypeOctectStream(R.propOr([], 'eventTypeOrganizedReport', organizedEventTypeData), setOctectStream)
+        organizedEventTypeData ? setOctectStream(createEventTypeOctectStream(R.propOr([], 'eventTypeOrganizedReport', organizedEventTypeData))) : setOctectStream(null)
         break;
       case 'individualEventType':
-        individualEventTypeData && setEventTypeOctectStream(R.propOr([], 'eventTypeIndividualReport', individualEventTypeData), setOctectStream)
+        individualEventTypeData ? setOctectStream(createEventTypeOctectStream(R.propOr([], 'eventTypeIndividualReport', individualEventTypeData))) : setOctectStream(null)
+        break;
+      case 'organizedTag':
+        organizedTagData ? setOctectStream(createTagOctectStream(R.propOr([], 'tagOrganizedReport', organizedTagData))) : setOctectStream(null)
+        break;
+      case 'individualTag':
+        individualTagData ? setOctectStream(createTagOctectStream(R.propOr([], 'tagIndividualReport', individualTagData))) : setOctectStream(null)
         break;
       default:
         break;
     }
-  }, [ userData, organizedEventTypeData, individualEventTypeData ])
+  }, [ report, userData, organizedEventTypeData, individualEventTypeData, organizedTagData, individualTagData ])
 
   const changeStartDate = date => setDateRange(R.set(R.lensProp('start'), date))
   const changeEndDate = date => setDateRange(R.set(R.lensProp('end'), date))
@@ -137,7 +164,9 @@ const ReportingPage = () => {
   const reportKeyTitleMap = {
     user: t('volunteer_portal.admin.tab.reporting.dropdown.users'),
     organizedEventType: `${t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}`,
-    individualEventType: `${t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}`
+    individualEventType: `${t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}`,
+    organizedTag: `${t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}`,
+    individualTag: `${t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')} / ${t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}`,
   }
 
   const handleDropdownStateChange = (changes, stateAndHelpers) => {
@@ -171,6 +200,8 @@ const ReportingPage = () => {
       setReport(item)
     }
   }
+
+  const exportFileName = generateExportFileName(report, dateRange.start, dateRange.end)
 
   return (
     <FlexBox justifyContent="space-around">
@@ -212,7 +243,7 @@ const ReportingPage = () => {
                 </Datepicker>
             </FormField>
           </FlexBox>
-          <a href={octetStream && `data:application/octet-stream;filename=export.csv,${octetStream}`} download="export.csv">
+          <a href={octetStream && `data:application/octet-stream;filename=${exportFileName},${octetStream}`} download={exportFileName}>
             <Button disabled={!octetStream}>{t('volunteer_portal.admin.tab.reporting.exportascsv')}</Button>
           </a>
         </ToolbarHeader>
@@ -224,15 +255,35 @@ const ReportingPage = () => {
             />
           :
           report === 'organizedEventType' ?
-            <EventTypeReporting
-              eventTypes={R.propOr([], 'eventTypeOrganizedReport', organizedEventTypeData)}
+            <FieldHoursTable
+              fields={R.propOr([], 'eventTypeOrganizedReport', organizedEventTypeData)}
+              name={t('volunteer_portal.admin.tab.reporting.event_type')}
+              itemNameAccessor='title'
               loading={organizedEventTypeLoading}
             />
           :
           report === 'individualEventType' ?
-            <EventTypeReporting
-              eventTypes={R.propOr([], 'eventTypeIndividualReport', individualEventTypeData)}
+            <FieldHoursTable
+              fields={R.propOr([], 'eventTypeIndividualReport', individualEventTypeData)}
+              name={t('volunteer_portal.admin.tab.reporting.event_type')}
+              itemNameAccessor='title'
               loading={individualEventTypeLoading}
+            />
+          :
+          report === 'organizedTag' ?
+            <FieldHoursTable
+              fields={R.propOr([], 'tagOrganizedReport', organizedTagData)}
+              name={t('volunteer_portal.admin.tab.reporting.tag')}
+              itemNameAccessor='name'
+              loading={organizedTagLoading}
+            />
+          :
+          report === 'individualTag' ?
+            <FieldHoursTable
+              fields={R.propOr([], 'tagIndividualReport', individualTagData)}
+              name={t('volunteer_portal.admin.tab.reporting.tag')}
+              itemNameAccessor='name'
+              loading={individualTagLoading}
             />
           :
           <Box mt="16px">

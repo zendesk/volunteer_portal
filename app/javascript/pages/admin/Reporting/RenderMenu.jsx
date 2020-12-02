@@ -21,8 +21,8 @@ const OrgnizedEventsMenu = ({ t }) =>
   <PreviousItem value="base">{t('volunteer_portal.admin.tab.reporting.dropdown.organized_events')}</PreviousItem>
   <Separator />
   <Item value="organizedEventType">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}</Item>
+  <Item value="organizedTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item>
   {/* Not implemented yet */}
-  {/* <Item value="organizedTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item> */}
   {/* <Item value="organizedOrganization">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.organization')}</Item> */}
 </>
 
@@ -31,8 +31,8 @@ const IndividualEventsMenu = ({ t }) =>
   <PreviousItem value="base">{t('volunteer_portal.admin.tab.reporting.dropdown.individual_events')}</PreviousItem>
   <Separator />
   <Item value="individualEventType">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.event_type')}</Item>
+  <Item value="individualTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item>
   {/* Not implemented yet */}
-  {/* <Item value="individualTag">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.tag')}</Item> */}
   {/* <Item value="individualOrganization">{t('volunteer_portal.admin.tab.reporting.dropdown.nested.organization')}</Item> */}
 </>
 
