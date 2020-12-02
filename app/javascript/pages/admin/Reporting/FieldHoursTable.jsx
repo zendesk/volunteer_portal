@@ -21,8 +21,8 @@ const FieldHoursTable = ({ fields, loading, name, itemNameAccessor }) => {
   const [ page, setPage ] = useState(1)
 
   const fieldSlice = R.pipe(
-    R.slice(pageSize * (page - 1), pageSize * page),
     R.sort((a, b) => b.minutes - a.minutes),
+    R.slice(pageSize * (page - 1), pageSize * page),
   )(fields)
 
   const totalPages = Math.floor(fields.length / pageSize) + (fields.length % pageSize > 0 ? 1 : 0)

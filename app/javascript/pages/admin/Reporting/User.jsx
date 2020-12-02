@@ -21,8 +21,8 @@ const Reporting = ({ users, loading }) => {
   const [ page, setPage ] = useState(1)
 
   const userSlice = R.pipe(
-    R.slice(pageSize * (page - 1), pageSize * page),
     R.sort((a, b) => b.hours - a.hours),
+    R.slice(pageSize * (page - 1), pageSize * page),
   )(users)
 
   const totalPages = Math.floor(users.length / pageSize) + (users.length % pageSize > 0 ? 1 : 0)
