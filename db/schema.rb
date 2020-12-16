@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_054322) do
+ActiveRecord::Schema.define(version: 2020_12_16_035300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(version: 2020_05_06_054322) do
     t.index ["user_id"], name: "index_individual_events_on_user_id"
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.string "language_code"
+    t.index ["language_code"], name: "index_languages_on_language_code", unique: true
+  end
+
   create_table "offices", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "identifier", null: false
@@ -145,6 +150,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_054322) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "language_id", default: 1
     t.index ["user_id"], name: "index_user_preferences_on_user_id"
   end
 
@@ -184,5 +190,6 @@ ActiveRecord::Schema.define(version: 2020_05_06_054322) do
   add_foreign_key "event_tags", "tags"
   add_foreign_key "individual_event_tags", "individual_events"
   add_foreign_key "individual_event_tags", "tags"
+  add_foreign_key "user_preferences", "languages"
   add_foreign_key "user_preferences", "users"
 end
