@@ -940,6 +940,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.12.5":
+  version "7.12.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.3.3", "@babel/template@^7.4.0":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.10.4.tgz#3251996c4200ebc71d1a8fc405fba940f36ba278"
@@ -1792,12 +1799,13 @@
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
 
-"@zendeskgarden/react-typography@^8.5.0":
-  version "8.21.2"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-8.21.2.tgz#c0fce84ca75a9d3d806661ae5a01341befbf911b"
-  integrity sha512-g+UT83JrtGpyfNr8PHjwXpqX2yyRAjusumK4VIZtJxELNQCghvRdVNmXpdAKsJ07ka4ydPewFgi+17hhHB8j0A==
+"@zendeskgarden/react-typography@^8.29.1":
+  version "8.29.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-8.29.1.tgz#d87857bfe421757e213e99ceb6328350f0fbbb94"
+  integrity sha512-nr+/hY6wY0XwrwNCKbCUqiBCltw10J0TIM05oJ1t84dTL2KTp9vyur252jmm2ACXO7sRPvbllI5mhE7sQ7hLvQ==
   dependencies:
-    polished "^3.5.1"
+    polished "^4.0.0"
+    prism-react-renderer "^1.1.1"
 
 "@zendeskgarden/svg-icons@^6.17.0":
   version "6.22.0"
@@ -8098,6 +8106,13 @@ polished@^3.5.1:
   dependencies:
     "@babel/runtime" "^7.9.2"
 
+polished@^4.0.0:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-4.0.5.tgz#3f91873c8f72dec1723b3f892f57fbb22645b23d"
+  integrity sha512-BY2+LVtOHQWBQpGN4GPAKpCdsBePOdSdHTpZegRDRCrvGPkRPTx1DEC+vGjIDPhXS7W2qiBxschnwRWTFdMZag==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 popper.js@^1.14.4:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
@@ -8834,6 +8849,11 @@ pretty-format@^24.9.0:
     ansi-regex "^4.0.0"
     ansi-styles "^3.2.0"
     react-is "^16.8.4"
+
+prism-react-renderer@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.1.1.tgz#1c1be61b1eb9446a146ca7a50b7bcf36f2a70a44"
+  integrity sha512-MgMhSdHuHymNRqD6KM3eGS0PNqgK9q4QF5P0yoQQvpB6jNjeSAi3jcSAz0Sua/t9fa4xDOMar9HJbLa08gl9ug==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
