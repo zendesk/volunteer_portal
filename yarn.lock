@@ -932,14 +932,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.2.0":
-  version "7.12.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
-  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.12.5":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.2.0":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
@@ -1763,10 +1756,10 @@
     dom-helpers "^5.1.0"
     react-popper "^2.2.3"
 
-"@zendeskgarden/react-notifications@^8.25.1":
-  version "8.25.1"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.25.1.tgz#9dd689b19faa8bdf79a4e29c8d87de5607b31084"
-  integrity sha512-T+ensxIbj/jYt7ki0rPWFAhrqeJDv9Lg3cgsxzyrHfiiQnYTRxraJRsvrTLeXemZUViA23Ro196FYOH6WGU4cQ==
+"@zendeskgarden/react-notifications@^8.30.0":
+  version "8.30.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.30.0.tgz#d39fc41406d240566aa3022ac384bb248447e138"
+  integrity sha512-l4dL7H0vX8OsYeBN5l7E8L/Ly+Q4oYtpW9PaKu3DwdBBJlKa/eokYxXyebRCrvZ+RCoQMNB9MQgvHwgAxUObcA==
 
 "@zendeskgarden/react-pagination@^8.23.1":
   version "8.23.1"
