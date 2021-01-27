@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'single_cov'
 
 SingleCov.setup :minitest, branches: false
-SingleCov::APP_FOLDERS.concat %w[
+SingleCov::RAILS_APP_FOLDERS.concat %w[
   presenters
   graphql
   middleware
