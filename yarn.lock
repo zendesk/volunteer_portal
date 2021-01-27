@@ -1623,6 +1623,13 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
 
+"@zendeskgarden/container-focusvisible@^0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-focusvisible/-/container-focusvisible-0.4.6.tgz#bf1736353babb632ff04e4f7330c7da98bdd8ce0"
+  integrity sha512-YLGJ2+i9PKzP4ND9OtuWrUomJvKp+Mel8QSIGsWkUQ6DqabVZPi2//BZ0slqnyq4LcIS0MjTSCLi28H6IFjrrA==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
 "@zendeskgarden/container-keyboardfocus@^0.4.1":
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-keyboardfocus/-/container-keyboardfocus-0.4.5.tgz#06cf831c16db99565d21180dd6af4b2bda645075"
@@ -1668,6 +1675,13 @@
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.5.4.tgz#8550404cafd0aab5ed80f3da0a51d424e8e3facb"
   integrity sha512-Iz6YZ6va3JIShzKXKjK4TCf168GSX+/XeeBr6o9MTJ4K84lO0F0ZX2GIFuZmacfkBjCXfyNxj4aua/5/1ZXyPg==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
+"@zendeskgarden/container-utilities@^0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.5.5.tgz#c291e7c2454fe6a638afe947b51e74d56387fc79"
+  integrity sha512-41qrK/ePXbPD+t2bKOtbzIZAjIlrIcN7EVGShPAjMjRzhQpZeX5UFsIrmN56/vQ8+xMVh/BxNEXgbtAO37FgwA==
   dependencies:
     "@babel/runtime" "^7.8.4"
 
@@ -1787,14 +1801,14 @@
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
 
-"@zendeskgarden/react-theming@^8.5.0":
-  version "8.21.2"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-8.21.2.tgz#1ec29592ce9aa9e23556fc94ceb32de18911ec8e"
-  integrity sha512-TQS0ZvI0WlzckHtFhFx/2hkfEsPArbJQfSgXFhC0WUhk/iiXYahLIlq2Eq/Q7HEUUtQ7RDMi7hTPea74DBJaZw==
+"@zendeskgarden/react-theming@^8.30.0":
+  version "8.30.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-8.30.0.tgz#b7da8c3865278d2d7f766a727d5f3aeddef96364"
+  integrity sha512-+UL39BIkayoEYJfW+c1Q50JTvh39QwjRU2nDTbO8/uDZE1tOm1/HArR2y4K7/L2F9TMdynvSmG9KFkzOwgtLog==
   dependencies:
-    "@zendeskgarden/container-focusvisible" "^0.4.3"
-    "@zendeskgarden/container-utilities" "^0.5.1"
-    polished "^3.5.1"
+    "@zendeskgarden/container-focusvisible" "^0.4.6"
+    "@zendeskgarden/container-utilities" "^0.5.5"
+    polished "^4.0.0"
 
 "@zendeskgarden/react-typography@^8.5.0":
   version "8.21.2"
