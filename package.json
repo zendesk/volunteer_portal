@@ -112,6 +112,7 @@
     "i18next-xhr-backend": "^3.0.0",
     "js-yaml": "^3.13.1",
     "lodash.debounce": "^4.0.8",
+    "lodash.startcase": "^4.4.0",
     "material-ui": "0.20.2",
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.14",

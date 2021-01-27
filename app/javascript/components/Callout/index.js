@@ -1,33 +1,31 @@
 import React from 'react'
-import s from './main.css'
-
-const colorClass = type => {
-  switch (type) {
-    case 'default':
-      return s.default
-    case 'success':
-      return s.success
-    case 'warning':
-      return s.warning
-    case 'error':
-      return s.error
-    default:
-      return s.default
-  }
-}
+import startCase from 'lodash.startcase'
+import { Alert, Close, Title } from '@zendeskgarden/react-notifications'
 
 const genericErrorMessage = 'We are having trouble loading this form, please contact support.'
 
 const calloutMessage = (message, type) => {
   if (type === 'error' && !message) {
     return genericErrorMessage
-  } else {
-    return message
   }
+
+  return message
+}
+
+const alertType = (type) => {
+  if (!type || type === 'default') {
+    return 'info'
+  }
+
+  return type
 }
 
 const Callout = ({ message, type }) => (
-  <div className={`${s.callout} ${colorClass(type)}`}>{calloutMessage(message, type)}</div>
+  <Alert type={alertType(type)}>
+    <Title>{startCase(type)}</Title>
+    {calloutMessage(message, type)}
+    <Close aria-label="Close Alert" />
+  </Alert>
 )
 
 export default Callout
