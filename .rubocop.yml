@@ -9,6 +9,7 @@ AllCops:
     - 'db/schema.rb'
     - 'Rakefile'
     - 'vendor/bundle/**/*'
+    - 'node_modules/**/*'
 
 # LineLength metrics seems to complicate any other rules.
 # It should probably be enabled last, if ever.
@@ -107,7 +108,6 @@ Style/FrozenStringLiteralComment:
 Style/Lambda:
   EnforcedStyle: literal
 
-
 # Consistent use of quote is probably a good thing, but would lead to more frustration than benefits
 # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/StringLiterals
 Style/StringLiterals:
@@ -154,7 +154,7 @@ Style/HashTransformValues:
   Enabled: true
 
 Style/RedundantFetchBlock:
-  Enabled: true 
+  Enabled: true
 
 Style/RedundantRegexpCharacterClass:
   Enabled: true
