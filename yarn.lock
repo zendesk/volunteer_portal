@@ -932,7 +932,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.2.0":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.2.0":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
@@ -1803,12 +1803,13 @@
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
 
-"@zendeskgarden/react-typography@^8.5.0":
-  version "8.21.2"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-8.21.2.tgz#c0fce84ca75a9d3d806661ae5a01341befbf911b"
-  integrity sha512-g+UT83JrtGpyfNr8PHjwXpqX2yyRAjusumK4VIZtJxELNQCghvRdVNmXpdAKsJ07ka4ydPewFgi+17hhHB8j0A==
+"@zendeskgarden/react-typography@^8.30.0":
+  version "8.30.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-8.30.0.tgz#3f8065f7815b25d72d876eeed2a7455a081e8425"
+  integrity sha512-HXJT+VLYymCWBXWzNK9s8Afio8TJHc7oCoc1N5mObvA/gHQefe/DoVecp3ON1YEyGBDnGsUBopGSN9vlv7O7LA==
   dependencies:
-    polished "^3.5.1"
+    polished "^4.0.0"
+    prism-react-renderer "^1.1.1"
 
 "@zendeskgarden/svg-icons@^6.17.0":
   version "6.22.0"
@@ -8853,6 +8854,11 @@ pretty-format@^24.9.0:
     ansi-regex "^4.0.0"
     ansi-styles "^3.2.0"
     react-is "^16.8.4"
+
+prism-react-renderer@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.1.1.tgz#1c1be61b1eb9446a146ca7a50b7bcf36f2a70a44"
+  integrity sha512-MgMhSdHuHymNRqD6KM3eGS0PNqgK9q4QF5P0yoQQvpB6jNjeSAi3jcSAz0Sua/t9fa4xDOMar9HJbLa08gl9ug==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
