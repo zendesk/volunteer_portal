@@ -61,7 +61,6 @@ const EventPopoverForData = (props) => {
   return (
     <EventPopover
       loading={networkStatus === NetworkStatus.loading}
-      open
       anchorEl={popoverState.anchorEl}
       currentUser={currentUser}
       event={event}
