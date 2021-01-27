@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read('.ruby-version').strip
 
-gem 'rails', '~> 6.1.1'
+gem 'rails', '~> 6.0.0'
 gem 'rack-cors', '~> 1.1.1', require: 'rack/cors'
 gem 'puma'
 gem 'daemons', require: false
@@ -10,7 +10,7 @@ gem 'pg', '~> 1.2' # https://github.com/rails/rails/issues/31673
 gem 'dotenv'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-saml'
-gem 'stronger_parameters', '~> 2.13'
+gem 'stronger_parameters', '~> 2.12.1'
 gem 'graphql', '~> 1.11'
 gem 'graphql-batch'
 gem 'graphiql-rails'
@@ -50,7 +50,7 @@ end
 
 group :test do
   gem 'webmock', require: false
-  gem 'minitest-rails', '~> 6.1.0', require: false
+  gem 'minitest-rails', '~> 6.0.0', require: false
   gem 'minitest-ci', require: false
   gem 'maxitest', require: false
   gem 'mocha', require: false
