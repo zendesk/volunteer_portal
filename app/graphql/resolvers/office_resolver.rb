@@ -6,9 +6,7 @@ module OfficeResolver
     def all(_object, args, _context)
       scope = Office.all
 
-      scope = scope_with_sort_by(scope, args[:sort_by])
-
-      scope
+      scope_with_sort_by(scope, args[:sort_by])
     end
 
     def create(_, args, _context)

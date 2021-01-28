@@ -18,9 +18,7 @@ module UserResolver
       scope = scope_with_time(scope, args[:after], args[:before])
       scope = scope_with_office_id(scope, office_id)
       scope = scope_with_count(scope, args[:count])
-      scope = scope_with_sort_by(scope, args[:sort_by])
-
-      scope
+      scope_with_sort_by(scope, args[:sort_by])
     end
 
     def update(_, args, context)

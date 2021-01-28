@@ -20,14 +20,13 @@ module EventTypeReportResolver
       SQL
 
       records_array = ActiveRecord::Base.connection.execute(sql)
-      result = records_array.map do |record|
+      records_array.map do |record|
         {
           id: record["id"],
           title: record["title"],
           minutes: record["sum"]
         }
       end
-      result
     end
 
     def organized(_object, args, _context)
@@ -46,14 +45,13 @@ module EventTypeReportResolver
       SQL
 
       records_array = ActiveRecord::Base.connection.execute(sql)
-      result = records_array.map do |record|
+      records_array.map do |record|
         {
           id: record["id"],
           title: record["title"],
           minutes: record["sum"]
         }
       end
-      result
     end
   end
 end
