@@ -9,6 +9,7 @@ AllCops:
     - 'db/schema.rb'
     - 'Rakefile'
     - 'vendor/bundle/**/*'
+    - 'node_modules/**/*'
 
 # LineLength metrics seems to complicate any other rules.
 # It should probably be enabled last, if ever.
