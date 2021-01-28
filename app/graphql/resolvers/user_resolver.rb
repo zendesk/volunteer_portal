@@ -96,9 +96,9 @@ module UserResolver
 
       order = case sort_by
               when HOURS_DESC
-                query + ' DESC'
+                "#{query} DESC"
               when HOURS_ASC
-                query + ' ASC'
+                "#{query} ASC"
               end
 
       scope = scope.joins(BASE_INDIVIDUAL_EVENTS_JOIN) unless scope.to_sql.include?('LEFT JOIN "individual_events"')
