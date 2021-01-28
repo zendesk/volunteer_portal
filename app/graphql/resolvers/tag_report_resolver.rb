@@ -1,5 +1,5 @@
 module TagReportResolver
-  # Note: These queries have been taken from official Dataclips we've been using since 2019.
+  # NOTE: These queries have been taken from official Dataclips we've been using since 2019.
   # TODO: Refactor into Active Record Queries to make it testable.
   class << self
     def individual(_object, args, _context)
