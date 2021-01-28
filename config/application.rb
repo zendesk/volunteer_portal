@@ -52,7 +52,7 @@ module Portal
     config.assets.paths << Rails.root.join("public/assets")
 
     unless Rails.env.test?
-      logger           = ActiveSupport::Logger.new(STDOUT)
+      logger           = ActiveSupport::Logger.new($stdout)
       logger.formatter = config.log_formatter
       config.logger    = ActiveSupport::TaggedLogging.new(logger)
     end
