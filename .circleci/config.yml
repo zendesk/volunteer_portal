@@ -24,7 +24,7 @@ jobs:
           name: install dependencies
           command: |
             gem install bundler -v 1.17.3
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle install --local --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -53,7 +53,7 @@ jobs:
           name: install dependencies
           command:  |
             gem install bundler -v 1.17.3
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle install --local --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
             - ./vendor/bundle
