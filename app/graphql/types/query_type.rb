@@ -152,5 +152,11 @@ module Types
     def tags
       Tag.all
     end
+
+    field :languages, [LanguageGraphType], null: true
+    def languages
+      Language.all
+    end
+
   end
 end

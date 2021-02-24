@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_035300) do
 
   create_table "languages", force: :cascade do |t|
     t.string "language_code"
+    t.string "language_name"
     t.index ["language_code"], name: "index_languages_on_language_code", unique: true
   end
 
