@@ -31,6 +31,14 @@ volunteer_portal.admin.tab.organizations,Organizaciones,Clickable tab that displ
 volunteer_portal.admin.tab.individualevents,Eventos individuales,Clickable tab that displays the administrator Individual Events View,https://drive.google.com/open?id=1qVwYdnBDhMRR9l3eqx-yyHTWPchQDHiJ,TRUE
 volunteer_portal.admin.tab.users,Usuarios,Clickable tab that displays the administrator Users View,https://drive.google.com/open?id=1bQIlk90OYX9FDR8lZU1p_aR3o3jlr0cm,TRUE
 volunteer_portal.admin.tab.reporting,Informes,Clickable tab that displays the administrator Reporting View,https://drive.google.com/open?id=1ilxTU6f_yWopyoVEZIHPI2z6VDHY__H8,TRUE
+volunteer_portal.admin.tab.reporting.dropdown.individual_events,Eventos individuales,,,true
+volunteer_portal.admin.tab.reporting.dropdown.nested.event_type,Tipo de evento,,,true
+volunteer_portal.admin.tab.reporting.dropdown.nested.organization,Organización,,,true
+volunteer_portal.admin.tab.reporting.dropdown.nested.tag,Etiqueta,,,true
+volunteer_portal.admin.tab.reporting.dropdown.nested.total,Total,,,true
+volunteer_portal.admin.tab.reporting.dropdown.none,Ninguno/a,,,true
+volunteer_portal.admin.tab.reporting.dropdown.organized_events,Eventos organizados,,,true
+volunteer_portal.admin.tab.reporting.dropdown.users,Usuarios,,,true
 volunteer_portal.calendar.bigcalendar.month,Mes,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
 volunteer_portal.calendar.bigcalendar.week,Semana,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
 volunteer_portal.calendar.bigcalendar.work_week,Semana laboral,"Tab to select Month, Week, Work Week and Day. ATM ONLY Month is activated",https://drive.google.com/open?id=1Q840c2xaqGMFMT2ivJnGFXEaL88VY4R_,TRUE
@@ -176,10 +184,13 @@ volunteer_portal.admin.tab.tags_delete_confirmation,¿Está seguro de que desea 
 volunteer_portal.admin.tab.reporting.name,Nombre,,,true
 volunteer_portal.admin.tab.reporting.email,Correo electrónico,,,true
 volunteer_portal.admin.tab.reporting.office,Oficina,,,true
+volunteer_portal.admin.tab.reporting.select_label,Reporte,,,true
+volunteer_portal.admin.tab.reporting.select_report,Comience seleccionando un reporte,,,true
 volunteer_portal.admin.tab.reporting.from,Desde,,,true
 volunteer_portal.admin.tab.reporting.to,Hasta,,,true
 volunteer_portal.admin.tab.reporting.hours,Horas,,,true
 volunteer_portal.admin.tab.reporting.exportascsv,Exportar como CSV,,,true
+volunteer_portal.admin.tab.reporting.filter,Filtro,,,true
 volunteer_portal.admin.tab.user.dashboard.topvolunteers,Mejores Voluntarios,,,true
 volunteer_portal.admin.tab.user.dashboard.topvolunteers.hours,horas,,,true
 volunteer_portal.admin.tab.user.dashboard.networkerror,Error de red,,,true
