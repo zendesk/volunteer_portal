@@ -228,7 +228,7 @@ volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.tags.error,
 volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office,Office,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.office.error,Must have selection,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.record,Record,,,true
-volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.edit,Edit,,,true
+volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.edit,Save,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.editevent,Edit Event,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent,Delete event,,,true
 volunteer_portal.admin.tab.user.myevents.individualevent.deleteevent.description,Are you sure you want to delete this event?,,,true
