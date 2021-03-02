@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import * as R from 'ramda'
 import moment from 'moment'
-import Paper from 'material-ui/Paper'
+import { Well } from '@zendeskgarden/react-notifications'
 import { useQuery } from '@apollo/react-hooks'
 
 import Loading from 'components/LoadingIcon'
@@ -16,28 +16,19 @@ import AttendanceQuery from './attendanceQuery.gql'
 
 import { withTranslation } from 'react-i18next'
 
-const startOfWeek = moment()
-  .startOf('week')
-  .unix()
+const startOfWeek = moment().startOf('week').unix()
 
-const startOfMonth = moment()
-  .startOf('month')
-  .unix()
+const startOfMonth = moment().startOf('month').unix()
 
-const endOfWeek = moment()
-  .endOf('week')
-  .unix()
+const endOfWeek = moment().endOf('week').unix()
 
-const endOfMonth = moment()
-  .endOf('month')
-  .unix()
+const endOfMonth = moment().endOf('month').unix()
 
 // Only declare styles in here that are needed for MUI components
 const styles = {
-  paper: {
-    width: '100%',
+  well: {
+    width: '85%',
     height: '100%',
-    padding: 20,
   },
 }
 
@@ -109,7 +100,7 @@ const Dashboard = ({ t }) => {
       </div>
       <div className={s.row}>
         <div className={s.column}>
-          <Paper style={styles.paper} rounded={false}>
+          <Well style={styles.well}>
             {eventsThisWeek.length === 0 ? (
               <h3>{t('volunteer_portal.admin.tab.dashboard_noeventsthisweek')}</h3>
             ) : (
@@ -139,10 +130,10 @@ const Dashboard = ({ t }) => {
                 </div>
               </div>
             )}
-          </Paper>
+          </Well>
         </div>
         <div className={s.column}>
-          <Paper style={styles.paper} rounded={false}>
+          <Well style={styles.well}>
             {eventsThisMonth.length === 0 ? (
               <h3>{t('volunteer_portal.admin.tab.dashboard_noeventsthismonth')}</h3>
             ) : (
@@ -172,27 +163,27 @@ const Dashboard = ({ t }) => {
                 </div>
               </div>
             )}
-          </Paper>
+          </Well>
         </div>
       </div>
       <div className={s.rowSpace} />
       <div className={s.row}>
         <div className={s.column}>
           {eventsThisWeek.length === 0 ? null : (
-            <Paper style={styles.paper} rounded={false}>
-              {R.take(10, eventsThisWeek).map(e => (
+            <Well style={styles.well}>
+              {R.take(10, eventsThisWeek).map((e) => (
                 <Event key={`week-event-${e.id}`} event={e} addPopover={false} isLink />
               ))}
-            </Paper>
+            </Well>
           )}
         </div>
         <div className={s.column}>
           {eventsThisMonth.length === 0 ? null : (
-            <Paper style={styles.paper} rounded={false}>
-              {R.take(10, eventsThisMonth).map(e => (
+            <Well style={styles.well}>
+              {R.take(10, eventsThisMonth).map((e) => (
                 <Event key={`month-event-${e.id}`} event={e} addPopover={false} isLink />
               ))}
-            </Paper>
+            </Well>
           )}
         </div>
       </div>
