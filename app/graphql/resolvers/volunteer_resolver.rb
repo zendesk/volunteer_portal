@@ -33,9 +33,7 @@ module VolunteerResolver
       all_events_scope = all_events_scope.select("#{user_entry},  SUM(\"duration\") AS \"duration\"").group(user_entry)
 
       all_events_scope = scope_with_count(all_events_scope, args[:count])
-      all_events_scope = scope_with_sort_by(all_events_scope, args[:sort_by])
-
-      all_events_scope
+      scope_with_sort_by(all_events_scope, args[:sort_by])
     end
 
     private

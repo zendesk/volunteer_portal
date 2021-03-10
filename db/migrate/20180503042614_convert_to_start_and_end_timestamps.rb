@@ -5,7 +5,7 @@ class ConvertToStartAndEndTimestamps < ActiveRecord::Migration[5.1]
     add_column :events, :ends_at, :datetime
 
     Event.connection.execute(
-      <<-SQL
+      <<-SQL.squish
         UPDATE "events"
         SET
           "starts_at" = "time",

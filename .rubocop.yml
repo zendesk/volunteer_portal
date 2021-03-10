@@ -3,12 +3,14 @@ require: rubocop-rails
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'bin/*'
     - 'config.ru'
     - 'db/schema.rb'
     - 'Rakefile'
     - 'vendor/bundle/**/*'
+    - 'node_modules/**/*'
 
 # LineLength metrics seems to complicate any other rules.
 # It should probably be enabled last, if ever.
@@ -154,7 +156,7 @@ Style/HashTransformValues:
   Enabled: true
 
 Style/RedundantFetchBlock:
-  Enabled: true 
+  Enabled: true
 
 Style/RedundantRegexpCharacterClass:
   Enabled: true

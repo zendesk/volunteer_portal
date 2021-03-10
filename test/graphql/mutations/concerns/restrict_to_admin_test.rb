@@ -3,22 +3,20 @@ require_relative '../../../test_helper'
 SingleCov.covered!
 
 describe Mutations::Concerns::RestrictToAdmin do
-  class TestMutation
-    include Mutations::Concerns::RestrictToAdmin
-  end
+  test_mutation = Class.new { include Mutations::Concerns::RestrictToAdmin }
 
   describe '#ready?' do
     let(:context) { {} }
 
     before do
-      TestMutation.any_instance.stubs(context: context)
+      test_mutation.any_instance.stubs(context: context)
     end
 
     describe 'current_user is an admin' do
       let(:context) { { current_user: users(:admin) } }
 
       it 'returns true' do
-        assert_equal true, TestMutation.new.ready?
+        assert_equal true, test_mutation.new.ready?
       end
     end
 
@@ -27,7 +25,7 @@ describe Mutations::Concerns::RestrictToAdmin do
 
       it 'raises an error' do
         assert_raises PortalSchema::MutationForbiddenError do
-          TestMutation.new.ready?
+          test_mutation.new.ready?
         end
       end
     end

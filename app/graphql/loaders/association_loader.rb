@@ -1,5 +1,6 @@
 class AssociationLoader < GraphQL::Batch::Loader
   def initialize(model, association_name, scope: nil)
+    super()
     @model = model
     @association_name = association_name
     @scope = scope

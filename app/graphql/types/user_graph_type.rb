@@ -38,10 +38,12 @@ module Types
       argument :before, Int, required: false, description: 'The end of a time range within which to return volunteer hours'
     end
     def hours(after:, before:)
-      Promise.all([
-                    EventHoursLoader.for(after: after, before: before).load(object),
-                    IndividualEventHoursLoader.for(after: after, before: before).load(object)
-                  ]).then { |results| results.reduce(&:+) }
+      Promise.all(
+        [
+          EventHoursLoader.for(after: after, before: before).load(object),
+          IndividualEventHoursLoader.for(after: after, before: before).load(object)
+        ]
+      ).then { |results| results.reduce(&:+) }
     end
 
     field :role, RoleGraphType, null: true

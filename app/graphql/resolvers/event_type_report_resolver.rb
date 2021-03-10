@@ -1,12 +1,12 @@
 module EventTypeReportResolver
-  # Note: These queries have been taken from official Dataclips we've been using since 2019.
+  # NOTE: These queries have been taken from official Dataclips we've been using since 2019.
   # TODO: Refactor into Active Record Queries to make it testable.
   class << self
     def individual(_object, args, _context)
       office_id = args[:office_id]
       and_office = office_id == 'all' ? '' : "AND individual_events.office_id=#{office_id}"
       # We use UTC as the reports should be consistent for all admins regardless of time zones.
-      sql = <<-SQL
+      sql = <<-SQL.squish
       SELECT "id", "title", "sum" from event_types INNER JOIN
         (SELECT SUM(duration), event_type_id
         from individual_events INNER JOIN event_types ON individual_events.event_type_id=event_types.id
@@ -20,20 +20,19 @@ module EventTypeReportResolver
       SQL
 
       records_array = ActiveRecord::Base.connection.execute(sql)
-      result = records_array.map do |record|
+      records_array.map do |record|
         {
           id: record["id"],
           title: record["title"],
           minutes: record["sum"]
         }
       end
-      result
     end
 
     def organized(_object, args, _context)
       office_id = args[:office_id]
       and_office = office_id == 'all' ? '' : "AND events.office_id=#{office_id}"
-      sql = <<-SQL
+      sql = <<-SQL.squish
       SELECT "id", "title", "sum" from event_types INNER JOIN
         (SELECT SUM(duration), event_type_id
         from events LEFT JOIN event_types ON (events.event_type_id=event_types.id) LEFT JOIN signups ON signups.event_id = events.id
@@ -46,14 +45,13 @@ module EventTypeReportResolver
       SQL
 
       records_array = ActiveRecord::Base.connection.execute(sql)
-      result = records_array.map do |record|
+      records_array.map do |record|
         {
           id: record["id"],
           title: record["title"],
           minutes: record["sum"]
         }
       end
-      result
     end
   end
 end

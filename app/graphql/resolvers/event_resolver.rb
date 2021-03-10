@@ -17,8 +17,7 @@ module EventResolver
       events = events.for_office(office_id) if office_id
       events = events.before(Time.zone.at(args[:before])) if args[:before]
       events = events.after(Time.zone.at(args[:after]))   if args[:after]
-      events = scope_with_sort_by(events, args[:sort_by])
-      events
+      scope_with_sort_by(events, args[:sort_by])
     end
 
     def create(_, args, _context)

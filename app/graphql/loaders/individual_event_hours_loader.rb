@@ -1,5 +1,6 @@
 class IndividualEventHoursLoader < GraphQL::Batch::Loader
   def initialize(after: nil, before: nil)
+    super()
     @after = after
     @before = before
   end

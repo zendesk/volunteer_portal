@@ -29,7 +29,6 @@ class IndividualEvent < ApplicationRecord
   def to_status_enum
     case status
     when REJECTED then 'REJECTED'
-    when PENDING then 'PENDING'
     when APPROVED then 'APPROVED'
     else 'PENDING'
     end
