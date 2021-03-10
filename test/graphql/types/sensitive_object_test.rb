@@ -3,22 +3,21 @@ require_relative '../../test_helper'
 SingleCov.covered!
 
 describe Types::SensitiveObject do
-  class TestQuery < Types::SensitiveObject
-  end
+  test_query = Class.new(Types::SensitiveObject)
 
   describe '#self.authorized?' do
     let(:context) { {} }
     let(:object) { {} }
 
     before do
-      TestQuery.any_instance.stubs(object: object, context: context)
+      test_query.any_instance.stubs(object: object, context: context)
     end
 
     describe 'current_user is an admin' do
       let(:context) { { current_user: users(:admin) } }
 
       it 'returns true' do
-        assert_equal true, TestQuery.authorized?(object, context)
+        assert_equal true, test_query.authorized?(object, context)
       end
     end
 
@@ -26,7 +25,7 @@ describe Types::SensitiveObject do
       let(:context) { { current_user: users(:a) } }
 
       it 'returns false' do
-        assert_equal false, TestQuery.authorized?(object, context)
+        assert_equal false, test_query.authorized?(object, context)
       end
     end
   end
