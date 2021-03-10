@@ -171,7 +171,7 @@ GEM
     puma (5.2.1)
       nio4r (~> 2.0)
     rack (2.2.3)
-    rack-attack (6.3.1)
+    rack-attack (6.5.0)
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
