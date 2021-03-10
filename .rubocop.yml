@@ -156,7 +156,7 @@ Style/HashTransformValues:
   Enabled: true
 
 Style/RedundantFetchBlock:
-  Enabled: true 
+  Enabled: true
 
 Style/RedundantRegexpCharacterClass:
   Enabled: true
