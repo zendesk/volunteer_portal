@@ -6,7 +6,7 @@
 const webpack = require('webpack')
 const { join, resolve } = require('path')
 const { sync } = require('glob')
-const ManifestPlugin = require('webpack-manifest-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const { env, settings, output, loadersDir } = require('./configuration.js')
 
 const CompileI18nextPlugin = require('../locales/compile-i18next-plugin')
@@ -28,7 +28,7 @@ module.exports = {
 
   plugins: [
     new webpack.EnvironmentPlugin(JSON.parse(JSON.stringify(env))),
-    new ManifestPlugin({
+    new WebpackManifestPlugin({
       publicPath: output.publicPath,
       writeToFileEmit: true,
     }),
