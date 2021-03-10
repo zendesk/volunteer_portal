@@ -23,6 +23,7 @@ default: &default
 
 development:
   <<: *default
+  host: localhost
   username: volunteer
   database: volunteer_development
 
@@ -58,6 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: localhost
   username: <%= ENV['PGUSER'] || 'volunteer' %>
   database: volunteer_test
 
