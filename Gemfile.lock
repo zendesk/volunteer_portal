@@ -76,7 +76,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.0)
-    ffaker (2.17.0)
+    ffaker (2.18.0)
     ffi (1.13.1)
     flamegraph (0.9.5)
     foreman (0.87.2)
