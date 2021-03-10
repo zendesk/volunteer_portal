@@ -70,7 +70,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-react": "^7.12.13",
     "@babel/runtime-corejs2": "^7.8.3",
     "@rails/webpacker": "5.1.1",
     "@zendeskgarden/css-utilities": "^4.5.5",
