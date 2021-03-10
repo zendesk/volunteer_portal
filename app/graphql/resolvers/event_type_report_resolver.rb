@@ -6,7 +6,7 @@ module EventTypeReportResolver
       office_id = args[:office_id]
       and_office = office_id == 'all' ? '' : "AND individual_events.office_id=#{office_id}"
       # We use UTC as the reports should be consistent for all admins regardless of time zones.
-      sql = <<-SQL
+      sql = <<-SQL.squish
       SELECT "id", "title", "sum" from event_types INNER JOIN
         (SELECT SUM(duration), event_type_id
         from individual_events INNER JOIN event_types ON individual_events.event_type_id=event_types.id
@@ -32,7 +32,7 @@ module EventTypeReportResolver
     def organized(_object, args, _context)
       office_id = args[:office_id]
       and_office = office_id == 'all' ? '' : "AND events.office_id=#{office_id}"
-      sql = <<-SQL
+      sql = <<-SQL.squish
       SELECT "id", "title", "sum" from event_types INNER JOIN
         (SELECT SUM(duration), event_type_id
         from events LEFT JOIN event_types ON (events.event_type_id=event_types.id) LEFT JOIN signups ON signups.event_id = events.id

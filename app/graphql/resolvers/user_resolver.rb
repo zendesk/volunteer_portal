@@ -82,7 +82,7 @@ module UserResolver
     def scope_with_sort_by(scope, sort_by)
       return scope unless sort_by
 
-      query = <<-SQL
+      query = <<-SQL.squish
         (
           SUM(
             (EXTRACT(EPOCH FROM "events"."ends_at") - EXTRACT(EPOCH FROM "events"."starts_at")) / 60
