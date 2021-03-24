@@ -1,5 +1,5 @@
 import React from 'react'
-import ClockIcon from 'material-ui/svg-icons/action/schedule'
+import ClockIcon from '@zendeskgarden/svg-icons/src/16/clock-stroke.svg'
 import moment from 'moment'
 
 const styles = {
@@ -8,7 +8,7 @@ const styles = {
     margin: '10px 0',
   },
   icon: {
-    verticalAlign: '-33%',
+    verticalAlign: '-13%',
     marginRight: 10,
   },
   iconWithDate: {
