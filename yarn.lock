@@ -1886,13 +1886,14 @@
     dom-helpers "^5.1.0"
     polished "^3.5.1"
 
-"@zendeskgarden/react-tags@^8.24.0":
-  version "8.24.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-8.24.0.tgz#1da3d8c03bcf12e476e7bdf91a5b434f94641ec8"
-  integrity sha512-B2CddFVnCFvRQn+GcblwC644iG1ZY3QB3Mr/iz4pJbR5ge41Y9k1ALz7ks+09425VWJxMxq5Tlx+Jvp6MNDSHg==
+"@zendeskgarden/react-tags@^8.35.0":
+  version "8.35.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-8.35.0.tgz#bbbb2cb328eabec737d234b66e7effb0258f97e1"
+  integrity sha512-KBRcDrQv/imj8yPHwbHxUcu8IbsiMqxOhk/GucTdP3zA622xFsg1WpfJ3lVVsMGN4Qd9PLbNzR+PhHRqr8mIsA==
   dependencies:
-    "@zendeskgarden/container-utilities" "^0.5.1"
-    polished "^3.5.1"
+    "@zendeskgarden/container-utilities" "^0.5.5"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
 
 "@zendeskgarden/react-theming@^8.5.0":
   version "8.21.2"
