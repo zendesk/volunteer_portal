@@ -1,5 +1,5 @@
 import React from 'react'
-import LocationIcon from 'material-ui/svg-icons/maps/place'
+import LocationIcon from '@zendeskgarden/svg-icons/src/16/location-fill.svg'
 
 const styles = {
   property: {
@@ -7,7 +7,7 @@ const styles = {
     margin: '10px 0',
   },
   icon: {
-    verticalAlign: '-33%',
+    verticalAlign: '-13%',
     marginRight: 10,
   },
 }
