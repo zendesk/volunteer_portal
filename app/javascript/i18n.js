@@ -6,7 +6,7 @@ i18n
   .use(Backend)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    lng: 'en',
+    lng: 'en', // reach out to local storage first.
     fallbackLng: 'en',
 
     keySeparator: false, // we do not use keys in form messages.welcome

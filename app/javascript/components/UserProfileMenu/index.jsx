@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
@@ -46,10 +46,16 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
   const { setOfficeValue } = useContext(FilterContext)
   const [ isOpen, setIsOpen ] = useState(false)
   const [ tempSelectedItem, setTempSelectedItem ] = useState()
-  const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office, language: languages[0] })
+  // language: reach out to local storage first
+  const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office, language: i18n.language })
   const [ updateDefaultOffice ] = useMutation(UpdateUserOfficeMutation)
 
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
+
+  useEffect(() => {
+    const selectedLanguage = R.find(R.propEq("value", i18n.language), languages)
+    setSelectedItem({ ...selectedItem, language: selectedLanguage })
+  }, [i18n.language])
 
   const handleOfficeSelect = office =>
     updateDefaultOffice({ variables: { userId: currentUser.id, officeId: office.id } })

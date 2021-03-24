@@ -31,8 +31,9 @@ const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, ch
             <div>
               <Header>
                 <UserProfileMenu
+                  // pass in language_id of the user
                   offices={offices}
-                  togglePopover={e => toggleUserPopover(e.currentTarget)}
+                  togglePopover={(e) => toggleUserPopover(e.currentTarget)}
                   popover={userPopover}
                 />
               </Header>

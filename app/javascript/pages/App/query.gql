@@ -1,6 +1,7 @@
 #import "fragments/UserEntry.gql"
 #import "fragments/OfficeEntry.gql"
 #import "fragments/UserPreferenceEntry.gql"
+#import "fragments/LanguageEntry.gql"
 
 query AppQuery {
   currentUser {
@@ -16,5 +17,8 @@ query AppQuery {
   }
   offices(sortBy: NAME_ASC) {
     ...OfficeEntry
+  }
+  languages {
+    ...LanguageEntry
   }
 }
