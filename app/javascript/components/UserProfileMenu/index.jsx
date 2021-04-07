@@ -34,12 +34,13 @@ const UserName = styled(MD)`
   font-weight: bold;
 `
 
-const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
-  const languages = [
-    { label: 'English', value: 'en' },
-    { label: '日本語', value: 'ja' },
-    { label: 'Español', value: 'es' },
-  ]
+const UserProfileMenu = ({ offices, location, router, togglePopover, languages }) => {
+  // 1: {id: "2", languageCode: "es", languageName: "Español"}
+  // const oldLanguages = [
+  //   { label: 'English', value: 'en' },
+  //   { label: '日本語', value: 'ja' },
+  //   { label: 'Español', value: 'es' },
+  // ]
   
   const { i18n, t } = useTranslation()
   const { currentUser, setOffice } = useContext(UserContext)
@@ -53,8 +54,8 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
 
   useEffect(() => {
-    const selectedLanguage = R.find(R.propEq("value", i18n.language), languages)
-    setSelectedItem({ ...selectedItem, language: selectedLanguage })
+    const selectedLanguage = R.find(R.propEq("languageCode", i18n.language), languages)
+    setSelectedItem({ ...selectedItem, language: { label: selectedLanguage.languageName, value: selectedLanguage.languageCode } })
   }, [i18n.language])
 
   const handleOfficeSelect = office =>

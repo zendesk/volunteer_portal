@@ -18,7 +18,7 @@ const MuiTheme = {
   },
 }
 
-const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, children }) => {
+const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, children, languages }) => {
   if (!currentUser) return null
 
   return (
@@ -31,7 +31,7 @@ const App = ({ loading, currentUser, offices, userPopover, toggleUserPopover, ch
             <div>
               <Header>
                 <UserProfileMenu
-                  // pass in language_id of the user
+                  languages={languages}
                   offices={offices}
                   togglePopover={(e) => toggleUserPopover(e.currentTarget)}
                   popover={userPopover}

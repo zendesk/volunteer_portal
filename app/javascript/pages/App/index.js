@@ -48,7 +48,7 @@ class AppPage extends Component {
     return (
       <RemoteLocale currentUser={currentUser} languages={languages}>
         <App
-          // pass languages down to profile menu.
+          languages={languages}
           loading={networkStatus === NetworkStatus.loading}
           currentUser={currentUser}
           offices={offices}
