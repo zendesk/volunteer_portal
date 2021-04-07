@@ -14,6 +14,7 @@ import { Avatar } from '@zendeskgarden/react-avatars'
 import { MD } from '@zendeskgarden/react-typography'
 
 import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
+import UpdateUserLanguagePreferenceMutation from '/mutations/UpdateUserLanguagePreferenceMutation.gql'
 import { UserContext, FilterContext } from '/context'
 import GeneralSettingsMenu from './GeneralSettingsMenu'
 import DefaultOfficeMenu from './DefaultOfficeMenu'
@@ -35,12 +36,6 @@ const UserName = styled(MD)`
 `
 
 const UserProfileMenu = ({ offices, location, router, togglePopover, languages }) => {
-  // 1: {id: "2", languageCode: "es", languageName: "Español"}
-  // const oldLanguages = [
-  //   { label: 'English', value: 'en' },
-  //   { label: '日本語', value: 'ja' },
-  //   { label: 'Español', value: 'es' },
-  // ]
   
   const { i18n, t } = useTranslation()
   const { currentUser, setOffice } = useContext(UserContext)
@@ -50,6 +45,7 @@ const UserProfileMenu = ({ offices, location, router, togglePopover, languages }
   // language: reach out to local storage first
   const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office, language: i18n.language })
   const [ updateDefaultOffice ] = useMutation(UpdateUserOfficeMutation)
+  const [ updateUserLanguagePreference ] = useMutation(UpdateUserLanguagePreferenceMutation)
 
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
 
@@ -63,7 +59,6 @@ const UserProfileMenu = ({ offices, location, router, togglePopover, languages }
       .then(response => setOffice(R.path(['data', 'updateUserOffice', 'office'], response)))
       .then(_ => setOfficeValue(office.id))
       .then(_ => togglePopover('user'))
-
 
   const handleStateChange = (changes, stateAndHelpers) => {
     if (R.hasPath(['isOpen'])(changes)) {
@@ -102,6 +97,8 @@ const UserProfileMenu = ({ offices, location, router, togglePopover, languages }
         i18n.changeLanguage(selectedItem.language.value, () => {
           // TODO: Handle callback (error/success)
         })
+        const selectedLanguage = R.find(R.propEq("languageCode", selectedItem.language.value), languages)
+        updateUserLanguagePreference({ variables: { id: selectedLanguage.id } })
         setSelectedItem(selectedItem)
       }
       // The following are for accessibility support for Link navigation
