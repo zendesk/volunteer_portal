@@ -5,8 +5,7 @@ module Mutations
       null true
 
       argument :id, ID, required: true
-      
-  
+
       def resolve(**args)
         UserPreferenceResolver.update_user_language_preference(object, args, context)
       end

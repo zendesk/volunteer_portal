@@ -43,12 +43,13 @@ const UserProfileMenu = ({ offices, location, router, togglePopover, languages }
   const [ isOpen, setIsOpen ] = useState(false)
   const [ tempSelectedItem, setTempSelectedItem ] = useState()
   // language: reach out to local storage first
-  const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office, language: i18n.language })
+  const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office })
   const [ updateDefaultOffice ] = useMutation(UpdateUserOfficeMutation)
   const [ updateUserLanguagePreference ] = useMutation(UpdateUserLanguagePreferenceMutation)
 
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
 
+  // Syncs language menu with local language
   useEffect(() => {
     const selectedLanguage = R.find(R.propEq("languageCode", i18n.language), languages)
     setSelectedItem({ ...selectedItem, language: { label: selectedLanguage.languageName, value: selectedLanguage.languageCode } })
