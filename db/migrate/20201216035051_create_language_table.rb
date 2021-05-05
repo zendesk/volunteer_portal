@@ -3,6 +3,7 @@ class CreateLanguageTable < ActiveRecord::Migration[5.2]
     create_table :languages do |t|
       t.string :language_code
       t.string :language_name
+      t.datetime :created_at, default: -> { 'CURRENT_TIMESTAMP' }
     end
 
     add_index :languages, :language_code, unique: true

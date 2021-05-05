@@ -157,6 +157,5 @@ module Types
     def languages
       Language.all
     end
-
   end
 end
