@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+minimum:
+  id: 1
+  language_code: ts
+  language_name: Test
