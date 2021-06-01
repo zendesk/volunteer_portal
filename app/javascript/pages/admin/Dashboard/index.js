@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/react-hooks'
 import Loading from 'components/LoadingIcon'
 import ProgressCircle from 'components/ProgressCircle'
 import Event from 'components/Event'
-import Callout from 'components/Callout'
+import Alert from 'components/Alert'
 import OfficeFilter from '/components/OfficeFilter'
 import { FilterContext, officeFilterValueLens } from '/context'
 
@@ -59,7 +59,7 @@ const Dashboard = ({ t }) => {
   }
 
   if (error) {
-    return <Callout type="error" />
+    return <Alert type="error" />
   }
 
   const eventsThisMonth = R.propOr([], 'eventsThisMonth', data)

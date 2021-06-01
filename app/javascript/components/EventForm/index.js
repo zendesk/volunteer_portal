@@ -5,7 +5,7 @@ import * as R from 'ramda'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
-import Callout from 'components/Callout'
+import Alert from 'components/Alert'
 import LocationField from 'components/LocationField'
 import ReduxFormAutocomplete from 'components/ReduxFormAutoComplete'
 
@@ -60,7 +60,7 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
         </select>
       )
     default:
-      return <Callout type="error" />
+      return <Alert type="error" />
   }
 }
 
@@ -134,7 +134,7 @@ const TimeField = ({ input: { value, onChange } }) => (
 
 const EventForm = ({ handleSubmit, disableSubmit, errors, eventTypes, tags, organizations, offices, children, t }) => (
   <form className={s.form} onSubmit={handleSubmit}>
-    {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
+    {isNoErrors(errors) ? null : <Alert type="error" message={formatGraphQLErrors(errors)} />}
     <div className={s.inputGroup}>
       <Field
         label={t('volunteer_portal.admin.tab.events.add.title')}
