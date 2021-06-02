@@ -42,17 +42,23 @@ const UserProfileMenu = ({ offices, location, router, togglePopover, languages }
   const { setOfficeValue } = useContext(FilterContext)
   const [ isOpen, setIsOpen ] = useState(false)
   const [ tempSelectedItem, setTempSelectedItem ] = useState()
-  // language: reach out to local storage first
   const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office })
   const [ updateDefaultOffice ] = useMutation(UpdateUserOfficeMutation)
   const [ updateUserLanguagePreference ] = useMutation(UpdateUserLanguagePreferenceMutation)
 
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
 
+
+  const getLanguageFromLanguageCode = (languageCode) => {
+    return R.find(R.propEq("languageCode", languageCode), languages)
+  }
+
   // Syncs language menu with local language
   useEffect(() => {
-    const selectedLanguage = R.find(R.propEq("languageCode", i18n.language), languages)
-    setSelectedItem({ ...selectedItem, language: { label: selectedLanguage.languageName, value: selectedLanguage.languageCode } })
+    const selectedLanguage = getLanguageFromLanguageCode(i18n.language)
+    if (!!selectedLanguage) {
+      selectedLanguage && setSelectedItem({ ...selectedItem, language: { label: selectedLanguage.languageName, value: selectedLanguage.languageCode } })
+    }
   }, [i18n.language])
 
   const handleOfficeSelect = office =>
@@ -98,9 +104,11 @@ const UserProfileMenu = ({ offices, location, router, togglePopover, languages }
         i18n.changeLanguage(selectedItem.language.value, () => {
           // TODO: Handle callback (error/success)
         })
-        const selectedLanguage = R.find(R.propEq("languageCode", selectedItem.language.value), languages)
-        updateUserLanguagePreference({ variables: { id: selectedLanguage.id } })
-        setSelectedItem(selectedItem)
+        const selectedLanguage = getLanguageFromLanguageCode(selectedItem.language.value)
+        if (!!selectedLanguage) {
+          updateUserLanguagePreference({ variables: { id: selectedLanguage.id } })
+          setSelectedItem(selectedItem)
+        }
       }
       // The following are for accessibility support for Link navigation
     } else if (selectedItem === 'admin') {

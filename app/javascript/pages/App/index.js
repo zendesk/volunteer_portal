@@ -17,7 +17,7 @@ const RemoteLocale = ({ children, currentUser, languages }) => {
   const { i18n } = useTranslation()
 
   useEffect(() => {
-    const languageId = R.pipe(R.prop('preference'), R.prop('languageId'))(currentUser)
+    const languageId = R.path(['preference', 'languageId'], currentUser)
 
     if (!R.isNil(languageId)) {
       const chosenLanguage = R.find(R.propEq('id', languageId))(languages)
