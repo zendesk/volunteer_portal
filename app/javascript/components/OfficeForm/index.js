@@ -3,7 +3,7 @@ import { Field } from 'redux-form'
 import moment from 'moment-timezone'
 import * as R from 'ramda'
 
-import Callout from 'components/Callout'
+import Alert from 'components/Alert'
 
 import s from './main.css'
 import { useTranslation } from 'react-i18next'
@@ -33,7 +33,7 @@ const renderFieldHelper = ({ input, type, label, className, selectOptions }) => 
         </select>
       )
     default:
-      return <Callout type="error" />
+      return <Alert type="error" />
   }
 }
 
@@ -65,7 +65,7 @@ const OfficeForm = ({ handleSubmit, disableSubmit, errors }) => {
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      {isNoErrors(errors) ? null : <Callout type="error" message={formatGraphQLErrors(errors)} />}
+      {isNoErrors(errors) ? null : <Alert type="error" message={formatGraphQLErrors(errors)} />}
       <div className={s.inputGroup}>
         <Field
           label={t('volunteer_portal.admin.tab.offices_addoffice_name')}
