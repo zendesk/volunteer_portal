@@ -7,7 +7,6 @@ import Event from 'components/Event'
 import Layout from 'components/Layout'
 import Loading from 'components/LoadingIcon'
 import Toolbar from 'components/Toolbar'
-import Alert from 'components/Alert'
 import { FilterContext, UserContext } from '/context'
 
 import 'style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
@@ -115,7 +114,6 @@ const Calendar = ({ loading, currentPath, events, togglePopover, loadMoreEvents 
 
   return (
     <Layout currentPath={currentPath}>
-      <Alert type="error"></Alert>
       <BigCalendar
         events={selectEvents(events, currentUser, filters)}
         eventPropGetter={eventPropGetter}
