@@ -148,7 +148,7 @@ GEM
     minitest-rails (5.2.0)
       minitest (~> 5.10)
       railties (~> 5.2.0)
-    mocha (1.11.2)
+    mocha (1.13.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
