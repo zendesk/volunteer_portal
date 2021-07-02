@@ -12,7 +12,6 @@ import { togglePopover } from 'actions'
 
 import AppQuery from './query.gql'
 
-// TODO refactor it into AppPage as a functional component // todo: change name
 const RemoteLocale = ({ children, currentUser, languages }) => {
   const { i18n } = useTranslation()
 
@@ -22,9 +21,7 @@ const RemoteLocale = ({ children, currentUser, languages }) => {
     if (!R.isNil(languageId)) {
       const chosenLanguage = R.find(R.propEq('id', languageId))(languages)
       const languageCode = R.prop('languageCode', chosenLanguage)
-      i18n.changeLanguage(languageCode, () => {
-        // TODO: Handle callback (error/success)
-      })
+      i18n.changeLanguage(languageCode)
       moment.locale(languageCode)
     }
   }, [currentUser])

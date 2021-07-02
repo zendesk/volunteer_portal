@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_035300) do
+ActiveRecord::Schema.define(version: 2021_06_30_040854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_035300) do
   create_table "languages", force: :cascade do |t|
     t.string "language_code"
     t.string "language_name"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
     t.index ["language_code"], name: "index_languages_on_language_code", unique: true
   end
 
