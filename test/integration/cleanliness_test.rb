@@ -50,6 +50,7 @@ describe 'cleanliness' do
         app/graphql/mutations/create_tag.rb
         app/graphql/mutations/update_tag.rb
         app/graphql/mutations/confirm_profile_settings.rb
+        app/graphql/mutations/update_user_language_preference.rb
         app/graphql/portal_schema.rb
         app/graphql/resolvers/office_resolver.rb
         app/graphql/resolvers/organization_resolver.rb
@@ -89,6 +90,7 @@ describe 'cleanliness' do
         app/graphql/types/user_graph_type.rb
         app/graphql/types/tag_graph_type.rb
         app/graphql/types/user_preference_graph_type.rb
+        app/graphql/types/language_graph_type.rb
         app/helpers/application_helper.rb
       ]
     )

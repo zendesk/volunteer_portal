@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
@@ -14,6 +14,7 @@ import { Avatar } from '@zendeskgarden/react-avatars'
 import { MD } from '@zendeskgarden/react-typography'
 
 import UpdateUserOfficeMutation from '/mutations/UpdateUserOfficeMutation.gql'
+import UpdateUserLanguagePreferenceMutation from '/mutations/UpdateUserLanguagePreferenceMutation.gql'
 import { UserContext, FilterContext } from '/context'
 import GeneralSettingsMenu from './GeneralSettingsMenu'
 import DefaultOfficeMenu from './DefaultOfficeMenu'
@@ -34,29 +35,37 @@ const UserName = styled(MD)`
   font-weight: bold;
 `
 
-const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
-  const languages = [
-    { label: 'English', value: 'en' },
-    { label: '日本語', value: 'ja' },
-    { label: 'Español', value: 'es' },
-  ]
+const UserProfileMenu = ({ offices, location, router, togglePopover, languages }) => {
   
   const { i18n, t } = useTranslation()
   const { currentUser, setOffice } = useContext(UserContext)
   const { setOfficeValue } = useContext(FilterContext)
   const [ isOpen, setIsOpen ] = useState(false)
   const [ tempSelectedItem, setTempSelectedItem ] = useState()
-  const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office, language: languages[0] })
+  const [ selectedItem, setSelectedItem ] = useState({ office: currentUser.office })
   const [ updateDefaultOffice ] = useMutation(UpdateUserOfficeMutation)
+  const [ updateUserLanguagePreference ] = useMutation(UpdateUserLanguagePreferenceMutation)
 
   if (R.isNil(currentUser) || R.isEmpty(currentUser)) return null
+
+
+  const getLanguageFromLanguageCode = (languageCode) => {
+    return R.find(R.propEq("languageCode", languageCode), languages)
+  }
+
+  // Syncs language menu with local language
+  useEffect(() => {
+    const selectedLanguage = getLanguageFromLanguageCode(i18n.language)
+    if (!!selectedLanguage) {
+      selectedLanguage && setSelectedItem({ ...selectedItem, language: { label: selectedLanguage.languageName, value: selectedLanguage.languageCode } })
+    }
+  }, [i18n.language])
 
   const handleOfficeSelect = office =>
     updateDefaultOffice({ variables: { userId: currentUser.id, officeId: office.id } })
       .then(response => setOffice(R.path(['data', 'updateUserOffice', 'office'], response)))
       .then(_ => setOfficeValue(office.id))
       .then(_ => togglePopover('user'))
-
 
   const handleStateChange = (changes, stateAndHelpers) => {
     if (R.hasPath(['isOpen'])(changes)) {
@@ -95,7 +104,11 @@ const UserProfileMenu = ({ offices, location, router, togglePopover }) => {
         i18n.changeLanguage(selectedItem.language.value, () => {
           // TODO: Handle callback (error/success)
         })
-        setSelectedItem(selectedItem)
+        const selectedLanguage = getLanguageFromLanguageCode(selectedItem.language.value)
+        if (!!selectedLanguage) {
+          updateUserLanguagePreference({ variables: { id: selectedLanguage.id } })
+          setSelectedItem(selectedItem)
+        }
       }
       // The following are for accessibility support for Link navigation
     } else if (selectedItem === 'admin') {

@@ -8,5 +8,6 @@ module Types
 
     field :id, ID, null: false
     field :confirmed_profile_settings, Boolean, null: false
+    field :language_id, ID, null: false
   end
 end

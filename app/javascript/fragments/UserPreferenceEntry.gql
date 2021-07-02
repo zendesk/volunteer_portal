@@ -1,4 +1,5 @@
 fragment UserPreferenceEntry on UserPreference {
   id
   confirmedProfileSettings
+  languageId
 }

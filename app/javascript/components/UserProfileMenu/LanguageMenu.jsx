@@ -13,9 +13,8 @@ const LanguageMenu = ( { languages, previousMenuValue, selectedItem, t }) =>
   </PreviousItem>
   <Separator />
   {languages.map((language, i) => (
-    <Item key={i} value={{ office: selectedItem.office, language }}>
-      {' '}
-      {language.label}{' '}
+    <Item key={i} value={{ office: selectedItem.office, language: { label: language.languageName, value: language.languageCode } }}>
+      {language.languageName}
     </Item>
   ))}
 </>

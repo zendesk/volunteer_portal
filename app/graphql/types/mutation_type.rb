@@ -36,5 +36,6 @@ module Types
     field :delete_tag, TagGraphType, mutation: Mutations::DeleteTag
 
     field :confirm_profile_settings, UserPreferenceGraphType, mutation: Mutations::ConfirmProfileSettings
+    field :update_user_language_preference, UserPreferenceGraphType, mutation: Mutations::UpdateUserLanguagePreference
   end
 end

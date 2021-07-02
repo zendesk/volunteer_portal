@@ -12,12 +12,20 @@ import { togglePopover } from 'actions'
 
 import AppQuery from './query.gql'
 
-// TODO refactor it into AppPage as a functional component
-const MomentLocale = ({ children }) => {
+const RemoteLocale = ({ children, currentUser, languages }) => {
   const { i18n } = useTranslation()
+
   useEffect(() => {
-    moment.locale(i18n.language)
-  }, [i18n.language])
+    const languageId = R.path(['preference', 'languageId'], currentUser)
+
+    if (!R.isNil(languageId)) {
+      const chosenLanguage = R.find(R.propEq('id', languageId))(languages)
+      const languageCode = R.prop('languageCode', chosenLanguage)
+      i18n.changeLanguage(languageCode)
+      moment.locale(languageCode)
+    }
+  }, [currentUser])
+
   return <>{children}</>
 }
 
@@ -28,15 +36,16 @@ class AppPage extends Component {
 
   render() {
     const {
-      data: { networkStatus, currentUser, offices },
+      data: { networkStatus, currentUser, offices, languages },
       togglePopover,
       popover,
       children,
     } = this.props
 
     return (
-      <MomentLocale>
+      <RemoteLocale currentUser={currentUser} languages={languages}>
         <App
+          languages={languages}
           loading={networkStatus === NetworkStatus.loading}
           currentUser={currentUser}
           offices={offices}
@@ -45,7 +54,7 @@ class AppPage extends Component {
         >
           {children}
         </App>
-      </MomentLocale>
+      </RemoteLocale>
     )
   }
 }

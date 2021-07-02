@@ -1,0 +1,5 @@
+fragment LanguageEntry on Language {
+    id
+    languageCode
+    languageName
+}

@@ -87,6 +87,13 @@ ActiveRecord::Schema.define(version: 2021_06_30_040854) do
     t.index ["user_id"], name: "index_individual_events_on_user_id"
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.string "language_code"
+    t.string "language_name"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.index ["language_code"], name: "index_languages_on_language_code", unique: true
+  end
+
   create_table "offices", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "identifier", null: false
@@ -145,6 +152,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_040854) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "language_id", default: 1
     t.index ["user_id"], name: "index_user_preferences_on_user_id"
   end
 
@@ -184,5 +192,6 @@ ActiveRecord::Schema.define(version: 2021_06_30_040854) do
   add_foreign_key "event_tags", "tags"
   add_foreign_key "individual_event_tags", "individual_events"
   add_foreign_key "individual_event_tags", "tags"
+  add_foreign_key "user_preferences", "languages"
   add_foreign_key "user_preferences", "users"
 end

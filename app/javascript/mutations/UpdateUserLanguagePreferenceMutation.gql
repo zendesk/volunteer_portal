@@ -1,0 +1,5 @@
+mutation updateUserLanguagePreference($id:ID!) {
+  updateUserLanguagePreference(id: $id) {
+    id
+  }
+}
