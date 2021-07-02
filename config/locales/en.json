@@ -216,7 +216,7 @@
       "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description": "Description",
       "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.description.error": "Must not be empty",
       "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization": "Organization",
-      "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.hint": "Contact us to add your organization to this list or select 'Other'",
+      "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.hint": "If you do not see your organization, select 'External Volunteering'",
       "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.organization.error": "Must select one",
       "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date": "Date",
       "volunteer_portal.admin.tab.user.myevents.individualevent.recordevent.date.error": "Must select one",
