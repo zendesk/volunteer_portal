@@ -1,19 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
 import * as R from 'ramda'
-import LinearProgress from 'material-ui/LinearProgress'
+import { Progress } from '@zendeskgarden/react-loaders'
 
 import s from './main.css'
-
-// Material UI components still require inline styles
-const styles = {
-  bar: {
-    height: 7,
-    borderRadius: 4,
-    width: '100%',
-    backgroundColor: '#ddd',
-  },
-}
 
 const Container = ({ event, isLink, children, onClick }) => {
   // When this is rendered on the Calendar, we want it to trigger a popover. When it is
@@ -28,9 +18,7 @@ const Container = ({ event, isLink, children, onClick }) => {
 const Event = ({ event, isLink, addPopover, onClick }) => (
   <Container className={s.event} event={event} isLink={isLink} onClick={onClick}>
     <span className={s.title}>{event.title}</span>
-    <LinearProgress
-      style={styles.bar}
-      mode="determinate"
+    <Progress
       value={(R.clamp(0, 100, event.signupCount / event.capacity) || 0) * 100.0}
       color="#30aabc"
     />
