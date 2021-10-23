@@ -74,7 +74,7 @@
     "@babel/runtime-corejs2": "^7.8.3",
     "@rails/webpacker": "5.1.1",
     "@zendeskgarden/css-utilities": "^4.5.5",
-    "@zendeskgarden/react-avatars": "^8.11.0",
+    "@zendeskgarden/react-avatars": "^8.42.0",
     "@zendeskgarden/react-buttons": "^8.5.0",
     "@zendeskgarden/react-datepickers": "^8.25.1",
     "@zendeskgarden/react-dropdowns": "^8.14.1",

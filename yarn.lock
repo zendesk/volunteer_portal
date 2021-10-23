@@ -1789,12 +1789,13 @@
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
   integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
 
-"@zendeskgarden/react-avatars@^8.11.0":
-  version "8.21.2"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.21.2.tgz#9f4f6a99563a94836f6961770431ec0bfbaf4055"
-  integrity sha512-dGHGf9zL7tPbDxukk9HMl8G08785XpHjXM+XWOEBso5k858TGqJepGqTCSBG34M1Zl564Upj3vEHv9oVFCPydQ==
+"@zendeskgarden/react-avatars@^8.42.0":
+  version "8.43.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.43.0.tgz#4dfeb32edfcc73eac4eda38a06e62568a149f19a"
+  integrity sha512-daYEvED1gIgUXfLxMGctLXRKWkKXH1T23+/0o0ZFBEYsEOu5y34Ux5jw5qqNrLEck1PdLuxld3dCR3BeoVAyPg==
   dependencies:
-    polished "^3.5.1"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
 
 "@zendeskgarden/react-buttons@^8.5.0":
   version "8.21.2"
