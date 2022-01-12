@@ -5,6 +5,6 @@ module Types::Input
 
     argument :id, ID, required: true
     argument :is_admin, Boolean, required: true
-    argument :officeId, ID, required: true
+    argument :office_id, ID, required: true
   end
 end
