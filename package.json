@@ -113,7 +113,7 @@
     "js-yaml": "^3.13.1",
     "lodash.debounce": "^4.0.8",
     "material-ui": "0.20.2",
-    "moment": "^2.20.1",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.14",
     "postcss-loader": "^3.0.0",
     "postcss-smart-import": "^0.7.6",
