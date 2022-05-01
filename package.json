@@ -150,7 +150,7 @@
     "enzyme-to-json": "^3.6.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
-    "jest-junit": "^6.3.0",
+    "jest-junit": "^13.2.0",
     "jest-transform-graphql": "^2.1.0",
     "lint-staged": "^10.5.4",
     "loglevel": "^1.7.1",
