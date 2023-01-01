@@ -114,7 +114,7 @@
     "lodash.debounce": "^4.0.8",
     "material-ui": "0.20.2",
     "moment": "^2.20.1",
-    "moment-timezone": "^0.5.14",
+    "moment-timezone": "^0.5.40",
     "postcss-loader": "^3.0.0",
     "postcss-smart-import": "^0.7.6",
     "prop-types": "^15.7.2",
