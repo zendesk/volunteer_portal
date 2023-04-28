@@ -1,3 +1,5 @@
+⚠️ This project is no longer actively maintained. Issues and Pull Requests will not be monitored.
+
 # Volunteer Portal
 
 [![CircleCI](https://circleci.com/gh/zendesk/volunteer_portal/tree/master.svg?style=svg)](https://circleci.com/gh/zendesk/volunteer_portal/tree/master)
