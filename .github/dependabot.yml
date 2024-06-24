@@ -10,7 +10,11 @@ updates:
     schedule:
       interval: "monthly"
     vendor: true
+    allow:
+      - dependency-type: "direct"
   - package-ecosystem: "npm"
     directory: /
     schedule:
       interval: "monthly"
+    allow:
+      - dependency-type: "direct"
